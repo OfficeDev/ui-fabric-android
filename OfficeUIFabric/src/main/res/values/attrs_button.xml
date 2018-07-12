@@ -1,4 +1,5 @@
 <resources>
     <declare-styleable name="Button">
+        <attr name="showBorder" format="boolean"/>
     </declare-styleable>
 </resources>

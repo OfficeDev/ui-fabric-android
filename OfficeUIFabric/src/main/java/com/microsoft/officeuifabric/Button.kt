@@ -18,6 +18,9 @@ open class Button : android.widget.Button {
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         init()
+        val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.Button)
+        showBorder = styledAttrs.getBoolean(R.styleable.Button_showBorder, showBorder)
+        styledAttrs.recycle()
     }
 
     private fun init() {
