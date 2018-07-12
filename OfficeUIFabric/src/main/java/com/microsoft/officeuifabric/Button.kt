@@ -1,6 +1,7 @@
 package com.microsoft.officeuifabric
 
 import android.content.Context
+import android.util.AttributeSet
 
 open class Button : android.widget.Button {
     private var _showBorder: Boolean = true
@@ -12,6 +13,10 @@ open class Button : android.widget.Button {
         }
 
     constructor(context: Context) : super(context) {
+        init()
+    }
+
+    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         init()
     }
 
