@@ -3,7 +3,7 @@ package com.microsoft.officeuifabric
 import android.content.Context
 import android.util.AttributeSet
 
-open class Button : android.widget.Button {
+open class Button : android.support.v7.widget.AppCompatButton {
     private var _showBorder: Boolean = true
 
     var showBorder: Boolean
