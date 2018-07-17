@@ -12,17 +12,23 @@ open class Button : android.support.v7.widget.AppCompatButton {
             _showBorder = newValue
         }
 
-    constructor(context: Context) : super(context) {
-        init()
+    init {
+        // core initialization
     }
 
+    constructor(context: Context) : super(context)
+
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
-        init()
+        initializeFromStyle(context, attrs)
+    }
+
+    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+        initializeFromStyle(context, attrs)
+    }
+
+    private fun initializeFromStyle(context: Context, attrs: AttributeSet) {
         val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.Button)
         showBorder = styledAttrs.getBoolean(R.styleable.Button_showBorder, showBorder)
         styledAttrs.recycle()
-    }
-
-    private fun init() {
     }
 }
