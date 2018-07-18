@@ -10,7 +10,7 @@ import org.robolectric.RuntimeEnvironment
 class ButtonUnitTest {
     @Test
     fun testSimpleButton() {
-//        val button = Button(RuntimeEnvironment.systemContext)
-//        Assert.assertNotNull(button)
+        val button = Button(RuntimeEnvironment.application)
+        Assert.assertNotNull(button)
     }
 }
