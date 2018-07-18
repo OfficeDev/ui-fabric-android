@@ -13,4 +13,11 @@ class ButtonUnitTest {
         val button = Button(RuntimeEnvironment.application)
         Assert.assertNotNull(button)
     }
+
+    @Test
+    fun testStyledButton() {
+        val button = Button(RuntimeEnvironment.application)
+        button.showBorder = false
+        Assert.assertFalse(button.showBorder)
+    }
 }
