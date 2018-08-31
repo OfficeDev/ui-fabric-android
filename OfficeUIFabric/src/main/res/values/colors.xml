@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="avatar_background_colors">
+        <item>#FF3298DB</item>
+        <item>#FF50BBC4</item>
+        <item>#FF32C270</item>
+        <item>#FFF07E21</item>
+        <item>#FFE6463C</item>
+        <item>#FFF0CE0E</item>
+        <item>#FFF069B1</item>
+        <item>#FF9E75DB</item>
+        <item>#FFAC735F</item>
+        <item>#FFA5A5AB</item>
+    </array>
+</resources>

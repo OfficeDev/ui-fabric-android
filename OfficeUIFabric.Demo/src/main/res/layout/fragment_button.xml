@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:padding="@dimen/default_layout_margin"
     tools:context=".demos.ButtonFragment">
 
     <com.microsoft.officeuifabric.Button
         android:id="@+id/button"
-        android:layout_width="287dp"
+        android:layout_width="@dimen/button_width"
         android:layout_height="wrap_content"
         android:text="Button"
         app:showBorder="false" />

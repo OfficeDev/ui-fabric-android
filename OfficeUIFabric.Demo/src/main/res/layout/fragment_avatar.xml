@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/avatar_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="@dimen/default_layout_margin"
+    tools:context=".demos.AvatarFragment">
+
+    <com.microsoft.officeuifabric.AvatarView
+        android:id="@+id/avatar_example_initials"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/default_layout_margin"
+        app:avatarSize="size_25" />
+
+    <com.microsoft.officeuifabric.AvatarView
+        android:id="@+id/avatar_example_picasso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/default_layout_margin"
+        app:avatarSize="size_30" />
+
+    <com.microsoft.officeuifabric.AvatarView
+        android:id="@+id/avatar_example_glide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/default_layout_margin"
+        app:avatarSize="size_35" />
+
+    <com.microsoft.officeuifabric.AvatarView
+        android:id="@+id/avatar_example_local"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/default_layout_margin"
+        app:avatarSize="size_40" />
+
+</LinearLayout>
