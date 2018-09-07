@@ -12,8 +12,8 @@ open class DemoFragment : Fragment() {
 
     private var demo: Demo? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
         arguments?.let {
             if (it.containsKey(DEMO_ID)) {
                 val demoID = it.getSerializable(DEMO_ID) as UUID

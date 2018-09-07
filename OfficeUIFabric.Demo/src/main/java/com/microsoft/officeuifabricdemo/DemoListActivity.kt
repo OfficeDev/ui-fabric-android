@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.demo_list_content.view.*
 import kotlinx.android.synthetic.main.demo_list.*
 
 /**
- * An activity representing a list of Pings. This activity
+ * An activity representing a list of Demos. This activity
  * has different presentations for handset and tablet-size devices. On
  * handsets, the activity presents a list of items, which when touched,
  * lead to a [DemoActivity] representing
@@ -36,6 +36,8 @@ class DemoListActivity : AppCompatActivity() {
         }
 
         setupRecyclerView(demo_list)
+
+        Initializer.init(application)
     }
 
     private fun setupRecyclerView(recyclerView: RecyclerView) {
