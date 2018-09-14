@@ -1,9 +1,9 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="app_bar_height">200dp</dimen>
-    <dimen name="item_width">200dp</dimen>
-    <dimen name="text_margin">16dp</dimen>
     <dimen name="default_layout_margin">16dp</dimen>
     <dimen name="default_view_margin">8dp</dimen>
     <dimen name="button_width">287dp</dimen>
+    <dimen name="cell_horizontal_spacing">8dp</dimen>
+    <dimen name="cell_vertical_spacing">2dp</dimen>
 </resources>

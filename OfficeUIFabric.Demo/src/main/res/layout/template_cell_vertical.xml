@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/default_view_margin"
+    android:background="@android:color/holo_green_light">
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/cell_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="@string/cell_sample_title" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/cell_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/cell_vertical_spacing"
+        tools:text="@string/cell_sample_description" />
+
+</LinearLayout>

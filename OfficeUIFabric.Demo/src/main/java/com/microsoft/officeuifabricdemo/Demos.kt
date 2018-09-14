@@ -3,6 +3,7 @@ package com.microsoft.officeuifabricdemo
 import android.support.v4.app.Fragment
 import com.microsoft.officeuifabricdemo.demos.AvatarFragment
 import com.microsoft.officeuifabricdemo.demos.ButtonFragment
+import com.microsoft.officeuifabricdemo.demos.TemplateViewFragment
 import com.microsoft.officeuifabricdemo.demos.TypographyFragment
 import java.util.*
 import kotlin.reflect.KClass
@@ -10,8 +11,7 @@ import kotlin.reflect.KClass
 val DEMOS = arrayListOf(
     Demo("Avatar", AvatarFragment::class),
     Demo("Button", ButtonFragment::class),
-    Demo("TextEdit", DemoFragment::class),  //!!!
-    Demo("TextField", DemoFragment::class),  //!!!
+    Demo("TemplateView", TemplateViewFragment::class),
     Demo("Typography", TypographyFragment::class)
 )
 

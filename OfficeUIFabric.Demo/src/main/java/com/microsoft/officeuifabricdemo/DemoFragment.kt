@@ -18,7 +18,7 @@ open class DemoFragment : Fragment() {
             if (it.containsKey(DEMO_ID)) {
                 val demoID = it.getSerializable(DEMO_ID) as UUID
                 demo = DEMOS.find { it.id == demoID }
-                activity?.toolbar_layout?.title = demo?.title
+                activity?.title = demo?.title
             }
         }
     }

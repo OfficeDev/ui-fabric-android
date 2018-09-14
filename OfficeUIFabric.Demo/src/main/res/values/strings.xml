@@ -11,6 +11,16 @@
     <string name="avatar_male_name">Maor Sharett</string>
     <string name="avatar_male_email">maorsharett@microsoft.com</string>
 
+    <!--TemplateView-->
+    <string name="cell_sample_title">Title</string>
+    <string name="cell_sample_description">Description</string>
+    <string name="calculate_cells">Load/calculate 100 cells</string>
+    <string name="calculate_layouts">Load/calculate 100 layouts</string>
+    <string name="template_list">Template List</string>
+    <string name="regular_list">Regular List</string>
+    <string name="cell_example_title">Title: Cell</string>
+    <string name="cell_example_description">Description: Tap to change orientation</string>
+
     <!--Typography-->
     <string name="headline">Headline</string>
     <string name="title_1">Title 1</string>
