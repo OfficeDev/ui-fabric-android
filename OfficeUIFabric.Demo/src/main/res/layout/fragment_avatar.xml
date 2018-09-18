@@ -9,32 +9,32 @@
     android:padding="@dimen/default_layout_margin"
     tools:context=".demos.AvatarFragment">
 
-    <com.microsoft.officeuifabric.AvatarView
+    <com.microsoft.officeuifabric.persona.AvatarView
         android:id="@+id/avatar_example_initials"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/default_layout_margin"
-        app:avatarSize="size_25" />
+        app:avatarSize="small" />
 
-    <com.microsoft.officeuifabric.AvatarView
+    <com.microsoft.officeuifabric.persona.AvatarView
         android:id="@+id/avatar_example_picasso"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/default_layout_margin"
-        app:avatarSize="size_30" />
+        app:avatarSize="medium" />
 
-    <com.microsoft.officeuifabric.AvatarView
+    <com.microsoft.officeuifabric.persona.AvatarView
         android:id="@+id/avatar_example_glide"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/default_layout_margin"
-        app:avatarSize="size_35" />
+        app:avatarSize="large" />
 
-    <com.microsoft.officeuifabric.AvatarView
+    <com.microsoft.officeuifabric.persona.AvatarView
         android:id="@+id/avatar_example_local"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/default_layout_margin"
-        app:avatarSize="size_40" />
+        app:avatarSize="xlarge" />
 
 </LinearLayout>

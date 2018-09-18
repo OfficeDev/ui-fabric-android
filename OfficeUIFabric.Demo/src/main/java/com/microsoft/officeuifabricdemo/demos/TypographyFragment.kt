@@ -1,3 +1,7 @@
+/**
+ * Copyright © 2018 Microsoft Corporation. All rights reserved.
+ */
+
 package com.microsoft.officeuifabricdemo.demos
 
 import android.os.Bundle

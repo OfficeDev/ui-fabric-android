@@ -2,12 +2,11 @@
 <resources>
     <declare-styleable name="AvatarView">
         <attr name="avatarSize" format="enum">
-            <enum name="size_18" value="0" />
-            <enum name="size_25" value="1" />
-            <enum name="size_30" value="2" />
-            <enum name="size_35" value="3" />
-            <enum name="size_40" value="4" />
-            <enum name="size_70" value="5" />
+            <enum name="small" value="0" />
+            <enum name="medium" value="1" />
+            <enum name="large" value="2" />
+            <enum name="xlarge" value="3" />
+            <enum name="xxlarge" value="4" />
         </attr>
     </declare-styleable>
 </resources>

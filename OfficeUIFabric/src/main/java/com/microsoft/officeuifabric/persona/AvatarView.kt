@@ -1,8 +1,8 @@
-//
-// Copyright © 2018 Microsoft Corporation. All rights reserved.
-//
+/**
+ * Copyright © 2018 Microsoft Corporation. All rights reserved.
+ */
 
-package com.microsoft.officeuifabric
+package com.microsoft.officeuifabric.persona
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -17,6 +17,7 @@ import android.provider.MediaStore
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory
 import android.support.v7.widget.AppCompatImageView
 import android.util.AttributeSet
+import com.microsoft.officeuifabric.R
 
 /**
  * [AvatarView] is a custom ImageView that displays the initials of a person on top of a colored circular
@@ -24,8 +25,13 @@ import android.util.AttributeSet
  * background is computed from the name and is based on an array of colors.
  */
 open class AvatarView : AppCompatImageView {
+    @JvmOverloads
+    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
+        attrs?.let { initializeFromStyle(context, it) }
+    }
+
     companion object {
-        private val defaultAvatarSize = AvatarSize.SIZE_40
+        internal val defaultAvatarSize = AvatarSize.LARGE
     }
 
     /**
@@ -37,20 +43,12 @@ open class AvatarView : AppCompatImageView {
             field = value
             avatarDisplaySize = value.getDisplayValue(context)
         }
+
     private val initials = InitialsDrawable(context)
     private var avatarDisplaySize = defaultAvatarSize.getDisplayValue(context)
-    private var avatar: Drawable? = null
-
-    constructor(context: Context?) : super(context)
-    constructor(context: Context, attributeSet: AttributeSet) : super(context, attributeSet) {
-        initializeFromStyle(context, attributeSet)
-    }
-    constructor(context: Context, attributeSet: AttributeSet, defStyle: Int) : super(context, attributeSet, defStyle) {
-        initializeFromStyle(context, attributeSet)
-    }
 
     override fun draw(canvas: Canvas) {
-        initials.bounds = Rect(left, top, right, bottom)
+        initials.bounds = Rect(0, 0, width, height)
         initials.draw(canvas)
         super.draw(canvas)
     }
@@ -87,6 +85,13 @@ open class AvatarView : AppCompatImageView {
         }
     }
 
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        setMeasuredDimension(
+            resolveSizeAndState(avatarDisplaySize, widthMeasureSpec, 0),
+            resolveSizeAndState(avatarDisplaySize, heightMeasureSpec, 0)
+        )
+    }
+
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         layoutParams.width = avatarDisplaySize
         layoutParams.height = avatarDisplaySize
@@ -99,10 +104,6 @@ open class AvatarView : AppCompatImageView {
      */
     fun setInfo(name: String, email: String) {
         initials.setInfo(name, email)
-        drawable?.let {
-            initials.bounds = Rect(left, top, right, bottom)
-        }
-        avatar = null
     }
 
     private fun initializeFromStyle(context: Context, attrs: AttributeSet) {

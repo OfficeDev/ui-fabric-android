@@ -1,6 +1,6 @@
-//
-// Copyright © 2018 Microsoft Corporation. All rights reserved.
-//
+/**
+ * Copyright © 2018 Microsoft Corporation. All rights reserved.
+ */
 
 package com.microsoft.officeuifabricdemo.demos
 
@@ -11,8 +11,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import com.bumptech.glide.Glide
-import com.microsoft.officeuifabric.AvatarSize
-import com.microsoft.officeuifabric.AvatarView
+import com.microsoft.officeuifabric.persona.AvatarSize
+import com.microsoft.officeuifabric.persona.AvatarView
 import com.microsoft.officeuifabricdemo.DemoFragment
 import com.microsoft.officeuifabricdemo.R
 import com.squareup.picasso.Picasso
@@ -51,10 +51,11 @@ class AvatarFragment : DemoFragment() {
     }
 
     private fun createNewAvatarFromCode() {
+        val context = context ?: return
         val avatarView = AvatarView(context)
-        avatarView.avatarSize = AvatarSize.SIZE_70
+        avatarView.avatarSize = AvatarSize.XXLARGE
         avatarView.setInfo(getString(R.string.avatar_male_name), getString(R.string.avatar_male_email))
-        avatarView.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        avatarView.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         avatarView.id = R.id.avatar_example_code
         avatar_layout.addView(avatarView)
     }

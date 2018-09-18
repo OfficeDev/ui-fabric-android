@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PersonaView">
+        <attr name="avatarSize" />
+        <attr name="name" format="string" />
+        <attr name="email" format="string" />
+        <attr name="subtitle" format="string" />
+        <attr name="footer" format="string" />
+        <attr name="avatarDrawable" format="reference" />
+    </declare-styleable>
+</resources>

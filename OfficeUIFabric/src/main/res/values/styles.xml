@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="UIFabric_PersonaTitle" parent="UIFabric_SubHeading">
+        <item name="android:textColor">@color/uifabric_black</item>
+    </style>
+    <style name="UIFabric_PersonaSubtitle" parent="UIFabric_Body1">
+        <item name="android:textColor">@color/uifabric_gray</item>
+    </style>
+    <style name="UIFabric_PersonaFooter" parent="UIFabric_Caption">
+        <item name="android:textColor">@color/uifabric_gray</item>
+    </style>
+</resources>

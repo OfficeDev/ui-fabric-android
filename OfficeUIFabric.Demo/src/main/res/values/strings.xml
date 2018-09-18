@@ -30,4 +30,7 @@
     <string name="body_1">Body 1</string>
     <string name="body_2">Body 2</string>
     <string name="caption">Caption</string>
+
+    <!--Persona-->
+    <string name="persona_footer">Available</string>
 </resources>

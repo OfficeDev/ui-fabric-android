@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/persona_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/default_layout_margin">
+
+    <com.microsoft.officeuifabric.persona.PersonaView
+        android:id="@+id/persona_example_xxlarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/default_layout_margin"
+        app:avatarSize="xxlarge"
+        app:email="@string/avatar_female_email"
+        app:footer="@string/persona_footer"
+        app:name="@string/avatar_female_name"
+        app:subtitle="@string/avatar_female_email" />
+
+    <com.microsoft.officeuifabric.persona.PersonaView
+        android:id="@+id/persona_example_large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/default_layout_margin"
+        app:avatarDrawable="@drawable/avatar_male"
+        app:avatarSize="large"
+        app:email="@string/avatar_male_email"
+        app:name="@string/avatar_male_name"
+        app:subtitle="@string/avatar_male_email" />
+
+</LinearLayout>

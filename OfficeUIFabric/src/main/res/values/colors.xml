@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <array name="avatar_background_colors">
+    <color name="uifabric_gray">#8E8E93</color>
+    <color name="uifabric_black">#222222</color>
+    <array name="uifabric_avatar_background_colors">
         <item>#FF3298DB</item>
         <item>#FF50BBC4</item>
         <item>#FF32C270</item>

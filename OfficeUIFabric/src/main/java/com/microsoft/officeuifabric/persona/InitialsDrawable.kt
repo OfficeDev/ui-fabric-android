@@ -1,8 +1,8 @@
-//
-// Copyright © 2018 Microsoft Corporation. All rights reserved.
-//
+/**
+ * Copyright © 2018 Microsoft Corporation. All rights reserved.
+ */
 
-package com.microsoft.officeuifabric
+package com.microsoft.officeuifabric.persona
 
 import android.content.Context
 import android.graphics.*
@@ -10,6 +10,7 @@ import android.graphics.drawable.Drawable
 import android.support.annotation.ColorInt
 import android.support.annotation.IntRange
 import android.text.*
+import com.microsoft.officeuifabric.R
 import util.ThemeUtil
 import java.util.*
 
@@ -74,7 +75,7 @@ class InitialsDrawable constructor(context: Context) : Drawable() {
         textPaint.color = Color.WHITE
         textPaint.density = context.resources.displayMetrics.density
         if (backgroundColors == null) {
-            backgroundColors = ThemeUtil.getColors(context, R.array.avatar_background_colors)
+            backgroundColors = ThemeUtil.getColors(context, R.array.uifabric_avatar_background_colors)
         }
     }
 
@@ -136,7 +137,7 @@ class InitialsDrawable constructor(context: Context) : Drawable() {
      * Uses [name] and [email] to generate initials
      */
     fun setInfo(name: String, email: String) {
-        val initialsBackgroundColor = InitialsDrawable.getInitialsBackgroundColor(backgroundColors, name, email)
+        val initialsBackgroundColor = getInitialsBackgroundColor(backgroundColors, name, email)
         initials = getInitials(name, email)
         this.initialsBackgroundColor = initialsBackgroundColor
         invalidateSelf()
