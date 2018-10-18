@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="uifabric_primary">#0078D4</color>
     <color name="uifabric_gray">#8E8E93</color>
     <color name="uifabric_divider">#E1E1E1</color>
     <color name="uifabric_black">#222222</color>
+    <color name="uifabric_background_light_gray">#F8F8F8</color>
+    <color name="uifabric_border_gray">#E1E1E1</color>
+    <color name="uifabric_border_light_gray">#C8C8C8</color>
     <array name="uifabric_avatar_background_colors">
         <item>#750B1C</item>
         <item>#A4262C</item>
@@ -24,4 +28,20 @@
         <item>#7A7574</item>
         <item>#393939</item>
     </array>
+
+    <!--DatePicker-->
+    <color name="uifabric_date_picker_week_header_background">@color/uifabric_primary</color>
+    <color name="uifabric_date_picker_week_heading_week_day_text">@color/uifabric_gray</color>
+    <color name="uifabric_date_picker_week_heading_weekend_text">@color/uifabric_border_light_gray</color>
+    <!-- TODO update after design adds #B2FFFFFF to toolkit -->
+    <color name="uifabric_date_picker_month_overlay_background">#B2FFFFFF</color>
+    <color name="uifabric_date_picker_month_overlay_text">@color/uifabric_black</color>
+    <color name="uifabric_date_picker_other_month_background">@color/uifabric_background_light_gray</color>
+    <!-- TODO update after design adds #FFF5FAFC to toolkit -->
+    <color name="uifabric_date_picker_day_today_background">#FFF5FAFC</color>
+    <!-- TODO update after design adds #0E000000 to toolkit -->
+    <color name="uifabric_date_picker_item_highlight">#0E000000</color> <!-- 5% black -->
+    <color name="uifabric_date_picker_view_week_day_text">@color/date_picker_week_day_text_selector</color>
+    <color name="uifabric_date_picker_view_monochrome_text">@color/date_picker_week_day_text_selector</color>
+    <color name="uifabric_date_picker_divider">@color/uifabric_border_gray</color>
 </resources>

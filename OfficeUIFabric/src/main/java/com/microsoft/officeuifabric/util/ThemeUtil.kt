@@ -1,8 +1,8 @@
-//
-// Copyright © 2018 Microsoft Corporation. All rights reserved.
-//
+/**
+ * Copyright © 2018 Microsoft Corporation. All rights reserved.
+ */
 
-package util
+package com.microsoft.officeuifabric.util
 
 import android.content.Context
 import android.content.res.ColorStateList
@@ -93,7 +93,7 @@ object ThemeUtil {
     fun getTintedDrawable(context: Context, @DrawableRes drawableId: Int, @AttrRes tintId: Int): Drawable {
         val drawable = ContextCompat.getDrawable(context, drawableId)!!
         val wrappedDrawable = DrawableCompat.wrap(drawable.mutate())
-        DrawableCompat.setTint(wrappedDrawable, ThemeUtil.getColor(context, tintId))
+        DrawableCompat.setTint(wrappedDrawable, getColor(context, tintId))
         return wrappedDrawable
     }
 

@@ -61,4 +61,7 @@
     <string name="body_1">Body 1</string>
     <string name="body_2">Body 2</string>
     <string name="caption">Caption</string>
+
+    <!--DatePicker-->
+    <string name="date_picker_example_chosen_date">Choose a date</string>
 </resources>

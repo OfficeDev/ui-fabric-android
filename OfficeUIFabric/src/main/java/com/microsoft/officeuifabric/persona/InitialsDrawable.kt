@@ -11,7 +11,7 @@ import android.support.annotation.ColorInt
 import android.support.annotation.IntRange
 import android.text.*
 import com.microsoft.officeuifabric.R
-import util.ThemeUtil
+import com.microsoft.officeuifabric.util.ThemeUtil
 import java.util.*
 
 /**

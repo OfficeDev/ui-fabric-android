@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:state_activated="true"
+        android:state_checked="false"
+        android:color="@color/uifabric_primary" />
+
+    <item
+        android:state_activated="true"
+        android:state_checked="true"
+        android:color="@android:color/white" />
+
+    <item
+        android:state_activated="false"
+        android:state_checked="true"
+        android:color="@android:color/white" />
+
+    <item android:color="@color/uifabric_gray" />
+
+</selector>

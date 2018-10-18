@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/example_date_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/default_layout_margin"
+        android:paddingBottom="@dimen/default_layout_margin"
+        android:textSize="@dimen/date_picker_date_title_text_size"
+        android:text="@string/date_picker_example_chosen_date"
+        android:textColor="@color/date_picker_chosen_date_text"
+        android:textAlignment="center"
+        android:background="@color/date_picker_chosen_date_background"/>
+
+    <com.microsoft.officeuifabric.datepicker.DatePickerView
+        android:id="@+id/date_picker_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

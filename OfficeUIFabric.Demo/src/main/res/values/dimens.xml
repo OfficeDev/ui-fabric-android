@@ -6,4 +6,5 @@
     <dimen name="button_width">287dp</dimen>
     <dimen name="cell_horizontal_spacing">8dp</dimen>
     <dimen name="cell_vertical_spacing">2dp</dimen>
+    <dimen name="date_picker_date_title_text_size">18sp</dimen>
 </resources>

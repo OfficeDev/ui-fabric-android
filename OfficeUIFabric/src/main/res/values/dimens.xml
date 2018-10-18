@@ -14,4 +14,15 @@
     <dimen name="uifabric_persona_cell_horizontal_padding">16dp</dimen>
     <dimen name="uifabric_persona_cell_vertical_padding">12dp</dimen>
     <dimen name="uifabric_persona_text_spacing">2dp</dimen>
+
+    <dimen name="divider_height">0.5dp</dimen>
+
+    <!--DatePicker-->
+    <dimen name="uifabric_date_picker_view_week_day_font_size">16sp</dimen>
+    <dimen name="uifabric_date_picker_view_month_year_font_size">12sp</dimen>
+    <dimen name="uifabric_date_picker_view_week_heading_height">28dp</dimen>
+    <dimen name="uifabric_date_picker_view_week_heading_text_size">12sp</dimen>
+    <dimen name="uifabric_date_picker_view_month_overlay_text_size">20sp</dimen>
+    <dimen name="uifabric_date_picker_view_weeks_max_width">336dp</dimen>
+    <dimen name="uifabric_date_picker_view_day_selection_size">36dp</dimen>
 </resources>
