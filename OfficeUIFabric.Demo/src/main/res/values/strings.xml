@@ -5,11 +5,42 @@
     <string name="action_settings">Settings</string>
     <string name="title_demo_detail">Control Demo</string>
 
-    <!--Avatar-->
-    <string name="avatar_female_name">Kat Larson</string>
-    <string name="avatar_female_email">klarson@microsoft.com</string>
-    <string name="avatar_male_name">Maor Sharett</string>
-    <string name="avatar_male_email">maorsharett@microsoft.com</string>
+    <!--Persona-->
+    <string name="persona_email_kat_larsson">klarsson@microsoft.com</string>
+    <string name="persona_email_mauricio_august">maugust@microsoft.com</string>
+    <string name="persona_footer">Available</string>
+    <string name="persona_name_allan_munger">Allan Munger</string>
+    <string name="persona_name_amanda_brady">Amanda Brady</string>
+    <string name="persona_name_ashley_mccarthy">Ashley McCarthy</string>
+    <string name="persona_name_carlos_slattery">Carlos Slattery</string>
+    <string name="persona_name_carole_poland">Carole Poland</string>
+    <string name="persona_name_cecil_folk">Cecil Folk</string>
+    <string name="persona_name_celeste_burton">Celeste Burton</string>
+    <string name="persona_name_charlotte_waltson">Charlotte Waltson</string>
+    <string name="persona_name_colin_ballinger">Colin Ballinger</string>
+    <string name="persona_name_daisy_phillips">Daisy Phillips</string>
+    <string name="persona_name_elliot_woordward">Elliot Woodward</string>
+    <string name="persona_name_elvia_atkins">Elvia Atkins</string>
+    <string name="persona_name_erik_nason">Erik Nason</string>
+    <string name="persona_name_henry_brill">Henry Brill</string>
+    <string name="persona_name_isaac_fielder">Isaac Fielder</string>
+    <string name="persona_name_johnie_mcconnell">Johnie McConnell</string>
+    <string name="persona_name_kat_larsson">Kat Larsson</string>
+    <string name="persona_name_katri_ahokas">Katri Ahokas</string>
+    <string name="persona_name_kevin_sturgis">Kevin Sturgis</string>
+    <string name="persona_name_kristen_patterson">Kristen Patterson</string>
+    <string name="persona_name_lydia_bauer">Lydia Bauer</string>
+    <string name="persona_name_mauricio_august">Mauricio August</string>
+    <string name="persona_name_miguel_garcia">Miguel Garcia</string>
+    <string name="persona_name_mona_kane">Mona Kane</string>
+    <string name="persona_name_robin_counts">Robin Counts</string>
+    <string name="persona_name_tim_deboer">Tim Deboer</string>
+    <string name="persona_name_wanda_howard">Wanda Howard</string>
+    <string name="persona_subtitle_designer">Designer</string>
+    <string name="persona_subtitle_engineer">Engineer</string>
+    <string name="persona_subtitle_manager">Manager</string>
+    <string name="persona_subtitle_researcher">Researcher</string>
+    <string name="persona_truncation">\ (long text example to test truncation)</string>
 
     <!--TemplateView-->
     <string name="cell_sample_title">Title</string>
@@ -30,7 +61,4 @@
     <string name="body_1">Body 1</string>
     <string name="body_2">Body 2</string>
     <string name="caption">Caption</string>
-
-    <!--Persona-->
-    <string name="persona_footer">Available</string>
 </resources>

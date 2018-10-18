@@ -63,7 +63,7 @@ open class AvatarView : AppCompatImageView {
 
     override fun setImageBitmap(bitmap: Bitmap?) {
         if (bitmap == null) {
-            super.setImageBitmap(bitmap)
+            return
         } else {
             val roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(resources, bitmap)
             roundedBitmapDrawable.isCircular = true

@@ -38,8 +38,11 @@ class DemoActivity : AppCompatActivity() {
                     putSerializable(DemoFragment.DEMO_ID, demoID)
                 }
             }
+
+            val isDemoScrollable = (fragment as? DemoFragment)?.needsScrollableContainer() ?: true
+
             supportFragmentManager.beginTransaction()
-                .add(R.id.demo_detail_container, fragment)
+                .add(if (isDemoScrollable) R.id.demo_detail_scrollable_container else R.id.demo_detail_container, fragment)
                 .commit()
         }
     }

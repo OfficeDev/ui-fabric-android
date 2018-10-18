@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="uifabric_gray">#8E8E93</color>
+    <color name="uifabric_divider">#E1E1E1</color>
     <color name="uifabric_black">#222222</color>
     <array name="uifabric_avatar_background_colors">
-        <item>#FF3298DB</item>
-        <item>#FF50BBC4</item>
-        <item>#FF32C270</item>
-        <item>#FFF07E21</item>
-        <item>#FFE6463C</item>
-        <item>#FFF0CE0E</item>
-        <item>#FFF069B1</item>
-        <item>#FF9E75DB</item>
-        <item>#FFAC735F</item>
-        <item>#FFA5A5AB</item>
+        <item>#750B1C</item>
+        <item>#A4262C</item>
+        <item>#D13438</item>
+        <item>#CA5010</item>
+        <item>#986F0B</item>
+        <item>#498205</item>
+        <item>#005E50</item>
+        <item>#038387</item>
+        <item>#0078D4</item>
+        <item>#004E8C</item>
+        <item>#4F6BED</item>
+        <item>#373277</item>
+        <item>#881798</item>
+        <item>#C239B3</item>
+        <item>#E3008C</item>
+        <item>#603D30</item>
+        <item>#69797E</item>
+        <item>#7A7574</item>
+        <item>#393939</item>
     </array>
 </resources>

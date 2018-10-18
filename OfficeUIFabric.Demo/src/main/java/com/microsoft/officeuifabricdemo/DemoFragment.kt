@@ -12,6 +12,8 @@ open class DemoFragment : Fragment() {
 
     private var demo: Demo? = null
 
+    open fun needsScrollableContainer(): Boolean = true
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         arguments?.let {

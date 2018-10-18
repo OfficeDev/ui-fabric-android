@@ -31,8 +31,8 @@ class PersonaFragment: DemoFragment() {
         val context = context ?: return
         val personaView = PersonaView(context)
         personaView.avatarSize = AvatarSize.SMALL
-        personaView.name = resources.getString(R.string.avatar_male_name)
-        personaView.email = resources.getString(R.string.avatar_male_email)
+        personaView.name = resources.getString(R.string.persona_name_mauricio_august)
+        personaView.email = resources.getString(R.string.persona_email_mauricio_august)
         personaView.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         persona_layout.addView(personaView)
     }

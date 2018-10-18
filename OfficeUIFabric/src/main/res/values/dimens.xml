@@ -7,6 +7,8 @@
     <dimen name="uifabric_avatar_size_xlarge">52dp</dimen>
     <dimen name="uifabric_avatar_size_xxlarge">64dp</dimen>
 
+    <dimen name="uifabric_divider_height">.5dp</dimen>
+
     <!--Persona-->
     <dimen name="uifabric_persona_horizontal_spacing">16dp</dimen>
     <dimen name="uifabric_persona_cell_horizontal_padding">16dp</dimen>

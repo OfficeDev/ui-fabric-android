@@ -24,6 +24,16 @@ import kotlinx.android.synthetic.main.view_persona.view.*
 class PersonaView : LinearLayout {
     companion object {
         val personaAvatarSizes = arrayOf(AvatarSize.SMALL, AvatarSize.LARGE, AvatarSize.XXLARGE)
+
+        internal data class Spacing(val cellPadding: Int, val insetLeft: Int)
+
+        internal fun getSpacing(context: Context, avatarSize: AvatarSize): Spacing {
+            val avatarDisplaySize = avatarSize.getDisplayValue(context)
+            val spacingRight = context.resources.getDimension(R.dimen.uifabric_persona_horizontal_spacing)
+            val cellPadding = context.resources.getDimension(R.dimen.uifabric_persona_cell_horizontal_padding).toInt()
+            val insetLeft = (avatarDisplaySize + spacingRight + cellPadding).toInt()
+            return Spacing(cellPadding, insetLeft)
+        }
     }
 
     /**
@@ -164,4 +174,15 @@ class PersonaView : LinearLayout {
         persona_footer.visibility = if (footer != "" && avatarSize != AvatarSize.SMALL) View.VISIBLE else View.GONE
         persona_subtitle.visibility = if (subtitle != "" && avatarSize != AvatarSize.SMALL) View.VISIBLE else View.GONE
     }
+}
+
+fun PersonaView.setPersona(persona: IPersona) {
+    name = persona.name
+    email = persona.email
+    subtitle = persona.subtitle
+    footer = persona.footer
+    avatarImageBitmap = persona.avatarImageBitmap
+    avatarImageDrawable = persona.avatarImageDrawable
+    avatarImageResource = persona.avatarImageResource
+    avatarImageUri = persona.avatarImageUri
 }

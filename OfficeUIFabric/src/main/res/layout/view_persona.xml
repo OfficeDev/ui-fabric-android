@@ -11,6 +11,7 @@
         android:layout_marginBottom="@dimen/uifabric_persona_cell_vertical_padding"
         android:layout_marginEnd="@dimen/uifabric_persona_horizontal_spacing"
         android:layout_marginStart="@dimen/uifabric_persona_cell_horizontal_padding"
+        android:layout_marginTop="@dimen/uifabric_persona_cell_vertical_padding"
         app:avatarSize="large" />
 
     <LinearLayout
@@ -18,6 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/uifabric_persona_cell_vertical_padding"
         android:layout_marginTop="@dimen/uifabric_persona_cell_vertical_padding"
+        android:layout_marginEnd="@dimen/uifabric_persona_horizontal_spacing"
         android:orientation="vertical">
 
         <TextView

@@ -29,10 +29,10 @@ class AvatarFragment : DemoFragment() {
         // Avatar drawables with bitmap
         loadBitmapFromPicasso(avatar_example_picasso)
         loadBitmapFromGlide(avatar_example_glide)
-        avatar_example_local.setImageResource(R.drawable.avatar_male)
+        avatar_example_local.setImageResource(R.drawable.avatar_erik_nason)
 
         // Avatar drawable with initials
-        avatar_example_initials.setInfo(getString(R.string.avatar_female_name), getString(R.string.avatar_female_email))
+        avatar_example_initials.setInfo(getString(R.string.persona_name_kat_larsson), getString(R.string.persona_email_kat_larsson))
 
         // Add AvatarView with code
         createNewAvatarFromCode()
@@ -40,13 +40,13 @@ class AvatarFragment : DemoFragment() {
 
     private fun loadBitmapFromPicasso(imageView: ImageView) {
         Picasso.get()
-            .load(R.drawable.avatar_female)
+            .load(R.drawable.avatar_celeste_burton)
             .into(imageView)
     }
 
     private fun loadBitmapFromGlide(imageView: ImageView) {
         Glide.with(this)
-            .load(R.drawable.avatar_female)
+            .load(R.drawable.avatar_isaac_fielder)
             .into(imageView)
     }
 
@@ -54,7 +54,7 @@ class AvatarFragment : DemoFragment() {
         val context = context ?: return
         val avatarView = AvatarView(context)
         avatarView.avatarSize = AvatarSize.XXLARGE
-        avatarView.setInfo(getString(R.string.avatar_male_name), getString(R.string.avatar_male_email))
+        avatarView.setInfo(getString(R.string.persona_name_mauricio_august), getString(R.string.persona_email_mauricio_august))
         avatarView.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         avatarView.id = R.id.avatar_example_code
         avatar_layout.addView(avatarView)
