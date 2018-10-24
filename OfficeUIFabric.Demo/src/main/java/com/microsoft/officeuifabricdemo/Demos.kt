@@ -9,8 +9,9 @@ val DEMOS = arrayListOf(
     Demo("Avatar", AvatarFragment::class),
     Demo("Button", ButtonFragment::class),
     Demo("DatePicker", DatePickerFragment::class),
-    Demo("PeoplePicker", PeoplePickerFragment::class),
     Demo("Persona", PersonaFragment::class),
+    Demo("PersonaChip", PersonaChipFragment::class),
+    Demo("PersonaListView", PersonaListViewFragment::class),
     Demo("TemplateView", TemplateViewFragment::class),
     Demo("Typography", TypographyFragment::class)
 )

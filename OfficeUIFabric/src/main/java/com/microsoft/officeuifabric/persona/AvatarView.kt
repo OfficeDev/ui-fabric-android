@@ -25,13 +25,25 @@ import com.microsoft.officeuifabric.R
  * background is computed from the name and is based on an array of colors.
  */
 open class AvatarView : AppCompatImageView {
-    @JvmOverloads
-    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
-        attrs?.let { initializeFromStyle(context, it) }
-    }
-
     companion object {
         internal val defaultAvatarSize = AvatarSize.LARGE
+    }
+
+    @JvmOverloads
+    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
+        if (attrs == null)
+            return
+        val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.AvatarView)
+        val avatarSizeOrdinal = styledAttrs.getInt(R.styleable.AvatarView_avatarSize, defaultAvatarSize.ordinal)
+        name = styledAttrs.getString(R.styleable.AvatarView_name) ?: ""
+        email = styledAttrs.getString(R.styleable.AvatarView_email) ?: ""
+        avatarSize = AvatarSize.values()[avatarSizeOrdinal]
+
+        val avatarImageResourceId = styledAttrs.getResourceId(R.styleable.AvatarView_avatarImageDrawable, 0)
+        if (avatarImageResourceId > 0 && resources.getResourceTypeName(avatarImageResourceId) == "drawable")
+            avatarImageDrawable = styledAttrs.getDrawable(R.styleable.AvatarView_avatarImageDrawable)
+
+        styledAttrs.recycle()
     }
 
     /**
@@ -42,6 +54,36 @@ open class AvatarView : AppCompatImageView {
         set(value) {
             field = value
             avatarDisplaySize = value.getDisplayValue(context)
+        }
+    var name: String = ""
+        set(value) {
+            field = value
+            initials.setInfo(name, email)
+        }
+    var email: String = ""
+        set(value) {
+            field = value
+            initials.setInfo(name, email)
+        }
+    var avatarImageBitmap: Bitmap? = null
+        set(value) {
+            field = value
+            setImageBitmap(value)
+        }
+    var avatarImageDrawable: Drawable? = null
+        set(value) {
+            field = value
+            setImageDrawable(value)
+        }
+    var avatarImageResourceId: Int? = null
+        set(value) {
+            field = value
+            value?.let { setImageResource(it) }
+        }
+    var avatarImageUri: Uri? = null
+        set(value) {
+            field = value
+            setImageURI(value)
         }
 
     private val initials = InitialsDrawable(context)
@@ -62,13 +104,12 @@ open class AvatarView : AppCompatImageView {
     }
 
     override fun setImageBitmap(bitmap: Bitmap?) {
-        if (bitmap == null) {
+        if (bitmap == null)
             return
-        } else {
-            val roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(resources, bitmap)
-            roundedBitmapDrawable.isCircular = true
-            super.setImageDrawable(roundedBitmapDrawable)
-        }
+
+        val roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(resources, bitmap)
+        roundedBitmapDrawable.isCircular = true
+        super.setImageDrawable(roundedBitmapDrawable)
     }
 
     override fun setImageResource(resId: Int) {
@@ -98,18 +139,14 @@ open class AvatarView : AppCompatImageView {
         Handler().post { requestLayout() }
         super.onSizeChanged(w, h, oldw, oldh)
     }
+}
 
-    /**
-     * Uses [name] and [email] to generate initials for the Avatar.
-     */
-    fun setInfo(name: String, email: String) {
-        initials.setInfo(name, email)
-    }
-
-    private fun initializeFromStyle(context: Context, attrs: AttributeSet) {
-        val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.AvatarView)
-        val avatarSizeOrdinal = styledAttrs.getInt(R.styleable.AvatarView_avatarSize, defaultAvatarSize.ordinal)
-        avatarSize = AvatarSize.values()[avatarSizeOrdinal]
-        styledAttrs.recycle()
-    }
+// TODO: See if this can be used anywhere
+fun AvatarView.setAvatar(avatar: IAvatar) {
+    name = avatar.name
+    email = avatar.email
+    avatarImageBitmap = avatar.avatarImageBitmap
+    avatarImageDrawable = avatar.avatarImageDrawable
+    avatarImageResourceId = avatar.avatarImageResourceId
+    avatarImageUri = avatar.avatarImageUri
 }

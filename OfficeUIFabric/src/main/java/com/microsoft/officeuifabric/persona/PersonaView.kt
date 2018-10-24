@@ -37,42 +37,6 @@ class PersonaView : LinearLayout {
     }
 
     /**
-     * Bitmap used for internal [AvatarView].
-     */
-    var avatarImageBitmap: Bitmap? = null
-        set(value) {
-            field = value
-            persona_avatar_view.setImageBitmap(value)
-        }
-
-    /**
-     * Drawable used for internal [AvatarView].
-     */
-    var avatarImageDrawable: Drawable? = null
-        set(value) {
-            field = value
-            persona_avatar_view.setImageDrawable(value)
-        }
-
-    /**
-     * Resource used for internal [AvatarView].
-     */
-    var avatarImageResource: Int? = null
-        set(value) {
-            field = value
-            value?.let { persona_avatar_view.setImageResource(it) }
-        }
-
-    /**
-     * Uri used for internal [AvatarView].
-     */
-    var avatarImageUri: Uri? = null
-        set(value) {
-            field = value
-            persona_avatar_view.setImageURI(value)
-        }
-
-    /**
      * [AvatarSize] used to set internal [AvatarView]'s layout width and height.
      */
     var avatarSize = AvatarView.defaultAvatarSize
@@ -89,7 +53,6 @@ class PersonaView : LinearLayout {
 
     /**
      * Text for the top hierarchy of the three TextViews.
-     * [name] is used in conjunction with [email] to set initials for internal [AvatarView].
      */
     var name = ""
         set(value) {
@@ -97,15 +60,11 @@ class PersonaView : LinearLayout {
             updateTextViews()
         }
 
-    /**
-     * [email] is used in conjunction with [name] to set initials for internal [AvatarView].
-     */
     var email = ""
         set(value) {
             field = value
             updateTextViews()
         }
-
     /**
      * Text for the middle hierarchy of the three TextViews
      */
@@ -115,7 +74,6 @@ class PersonaView : LinearLayout {
             persona_subtitle.text = value
             updateTextViews()
         }
-
     /**
      * Text for the bottom hierarchy of the three TextViews
      */
@@ -124,6 +82,26 @@ class PersonaView : LinearLayout {
             field = value
             persona_footer.text = value
             updateTextViews()
+        }
+    var avatarImageBitmap: Bitmap? = null
+        set(value) {
+            field = value
+            persona_avatar_view.setImageBitmap(value)
+        }
+    var avatarImageDrawable: Drawable? = null
+        set(value) {
+            field = value
+            persona_avatar_view.setImageDrawable(value)
+        }
+    var avatarImageResourceId: Int? = null
+        set(value) {
+            field = value
+            value?.let { persona_avatar_view.setImageResource(it) }
+        }
+    var avatarImageUri: Uri? = null
+        set(value) {
+            field = value
+            persona_avatar_view.setImageURI(value)
         }
 
     private var title: String = name
@@ -134,22 +112,9 @@ class PersonaView : LinearLayout {
 
     @JvmOverloads
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
-        initializeViews()
+        LayoutInflater.from(context).inflate(R.layout.view_persona, this)
         attrs?.let { setPropertiesFromAttributes(context, it) }
         updateTextViews()
-    }
-
-    /**
-     * Use this function to conveniently set the strings for [name], [subtitle], and [footer] TextView text.
-     */
-    fun setDisplayText(name: String, subtitle: String = "", footer: String = "") {
-        this.name = name
-        this.subtitle = subtitle
-        this.footer = footer
-    }
-
-    private fun initializeViews() {
-        LayoutInflater.from(context).inflate(R.layout.view_persona, this)
     }
 
     private fun setPropertiesFromAttributes(context: Context, attrs: AttributeSet) {
@@ -160,7 +125,11 @@ class PersonaView : LinearLayout {
         email = styledAttrs.getString(R.styleable.PersonaView_email) ?: ""
         subtitle = styledAttrs.getString(R.styleable.PersonaView_subtitle) ?: ""
         footer = styledAttrs.getString(R.styleable.PersonaView_footer) ?: ""
-        avatarImageDrawable = styledAttrs.getDrawable(R.styleable.PersonaView_avatarDrawable)
+
+        val avatarImageResourceId = styledAttrs.getResourceId(R.styleable.PersonaView_avatarImageDrawable, 0)
+        if (avatarImageResourceId > 0 && resources.getResourceTypeName(avatarImageResourceId) == "drawable")
+            avatarImageDrawable = styledAttrs.getDrawable(R.styleable.PersonaView_avatarImageDrawable)
+
         styledAttrs.recycle()
     }
 
@@ -170,7 +139,8 @@ class PersonaView : LinearLayout {
             !email.isEmpty() -> email
             else -> context.getString(R.string.persona_title_placeholder)
         }
-        persona_avatar_view.setInfo(name, email)
+        persona_avatar_view.name = name
+        persona_avatar_view.email = email
         persona_footer.visibility = if (footer != "" && avatarSize != AvatarSize.SMALL) View.VISIBLE else View.GONE
         persona_subtitle.visibility = if (subtitle != "" && avatarSize != AvatarSize.SMALL) View.VISIBLE else View.GONE
     }
@@ -183,6 +153,6 @@ fun PersonaView.setPersona(persona: IPersona) {
     footer = persona.footer
     avatarImageBitmap = persona.avatarImageBitmap
     avatarImageDrawable = persona.avatarImageDrawable
-    avatarImageResource = persona.avatarImageResource
+    avatarImageResourceId = persona.avatarImageResourceId
     avatarImageUri = persona.avatarImageUri
 }

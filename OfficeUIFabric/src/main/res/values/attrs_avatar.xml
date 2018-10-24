@@ -2,11 +2,15 @@
 <resources>
     <declare-styleable name="AvatarView">
         <attr name="avatarSize" format="enum">
-            <enum name="small" value="0" />
-            <enum name="medium" value="1" />
-            <enum name="large" value="2" />
-            <enum name="xlarge" value="3" />
-            <enum name="xxlarge" value="4" />
+            <enum name="xsmall" value="0" />
+            <enum name="small" value="1" />
+            <enum name="medium" value="2" />
+            <enum name="large" value="3" />
+            <enum name="xlarge" value="4" />
+            <enum name="xxlarge" value="5" />
         </attr>
+        <attr name="name" />
+        <attr name="email" />
+        <attr name="avatarImageDrawable" format="reference" />
     </declare-styleable>
 </resources>

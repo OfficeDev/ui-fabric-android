@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--Avatar-->
+    <dimen name="uifabric_avatar_size_xsmall">20dp</dimen>
     <dimen name="uifabric_avatar_size_small">24dp</dimen>
     <dimen name="uifabric_avatar_size_medium">32dp</dimen>
     <dimen name="uifabric_avatar_size_large">40dp</dimen>
     <dimen name="uifabric_avatar_size_xlarge">52dp</dimen>
     <dimen name="uifabric_avatar_size_xxlarge">64dp</dimen>
 
-    <dimen name="uifabric_divider_height">.5dp</dimen>
-
-    <!--Persona-->
-    <dimen name="uifabric_persona_horizontal_spacing">16dp</dimen>
-    <dimen name="uifabric_persona_cell_horizontal_padding">16dp</dimen>
-    <dimen name="uifabric_persona_cell_vertical_padding">12dp</dimen>
-    <dimen name="uifabric_persona_text_spacing">2dp</dimen>
-
-    <dimen name="divider_height">0.5dp</dimen>
+    <!--Chip-->
+    <dimen name="uifabric_chip_corner_radius">2dp</dimen>
+    <dimen name="uifabric_chip_height">32dp</dimen>
+    <dimen name="uifabric_chip_padding">6dp</dimen>
+    <dimen name="uifabric_chip_spacing">6dp</dimen>
 
     <!--DatePicker-->
     <dimen name="uifabric_date_picker_view_week_day_font_size">16sp</dimen>
@@ -25,4 +22,13 @@
     <dimen name="uifabric_date_picker_view_month_overlay_text_size">20sp</dimen>
     <dimen name="uifabric_date_picker_view_weeks_max_width">336dp</dimen>
     <dimen name="uifabric_date_picker_view_day_selection_size">36dp</dimen>
+
+    <!--Persona-->
+    <dimen name="uifabric_persona_horizontal_spacing">16dp</dimen>
+    <dimen name="uifabric_persona_cell_horizontal_padding">16dp</dimen>
+    <dimen name="uifabric_persona_cell_vertical_padding">12dp</dimen>
+    <dimen name="uifabric_persona_text_spacing">2dp</dimen>
+
+    <!--Shared-->
+    <dimen name="uifabric_divider_height">.5dp</dimen>
 </resources>

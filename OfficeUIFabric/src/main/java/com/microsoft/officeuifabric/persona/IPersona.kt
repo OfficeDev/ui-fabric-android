@@ -1,18 +1,16 @@
+/**
+ * Copyright © 2018 Microsoft Corporation. All rights reserved.
+ */
+
 package com.microsoft.officeuifabric.persona
 
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.net.Uri
 
-interface IPersona {
-    var name: String
-    var email: String
+interface IPersona : IAvatar {
     var subtitle: String
     var footer: String
-    var avatarImageBitmap: Bitmap?
-    var avatarImageDrawable: Drawable?
-    var avatarImageResource: Int?
-    var avatarImageUri: Uri?
 }
 
 data class Persona(override var name: String = "", override var email: String = "") : IPersona {
@@ -20,6 +18,6 @@ data class Persona(override var name: String = "", override var email: String = 
     override var footer: String = ""
     override var avatarImageBitmap: Bitmap? = null
     override var avatarImageDrawable: Drawable? = null
-    override var avatarImageResource: Int? = null
+    override var avatarImageResourceId: Int? = null
     override var avatarImageUri: Uri? = null
 }

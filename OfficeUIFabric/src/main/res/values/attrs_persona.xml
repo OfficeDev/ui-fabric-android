@@ -6,6 +6,6 @@
         <attr name="email" format="string" />
         <attr name="subtitle" format="string" />
         <attr name="footer" format="string" />
-        <attr name="avatarDrawable" format="reference" />
+        <attr name="avatarImageDrawable" />
     </declare-styleable>
 </resources>

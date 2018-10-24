@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--Copyright (c) 2018. Microsoft Corporation. All rights reserved.-->
 <resources>
+    <!-- *** Physical Colors *** -->
+
+    <!--Product Primary-->
     <color name="uifabric_primary">#0078D4</color>
-    <color name="uifabric_gray">#8E8E93</color>
-    <color name="uifabric_divider">#E1E1E1</color>
+
+    <!--Multi-Use-->
+    <color name="uifabric_white">#FFFFFF</color>
     <color name="uifabric_black">#222222</color>
+    <color name="uifabric_light_gray">#A8A8AC</color>
+    <color name="uifabric_gray">#8E8E93</color>
+    <color name="uifabric_dark_gray">#777777</color>
+
+    <!--Backgrounds-->
+    <color name="uifabric_background_gray">#F1F1F1</color>
     <color name="uifabric_background_light_gray">#F8F8F8</color>
+
+    <!--Borders-->
     <color name="uifabric_border_gray">#E1E1E1</color>
     <color name="uifabric_border_light_gray">#C8C8C8</color>
+
+    <!-- *** Semantic Colors *** -->
+
+    <!--Avatar-->
     <array name="uifabric_avatar_background_colors">
         <item>#750B1C</item>
         <item>#A4262C</item>
@@ -29,6 +46,21 @@
         <item>#393939</item>
     </array>
 
+    <!--Chips-->
+    <color name="uifabric_chip_normal">@color/uifabric_background_gray</color>
+    <color name="uifabric_chip_normal_text">@color/uifabric_black</color>
+    <!-- TODO update after design adds #0D000000 to toolkit -->
+    <color name="uifabric_chip_pressed">#0D000000</color>
+    <color name="uifabric_chip_active">@color/uifabric_primary</color>
+    <color name="uifabric_chip_active_text">@color/uifabric_white</color>
+    <!-- TODO update after design adds #FFF3F4 to toolkit -->
+    <color name="uifabric_chip_error">#FFF3F4</color>
+    <!-- TODO update after design adds #E8484C to toolkit -->
+    <color name="uifabric_chip_error_active">#E8484C</color>
+    <!-- TODO update after design adds #A80000 to toolkit -->
+    <color name="uifabric_chip_error_text">#A80000</color>
+    <color name="uifabric_chip_disabled_text">@color/uifabric_gray</color>
+
     <!--DatePicker-->
     <color name="uifabric_date_picker_week_header_background">@color/uifabric_primary</color>
     <color name="uifabric_date_picker_week_heading_week_day_text">@color/uifabric_gray</color>
@@ -43,5 +75,7 @@
     <color name="uifabric_date_picker_item_highlight">#0E000000</color> <!-- 5% black -->
     <color name="uifabric_date_picker_view_week_day_text">@color/date_picker_week_day_text_selector</color>
     <color name="uifabric_date_picker_view_monochrome_text">@color/date_picker_week_day_text_selector</color>
-    <color name="uifabric_date_picker_divider">@color/uifabric_border_gray</color>
+
+    <!--Shared-->
+    <color name="uifabric_divider">@color/uifabric_border_gray</color>
 </resources>

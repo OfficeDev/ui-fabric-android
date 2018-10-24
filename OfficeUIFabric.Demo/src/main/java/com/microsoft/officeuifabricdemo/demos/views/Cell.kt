@@ -7,7 +7,7 @@ package com.microsoft.officeuifabricdemo.demos.views
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.TextView
-import com.microsoft.officeuifabric.TemplateView
+import com.microsoft.officeuifabric.view.TemplateView
 import com.microsoft.officeuifabricdemo.R
 
 enum class CellOrientation {

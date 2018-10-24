@@ -23,7 +23,7 @@ import com.microsoft.officeuifabricdemo.DemoFragment
 import com.microsoft.officeuifabricdemo.R
 import kotlinx.android.synthetic.main.fragment_people_picker.*
 
-class PeoplePickerFragment : DemoFragment() {
+class PersonaListViewFragment : DemoFragment() {
     private lateinit var personaList: ArrayList<IPersona>
 
     override fun needsScrollableContainer(): Boolean = false
@@ -186,7 +186,7 @@ class PeoplePickerFragment : DemoFragment() {
                               imageBitmap: Bitmap? = null, imageUri: Uri? = null): Persona {
         val persona = Persona(name)
         persona.subtitle = subtitle
-        persona.avatarImageResource = imageResource
+        persona.avatarImageResourceId = imageResource
         persona.avatarImageDrawable = imageDrawable
         persona.avatarImageBitmap = imageBitmap
         persona.avatarImageUri = imageUri

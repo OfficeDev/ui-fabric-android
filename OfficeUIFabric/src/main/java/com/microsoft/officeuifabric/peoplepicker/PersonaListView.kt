@@ -52,7 +52,7 @@ class PersonaListView : RecyclerView {
     private fun addCustomDivider(orientation: Int) {
         val dividerItemDecoration = DividerItemDecoration(context, orientation)
         val spacing = PersonaView.getSpacing(context, AvatarSize.LARGE)
-        val insetDrawable = InsetDrawable(ContextCompat.getDrawable(context, R.drawable.divider_people_picker), spacing.insetLeft, 0, spacing.cellPadding, 0)
+        val insetDrawable = InsetDrawable(ContextCompat.getDrawable(context, R.drawable.row_divider), spacing.insetLeft, 0, spacing.cellPadding, 0)
         dividerItemDecoration.setDrawable(insetDrawable)
         addItemDecoration(dividerItemDecoration)
     }

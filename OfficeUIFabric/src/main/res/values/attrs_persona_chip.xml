@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PersonaChipView">
+        <attr name="name" />
+        <attr name="email" />
+        <attr name="avatarImageDrawable" />
+        <attr name="showCloseIconWhenSelected" format="boolean" />
+    </declare-styleable>
+</resources>

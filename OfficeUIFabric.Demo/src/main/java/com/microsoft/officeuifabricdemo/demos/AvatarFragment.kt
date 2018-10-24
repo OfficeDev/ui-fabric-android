@@ -29,10 +29,11 @@ class AvatarFragment : DemoFragment() {
         // Avatar drawables with bitmap
         loadBitmapFromPicasso(avatar_example_picasso)
         loadBitmapFromGlide(avatar_example_glide)
-        avatar_example_local.setImageResource(R.drawable.avatar_erik_nason)
+        avatar_example_local.avatarImageResourceId = R.drawable.avatar_erik_nason
 
         // Avatar drawable with initials
-        avatar_example_initials.setInfo(getString(R.string.persona_name_kat_larsson), getString(R.string.persona_email_kat_larsson))
+        avatar_example_initials.name = getString(R.string.persona_name_kat_larsson)
+        avatar_example_initials.email = getString(R.string.persona_email_kat_larsson)
 
         // Add AvatarView with code
         createNewAvatarFromCode()
@@ -54,7 +55,8 @@ class AvatarFragment : DemoFragment() {
         val context = context ?: return
         val avatarView = AvatarView(context)
         avatarView.avatarSize = AvatarSize.XXLARGE
-        avatarView.setInfo(getString(R.string.persona_name_mauricio_august), getString(R.string.persona_email_mauricio_august))
+        avatarView.name = getString(R.string.persona_name_mauricio_august)
+        avatarView.email = getString(R.string.persona_email_mauricio_august)
         avatarView.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         avatarView.id = R.id.avatar_example_code
         avatar_layout.addView(avatarView)

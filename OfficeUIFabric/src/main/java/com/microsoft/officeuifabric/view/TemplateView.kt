@@ -2,7 +2,7 @@
 // Copyright © 2018 Microsoft Corporation. All rights reserved.
 //
 
-package com.microsoft.officeuifabric
+package com.microsoft.officeuifabric.view
 
 import android.content.Context
 import android.support.annotation.IdRes

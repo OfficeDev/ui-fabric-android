@@ -1,5 +1,6 @@
 package com.microsoft.officeuifabric
 
+import com.microsoft.officeuifabric.view.Button
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith

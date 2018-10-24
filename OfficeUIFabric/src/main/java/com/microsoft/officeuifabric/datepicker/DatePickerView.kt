@@ -113,7 +113,7 @@ class DatePickerView : LinearLayout, IDatePickerEvents {
     @JvmOverloads
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
         AndroidThreeTen.init(context)
-        dividerHeight = Math.round(resources.getDimension(R.dimen.divider_height))
+        dividerHeight = Math.round(resources.getDimension(R.dimen.uifabric_divider_height))
         calendarViewWidthForTablet = Math.round(resources.getDimension(R.dimen.uifabric_date_picker_view_weeks_max_width))
 
         config = Config()
@@ -224,7 +224,7 @@ class DatePickerView : LinearLayout, IDatePickerEvents {
         addView(weeksView)
 
         if (config.showWeekHeadingDivider) {
-            dividerDrawable = ContextCompat.getDrawable(context, R.drawable.date_picker_divider_mercury)
+            dividerDrawable = ContextCompat.getDrawable(context, R.drawable.row_divider)
             showDividers = LinearLayout.SHOW_DIVIDER_MIDDLE
         } else {
             showDividers = LinearLayout.SHOW_DIVIDER_NONE

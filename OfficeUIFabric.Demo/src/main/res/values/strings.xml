@@ -6,8 +6,10 @@
     <string name="title_demo_detail">Control Demo</string>
 
     <!--Persona-->
+    <string name="persona_email_cecil_folk">cfolk@microsoft.com</string>
     <string name="persona_email_kat_larsson">klarsson@microsoft.com</string>
     <string name="persona_email_mauricio_august">maugust@microsoft.com</string>
+    <string name="persona_email_mona_kane">mkane@microsoft.com</string>
     <string name="persona_footer">Available</string>
     <string name="persona_name_allan_munger">Allan Munger</string>
     <string name="persona_name_amanda_brady">Amanda Brady</string>
@@ -42,6 +44,12 @@
     <string name="persona_subtitle_researcher">Researcher</string>
     <string name="persona_truncation">\ (long text example to test truncation)</string>
 
+    <!--Persona Chip-->
+    <string name="persona_chip_example_disabled">Disabled Persona Chip</string>
+    <string name="persona_chip_example_error">Error Persona Chip</string>
+    <string name="persona_chip_example_no_icon">Persona Chip with no close icon</string>
+    <string name="persona_chip_example_basic">Basic Persona Chip</string>
+
     <!--TemplateView-->
     <string name="cell_sample_title">Title</string>
     <string name="cell_sample_description">Description</string>
@@ -64,4 +72,5 @@
 
     <!--DatePicker-->
     <string name="date_picker_example_chosen_date">Choose a date</string>
+    <string name="persona_chip_example_click">You clicked on a selected Persona Chip.</string>
 </resources>

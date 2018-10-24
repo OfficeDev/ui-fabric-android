@@ -21,7 +21,7 @@
         android:id="@+id/persona_example_large"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:avatarDrawable="@drawable/avatar_tim_deboer"
+        app:avatarImageDrawable="@drawable/avatar_tim_deboer"
         app:avatarSize="large"
         app:email="@string/persona_email_mauricio_august"
         app:name="@string/persona_name_mauricio_august"

@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--TODO: Merge with DatePicker's divider-->
+<!--Copyright (c) 2018. Microsoft Corporation. All rights reserved.-->
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-
     <size android:height="@dimen/uifabric_divider_height" />
-
     <solid android:color="@color/uifabric_divider" />
-
 </shape>
