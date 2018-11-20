@@ -49,6 +49,7 @@
     <string name="persona_chip_example_error">Error Persona Chip</string>
     <string name="persona_chip_example_no_icon">Persona Chip with no close icon</string>
     <string name="persona_chip_example_basic">Basic Persona Chip</string>
+    <string name="persona_chip_example_click">You clicked on a selected Persona Chip.</string>
 
     <!--TemplateView-->
     <string name="cell_sample_title">Title</string>
@@ -72,5 +73,9 @@
 
     <!--DatePicker-->
     <string name="date_picker_example_chosen_date">Choose a date</string>
-    <string name="persona_chip_example_click">You clicked on a selected Persona Chip.</string>
+
+    <!--DateTimePickerDialog-->
+    <string name="date_time_picker_dialog_button">Show date picker</string>
+    <string name="date_time_picker_dialog_date_picked_default">No date picked</string>
+    <string name="date_time_picker_example_date_pick">You picked %1$s</string>
 </resources>

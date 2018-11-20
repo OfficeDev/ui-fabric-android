@@ -1,7 +1,7 @@
 <resources>
     <string name="persona_title_placeholder">No name</string>
 
-    <!-- DatePicker -->
+    <!-- *** DatePicker *** -->
 
     <string name="date_at_time">%1$s at %2$s</string>
     <string name="all_day">All Day</string>
@@ -66,4 +66,7 @@
     <string name="accessibility_today">today</string>
     <string name="accessibility_selected">Selected</string>
 
+    <!-- *** Shared *** -->
+
+    <string name="done">Done</string>
 </resources>

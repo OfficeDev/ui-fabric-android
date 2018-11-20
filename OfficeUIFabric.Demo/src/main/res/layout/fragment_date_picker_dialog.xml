@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/default_layout_margin"
+    android:layout_marginStart="@dimen/default_layout_margin"
+    android:layout_marginBottom="@dimen/default_layout_margin">
+
+    <TextView
+        android:id="@+id/date_text_vew"
+        style="@style/UIFabric_Heading"
+        android:layout_marginBottom="@dimen/default_layout_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/date_time_picker_dialog_date_picked_default" />
+
+    <Button
+        android:id="@+id/date_picker_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/default_layout_margin"
+        android:textAllCaps="false"
+        android:text="@string/date_time_picker_dialog_button"/>
+
+</LinearLayout>

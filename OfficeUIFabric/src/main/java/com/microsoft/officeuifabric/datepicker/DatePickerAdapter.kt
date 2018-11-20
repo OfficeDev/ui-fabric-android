@@ -50,6 +50,9 @@ class DatePickerAdapter : RecyclerView.Adapter<DatePickerAdapter.DatePickerDayVi
     val todayPosition: Int
         get() = ChronoUnit.DAYS.between(minDate, ZonedDateTime.now().truncatedTo(ChronoUnit.DAYS)).toInt() + 1
 
+    private val LocalDate.getLocalDateToZonedDateTime: ZonedDateTime
+        get() = ZonedDateTime.of(this, LocalTime.MIDNIGHT, ZoneId.systemDefault())
+
     private val firstDayOfWeekIndices = SimpleArrayMap<DayOfWeek, Int>(DayOfWeek.values().size)
     private val lastDayOfWeekIndices = SimpleArrayMap<DayOfWeek, Int>(DayOfWeek.values().size)
 
@@ -57,7 +60,7 @@ class DatePickerAdapter : RecyclerView.Adapter<DatePickerAdapter.DatePickerDayVi
     private var dayCount: Int
     private val context: Context
     private val config: DatePickerView.Config
-    private val events: IDatePickerEvents
+    private val listener: DateTimePickerListener
 
     private var selectedDuration: Duration? = null
 
@@ -68,10 +71,10 @@ class DatePickerAdapter : RecyclerView.Adapter<DatePickerAdapter.DatePickerDayVi
 
     private val dayViewAccessibilityDelegate = DayViewAccessibilityDelegate()
 
-    constructor(context: Context, config: DatePickerView.Config, events: IDatePickerEvents) {
+    constructor(context: Context, config: DatePickerView.Config, listener: DateTimePickerListener) {
         this.context = context
         this.config = config
-        this.events = events
+        this.listener = listener
 
         selectionDrawableCircle = DatePickerDaySelectionDrawable(this.context, Mode.SINGLE)
         selectionDrawableStart = DatePickerDaySelectionDrawable(this.context, Mode.START)
@@ -149,7 +152,7 @@ class DatePickerAdapter : RecyclerView.Adapter<DatePickerAdapter.DatePickerDayVi
     override fun getItemCount() = dayCount
 
     override fun onClick(v: View) {
-        events.onChange((v as DatePickerDayView).date)
+        listener.onDateSelected((v as DatePickerDayView).date.getLocalDateToZonedDateTime)
     }
 
     private fun updateDayIndicesAndHeading() {
@@ -223,7 +226,7 @@ class DatePickerAdapter : RecyclerView.Adapter<DatePickerAdapter.DatePickerDayVi
                 else -> return super.performAccessibilityAction(host, action, args)
             }
 
-            events.onChange(date)
+            listener.onDateSelected(date.getLocalDateToZonedDateTime)
             return true
         }
     }

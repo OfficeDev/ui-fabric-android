@@ -2,5 +2,5 @@
 <!--Copyright (c) 2018. Microsoft Corporation. All rights reserved.-->
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <solid android:color="@color/uifabric_chip_normal" />
-    <corners android:radius="@dimen/uifabric_chip_corner_radius" />
+    <corners android:radius="@dimen/uifabric_corner_radius_2dp" />
 </shape>

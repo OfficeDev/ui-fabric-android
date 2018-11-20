@@ -117,7 +117,7 @@ class DatePickerDayView: AppCompatButton, Checkable {
         config = datePickerConfig
         setWillNotDraw(false)
 
-        todayBackgroundDrawable = ContextCompat.getDrawable(context, R.drawable.date_picker_view_today_background)
+        todayBackgroundDrawable = ContextCompat.getDrawable(context, R.drawable.date_picker_view_background_today)
 
         paint.isAntiAlias = true
 

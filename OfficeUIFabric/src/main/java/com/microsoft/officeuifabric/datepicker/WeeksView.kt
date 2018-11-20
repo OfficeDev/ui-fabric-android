@@ -93,12 +93,12 @@ class WeeksView : MSRecyclerView {
 
     private lateinit var overlayBackgroundColorProperty: ColorProperty
     private lateinit var overlayFontColorProperty: ColorProperty
-    private lateinit var events: IDatePickerEvents
+    private lateinit var listener: DateTimePickerListener
     private lateinit var paint: TextPaint
 
-    constructor(context: Context, config: DatePickerView.Config, events: IDatePickerEvents) : super(context) {
+    constructor(context: Context, config: DatePickerView.Config, listener: DateTimePickerListener) : super(context) {
         this.config = config
-        this.events = events
+        this.listener = listener
         setWillNotDraw(false)
 
         ContextCompat.getDrawable(context, R.drawable.row_divider)?.let {
@@ -107,7 +107,7 @@ class WeeksView : MSRecyclerView {
             addItemDecoration(divider)
         }
 
-        pickerAdapter = DatePickerAdapter(context, config, this.events)
+        pickerAdapter = DatePickerAdapter(context, config, this.listener)
         adapter = pickerAdapter
 
         setHasFixedSize(true)

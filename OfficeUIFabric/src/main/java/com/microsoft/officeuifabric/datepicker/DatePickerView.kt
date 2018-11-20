@@ -18,11 +18,7 @@ import android.widget.LinearLayout
 
 import com.jakewharton.threetenabp.AndroidThreeTen
 import com.microsoft.officeuifabric.R
-
-import org.threeten.bp.Duration
-import org.threeten.bp.LocalDate
-import org.threeten.bp.LocalDateTime
-import org.threeten.bp.LocalTime
+import org.threeten.bp.*
 
 // TODO: Convert to TemplateView along with other things that extend LinearLayout
 // TODO: implement ability to add icon to DatePickerDayView
@@ -32,7 +28,7 @@ import org.threeten.bp.LocalTime
  * [DatePickerView] is a custom LinearLayout that groups together views used to display
  * calendar dates and allows a user to select a date
  */
-class DatePickerView : LinearLayout, IDatePickerEvents {
+class DatePickerView : LinearLayout, DateTimePickerListener {
     companion object {
         const val DAYS_IN_WEEK = 7
         private const val VIEW_MODE_CHANGE_ANIMATION_DURATION = 300L
@@ -52,9 +48,9 @@ class DatePickerView : LinearLayout, IDatePickerEvents {
     }
 
     /**
-     * Callback implementation for date picking events
+     * Callback implementation for date picking listener
      */
-    var events: IDatePickerEvents? = null
+    var listener: DateTimePickerListener? = null
 
     /**
      * Integer returning the calendar width for tablet
@@ -198,9 +194,9 @@ class DatePickerView : LinearLayout, IDatePickerEvents {
         super.onMeasure(widthMeasureSpec, View.MeasureSpec.makeMeasureSpec(computeHeight(displayMode), View.MeasureSpec.EXACTLY))
     }
 
-    override fun onChange(date: LocalDate) {
-        this.date = date
-        events?.onChange(date)
+    override fun onDateSelected(date: ZonedDateTime) {
+        this.date = date.toLocalDate()
+        listener?.onDateSelected(date)
     }
 
     private fun computeHeight(mode: DisplayMode): Int {

@@ -5,12 +5,17 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
+import com.jakewharton.threetenabp.AndroidThreeTen
+import com.microsoft.officeuifabric.datepicker.DateTimePickerListener
+import com.microsoft.officeuifabricdemo.demos.DateTimePickerDialogFragment
 import kotlinx.android.synthetic.main.activity_demo_detail.*
+import org.threeten.bp.ZonedDateTime
 import java.util.*
 
-class DemoActivity : AppCompatActivity() {
+class DemoActivity : AppCompatActivity(), DateTimePickerListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        AndroidThreeTen.init(this)
         setContentView(R.layout.activity_demo_detail)
         setSupportActionBar(detail_toolbar)
 
@@ -42,7 +47,7 @@ class DemoActivity : AppCompatActivity() {
             val isDemoScrollable = (fragment as? DemoFragment)?.needsScrollableContainer() ?: true
 
             supportFragmentManager.beginTransaction()
-                .add(if (isDemoScrollable) R.id.demo_detail_scrollable_container else R.id.demo_detail_container, fragment)
+                .add(if (isDemoScrollable) R.id.demo_detail_scrollable_container else R.id.demo_detail_container, fragment, demo.title)
                 .commit()
         }
     }
@@ -61,4 +66,9 @@ class DemoActivity : AppCompatActivity() {
                 }
                 else -> super.onOptionsItemSelected(item)
             }
+
+    override fun onDatePicked(date: ZonedDateTime) {
+        val dateTimePickerDialogFragment = supportFragmentManager.findFragmentByTag(DATE_TIME_PICKER_DIALOG) as? DateTimePickerDialogFragment
+        dateTimePickerDialogFragment?.date = date
+    }
 }
