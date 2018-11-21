@@ -9,7 +9,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="@dimen/uifabric_date_picker_toolbar_elevation"
+        android:elevation="@dimen/uifabric_calendar_toolbar_elevation"
         android:background="@color/uifabric_white"/>
 
     <LinearLayout

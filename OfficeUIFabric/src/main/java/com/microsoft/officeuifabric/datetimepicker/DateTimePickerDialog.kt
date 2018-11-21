@@ -2,7 +2,7 @@
  * Copyright © 2018 Microsoft Corporation. All rights reserved.
  */
 
-package com.microsoft.officeuifabric.datepicker
+package com.microsoft.officeuifabric.datetimepicker
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
@@ -19,6 +19,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.microsoft.officeuifabric.R
+import com.microsoft.officeuifabric.core.DateTimeSelectionListener
 import com.microsoft.officeuifabric.util.DateStringUtils
 import com.microsoft.officeuifabric.view.ResizableDialog
 import kotlinx.android.synthetic.main.dialog_date_time_picker.*
@@ -30,7 +31,7 @@ import org.threeten.bp.ZonedDateTime
  * [DateTimePickerDialog] provides a dialog view housing both a [DatePickerDialog] and Time Picker in a [ViewPager]
  * as well as includes toolbar UI and menu buttons to dismiss the dialog and accept a date/ time
  */
-class DateTimePickerDialog : ResizableDialog(), Toolbar.OnMenuItemClickListener, DateTimePickerListener {
+class DateTimePickerDialog : ResizableDialog(), Toolbar.OnMenuItemClickListener, DateTimeSelectionListener {
     companion object {
         @JvmStatic
         fun newInstance(
@@ -57,7 +58,7 @@ class DateTimePickerDialog : ResizableDialog(), Toolbar.OnMenuItemClickListener,
         NORMAL_TIME(true, true, true, 0, 1, 1)
     }
 
-    var listener: DateTimePickerListener? = null
+    var listener: DateTimeSelectionListener? = null
 
     private lateinit var displayDate: ZonedDateTime
     private lateinit var duration: Duration
@@ -187,7 +188,7 @@ class DateTimePickerDialog : ResizableDialog(), Toolbar.OnMenuItemClickListener,
 
     private fun callDateListener() {
         // Routing communication through Activities rather than Fragment to Fragment is preferred in Android
-        (activity as? DateTimePickerListener)?.onDatePicked(displayDate)
+        (activity as? DateTimeSelectionListener)?.onDatePicked(displayDate)
         listener?.onDatePicked(displayDate)
     }
 

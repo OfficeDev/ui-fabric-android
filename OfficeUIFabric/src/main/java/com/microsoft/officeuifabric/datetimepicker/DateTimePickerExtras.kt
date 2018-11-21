@@ -1,4 +1,4 @@
-package com.microsoft.officeuifabric.datepicker
+package com.microsoft.officeuifabric.datetimepicker
 
 object DateTimePickerExtras {
     const val MODE = "MODE"

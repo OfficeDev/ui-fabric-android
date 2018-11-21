@@ -17,7 +17,7 @@
         android:text="@string/date_time_picker_dialog_date_picked_default" />
 
     <Button
-        android:id="@+id/date_picker_button"
+        android:id="@+id/date_time_picker_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/default_layout_margin"

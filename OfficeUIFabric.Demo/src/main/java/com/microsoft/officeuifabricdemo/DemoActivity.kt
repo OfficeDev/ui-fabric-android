@@ -6,13 +6,13 @@ import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import com.jakewharton.threetenabp.AndroidThreeTen
-import com.microsoft.officeuifabric.datepicker.DateTimePickerListener
+import com.microsoft.officeuifabric.core.DateTimeSelectionListener
 import com.microsoft.officeuifabricdemo.demos.DateTimePickerDialogFragment
 import kotlinx.android.synthetic.main.activity_demo_detail.*
 import org.threeten.bp.ZonedDateTime
 import java.util.*
 
-class DemoActivity : AppCompatActivity(), DateTimePickerListener {
+class DemoActivity : AppCompatActivity(), DateTimeSelectionListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AndroidThreeTen.init(this)

@@ -18,8 +18,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.microsoft.officeuifabric.datepicker.DatePickerView
-            android:id="@+id/date_picker_view"
+        <com.microsoft.officeuifabric.calendar.CalendarView
+            android:id="@+id/calendar_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

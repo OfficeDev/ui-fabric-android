@@ -2,7 +2,7 @@
  * Copyright © 2018 Microsoft Corporation. All rights reserved.
  * */
 
-package com.microsoft.officeuifabric.datepicker
+package com.microsoft.officeuifabric.calendar
 
 import android.content.Context
 import android.graphics.Canvas
@@ -15,9 +15,9 @@ import android.support.v4.content.ContextCompat
 import com.microsoft.officeuifabric.R
 
 /**
- * [DatePickerDaySelectionDrawable] is a drawable added to a [DatePickerDayView] displaying selected state
+ * [CalendarDaySelectionDrawable] is a drawable added to a [CalendarDayView] displaying selected state
  */
-class DatePickerDaySelectionDrawable : Drawable {
+class CalendarDaySelectionDrawable : Drawable {
     enum class Mode {
         SINGLE, START, END, MIDDLE
     }
@@ -31,7 +31,7 @@ class DatePickerDaySelectionDrawable : Drawable {
         this.context = context
         this.mode = mode
         paint.color = ContextCompat.getColor(context, R.color.uifabric_primary)
-        circleSize = context.resources.getDimensionPixelSize(R.dimen.uifabric_date_picker_view_day_selection_size)
+        circleSize = context.resources.getDimensionPixelSize(R.dimen.uifabric_calendar_day_selection_size)
     }
 
     override fun draw(canvas: Canvas) {

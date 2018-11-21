@@ -2,7 +2,7 @@
  * Copyright © 2018 Microsoft Corporation. All rights reserved.
  */
 
-package com.microsoft.officeuifabric.datepicker
+package com.microsoft.officeuifabric.calendar
 
 import android.content.Context
 import android.graphics.drawable.Drawable
@@ -15,7 +15,8 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import com.microsoft.officeuifabric.R
-import com.microsoft.officeuifabric.datepicker.DatePickerDaySelectionDrawable.Mode
+import com.microsoft.officeuifabric.calendar.CalendarDaySelectionDrawable.Mode
+import com.microsoft.officeuifabric.core.DateTimeSelectionListener
 import com.microsoft.officeuifabric.managers.PreferencesManager
 import com.microsoft.officeuifabric.util.DateTimeUtils
 import org.threeten.bp.*
@@ -23,9 +24,9 @@ import org.threeten.bp.temporal.ChronoUnit
 import java.util.concurrent.TimeUnit
 
 /**
- * [DatePickerAdapter] is the adapter for the DatePicker
+ * [CalendarAdapter] is the adapter for the [CalendarView]
  */
-class DatePickerAdapter : RecyclerView.Adapter<DatePickerAdapter.DatePickerDayViewHolder>, View.OnClickListener {
+class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarDayViewHolder>, View.OnClickListener {
     companion object {
         private const val MONTH_BACK = 3L
         private const val MONTH_AHEAD = 12L
@@ -59,27 +60,27 @@ class DatePickerAdapter : RecyclerView.Adapter<DatePickerAdapter.DatePickerDayVi
     private var firstDayOfWeek: DayOfWeek? = null
     private var dayCount: Int
     private val context: Context
-    private val config: DatePickerView.Config
-    private val listener: DateTimePickerListener
+    private val config: CalendarView.Config
+    private val listener: DateTimeSelectionListener
 
     private var selectedDuration: Duration? = null
 
-    private val selectionDrawableCircle: DatePickerDaySelectionDrawable
-    private val selectionDrawableStart: DatePickerDaySelectionDrawable
-    private val selectionDrawableMiddle: DatePickerDaySelectionDrawable
-    private val selectionDrawableEnd: DatePickerDaySelectionDrawable
+    private val selectionDrawableCircle: CalendarDaySelectionDrawable
+    private val selectionDrawableStart: CalendarDaySelectionDrawable
+    private val selectionDrawableMiddle: CalendarDaySelectionDrawable
+    private val selectionDrawableEnd: CalendarDaySelectionDrawable
 
     private val dayViewAccessibilityDelegate = DayViewAccessibilityDelegate()
 
-    constructor(context: Context, config: DatePickerView.Config, listener: DateTimePickerListener) {
+    constructor(context: Context, config: CalendarView.Config, listener: DateTimeSelectionListener) {
         this.context = context
         this.config = config
         this.listener = listener
 
-        selectionDrawableCircle = DatePickerDaySelectionDrawable(this.context, Mode.SINGLE)
-        selectionDrawableStart = DatePickerDaySelectionDrawable(this.context, Mode.START)
-        selectionDrawableMiddle = DatePickerDaySelectionDrawable(this.context, Mode.MIDDLE)
-        selectionDrawableEnd = DatePickerDaySelectionDrawable(this.context, Mode.END)
+        selectionDrawableCircle = CalendarDaySelectionDrawable(this.context, Mode.SINGLE)
+        selectionDrawableStart = CalendarDaySelectionDrawable(this.context, Mode.START)
+        selectionDrawableMiddle = CalendarDaySelectionDrawable(this.context, Mode.MIDDLE)
+        selectionDrawableEnd = CalendarDaySelectionDrawable(this.context, Mode.END)
 
         updateDayIndicesAndHeading()
 
@@ -123,15 +124,15 @@ class DatePickerAdapter : RecyclerView.Adapter<DatePickerAdapter.DatePickerDayVi
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DatePickerDayViewHolder {
-        val dayView = DatePickerDayView(parent.context, config)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalendarDayViewHolder {
+        val dayView = CalendarDayView(parent.context, config)
         dayView.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
         dayView.setOnClickListener(this)
         ViewCompat.setAccessibilityDelegate(dayView, dayViewAccessibilityDelegate)
-        return DatePickerDayViewHolder(dayView)
+        return CalendarDayViewHolder(dayView)
     }
 
-    override fun onBindViewHolder(holder: DatePickerDayViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CalendarDayViewHolder, position: Int) {
         val date = minDate.plusDays(position.toLong())
         holder.date = date
 
@@ -152,7 +153,7 @@ class DatePickerAdapter : RecyclerView.Adapter<DatePickerAdapter.DatePickerDayVi
     override fun getItemCount() = dayCount
 
     override fun onClick(v: View) {
-        listener.onDateSelected((v as DatePickerDayView).date.getLocalDateToZonedDateTime)
+        listener.onDateSelected((v as CalendarDayView).date.getLocalDateToZonedDateTime)
     }
 
     private fun updateDayIndicesAndHeading() {
@@ -173,31 +174,31 @@ class DatePickerAdapter : RecyclerView.Adapter<DatePickerAdapter.DatePickerDayVi
     }
 
     /**
-     * ViewHolder for the [DatePickerDayView]
+     * ViewHolder for the [CalendarDayView]
      */
-    inner class DatePickerDayViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class CalendarDayViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         /**
-         * Sets and gets the selected date in the [DatePickerDayView]
+         * Sets and gets the selected date in the [CalendarDayView]
          */
         var date: LocalDate
-            get() =  datePickerDayView.date
-            set(value) {  datePickerDayView.date = value }
+            get() =  calendarDayView.date
+            set(value) {  calendarDayView.date = value }
 
         /**
-         * Sets and gets the selected Drawable in the [DatePickerDayView]
+         * Sets and gets the selected Drawable in the [CalendarDayView]
          */
         var selectedDrawable: Drawable?
-            get() =  datePickerDayView.selectedDrawable
-            set(value) { datePickerDayView.selectedDrawable = value }
+            get() =  calendarDayView.selectedDrawable
+            set(value) { calendarDayView.selectedDrawable = value }
 
         /**
-         * Sets and gets the selected state of the [DatePickerDayView]
+         * Sets and gets the selected state of the [CalendarDayView]
          */
         var isSelected: Boolean
-            get() = datePickerDayView.isChecked
-            set(value) { datePickerDayView.isChecked = value }
+            get() = calendarDayView.isChecked
+            set(value) { calendarDayView.isChecked = value }
 
-        private val datePickerDayView = itemView as DatePickerDayView
+        private val calendarDayView = itemView as CalendarDayView
     }
 
     private inner class DayViewAccessibilityDelegate : AccessibilityDelegateCompat() {

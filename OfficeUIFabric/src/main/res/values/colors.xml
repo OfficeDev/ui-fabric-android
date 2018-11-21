@@ -61,20 +61,20 @@
     <color name="uifabric_chip_error_text">#A80000</color>
     <color name="uifabric_chip_disabled_text">@color/uifabric_gray</color>
 
-    <!--DatePicker-->
-    <color name="uifabric_date_picker_week_header_background">@color/uifabric_primary</color>
-    <color name="uifabric_date_picker_week_heading_week_day_text">@color/uifabric_gray</color>
-    <color name="uifabric_date_picker_week_heading_weekend_text">@color/uifabric_border_light_gray</color>
+    <!--CalendarView-->
+    <color name="uifabric_calendar_week_header_background">@color/uifabric_primary</color>
+    <color name="uifabric_calendar_week_heading_week_day_text">@color/uifabric_gray</color>
+    <color name="uifabric_calendar_week_heading_weekend_text">@color/uifabric_border_light_gray</color>
     <!-- TODO update after design adds #B2FFFFFF to toolkit -->
-    <color name="uifabric_date_picker_month_overlay_background">#B2FFFFFF</color>
-    <color name="uifabric_date_picker_month_overlay_text">@color/uifabric_black</color>
-    <color name="uifabric_date_picker_other_month_background">@color/uifabric_background_light_gray</color>
+    <color name="uifabric_calendar_month_overlay_background">#B2FFFFFF</color>
+    <color name="uifabric_calendar_month_overlay_text">@color/uifabric_black</color>
+    <color name="uifabric_calendar_other_month_background">@color/uifabric_background_light_gray</color>
     <!-- TODO update after design adds #FFF5FAFC to toolkit -->
-    <color name="uifabric_date_picker_day_today_background">#FFF5FAFC</color>
+    <color name="uifabric_calendar_day_today_background">#FFF5FAFC</color>
     <!-- TODO update after design adds #0E000000 to toolkit -->
-    <color name="uifabric_date_picker_item_highlight">#0E000000</color> <!-- 5% black -->
-    <color name="uifabric_date_picker_view_week_day_text">@color/date_picker_week_day_text_selector</color>
-    <color name="uifabric_date_picker_view_monochrome_text">@color/date_picker_week_day_text_selector</color>
+    <color name="uifabric_calendar_item_highlight">#0E000000</color> <!-- 5% black -->
+    <color name="uifabric_calendar_week_day_text">@color/calendar_week_day_text_selector</color>
+    <color name="uifabric_calendar_monochrome_text">@color/calendar_week_day_text_selector</color>
 
     <!--Shared-->
     <color name="uifabric_divider">@color/uifabric_border_gray</color>

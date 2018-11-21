@@ -13,15 +13,15 @@
     <dimen name="uifabric_chip_padding">6dp</dimen>
     <dimen name="uifabric_chip_spacing">6dp</dimen>
 
-    <!--DatePicker-->
-    <dimen name="uifabric_date_picker_view_week_day_font_size">16sp</dimen>
-    <dimen name="uifabric_date_picker_view_month_year_font_size">12sp</dimen>
-    <dimen name="uifabric_date_picker_view_week_heading_height">28dp</dimen>
-    <dimen name="uifabric_date_picker_view_week_heading_text_size">12sp</dimen>
-    <dimen name="uifabric_date_picker_view_month_overlay_text_size">20sp</dimen>
-    <dimen name="uifabric_date_picker_view_weeks_max_width">336dp</dimen>
-    <dimen name="uifabric_date_picker_view_day_selection_size">36dp</dimen>
-    <dimen name="uifabric_date_picker_toolbar_elevation">2dp</dimen>
+    <!--CalendarView-->
+    <dimen name="uifabric_calendar_week_day_font_size">16sp</dimen>
+    <dimen name="uifabric_calendar_month_year_font_size">12sp</dimen>
+    <dimen name="uifabric_calendar_week_heading_height">28dp</dimen>
+    <dimen name="uifabric_calendar_week_heading_text_size">12sp</dimen>
+    <dimen name="uifabric_calendar_month_overlay_text_size">20sp</dimen>
+    <dimen name="uifabric_calendar_weeks_max_width">336dp</dimen>
+    <dimen name="uifabric_calendar_day_selection_size">36dp</dimen>
+    <dimen name="uifabric_calendar_toolbar_elevation">2dp</dimen>
 
     <!--DateTimePickerDialog-->
     <dimen name="uifabric_date_time_picker_dialog_title_horizontal_margin">24dp</dimen>

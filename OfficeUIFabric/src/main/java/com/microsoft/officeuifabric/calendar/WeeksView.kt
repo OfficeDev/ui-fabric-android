@@ -2,7 +2,7 @@
  * Copyright © 2018 Microsoft Corporation. All rights reserved.
  */
 
-package com.microsoft.officeuifabric.datepicker
+package com.microsoft.officeuifabric.calendar
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
@@ -24,6 +24,7 @@ import android.text.format.DateUtils.FORMAT_NO_MONTH_DAY
 import android.text.format.DateUtils.FORMAT_SHOW_DATE
 import android.util.AttributeSet
 import com.microsoft.officeuifabric.R
+import com.microsoft.officeuifabric.core.DateTimeSelectionListener
 import com.microsoft.officeuifabric.util.ColorProperty
 import com.microsoft.officeuifabric.util.DateTimeUtils
 import com.microsoft.officeuifabric.view.MSRecyclerView
@@ -70,9 +71,9 @@ class WeeksView : MSRecyclerView {
     val firstVisibleItemPosition: Int
         get() = (layoutManager as GridLayoutManager).findFirstVisibleItemPosition()
 
-    private lateinit var config: DatePickerView.Config
+    private lateinit var config: CalendarView.Config
 
-    private lateinit var pickerAdapter: DatePickerAdapter
+    private lateinit var pickerAdapter: CalendarAdapter
 
     private var overlayDisplayState = OverlayState.HIDDEN
     private val overlayTransitionAnimator = AnimatorSet()
@@ -93,10 +94,10 @@ class WeeksView : MSRecyclerView {
 
     private lateinit var overlayBackgroundColorProperty: ColorProperty
     private lateinit var overlayFontColorProperty: ColorProperty
-    private lateinit var listener: DateTimePickerListener
+    private lateinit var listener: DateTimeSelectionListener
     private lateinit var paint: TextPaint
 
-    constructor(context: Context, config: DatePickerView.Config, listener: DateTimePickerListener) : super(context) {
+    constructor(context: Context, config: CalendarView.Config, listener: DateTimeSelectionListener) : super(context) {
         this.config = config
         this.listener = listener
         setWillNotDraw(false)
@@ -107,7 +108,7 @@ class WeeksView : MSRecyclerView {
             addItemDecoration(divider)
         }
 
-        pickerAdapter = DatePickerAdapter(context, config, this.listener)
+        pickerAdapter = CalendarAdapter(context, config, this.listener)
         adapter = pickerAdapter
 
         setHasFixedSize(true)
@@ -130,14 +131,14 @@ class WeeksView : MSRecyclerView {
     @JvmOverloads
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr)
 
-    fun ensureDateVisible(date: LocalDate?, displayMode: DatePickerView.DisplayMode, rowHeight: Int, dividerHeight: Int) {
+    fun ensureDateVisible(date: LocalDate?, displayMode: CalendarView.DisplayMode, rowHeight: Int, dividerHeight: Int) {
         val date = date ?: return
         smoothScrollBy(0, 0)
 
         val datePosition = ChronoUnit.DAYS.between(minDate, date).toInt()
         val visibleRows = displayMode.visibleRows
         val firstVisiblePosition = firstVisibleItemPosition
-        val lastVisiblePosition = firstVisiblePosition + DatePickerView.DAYS_IN_WEEK * visibleRows
+        val lastVisiblePosition = firstVisiblePosition + CalendarView.DAYS_IN_WEEK * visibleRows
 
         if (RecyclerView.NO_POSITION == firstVisiblePosition || datePosition < firstVisiblePosition || DateTimeUtils.isSameDay(date, ZonedDateTime.now())) {
             scrollToPositionWithOffset(datePosition, 0)
@@ -201,8 +202,8 @@ class WeeksView : MSRecyclerView {
         val now = ZonedDateTime.now().truncatedTo(ChronoUnit.DAYS)
         val monthDescriptors = ArrayList<MonthDescriptor>(MONTH_DESCRIPTORS_CAPACITY)
         for (i in 0 until childCount step DAYS_IN_WEEK) {
-            val datePickerDayView = getChildAt(i) as DatePickerDayView
-            val date = datePickerDayView.date
+            val calendarDayView = getChildAt(i) as CalendarDayView
+            val date = calendarDayView.date
             val month = date.month
             if (previousMonth == month)
                 continue

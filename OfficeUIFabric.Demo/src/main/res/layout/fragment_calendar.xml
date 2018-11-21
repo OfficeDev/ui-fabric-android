@@ -10,14 +10,14 @@
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/default_layout_margin"
         android:paddingBottom="@dimen/default_layout_margin"
-        android:textSize="@dimen/date_picker_date_title_text_size"
-        android:text="@string/date_picker_example_chosen_date"
-        android:textColor="@color/date_picker_chosen_date_text"
+        android:textSize="@dimen/calendar_date_title_text_size"
+        android:text="@string/calendar_example_chosen_date"
+        android:textColor="@color/calendar_selected_date_text"
         android:textAlignment="center"
-        android:background="@color/date_picker_chosen_date_background"/>
+        android:background="@color/calendar_selected_date_background"/>
 
-    <com.microsoft.officeuifabric.datepicker.DatePickerView
-        android:id="@+id/date_picker_view"
+    <com.microsoft.officeuifabric.calendar.CalendarView
+        android:id="@+id/calendar_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </LinearLayout>

@@ -72,7 +72,7 @@
     <string name="caption">Caption</string>
 
     <!--DatePicker-->
-    <string name="date_picker_example_chosen_date">Choose a date</string>
+    <string name="calendar_example_chosen_date">Choose a date</string>
 
     <!--DateTimePickerDialog-->
     <string name="date_time_picker_dialog_button">Show date picker</string>

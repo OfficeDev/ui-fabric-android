@@ -2,7 +2,7 @@
  * Copyright © 2018 Microsoft Corporation. All rights reserved.
  */
 
-package com.microsoft.officeuifabric.datepicker
+package com.microsoft.officeuifabric.calendar
 
 import android.content.Context
 import android.support.v4.view.ViewCompat
@@ -18,14 +18,14 @@ import com.microsoft.officeuifabric.managers.PreferencesManager
 import org.threeten.bp.DayOfWeek
 
 /**
- * [WeekHeadingView] is a LinearLayout holding the DatePicker header with views for
+ * [WeekHeadingView] is a LinearLayout holding the [CalendarView] header with views for
  * the week day letters, S, M, T, W, T, F, S
  */
 class WeekHeadingView : LinearLayout {
-    private lateinit var config: DatePickerView.Config
+    private lateinit var config: CalendarView.Config
 
-    constructor(context: Context, datePickerConfig: DatePickerView.Config) : super(context) {
-        config = datePickerConfig
+    constructor(context: Context, calendarConfig: CalendarView.Config) : super(context) {
+        config = calendarConfig
         setBackgroundColor(config.weekHeadingBackgroundColor)
 
         var dayOfWeek = PreferencesManager.getWeekStart(context)
@@ -36,7 +36,7 @@ class WeekHeadingView : LinearLayout {
         val weekendHeadingColor = config.weekendHeadingTextColor
 
         val strDayOfWeek = resources.getStringArray(R.array.weekday_initial)
-        for (i in 1..DatePickerView.DAYS_IN_WEEK) {
+        for (i in 1..CalendarView.DAYS_IN_WEEK) {
             val textView = TextView(context)
             TextViewCompat.setTextAppearance(textView, headingTextAppearance)
             textView.text = strDayOfWeek[dayOfWeek.value - 1]

@@ -1,7 +1,7 @@
 <resources>
     <string name="persona_title_placeholder">No name</string>
 
-    <!-- *** DatePicker *** -->
+    <!-- *** CalendarView *** -->
 
     <string name="date_at_time">%1$s at %2$s</string>
     <string name="all_day">All Day</string>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
-    <solid android:color="@color/uifabric_date_picker_day_today_background"/>
+    <solid android:color="@color/uifabric_calendar_day_today_background"/>
 </shape>

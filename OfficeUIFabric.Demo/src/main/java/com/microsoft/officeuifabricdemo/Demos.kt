@@ -7,7 +7,7 @@ import kotlin.reflect.KClass
 
 const val AVATAR = "Avatar"
 const val BUTTON = "Button"
-const val DATE_PICKER = "DatePicker"
+const val CALENDAR_VIEW = "CalendarView"
 const val DATE_TIME_PICKER_DIALOG = "DateTimePickerDialog"
 const val PERSONA = "Persona"
 const val PERSONA_CHIP = "PersonaChip"
@@ -18,7 +18,7 @@ const val TYPOGRAPHY = "Typography"
 val DEMOS = arrayListOf(
     Demo(AVATAR, AvatarFragment::class),
     Demo(BUTTON, ButtonFragment::class),
-    Demo(DATE_PICKER, DatePickerFragment::class),
+    Demo(CALENDAR_VIEW, CalendarViewFragment::class),
     Demo(DATE_TIME_PICKER_DIALOG, DateTimePickerDialogFragment::class),
     Demo(PERSONA, PersonaFragment::class),
     Demo(PERSONA_CHIP, PersonaChipFragment::class),

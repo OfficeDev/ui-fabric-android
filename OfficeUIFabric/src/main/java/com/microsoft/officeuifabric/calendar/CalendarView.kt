@@ -2,7 +2,7 @@
  * Copyright © 2018 Microsoft Corporation. All rights reserved.
  */
 
-package com.microsoft.officeuifabric.datepicker
+package com.microsoft.officeuifabric.calendar
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
@@ -18,17 +18,18 @@ import android.widget.LinearLayout
 
 import com.jakewharton.threetenabp.AndroidThreeTen
 import com.microsoft.officeuifabric.R
+import com.microsoft.officeuifabric.core.DateTimeSelectionListener
 import org.threeten.bp.*
 
 // TODO: Convert to TemplateView along with other things that extend LinearLayout
-// TODO: implement ability to add icon to DatePickerDayView
-// TODO: implement ability to change background color of DatePickerDayView cell
+// TODO: implement ability to add icon to CalendarDayView
+// TODO: implement ability to change background color of CalendarDayView cell
 
 /**
- * [DatePickerView] is a custom LinearLayout that groups together views used to display
+ * [CalendarView] is a custom LinearLayout that groups together views used to display
  * calendar dates and allows a user to select a date
  */
-class DatePickerView : LinearLayout, DateTimePickerListener {
+class CalendarView : LinearLayout, DateTimeSelectionListener {
     companion object {
         const val DAYS_IN_WEEK = 7
         private const val VIEW_MODE_CHANGE_ANIMATION_DURATION = 300L
@@ -50,7 +51,7 @@ class DatePickerView : LinearLayout, DateTimePickerListener {
     /**
      * Callback implementation for date picking listener
      */
-    var listener: DateTimePickerListener? = null
+    var listener: DateTimeSelectionListener? = null
 
     /**
      * Integer returning the calendar width for tablet
@@ -110,7 +111,7 @@ class DatePickerView : LinearLayout, DateTimePickerListener {
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
         AndroidThreeTen.init(context)
         dividerHeight = Math.round(resources.getDimension(R.dimen.uifabric_divider_height))
-        calendarViewWidthForTablet = Math.round(resources.getDimension(R.dimen.uifabric_date_picker_view_weeks_max_width))
+        calendarViewWidthForTablet = Math.round(resources.getDimension(R.dimen.uifabric_calendar_weeks_max_width))
 
         config = Config()
 
@@ -123,7 +124,7 @@ class DatePickerView : LinearLayout, DateTimePickerListener {
     }
 
     /**
-     * Sets the [DisplayMode] with a flag to animate the resize of the [DatePickerView]
+     * Sets the [DisplayMode] with a flag to animate the resize of the [CalendarView]
      */
     fun setDisplayMode(mode: DisplayMode, animateResize: Boolean) {
         if (mode == displayMode)
@@ -240,28 +241,28 @@ class DatePickerView : LinearLayout, DateTimePickerListener {
      */
     inner class Config {
         var weekHeadingBackgroundColor = Color.WHITE
-        var weekdayHeadingTextColor = ContextCompat.getColor(context, R.color.uifabric_date_picker_week_heading_week_day_text)
-        var weekendHeadingTextColor = ContextCompat.getColor(context, R.color.uifabric_date_picker_week_heading_weekend_text)
-        var weekHeadingHeight = context.resources.getDimensionPixelSize(R.dimen.uifabric_date_picker_view_week_heading_height)
-        var weekHeadingTextSize = context.resources.getDimensionPixelSize(R.dimen.uifabric_date_picker_view_week_heading_text_size)
+        var weekdayHeadingTextColor = ContextCompat.getColor(context, R.color.uifabric_calendar_week_heading_week_day_text)
+        var weekendHeadingTextColor = ContextCompat.getColor(context, R.color.uifabric_calendar_week_heading_weekend_text)
+        var weekHeadingHeight = context.resources.getDimensionPixelSize(R.dimen.uifabric_calendar_week_heading_height)
+        var weekHeadingTextSize = context.resources.getDimensionPixelSize(R.dimen.uifabric_calendar_week_heading_text_size)
         var showWeekHeadingDivider = false
 
         var selectionAccentColor = ContextCompat.getColor(context, R.color.uifabric_primary)
 
         var isFullMode = true
 
-        var monthOverlayBackgroundColor = ContextCompat.getColor(context, R.color.uifabric_date_picker_month_overlay_background)
-        var monthOverlayTextSize = context.resources.getDimensionPixelSize(R.dimen.uifabric_date_picker_view_month_overlay_text_size)
+        var monthOverlayBackgroundColor = ContextCompat.getColor(context, R.color.uifabric_calendar_month_overlay_background)
+        var monthOverlayTextSize = context.resources.getDimensionPixelSize(R.dimen.uifabric_calendar_month_overlay_text_size)
         var monthOverlayTextColor = ContextCompat.getColor(context, R.color.uifabric_primary)
 
         var differentiateOddEvenMonth = true
         var isTodayHighlighted = true
-        var otherMonthBackgroundColor = ContextCompat.getColor(context, R.color.uifabric_date_picker_other_month_background)
-        var calendarDayMonthYearTextSize = context.resources.getDimensionPixelSize(R.dimen.uifabric_date_picker_view_month_year_font_size)
+        var otherMonthBackgroundColor = ContextCompat.getColor(context, R.color.uifabric_calendar_other_month_background)
+        var calendarDayMonthYearTextSize = context.resources.getDimensionPixelSize(R.dimen.uifabric_calendar_month_year_font_size)
 
-        var calendarDayWeekdayTextColorId =  R.color.uifabric_date_picker_view_week_day_text
-        var calendarDayWeekendTextColorId = R.color.uifabric_date_picker_view_week_day_text
-        var calendarDayFirstDayOfMonthTextColorId = R.color.uifabric_date_picker_view_week_day_text
-        var calendarDayMonochromeTextColorId = R.color.uifabric_date_picker_view_monochrome_text
+        var calendarDayWeekdayTextColorId =  R.color.uifabric_calendar_week_day_text
+        var calendarDayWeekendTextColorId = R.color.uifabric_calendar_week_day_text
+        var calendarDayFirstDayOfMonthTextColorId = R.color.uifabric_calendar_week_day_text
+        var calendarDayMonochromeTextColorId = R.color.uifabric_calendar_monochrome_text
     }
 }

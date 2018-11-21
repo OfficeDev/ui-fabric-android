@@ -2,14 +2,14 @@
  * Copyright © 2018 Microsoft Corporation. All rights reserved.
  */
 
-package com.microsoft.officeuifabric.datepicker
+package com.microsoft.officeuifabric.core
 
 import org.threeten.bp.ZonedDateTime
 
 /**
- * [DateTimePickerListener] is an interface for Date and Time picker callbacks
+ * [DateTimeSelectionListener] is an interface for Date and Time picker callbacks
  */
-interface DateTimePickerListener {
+interface DateTimeSelectionListener {
     /**
      * Method called when a user selects a date
      * @param [date] the selected date
@@ -20,7 +20,7 @@ interface DateTimePickerListener {
 
     /**
      * Method called when a user picks a date. This would be used in a scenario where
-     * date picking is completed and the DatePicker is dismissed
+     * date picking is completed and the DatePickerDialog is dismissed
      * @param [date] the picked date
      */
     fun onDatePicked(date: ZonedDateTime) {

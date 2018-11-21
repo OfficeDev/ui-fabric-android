@@ -3,6 +3,6 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="date_picker_chosen_date_text">#E1E1E1</color>
-    <color name="date_picker_chosen_date_background">#333</color>
+    <color name="calendar_selected_date_text">#E1E1E1</color>
+    <color name="calendar_selected_date_background">#333</color>
 </resources>

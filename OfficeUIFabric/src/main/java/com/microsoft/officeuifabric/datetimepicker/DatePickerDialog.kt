@@ -2,7 +2,7 @@
  * Copyright © 2018 Microsoft Corporation. All rights reserved.
  */
 
-package com.microsoft.officeuifabric.datepicker
+package com.microsoft.officeuifabric.datetimepicker
 
 import android.app.Dialog
 import android.os.Build
@@ -14,6 +14,8 @@ import android.view.ViewGroup
 import android.view.WindowManager
 
 import com.microsoft.officeuifabric.R
+import com.microsoft.officeuifabric.calendar.CalendarView
+import com.microsoft.officeuifabric.core.DateTimeSelectionListener
 import com.microsoft.officeuifabric.util.DateStringUtils
 import com.microsoft.officeuifabric.view.PositionableDialog
 import kotlinx.android.synthetic.main.dialog_day_picker.*
@@ -22,10 +24,10 @@ import org.threeten.bp.Duration
 import org.threeten.bp.ZonedDateTime
 
 /**
- * [DatePickerDialog] houses a [DatePickerView] instances within a positionable dialog as well as
+ * [DatePickerDialog] houses a [CalendarView] instances within a positionable dialog as well as
  * configures aspects of the view
  */
-class DatePickerDialog : PositionableDialog(), DateTimePickerListener {
+class DatePickerDialog : PositionableDialog(), DateTimeSelectionListener {
     companion object {
         private const val ELEVATION = 0f
 
@@ -71,21 +73,21 @@ class DatePickerDialog : PositionableDialog(), DateTimePickerListener {
         }
 
     val fullModeHeight: Int
-        get() = date_picker_view.fullModeHeight
+        get() = calendar_view.fullModeHeight
 
     fun setTimeSlot(startTime: ZonedDateTime, duration: Duration) {
         displayDate = startTime
         val endTime = startTime.plus(duration).with(startTime.toLocalTime())
         this.duration = Duration.between(startTime, endTime)
-        date_picker_view.setSelectedDateRange(displayDate.toLocalDate(), this.duration, pickMode == PickMode.RANGE_END)
+        calendar_view.setSelectedDateRange(displayDate.toLocalDate(), this.duration, pickMode == PickMode.RANGE_END)
     }
 
     fun expandCalendarView() {
-        date_picker_view.displayMode = DatePickerView.DisplayMode.LENGTHY_MODE
+        calendar_view.displayMode = CalendarView.DisplayMode.LENGTHY_MODE
     }
 
     fun collapseCalendarView() {
-        date_picker_view.leaveLengthyMode()
+        calendar_view.leaveLengthyMode()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -104,8 +106,8 @@ class DatePickerDialog : PositionableDialog(), DateTimePickerListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        date_picker_view.setSelectedDateRange(displayDate.toLocalDate(), duration, pickMode == PickMode.SINGLE)
-        date_picker_view.listener = this
+        calendar_view.setSelectedDateRange(displayDate.toLocalDate(), duration, pickMode == PickMode.SINGLE)
+        calendar_view.listener = this
 
         val arguments = arguments ?: return
         if (arguments.getBoolean(DateTimePickerExtras.SHOW_TITLEBAR)) {
@@ -156,7 +158,7 @@ class DatePickerDialog : PositionableDialog(), DateTimePickerListener {
             }
         }
 
-        (parentFragment as? DateTimePickerListener)?.onDateSelected(date)
+        (parentFragment as? DateTimeSelectionListener)?.onDateSelected(date)
 
         if (title.visibility == View.VISIBLE)
             context?.let { title.text = DateStringUtils.formatDateAbbrevAll(it, displayDate) }

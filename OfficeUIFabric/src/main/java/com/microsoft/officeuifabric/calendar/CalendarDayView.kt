@@ -2,7 +2,7 @@
  * Copyright © 2018 Microsoft Corporation. All rights reserved.
  */
 
-package com.microsoft.officeuifabric.datepicker
+package com.microsoft.officeuifabric.calendar
 
 import android.annotation.TargetApi
 import android.content.Context
@@ -35,9 +35,9 @@ import org.threeten.bp.temporal.ChronoUnit
 import java.util.*
 
 /**
- * [DatePickerDayView] View that displays a day of the week
+ * [CalendarDayView] View that displays a day of the week
  */
-class DatePickerDayView: AppCompatButton, Checkable {
+class CalendarDayView: AppCompatButton, Checkable {
     companion object {
         private val MONTH = DateTimeFormatter.ofPattern("MMM")
         private val CHECKED_STATE_SET = intArrayOf(android.R.attr.state_checked)
@@ -91,7 +91,7 @@ class DatePickerDayView: AppCompatButton, Checkable {
             ViewCompat.postInvalidateOnAnimation(this)
         }
 
-    private lateinit var config: DatePickerView.Config
+    private lateinit var config: CalendarView.Config
 
     private var paint = Paint()
 
@@ -110,14 +110,14 @@ class DatePickerDayView: AppCompatButton, Checkable {
 
     /**
      * @param [context] Context
-     * @param [datePickerConfig] Config passes DatePickerView attributes
-     * @constructor creates an instance of a DatePickerDayView
+     * @param [calendarConfig] Config passes CalendarView attributes
+     * @constructor creates an instance of a CalendarDayView
      */
-    constructor(context: Context, datePickerConfig: DatePickerView.Config) : super(context) {
-        config = datePickerConfig
+    constructor(context: Context, calendarConfig: CalendarView.Config) : super(context) {
+        config = calendarConfig
         setWillNotDraw(false)
 
-        todayBackgroundDrawable = ContextCompat.getDrawable(context, R.drawable.date_picker_view_background_today)
+        todayBackgroundDrawable = ContextCompat.getDrawable(context, R.drawable.calendar_background_today)
 
         paint.isAntiAlias = true
 
