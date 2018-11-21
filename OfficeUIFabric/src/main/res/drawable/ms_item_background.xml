@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--Copyright (c) 2018. Microsoft Corporation. All rights reserved.-->
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-
     <item android:drawable="@color/uifabric_calendar_item_highlight" android:state_focused="true" android:state_pressed="true" />
-
     <item android:drawable="@color/uifabric_calendar_item_highlight" android:state_focused="false" android:state_pressed="true" />
-
     <item android:drawable="@color/uifabric_calendar_item_highlight" android:state_focused="true" />
-
     <item android:drawable="@color/uifabric_calendar_item_highlight" android:state_selected="true" />
-
     <item android:drawable="@android:color/transparent" />
-
 </selector>

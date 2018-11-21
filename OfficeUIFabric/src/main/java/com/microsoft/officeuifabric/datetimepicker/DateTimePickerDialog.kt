@@ -122,9 +122,9 @@ class DateTimePickerDialog : ResizableDialog(), Toolbar.OnMenuItemClickListener,
         toolbar.setTitleTextColor(accentColor)
         toolbar.inflateMenu(R.menu.menu_time_picker)
         toolbar.setOnMenuItemClickListener(this)
-        toolbar.setNavigationIcon(R.drawable.ic_close_grey)
+        toolbar.setNavigationIcon(R.drawable.ms_ic_close_grey)
         toolbar.setNavigationOnClickListener { dismiss() }
-        toolbar.menu.findItem(R.id.action_done).setIcon(R.drawable.ic_done)
+        toolbar.menu.findItem(R.id.action_done).setIcon(R.drawable.ms_ic_done)
 
         pagerAdapter = DateTimePagerAdapter(childFragmentManager)
         viewPager.adapter = pagerAdapter

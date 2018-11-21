@@ -221,7 +221,7 @@ class CalendarView : LinearLayout, DateTimeSelectionListener {
         addView(weeksView)
 
         if (config.showWeekHeadingDivider) {
-            dividerDrawable = ContextCompat.getDrawable(context, R.drawable.row_divider)
+            dividerDrawable = ContextCompat.getDrawable(context, R.drawable.ms_row_divider)
             showDividers = LinearLayout.SHOW_DIVIDER_MIDDLE
         } else {
             showDividers = LinearLayout.SHOW_DIVIDER_NONE

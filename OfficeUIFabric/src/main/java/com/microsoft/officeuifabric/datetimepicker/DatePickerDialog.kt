@@ -116,7 +116,7 @@ class DatePickerDialog : PositionableDialog(), DateTimeSelectionListener {
             context?.let { title.text = DateStringUtils.formatDateAbbrevAll(it, displayDate) }
 
             if (arguments.getBoolean(DateTimePickerExtras.POPUP_MODE, false))
-                view.setBackgroundResource(R.drawable.dialog_background_light_no_insets)
+                view.setBackgroundResource(R.drawable.ms_dialog_background_light_no_insets)
         }
     }
 

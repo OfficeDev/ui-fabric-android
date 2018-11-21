@@ -102,7 +102,7 @@ class WeeksView : MSRecyclerView {
         this.listener = listener
         setWillNotDraw(false)
 
-        ContextCompat.getDrawable(context, R.drawable.row_divider)?.let {
+        ContextCompat.getDrawable(context, R.drawable.ms_row_divider)?.let {
             val divider = DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
             divider.setDrawable(it)
             addItemDecoration(divider)

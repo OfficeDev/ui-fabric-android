@@ -152,7 +152,7 @@ class CalendarDayView: AppCompatButton, Checkable {
         includeFontPadding = false
         TextViewCompat.setTextAppearance(this, regularAppearance)
         setAllCaps(false)
-        ContextCompat.getDrawable(context, R.drawable.item_background)?.let { _foregroundDrawable = it }
+        ContextCompat.getDrawable(context, R.drawable.ms_item_background)?.let { _foregroundDrawable = it }
         setPadding(0, 0, 0, 0)
     }
 
