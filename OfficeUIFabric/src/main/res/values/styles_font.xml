@@ -1,47 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="UIFabric_Headline">
+    <style name="TextAppearance.UIFabric" parent="TextAppearance.AppCompat"/>
+
+    <style name="TextAppearance.UIFabric.Headline">
         <item name="android:textSize">28sp</item>
         <item name="android:fontFamily">"sans-serif-light"</item>
     </style>
 
-    <style name="UIFabric_Title1">
+    <style name="TextAppearance.UIFabric.Title1">
         <item name="android:textSize">20sp</item>
         <item name="android:fontFamily">"sans-serif-medium"</item>
     </style>
 
-    <style name="UIFabric_Title2">
+    <style name="TextAppearance.UIFabric.Title2">
         <item name="android:textSize">20sp</item>
         <item name="android:fontFamily">"sans-serif"</item>
     </style>
 
-    <style name="UIFabric_Heading">
+    <style name="TextAppearance.UIFabric.Heading">
         <item name="android:textSize">18sp</item>
         <item name="android:fontFamily">"sans-serif"</item>
     </style>
 
-    <style name="UIFabric_SubHeading">
+    <style name="TextAppearance.UIFabric.SubHeading">
         <item name="android:textSize">16sp</item>
         <item name="android:fontFamily">"sans-serif"</item>
     </style>
 
-    <style name="UIFabric_SubHeading2">
+    <style name="TextAppearance.UIFabric.SubHeading2">
         <item name="android:textSize">16sp</item>
         <item name="android:fontFamily">"sans-serif-medium"</item>
     </style>
 
-    <style name="UIFabric_Body1">
+    <style name="TextAppearance.UIFabric.Body1">
         <item name="android:textSize">14sp</item>
         <item name="android:fontFamily">"sans-serif"</item>
     </style>
 
-    <style name="UIFabric_Body2">
+    <style name="TextAppearance.UIFabric.Body2">
         <item name="android:textSize">14sp</item>
         <item name="android:fontFamily">"sans-serif-medium"</item>
     </style>
 
-    <style name="UIFabric_Caption">
+    <style name="TextAppearance.UIFabric.Caption">
         <item name="android:textSize">12sp</item>
         <item name="android:fontFamily">"sans-serif"</item>
     </style>

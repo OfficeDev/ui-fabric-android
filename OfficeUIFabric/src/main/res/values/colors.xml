@@ -5,6 +5,7 @@
 
     <!--Product Primary-->
     <color name="uifabric_primary">#0078D4</color>
+    <color name="uifabric_primaryDark">#005a9e</color>
 
     <!--Multi-Use-->
     <color name="uifabric_white">#FFFFFF</color>

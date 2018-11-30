@@ -30,7 +30,7 @@ class WeekHeadingView : LinearLayout {
 
         var dayOfWeek = PreferencesManager.getWeekStart(context)
 
-        val headingTextAppearance = R.style.UIFabric_SubHeading2
+        val headingTextAppearance = R.style.TextAppearance_UIFabric_CalendarDay2
 
         val weekDayHeadingColor = config.weekdayHeadingTextColor
         val weekendHeadingColor = config.weekendHeadingTextColor

@@ -11,8 +11,7 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/default_view_margin"
         android:text="@string/headline"
-        android:textAppearance="@style/UIFabric_Headline"
-        android:textColor="@android:color/black"/>
+        android:textAppearance="@style/TextAppearance.UIFabric.Headline"/>
 
     <TextView
         android:id="@+id/typography_example_title_1"
@@ -20,8 +19,7 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/default_view_margin"
         android:text="@string/title_1"
-        android:textAppearance="@style/UIFabric_Title1"
-        android:textColor="@android:color/black"/>
+        android:textAppearance="@style/TextAppearance.UIFabric.Title1"/>
 
     <TextView
         android:id="@+id/typography_example_title_2"
@@ -29,8 +27,7 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/default_view_margin"
         android:text="@string/title_2"
-        android:textAppearance="@style/UIFabric_Title2"
-        android:textColor="@android:color/black"/>
+        android:textAppearance="@style/TextAppearance.UIFabric.Title2"/>
 
     <TextView
         android:id="@+id/typography_example_heading"
@@ -38,8 +35,7 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/default_view_margin"
         android:text="@string/heading"
-        android:textAppearance="@style/UIFabric_Heading"
-        android:textColor="@android:color/black"/>
+        android:textAppearance="@style/TextAppearance.UIFabric.Heading"/>
 
     <TextView
         android:id="@+id/typography_example_subheading"
@@ -47,8 +43,7 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/default_view_margin"
         android:text="@string/subheading"
-        android:textAppearance="@style/UIFabric_SubHeading"
-        android:textColor="@android:color/black"/>
+        android:textAppearance="@style/TextAppearance.UIFabric.SubHeading"/>
 
     <TextView
         android:id="@+id/typography_example_body_1"
@@ -56,8 +51,7 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/default_view_margin"
         android:text="@string/body_1"
-        android:textAppearance="@style/UIFabric_Body1"
-        android:textColor="@android:color/black"/>
+        android:textAppearance="@style/TextAppearance.UIFabric.Body1"/>
 
     <TextView
         android:id="@+id/typography_example_body_2"
@@ -73,7 +67,7 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/default_view_margin"
         android:text="@string/caption"
-        android:textAppearance="@style/UIFabric_Caption"
+        android:textAppearance="@style/TextAppearance.UIFabric.Caption"
         android:textColor="@android:color/black"/>
 
 </LinearLayout>

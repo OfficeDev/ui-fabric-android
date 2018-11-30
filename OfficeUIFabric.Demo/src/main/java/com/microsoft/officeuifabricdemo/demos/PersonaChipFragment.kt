@@ -38,7 +38,7 @@ class PersonaChipFragment : DemoFragment() {
         val textView = TextView(context)
         textView.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         textView.text = getString(R.string.persona_chip_example_disabled)
-        TextViewCompat.setTextAppearance(textView, R.style.UIFabric_Body2)
+        TextViewCompat.setTextAppearance(textView, R.style.TextAppearance_UIFabric_Body2)
         textView.setTextColor(ContextCompat.getColor(context, R.color.uifabric_black))
         persona_chip_layout.addView(textView)
 

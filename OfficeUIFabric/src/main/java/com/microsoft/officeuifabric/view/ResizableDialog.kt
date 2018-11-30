@@ -98,7 +98,7 @@ abstract class ResizableDialog : DialogFragment() {
         }
     }
 
-    override fun getTheme(): Int = R.style.UIFabric_Dialog
+    override fun getTheme(): Int = R.style.Dialog_UIFabric
 
     protected abstract fun createContentView(inflater: LayoutInflater, parent: ViewGroup?, savedInstanceState: Bundle?): View
 }

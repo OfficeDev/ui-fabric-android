@@ -10,7 +10,7 @@
 
     <TextView
         android:id="@+id/date_text_vew"
-        style="@style/UIFabric_Heading"
+        style="@style/TextAppearance.UIFabric.Heading"
         android:layout_marginBottom="@dimen/default_layout_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

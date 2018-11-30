@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textAppearance="@style/UIFabric_PersonaTitle"
+            android:textAppearance="@style/TextAppearance.UIFabric.PersonaTitle"
             tools:text="Title" />
 
         <TextView
@@ -38,7 +38,7 @@
             android:layout_marginTop="@dimen/uifabric_persona_text_spacing"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textAppearance="@style/UIFabric_PersonaSubtitle"
+            android:textAppearance="@style/TextAppearance.UIFabric.PersonaSubtitle"
             tools:text="Subtitle" />
 
         <TextView
@@ -48,7 +48,7 @@
             android:layout_marginTop="@dimen/uifabric_persona_text_spacing"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textAppearance="@style/UIFabric_PersonaFooter"
+            android:textAppearance="@style/TextAppearance.UIFabric.PersonaFooter"
             tools:text="Footer" />
 
     </LinearLayout>

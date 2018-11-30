@@ -20,6 +20,6 @@ class TypographyFragment : DemoFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        TextViewCompat.setTextAppearance(typography_example_body_2, R.style.UIFabric_Body2)
+        TextViewCompat.setTextAppearance(typography_example_body_2, R.style.TextAppearance_UIFabric_Body2)
     }
 }

@@ -121,9 +121,9 @@ class CalendarDayView: AppCompatButton, Checkable {
 
         paint.isAntiAlias = true
 
-        regularAppearance = R.style.UIFabric_SubHeading
-        todayAppearance = R.style.UIFabric_SubHeading2
-        checkedAppearance = R.style.UIFabric_SubHeading2
+        regularAppearance = R.style.TextAppearance_UIFabric_CalendarDay
+        todayAppearance = R.style.TextAppearance_UIFabric_CalendarDay2
+        checkedAppearance = R.style.TextAppearance_UIFabric_CalendarDay2
 
         textWeekDayColor = ContextCompat.getColorStateList(
             context,

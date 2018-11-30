@@ -1,25 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- TODO PBI #658677 redo style naming to dot notation -->
 <resources>
 
+    <!-- UIFabric application theme -->
+    <style name="Theme.UIFabric" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/uifabric_primary</item>
+        <item name="colorPrimaryDark">@color/uifabric_primaryDark</item>
+        <item name="colorAccent">@color/uifabric_primary</item>
+        <item name="android:textColorPrimary">@color/uifabric_black</item>
+    </style>
+
     <!-- Persona -->
-    <style name="UIFabric_PersonaTitle" parent="UIFabric_SubHeading">
+    <style name="TextAppearance.UIFabric.PersonaTitle" parent="TextAppearance.UIFabric.SubHeading">
         <item name="android:textColor">@color/uifabric_black</item>
     </style>
-    <style name="UIFabric_PersonaSubtitle" parent="UIFabric_Body1">
+    <style name="TextAppearance.UIFabric.PersonaSubtitle" parent="TextAppearance.UIFabric.Body1">
         <item name="android:textColor">@color/uifabric_gray</item>
     </style>
-    <style name="UIFabric_PersonaFooter" parent="UIFabric_Caption">
+    <style name="TextAppearance.UIFabric.PersonaFooter" parent="TextAppearance.UIFabric.Caption">
         <item name="android:textColor">@color/uifabric_gray</item>
+    </style>
+
+    <!-- Calendar -->
+    <!-- calendar_week_day_text_selector sets the colors for these -->
+    <style name="TextAppearance.UIFabric.CalendarDay" parent="TextAppearance.UIFabric.SubHeading">
+        <item name="android:textColor">@null</item>
+    </style>
+    <style name="TextAppearance.UIFabric.CalendarDay2" parent="TextAppearance.UIFabric.SubHeading2">
+        <item name="android:textColor">@null</item>
     </style>
 
     <!-- Dialog -->
-    <style name="UIFabric_Dialog" parent="@style/Theme.AppCompat.Light.Dialog.Alert">
+    <style name="Dialog.UIFabric" parent="@style/Theme.AppCompat.Light.Dialog.Alert">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="colorAccent">@color/uifabric_primary</item>
         <item name="android:colorBackground">@color/uifabric_white</item>
         <item name="android:colorBackgroundCacheHint">@color/uifabric_white</item>
-        <item name="android:textAppearance">@style/UIFabric_Title1</item>
+        <item name="android:textAppearance">@style/TextAppearance.UIFabric.Title1</item>
         <item name="android:textColor">@color/uifabric_primary</item>
     </style>
+
 </resources>
