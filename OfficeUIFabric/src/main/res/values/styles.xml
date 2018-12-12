@@ -9,17 +9,6 @@
         <item name="android:textColorPrimary">@color/uifabric_black</item>
     </style>
 
-    <!-- Persona -->
-    <style name="TextAppearance.UIFabric.PersonaTitle" parent="TextAppearance.UIFabric.SubHeading">
-        <item name="android:textColor">@color/uifabric_black</item>
-    </style>
-    <style name="TextAppearance.UIFabric.PersonaSubtitle" parent="TextAppearance.UIFabric.Body1">
-        <item name="android:textColor">@color/uifabric_gray</item>
-    </style>
-    <style name="TextAppearance.UIFabric.PersonaFooter" parent="TextAppearance.UIFabric.Caption">
-        <item name="android:textColor">@color/uifabric_gray</item>
-    </style>
-
     <!-- Calendar -->
     <!-- calendar_week_day_text_selector sets the colors for these -->
     <style name="TextAppearance.UIFabric.CalendarDay" parent="TextAppearance.UIFabric.SubHeading">
@@ -38,5 +27,19 @@
         <item name="android:textAppearance">@style/TextAppearance.UIFabric.Title1</item>
         <item name="android:textColor">@color/uifabric_primary</item>
     </style>
+
+    <!--PeoplePicker-->
+    <style name="TextAppearance.UIFabric.PeoplePickerLabel" parent="TextAppearance.UIFabric.ListItemLabel" />
+    <style name="TextAppearance.UIFabric.PeoplePickerText" parent="TextAppearance.UIFabric.Heading" />
+    <style name="TextAppearance.UIFabric.PeoplePickerCountSpan" parent="TextAppearance.UIFabric.LightCaption" />
+
+    <!-- Persona -->
+    <style name="TextAppearance.UIFabric.PersonaTitle" parent="TextAppearance.UIFabric.SubHeading">
+        <item name="android:textColor">@color/uifabric_black</item>
+    </style>
+    <style name="TextAppearance.UIFabric.PersonaSubtitle" parent="TextAppearance.UIFabric.Body1">
+        <item name="android:textColor">@color/uifabric_gray</item>
+    </style>
+    <style name="TextAppearance.UIFabric.PersonaFooter" parent="TextAppearance.UIFabric.LightCaption" />
 
 </resources>

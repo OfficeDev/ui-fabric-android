@@ -2,7 +2,7 @@
  * Copyright © 2018 Microsoft Corporation. All rights reserved.
  */
 
-package com.microsoft.officeuifabric.peoplepicker
+package com.microsoft.officeuifabric.persona
 
 import android.content.Context
 import android.graphics.drawable.InsetDrawable
@@ -12,9 +12,6 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
 import com.microsoft.officeuifabric.R
-import com.microsoft.officeuifabric.persona.AvatarSize
-import com.microsoft.officeuifabric.persona.IPersona
-import com.microsoft.officeuifabric.persona.PersonaView
 import java.util.*
 
 /**
@@ -23,12 +20,12 @@ import java.util.*
  */
 class PersonaListView : RecyclerView {
     /**
-     * [personaList] contains the collection of Personas that the adapter binds to the ViewHolder.
+     * [personas] contains the collection of Personas that the adapter binds to the ViewHolder.
      */
-    var personaList = ArrayList<IPersona>()
+    var personas = ArrayList<IPersona>()
         set(value) {
             field = value
-            personaListAdapter.personaList = value
+            personaListAdapter.personas = value
         }
 
     /**

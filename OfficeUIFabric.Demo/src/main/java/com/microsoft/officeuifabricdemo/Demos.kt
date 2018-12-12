@@ -9,6 +9,7 @@ const val AVATAR = "Avatar"
 const val BUTTON = "Button"
 const val CALENDAR_VIEW = "CalendarView"
 const val DATE_TIME_PICKER_DIALOG = "DateTimePickerDialog"
+const val PEOPLE_PICKER = "PeoplePicker"
 const val PERSONA = "Persona"
 const val PERSONA_CHIP = "PersonaChip"
 const val PERSONA_LIST_VIEW = "PersonaListView"
@@ -20,6 +21,7 @@ val DEMOS = arrayListOf(
     Demo(BUTTON, ButtonFragment::class),
     Demo(CALENDAR_VIEW, CalendarViewFragment::class),
     Demo(DATE_TIME_PICKER_DIALOG, DateTimePickerDialogFragment::class),
+    Demo(PEOPLE_PICKER, PeoplePickerFragment::class),
     Demo(PERSONA, PersonaFragment::class),
     Demo(PERSONA_CHIP, PersonaChipFragment::class),
     Demo(PERSONA_LIST_VIEW, PersonaListViewFragment::class),

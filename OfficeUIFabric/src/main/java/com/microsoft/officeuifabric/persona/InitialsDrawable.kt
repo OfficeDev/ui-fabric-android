@@ -80,8 +80,8 @@ class InitialsDrawable constructor(context: Context) : Drawable() {
     }
 
     override fun draw(canvas: Canvas) {
-        val width = canvas.width
-        val height = canvas.height
+        val width = bounds.width()
+        val height = bounds.height()
 
         path.reset()
         path.addCircle(width / 2f, height / 2f, width / 2f, Path.Direction.CW)
@@ -93,7 +93,7 @@ class InitialsDrawable constructor(context: Context) : Drawable() {
 
         initialsLayout?.let {
             canvas.save()
-            canvas.translate(0f, (bounds.height() - it.height) / 2f)
+            canvas.translate(0f, (height - it.height) / 2f)
             it.draw(canvas)
             canvas.restore()
         }

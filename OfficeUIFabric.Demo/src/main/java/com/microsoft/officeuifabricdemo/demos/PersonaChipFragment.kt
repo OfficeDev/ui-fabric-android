@@ -28,9 +28,9 @@ class PersonaChipFragment : DemoFragment() {
         super.onViewCreated(view, savedInstanceState)
         val context = context ?: return
         createDisabledPersonaChip(context)
-        persona_chip_example_basic.onClick = setOnClickExample(view)
-        persona_chip_example_no_icon.onClick = setOnClickExample(view)
-        persona_chip_example_error.onClick = setOnClickExample(view)
+        persona_chip_example_basic.listener = setOnClickExample(view)
+        persona_chip_example_no_icon.listener = setOnClickExample(view)
+        persona_chip_example_error.listener = setOnClickExample(view)
         persona_chip_example_error.hasError = true
     }
 
@@ -50,8 +50,12 @@ class PersonaChipFragment : DemoFragment() {
         persona_chip_layout.addView(personaChipView)
     }
 
-    private fun setOnClickExample(view: View): PersonaChipView.Callback {
-        return object : PersonaChipView.Callback {
+    private fun setOnClickExample(view: View): PersonaChipView.Listener {
+        return object : PersonaChipView.Listener {
+            override fun onSelected(selected: Boolean) {
+                // no op
+            }
+
             override fun onClicked() {
                 val snackbar = Snackbar.make(
                     view,

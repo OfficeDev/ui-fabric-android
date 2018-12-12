@@ -2,14 +2,13 @@
  * Copyright © 2018 Microsoft Corporation. All rights reserved.
  */
 
-package com.microsoft.officeuifabric.peoplepicker
+package com.microsoft.officeuifabric.persona
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import com.microsoft.officeuifabric.persona.*
 import java.util.*
 
 /**
@@ -23,7 +22,7 @@ class PersonaListAdapter(private val context: Context) : RecyclerView.Adapter<Pe
     /**
      * Collection of [Persona] objects that hold data to create the [PersonaView]s
      */
-    var personaList = ArrayList<IPersona>()
+    var personas = ArrayList<IPersona>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = PersonaView(context)
@@ -33,13 +32,13 @@ class PersonaListAdapter(private val context: Context) : RecyclerView.Adapter<Pe
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        if (position in 0 until personaList.size)
-            holder.setPersona(personaList[position])
+        if (position in 0 until personas.size)
+            holder.setPersona(personas[position])
         else
             return
     }
 
-    override fun getItemCount() = personaList.size
+    override fun getItemCount() = personas.size
 
     private fun onItemClicked(persona: IPersona) {
         clickCallback?.onItemClicked(persona)

@@ -5,6 +5,25 @@
     <string name="action_settings">Settings</string>
     <string name="title_demo_detail">Control Demo</string>
 
+    <!--DatePicker-->
+    <string name="calendar_example_chosen_date">Choose a date</string>
+
+    <!--DateTimePickerDialog-->
+    <string name="date_time_picker_dialog_button">Show date picker</string>
+    <string name="date_time_picker_dialog_date_picked_default">No date picked</string>
+    <string name="date_time_picker_example_date_pick">You picked %1$s</string>
+    <string name="date_picker_example_chosen_date">Choose a date</string>
+
+    <!--PeoplePicker-->
+    <string name="people_picker_select_example">Select</string>
+    <string name="people_picker_select_deselect_example">SelectDeselect</string>
+    <string name="people_picker_none_example">None</string>
+    <string name="people_picker_delete_example">Delete</string>
+    <string name="people_picker_picked_personas_listener">Personas Listener</string>
+    <string name="people_picker_suggestions_listener">Suggestions Listener</string>
+    <string name="people_picker_dialog_title_removed">You removed a persona:</string>
+    <string name="people_picker_dialog_title_added">You added a persona:</string>
+
     <!--Persona-->
     <string name="persona_email_cecil_folk">cfolk@microsoft.com</string>
     <string name="persona_email_kat_larsson">klarsson@microsoft.com</string>
@@ -71,11 +90,4 @@
     <string name="body_2">Body 2</string>
     <string name="caption">Caption</string>
 
-    <!--DatePicker-->
-    <string name="calendar_example_chosen_date">Choose a date</string>
-
-    <!--DateTimePickerDialog-->
-    <string name="date_time_picker_dialog_button">Show date picker</string>
-    <string name="date_time_picker_dialog_date_picked_default">No date picked</string>
-    <string name="date_time_picker_example_date_pick">You picked %1$s</string>
 </resources>

@@ -34,13 +34,19 @@
     <dimen name="uifabric_resizable_dialog_card_elevation">2dp</dimen>
     <dimen name="uifabric_resizable_dialog_card_tools_width">300dp</dimen>
 
+    <!--PeoplePicker-->
+    <dimen name="uifabric_people_picker_token_padding">6dp</dimen>
+    <dimen name="uifabric_people_picker_dropdown_vertical_offset">0dp</dimen>
+
     <!--Persona-->
     <dimen name="uifabric_persona_horizontal_spacing">16dp</dimen>
-    <dimen name="uifabric_persona_cell_horizontal_padding">16dp</dimen>
-    <dimen name="uifabric_persona_cell_vertical_padding">12dp</dimen>
+    <dimen name="uifabric_persona_horizontal_padding">16dp</dimen>
+    <dimen name="uifabric_persona_vertical_padding">12dp</dimen>
     <dimen name="uifabric_persona_text_spacing">2dp</dimen>
+    <dimen name="uifabric_persona_label_spacing">8dp</dimen>
 
     <!--Shared-->
     <dimen name="uifabric_divider_height">.5dp</dimen>
     <dimen name="uifabric_corner_radius_2dp">2dp</dimen>
+    <dimen name="uifabric_min_touch_size">48dp</dimen>
 </resources>

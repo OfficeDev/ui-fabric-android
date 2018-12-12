@@ -44,7 +44,7 @@ class PersonaChipView : TemplateView {
             field = value
             avatarView?.avatarImageDrawable = value
         }
-    var avatarImageResource: Int? = null
+    var avatarImageResourceId: Int? = null
         set(value) {
             field = value
             avatarView?.avatarImageResourceId = value
@@ -69,9 +69,9 @@ class PersonaChipView : TemplateView {
     var showCloseIconWhenSelected: Boolean = true
 
     /**
-     * When a chip is selected, the next touch will fire the [onClick].
+     * When a chip is selected, the next touch will fire the [listener]'s [onClicked] method.
      */
-    var onClick: Callback? = null
+    var listener: Listener? = null
 
     @JvmOverloads
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
@@ -119,6 +119,7 @@ class PersonaChipView : TemplateView {
     override fun setSelected(selected: Boolean) {
         super.setSelected(selected)
         updateState()
+        listener?.onSelected(selected)
     }
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
@@ -147,7 +148,7 @@ class PersonaChipView : TemplateView {
     override fun performClick(): Boolean {
         super.performClick()
         if (isSelected) {
-            onClick?.onClicked()
+            listener?.onClicked()
         }
         return true
     }
@@ -220,7 +221,17 @@ class PersonaChipView : TemplateView {
         avatarView?.avatarImageDrawable = avatarImageDrawable
     }
 
-    interface Callback {
+    interface Listener {
         fun onClicked()
+        fun onSelected(selected: Boolean)
     }
+}
+
+fun PersonaChipView.setPersona(persona: IPersona) {
+    name = persona.name
+    email = persona.email
+    avatarImageBitmap = persona.avatarImageBitmap
+    avatarImageDrawable = persona.avatarImageDrawable
+    avatarImageResourceId = persona.avatarImageResourceId
+    avatarImageUri = persona.avatarImageUri
 }

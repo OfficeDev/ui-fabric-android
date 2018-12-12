@@ -1,6 +1,4 @@
 <resources>
-    <string name="persona_title_placeholder">No name</string>
-
     <!-- *** CalendarView *** -->
 
     <string name="date_at_time">%1$s at %2$s</string>
@@ -65,6 +63,15 @@
     <string name="accessibility_goto_previous_week">Go to previous week</string>
     <string name="accessibility_today">today</string>
     <string name="accessibility_selected">Selected</string>
+
+    <!-- *** PeoplePicker *** -->
+
+    <string name="people_picker_sample_label">Label</string>
+    <string name="people_picker_default_hint">Choose a persona from the list</string>
+
+    <!-- *** Persona *** -->
+
+    <string name="persona_title_placeholder">No name</string>
 
     <!-- *** Shared *** -->
 

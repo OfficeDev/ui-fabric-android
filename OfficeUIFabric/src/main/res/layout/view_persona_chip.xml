@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="@dimen/uifabric_chip_height"
-    android:gravity="center_vertical"
+    android:baselineAligned="true"
     android:orientation="horizontal"
     android:padding="@dimen/uifabric_chip_padding">
 
@@ -28,10 +28,10 @@
         android:id="@+id/persona_chip_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
         android:ellipsize="end"
         android:maxLines="1"
-        android:singleLine="true"
         android:textAppearance="@style/TextAppearance.UIFabric.Body1"
-        tools:text="@tools:sample/full_names"/>
+        tools:text="@tools:sample/full_names" />
 
 </LinearLayout>

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- *** UIFabric Theme *** -->
+
     <style name="TextAppearance.UIFabric" parent="TextAppearance.AppCompat"/>
 
     <style name="TextAppearance.UIFabric.Headline">
@@ -46,6 +48,15 @@
     <style name="TextAppearance.UIFabric.Caption">
         <item name="android:textSize">12sp</item>
         <item name="android:fontFamily">"sans-serif"</item>
+    </style>
+
+    <!-- *** UIFabric Base Semantic Slots *** -->
+
+    <style name="TextAppearance.UIFabric.ListItemLabel" parent="TextAppearance.UIFabric.SubHeading">
+        <item name="android:textColor">@color/uifabric_gray</item>
+    </style>
+    <style name="TextAppearance.UIFabric.LightCaption" parent="TextAppearance.UIFabric.Caption">
+        <item name="android:textColor">@color/uifabric_gray</item>
     </style>
 
 </resources>

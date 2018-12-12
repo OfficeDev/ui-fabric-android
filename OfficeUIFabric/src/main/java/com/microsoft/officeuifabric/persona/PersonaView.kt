@@ -25,12 +25,14 @@ class PersonaView : LinearLayout {
     companion object {
         val personaAvatarSizes = arrayOf(AvatarSize.SMALL, AvatarSize.LARGE, AvatarSize.XXLARGE)
 
+        internal val layoutId = R.layout.view_persona
+
         internal data class Spacing(val cellPadding: Int, val insetLeft: Int)
 
         internal fun getSpacing(context: Context, avatarSize: AvatarSize): Spacing {
             val avatarDisplaySize = avatarSize.getDisplayValue(context)
             val spacingRight = context.resources.getDimension(R.dimen.uifabric_persona_horizontal_spacing)
-            val cellPadding = context.resources.getDimension(R.dimen.uifabric_persona_cell_horizontal_padding).toInt()
+            val cellPadding = context.resources.getDimension(R.dimen.uifabric_persona_horizontal_padding).toInt()
             val insetLeft = (avatarDisplaySize + spacingRight + cellPadding).toInt()
             return Spacing(cellPadding, insetLeft)
         }
