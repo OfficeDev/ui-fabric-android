@@ -77,6 +77,21 @@
     <color name="uifabric_calendar_week_day_text">@color/calendar_week_day_text_selector</color>
     <color name="uifabric_calendar_monochrome_text">@color/calendar_week_day_text_selector</color>
 
+    <!--DateTimePicker-->
+    <color name="uifabric_date_time_picker_tab_text">@color/uifabric_gray</color>
+    <color name="uifabric_date_time_picker_tab_text_selected">@color/uifabric_primary</color>
+    <color name="uifabric_date_time_picker_dialog_background">@color/uifabric_white</color>
+
+    <!--NumberPicker-->
+    <color name="uifabric_number_picker_default_accent">@color/uifabric_primary</color>
+    <color name="uifabric_number_picker_default_text">@color/uifabric_gray</color>
+
     <!--Shared-->
     <color name="uifabric_divider">@color/uifabric_border_gray</color>
+
+    <!--TabLayout-->
+    <color name="uifabric_tab_layout_text">@color/uifabric_gray</color>
+    <color name="uifabric_tab_layout_text_selected">@color/uifabric_primary</color>
+    <color name="uifabric_tab_layout_indicator">@color/uifabric_primary</color>
+
 </resources>

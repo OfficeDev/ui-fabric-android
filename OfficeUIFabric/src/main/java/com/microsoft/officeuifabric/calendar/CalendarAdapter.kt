@@ -16,7 +16,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.calendar.CalendarDaySelectionDrawable.Mode
-import com.microsoft.officeuifabric.core.DateTimeSelectionListener
 import com.microsoft.officeuifabric.managers.PreferencesManager
 import com.microsoft.officeuifabric.util.DateTimeUtils
 import org.threeten.bp.*
@@ -57,12 +56,9 @@ class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarDayViewHold
     private val firstDayOfWeekIndices = SimpleArrayMap<DayOfWeek, Int>(DayOfWeek.values().size)
     private val lastDayOfWeekIndices = SimpleArrayMap<DayOfWeek, Int>(DayOfWeek.values().size)
 
-    private var firstDayOfWeek: DayOfWeek? = null
-    private var dayCount: Int
     private val context: Context
     private val config: CalendarView.Config
-    private val listener: DateTimeSelectionListener
-
+    private val onDateSelectedListener: OnDateSelectedListener
     private var selectedDuration: Duration? = null
 
     private val selectionDrawableCircle: CalendarDaySelectionDrawable
@@ -72,10 +68,13 @@ class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarDayViewHold
 
     private val dayViewAccessibilityDelegate = DayViewAccessibilityDelegate()
 
-    constructor(context: Context, config: CalendarView.Config, listener: DateTimeSelectionListener) {
+    private var firstDayOfWeek: DayOfWeek? = null
+    private var dayCount: Int
+
+    constructor(context: Context, config: CalendarView.Config, onDateSelectedListener: OnDateSelectedListener) {
         this.context = context
         this.config = config
-        this.listener = listener
+        this.onDateSelectedListener = onDateSelectedListener
 
         selectionDrawableCircle = CalendarDaySelectionDrawable(this.context, Mode.SINGLE)
         selectionDrawableStart = CalendarDaySelectionDrawable(this.context, Mode.START)
@@ -153,7 +152,7 @@ class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarDayViewHold
     override fun getItemCount() = dayCount
 
     override fun onClick(v: View) {
-        listener.onDateSelected((v as CalendarDayView).date.getLocalDateToZonedDateTime)
+        onDateSelectedListener.onDateSelected((v as CalendarDayView).date.getLocalDateToZonedDateTime)
     }
 
     private fun updateDayIndicesAndHeading() {
@@ -207,13 +206,13 @@ class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarDayViewHold
             // custom accessibility action only works for API level 21 (Lollipop) and higher (will be ignored in previous versions)
             info.addAction(
                 AccessibilityNodeInfoCompat.AccessibilityActionCompat(
-                    R.id.uifabric_action_goto_next_week,
+                    R.id.uifabric_calendar_view_action_goto_next_week,
                     host.resources.getString(R.string.accessibility_goto_next_week)
                 )
             )
             info.addAction(
                 AccessibilityNodeInfoCompat.AccessibilityActionCompat(
-                    R.id.uifabric_action_goto_previous_week,
+                    R.id.uifabric_calendar_view_action_goto_previous_week,
                     host.resources.getString(R.string.accessibility_goto_previous_week)
                 )
             )
@@ -222,12 +221,12 @@ class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarDayViewHold
         override fun performAccessibilityAction(host: View, action: Int, args: Bundle): Boolean {
             val selectedDate = selectedDate ?: return super.performAccessibilityAction(host, action, args)
             val date: LocalDate = when(action) {
-                R.id.uifabric_action_goto_next_week -> selectedDate.plusDays(7)
-                R.id.uifabric_action_goto_previous_week -> selectedDate.minusDays(7)
+                R.id.uifabric_calendar_view_action_goto_next_week -> selectedDate.plusDays(7)
+                R.id.uifabric_calendar_view_action_goto_previous_week -> selectedDate.minusDays(7)
                 else -> return super.performAccessibilityAction(host, action, args)
             }
 
-            listener.onDateSelected(date.getLocalDateToZonedDateTime)
+            onDateSelectedListener.onDateSelected(date.getLocalDateToZonedDateTime)
             return true
         }
     }

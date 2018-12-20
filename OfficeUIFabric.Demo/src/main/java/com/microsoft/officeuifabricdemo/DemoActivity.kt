@@ -6,13 +6,13 @@ import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import com.jakewharton.threetenabp.AndroidThreeTen
-import com.microsoft.officeuifabric.core.DateTimeSelectionListener
+import com.microsoft.officeuifabric.datetimepicker.OnDateTimePickedListener
 import com.microsoft.officeuifabricdemo.demos.DateTimePickerDialogFragment
 import kotlinx.android.synthetic.main.activity_demo_detail.*
 import org.threeten.bp.ZonedDateTime
 import java.util.*
 
-class DemoActivity : AppCompatActivity(), DateTimeSelectionListener {
+class DemoActivity : AppCompatActivity(), OnDateTimePickedListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AndroidThreeTen.init(this)
@@ -67,8 +67,8 @@ class DemoActivity : AppCompatActivity(), DateTimeSelectionListener {
                 else -> super.onOptionsItemSelected(item)
             }
 
-    override fun onDatePicked(date: ZonedDateTime) {
+    override fun onDateTimePicked(dateTime: ZonedDateTime) {
         val dateTimePickerDialogFragment = supportFragmentManager.findFragmentByTag(DATE_TIME_PICKER_DIALOG) as? DateTimePickerDialogFragment
-        dateTimePickerDialogFragment?.date = date
+        dateTimePickerDialogFragment?.setDateTime(dateTime)
     }
 }

@@ -9,10 +9,11 @@
     <string name="calendar_example_chosen_date">Choose a date</string>
 
     <!--DateTimePickerDialog-->
-    <string name="date_time_picker_dialog_button">Show date picker</string>
+    <string name="date_time_picker_dialog_date_button">Show date picker</string>
+    <string name="date_time_picker_dialog_calendar_date_time_button">Show date time picker with date tab selected</string>
+    <string name="date_time_picker_dialog_date_time_calendar_button">Show date time picker with time tab selected</string>
     <string name="date_time_picker_dialog_date_picked_default">No date picked</string>
     <string name="date_time_picker_example_date_pick">You picked %1$s</string>
-    <string name="date_picker_example_chosen_date">Choose a date</string>
 
     <!--PeoplePicker-->
     <string name="people_picker_select_example">Select</string>

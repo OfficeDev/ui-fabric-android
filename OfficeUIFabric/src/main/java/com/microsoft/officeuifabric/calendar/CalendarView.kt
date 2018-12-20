@@ -18,7 +18,6 @@ import android.widget.LinearLayout
 
 import com.jakewharton.threetenabp.AndroidThreeTen
 import com.microsoft.officeuifabric.R
-import com.microsoft.officeuifabric.core.DateTimeSelectionListener
 import org.threeten.bp.*
 
 // TODO: Convert to TemplateView along with other things that extend LinearLayout
@@ -29,7 +28,7 @@ import org.threeten.bp.*
  * [CalendarView] is a custom LinearLayout that groups together views used to display
  * calendar dates and allows a user to select a date
  */
-class CalendarView : LinearLayout, DateTimeSelectionListener {
+class CalendarView : LinearLayout, OnDateSelectedListener {
     companion object {
         const val DAYS_IN_WEEK = 7
         private const val VIEW_MODE_CHANGE_ANIMATION_DURATION = 300L
@@ -49,21 +48,15 @@ class CalendarView : LinearLayout, DateTimeSelectionListener {
     }
 
     /**
-     * Callback implementation for date picking listener
+     * Callback implementation for date picking onDateTimePickedListener
      */
-    var listener: DateTimeSelectionListener? = null
+    var onDateSelectedListener: OnDateSelectedListener? = null
 
     /**
      * Integer returning the calendar width for tablet
      */
     var calendarViewWidthForTablet: Int = 0
         private set
-
-    /**
-     * Directly sets the [DisplayMode]
-     */
-    var displayMode: DisplayMode = DisplayMode.FULL_MODE
-        set(value) { setDisplayMode(value, false) }
 
     /**
      * Integer returning the fullModeHeight
@@ -86,6 +79,7 @@ class CalendarView : LinearLayout, DateTimeSelectionListener {
     private var rowHeight = 0
     private var isViewModeChanging = false
     private var resizeAnimator: ObjectAnimator? = null
+    private var displayMode: DisplayMode = DisplayMode.FULL_MODE
 
     private val heightProperty: Property<View, Int> = object : Property<View, Int>(Int::class.java, HEIGHT) {
         override fun get(`object`: View): Int {
@@ -126,7 +120,8 @@ class CalendarView : LinearLayout, DateTimeSelectionListener {
     /**
      * Sets the [DisplayMode] with a flag to animate the resize of the [CalendarView]
      */
-    fun setDisplayMode(mode: DisplayMode, animateResize: Boolean) {
+    @JvmOverloads
+    fun setDisplayMode(mode: DisplayMode, animateResize: Boolean = true) {
         if (mode == displayMode)
             return
 
@@ -197,7 +192,7 @@ class CalendarView : LinearLayout, DateTimeSelectionListener {
 
     override fun onDateSelected(date: ZonedDateTime) {
         this.date = date.toLocalDate()
-        listener?.onDateSelected(date)
+        onDateSelectedListener?.onDateSelected(date)
     }
 
     private fun computeHeight(mode: DisplayMode): Int {
@@ -265,4 +260,12 @@ class CalendarView : LinearLayout, DateTimeSelectionListener {
         var calendarDayFirstDayOfMonthTextColorId = R.color.uifabric_calendar_week_day_text
         var calendarDayMonochromeTextColorId = R.color.uifabric_calendar_monochrome_text
     }
+}
+
+interface OnDateSelectedListener {
+    /**
+     * Method called when a user selects a date
+     * @param [date] the selected date
+     */
+    fun onDateSelected(date: ZonedDateTime)
 }

@@ -24,7 +24,7 @@ import android.text.format.DateUtils.FORMAT_NO_MONTH_DAY
 import android.text.format.DateUtils.FORMAT_SHOW_DATE
 import android.util.AttributeSet
 import com.microsoft.officeuifabric.R
-import com.microsoft.officeuifabric.core.DateTimeSelectionListener
+
 import com.microsoft.officeuifabric.util.ColorProperty
 import com.microsoft.officeuifabric.util.DateTimeUtils
 import com.microsoft.officeuifabric.view.MSRecyclerView
@@ -94,12 +94,12 @@ class WeeksView : MSRecyclerView {
 
     private lateinit var overlayBackgroundColorProperty: ColorProperty
     private lateinit var overlayFontColorProperty: ColorProperty
-    private lateinit var listener: DateTimeSelectionListener
+    private lateinit var onDateSelectedListener: OnDateSelectedListener
     private lateinit var paint: TextPaint
 
-    constructor(context: Context, config: CalendarView.Config, listener: DateTimeSelectionListener) : super(context) {
+    constructor(context: Context, config: CalendarView.Config, onDateSelectedListener: OnDateSelectedListener) : super(context) {
         this.config = config
-        this.listener = listener
+        this.onDateSelectedListener = onDateSelectedListener
         setWillNotDraw(false)
 
         ContextCompat.getDrawable(context, R.drawable.ms_row_divider)?.let {
@@ -108,7 +108,7 @@ class WeeksView : MSRecyclerView {
             addItemDecoration(divider)
         }
 
-        pickerAdapter = CalendarAdapter(context, config, this.listener)
+        pickerAdapter = CalendarAdapter(context, config, this.onDateSelectedListener)
         adapter = pickerAdapter
 
         setHasFixedSize(true)

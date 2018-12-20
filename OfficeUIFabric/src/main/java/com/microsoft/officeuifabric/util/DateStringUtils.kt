@@ -164,14 +164,21 @@ object DateStringUtils {
      * is not the current year.
      *
      * Example:
-     * - 3:55AM, Tuesday, November 25, 2014
-     * - 16:22, Tuesday, March 3
+     * - Tuesday, November 25, 2014, 3:55AM
+     * - Tuesday, March 3, 16:22
      *
      * @param time   Time to format (in millis since the epoch in UTC)
      */
     @JvmStatic
-    fun formatFullDate(context: Context, time: Long): String =
+    fun formatFullDateTime(context: Context, time: Long): String =
         DateUtils.formatDateTime(context, time, FORMAT_SHOW_DATE or FORMAT_SHOW_WEEKDAY or FORMAT_SHOW_TIME)
+
+    /**
+     * @see .formatFullDateTime
+     */
+    @JvmStatic
+    fun formatFullDateTime(context: Context, date: TemporalAccessor?): String =
+        if (date == null) "" else formatFullDateTime(context, date.epochMillis)
 
     /**
      * Formats a date with the abbreviated weekday + month + day + year + 'at' + time.
@@ -184,31 +191,20 @@ object DateStringUtils {
      */
     @JvmStatic
     fun formatAbbrevDateAtTime(context: Context, date: TemporalAccessor?): String =
-        if (date == null)
-            ""
-        else
-            formatAbbrevDateAtTime(context, date.epochMillis)
+        if (date == null) "" else formatAbbrevDateTime(context, date.epochMillis, R.string.date_at_time)
 
     /**
-     * @see .formatAbbrevDateAtTime
+     * Formats a date with the abbreviated weekday + month + day + year + ',' + time.
+     *
+     * Example:
+     * - Tue, Nov 25, 2014, 3:55AM
+     * - Tue, Mar 3, 2016, 16:22
+     *
+     * @param date Time to format
      */
     @JvmStatic
-    fun formatAbbrevDateAtTime(context: Context, timestamp: Long): String {
-        var flags = FORMAT_ABBREV_MONTH or FORMAT_ABBREV_WEEKDAY or FORMAT_SHOW_DATE or FORMAT_SHOW_WEEKDAY
-
-        // Only show Year when it's not current year
-        val calendar = Calendar.getInstance()
-        val currentYear = calendar.get(Calendar.YEAR)
-        calendar.timeInMillis = timestamp
-        if (calendar.get(Calendar.YEAR) != currentYear) {
-            flags = flags or FORMAT_SHOW_YEAR
-        }
-
-        val date = DateUtils.formatDateTime(context, timestamp, flags)
-        val time = DateUtils.formatDateTime(context, timestamp, FORMAT_SHOW_TIME)
-
-        return context.getString(R.string.date_at_time, date, time)
-    }
+    fun formatAbbrevDateTime(context: Context, date: TemporalAccessor?): String =
+        if (date == null) "" else formatAbbrevDateTime(context, date.epochMillis, R.string.date_time)
 
     /**
      * Formats a time.
@@ -252,10 +248,25 @@ object DateStringUtils {
             FORMAT_ABBREV_WEEKDAY or FORMAT_ABBREV_MONTH or FORMAT_SHOW_WEEKDAY or FORMAT_SHOW_DATE or FORMAT_SHOW_YEAR
         )
 
+    private fun formatAbbrevDateTime(context: Context, timestamp: Long, stringResource: Int): String {
+        var flags = FORMAT_ABBREV_MONTH or FORMAT_ABBREV_WEEKDAY or FORMAT_SHOW_DATE or FORMAT_SHOW_WEEKDAY
+
+        // Only show Year when it's not current year
+        val calendar = Calendar.getInstance()
+        val currentYear = calendar.get(Calendar.YEAR)
+        calendar.timeInMillis = timestamp
+        if (calendar.get(Calendar.YEAR) != currentYear)
+            flags = flags or FORMAT_SHOW_YEAR
+
+        val date = DateUtils.formatDateTime(context, timestamp, flags)
+        val time = DateUtils.formatDateTime(context, timestamp, FORMAT_SHOW_TIME)
+
+        return context.getString(stringResource, date, time)
+    }
+
     /**
      * Converts date to the number of milliseconds from the epoch of 1970-01-01T00:00:00Z.
      */
-    @JvmStatic
     private val TemporalAccessor.epochMillis: Long
         get() = when (this) {
             is ZonedDateTime -> this.toInstant().toEpochMilli()

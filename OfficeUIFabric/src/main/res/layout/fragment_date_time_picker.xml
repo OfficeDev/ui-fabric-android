@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Copyright (c) 2018. Microsoft Corporation. All rights reserved.-->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:divider="@drawable/ms_row_divider"
+    android:orientation="vertical"
+    android:showDividers="middle">
+
+    <com.microsoft.officeuifabric.datetimepicker.DateTimePicker
+        android:id="@+id/date_time_picker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:showDividers="none"/>
+
+</LinearLayout>

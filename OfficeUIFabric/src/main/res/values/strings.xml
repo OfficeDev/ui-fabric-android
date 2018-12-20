@@ -2,6 +2,7 @@
     <!-- *** CalendarView *** -->
 
     <string name="date_at_time">%1$s at %2$s</string>
+    <string name="date_time">%1$s, %2$s</string>
     <string name="all_day">All Day</string>
     <string name="to_syntax">%1$s to %2$s</string>
     <string name="now">Now</string>
@@ -63,6 +64,13 @@
     <string name="accessibility_goto_previous_week">Go to previous week</string>
     <string name="accessibility_today">today</string>
     <string name="accessibility_selected">Selected</string>
+
+    <!-- *** DateTimePicker *** -->
+
+    <string name="date_time_picker_start_time">Start time</string>
+    <string name="date_time_picker_end_time">End time</string>
+    <string name="date_time_picker_choose_time">Choose time</string>
+    <string name="date_time_picker_choose_date">Choose date</string>
 
     <!-- *** PeoplePicker *** -->
 
