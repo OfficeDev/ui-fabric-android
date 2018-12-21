@@ -1,6 +1,6 @@
-//
-// Copyright © 2018 Microsoft Corporation. All rights reserved.
-//
+/**
+ * Copyright © 2018 Microsoft Corporation. All rights reserved.
+ */
 
 package com.microsoft.officeuifabricdemo.demos
 
@@ -12,58 +12,55 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
-import com.microsoft.officeuifabricdemo.DemoFragment
+import com.microsoft.officeuifabricdemo.DemoActivity
 import com.microsoft.officeuifabricdemo.R
 import com.microsoft.officeuifabricdemo.demos.views.Cell
 import com.microsoft.officeuifabricdemo.demos.views.CellOrientation
-import kotlinx.android.synthetic.main.fragment_templateview.*
+import kotlinx.android.synthetic.main.activity_template_view.*
 import kotlinx.android.synthetic.main.template_cell_vertical.view.*
 
-class TemplateViewFragment : DemoFragment() {
+class TemplateViewActivity : DemoActivity() {
     companion object {
         const val LIST_ITEM_COUNT = 1000
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_templateview, container, false)
-    }
+    override val contentLayoutId: Int
+        get() = R.layout.activity_template_view
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
         horizontal_cell.setOnClickListener { onCellClicked(it as Cell) }
         vertical_cell.setOnClickListener { onCellClicked(it as Cell) }
 
         template_list_view.adapter = TemplateListViewAdapter()
-        template_list_view.layoutManager = LinearLayoutManager(context)
+        template_list_view.layoutManager = LinearLayoutManager(this)
         template_list_view.setHasFixedSize(true)
 
         regular_list_view.adapter = RegularListViewAdapter()
-        regular_list_view.layoutManager = LinearLayoutManager(context)
+        regular_list_view.layoutManager = LinearLayoutManager(this)
         regular_list_view.setHasFixedSize(true)
 
         calculate_cells_button.setOnClickListener {
-            val context = context ?: return@setOnClickListener
             val t = measureAndLayoutViews(createView = {
-                val cell = Cell(context)
+                val cell = Cell(this)
                 cell.orientation = CellOrientation.VERTICAL
                 return@measureAndLayoutViews cell
             })
             println("Cell.M&L: $t")
-            calculate_cells_button.text = context.getString(R.string.calculate_cells) + " = $t ms"
+            calculate_cells_button.text = getString(R.string.calculate_cells) + " = $t ms"
         }
 
         calculate_layouts_button.setOnClickListener {
-            val context = context ?: return@setOnClickListener
             val t = measureAndLayoutViews(createView = {
                 // Emulation of Cell code without extra ViewGroup (Cell itself)
-                val cell = LayoutInflater.from(context).inflate(R.layout.template_cell_vertical, null)
+                val cell = layoutInflater.inflate(R.layout.template_cell_vertical, null)
                 /*val titleView = */cell.findViewById(R.id.cell_title) as TextView
                 /*val descriptionView = */cell.findViewById(R.id.cell_description) as TextView
                 return@measureAndLayoutViews cell
             })
             println("Layout.M&L: $t")
-            calculate_layouts_button.text = context.getString(R.string.calculate_layouts) + " = $t ms"
+            calculate_layouts_button.text = getString(R.string.calculate_layouts) + " = $t ms"
         }
     }
 

@@ -5,26 +5,23 @@
 package com.microsoft.officeuifabricdemo.demos
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import com.bumptech.glide.Glide
 import com.microsoft.officeuifabric.persona.AvatarSize
 import com.microsoft.officeuifabric.persona.AvatarView
-import com.microsoft.officeuifabricdemo.DemoFragment
+import com.microsoft.officeuifabricdemo.DemoActivity
 import com.microsoft.officeuifabricdemo.R
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_avatar.*
+import kotlinx.android.synthetic.main.activity_avatar_view.*
 
-class AvatarFragment : DemoFragment() {
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_avatar, container, false)
-    }
+class AvatarViewActivity : DemoActivity() {
+    override val contentLayoutId: Int
+        get() = R.layout.activity_avatar_view
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
         // Avatar drawables with bitmap
         loadBitmapFromPicasso(avatar_example_picasso)
@@ -52,8 +49,7 @@ class AvatarFragment : DemoFragment() {
     }
 
     private fun createNewAvatarFromCode() {
-        val context = context ?: return
-        val avatarView = AvatarView(context)
+        val avatarView = AvatarView(this)
         avatarView.avatarSize = AvatarSize.XXLARGE
         avatarView.name = getString(R.string.persona_name_mauricio_august)
         avatarView.email = getString(R.string.persona_email_mauricio_august)

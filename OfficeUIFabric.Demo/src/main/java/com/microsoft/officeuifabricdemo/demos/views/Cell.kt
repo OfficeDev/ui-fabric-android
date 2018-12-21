@@ -1,6 +1,6 @@
-//
-// Copyright © 2018 Microsoft Corporation. All rights reserved.
-//
+/**
+ * Copyright © 2018 Microsoft Corporation. All rights reserved.
+ */
 
 package com.microsoft.officeuifabricdemo.demos.views
 

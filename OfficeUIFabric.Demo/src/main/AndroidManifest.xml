@@ -9,24 +9,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name="com.microsoft.officeuifabricdemo.DemoListActivity"
-            android:label="@string/app_title"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:label="@string/app_title">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.microsoft.officeuifabricdemo.DemoActivity"
-            android:label="@string/title_demo_detail"
-            android:parentActivityName="com.microsoft.officeuifabricdemo.DemoListActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.microsoft.officeuifabricdemo.DemoListActivity" />
-        </activity>
+
+        <!-- Demo activities -->
+        <activity android:name="com.microsoft.officeuifabricdemo.demos.AvatarViewActivity" />
+        <activity android:name="com.microsoft.officeuifabricdemo.demos.CalendarViewActivity" />
+        <activity android:name="com.microsoft.officeuifabricdemo.demos.DateTimePickerDialogActivity" />
+        <activity android:name="com.microsoft.officeuifabricdemo.demos.PeoplePickerViewActivity" />
+        <activity android:name="com.microsoft.officeuifabricdemo.demos.PersonaChipViewActivity" />
+        <activity android:name="com.microsoft.officeuifabricdemo.demos.PersonaListViewActivity" />
+        <activity android:name="com.microsoft.officeuifabricdemo.demos.PersonaViewActivity" />
+        <activity android:name="com.microsoft.officeuifabricdemo.demos.TemplateViewActivity" />
+        <activity android:name="com.microsoft.officeuifabricdemo.demos.TypographyActivity" />
+
     </application>
 
 </manifest>

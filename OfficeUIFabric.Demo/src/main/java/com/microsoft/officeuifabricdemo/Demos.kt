@@ -1,32 +1,35 @@
+/**
+ * Copyright © 2018 Microsoft Corporation. All rights reserved.
+ */
+
 package com.microsoft.officeuifabricdemo
 
-import android.support.v4.app.Fragment
 import com.microsoft.officeuifabricdemo.demos.*
 import java.util.*
 import kotlin.reflect.KClass
 
-const val AVATAR = "Avatar"
+const val AVATAR_VIEW = "AvatarView"
 const val CALENDAR_VIEW = "CalendarView"
 const val DATE_TIME_PICKER_DIALOG = "DateTimePickerDialog"
-const val PEOPLE_PICKER = "PeoplePicker"
-const val PERSONA = "Persona"
-const val PERSONA_CHIP = "PersonaChip"
+const val PEOPLE_PICKER_VIEW = "PeoplePickerView"
+const val PERSONA_CHIP_VIEW = "PersonaChipView"
 const val PERSONA_LIST_VIEW = "PersonaListView"
+const val PERSONA_VIEW = "PersonaView"
 const val TEMPLATE_VIEW = "TemplateView"
 const val TYPOGRAPHY = "Typography"
 
 val DEMOS = arrayListOf(
-    Demo(AVATAR, AvatarFragment::class),
-    Demo(CALENDAR_VIEW, CalendarViewFragment::class),
-    Demo(DATE_TIME_PICKER_DIALOG, DateTimePickerDialogFragment::class),
-    Demo(PEOPLE_PICKER, PeoplePickerFragment::class),
-    Demo(PERSONA, PersonaFragment::class),
-    Demo(PERSONA_CHIP, PersonaChipFragment::class),
-    Demo(PERSONA_LIST_VIEW, PersonaListViewFragment::class),
-    Demo(TEMPLATE_VIEW, TemplateViewFragment::class),
-    Demo(TYPOGRAPHY, TypographyFragment::class)
+    Demo(AVATAR_VIEW, AvatarViewActivity::class),
+    Demo(CALENDAR_VIEW, CalendarViewActivity::class),
+    Demo(DATE_TIME_PICKER_DIALOG, DateTimePickerDialogActivity::class),
+    Demo(PEOPLE_PICKER_VIEW, PeoplePickerViewActivity::class),
+    Demo(PERSONA_CHIP_VIEW, PersonaChipViewActivity::class),
+    Demo(PERSONA_LIST_VIEW, PersonaListViewActivity::class),
+    Demo(PERSONA_VIEW, PersonaViewActivity::class),
+    Demo(TEMPLATE_VIEW, TemplateViewActivity::class),
+    Demo(TYPOGRAPHY, TypographyActivity::class)
 )
 
-data class Demo(val title: String, val demoClass: KClass<out Fragment>) {
+data class Demo(val title: String, val demoClass: KClass<out DemoActivity>) {
     val id: UUID = UUID.randomUUID()
 }

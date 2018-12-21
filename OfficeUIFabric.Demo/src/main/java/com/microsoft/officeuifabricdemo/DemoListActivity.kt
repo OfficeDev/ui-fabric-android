@@ -1,62 +1,48 @@
+/**
+ * Copyright © 2018 Microsoft Corporation. All rights reserved.
+ */
+
 package com.microsoft.officeuifabricdemo
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.jakewharton.threetenabp.AndroidThreeTen
 import kotlinx.android.synthetic.main.activity_demo_list.*
 import kotlinx.android.synthetic.main.demo_list.*
 import kotlinx.android.synthetic.main.demo_list_content.view.*
 
 /**
- * An activity representing a list of Demos. This activity
- * has different presentations for handset and tablet-size devices. On
- * handsets, the activity presents a list of items, which when touched,
- * lead to a [DemoActivity] representing
- * item details. On tablets, the activity presents the list of items and
- * item details side-by-side using two vertical panes.
+ * This activity presents a list of [Demo]s, which when touched,
+ * lead to a subclass of [DemoActivity] representing demo details.
  */
 class DemoListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        AndroidThreeTen.init(this)
+
         setContentView(R.layout.activity_demo_list)
 
         setSupportActionBar(toolbar)
         toolbar.title = title
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }
-
-        setupRecyclerView(demo_list)
+        demo_list.adapter = DemoListAdapter()
 
         Initializer.init(application)
     }
 
-    private fun setupRecyclerView(recyclerView: RecyclerView) {
-        recyclerView.adapter = DemoRecyclerViewAdapter(this)
-    }
-
-    // DemoRecyclerViewAdapter
-
-    private class DemoRecyclerViewAdapter(val parentActivity: DemoListActivity) :
-        RecyclerView.Adapter<DemoRecyclerViewAdapter.ViewHolder>() {
-
-        private val onClickListener: View.OnClickListener
-
-        init {
-            onClickListener = View.OnClickListener { v ->
-                val demo = v.tag as Demo
-                val intent = Intent(v.context, DemoActivity::class.java)
-                intent.putExtra(DemoFragment.DEMO_ID, demo.id)
-                v.context.startActivity(intent)
-            }
+    private class DemoListAdapter : RecyclerView.Adapter<DemoListAdapter.ViewHolder>() {
+        private val onClickListener = View.OnClickListener { view ->
+            val demo = view.tag as Demo
+            val intent = Intent(view.context, demo.demoClass.java)
+            intent.putExtra(DemoActivity.DEMO_ID, demo.id)
+            view.context.startActivity(intent)
         }
 
         override fun getItemCount() = DEMOS.size
@@ -76,9 +62,7 @@ class DemoListActivity : AppCompatActivity() {
             }
         }
 
-        // ViewHolder
-
-        inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        private class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             val textView: TextView = view.id_text
         }
     }

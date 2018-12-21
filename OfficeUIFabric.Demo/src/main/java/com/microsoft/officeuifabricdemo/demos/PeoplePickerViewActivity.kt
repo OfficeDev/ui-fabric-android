@@ -1,33 +1,33 @@
+/**
+ * Copyright © 2018 Microsoft Corporation. All rights reserved.
+ */
+
 package com.microsoft.officeuifabricdemo.demos
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.microsoft.officeuifabric.peoplepicker.PeoplePickerPersonaChipClickStyle
 import com.microsoft.officeuifabric.peoplepicker.PeoplePickerView
 import com.microsoft.officeuifabric.persona.IPersona
-import com.microsoft.officeuifabricdemo.DemoFragment
+import com.microsoft.officeuifabricdemo.DemoActivity
 import com.microsoft.officeuifabricdemo.R
 import com.microsoft.officeuifabricdemo.util.createPersonaList
-import kotlinx.android.synthetic.main.fragment_people_picker.*
+import kotlinx.android.synthetic.main.activity_people_picker_view.*
 import java.util.*
 import kotlin.collections.ArrayList
 
-class PeoplePickerFragment : DemoFragment() {
+class PeoplePickerViewActivity : DemoActivity() {
+    override val contentLayoutId: Int
+        get() = R.layout.activity_people_picker_view
+
     private lateinit var samplePersonas: ArrayList<IPersona>
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        samplePersonas = createPersonaList(context)
-        return inflater.inflate(R.layout.fragment_people_picker, container, false)
-    }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        val context = context ?: return
+        samplePersonas = createPersonaList(this)
 
         // Use attributes to set personaChipClickStyle and label
 
@@ -74,8 +74,7 @@ class PeoplePickerFragment : DemoFragment() {
         personaSuggestionsListener: PeoplePickerView.PersonaSuggestionsListener? = null,
         pickedPersonasChangeListener: PeoplePickerView.PickedPersonasChangeListener? = null
     ) {
-        val context = context ?: return
-        val peoplePickerView = PeoplePickerView(context)
+        val peoplePickerView = PeoplePickerView(this)
         peoplePickerView.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         with(peoplePickerView) {
             label = labelText
@@ -100,7 +99,7 @@ class PeoplePickerFragment : DemoFragment() {
     }
 
     private fun showPickedPersonaDialog(title: String, persona: IPersona) {
-        val dialog = AlertDialog.Builder(context)
+        val dialog = AlertDialog.Builder(this)
         dialog.setTitle(title)
         dialog.setMessage(if (!persona.name.isEmpty()) persona.name else persona.email)
         dialog.show()
