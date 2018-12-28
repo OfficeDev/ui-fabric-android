@@ -1,6 +1,6 @@
 package com.microsoft.officeuifabric.datetimepicker
 
-object DateTimePickerExtras {
+internal object DateTimePickerExtras {
     const val MODE = "MODE"
     const val DATE_TIME = "DATE_TIME"
     const val DISMISS_ON_DAY_PICKED = "DISMISS_ON_DAY_PICKED"

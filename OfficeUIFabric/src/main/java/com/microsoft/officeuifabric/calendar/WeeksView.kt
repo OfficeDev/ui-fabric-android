@@ -39,7 +39,7 @@ import java.util.*
 /**
  * [WeeksView] is a RecyclerView for week days
  */
-class WeeksView : MSRecyclerView {
+internal class WeeksView : MSRecyclerView {
     companion object {
         private const val OVERLAY_TRANSITION_DURATION = 200L
 

@@ -14,11 +14,11 @@ import java.util.*
 /**
  * This adapter controls data binding and ViewHolders for [PersonaListView].
  */
-class PersonaListAdapter(private val context: Context) : RecyclerView.Adapter<PersonaListAdapter.ViewHolder>() {
+internal class PersonaListAdapter(private val context: Context) : RecyclerView.Adapter<PersonaListAdapter.ViewHolder>() {
     /**
-     * [Callback] for when a list item is clicked
+     * [PersonaListView.OnItemClickedListener] for when a list item is clicked
      */
-    var clickCallback: Callback? = null
+    var onItemClickedListener: PersonaListView.OnItemClickedListener? = null
     /**
      * Collection of [Persona] objects that hold data to create the [PersonaView]s
      */
@@ -41,7 +41,7 @@ class PersonaListAdapter(private val context: Context) : RecyclerView.Adapter<Pe
     override fun getItemCount() = personas.size
 
     private fun onItemClicked(persona: IPersona) {
-        clickCallback?.onItemClicked(persona)
+        onItemClickedListener?.onItemClicked(persona)
     }
 
     inner class ViewHolder : RecyclerView.ViewHolder, View.OnClickListener {
@@ -61,9 +61,5 @@ class PersonaListAdapter(private val context: Context) : RecyclerView.Adapter<Pe
             this.persona = persona
             personaView.setPersona(persona)
         }
-    }
-
-    interface Callback {
-        fun onItemClicked(persona: IPersona)
     }
 }

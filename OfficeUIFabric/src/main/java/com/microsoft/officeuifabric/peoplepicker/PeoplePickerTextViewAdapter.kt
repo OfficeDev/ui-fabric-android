@@ -19,7 +19,7 @@ import java.util.*
  * The DropDown used by [MultiAutoCompleteTextView] (via [TokenCompleteTextView]) uses a ListView
  * so we use an [ArrayAdapter] to generate the views instead of a [RecyclerView.Adapter].
  */
-class PeoplePickerTextViewAdapter : ArrayAdapter<IPersona>, Filterable {
+internal class PeoplePickerTextViewAdapter : ArrayAdapter<IPersona>, Filterable {
     /**
      * Collection of [Persona] objects that hold data to create the [PersonaView]s
      */

@@ -7,7 +7,7 @@ package com.microsoft.officeuifabricdemo.demos
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import com.microsoft.officeuifabric.persona.IPersona
-import com.microsoft.officeuifabric.persona.PersonaListAdapter
+import com.microsoft.officeuifabric.persona.PersonaListView
 import com.microsoft.officeuifabricdemo.DemoActivity
 import com.microsoft.officeuifabricdemo.R
 import com.microsoft.officeuifabricdemo.util.createPersonaList
@@ -23,7 +23,7 @@ class PersonaListViewActivity : DemoActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         persona_list_view_example.personas = createPersonaList(this)
-        persona_list_view_example.onItemClicked = object : PersonaListAdapter.Callback {
+        persona_list_view_example.onItemClickedListener = object : PersonaListView.OnItemClickedListener {
             override fun onItemClicked(persona: IPersona) {
                 Snackbar.make(
                     root_view,

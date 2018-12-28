@@ -21,7 +21,7 @@ import org.threeten.bp.DayOfWeek
  * [WeekHeadingView] is a LinearLayout holding the [CalendarView] header with views for
  * the week day letters, S, M, T, W, T, F, S
  */
-class WeekHeadingView : LinearLayout {
+internal class WeekHeadingView : LinearLayout {
     private lateinit var config: CalendarView.Config
 
     constructor(context: Context, calendarConfig: CalendarView.Config) : super(context) {

@@ -17,7 +17,7 @@ import com.microsoft.officeuifabric.R
 /**
  * [CalendarDaySelectionDrawable] is a drawable added to a [CalendarDayView] displaying selected state
  */
-class CalendarDaySelectionDrawable : Drawable {
+internal class CalendarDaySelectionDrawable : Drawable {
     enum class Mode {
         SINGLE, START, END, MIDDLE
     }

@@ -270,7 +270,7 @@ internal class DateTimePicker : LinearLayout, NumberPicker.OnValueChangeListener
     }
 }
 
-interface OnDateTimeSelectedListener {
+internal interface OnDateTimeSelectedListener {
     /**
      * Method called when a user changes a date and time
      * @param [dateTime] the selected date and time

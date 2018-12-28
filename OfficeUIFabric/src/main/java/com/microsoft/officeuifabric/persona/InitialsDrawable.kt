@@ -17,7 +17,7 @@ import java.util.*
 /**
  * [InitialsDrawable] generates initials and background color for the AvatarView.
  */
-class InitialsDrawable constructor(context: Context) : Drawable() {
+internal class InitialsDrawable constructor(context: Context) : Drawable() {
     companion object {
         // This is the displayed value for avatars / headers when the name starts with a symbol
         val DEFAULT_SYMBOL_HEADER = '#'

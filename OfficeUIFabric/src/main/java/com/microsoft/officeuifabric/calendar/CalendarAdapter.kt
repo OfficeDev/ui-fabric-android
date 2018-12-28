@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit
 /**
  * [CalendarAdapter] is the adapter for the [CalendarView]
  */
-class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarDayViewHolder>, View.OnClickListener {
+internal class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarDayViewHolder>, View.OnClickListener {
     companion object {
         private const val MONTH_BACK = 3L
         private const val MONTH_AHEAD = 12L

@@ -49,7 +49,7 @@ import com.tokenautocomplete.TokenCompleteTextView
  * - Limit what appears in the long click context menu.
  * - Baseline align chips with other text
  */
-class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
+internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
     companion object {
         // Removes constraints to the input field
         private val noFilters = arrayOfNulls<InputFilter>(0)

@@ -15,7 +15,7 @@ import com.microsoft.officeuifabric.R
 import java.util.*
 
 /**
- * This is a custom [RecyclerView] with a set adapter and layoutManager. It provides an interface for the list data and clickCallback and
+ * This is a custom [RecyclerView] with a set adapter and layoutManager. It provides an interface for the list data and onItemClickedListener and
  * adds a custom [DividerItemDecoration] to each row.
  */
 class PersonaListView : RecyclerView {
@@ -29,12 +29,12 @@ class PersonaListView : RecyclerView {
         }
 
     /**
-     * This clickCallback is called when a [PersonaView] cell is clicked.
+     * This onItemClickedListener is called when a [PersonaView] cell is clicked.
      */
-    var onItemClicked: PersonaListAdapter.Callback? = null
+    var onItemClickedListener: OnItemClickedListener? = null
         set(value) {
             field = value
-            personaListAdapter.clickCallback = value
+            personaListAdapter.onItemClickedListener = value
         }
 
     private val personaListAdapter = PersonaListAdapter(context)
@@ -52,5 +52,9 @@ class PersonaListView : RecyclerView {
         val insetDrawable = InsetDrawable(ContextCompat.getDrawable(context, R.drawable.ms_row_divider), spacing.insetLeft, 0, spacing.cellPadding, 0)
         dividerItemDecoration.setDrawable(insetDrawable)
         addItemDecoration(dividerItemDecoration)
+    }
+
+    interface OnItemClickedListener {
+        fun onItemClicked(persona: IPersona)
     }
 }

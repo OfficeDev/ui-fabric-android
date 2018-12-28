@@ -37,7 +37,7 @@ import java.util.*
 /**
  * [CalendarDayView] View that displays a day of the week
  */
-class CalendarDayView: AppCompatButton, Checkable {
+internal class CalendarDayView: AppCompatButton, Checkable {
     companion object {
         private val MONTH = DateTimeFormatter.ofPattern("MMM")
         private val CHECKED_STATE_SET = intArrayOf(android.R.attr.state_checked)
