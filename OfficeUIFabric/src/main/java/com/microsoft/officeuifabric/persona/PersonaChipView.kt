@@ -164,7 +164,7 @@ class PersonaChipView : TemplateView {
 
     private fun setDisabledState() {
         avatarView?.alpha = DISABLED_BACKGROUND_OPACITY
-        updateStateStyles(R.drawable.persona_chip_background_normal, R.color.uifabric_chip_disabled_text)
+        updateStateStyles(R.drawable.persona_chip_background_normal, R.color.uifabric_persona_chip_disabled_text)
     }
 
     private fun setNormalState() {
@@ -173,15 +173,15 @@ class PersonaChipView : TemplateView {
             updateCloseIconVisibility(false)
         }
         if (hasError) {
-            updateStateStyles(R.drawable.persona_chip_background_normal_error, R.color.uifabric_chip_error_text)
+            updateStateStyles(R.drawable.persona_chip_background_normal_error, R.color.uifabric_persona_chip_error_text)
 
         } else {
-            updateStateStyles(R.drawable.persona_chip_background_normal, R.color.uifabric_chip_normal_text)
+            updateStateStyles(R.drawable.persona_chip_background_normal, R.color.uifabric_persona_chip_normal_text)
         }
     }
 
     private fun setPressedState() {
-        updateStateStyles(R.drawable.persona_chip_background_pressed, R.color.uifabric_chip_normal_text)
+        updateStateStyles(R.drawable.persona_chip_background_pressed, R.color.uifabric_persona_chip_normal_text)
     }
 
     private fun setSelectedState() {
@@ -189,9 +189,9 @@ class PersonaChipView : TemplateView {
             updateCloseIconVisibility(true)
         }
         if (hasError) {
-            updateStateStyles(R.drawable.persona_chip_background_active_error, R.color.uifabric_chip_active_text)
+            updateStateStyles(R.drawable.persona_chip_background_active_error, R.color.uifabric_persona_chip_active_text)
         } else {
-            updateStateStyles(R.drawable.persona_chip_background_active, R.color.uifabric_chip_active_text)
+            updateStateStyles(R.drawable.persona_chip_background_active, R.color.uifabric_persona_chip_active_text)
         }
     }
 

@@ -63,13 +63,12 @@ internal class PeoplePickerTextViewAdapter : ArrayAdapter<IPersona>, Filterable 
 
     private fun createDivider(): InsetDrawable {
         val spacing = PersonaView.getSpacing(context, AvatarSize.LARGE)
-        val insetDrawable = InsetDrawable(
+        return InsetDrawable(
             ContextCompat.getDrawable(context, R.drawable.ms_row_divider),
             spacing.insetLeft,
             0,
             spacing.cellPadding,
             0
         )
-        return insetDrawable
     }
 }

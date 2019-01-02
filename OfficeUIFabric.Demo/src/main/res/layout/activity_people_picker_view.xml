@@ -2,24 +2,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/people_picker_layout"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:showDividers="middle"
-    android:divider="@drawable/ms_row_divider">
+    android:divider="@drawable/ms_row_divider"
+    android:orientation="vertical"
+    android:showDividers="middle">
 
     <com.microsoft.officeuifabric.peoplepicker.PeoplePickerView
         android:id="@+id/people_picker_select"
-        app:label="@string/people_picker_select_example"
-        app:personaChipClickStyle="select"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        app:label="@string/people_picker_select_example"
+        app:personaChipClickStyle="select" />
 
     <com.microsoft.officeuifabric.peoplepicker.PeoplePickerView
         android:id="@+id/people_picker_select_deselect"
-        app:label="@string/people_picker_select_deselect_example"
-        app:personaChipClickStyle="select_deselect"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        app:label="@string/people_picker_select_deselect_example"
+        app:personaChipClickStyle="select_deselect" />
 
 </LinearLayout>

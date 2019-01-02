@@ -40,8 +40,9 @@
     <dimen name="uifabric_number_picker_padding_right">8dp</dimen>
 
     <!--PeoplePicker-->
-    <dimen name="uifabric_people_picker_token_padding">6dp</dimen>
+    <dimen name="uifabric_people_picker_popup_elevation">0dp</dimen>
     <dimen name="uifabric_people_picker_dropdown_vertical_offset">0dp</dimen>
+    <dimen name="uifabric_people_picker_text_view_padding">6dp</dimen>
 
     <!--Persona-->
     <dimen name="uifabric_persona_horizontal_spacing">16dp</dimen>
@@ -51,9 +52,9 @@
     <dimen name="uifabric_persona_label_spacing">8dp</dimen>
 
     <!--PersonaChip-->
-    <dimen name="uifabric_chip_height">32dp</dimen>
-    <dimen name="uifabric_chip_padding">6dp</dimen>
-    <dimen name="uifabric_chip_spacing">6dp</dimen>
+    <dimen name="uifabric_persona_chip_height">32dp</dimen>
+    <dimen name="uifabric_persona_chip_padding">6dp</dimen>
+    <dimen name="uifabric_persona_chip_spacing">6dp</dimen>
 
     <!--Shared-->
     <dimen name="uifabric_divider_height">.5dp</dimen>

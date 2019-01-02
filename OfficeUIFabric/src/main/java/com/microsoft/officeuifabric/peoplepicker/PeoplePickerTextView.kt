@@ -58,7 +58,7 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
     }
 
     /**
-     * Defines what happens when a user clicks on a [personaChip] token.
+     * Defines what happens when a user clicks on a [personaChip].
      */
     var personaChipClickStyle: PeoplePickerPersonaChipClickStyle = PeoplePickerPersonaChipClickStyle.Select
         set(value) {

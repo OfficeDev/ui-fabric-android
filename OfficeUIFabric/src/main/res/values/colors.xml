@@ -47,21 +47,6 @@
         <item>#393939</item>
     </array>
 
-    <!--Chips-->
-    <color name="uifabric_chip_normal">@color/uifabric_background_gray</color>
-    <color name="uifabric_chip_normal_text">@color/uifabric_black</color>
-    <!-- TODO update after design adds #0D000000 to toolkit -->
-    <color name="uifabric_chip_pressed">#0D000000</color>
-    <color name="uifabric_chip_active">@color/uifabric_primary</color>
-    <color name="uifabric_chip_active_text">@color/uifabric_white</color>
-    <!-- TODO update after design adds #FFF3F4 to toolkit -->
-    <color name="uifabric_chip_error">#FFF3F4</color>
-    <!-- TODO update after design adds #E8484C to toolkit -->
-    <color name="uifabric_chip_error_active">#E8484C</color>
-    <!-- TODO update after design adds #A80000 to toolkit -->
-    <color name="uifabric_chip_error_text">#A80000</color>
-    <color name="uifabric_chip_disabled_text">@color/uifabric_gray</color>
-
     <!--CalendarView-->
     <color name="uifabric_calendar_week_header_background">@color/uifabric_primary</color>
     <color name="uifabric_calendar_week_heading_week_day_text">@color/uifabric_gray</color>
@@ -85,6 +70,25 @@
     <!--NumberPicker-->
     <color name="uifabric_number_picker_default_accent">@color/uifabric_primary</color>
     <color name="uifabric_number_picker_default_text">@color/uifabric_gray</color>
+
+    <!--PeoplePicker-->
+    <color name="uifabric_people_picker_popup_background">@color/uifabric_white</color>
+    <color name="uifabric_people_picker_text_view_background">@color/uifabric_white</color>
+
+    <!--Persona Chip-->
+    <color name="uifabric_persona_chip_normal">@color/uifabric_background_gray</color>
+    <color name="uifabric_persona_chip_normal_text">@color/uifabric_black</color>
+    <!-- TODO update after design adds #0D000000 to toolkit -->
+    <color name="uifabric_persona_chip_pressed">#0D000000</color>
+    <color name="uifabric_persona_chip_active">@color/uifabric_primary</color>
+    <color name="uifabric_persona_chip_active_text">@color/uifabric_white</color>
+    <!-- TODO update after design adds #FFF3F4 to toolkit -->
+    <color name="uifabric_persona_chip_error">#FFF3F4</color>
+    <!-- TODO update after design adds #E8484C to toolkit -->
+    <color name="uifabric_persona_chip_error_active">#E8484C</color>
+    <!-- TODO update after design adds #A80000 to toolkit -->
+    <color name="uifabric_persona_chip_error_text">#A80000</color>
+    <color name="uifabric_persona_chip_disabled_text">@color/uifabric_gray</color>
 
     <!--Shared-->
     <color name="uifabric_divider">@color/uifabric_border_gray</color>

@@ -23,7 +23,10 @@
         <activity android:name="com.microsoft.officeuifabricdemo.demos.AvatarViewActivity" />
         <activity android:name="com.microsoft.officeuifabricdemo.demos.CalendarViewActivity" />
         <activity android:name="com.microsoft.officeuifabricdemo.demos.DateTimePickerDialogActivity" />
-        <activity android:name="com.microsoft.officeuifabricdemo.demos.PeoplePickerViewActivity" />
+        <activity
+            android:name="com.microsoft.officeuifabricdemo.demos.PeoplePickerViewActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name="com.microsoft.officeuifabricdemo.demos.PersonaChipViewActivity" />
         <activity android:name="com.microsoft.officeuifabricdemo.demos.PersonaListViewActivity" />
         <activity android:name="com.microsoft.officeuifabricdemo.demos.PersonaViewActivity" />

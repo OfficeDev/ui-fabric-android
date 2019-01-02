@@ -5,23 +5,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="@dimen/uifabric_chip_height"
+    android:layout_height="@dimen/uifabric_persona_chip_height"
     android:baselineAligned="true"
     android:orientation="horizontal"
-    android:padding="@dimen/uifabric_chip_padding">
+    android:padding="@dimen/uifabric_persona_chip_padding">
 
     <com.microsoft.officeuifabric.persona.AvatarView
         android:id="@+id/persona_chip_avatar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/uifabric_chip_spacing"
+        android:layout_marginEnd="@dimen/uifabric_persona_chip_spacing"
         app:avatarSize="xsmall" />
 
     <ImageView
         android:id="@+id/persona_chip_close"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/uifabric_chip_spacing"
+        android:layout_marginEnd="@dimen/uifabric_persona_chip_spacing"
         android:src="@drawable/ms_ic_close"/>
 
     <TextView

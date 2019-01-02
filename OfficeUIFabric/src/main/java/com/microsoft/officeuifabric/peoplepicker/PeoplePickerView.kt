@@ -5,6 +5,8 @@
 package com.microsoft.officeuifabric.peoplepicker
 
 import android.content.Context
+import android.content.res.Configuration
+import android.graphics.Rect
 import android.util.AttributeSet
 import android.view.ViewGroup
 import android.widget.Filter
@@ -19,13 +21,10 @@ import kotlinx.android.synthetic.main.view_people_picker.view.*
 typealias PeoplePickerPersonaChipClickStyle = TokenCompleteTextView.TokenClickStyle
 
 /**
- * [PeoplePickerView] is a customizable [TemplateView] comprised of a label and [PeoplePickerTextView].
+ * [PeoplePickerView] is a customizable view comprised of a label and [PeoplePickerTextView].
  *
  * TODO Future work:
  * - Handle cases where [pickedPersonas] is modified programmatically.
- * - Use Outlook's adjustDropDownPositionAndSize and getMaxAvailableHeight methods in ContactPickerView
- * to resize the drop down to the available space in the view. This will make the list less jumpy,
- * which is most noticeable when it appears above the [PeoplePickerTextView].
  */
 class PeoplePickerView : TemplateView {
     /**
@@ -177,6 +176,54 @@ class PeoplePickerView : TemplateView {
             peoplePickerTextView?.addObject(persona)
     }
 
+    // Dropdown
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        adjustDropDownHeight()
+    }
+
+    override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
+        super.onLayout(changed, left, top, right, bottom)
+        adjustDropDownHeight()
+    }
+
+    private fun adjustDropDownHeight() {
+        val dropDownHeight = getMaxAvailableHeight()
+        if (peoplePickerTextView?.dropDownHeight == dropDownHeight)
+            return
+        peoplePickerTextView?.dropDownHeight = dropDownHeight
+        if (peoplePickerTextView?.isPopupShowing == true)
+            // Force popup layout to refresh
+            peoplePickerTextView?.showDropDown()
+    }
+
+    /**
+     * Adapted from Android's PopupWindow.
+     */
+    private fun getMaxAvailableHeight(): Int {
+        val displayFrame = Rect()
+        getWindowVisibleDisplayFrame(displayFrame)
+
+        val anchorLocationOnScreen = IntArray(2)
+        getLocationOnScreen(anchorLocationOnScreen)
+
+        val anchorTop = anchorLocationOnScreen[1]
+        val yOffset = resources.getDimension(R.dimen.uifabric_people_picker_dropdown_vertical_offset).toInt()
+        val distanceToBottom = displayFrame.bottom - (anchorTop + height) - yOffset
+        val distanceToTop = anchorTop - displayFrame.top + yOffset
+        var returnedHeight = Math.max(distanceToBottom, distanceToTop)
+
+        val background = peoplePickerTextView?.dropDownBackground
+        if (background != null) {
+            val backgroundPadding = Rect()
+            background.getPadding(backgroundPadding)
+            returnedHeight -= backgroundPadding.top + backgroundPadding.bottom
+        }
+
+        return returnedHeight
+    }
+
     // Filter
 
     private class PersonaFilter(val view: PeoplePickerView) : Filter() {
@@ -193,17 +240,17 @@ class PeoplePickerView : TemplateView {
 
             val availablePersonas = view.availablePersonas
             val suggestedPersonas: ArrayList<IPersona>
-            if (availablePersonas == null)
-                suggestedPersonas = ArrayList()
-            else
-                if (constraint != null) {
+            suggestedPersonas = when {
+                availablePersonas == null -> ArrayList()
+                constraint != null -> {
                     val searchTerm = constraint.toString().toLowerCase()
                     val filteredResults = availablePersonas.filter {
                         it.name.toLowerCase().contains(searchTerm) && !view.pickedPersonas.contains(it)
                     }
-                    suggestedPersonas = ArrayList(filteredResults)
-                } else
-                    suggestedPersonas = availablePersonas
+                    ArrayList(filteredResults)
+                }
+                else -> availablePersonas
+            }
             return FilterResults().apply {
                 values = suggestedPersonas
                 count = suggestedPersonas.size
@@ -218,8 +265,7 @@ class PeoplePickerView : TemplateView {
                         view.peoplePickerTextViewAdapter?.personas = it
                     }
                 }
-            }
-            else {
+            } else {
                 view.peoplePickerTextViewAdapter?.personas = results.values as ArrayList<IPersona>
             }
         }

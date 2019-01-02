@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Copyright (c) 2018. Microsoft Corporation. All rights reserved.-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:drawable="@drawable/ms_row_divider"
+        android:gravity="bottom" />
+    <item android:bottom="@dimen/uifabric_divider_height">
+        <color android:color="@color/uifabric_people_picker_popup_background" />
+    </item>
+</layer-list>
