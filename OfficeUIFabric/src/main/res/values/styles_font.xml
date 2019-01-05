@@ -3,7 +3,7 @@
 
     <!-- *** UIFabric Theme *** -->
 
-    <style name="TextAppearance.UIFabric" parent="TextAppearance.AppCompat"/>
+    <style name="TextAppearance.UIFabric" parent="TextAppearance.AppCompat" />
 
     <style name="TextAppearance.UIFabric.Headline">
         <item name="android:textSize">28sp</item>
@@ -55,8 +55,13 @@
     <style name="TextAppearance.UIFabric.ListItemLabel" parent="TextAppearance.UIFabric.SubHeading">
         <item name="android:textColor">@color/uifabric_gray</item>
     </style>
+
     <style name="TextAppearance.UIFabric.LightCaption" parent="TextAppearance.UIFabric.Caption">
         <item name="android:textColor">@color/uifabric_gray</item>
+    </style>
+
+    <style name="TextAppearance.UIFabric.Button" parent="TextAppearance.UIFabric.Body2">
+        <item name="android:textColor">@color/uifabric_primary</item>
     </style>
 
 </resources>

@@ -5,7 +5,7 @@
 
     <!--Product Primary-->
     <color name="uifabric_primary">#0078D4</color>
-    <color name="uifabric_primaryDark">#005a9e</color>
+    <color name="uifabric_primary_dark">#005a9e</color>
 
     <!--Multi-Use-->
     <color name="uifabric_white">#FFFFFF</color>
@@ -57,8 +57,6 @@
     <color name="uifabric_calendar_other_month_background">@color/uifabric_background_light_gray</color>
     <!-- TODO update after design adds #FFF5FAFC to toolkit -->
     <color name="uifabric_calendar_day_today_background">#FFF5FAFC</color>
-    <!-- TODO update after design adds #0E000000 to toolkit -->
-    <color name="uifabric_calendar_item_highlight">#0E000000</color> <!-- 5% black -->
     <color name="uifabric_calendar_week_day_text">@color/calendar_week_day_text_selector</color>
     <color name="uifabric_calendar_monochrome_text">@color/calendar_week_day_text_selector</color>
 
@@ -92,6 +90,8 @@
 
     <!--Shared-->
     <color name="uifabric_divider">@color/uifabric_border_gray</color>
+    <!-- TODO update after design adds #0E000000 to toolkit -->
+    <color name="uifabric_item_highlight">#0E000000</color> <!-- 5% black -->
 
     <!--TabLayout-->
     <color name="uifabric_tab_layout_text">@color/uifabric_gray</color>

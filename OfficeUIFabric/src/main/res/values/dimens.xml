@@ -28,7 +28,7 @@
     <!--Dialog-->
     <dimen name="uifabric_dialog_background_light_shadow_width">8dp</dimen>
     <dimen name="uifabric_dialog_background_light_shadow_height">8dp</dimen>
-    <dimen name="uifabric_dialog_insets">16dp</dimen>
+    <dimen name="uifabric_dialog_insets">@dimen/uifabric_content_inset</dimen>
     <dimen name="uifabric_resizable_dialog_card_elevation">2dp</dimen>
     <dimen name="uifabric_resizable_dialog_card_tools_width">300dp</dimen>
 
@@ -43,10 +43,13 @@
     <dimen name="uifabric_people_picker_popup_elevation">0dp</dimen>
     <dimen name="uifabric_people_picker_dropdown_vertical_offset">0dp</dimen>
     <dimen name="uifabric_people_picker_text_view_padding">6dp</dimen>
+    <dimen name="uifabric_people_picker_search_directory_min_height">56dp</dimen>
+    <dimen name="uifabric_people_picker_search_directory_padding_horizontal">@dimen/uifabric_content_inset</dimen>
+    <dimen name="uifabric_people_picker_search_directory_padding_vertical">12dp</dimen>
 
     <!--Persona-->
-    <dimen name="uifabric_persona_horizontal_spacing">16dp</dimen>
-    <dimen name="uifabric_persona_horizontal_padding">16dp</dimen>
+    <dimen name="uifabric_persona_horizontal_spacing">@dimen/uifabric_content_inset</dimen>
+    <dimen name="uifabric_persona_horizontal_padding">@dimen/uifabric_content_inset</dimen>
     <dimen name="uifabric_persona_vertical_padding">12dp</dimen>
     <dimen name="uifabric_persona_text_spacing">2dp</dimen>
     <dimen name="uifabric_persona_label_spacing">8dp</dimen>
@@ -60,4 +63,5 @@
     <dimen name="uifabric_divider_height">.5dp</dimen>
     <dimen name="uifabric_corner_radius_2dp">2dp</dimen>
     <dimen name="uifabric_min_touch_size">48dp</dimen>
+    <dimen name="uifabric_content_inset">16dp</dimen>
 </resources>

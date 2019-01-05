@@ -38,7 +38,15 @@ class PeoplePickerViewActivity : DemoActivity() {
             samplePersonas[4],
             samplePersonas[5]
         )
+        val selectSearchDirectoryPersonas = arrayListOf(
+            samplePersonas[14],
+            samplePersonas[7],
+            samplePersonas[8],
+            samplePersonas[9]
+        )
         people_picker_select.pickedPersonas = selectPickedPersonas
+        people_picker_select.showSearchDirectoryButton = true
+        people_picker_select.searchDirectorySuggestionsListener = createPersonaSuggestionsListener(selectSearchDirectoryPersonas)
 
         people_picker_select_deselect.availablePersonas = samplePersonas
         val selectDeselectPickedPersonas = arrayListOf(samplePersonas[2])
@@ -63,7 +71,7 @@ class PeoplePickerViewActivity : DemoActivity() {
         )
         setupPeoplePickerView(
             getString(R.string.people_picker_suggestions_listener),
-            personaSuggestionsListener = createPersonaSuggestionsListener()
+            personaSuggestionsListener = createPersonaSuggestionsListener(samplePersonas)
         )
     }
 
@@ -105,7 +113,7 @@ class PeoplePickerViewActivity : DemoActivity() {
         dialog.show()
     }
 
-    private fun createPersonaSuggestionsListener(): PeoplePickerView.PersonaSuggestionsListener {
+    private fun createPersonaSuggestionsListener(personas: ArrayList<IPersona>): PeoplePickerView.PersonaSuggestionsListener {
         return object : PeoplePickerView.PersonaSuggestionsListener {
             override fun onGetSuggestedPersonas(
                 searchConstraint: CharSequence?,
@@ -117,7 +125,7 @@ class PeoplePickerViewActivity : DemoActivity() {
                 Timer().schedule(
                     object : TimerTask() {
                         override fun run() {
-                            completion(filterPersonas(searchConstraint, samplePersonas, pickedPersonas))
+                            completion(filterPersonas(searchConstraint, personas, pickedPersonas))
                         }
                     },
                     500

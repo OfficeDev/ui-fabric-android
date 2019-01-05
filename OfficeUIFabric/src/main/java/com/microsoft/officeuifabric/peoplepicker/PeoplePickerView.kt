@@ -8,6 +8,7 @@ import android.content.Context
 import android.content.res.Configuration
 import android.graphics.Rect
 import android.util.AttributeSet
+import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.TextView
@@ -60,7 +61,6 @@ class PeoplePickerView : TemplateView {
                 value ?: ArrayList(),
                 PersonaFilter(this)
             )
-            updateViews()
         }
     /**
      * Tracks personas that have been added as PersonaChips to the [PeoplePickerTextView].
@@ -112,6 +112,17 @@ class PeoplePickerView : TemplateView {
             updateViews()
         }
     /**
+     * Add a button to the bottom of the list of suggested personas that triggers a
+     * new search when using [searchDirectorySuggestionsListener].
+     */
+    var showSearchDirectoryButton: Boolean = false
+        set(value) {
+            if (field == value)
+                return
+            field = value
+            updateViews()
+        }
+    /**
      * Provides callbacks for when a persona chip is added or removed from the [PeoplePickerTextView].
      */
     var pickedPersonasChangeListener: PickedPersonasChangeListener? = null
@@ -119,8 +130,31 @@ class PeoplePickerView : TemplateView {
      * Callbacks for customized filtering. Supports async.
      */
     var personaSuggestionsListener: PersonaSuggestionsListener? = null
+    /**
+     * Use this callback for additional customized filtering when using the [showSearchDirectoryButton].
+     */
+    var searchDirectorySuggestionsListener: PersonaSuggestionsListener? = null
 
     private var peoplePickerTextViewAdapter: PeoplePickerTextViewAdapter? = null
+        set(value) {
+            field = value
+            value?.onSearchDirectoryButtonClicked = onSearchDirectoryButtonClicked
+            updateViews()
+        }
+    private var searchConstraint: CharSequence? = null
+
+    private val onSearchDirectoryButtonClicked = OnClickListener {
+        val searchDirectorySuggestionsListener = searchDirectorySuggestionsListener
+        if (searchDirectorySuggestionsListener != null) {
+            peoplePickerTextViewAdapter?.isSearchingDirectory = true
+            searchDirectorySuggestionsListener.onGetSuggestedPersonas(searchConstraint, availablePersonas, pickedPersonas) {
+                post {
+                    peoplePickerTextViewAdapter?.personas = it
+                    peoplePickerTextViewAdapter?.isSearchingDirectory = false
+                }
+            }
+        }
+    }
 
     @JvmOverloads
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
@@ -168,6 +202,7 @@ class PeoplePickerView : TemplateView {
             personaChipClickStyle = this@PeoplePickerView.personaChipClickStyle
             hint = valueHint
         }
+        peoplePickerTextViewAdapter?.showSearchDirectoryButton = showSearchDirectoryButton
     }
 
     private fun updatePersonaChips() {
@@ -228,6 +263,7 @@ class PeoplePickerView : TemplateView {
 
     private class PersonaFilter(val view: PeoplePickerView) : Filter() {
         override fun performFiltering(constraint: CharSequence?): Filter.FilterResults {
+            view.searchConstraint = constraint
             if (view.personaSuggestionsListener != null) {
                 // Show the previous results until we get new ones.
                 // This code allows us to keep dropdown open and not hidden on each key stroke.
@@ -239,8 +275,7 @@ class PeoplePickerView : TemplateView {
             }
 
             val availablePersonas = view.availablePersonas
-            val suggestedPersonas: ArrayList<IPersona>
-            suggestedPersonas = when {
+            val suggestedPersonas = when {
                 availablePersonas == null -> ArrayList()
                 constraint != null -> {
                     val searchTerm = constraint.toString().toLowerCase()

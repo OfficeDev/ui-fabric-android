@@ -76,6 +76,8 @@
 
     <string name="people_picker_sample_label">Label</string>
     <string name="people_picker_default_hint">Choose a persona from the list</string>
+    <string name="people_picker_search_directory">Search Directory</string>
+    <string name="people_picker_search_progress">Searching…</string>
 
     <!-- *** Persona *** -->
 
