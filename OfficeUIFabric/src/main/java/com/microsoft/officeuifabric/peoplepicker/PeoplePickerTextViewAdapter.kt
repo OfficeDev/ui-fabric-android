@@ -39,10 +39,6 @@ internal class PeoplePickerTextViewAdapter : ArrayAdapter<IPersona>, Filterable 
         }
 
     var onSearchDirectoryButtonClicked: View.OnClickListener? = null
-        set(value) {
-            field = value
-            searchDirectoryView?.setOnClickListener(value)
-        }
 
     private var filter: Filter
     private var listView: ListView? = null
@@ -58,9 +54,9 @@ internal class PeoplePickerTextViewAdapter : ArrayAdapter<IPersona>, Filterable 
         set(value) {
             field = value
             searchDirectoryTextView = value?.people_picker_search_directory_text
+            value?.setOnClickListener(onSearchDirectoryButtonClicked)
             updateSearchDirectoryText()
         }
-
     private var searchDirectoryTextView: TextView? = null
         set(value) {
             if (field == value)
