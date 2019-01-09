@@ -27,8 +27,7 @@ import java.util.concurrent.TimeUnit
  */
 internal class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarDayViewHolder>, View.OnClickListener {
     companion object {
-        private const val MONTH_BACK = 3L
-        private const val MONTH_AHEAD = 12L
+        private const val MONTH_LIMIT = 1200L
         private val DAY_IN_SECONDS = TimeUnit.DAYS.toSeconds(1).toInt()
     }
 
@@ -84,10 +83,10 @@ internal class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarDa
         updateDayIndicesAndHeading()
 
         val today = LocalDate.now()
-        minDate = today.minusMonths(MONTH_BACK)
+        minDate = today.minusMonths(MONTH_LIMIT)
         minDate = minDate.minusDays(firstDayOfWeekIndices.get(minDate.dayOfWeek).toLong())
 
-        var maxDate = today.plusMonths(MONTH_AHEAD)
+        var maxDate = today.plusMonths(MONTH_LIMIT)
         maxDate = maxDate.plusDays(lastDayOfWeekIndices.get(maxDate.dayOfWeek).toLong())
 
         dayCount = ChronoUnit.DAYS.between(minDate, maxDate).toInt() + 1

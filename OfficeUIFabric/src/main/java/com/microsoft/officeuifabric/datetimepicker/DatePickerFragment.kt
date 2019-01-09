@@ -14,6 +14,7 @@ import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.calendar.OnDateSelectedListener
 import com.microsoft.officeuifabric.calendar.CalendarView
 import com.microsoft.officeuifabric.util.DateStringUtils
+import com.microsoft.officeuifabric.util.startOfLocalDay
 import kotlinx.android.synthetic.main.fragment_date_picker.*
 
 import org.threeten.bp.Duration
@@ -35,7 +36,7 @@ internal class DatePickerFragment : Fragment(), OnDateSelectedListener {
     fun setTimeSlot(timeSlot: TimeSlot) {
         date = timeSlot.start
         duration = timeSlot.duration
-        calendar_view.setSelectedDateRange(date.toLocalDate(), duration, datePickMode == DatePickMode.RANGE_END)
+        updateCalendarSelectedDateRange()
     }
 
     fun expandCalendarView() {
@@ -62,7 +63,7 @@ internal class DatePickerFragment : Fragment(), OnDateSelectedListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        calendar_view.setSelectedDateRange(date.toLocalDate(), duration, datePickMode == DatePickMode.SINGLE)
+        updateCalendarSelectedDateRange()
         calendar_view.onDateSelectedListener = this
     }
 
@@ -83,17 +84,23 @@ internal class DatePickerFragment : Fragment(), OnDateSelectedListener {
                 this.date = date
             }
             DatePickMode.RANGE_END -> {
-                if (date.isBefore(this.date)) {
+                val dateDayStart = this.date.startOfLocalDay()
+                if (date.isBefore(dateDayStart))
                     this.date = date.minus(duration)
-                } else {
-                    duration = Duration.between(this.date, date)
-                }
+                else
+                    duration = Duration.between(dateDayStart, date)
             }
         }
 
-        onDateSelectedListener?.onDateSelected(this.date)
+        updateCalendarSelectedDateRange()
 
         if (title.visibility == View.VISIBLE)
             context?.let { title.text = DateStringUtils.formatDateAbbrevAll(it, this.date) }
+
+        onDateSelectedListener?.onDateSelected(date)
+    }
+
+    private fun updateCalendarSelectedDateRange() {
+        calendar_view.setSelectedDateRange(date.toLocalDate(), duration, datePickMode == DatePickMode.RANGE_END)
     }
 }

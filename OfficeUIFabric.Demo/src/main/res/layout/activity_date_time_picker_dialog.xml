@@ -6,10 +6,24 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/default_layout_margin"
     android:layout_marginStart="@dimen/default_layout_margin"
-    android:layout_marginBottom="@dimen/default_layout_margin">
+    android:layout_marginBottom="@dimen/default_layout_margin"
+    android:layout_marginEnd="@dimen/default_layout_margin">
 
     <TextView
-        android:id="@+id/date_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/date_time_picker_example_no_duration_title"
+        android:paddingBottom="@dimen/date_picker_example_title_padding_bottom"
+        style="@style/TextAppearance.UIFabric.Headline" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/date_picker_example_row_divider_height"
+        android:layout_marginBottom="@dimen/default_layout_margin"
+        android:background="@drawable/ms_row_divider" />
+
+    <TextView
+        android:id="@+id/single_date_text_view"
         style="@style/TextAppearance.UIFabric.Heading"
         android:layout_marginBottom="@dimen/default_layout_margin"
         android:layout_width="match_parent"
@@ -22,7 +36,7 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/default_layout_margin"
         android:textAllCaps="false"
-        android:text="@string/date_time_picker_dialog_date_button"/>
+        android:text="@string/date_time_picker_dialog_date_button" />
 
     <Button
         android:id="@+id/date_time_picker_date_selected_button"
@@ -30,7 +44,7 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/default_layout_margin"
         android:textAllCaps="false"
-        android:text="@string/date_time_picker_dialog_calendar_date_time_button"/>
+        android:text="@string/date_time_picker_dialog_calendar_date_time_button" />
 
     <Button
         android:id="@+id/date_time_picker_time_selected_button"
@@ -38,6 +52,91 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/default_layout_margin"
         android:textAllCaps="false"
-        android:text="@string/date_time_picker_dialog_date_time_calendar_button"/>
+        android:text="@string/date_time_picker_dialog_date_time_calendar_button" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/date_time_picker_example_date_range_title"
+        android:layout_marginTop="@dimen/default_layout_margin"
+        android:paddingBottom="@dimen/date_picker_example_title_padding_bottom"
+        style="@style/TextAppearance.UIFabric.Headline" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/date_picker_example_row_divider_height"
+        android:layout_marginBottom="@dimen/default_layout_margin"
+        android:background="@drawable/ms_row_divider" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/date_start_title"
+            style="@style/TextAppearance.UIFabric.Heading"
+            android:layout_width="@dimen/date_picker_example_range_title_width"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/date_picker_example_range_title_padding_end"
+            android:textColor="@color/uifabric_gray"
+            android:text="@string/date_time_picker_example_date_range_start_title" />
+
+        <TextView
+            android:id="@+id/date_start_text_view"
+            style="@style/TextAppearance.UIFabric.Heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/date_time_picker_dialog_date_start_picked_default" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/default_layout_margin">
+
+        <TextView
+            android:id="@+id/date_end_title"
+            style="@style/TextAppearance.UIFabric.Heading"
+            android:layout_marginEnd="@dimen/date_picker_example_range_title_padding_end"
+            android:layout_width="@dimen/date_picker_example_range_title_width"
+            android:layout_height="wrap_content"
+            android:textColor="@color/uifabric_gray"
+            android:text="@string/date_time_picker_example_date_range_end_title" />
+
+        <TextView
+            android:id="@+id/date_end_text_view"
+            style="@style/TextAppearance.UIFabric.Heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/date_time_picker_dialog_date_end_picked_default" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/default_layout_margin">
+
+        <Button
+            android:id="@+id/date_range_start_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/default_layout_margin"
+            android:textAllCaps="false"
+            android:text="@string/date_time_picker_dialog_date_start_button" />
+
+        <Button
+            android:id="@+id/date_range_end_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/default_layout_margin"
+            android:textAllCaps="false"
+            android:text="@string/date_time_picker_dialog_date_end_button" />
+
+    </LinearLayout>
 
 </LinearLayout>

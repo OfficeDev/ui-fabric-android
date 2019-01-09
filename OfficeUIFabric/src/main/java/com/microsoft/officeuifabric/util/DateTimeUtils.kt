@@ -182,3 +182,6 @@ object DateTimeUtils {
     fun isStartDayOfWeek(startDayOfWeek: DayOfWeek, day: LocalDate): Boolean =
         startDayOfWeek.value == day.dayOfWeek.value
 }
+
+
+fun ZonedDateTime.startOfLocalDay(): ZonedDateTime = this.toLocalDate().atStartOfDay(ZoneId.systemDefault())
