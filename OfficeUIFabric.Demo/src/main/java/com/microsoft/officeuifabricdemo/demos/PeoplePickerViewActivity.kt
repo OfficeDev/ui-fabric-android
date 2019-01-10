@@ -4,8 +4,8 @@
 
 package com.microsoft.officeuifabricdemo.demos
 
-import android.app.AlertDialog
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.microsoft.officeuifabric.peoplepicker.PeoplePickerPersonaChipClickStyle
@@ -13,7 +13,9 @@ import com.microsoft.officeuifabric.peoplepicker.PeoplePickerView
 import com.microsoft.officeuifabric.persona.IPersona
 import com.microsoft.officeuifabricdemo.DemoActivity
 import com.microsoft.officeuifabricdemo.R
+import com.microsoft.officeuifabricdemo.util.createCustomPersona
 import com.microsoft.officeuifabricdemo.util.createPersonaList
+import kotlinx.android.synthetic.main.activity_demo_detail.*
 import kotlinx.android.synthetic.main.activity_people_picker_view.*
 import java.util.*
 import kotlin.collections.ArrayList
@@ -47,10 +49,15 @@ class PeoplePickerViewActivity : DemoActivity() {
         people_picker_select.pickedPersonas = selectPickedPersonas
         people_picker_select.showSearchDirectoryButton = true
         people_picker_select.searchDirectorySuggestionsListener = createPersonaSuggestionsListener(selectSearchDirectoryPersonas)
+        people_picker_select.allowPersonaChipDragAndDrop = true
+        people_picker_select.onCreatePersona = { name, email ->
+            createCustomPersona(this, name, email)
+        }
 
         people_picker_select_deselect.availablePersonas = samplePersonas
         val selectDeselectPickedPersonas = arrayListOf(samplePersonas[2])
         people_picker_select_deselect.pickedPersonas = selectDeselectPickedPersonas
+        people_picker_select_deselect.allowPersonaChipDragAndDrop = true
 
         // Use code to set personaChipClickStyle and label
 
@@ -90,6 +97,7 @@ class PeoplePickerViewActivity : DemoActivity() {
             this.personaChipClickStyle = personaChipClickStyle
             this.personaSuggestionsListener = personaSuggestionsListener
             this.pickedPersonasChangeListener = pickedPersonasChangeListener
+            allowPersonaChipDragAndDrop = true
         }
         people_picker_layout.addView(peoplePickerView)
     }
@@ -97,20 +105,13 @@ class PeoplePickerViewActivity : DemoActivity() {
     private fun createPickedPersonasChangeListener(): PeoplePickerView.PickedPersonasChangeListener {
         return object : PeoplePickerView.PickedPersonasChangeListener {
             override fun onPersonaAdded(persona: IPersona) {
-                showPickedPersonaDialog(getString(R.string.people_picker_dialog_title_added), persona)
+                showSnackbar("${getString(R.string.people_picker_dialog_title_added)} ${if (!persona.name.isEmpty()) persona.name else persona.email}")
             }
 
             override fun onPersonaRemoved(persona: IPersona) {
-                showPickedPersonaDialog(getString(R.string.people_picker_dialog_title_removed), persona)
+                showSnackbar("${getString(R.string.people_picker_dialog_title_removed)} ${if (!persona.name.isEmpty()) persona.name else persona.email}")
             }
         }
-    }
-
-    private fun showPickedPersonaDialog(title: String, persona: IPersona) {
-        val dialog = AlertDialog.Builder(this)
-        dialog.setTitle(title)
-        dialog.setMessage(if (!persona.name.isEmpty()) persona.name else persona.email)
-        dialog.show()
     }
 
     private fun createPersonaSuggestionsListener(personas: ArrayList<IPersona>): PeoplePickerView.PersonaSuggestionsListener {
@@ -132,6 +133,10 @@ class PeoplePickerViewActivity : DemoActivity() {
                 )
             }
         }
+    }
+
+    private fun showSnackbar(text: String) {
+        Snackbar.make(root_view, text, Snackbar.LENGTH_SHORT).show()
     }
 
     // Basic custom filtering example

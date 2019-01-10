@@ -4,22 +4,30 @@
 
 package com.microsoft.officeuifabric.peoplepicker
 
+import android.content.ClipData
+import android.content.ClipDescription
 import android.content.Context
 import android.graphics.Rect
 import android.os.Handler
+import android.support.v4.content.ContextCompat
 import android.text.InputFilter
 import android.text.SpannableString
 import android.text.Spanned
+import android.text.TextUtils
 import android.text.method.MovementMethod
 import android.text.style.TextAppearanceSpan
+import android.text.util.Rfc822Token
+import android.text.util.Rfc822Tokenizer
 import android.util.AttributeSet
 import android.util.Patterns
+import android.view.DragEvent
+import android.view.MotionEvent
 import android.view.View
+import android.view.ViewConfiguration
 import android.view.accessibility.AccessibilityEvent
 import android.view.inputmethod.InputMethodManager
 import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.persona.IPersona
-import com.microsoft.officeuifabric.persona.Persona
 import com.microsoft.officeuifabric.persona.PersonaChipView
 import com.microsoft.officeuifabric.persona.setPersona
 import com.tokenautocomplete.CountSpan
@@ -45,9 +53,9 @@ import com.tokenautocomplete.TokenCompleteTextView
  *
  * TODO Future work:
  * - Improve accessibility with something like the [TokenCompleteTextViewTouchHelper] class.
- * - Support drag and drop.
  * - Limit what appears in the long click context menu.
- * - Baseline align chips with other text
+ * - Baseline align chips with other text.
+ * - Improve vertical spacing for chips.
  */
 internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
     companion object {
@@ -65,6 +73,12 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
             field = value
             setTokenClickStyle(value)
         }
+    /**
+     * Flag for enabling Drag and Drop persona chips.
+     */
+    var allowPersonaChipDragAndDrop: Boolean = false
+
+    lateinit var onCreatePersona: (name: String, email: String) -> IPersona
 
     private val countSpan: CountSpan?
         get() = text.getSpans(0, text.length, CountSpan::class.java).firstOrNull()
@@ -101,9 +115,7 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
         if (completionText.isEmpty() || !isEmailValid(completionText))
             return null
 
-        val entry = Persona()
-        entry.email = completionText
-        return entry
+        return onCreatePersona("", completionText)
     }
 
     override fun performCollapse(hasFocus: Boolean) {
@@ -177,7 +189,7 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
         isCursorVisible = false
         filters = blockInputFilters
 
-        // Prevents other input from being selected when a token is selected
+        // Prevents other input from being selected when a persona chip is selected
         blockedMovementMethod = movementMethod
         movementMethod = null
     }
@@ -189,5 +201,153 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
         // Restores original MovementMethod we blocked during selection
         if (blockedMovementMethod != null)
             movementMethod = blockedMovementMethod
+    }
+
+    // Drag and drop
+
+    private var isDraggingPersonaChip: Boolean = false
+    private var firstTouchX: Float = 0f
+    private var firstTouchY: Float = 0f
+    private var initialTouchedPersonaSpan: TokenImageSpan? = null
+
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        var handled = false
+
+        if (personaChipClickStyle == TokenClickStyle.None)
+            handled = super.onTouchEvent(event)
+
+        val touchedPersonaSpan = getPersonaSpanAt(event.x, event.y)
+
+        if (touchedPersonaSpan != null) {
+            when (event.actionMasked) {
+                MotionEvent.ACTION_DOWN -> {
+                    if (!isFocused)
+                        requestFocus()
+                    if (allowPersonaChipDragAndDrop) {
+                        initialTouchedPersonaSpan = touchedPersonaSpan
+                        firstTouchX = event.x
+                        firstTouchY = event.y
+                        parent.requestDisallowInterceptTouchEvent(true)
+                        handled = true
+                    }
+                }
+
+                MotionEvent.ACTION_MOVE -> {
+                    if (allowPersonaChipDragAndDrop && !isDraggingPersonaChip) {
+                        val deltaX = Math.ceil(Math.abs(firstTouchX - event.x).toDouble()).toInt()
+                        val deltaY = Math.ceil(Math.abs(firstTouchY - event.y).toDouble()).toInt()
+                        val touchSlop = ViewConfiguration.get(context).scaledTouchSlop
+                        if (deltaX >= touchSlop || deltaY >= touchSlop)
+                            startPersonaDragAndDrop(touchedPersonaSpan.token)
+                        handled = true
+                    }
+                }
+
+                MotionEvent.ACTION_UP -> {
+                    if (isFocused && text != null && initialTouchedPersonaSpan == touchedPersonaSpan)
+                        touchedPersonaSpan.onClick()
+                    initialTouchedPersonaSpan = null
+                    handled = true
+                }
+
+                MotionEvent.ACTION_CANCEL -> {
+                    initialTouchedPersonaSpan = null
+                }
+            }
+        }
+
+        if (!handled && personaChipClickStyle != TokenClickStyle.None)
+            handled = super.onTouchEvent(event)
+
+        return handled
+    }
+
+    override fun onDragEvent(event: DragEvent): Boolean {
+        if (!allowPersonaChipDragAndDrop)
+            return false
+
+        when (event.action) {
+            DragEvent.ACTION_DRAG_STARTED -> return event.clipDescription.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)
+
+            DragEvent.ACTION_DRAG_ENTERED -> requestFocus()
+
+            DragEvent.ACTION_DROP -> return addPersonaFromDragEvent(event)
+
+            DragEvent.ACTION_DRAG_ENDED -> {
+                if (!event.result && isDraggingPersonaChip)
+                    addPersonaFromDragEvent(event)
+                isDraggingPersonaChip = false
+            }
+        }
+        return false
+    }
+
+    private fun getClipDataForPersona(persona: IPersona): ClipData? {
+        val name = persona.name
+        val email = persona.email
+        val rfcToken = Rfc822Token(name, email, null)
+        return ClipData.newPlainText(if (TextUtils.isEmpty(name)) email else name, rfcToken.toString())
+    }
+
+    private fun getPersonaForClipData(clipData: ClipData): IPersona? {
+        if (!clipData.description.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN) || clipData.itemCount != 1)
+            return null
+
+        val clipDataItem = clipData.getItemAt(0) ?: return null
+
+        val data = clipDataItem.text
+        if (TextUtils.isEmpty(data))
+            return null
+
+        val rfcTokens = Rfc822Tokenizer.tokenize(data)
+        if (rfcTokens == null || rfcTokens.isEmpty())
+            return null
+
+        val rfcToken = rfcTokens[0]
+        return onCreatePersona(rfcToken.name ?: "", rfcToken.address ?: "")
+    }
+
+    private fun startPersonaDragAndDrop(persona: IPersona) {
+        val clipData = getClipDataForPersona(persona) ?: return
+
+        // Layout a copy of the persona chip to use as the drag shadow
+        val personaChipView = getViewForObject(persona)
+        personaChipView.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED)
+        personaChipView.layout(0, 0, personaChipView.measuredWidth, personaChipView.measuredHeight)
+        personaChipView.background = ContextCompat.getDrawable(context, R.color.uifabric_people_picker_persona_chip_drag_background)
+
+        // We pass the persona object as LocalState so we can restore it when dropping
+        // [startDrag] is deprecated, but the new [startDragAndDrop] requires a higher api than our min
+        isDraggingPersonaChip = startDrag(clipData, View.DragShadowBuilder(personaChipView), persona, 0)
+        if (isDraggingPersonaChip)
+            removeObject(persona)
+    }
+
+    private fun getPersonaSpanAt(x: Float, y: Float): TokenImageSpan? {
+        if (TextUtils.isEmpty(text))
+            return null
+
+        val offset = getOffsetForPosition(x, y)
+        if (offset == -1)
+            return null
+
+        val personaSpans = text.getSpans(offset, offset, TokenImageSpan::class.java)
+            as Array<TokenCompleteTextView<IPersona>.TokenImageSpan>
+        return personaSpans.firstOrNull()
+    }
+
+    private fun addPersonaFromDragEvent(event: DragEvent): Boolean {
+        var persona = event.localState as? IPersona
+
+        // If it looks like the drag & drop is not coming from us, try to extract a persona object from the clipData
+        if (persona == null && event.clipData != null)
+            persona = getPersonaForClipData(event.clipData)
+
+        if (persona == null)
+            return false
+
+        addObject(persona)
+
+        return true
     }
 }

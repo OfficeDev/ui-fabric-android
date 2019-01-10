@@ -36,23 +36,31 @@ class PersonaChipView : TemplateView {
         }
     var avatarImageBitmap: Bitmap? = null
         set(value) {
+            if (field == value)
+                return
             field = value
-            avatarView?.avatarImageBitmap = value
+            updateViews()
         }
     var avatarImageDrawable: Drawable? = null
         set(value) {
+            if (field == value)
+                return
             field = value
-            avatarView?.avatarImageDrawable = value
+            updateViews()
         }
     var avatarImageResourceId: Int? = null
         set(value) {
+            if (field == value)
+                return
             field = value
-            avatarView?.avatarImageResourceId = value
+            updateViews()
         }
     var avatarImageUri: Uri? = null
         set(value) {
+            if (field == value)
+                return
             field = value
-            avatarView?.avatarImageUri = value
+            updateViews()
         }
     /**
      * Flag for setting the chip's error state
@@ -93,8 +101,8 @@ class PersonaChipView : TemplateView {
 
     override val templateId: Int = R.layout.view_persona_chip
     private var avatarView: AvatarView? = null
-    private var closeIcon: ImageView? = null
     private var textView: TextView? = null
+    private var closeIcon: ImageView? = null
 
     override fun onTemplateLoaded() {
         super.onTemplateLoaded()
@@ -216,9 +224,14 @@ class PersonaChipView : TemplateView {
             !email.isEmpty() -> email
             else -> context.getString(R.string.persona_title_placeholder)
         }
-        avatarView?.name = name
-        avatarView?.email = email
-        avatarView?.avatarImageDrawable = avatarImageDrawable
+
+        avatarView?.apply {
+            name = this@PersonaChipView.name
+            email = this@PersonaChipView.email
+            avatarImageDrawable = this@PersonaChipView.avatarImageDrawable
+            avatarImageBitmap = this@PersonaChipView.avatarImageBitmap
+            avatarImageUri = this@PersonaChipView.avatarImageUri
+        }
     }
 
     interface Listener {

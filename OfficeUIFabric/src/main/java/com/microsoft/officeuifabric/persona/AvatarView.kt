@@ -118,6 +118,9 @@ open class AvatarView : AppCompatImageView {
     }
 
     override fun setImageURI(uri: Uri?) {
+        if (uri == null)
+            return
+
         try {
             val bitmap = MediaStore.Images.Media.getBitmap(context.contentResolver, uri)
             setImageBitmap(bitmap)

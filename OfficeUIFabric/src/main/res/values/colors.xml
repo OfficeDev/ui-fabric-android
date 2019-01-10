@@ -6,6 +6,8 @@
     <!--Product Primary-->
     <color name="uifabric_primary">#0078D4</color>
     <color name="uifabric_primary_dark">#005a9e</color>
+    <!-- TODO update after design adds Fluent colors to the toolkit -->
+    <color name="uifabric_primary_highlighted">#CBE3F5</color>
 
     <!--Multi-Use-->
     <color name="uifabric_white">#FFFFFF</color>
@@ -72,6 +74,7 @@
     <!--PeoplePicker-->
     <color name="uifabric_people_picker_popup_background">@color/uifabric_white</color>
     <color name="uifabric_people_picker_text_view_background">@color/uifabric_white</color>
+    <color name="uifabric_people_picker_persona_chip_drag_background">@color/uifabric_primary_highlighted</color>
 
     <!--Persona Chip-->
     <color name="uifabric_persona_chip_normal">@color/uifabric_background_gray</color>

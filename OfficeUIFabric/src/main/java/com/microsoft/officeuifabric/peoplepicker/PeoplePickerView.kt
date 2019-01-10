@@ -14,6 +14,7 @@ import android.widget.Filter
 import android.widget.TextView
 import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.persona.IPersona
+import com.microsoft.officeuifabric.persona.Persona
 import com.microsoft.officeuifabric.persona.PersonaView
 import com.microsoft.officeuifabric.view.TemplateView
 import com.tokenautocomplete.TokenCompleteTextView
@@ -123,7 +124,28 @@ class PeoplePickerView : TemplateView {
             updateViews()
         }
     /**
-     * Provides callbacks for when a persona chip is added or removed from the [PeoplePickerTextView].
+     * Flag for enabling Drag and Drop persona chips.
+     */
+    var allowPersonaChipDragAndDrop: Boolean = false
+        set(value) {
+            if (field == value)
+                return
+            field = value
+            updateViews()
+        }
+
+    /**
+     * Callback to use your own [IPersona] object in place of our default [Persona].
+     */
+    var onCreatePersona: ((name: String, email: String) -> IPersona)? = null
+        set(value) {
+            if (field == value)
+                return
+            field = value
+            updateViews()
+        }
+    /**
+     * Callbacks for when a persona chip is added or removed from the [PeoplePickerTextView].
      */
     var pickedPersonasChangeListener: PickedPersonasChangeListener? = null
     /**
@@ -131,7 +153,7 @@ class PeoplePickerView : TemplateView {
      */
     var personaSuggestionsListener: PersonaSuggestionsListener? = null
     /**
-     * Use this callback for additional customized filtering when using the [showSearchDirectoryButton].
+     * Callbacks for additional customized filtering when using the [showSearchDirectoryButton].
      */
     var searchDirectorySuggestionsListener: PersonaSuggestionsListener? = null
 
@@ -201,6 +223,8 @@ class PeoplePickerView : TemplateView {
             setAdapter(peoplePickerTextViewAdapter)
             personaChipClickStyle = this@PeoplePickerView.personaChipClickStyle
             hint = valueHint
+            allowPersonaChipDragAndDrop = this@PeoplePickerView.allowPersonaChipDragAndDrop
+            onCreatePersona = ::createPersona
         }
         peoplePickerTextViewAdapter?.showSearchDirectoryButton = showSearchDirectoryButton
     }
@@ -209,6 +233,10 @@ class PeoplePickerView : TemplateView {
         peoplePickerTextView?.removeObjects(peoplePickerTextView?.objects)
         for (persona in pickedPersonas)
             peoplePickerTextView?.addObject(persona)
+    }
+
+    private fun createPersona(name: String, email: String): IPersona {
+        return onCreatePersona?.invoke(name, email) ?: Persona(name, email)
     }
 
     // Dropdown
