@@ -30,10 +30,7 @@ import org.threeten.bp.temporal.ChronoUnit
  */
 internal class DateTimePicker : LinearLayout, NumberPicker.OnValueChangeListener {
     companion object {
-        // The number of months the calendar goes back from the current date
-        private const val MONTH_BACK = 3L
-        // The number of months the calendar goes forward from the current date
-        private const val MONTH_AHEAD = 12L
+        private const val MONTH_LIMIT = 1200L
         private const val MAX_HOURS_24_CLOCK = 23
         private const val MAX_HOURS_12_CLOCK = 12
         private const val MIN_HOURS_24_CLOCK = 0
@@ -80,15 +77,11 @@ internal class DateTimePicker : LinearLayout, NumberPicker.OnValueChangeListener
     private var daysForward: Int = 0
 
     private val onTabSelectedListener = object : TabLayout.OnTabSelectedListener {
-        // TODO revisit when implementing duration
         override fun onTabSelected(tab: TabLayout.Tab) {
             // Adjust start time and duration when switching tabs
             if (tab.tag === Tab.START_TIME) {
-                date_picker.maxValue = daysBack + daysForward
                 displayTime(true, true)
             } else {
-                // Since simple time picker shows 28 hours, end time of alt time picker should be extended to the next day
-                date_picker.maxValue = daysBack + daysForward + 1
                 displayTime(false, true)
             }
         }
@@ -169,7 +162,7 @@ internal class DateTimePicker : LinearLayout, NumberPicker.OnValueChangeListener
     }
 
     override fun onValueChange(picker: NumberPicker, oldVal: Int, newVal: Int) {
-        timeSlot?.let { onDateTimeSelectedListener?.onDateTimeSelected(it.start) }
+        timeSlot?.let { onDateTimeSelectedListener?.onDateTimeSelected(it.start, it.duration) }
     }
 
     private fun computeTime(): ZonedDateTime {
@@ -194,9 +187,9 @@ internal class DateTimePicker : LinearLayout, NumberPicker.OnValueChangeListener
     private fun initDatePicker() {
         val firstDayOfWeek = PreferencesManager.getWeekStart(context)
         val today = LocalDate.now()
-        var minWindowRange = today.minusMonths(MONTH_BACK)
+        var minWindowRange = today.minusMonths(MONTH_LIMIT)
         minWindowRange = DateTimeUtils.roundToLastWeekend(minWindowRange, firstDayOfWeek)
-        var maxWindowRange = today.plusMonths(MONTH_AHEAD)
+        var maxWindowRange = today.plusMonths(MONTH_LIMIT)
         maxWindowRange = DateTimeUtils.roundToNextWeekend(maxWindowRange, firstDayOfWeek)
 
         daysBack = ChronoUnit.DAYS.between(minWindowRange, today).toInt()
@@ -272,8 +265,9 @@ internal class DateTimePicker : LinearLayout, NumberPicker.OnValueChangeListener
 
 internal interface OnDateTimeSelectedListener {
     /**
-     * Method called when a user changes a date and time
+     * Method called when a user selects a date time range
      * @param [dateTime] the selected date and time
+     * @param [duration] the duration of a date range
      */
-    fun onDateTimeSelected(dateTime: ZonedDateTime)
+    fun onDateTimeSelected(dateTime: ZonedDateTime, duration: Duration)
 }

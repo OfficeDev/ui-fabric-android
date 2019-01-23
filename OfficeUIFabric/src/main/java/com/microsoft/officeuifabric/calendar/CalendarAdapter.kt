@@ -96,9 +96,8 @@ internal class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarDa
      * Sets the selected date range
      */
     fun setSelectedDateRange(date: LocalDate?, duration: Duration) {
-        if (selectedDate != null && selectedDuration != null && selectedDate == date && selectedDuration == duration) {
+        if (selectedDate != null && selectedDuration != null && selectedDate == date && selectedDuration == duration)
             return
-        }
 
         val previousSelectedDate = selectedDate
         val previousSelectedDuration = selectedDuration

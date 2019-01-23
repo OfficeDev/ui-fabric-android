@@ -14,7 +14,7 @@ import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.calendar.OnDateSelectedListener
 import com.microsoft.officeuifabric.calendar.CalendarView
 import com.microsoft.officeuifabric.util.DateStringUtils
-import com.microsoft.officeuifabric.util.startOfLocalDay
+import com.microsoft.officeuifabric.util.getNumberOfDaysFrom
 import kotlinx.android.synthetic.main.fragment_date_picker.*
 
 import org.threeten.bp.Duration
@@ -35,7 +35,7 @@ internal class DatePickerFragment : Fragment(), OnDateSelectedListener {
 
     fun setTimeSlot(timeSlot: TimeSlot) {
         date = timeSlot.start
-        duration = timeSlot.duration
+        duration = date.getNumberOfDaysFrom(date.plus(timeSlot.duration))
         updateCalendarSelectedDateRange()
     }
 
@@ -84,11 +84,10 @@ internal class DatePickerFragment : Fragment(), OnDateSelectedListener {
                 this.date = date
             }
             DatePickMode.RANGE_END -> {
-                val dateDayStart = this.date.startOfLocalDay()
-                if (date.isBefore(dateDayStart))
+                if (date.isBefore(this.date))
                     this.date = date.minus(duration)
                 else
-                    duration = Duration.between(dateDayStart, date)
+                    duration = this.date.getNumberOfDaysFrom(date)
             }
         }
 

@@ -4,11 +4,7 @@
 
 package com.microsoft.officeuifabric.util
 
-import org.threeten.bp.DayOfWeek
-import org.threeten.bp.Instant
-import org.threeten.bp.LocalDate
-import org.threeten.bp.ZoneId
-import org.threeten.bp.ZonedDateTime
+import org.threeten.bp.*
 import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.format.DateTimeParseException
 
@@ -183,5 +179,12 @@ object DateTimeUtils {
         startDayOfWeek.value == day.dayOfWeek.value
 }
 
-
-fun ZonedDateTime.startOfLocalDay(): ZonedDateTime = this.toLocalDate().atStartOfDay(ZoneId.systemDefault())
+fun ZonedDateTime.getNumberOfDaysFrom(endDateTime: ZonedDateTime): Duration {
+    // Reassigns endDateTime's time to the instance's time. This has the effect of normalizing the time and
+    // is useful for getting whole days between ZonedDateTimes when a start time is later than an end time
+    // ie. start date time: 1/1/2019 1pm and end date time is 1/2/2019 10am. Duration is less than 24
+    // hours so the calendar will only represent one day; however, when the time is normalized, the
+    // representation on a calendar will cover two days, 1/1/2019 and 1/2/2019.
+    val normalizedDateTime = endDateTime.with(this.toLocalTime())
+    return Duration.between(this, normalizedDateTime)
+}

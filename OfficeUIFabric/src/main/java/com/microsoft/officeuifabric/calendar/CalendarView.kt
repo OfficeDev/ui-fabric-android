@@ -67,7 +67,7 @@ class CalendarView : LinearLayout, OnDateSelectedListener {
     /**
      * LocalDate used to set the selected date
      */
-    var date: LocalDate? = null
+    private var date: LocalDate? = null
         set(value) { setSelectedDateRange(value, Duration.ZERO, false) }
 
     private var dividerHeight = 0

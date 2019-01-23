@@ -22,6 +22,9 @@ import org.threeten.bp.ZonedDateTime
 internal class DateTimePickerFragment : Fragment(), OnDateTimeSelectedListener {
     var onDateTimeSelectedListener: OnDateTimeSelectedListener? = null
 
+    val selectedTab: DateTimePicker.Tab
+        get() = date_time_picker.selectedTab
+
     private var datePickMode: DatePickMode? = null
 
     fun setDate(date: ZonedDateTime) {
@@ -70,8 +73,8 @@ internal class DateTimePickerFragment : Fragment(), OnDateTimeSelectedListener {
         bundle.putSerializable(DateTimePickerExtras.DURATION, date_time_picker.timeSlot?.duration)
     }
 
-    override fun onDateTimeSelected(dateTime: ZonedDateTime) {
-        onDateTimeSelectedListener?.onDateTimeSelected(dateTime)
+    override fun onDateTimeSelected(dateTime: ZonedDateTime, duration: Duration) {
+        onDateTimeSelectedListener?.onDateTimeSelected(dateTime, duration)
     }
 
     private fun initUI() {

@@ -21,7 +21,8 @@ import android.view.ViewGroup
 import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.calendar.OnDateSelectedListener
 import com.microsoft.officeuifabric.util.DateStringUtils
-import com.microsoft.officeuifabric.util.startOfLocalDay
+import com.microsoft.officeuifabric.util.DateTimeUtils
+import com.microsoft.officeuifabric.util.getNumberOfDaysFrom
 import com.microsoft.officeuifabric.view.ResizableDialog
 import kotlinx.android.synthetic.main.dialog_date_time_picker.*
 import org.threeten.bp.Duration
@@ -35,6 +36,8 @@ import org.threeten.bp.ZonedDateTime
  */
 class DateTimePickerDialog : ResizableDialog(), Toolbar.OnMenuItemClickListener, OnDateTimeSelectedListener, OnDateSelectedListener {
     companion object {
+        private const val SELECTED_DATE_TIME_TAB = "selectedDateTimeTab"
+
         @JvmStatic
         fun newInstance(
             dateTime: ZonedDateTime,
@@ -45,12 +48,22 @@ class DateTimePickerDialog : ResizableDialog(), Toolbar.OnMenuItemClickListener,
             val args = Bundle()
             args.putSerializable(DateTimePickerExtras.DATE_TIME, dateTime)
             args.putSerializable(DateTimePickerExtras.DURATION, duration)
-            args.putSerializable(DateTimePickerExtras.DISPLAY_MODE, mode.defaultMode)
+            args.putSerializable(DateTimePickerExtras.DISPLAY_MODE, getDisplayMode(dateTime, duration, mode))
             args.putSerializable(DateTimePickerExtras.DATE_PICK_MODE, datePickMode)
 
             val dialog = DateTimePickerDialog()
             dialog.arguments = args
             return dialog
+        }
+
+        private fun getDisplayMode(dateTime: ZonedDateTime, duration: Duration, mode: Mode): DisplayMode {
+            if (mode != Mode.DATE) {
+                val endTime = dateTime.plus(duration)
+                val isSameDayEvent = DateTimeUtils.isSameDay(dateTime, endTime)
+                return if (isSameDayEvent) mode.defaultMode else DisplayMode.TIME
+            }
+
+            return mode.defaultMode
         }
     }
 
@@ -70,22 +83,26 @@ class DateTimePickerDialog : ResizableDialog(), Toolbar.OnMenuItemClickListener,
         val dateTimeTabIndex: Int,
         val initialIndex: Int
     ) {
-        DATE(true, false, false, false, 0, -1, 0),
-        DATE_TIME(true, true, true, false, 0, 1, 0),
-        TIME_DATE(true, true, true, false, 0, 1, 1),
-        DATE_TIME_RANGE(true, true, true, true, 0, 1, 1),
         ACCESSIBLE_DATE(false, true, false, false, -1, 0, 0),
         ACCESSIBLE_DATE_TIME(false, true, true, false, -1, 0, 0),
         ACCESSIBLE_DATE_TIME_RANGE(false, true, true, true, -1, 0, 0),
+        DATE(true, false, false, false, 0, -1, 0),
+        DATE_TIME(true, true, true, false, 0, 1, 0),
+        DATE_TIME_RANGE(true, true, true, true, 0, 1, 1),
+        TIME(false, false, true, true, -1, 0, 0),
+        TIME_DATE(true, true, true, false, 0, 1, 1),
     }
 
     var onDateTimePickedListener: OnDateTimePickedListener? = null
 
+    // A single point in time or the start time of an event
     private lateinit var dateTime: ZonedDateTime
     private lateinit var duration: Duration
     private lateinit var displayMode: DisplayMode
     private lateinit var datePickMode: DatePickMode
     private lateinit var pagerAdapter: DateTimePagerAdapter
+    private var selectedDateTimeTab: DateTimePicker.Tab = DateTimePicker.Tab.START_TIME
+        get() = pagerAdapter.dateTimePicker?.selectedTab ?: field ?: DateTimePicker.Tab.START_TIME
 
     private val animatorListener = object : AnimatorListenerAdapter() {
         override fun onAnimationCancel(animation: Animator) {
@@ -106,7 +123,6 @@ class DateTimePickerDialog : ResizableDialog(), Toolbar.OnMenuItemClickListener,
             val dateTimePicker = pagerAdapter.dateTimePicker
             if (position == displayMode.dateTabIndex && datePicker != null) {
                 view_pager.currentObject = datePicker
-
                 // We're switching from the tall time picker to the short date picker. Layout transition
                 // leaves blank white area below date picker. So manual animation is used here instead to avoid this.
                 enableLayoutTransition(false)
@@ -128,6 +144,10 @@ class DateTimePickerDialog : ResizableDialog(), Toolbar.OnMenuItemClickListener,
         duration = bundle.getSerializable(DateTimePickerExtras.DURATION) as Duration
         displayMode = bundle.getSerializable(DateTimePickerExtras.DISPLAY_MODE) as DisplayMode
         datePickMode = bundle.getSerializable(DateTimePickerExtras.DATE_PICK_MODE) as DatePickMode
+
+        savedInstanceState?.let {
+            selectedDateTimeTab = it.getSerializable(SELECTED_DATE_TIME_TAB) as DateTimePicker.Tab
+        }
     }
 
     override fun createContentView(inflater: LayoutInflater, parent: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -170,6 +190,7 @@ class DateTimePickerDialog : ResizableDialog(), Toolbar.OnMenuItemClickListener,
         bundle.putSerializable(DateTimePickerExtras.DURATION, duration)
         bundle.putSerializable(DateTimePickerExtras.DISPLAY_MODE, displayMode)
         bundle.putSerializable(DateTimePickerExtras.DATE_PICK_MODE, datePickMode)
+        bundle.putSerializable(SELECTED_DATE_TIME_TAB, selectedDateTimeTab)
     }
 
     override fun onMenuItemClick(item: MenuItem): Boolean {
@@ -182,11 +203,10 @@ class DateTimePickerDialog : ResizableDialog(), Toolbar.OnMenuItemClickListener,
 
     override fun onDateSelected(dateTime: ZonedDateTime) {
         if (datePickMode === DatePickMode.RANGE_END) {
-            val dateDayStart = this.dateTime.startOfLocalDay()
-            if (dateTime.isBefore(dateDayStart))
+            if (dateTime.isBefore(this.dateTime))
                 this.dateTime = dateTime.minus(duration)
             else
-                duration = Duration.between(dateDayStart, dateTime)
+                duration = this.dateTime.getNumberOfDaysFrom(dateTime)
         } else {
             this.dateTime = this.dateTime.with(dateTime.toLocalDate())
         }
@@ -196,10 +216,15 @@ class DateTimePickerDialog : ResizableDialog(), Toolbar.OnMenuItemClickListener,
         pagerAdapter.dateTimePicker?.setDate(this.dateTime)
     }
 
-    override fun onDateTimeSelected(dateTime: ZonedDateTime) {
+    override fun onDateTimeSelected(dateTime: ZonedDateTime, duration: Duration) {
+        this.duration = duration
         this.dateTime = dateTime
+
+        selectedDateTimeTab = pagerAdapter.dateTimePicker?.selectedTab ?: DateTimePicker.Tab.START_TIME
+
         updateTitles()
-        pagerAdapter.datePicker?.setTimeSlot(TimeSlot(this.dateTime, duration))
+
+        pagerAdapter.datePicker?.setTimeSlot(TimeSlot(this.dateTime, this.duration))
     }
 
     private fun updateTitles() {
@@ -221,12 +246,17 @@ class DateTimePickerDialog : ResizableDialog(), Toolbar.OnMenuItemClickListener,
                 val currentTab = view_pager.currentItem
                 toolbar.setTitle(if (currentTab == displayMode.dateTabIndex) R.string.date_time_picker_choose_date else R.string.date_time_picker_choose_time)
 
+                val tabDate = if (selectedDateTimeTab == DateTimePicker.Tab.END_TIME) dateTime.plus(duration) else dateTime
+
                 // Set tab titles
                 if (displayMode.dateTabIndex != -1)
-                    tabs.getTabAt(displayMode.dateTabIndex)?.text = DateStringUtils.formatDateWithWeekDay(context, dateTime)
+                    tabs.getTabAt(displayMode.dateTabIndex)?.text = DateStringUtils.formatDateWithWeekDay(
+                        context,
+                        if (currentTab == displayMode.dateTabIndex) dateTime else tabDate
+                    )
 
                 if (displayMode.dateTimeTabIndex != -1)
-                    tabs.getTabAt(displayMode.dateTimeTabIndex)?.text = DateStringUtils.formatAbbrevTime(context, dateTime)
+                    tabs.getTabAt(displayMode.dateTimeTabIndex)?.text = DateStringUtils.formatAbbrevTime(context, tabDate)
             }
         }
     }
@@ -253,7 +283,6 @@ class DateTimePickerDialog : ResizableDialog(), Toolbar.OnMenuItemClickListener,
                 datePicker?.onDateSelectedListener = this@DateTimePickerDialog
             } else if (position == displayMode.dateTimeTabIndex) {
                 dateTimePicker = fragment as DateTimePickerFragment
-                dateTimePicker?.arguments?.putSerializable(DateTimePickerExtras.DATE_PICK_MODE, DatePickMode.SINGLE)
                 dateTimePicker?.onDateTimeSelectedListener = this@DateTimePickerDialog
             }
 
