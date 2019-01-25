@@ -179,12 +179,12 @@ object DateTimeUtils {
         startDayOfWeek.value == day.dayOfWeek.value
 }
 
-fun ZonedDateTime.getNumberOfDaysFrom(endDateTime: ZonedDateTime): Duration {
-    // Reassigns endDateTime's time to the instance's time. This has the effect of normalizing the time and
+fun ZonedDateTime.getNumberOfDaysFrom(startDateTime: ZonedDateTime): Duration {
+    // Reassigns instance's time to the startDateTime's time. This has the effect of normalizing the time and
     // is useful for getting whole days between ZonedDateTimes when a start time is later than an end time
     // ie. start date time: 1/1/2019 1pm and end date time is 1/2/2019 10am. Duration is less than 24
     // hours so the calendar will only represent one day; however, when the time is normalized, the
     // representation on a calendar will cover two days, 1/1/2019 and 1/2/2019.
-    val normalizedDateTime = endDateTime.with(this.toLocalTime())
-    return Duration.between(this, normalizedDateTime)
+    val normalizedDateTime = this.with(startDateTime.toLocalTime())
+    return Duration.between(startDateTime, normalizedDateTime)
 }

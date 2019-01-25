@@ -206,7 +206,7 @@ class DateTimePickerDialog : ResizableDialog(), Toolbar.OnMenuItemClickListener,
             if (dateTime.isBefore(this.dateTime))
                 this.dateTime = dateTime.minus(duration)
             else
-                duration = this.dateTime.getNumberOfDaysFrom(dateTime)
+                duration = dateTime.getNumberOfDaysFrom(this.dateTime)
         } else {
             this.dateTime = this.dateTime.with(dateTime.toLocalDate())
         }
@@ -217,10 +217,8 @@ class DateTimePickerDialog : ResizableDialog(), Toolbar.OnMenuItemClickListener,
     }
 
     override fun onDateTimeSelected(dateTime: ZonedDateTime, duration: Duration) {
-        this.duration = duration
         this.dateTime = dateTime
-
-        selectedDateTimeTab = pagerAdapter.dateTimePicker?.selectedTab ?: DateTimePicker.Tab.START_TIME
+        this.duration = duration
 
         updateTitles()
 

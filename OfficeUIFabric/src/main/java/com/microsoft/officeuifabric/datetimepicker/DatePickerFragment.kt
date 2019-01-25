@@ -35,7 +35,7 @@ internal class DatePickerFragment : Fragment(), OnDateSelectedListener {
 
     fun setTimeSlot(timeSlot: TimeSlot) {
         date = timeSlot.start
-        duration = date.getNumberOfDaysFrom(date.plus(timeSlot.duration))
+        duration = date.plus(timeSlot.duration).getNumberOfDaysFrom(date)
         updateCalendarSelectedDateRange()
     }
 
@@ -87,7 +87,7 @@ internal class DatePickerFragment : Fragment(), OnDateSelectedListener {
                 if (date.isBefore(this.date))
                     this.date = date.minus(duration)
                 else
-                    duration = this.date.getNumberOfDaysFrom(date)
+                    duration = date.getNumberOfDaysFrom(this.date)
             }
         }
 

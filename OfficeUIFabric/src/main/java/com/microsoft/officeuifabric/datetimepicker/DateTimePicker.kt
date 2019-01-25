@@ -202,7 +202,6 @@ internal class DateTimePicker : LinearLayout, NumberPicker.OnValueChangeListener
             setFormatter(DateFormatter(context, today, daysBack))
             setOnValueChangedListener(this@DateTimePicker)
         }
-
     }
 
     private fun initHourPicker() {

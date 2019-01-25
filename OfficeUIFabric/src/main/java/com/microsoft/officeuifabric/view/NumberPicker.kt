@@ -1605,14 +1605,13 @@ internal class NumberPicker : LinearLayout {
         }
 
         val delta = mValue - value
-        var newValue = value
         if (delta > QUICK_ANIMATE_THRESHOLD) {
-            newValue += QUICK_ANIMATE_THRESHOLD
+            this.value = value + QUICK_ANIMATE_THRESHOLD
         } else if (delta < -QUICK_ANIMATE_THRESHOLD) {
-            newValue -= QUICK_ANIMATE_THRESHOLD
+            this.value = value - QUICK_ANIMATE_THRESHOLD
         }
 
-        animateValueTo(newValue)
+        animateValueTo(value)
     }
 
     /**
