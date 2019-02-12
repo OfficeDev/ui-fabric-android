@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import com.microsoft.officeuifabric.peoplepicker.PeoplePickerAccessibilityTextProvider
 import com.microsoft.officeuifabric.peoplepicker.PeoplePickerPersonaChipClickStyle
 import com.microsoft.officeuifabric.peoplepicker.PeoplePickerView
 import com.microsoft.officeuifabric.persona.IPersona
@@ -30,6 +31,7 @@ class PeoplePickerViewActivity : DemoActivity() {
         super.onCreate(savedInstanceState)
 
         samplePersonas = createPersonaList(this)
+        val accessibilityTextProvider = getAccessibilityTextProvider()
 
         // Use attributes to set personaChipClickStyle and label
 
@@ -53,11 +55,13 @@ class PeoplePickerViewActivity : DemoActivity() {
         people_picker_select.onCreatePersona = { name, email ->
             createCustomPersona(this, name, email)
         }
+        people_picker_select.accessibilityTextProvider = accessibilityTextProvider
 
         people_picker_select_deselect.availablePersonas = samplePersonas
         val selectDeselectPickedPersonas = arrayListOf(samplePersonas[2])
         people_picker_select_deselect.pickedPersonas = selectDeselectPickedPersonas
         people_picker_select_deselect.allowPersonaChipDragAndDrop = true
+        people_picker_select_deselect.accessibilityTextProvider = accessibilityTextProvider
 
         // Use code to set personaChipClickStyle and label
 
@@ -80,6 +84,16 @@ class PeoplePickerViewActivity : DemoActivity() {
             getString(R.string.people_picker_suggestions_listener),
             personaSuggestionsListener = createPersonaSuggestionsListener(samplePersonas)
         )
+    }
+
+    private fun getAccessibilityTextProvider() = object : PeoplePickerAccessibilityTextProvider(resources) {
+        override fun getPersonaQuantityText(personas: ArrayList<IPersona>): String {
+            return resources.getQuantityString(
+                R.plurals.people_picker_accessibility_text_view_example,
+                personas.size,
+                personas.size
+            )
+        }
     }
 
     private fun setupPeoplePickerView(

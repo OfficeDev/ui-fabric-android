@@ -22,6 +22,10 @@ import java.util.*
  * so we use an [ArrayAdapter] to generate the views instead of a [RecyclerView.Adapter].
  */
 internal class PeoplePickerTextViewAdapter : ArrayAdapter<IPersona>, Filterable {
+    private enum class ViewType {
+        PERSONA, SEARCH_DIRECTORY
+    }
+
     /**
      * Collection of [Persona] objects that hold data to create the [PersonaView]s
      */
@@ -53,9 +57,12 @@ internal class PeoplePickerTextViewAdapter : ArrayAdapter<IPersona>, Filterable 
     private var searchDirectoryView: View? = null
         set(value) {
             field = value
-            searchDirectoryTextView = value?.people_picker_search_directory_text
+            searchDirectoryView?.post {
+                // We set this in a post so that the we get the correct instance of the text view.
+                // This assumes that the first view is the correct view.
+                searchDirectoryTextView = value?.people_picker_search_directory_text
+            }
             value?.setOnClickListener(onSearchDirectoryButtonClicked)
-            updateSearchDirectoryText()
         }
     private var searchDirectoryTextView: TextView? = null
         set(value) {
@@ -78,32 +85,38 @@ internal class PeoplePickerTextViewAdapter : ArrayAdapter<IPersona>, Filterable 
 
     override fun getFilter(): Filter = filter
 
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        return if (isSearchDirectoryButtonPosition(position))
-            getSearchDirectoryView(parent)
+    override fun getItemViewType(position: Int): Int {
+        return if (position < personas.size)
+            ViewType.PERSONA.ordinal
         else
-            getPersonaView(convertView, position, parent)
+            ViewType.SEARCH_DIRECTORY.ordinal
+    }
+
+    override fun getViewTypeCount(): Int = ViewType.values().size
+
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+        return when (getItemViewType(position)) {
+            ViewType.PERSONA.ordinal -> getPersonaView(position, convertView, parent)
+            ViewType.SEARCH_DIRECTORY.ordinal -> getSearchDirectoryView(convertView, parent)
+            else -> throw IllegalStateException("ViewType expected")
+        }
     }
 
     private fun isSearchDirectoryButtonPosition(position: Int): Boolean = showSearchDirectoryButton && position == personas.size
 
-    private fun getPersonaView(convertView: View?, position: Int, parent: ViewGroup?): View {
+    private fun getPersonaView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val view = convertView as? PersonaView ?: PersonaView(context)
-        view.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
         view.avatarSize = AvatarSize.LARGE
         view.setPersona(personas[position])
         listView = parent as? ListView
         return view
     }
 
-    private fun getSearchDirectoryView(parent: ViewGroup?): View {
-        var view = searchDirectoryView
-        return if (view == null) {
-            view = LayoutInflater.from(context).inflate(R.layout.people_picker_search_directory, parent, false)
-            searchDirectoryView = view
-            view
-        } else
-            view
+    private fun getSearchDirectoryView(convertView: View?, parent: ViewGroup?): View {
+        // Need to use the convertView, otherwise accessibility focus breaks. Also more efficient.
+        val view = convertView ?: LayoutInflater.from(context).inflate(R.layout.people_picker_search_directory, parent, false)
+        searchDirectoryView = view
+        return view
     }
 
     private fun updateSearchDirectoryText() {

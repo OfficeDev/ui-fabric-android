@@ -37,6 +37,11 @@
     <string name="people_picker_picked_personas_listener">Personas Listener</string>
     <string name="people_picker_suggestions_listener">Suggestions Listener</string>
 
+    <plurals name="people_picker_accessibility_text_view_example">
+        <item quantity="one">%1$s recipient</item>
+        <item quantity="other">%1$s recipients</item>
+    </plurals>
+
     <!--Persona-->
     <string name="persona_email_allan_munger">amunger@microsoft.com</string>
     <string name="persona_email_amanda_brady">abrady@microsoft.com</string>

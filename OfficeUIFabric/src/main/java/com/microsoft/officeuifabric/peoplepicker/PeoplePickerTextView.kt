@@ -8,8 +8,12 @@ import android.content.ClipData
 import android.content.ClipDescription
 import android.content.Context
 import android.graphics.Rect
-import android.os.Handler
+import android.os.Build
+import android.os.Bundle
 import android.support.v4.content.ContextCompat
+import android.support.v4.view.ViewCompat
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat
+import android.support.v4.widget.ExploreByTouchHelper
 import android.text.InputFilter
 import android.text.SpannableString
 import android.text.Spanned
@@ -25,6 +29,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
 import android.view.accessibility.AccessibilityEvent
+import android.view.accessibility.AccessibilityNodeInfo
 import android.view.inputmethod.InputMethodManager
 import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.persona.IPersona
@@ -40,6 +45,8 @@ import com.tokenautocomplete.TokenCompleteTextView
  * Functionality we add in addition to [TokenCompleteTextView]'s functionality includes:
  * - Hiding the cursor when a token is selected
  * - Styling the [CountSpan]
+ * - Drag and drop option
+ * - Accessibility
  *
  * TODO Known issues:
  * - Using backspace to delete a selected token does not work if other text is entered in the input;
@@ -52,13 +59,17 @@ import com.tokenautocomplete.TokenCompleteTextView
  * -setTokenLimit is not working as intended. Need to debug this and add the public property back into the api.
  *
  * TODO Future work:
- * - Improve accessibility with something like the [TokenCompleteTextViewTouchHelper] class.
  * - Limit what appears in the long click context menu.
  * - Baseline align chips with other text.
  * - Improve vertical spacing for chips.
+ * - Add click api for persona chip and relevant accessibility events, including handling deselection
+ * - Announce already selected persona chips, may be related to this ^
  */
 internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
     companion object {
+        // Max number of personas the screen reader will announce on focus.
+        private const val MAX_PERSONAS_TO_READ = 3
+
         // Removes constraints to the input field
         private val noFilters = arrayOfNulls<InputFilter>(0)
         // Constrains changes that can be made to the input field to none
@@ -77,12 +88,45 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
      * Flag for enabling Drag and Drop persona chips.
      */
     var allowPersonaChipDragAndDrop: Boolean = false
+    /**
+     * Store the hint so that we can control when it is announced for accessibility
+     */
+    var valueHint: CharSequence = ""
+        set(value) {
+            field = value
+            hint = value
+        }
 
     lateinit var onCreatePersona: (name: String, email: String) -> IPersona
 
-    private val countSpan: CountSpan?
-        get() = text.getSpans(0, text.length, CountSpan::class.java).firstOrNull()
+    val countSpanStart: Int
+        get() = text.indexOfFirst { it == '+' }
+    private val countSpanEnd: Int
+        get() = text.length
+
+    private val accessibilityTouchHelper = AccessibilityTouchHelper(this)
     private var blockedMovementMethod: MovementMethod? = null
+    // Keep track of persona selection for accessibility events
+    private var selectedPersona: IPersona? = null
+        set(value) {
+            field = value
+            if (value != null)
+                blockInput()
+            else
+                unblockInput()
+        }
+    private var shouldAnnouncePersonaAddition: Boolean = false
+    private var shouldAnnouncePersonaRemoval: Boolean = true
+    private var searchConstraint: CharSequence = ""
+
+    init {
+        ViewCompat.setAccessibilityDelegate(this, accessibilityTouchHelper)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+            importantForAutofill = View.IMPORTANT_FOR_AUTOFILL_NO_EXCLUDE_DESCENDANTS
+
+        super.setTokenListener(TokenListener(this))
+    }
 
     // @JvmOverloads does not work in this scenario due to parameter defaults
     constructor(context: Context) : super(context)
@@ -100,11 +144,10 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
             }
 
             override fun onSelected(selected: Boolean) {
-                if (selected) {
-                    blockInput()
-                } else {
-                    unblockInput()
-                }
+                if (selected)
+                    selectedPersona = `object`
+                else
+                    selectedPersona = null
             }
         }
         view.setPersona(`object`)
@@ -119,49 +162,62 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
     }
 
     override fun performCollapse(hasFocus: Boolean) {
+        if (getOriginalCountSpan() == null)
+            removeCountSpanText()
+
         super.performCollapse(hasFocus)
 
-        // Replace the CountSpan with a custom styled span
-        val countSpan = countSpan
-        if (countSpan == null) {
-            removeReplacementCountSpan()
-        } else {
-            val countSpanStart = text.indexOfLast { it == '+' }
-            val countSpanEnd = text.length
-            text.removeSpan(countSpan)
-            val replacementCountSpan = SpannableString(countSpan.text)
-            replacementCountSpan.setSpan(
-                TextAppearanceSpan(context, R.style.TextAppearance_UIFabric_PeoplePickerCountSpan),
-                0,
-                replacementCountSpan.length,
-                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-            )
-            text.replace(countSpanStart, countSpanEnd, replacementCountSpan)
-        }
+        // Remove viewPadding for single line to fix jittery virtual view bounds in ExploreByTouch.
+        if (!hasFocus())
+            setPadding(0, 0, 0, 0)
+        else
+            setPadding(0, resources.getDimension(R.dimen.uifabric_people_picker_text_view_padding).toInt(), 0, resources.getDimension(R.dimen.uifabric_people_picker_text_view_padding).toInt())
+
+        updateCountSpanStyle()
     }
 
     override fun onFocusChanged(hasFocus: Boolean, direction: Int, previous: Rect?) {
         super.onFocusChanged(hasFocus, direction, previous)
 
-        val inputmethodManager: InputMethodManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        if (hasFocus) {
-            // Soft keyboard does not always show up without this
-            Handler().post {
-                inputmethodManager.showSoftInput(this, InputMethodManager.SHOW_IMPLICIT)
+        val inputMethodManager: InputMethodManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        // Soft keyboard does not always show up without this
+        if (hasFocus)
+            post {
+                inputMethodManager.showSoftInput(this, InputMethodManager.SHOW_IMPLICIT)
             }
-        } else {
-            inputmethodManager.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_IMPLICIT_ONLY);
-        }
+        else
+            inputMethodManager.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_IMPLICIT_ONLY)
     }
 
     override fun onSelectionChanged(selStart: Int, selEnd: Int) {
         // super.onSelectionChanged is buggy, but we still need the accessibility event from the super super call.
         sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_TEXT_SELECTION_CHANGED)
+        // This fixes buggy cursor position in accessibility mode.
+        setSelection(text.length)
     }
 
     override fun onTextChanged(text: CharSequence?, start: Int, lengthBefore: Int, lengthAfter: Int) {
         super.onTextChanged(text, start, lengthBefore, lengthAfter)
-        unblockInput()
+        selectedPersona = null
+
+        if (lengthAfter > lengthBefore || lengthAfter < lengthBefore && !text.isNullOrEmpty())
+            setupSearchConstraint(text)
+    }
+
+    override fun replaceText(text: CharSequence?) {
+        shouldAnnouncePersonaAddition = true
+        super.replaceText(text)
+    }
+
+    override fun canDeleteSelection(beforeLength: Int): Boolean {
+        // This method is called from keyboard events so any token removed would be coming from the user.
+        shouldAnnouncePersonaRemoval = true
+        return super.canDeleteSelection(beforeLength)
+    }
+
+    override fun removeObject(`object`: IPersona?) {
+        shouldAnnouncePersonaRemoval = false
+        super.removeObject(`object`)
     }
 
     internal fun removeObjects(personas: List<IPersona>?) {
@@ -174,13 +230,42 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
             i++
         }
 
-        removeReplacementCountSpan()
+        removeCountSpanText()
     }
 
-    private fun removeReplacementCountSpan() {
-        val replacementCountSpanStart = text.indexOfFirst { it == '+' }
-        if (replacementCountSpanStart > -1)
-            text.delete(replacementCountSpanStart, text.length)
+    private fun setupSearchConstraint(text: CharSequence?) {
+        accessibilityTouchHelper.invalidateRoot()
+        val personaSpanEnd = text?.indexOfLast { it == ',' }?.plus(1) ?: -1
+        searchConstraint = when {
+            // Ignore the count span
+            countSpanStart != -1 -> ""
+            // If we have personas, we'll also have comma tokenizers to remove from the text
+            personaSpanEnd > 0 -> text?.removeRange(text.indexOfFirst { it == ',' }, personaSpanEnd)?.trim() ?: ""
+            // Any other characters will be used as the search constraint to perform filtering.
+            else -> text ?: ""
+        }
+        // This keeps the entered text accessibility focused as the user types, which makes the suggested personas list the next focusable view.
+        accessibilityTouchHelper.sendEventForVirtualView(objects.size, AccessibilityEvent.TYPE_VIEW_ACCESSIBILITY_FOCUSED)
+    }
+
+    private fun updateCountSpanStyle() {
+        val originalCountSpan = getOriginalCountSpan() ?: return
+
+        text.removeSpan(originalCountSpan)
+        val replacementCountSpan = SpannableString(originalCountSpan.text)
+        replacementCountSpan.setSpan(
+            TextAppearanceSpan(context, R.style.TextAppearance_UIFabric_PeoplePickerCountSpan),
+            0,
+            replacementCountSpan.length,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        text.replace(countSpanStart, countSpanEnd, replacementCountSpan)
+    }
+
+    private fun removeCountSpanText() {
+        val countSpanStart = countSpanStart
+        if (countSpanStart > -1)
+            text.delete(countSpanStart, countSpanEnd)
     }
 
     private fun isEmailValid(email: CharSequence): Boolean = Patterns.EMAIL_ADDRESS.matcher(email).matches()
@@ -203,6 +288,35 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
             movementMethod = blockedMovementMethod
     }
 
+    private fun getPersonaSpans(start: Int = 0, end: Int = text.length): Array<TokenCompleteTextView<IPersona>.TokenImageSpan> =
+        text.getSpans(start, end, TokenImageSpan::class.java) as Array<TokenCompleteTextView<IPersona>.TokenImageSpan>
+
+    private fun getOriginalCountSpan(): CountSpan? =
+        text.getSpans(0, text.length, CountSpan::class.java).firstOrNull()
+
+    private fun getSpanForPersona(persona: Any): TokenImageSpan? =
+        getPersonaSpans().firstOrNull { it.token === persona }
+
+    // Token listener
+
+    private var tokenListener: TokenCompleteTextView.TokenListener<IPersona>? = null
+
+    override fun setTokenListener(l: TokenCompleteTextView.TokenListener<IPersona>?) {
+        tokenListener = l
+    }
+
+    private class TokenListener(val view: PeoplePickerTextView) : TokenCompleteTextView.TokenListener<IPersona> {
+        override fun onTokenAdded(token: IPersona) {
+            view.tokenListener?.onTokenAdded(token)
+            view.announcePersonaAdded(token)
+        }
+
+        override fun onTokenRemoved(token: IPersona) {
+            view.tokenListener?.onTokenRemoved(token)
+            view.announcePersonaRemoved(token)
+        }
+    }
+
     // Drag and drop
 
     private var isDraggingPersonaChip: Boolean = false
@@ -213,7 +327,7 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
     override fun onTouchEvent(event: MotionEvent): Boolean {
         var handled = false
 
-        if (personaChipClickStyle == TokenClickStyle.None)
+        if (personaChipClickStyle == PeoplePickerPersonaChipClickStyle.None)
             handled = super.onTouchEvent(event)
 
         val touchedPersonaSpan = getPersonaSpanAt(event.x, event.y)
@@ -221,8 +335,6 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
         if (touchedPersonaSpan != null) {
             when (event.actionMasked) {
                 MotionEvent.ACTION_DOWN -> {
-                    if (!isFocused)
-                        requestFocus()
                     if (allowPersonaChipDragAndDrop) {
                         initialTouchedPersonaSpan = touchedPersonaSpan
                         firstTouchX = event.x
@@ -246,6 +358,8 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
                 MotionEvent.ACTION_UP -> {
                     if (isFocused && text != null && initialTouchedPersonaSpan == touchedPersonaSpan)
                         touchedPersonaSpan.onClick()
+                    if (!isFocused)
+                        requestFocus()
                     initialTouchedPersonaSpan = null
                     handled = true
                 }
@@ -256,7 +370,7 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
             }
         }
 
-        if (!handled && personaChipClickStyle != TokenClickStyle.None)
+        if (!handled && personaChipClickStyle != PeoplePickerPersonaChipClickStyle.None)
             handled = super.onTouchEvent(event)
 
         return handled
@@ -324,16 +438,14 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
     }
 
     private fun getPersonaSpanAt(x: Float, y: Float): TokenImageSpan? {
-        if (TextUtils.isEmpty(text))
+        if (text.isEmpty())
             return null
 
         val offset = getOffsetForPosition(x, y)
         if (offset == -1)
             return null
 
-        val personaSpans = text.getSpans(offset, offset, TokenImageSpan::class.java)
-            as Array<TokenCompleteTextView<IPersona>.TokenImageSpan>
-        return personaSpans.firstOrNull()
+        return getPersonaSpans(offset, offset).firstOrNull()
     }
 
     private fun addPersonaFromDragEvent(event: DragEvent): Boolean {
@@ -349,5 +461,297 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
         addObject(persona)
 
         return true
+    }
+
+    // Accessibility
+
+    private var customAccessibilityTextProvider: PeoplePickerAccessibilityTextProvider? = null
+    private val defaultAccessibilityTextProvider = PeoplePickerAccessibilityTextProvider(resources)
+    val accessibilityTextProvider: PeoplePickerAccessibilityTextProvider
+        get() = customAccessibilityTextProvider ?: defaultAccessibilityTextProvider
+
+    fun setAccessibilityTextProvider(accessibilityTextProvider: PeoplePickerAccessibilityTextProvider?) {
+        customAccessibilityTextProvider = accessibilityTextProvider
+    }
+
+    override fun dispatchHoverEvent(motionEvent: MotionEvent): Boolean {
+        // Accessibility first
+        return if (accessibilityTouchHelper.dispatchHoverEvent(motionEvent))
+            true
+        else
+            super.dispatchHoverEvent(motionEvent)
+    }
+
+    private fun announcePersonaAdded(persona: IPersona) {
+        accessibilityTouchHelper.invalidateRoot()
+
+        val replacedText = if (searchConstraint.isNotEmpty())
+            "${resources.getString(R.string.people_picker_accessibility_replaced, searchConstraint)} "
+        else
+            ""
+
+        // We only want to announce when a persona was added by a user.
+        // If text has been replaced in the text editor and a token was added, the user added a token.
+        if (shouldAnnouncePersonaAddition) {
+            announceForAccessibility("$replacedText ${getAnnouncementText(
+                persona,
+                R.string.people_picker_accessibility_persona_added
+            )}")
+        }
+    }
+
+    private fun announcePersonaRemoved(persona: IPersona) {
+        accessibilityTouchHelper.invalidateRoot()
+
+        // We only want to announce when a persona was removed by a user.
+        if (shouldAnnouncePersonaRemoval) {
+            announceForAccessibility(getAnnouncementText(
+                persona,
+                R.string.people_picker_accessibility_persona_removed
+            ))
+        }
+    }
+
+    private fun getAnnouncementText(persona: IPersona, stringResourceId: Int): CharSequence =
+        resources.getString(stringResourceId, accessibilityTextProvider.getPersonaDescription(persona))
+
+    private fun positionIsInsidePersonaBounds(x: Float, y: Float, personaSpan: TokenImageSpan?): Boolean =
+        getBoundsForPersonaSpan(personaSpan).contains(x.toInt(), y.toInt())
+
+    private fun positionIsInsideSearchConstraintBounds(x: Float, y: Float): Boolean {
+        if (searchConstraint.isNotEmpty())
+            return getBoundsForSearchConstraint().contains(x.toInt(), y.toInt())
+        return false
+    }
+
+    private fun getBoundsForSearchConstraint(): Rect {
+        val start = text.indexOf(searchConstraint[0])
+        val end = text.length
+        return calculateBounds(start, end, resources.getDimension(R.dimen.uifabric_people_picker_accessibility_search_constraint_extra_space).toInt())
+    }
+
+    private fun getBoundsForPersonaSpan(personaSpan: TokenImageSpan? = null): Rect {
+        val start = text.getSpanStart(personaSpan)
+        val end = text.getSpanEnd(personaSpan)
+        return calculateBounds(start, end)
+    }
+
+    private fun calculateBounds(start: Int, end: Int, extraSpaceForLegibility: Int = 0): Rect {
+        val line = layout.getLineForOffset(end)
+        // Persona spans increase line height. Without them, we need to make the virtual view bound bottom lower.
+        val bounds = Rect(
+            layout.getPrimaryHorizontal(start).toInt() - extraSpaceForLegibility,
+            layout.getLineTop(line),
+            layout.getPrimaryHorizontal(end).toInt() + extraSpaceForLegibility,
+            if (getPersonaSpans().isEmpty()) bottom else layout.getLineBottom(line)
+        )
+        bounds.offset(paddingLeft, paddingTop)
+        return bounds
+    }
+
+    private fun setHint() {
+        if (!isFocused)
+        // If the edit box is not focused, there is no event that requires a hint.
+            hint = ""
+        else
+            hint = valueHint
+    }
+
+    private inner class AccessibilityTouchHelper(host: View) : ExploreByTouchHelper(host) {
+        // Host
+
+        val peoplePickerTextViewBounds = Rect(0, 0, width, height)
+
+        override fun onInitializeAccessibilityNodeInfo(host: View, info: AccessibilityNodeInfoCompat) {
+            super.onInitializeAccessibilityNodeInfo(host, info)
+            setHint()
+            setInfoText(info)
+        }
+
+        override fun onPopulateAccessibilityEvent(host: View?, event: AccessibilityEvent?) {
+            super.onPopulateAccessibilityEvent(host, event)
+            /**
+             * The CommaTokenizer is confusing in the screen reader.
+             * This overrides announcements that include the CommaTokenizer.
+             * We handle cases for replaced text and persona spans added / removed through callbacks.
+             */
+            if (event?.eventType == AccessibilityEvent.TYPE_VIEW_TEXT_CHANGED)
+                event.text.clear()
+        }
+
+        private fun setInfoText(info: AccessibilityNodeInfoCompat) {
+            val personas = objects
+            if (personas == null || personas.isEmpty())
+                return
+
+            var infoText = ""
+            // Read all of the personas if the list of personas in the field is short
+            // Otherwise, read how many personas are in the field
+            if (personas.size <= MAX_PERSONAS_TO_READ)
+                infoText += personas.map { accessibilityTextProvider.getPersonaDescription(it) }.joinToString { it }
+            else
+                infoText = accessibilityTextProvider.getPersonaQuantityText(personas as ArrayList<IPersona>)
+
+            info.text = infoText +
+                // Also ready any entered text in the field
+                if (searchConstraint.isNotEmpty())
+                    ", $searchConstraint"
+                else
+                    ""
+        }
+
+        // Virtual views
+
+        override fun getVirtualViewAt(x: Float, y: Float): Int {
+            if (objects == null || objects.size == 0)
+                return ExploreByTouchHelper.INVALID_ID
+
+            val offset = getOffsetForPosition(x, y)
+            if (offset != -1) {
+                val personaSpan = getPersonaSpans(offset, offset).firstOrNull()
+                if (personaSpan != null && positionIsInsidePersonaBounds(x, y, personaSpan) && isFocused)
+                    return objects.indexOf(personaSpan.token)
+                else if (searchConstraint.isNotEmpty() && positionIsInsideSearchConstraintBounds(x, y))
+                    return objects.size
+                else if (peoplePickerTextViewBounds.contains(x.toInt(), y.toInt())) {
+                    sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_ACCESSIBILITY_FOCUSED)
+                    return ExploreByTouchHelper.HOST_ID
+                }
+            }
+
+            return ExploreByTouchHelper.INVALID_ID
+        }
+
+        override fun getVisibleVirtualViews(virtualViewIds: MutableList<Int>) {
+            virtualViewIds.clear()
+
+            if (objects == null || objects.size == 0 || !isFocused)
+                return
+
+            for (i in objects.indices)
+                virtualViewIds.add(i)
+
+            if (searchConstraint.isNotEmpty())
+                virtualViewIds.add(objects.size)
+        }
+
+        override fun onPopulateEventForVirtualView(virtualViewId: Int, event: AccessibilityEvent) {
+            if (objects == null || virtualViewId >= objects.size) {
+                // The content description is mandatory.
+                event.contentDescription = ""
+                return
+            }
+
+            if (!isFocused) {
+                // Only respond to events for persona chips if the edit box is focused.
+                // Without this the user still gets haptic feedback when hovering over a persona chip.
+                event.recycle()
+                event.contentDescription = ""
+                return
+            }
+
+            if (virtualViewId == objects.size) {
+                event.contentDescription = searchConstraint
+                return
+            }
+
+            val persona = objects[virtualViewId]
+            val personaSpan = getSpanForPersona(persona)
+            if (personaSpan != null)
+                event.contentDescription = accessibilityTextProvider.getPersonaDescription(persona)
+
+            if (event.eventType == AccessibilityEvent.TYPE_VIEW_SELECTED)
+                event.contentDescription = String.format(
+                    resources.getString(R.string.people_picker_accessibility_selected_persona),
+                    event.contentDescription
+                )
+        }
+
+        override fun onPopulateNodeForVirtualView(virtualViewId: Int, node: AccessibilityNodeInfoCompat) {
+            if (objects == null || virtualViewId > objects.size) {
+                // the content description & the bounds are mandatory.
+                node.contentDescription = ""
+                node.setBoundsInParent(peoplePickerTextViewBounds)
+                return
+            }
+
+            if (!isFocused) {
+                // Only populate nodes for persona chips if the edit box is focused.
+                node.recycle()
+                node.contentDescription = ""
+                node.setBoundsInParent(peoplePickerTextViewBounds)
+                return
+            }
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                val clickAction = AccessibilityNodeInfoCompat.AccessibilityActionCompat(
+                    AccessibilityNodeInfoCompat.ACTION_CLICK,
+                    resources.getString(R.string.people_picker_accessibility_select_persona)
+                )
+                node.addAction(clickAction)
+            } else {
+                node.addAction(AccessibilityNodeInfoCompat.ACTION_CLICK)
+            }
+
+            if (virtualViewId == objects.size) {
+                if (searchConstraint.isNotEmpty()){
+                    node.contentDescription = searchConstraint
+                    node.setBoundsInParent(getBoundsForSearchConstraint())
+                } else {
+                    node.contentDescription = ""
+                    node.setBoundsInParent(peoplePickerTextViewBounds)
+                }
+                return
+            }
+
+            val persona = objects[virtualViewId]
+            val personaSpan = getSpanForPersona(persona)
+            if (personaSpan != null) {
+                if (node.isAccessibilityFocused)
+                    node.contentDescription = accessibilityTextProvider.getPersonaDescription(persona)
+                else
+                    node.contentDescription = ""
+                node.setBoundsInParent(getBoundsForPersonaSpan(personaSpan))
+            }
+        }
+
+        override fun onPerformActionForVirtualView(virtualViewId: Int, action: Int, arguments: Bundle?): Boolean {
+            if (objects == null || virtualViewId >= objects.size)
+                return false
+
+            if (AccessibilityNodeInfo.ACTION_CLICK == action) {
+                val persona = objects[virtualViewId]
+                val personaSpan = getSpanForPersona(persona)
+                if (personaSpan != null) {
+                    personaSpan.onClick()
+                    onPersonaSpanAccessibilityClick(personaSpan)
+                    shouldAnnouncePersonaRemoval = true
+                    return true
+                }
+            }
+
+            return false
+        }
+
+        private fun onPersonaSpanAccessibilityClick(personaSpan: TokenImageSpan) {
+            val personaSpanIndex = getPersonaSpans().indexOf(personaSpan)
+            when (personaChipClickStyle) {
+                PeoplePickerPersonaChipClickStyle.Select, PeoplePickerPersonaChipClickStyle.SelectDeselect -> {
+                    if (selectedPersona != null && selectedPersona == personaSpan.token) {
+                        invalidateVirtualView(personaSpanIndex)
+                        sendEventForVirtualView(personaSpanIndex, AccessibilityEvent.TYPE_VIEW_CLICKED)
+                        sendEventForVirtualView(personaSpanIndex, AccessibilityEvent.TYPE_VIEW_SELECTED)
+                    } else {
+                        sendEventForVirtualView(personaSpanIndex, AccessibilityEvent.TYPE_VIEW_CLICKED)
+                        if (personaChipClickStyle == PeoplePickerPersonaChipClickStyle.Select && personaSpanIndex == -1)
+                            invalidateRoot()
+                    }
+                }
+                PeoplePickerPersonaChipClickStyle.Delete -> {
+                    sendEventForVirtualView(personaSpanIndex, AccessibilityEvent.TYPE_VIEW_CLICKED)
+                    sendEventForVirtualView(personaSpanIndex, AccessibilityEvent.TYPE_VIEW_ACCESSIBILITY_FOCUS_CLEARED)
+                }
+            }
+        }
     }
 }

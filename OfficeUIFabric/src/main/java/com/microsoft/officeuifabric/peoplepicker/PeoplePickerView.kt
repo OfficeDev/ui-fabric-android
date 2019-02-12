@@ -10,6 +10,7 @@ import android.graphics.Rect
 import android.util.AttributeSet
 import android.view.View.OnClickListener
 import android.view.ViewGroup
+import android.view.accessibility.AccessibilityEvent
 import android.widget.Filter
 import android.widget.TextView
 import com.microsoft.officeuifabric.R
@@ -42,7 +43,7 @@ class PeoplePickerView : TemplateView {
     /**
      * [valueHint] is important for accessibility but will not be displayed.
      */
-    var valueHint: String = context.getString(R.string.people_picker_default_hint)
+    var valueHint: String = context.getString(R.string.people_picker_accessibility_default_hint)
         set(value) {
             if (field == value)
                 return
@@ -133,6 +134,17 @@ class PeoplePickerView : TemplateView {
             field = value
             updateViews()
         }
+    /**
+     * Customizes text announced by the screen reader.
+     * If there is no custom accessibility text, we use default text.
+     */
+    var accessibilityTextProvider: PeoplePickerAccessibilityTextProvider? = null
+        set(value) {
+            if (field == value)
+                return
+            field = value
+            updateViews()
+        }
 
     /**
      * Callback to use your own [IPersona] object in place of our default [Persona].
@@ -182,7 +194,7 @@ class PeoplePickerView : TemplateView {
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
         val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.PeoplePickerView)
         label = styledAttrs.getString(R.styleable.PeoplePickerView_label) ?: ""
-        valueHint = styledAttrs.getString(R.styleable.PeoplePickerView_valueHint) ?: ""
+        valueHint = styledAttrs.getString(R.styleable.PeoplePickerView_valueHint) ?: context.getString(R.string.people_picker_accessibility_default_hint)
         val personaChipClickStyleOrdinal = styledAttrs.getInt(R.styleable.PeoplePickerView_personaChipClickStyle, PeoplePickerPersonaChipClickStyle.Select.ordinal)
         personaChipClickStyle = PeoplePickerPersonaChipClickStyle.values()[personaChipClickStyleOrdinal]
 
@@ -210,34 +222,47 @@ class PeoplePickerView : TemplateView {
 
         updatePersonaChips()
         updateViews()
+        addLabelClickListenerForAccessibility()
 
         super.onTemplateLoaded()
+    }
+
+    private fun updatePersonaChips() {
+        peoplePickerTextView?.let {
+            it.removeObjects(it.objects)
+            for (persona in pickedPersonas)
+                it.addObject(persona)
+        }
     }
 
     private fun updateViews() {
         labelTextView?.text = label
         peoplePickerTextView?.apply {
+            valueHint = this@PeoplePickerView.valueHint
             allowCollapse(allowCollapse)
             allowDuplicates(allowDuplicatePersonaChips)
             threshold = characterThreshold
             setAdapter(peoplePickerTextViewAdapter)
             personaChipClickStyle = this@PeoplePickerView.personaChipClickStyle
-            hint = valueHint
             allowPersonaChipDragAndDrop = this@PeoplePickerView.allowPersonaChipDragAndDrop
             onCreatePersona = ::createPersona
+            setAccessibilityTextProvider(this@PeoplePickerView.accessibilityTextProvider)
         }
         peoplePickerTextViewAdapter?.showSearchDirectoryButton = showSearchDirectoryButton
     }
 
-    private fun updatePersonaChips() {
-        peoplePickerTextView?.removeObjects(peoplePickerTextView?.objects)
-        for (persona in pickedPersonas)
-            peoplePickerTextView?.addObject(persona)
+    private fun addLabelClickListenerForAccessibility() {
+        labelTextView?.setOnClickListener {
+            val accessibilityNodeInfo = it?.createAccessibilityNodeInfo()
+            if (accessibilityNodeInfo?.isAccessibilityFocused == true) {
+                peoplePickerTextView?.requestFocus()
+                peoplePickerTextView?.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_ACCESSIBILITY_FOCUSED)
+            }
+        }
     }
 
-    private fun createPersona(name: String, email: String): IPersona {
-        return onCreatePersona?.invoke(name, email) ?: Persona(name, email)
-    }
+    private fun createPersona(name: String, email: String): IPersona =
+        onCreatePersona?.invoke(name, email) ?: Persona(name, email)
 
     // Dropdown
 
@@ -322,14 +347,21 @@ class PeoplePickerView : TemplateView {
 
         override fun publishResults(constraint: CharSequence?, results: Filter.FilterResults) {
             val listener = view.personaSuggestionsListener
+            val accessibilityTextProvider = view.peoplePickerTextView?.accessibilityTextProvider
+            val countSpanStart = view.peoplePickerTextView?.countSpanStart
             if (listener != null) {
                 listener.onGetSuggestedPersonas(constraint, view.availablePersonas, view.pickedPersonas) {
                     view.post {
                         view.peoplePickerTextViewAdapter?.personas = it
+                        if (constraint != null && countSpanStart == -1)
+                            view.announceForAccessibility(accessibilityTextProvider?.getPersonaSuggestionsOpenedText(it))
                     }
                 }
             } else {
-                view.peoplePickerTextViewAdapter?.personas = results.values as ArrayList<IPersona>
+                val personas = results.values as ArrayList<IPersona>
+                view.peoplePickerTextViewAdapter?.personas = personas
+                if (constraint != null && countSpanStart == -1)
+                    view.announceForAccessibility(accessibilityTextProvider?.getPersonaSuggestionsOpenedText(personas))
             }
         }
     }

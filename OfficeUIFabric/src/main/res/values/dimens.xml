@@ -40,12 +40,13 @@
     <dimen name="uifabric_number_picker_padding_right">8dp</dimen>
 
     <!--PeoplePicker-->
-    <dimen name="uifabric_people_picker_popup_elevation">0dp</dimen>
+    <dimen name="uifabric_people_picker_accessibility_search_constraint_extra_space">5dp</dimen>
     <dimen name="uifabric_people_picker_dropdown_vertical_offset">0dp</dimen>
-    <dimen name="uifabric_people_picker_text_view_padding">6dp</dimen>
+    <dimen name="uifabric_people_picker_popup_elevation">0dp</dimen>
     <dimen name="uifabric_people_picker_search_directory_min_height">56dp</dimen>
     <dimen name="uifabric_people_picker_search_directory_padding_horizontal">@dimen/uifabric_content_inset</dimen>
     <dimen name="uifabric_people_picker_search_directory_padding_vertical">12dp</dimen>
+    <dimen name="uifabric_people_picker_text_view_padding">6dp</dimen>
 
     <!--Persona-->
     <dimen name="uifabric_persona_horizontal_spacing">@dimen/uifabric_content_inset</dimen>
