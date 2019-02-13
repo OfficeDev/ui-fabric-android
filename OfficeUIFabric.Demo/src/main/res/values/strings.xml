@@ -121,6 +121,20 @@
     <string name="cell_example_title">Title: Cell</string>
     <string name="cell_example_description">Description: Tap to change orientation</string>
 
+    <!--Snackbar-->
+    <string name="snackbar_action">Action</string>
+    <string name="snackbar_action_long">Long Text Action</string>
+    <string name="snackbar_announcement">This is an announcement snackbar. It’s used for communicating new features.</string>
+    <string name="snackbar_button_single_line">Single-line</string>
+    <string name="snackbar_button_multi_line">Multi-line</string>
+    <string name="snackbar_button_single_line_action">Single-line with action</string>
+    <string name="snackbar_button_multi_line_action">Multi-line with action</string>
+    <string name="snackbar_button_multi_line_action_long">Multi-line with long action text</string>
+    <string name="snackbar_button_announcement">Announcement style</string>
+    <string name="snackbar_multi_line">This is a multi-line snackbar. Max lines are set to two, the rest of the text will truncate.
+        Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
+    <string name="snackbar_single_line">Single-line snackbar</string>
+
     <!--Typography-->
     <string name="headline">Headline</string>
     <string name="title_1">Title 1</string>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:divider="@drawable/demo_divider"
+    android:orientation="vertical"
+    android:padding="@dimen/default_layout_margin"
+    android:showDividers="middle">
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btn_snackbar_single_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/snackbar_button_single_line" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btn_snackbar_multi_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/snackbar_button_multi_line" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btn_snackbar_single_line_action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/snackbar_button_single_line_action" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btn_snackbar_multi_line_action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/snackbar_button_multi_line_action" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btn_snackbar_multi_line_long_action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/snackbar_button_multi_line_action_long" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btn_snackbar_announcement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/snackbar_button_announcement" />
+
+</LinearLayout>

@@ -65,4 +65,13 @@
     <dimen name="uifabric_corner_radius_2dp">2dp</dimen>
     <dimen name="uifabric_min_touch_size">48dp</dimen>
     <dimen name="uifabric_content_inset">16dp</dimen>
+
+    <!-- Snackbar -->
+    <dimen name="uifabric_snackbar_action_min_size">0dp</dimen>
+    <dimen name="uifabric_snackbar_action_spacing">7dp</dimen>
+    <dimen name="uifabric_snackbar_action_text_wrapping_width">100dp</dimen>
+    <dimen name="uifabric_snackbar_announcement_icon_size">24dp</dimen>
+    <dimen name="uifabric_snackbar_background_inset">8dp</dimen>
+    <dimen name="uifabric_snackbar_background_corner_radius">4dp</dimen>
+    <dimen name="uifabric_snackbar_content_inset">@dimen/uifabric_content_inset</dimen>
 </resources>

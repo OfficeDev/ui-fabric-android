@@ -61,6 +61,11 @@
     </style>
     <style name="TextAppearance.UIFabric.PersonaFooter" parent="TextAppearance.UIFabric.LightCaption" />
 
+    <!--Snackbar-->
+    <style name="TextAppearance.UIFabric.SnackbarText" parent="TextAppearance.UIFabric.Body1">
+        <item name="android:textColor">@color/uifabric_snackbar_text</item>
+    </style>
+
     <!-- TabLayout -->
     <style name="Widget.UIFabric.TabLayout" parent="Widget.Design.TabLayout">
         <item name="tabGravity">center</item>

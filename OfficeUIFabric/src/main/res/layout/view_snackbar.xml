@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Copyright (c) 2018. Microsoft Corporation. All rights reserved.-->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/uifabric_snackbar_background_inset"
+    android:minHeight="@dimen/uifabric_min_touch_size">
+
+    <ImageView
+        android:id="@+id/snackbar_icon"
+        android:layout_width="@dimen/uifabric_snackbar_announcement_icon_size"
+        android:layout_height="@dimen/uifabric_snackbar_announcement_icon_size"
+        android:layout_gravity="center_vertical|start"
+        android:layout_marginStart="@dimen/uifabric_snackbar_content_inset"
+        android:layout_marginTop="@dimen/uifabric_snackbar_content_inset"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/snackbar_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|start"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:maxLines="@integer/snackbar_max_lines"
+        android:textAppearance="@style/TextAppearance.UIFabric.SnackbarText" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/snackbar_action"
+        style="?attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|end"
+        android:minWidth="@dimen/uifabric_snackbar_action_min_size"
+        android:minHeight="@dimen/uifabric_snackbar_action_min_size"
+        android:visibility="gone" />
+
+</RelativeLayout>
