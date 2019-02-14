@@ -9,19 +9,19 @@ import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.util.AttributeSet
-import android.view.LayoutInflater
 import android.view.View
-import android.widget.LinearLayout
+import android.widget.TextView
 import com.microsoft.officeuifabric.R
+import com.microsoft.officeuifabric.view.TemplateView
 import kotlinx.android.synthetic.main.view_persona.view.*
 
 /**
- * [PersonaView] is a custom compound ViewGroup. It is comprised of an [AvatarView] and three TextViews, all single line by default.
+ * [PersonaView] is comprised of an [AvatarView] and three TextViews, all single line by default.
  * [AvatarSize.SMALL], [AvatarSize.LARGE], and [AvatarSize.XXLARGE] are the recommended AvatarSizes to use with [PersonaView].
  * [AvatarSize.SMALL] will only have name text. [AvatarSize.LARGE] should use both name and subtitle texts.
  * [AvatarSize.XXLARGE] should use name, subtitle, and footer texts.
  */
-class PersonaView : LinearLayout {
+class PersonaView : TemplateView {
     companion object {
         val personaAvatarSizes = arrayOf(AvatarSize.SMALL, AvatarSize.LARGE, AvatarSize.XXLARGE)
 
@@ -49,8 +49,11 @@ class PersonaView : LinearLayout {
                     Please replace with one of the following AvatarSizes: ${personaAvatarSizes.joinToString(", ")}
                 """.trimIndent())
             }
+
+            if (field == value)
+                return
             field = value
-            persona_avatar_view.avatarSize = value
+            updateViews()
         }
 
     /**
@@ -58,68 +61,78 @@ class PersonaView : LinearLayout {
      */
     var name = ""
         set(value) {
+            if (field == value)
+                return
             field = value
-            updateTextViews()
+            updateViews()
         }
 
     var email = ""
         set(value) {
+            if (field == value)
+                return
             field = value
-            updateTextViews()
+            updateViews()
         }
     /**
      * Text for the middle hierarchy of the three TextViews
      */
     var subtitle: String = ""
         set(value) {
+            if (field == value)
+                return
             field = value
-            persona_subtitle.text = value
-            updateTextViews()
+            updateViews()
         }
     /**
      * Text for the bottom hierarchy of the three TextViews
      */
     var footer: String = ""
         set(value) {
+            if (field == value)
+                return
             field = value
-            persona_footer.text = value
-            updateTextViews()
+            updateViews()
         }
     var avatarImageBitmap: Bitmap? = null
         set(value) {
+            if (field == value)
+                return
             field = value
-            persona_avatar_view.setImageBitmap(value)
+            updateViews()
         }
     var avatarImageDrawable: Drawable? = null
         set(value) {
+            if (field == value)
+                return
             field = value
-            persona_avatar_view.setImageDrawable(value)
+            updateViews()
         }
     var avatarImageResourceId: Int? = null
         set(value) {
+            if (field == value)
+                return
             field = value
-            value?.let { persona_avatar_view.setImageResource(it) }
+            updateViews()
         }
     var avatarImageUri: Uri? = null
         set(value) {
+            if (field == value)
+                return
             field = value
-            persona_avatar_view.setImageURI(value)
+            updateViews()
         }
 
     private var title: String = name
         set(value) {
+            if (field == value)
+                return
             field = value
-            persona_title.text = value
+            updateViews()
         }
 
     @JvmOverloads
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
-        LayoutInflater.from(context).inflate(R.layout.view_persona, this)
-        attrs?.let { setPropertiesFromAttributes(context, it) }
-        updateTextViews()
-    }
-
-    private fun setPropertiesFromAttributes(context: Context, attrs: AttributeSet) {
         val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.PersonaView)
         val avatarSizeOrdinal = styledAttrs.getInt(R.styleable.PersonaView_avatarSize, AvatarView.defaultAvatarSize.ordinal)
         avatarSize = AvatarSize.values()[avatarSizeOrdinal]
@@ -135,16 +148,46 @@ class PersonaView : LinearLayout {
         styledAttrs.recycle()
     }
 
-    private fun updateTextViews() {
+    // Template
+
+    override val templateId: Int = R.layout.view_persona
+    private var avatarView: AvatarView? = null
+    private var titleView: TextView? = null
+    private var subtitleView: TextView? = null
+    private var footerView: TextView? = null
+
+    override fun onTemplateLoaded() {
+        super.onTemplateLoaded()
+        avatarView = persona_avatar_view
+        titleView = persona_title
+        subtitleView = persona_subtitle
+        footerView = persona_footer
+
+        updateViews()
+    }
+
+    private fun updateViews() {
+        avatarView?.apply {
+            name = this@PersonaView.name
+            email = this@PersonaView.email
+            avatarSize = this@PersonaView.avatarSize
+            avatarImageDrawable = this@PersonaView.avatarImageDrawable
+            avatarImageBitmap = this@PersonaView.avatarImageBitmap
+            avatarImageUri = this@PersonaView.avatarImageUri
+        }
+
         title = when {
             !name.isEmpty() -> name
             !email.isEmpty() -> email
             else -> context.getString(R.string.persona_title_placeholder)
         }
-        persona_avatar_view.name = name
-        persona_avatar_view.email = email
-        persona_footer.visibility = if (footer != "" && avatarSize != AvatarSize.SMALL) View.VISIBLE else View.GONE
-        persona_subtitle.visibility = if (subtitle != "" && avatarSize != AvatarSize.SMALL) View.VISIBLE else View.GONE
+
+        titleView?.text = title
+        subtitleView?.text = subtitle
+        footerView?.text = footer
+
+        footerView?.visibility = if (footer != "" && avatarSize != AvatarSize.SMALL) View.VISIBLE else View.GONE
+        subtitleView?.visibility = if (subtitle != "" && avatarSize != AvatarSize.SMALL) View.VISIBLE else View.GONE
     }
 }
 
