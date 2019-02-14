@@ -1,5 +1,5 @@
 /**
- * Copyright © 2018 Microsoft Corporation. All rights reserved.
+ * Copyright © 2019 Microsoft Corporation. All rights reserved.
  */
 
 package com.microsoft.officeuifabric.peoplepicker
@@ -7,6 +7,7 @@ package com.microsoft.officeuifabric.peoplepicker
 import android.content.ClipData
 import android.content.ClipDescription
 import android.content.Context
+import android.content.res.Configuration
 import android.graphics.Rect
 import android.os.Build
 import android.os.Bundle
@@ -51,15 +52,8 @@ import com.tokenautocomplete.TokenCompleteTextView
  * TODO Known issues:
  * - Using backspace to delete a selected token does not work if other text is entered in the input;
  * [TokenCompleteTextView] overrides [onCreateInputConnection] which blocks our ability to control this functionality.
- * - If you long press and select all the tokens, then press "Cut" to put them on the clipboard, the fragment crashes with an IndexOutOfBoundsException;
- * This same bug happens in Outlook.
- * - In [performCollapse] when the first token takes up the whole width of the text view, the CountSpan is in danger of being cut off.
- * Instead of shortening the token (PersonaChip in our implementation), [TokenCompleteTextView] removes it and adds it to the count in the CountSpan.
- * Shortening the PersonaChip would be more ideal.
- * -setTokenLimit is not working as intended. Need to debug this and add the public property back into the api.
  *
  * TODO Future work:
- * - Limit what appears in the long click context menu.
  * - Baseline align chips with other text.
  * - Improve vertical spacing for chips.
  * - Add click api for persona chip and relevant accessibility events, including handling deselection
@@ -88,6 +82,14 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
      * Flag for enabling Drag and Drop persona chips.
      */
     var allowPersonaChipDragAndDrop: Boolean = false
+    /**
+     * Limits the total number of persona chips that can be added to the field.
+     */
+    var personaChipLimit: Int = -1
+        set(value) {
+            field = value
+            setTokenLimit(value)
+        }
     /**
      * Store the hint so that we can control when it is announced for accessibility
      */
@@ -161,6 +163,24 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
         return onCreatePersona("", completionText)
     }
 
+    override fun buildSpanForObject(obj: IPersona?): TokenImageSpan? {
+        if (obj == null)
+            return null
+
+        // This ensures that persona spans will be short enough to leave room for the count span.
+        val countSpanWidth = resources.getDimension(R.dimen.uifabric_people_picker_count_span_width).toInt()
+        return TokenImageSpan(getViewForObject(obj), obj, maxTextWidth().toInt() - countSpanWidth)
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+
+        // To ensure persona chips are correctly laid out when orientation changes, redraw them by re-adding them.
+        val personas = objects
+        removeObjects(personas)
+        addObjects(personas)
+    }
+
     override fun performCollapse(hasFocus: Boolean) {
         if (getOriginalCountSpan() == null)
             removeCountSpanText()
@@ -193,6 +213,7 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
         // super.onSelectionChanged is buggy, but we still need the accessibility event from the super super call.
         sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_TEXT_SELECTION_CHANGED)
         // This fixes buggy cursor position in accessibility mode.
+        // Cutting spans to the clipboard is not functional so this also prevents that operation from being an option.
         setSelection(text.length)
     }
 
@@ -205,6 +226,10 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
     }
 
     override fun replaceText(text: CharSequence?) {
+        // Enforce personaChipLimit. TokenCompleteTextView enforces the limit for other scenarios.
+        if (personaChipLimit != -1 && objects.size == personaChipLimit)
+            return
+
         shouldAnnouncePersonaAddition = true
         super.replaceText(text)
     }
@@ -220,16 +245,15 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
         super.removeObject(`object`)
     }
 
+    internal fun addObjects(personas: List<IPersona>?) {
+        personas?.forEach { addObject(it) }
+    }
+
     internal fun removeObjects(personas: List<IPersona>?) {
         if (personas == null)
             return
 
-        var i = 0
-        while (i < personas.size) {
-            removeObject(personas[i])
-            i++
-        }
-
+        personas.forEach { removeObject(it) }
         removeCountSpanText()
     }
 

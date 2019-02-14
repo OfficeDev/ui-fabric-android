@@ -41,6 +41,8 @@
 
     <!--PeoplePicker-->
     <dimen name="uifabric_people_picker_accessibility_search_constraint_extra_space">5dp</dimen>
+    <!--30dp is an approximation of how much space 3 digits take up for the count span-->
+    <dimen name="uifabric_people_picker_count_span_width">30dp</dimen>
     <dimen name="uifabric_people_picker_dropdown_vertical_offset">0dp</dimen>
     <dimen name="uifabric_people_picker_popup_elevation">0dp</dimen>
     <dimen name="uifabric_people_picker_search_directory_min_height">56dp</dimen>

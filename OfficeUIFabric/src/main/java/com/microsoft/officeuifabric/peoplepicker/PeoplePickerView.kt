@@ -94,6 +94,16 @@ class PeoplePickerView : TemplateView {
             updateViews()
         }
     /**
+     * Limits the total number of persona chips that can be added to the field.
+     */
+    var personaChipLimit: Int = -1
+        set(value) {
+            if (field == value)
+                return
+            field = value
+            updateViews()
+        }
+    /**
      * Defines what happens when a user clicks on a persona chip.
      */
     var personaChipClickStyle: PeoplePickerPersonaChipClickStyle = PeoplePickerPersonaChipClickStyle.Select
@@ -230,8 +240,7 @@ class PeoplePickerView : TemplateView {
     private fun updatePersonaChips() {
         peoplePickerTextView?.let {
             it.removeObjects(it.objects)
-            for (persona in pickedPersonas)
-                it.addObject(persona)
+            it.addObjects(pickedPersonas)
         }
     }
 
@@ -242,6 +251,7 @@ class PeoplePickerView : TemplateView {
             allowCollapse(allowCollapse)
             allowDuplicates(allowDuplicatePersonaChips)
             threshold = characterThreshold
+            personaChipLimit = this@PeoplePickerView.personaChipLimit
             setAdapter(peoplePickerTextViewAdapter)
             personaChipClickStyle = this@PeoplePickerView.personaChipClickStyle
             allowPersonaChipDragAndDrop = this@PeoplePickerView.allowPersonaChipDragAndDrop
