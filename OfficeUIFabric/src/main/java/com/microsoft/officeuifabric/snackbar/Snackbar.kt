@@ -7,7 +7,6 @@ package com.microsoft.officeuifabric.snackbar
 import android.support.annotation.DrawableRes
 import android.support.design.widget.BaseTransientBottomBar
 import android.support.v4.content.ContextCompat
-import android.support.v4.view.ViewCompat
 import android.support.v7.widget.AppCompatButton
 import android.view.LayoutInflater
 import android.view.View
@@ -146,15 +145,25 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
 
     private class ContentViewCallback(private val content: View) : BaseTransientBottomBar.ContentViewCallback {
         override fun animateContentIn(delay: Int, duration: Int) {
-            // These animations are from the original snackbar
-            content.scaleY = 0f
-            ViewCompat.animate(content).scaleY(1f).setDuration(duration.toLong()).startDelay = delay.toLong()
+            // These animations are from the Android snackbar
+            content.snackbar_text.alpha = 0f
+            content.snackbar_text.animate().alpha(1f).setDuration(duration.toLong()).setStartDelay(delay.toLong()).start()
+
+            if (content.snackbar_action.visibility == View.VISIBLE) {
+                content.snackbar_action.alpha = 0f
+                content.snackbar_action.animate().alpha(1f).setDuration(duration.toLong()).setStartDelay(delay.toLong()).start()
+            }
         }
 
         override fun animateContentOut(delay: Int, duration: Int) {
-            // These animations are from the original snackbar
-            content.scaleY = 1f
-            ViewCompat.animate(content).scaleY(0f).setDuration(duration.toLong()).startDelay = delay.toLong()
+            // These animations are from the Android snackbar
+            content.snackbar_text.alpha = 1f
+            content.snackbar_text.animate().alpha(0f).setDuration(duration.toLong()).setStartDelay(delay.toLong()).start()
+
+            if (content.snackbar_action.visibility == View.VISIBLE) {
+                content.snackbar_action.alpha = 1f
+                content.snackbar_action.animate().alpha(0f).setDuration(duration.toLong()).setStartDelay(delay.toLong()).start()
+            }
         }
     }
 }
