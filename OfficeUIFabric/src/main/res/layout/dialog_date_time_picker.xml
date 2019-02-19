@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="@dimen/uifabric_calendar_toolbar_elevation"
+        app:titleTextColor="@color/uifabric_toolbar_title_text"
         android:background="@color/uifabric_date_time_picker_dialog_background"/>
 
     <LinearLayout
@@ -26,7 +27,8 @@
             android:id="@+id/tabs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:tabMode="scrollable"/>
+            app:tabMode="scrollable"
+            style="@style/Widget.UIFabric.TabLayout"/>
 
     </LinearLayout>
 

@@ -4,12 +4,16 @@
     <!-- *** Physical Colors *** -->
 
     <!--Product Primary-->
-    <color name="uifabric_primary">#0078D4</color>
-    <color name="uifabric_primary_dark">#005a9e</color>
-    <!-- TODO update after design adds Fluent colors to the toolkit -->
-    <color name="uifabric_primary_highlighted">#CBE3F5</color>
+    <color name="uifabric_primary">@color/uifabric_communication_blue</color>
+    <color name="uifabric_primary_dark">@color/uifabric_communication_shade_10</color>
+    <color name="uifabric_primary_light">@color/uifabric_communication_tint_20</color>
+    <color name="uifabric_primary_extra_light">@color/uifabric_communication_tint_40</color>
 
     <!--Multi-Use-->
+    <color name="uifabric_communication_blue">#0078D4</color>
+    <color name="uifabric_communication_shade_10">#005a9e</color>
+    <color name="uifabric_communication_tint_20">#C7E0F4</color>
+    <color name="uifabric_communication_tint_40">#EFF6FC</color>
     <color name="uifabric_white">#FFFFFF</color>
     <color name="uifabric_black">#222222</color>
     <color name="uifabric_light_gray">#A8A8AC</color>
@@ -50,38 +54,38 @@
     </array>
 
     <!--CalendarView-->
-    <color name="uifabric_calendar_week_header_background">@color/uifabric_primary</color>
     <color name="uifabric_calendar_week_heading_week_day_text">@color/uifabric_gray</color>
     <color name="uifabric_calendar_week_heading_weekend_text">@color/uifabric_border_light_gray</color>
     <!-- TODO update after design adds #B2FFFFFF to toolkit -->
     <color name="uifabric_calendar_month_overlay_background">#B2FFFFFF</color>
     <color name="uifabric_calendar_month_overlay_text">@color/uifabric_black</color>
     <color name="uifabric_calendar_other_month_background">@color/uifabric_background_light_gray</color>
-    <!-- TODO update after design adds #FFF5FAFC to toolkit -->
-    <color name="uifabric_calendar_day_today_background">#FFF5FAFC</color>
     <color name="uifabric_calendar_week_day_text">@color/calendar_week_day_text_selector</color>
     <color name="uifabric_calendar_monochrome_text">@color/calendar_week_day_text_selector</color>
+    <color name="uifabric_calendar_week_day_text_active">@color/uifabric_primary</color>
+    <color name="uifabric_calendar_selected">@color/uifabric_primary</color>
+    <color name="uifabric_calendar_day_today_background">@color/uifabric_primary_extra_light</color>
 
     <!--DateTimePicker-->
     <color name="uifabric_date_time_picker_tab_text">@color/uifabric_gray</color>
-    <color name="uifabric_date_time_picker_tab_text_selected">@color/uifabric_primary</color>
     <color name="uifabric_date_time_picker_dialog_background">@color/uifabric_white</color>
+    <color name="uifabric_date_time_picker_toolbar_icon">@color/uifabric_primary</color>
 
     <!--NumberPicker-->
-    <color name="uifabric_number_picker_default_accent">@color/uifabric_primary</color>
     <color name="uifabric_number_picker_default_text">@color/uifabric_gray</color>
+    <color name="uifabric_number_picker_selected_text">@color/uifabric_primary</color>
 
     <!--PeoplePicker-->
     <color name="uifabric_people_picker_popup_background">@color/uifabric_white</color>
     <color name="uifabric_people_picker_text_view_background">@color/uifabric_white</color>
-    <color name="uifabric_people_picker_persona_chip_drag_background">@color/uifabric_primary_highlighted</color>
+    <color name="uifabric_people_picker_text_view_drag_background">@color/uifabric_primary</color>
 
     <!--Persona Chip-->
+    <color name="uifabric_persona_chip_active">@color/uifabric_primary</color>
     <color name="uifabric_persona_chip_normal">@color/uifabric_background_gray</color>
     <color name="uifabric_persona_chip_normal_text">@color/uifabric_black</color>
     <!-- TODO update after design adds #0D000000 to toolkit -->
     <color name="uifabric_persona_chip_pressed">#0D000000</color>
-    <color name="uifabric_persona_chip_active">@color/uifabric_primary</color>
     <color name="uifabric_persona_chip_active_text">@color/uifabric_white</color>
     <!-- TODO update after design adds #FFF3F4 to toolkit -->
     <color name="uifabric_persona_chip_error">#FFF3F4</color>
@@ -97,15 +101,18 @@
     <color name="uifabric_item_highlight">#0E000000</color> <!-- 5% black -->
 
     <!--Snackbar-->
-    <!--TODO when the theming PR is merged, use colorPrimary with opacity instead-->
-    <color name="uifabric_snackbar_action_text">@color/uifabric_primary_highlighted</color>
+    <color name="uifabric_snackbar_action_text">@color/uifabric_primary_light</color>
     <color name="uifabric_snackbar_action_text_announcement">@color/uifabric_white</color>
+    <color name="uifabric_snackbar_announcement_background">@color/uifabric_primary</color>
     <color name="uifabric_snackbar_background">@color/uifabric_black</color>
     <color name="uifabric_snackbar_text">@color/uifabric_white</color>
 
     <!--TabLayout-->
     <color name="uifabric_tab_layout_text">@color/uifabric_gray</color>
-    <color name="uifabric_tab_layout_text_selected">@color/uifabric_primary</color>
-    <color name="uifabric_tab_layout_indicator">@color/uifabric_primary</color>
+    <color name="uifabric_tab_selected_text">@color/uifabric_primary</color>
+    <color name="uifabric_tab_selected_indicator">@color/uifabric_primary</color>
+
+    <!--Toolbar-->
+    <color name="uifabric_toolbar_title_text">@color/uifabric_primary</color>
 
 </resources>

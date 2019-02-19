@@ -16,7 +16,6 @@ import android.util.Property
 import android.view.View
 import android.widget.LinearLayout
 
-import com.jakewharton.threetenabp.AndroidThreeTen
 import com.microsoft.officeuifabric.R
 import org.threeten.bp.*
 
@@ -103,7 +102,6 @@ class CalendarView : LinearLayout, OnDateSelectedListener {
 
     @JvmOverloads
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
-        AndroidThreeTen.init(context)
         dividerHeight = Math.round(resources.getDimension(R.dimen.uifabric_divider_height))
         calendarViewWidthForTablet = Math.round(resources.getDimension(R.dimen.uifabric_calendar_weeks_max_width))
 
@@ -224,9 +222,8 @@ class CalendarView : LinearLayout, OnDateSelectedListener {
 
         weeksView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
-                if (canExpand()) {
+                if (canExpand())
                     displayMode = DisplayMode.FULL_MODE
-                }
             }
         })
     }
@@ -242,13 +239,13 @@ class CalendarView : LinearLayout, OnDateSelectedListener {
         var weekHeadingTextSize = context.resources.getDimensionPixelSize(R.dimen.uifabric_calendar_week_heading_text_size)
         var showWeekHeadingDivider = false
 
-        var selectionAccentColor = ContextCompat.getColor(context, R.color.uifabric_primary)
+        var selectionAccentColor = ContextCompat.getColor(context, R.color.uifabric_calendar_selected)
 
         var isFullMode = true
 
         var monthOverlayBackgroundColor = ContextCompat.getColor(context, R.color.uifabric_calendar_month_overlay_background)
         var monthOverlayTextSize = context.resources.getDimensionPixelSize(R.dimen.uifabric_calendar_month_overlay_text_size)
-        var monthOverlayTextColor = ContextCompat.getColor(context, R.color.uifabric_primary)
+        var monthOverlayTextColor = ContextCompat.getColor(context, R.color.uifabric_calendar_month_overlay_text)
 
         var differentiateOddEvenMonth = true
         var isTodayHighlighted = true

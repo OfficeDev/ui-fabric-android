@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- UIFabric application theme -->
+    <!--UIFabric application theme-->
     <style name="Theme.UIFabric" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/uifabric_primary</item>
         <item name="colorPrimaryDark">@color/uifabric_primary_dark</item>
@@ -11,8 +11,8 @@
 
     <style name="Widget.UIFabric" parent="@android:style/Widget"/>
 
-    <!-- Calendar -->
-    <!-- calendar_week_day_text_selector sets the colors for these -->
+    <!--Calendar-->
+    <!--calendar_week_day_text_selector sets the colors for these-->
     <style name="TextAppearance.UIFabric.CalendarDay" parent="TextAppearance.UIFabric.SubHeading">
         <item name="android:textColor">@null</item>
     </style>
@@ -20,17 +20,15 @@
         <item name="android:textColor">@null</item>
     </style>
 
-    <!-- Dialog -->
+    <!--Dialog-->
     <style name="Dialog.UIFabric" parent="@style/Theme.AppCompat.Light.Dialog.Alert">
         <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="colorAccent">@color/uifabric_primary</item>
         <item name="android:colorBackground">@color/uifabric_white</item>
         <item name="android:colorBackgroundCacheHint">@color/uifabric_white</item>
         <item name="android:textAppearance">@style/TextAppearance.UIFabric.Title1</item>
-        <item name="android:textColor">@color/uifabric_primary</item>
     </style>
 
-    <!-- NumberPicker -->
+    <!--NumberPicker-->
     <style name="Widget.UIFabric.NumberPicker">
         <item name="allowKeyboardInput">false</item>
         <item name="android:orientation">vertical</item>
@@ -40,8 +38,6 @@
         <item name="internalMinWidth">@dimen/uifabric_number_picker_internal_min_width</item>
         <item name="internalMaxHeight">@dimen/uifabric_number_picker_max_height</item>
         <item name="selectorWheelItemCount">7</item>
-        <item name="numberPickerSelectedTextColor">@color/uifabric_number_picker_default_accent</item>
-        <item name="numberPickerTextColor">@color/uifabric_number_picker_default_text</item>
         <item name="textAlign">center</item>
         <item name="android:paddingRight">@dimen/uifabric_number_picker_padding_right</item>
     </style>
@@ -52,7 +48,7 @@
     <style name="TextAppearance.UIFabric.PeoplePickerCountSpan" parent="TextAppearance.UIFabric.LightCaption" />
     <style name="TextAppearance.UIFabric.PeoplePickerSearchDirectoryButton" parent="TextAppearance.UIFabric.Button" />
 
-    <!-- Persona -->
+    <!--Persona-->
     <style name="TextAppearance.UIFabric.PersonaTitle" parent="TextAppearance.UIFabric.SubHeading">
         <item name="android:textColor">@color/uifabric_black</item>
     </style>
@@ -70,17 +66,16 @@
     <style name="Widget.UIFabric.TabLayout" parent="Widget.Design.TabLayout">
         <item name="tabGravity">center</item>
         <item name="tabMode">scrollable</item>
-        <item name="tabIndicatorColor">@color/uifabric_tab_layout_indicator</item>
         <item name="tabTextAppearance">@style/TextAppearance.UIFabric.Tab.Light</item>
-        <item name="tabTextColor">@color/uifabric_tab_layout_text</item>
-        <item name="tabSelectedTextColor">@color/uifabric_tab_layout_text_selected</item>
         <item name="tabMinWidth">90dp</item>
+        <item name="tabSelectedTextColor">@color/uifabric_tab_selected_text</item>
+        <item name="tabIndicatorColor">@color/uifabric_tab_selected_indicator</item>
     </style>
 
-    <style name="TextAppearance.UIFabric.Tab.Light" parent="TextAppearance.Design.Tab">
+    <style name="TextAppearance.UIFabric.Tab.Light" parent="TextAppearance.UIFabric.Body2">
+        <item name="android:textColor">@color/uifabric_tab_layout_text</item>
         <item name="textAllCaps">true</item>
         <item name="android:textAllCaps">true</item>
-        <item name="android:fontFamily">sans-serif-medium</item>
     </style>
 
 </resources>

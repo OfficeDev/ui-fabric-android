@@ -10,7 +10,6 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewPager
 import android.support.v7.widget.Toolbar
 import android.view.LayoutInflater
@@ -20,9 +19,7 @@ import android.view.ViewGroup
 
 import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.calendar.OnDateSelectedListener
-import com.microsoft.officeuifabric.util.DateStringUtils
-import com.microsoft.officeuifabric.util.DateTimeUtils
-import com.microsoft.officeuifabric.util.getNumberOfDaysFrom
+import com.microsoft.officeuifabric.util.*
 import com.microsoft.officeuifabric.view.ResizableDialog
 import kotlinx.android.synthetic.main.dialog_date_time_picker.*
 import org.threeten.bp.Duration
@@ -158,13 +155,12 @@ class DateTimePickerDialog : ResizableDialog(), Toolbar.OnMenuItemClickListener,
         super.onViewCreated(view, savedInstanceState)
 
         val context = context ?: return
-        val accentColor = ContextCompat.getColor(context, R.color.uifabric_primary)
-        toolbar.setTitleTextColor(accentColor)
+        val iconColor = R.color.uifabric_date_time_picker_toolbar_icon
         toolbar.inflateMenu(R.menu.menu_time_picker)
         toolbar.setOnMenuItemClickListener(this)
-        toolbar.setNavigationIcon(R.drawable.ms_ic_close_grey)
+        toolbar.navigationIcon = context.getTintedDrawable(R.drawable.ms_ic_close_grey, iconColor)
         toolbar.setNavigationOnClickListener { dismiss() }
-        toolbar.menu.findItem(R.id.action_done).setIcon(R.drawable.ms_ic_done)
+        toolbar.menu.findItem(R.id.action_done).icon = context.getTintedDrawable(R.drawable.ms_ic_done, iconColor)
 
         pagerAdapter = DateTimePagerAdapter(childFragmentManager)
         view_pager.adapter = pagerAdapter
@@ -173,13 +169,10 @@ class DateTimePickerDialog : ResizableDialog(), Toolbar.OnMenuItemClickListener,
         if (displayMode == DisplayMode.TIME_DATE)
             view_pager.currentItem = displayMode.dateTimeTabIndex
 
-        if (pagerAdapter.count < 2) {
+        if (pagerAdapter.count < 2)
             tab_container.visibility = View.GONE
-        } else {
+        else
             tabs.setupWithViewPager(view_pager)
-            tabs.setTabTextColors(ContextCompat.getColor(context, R.color.uifabric_gray), accentColor)
-            tabs.setSelectedTabIndicatorColor(accentColor)
-        }
 
         updateTitles()
     }

@@ -4,7 +4,7 @@
     <item
         android:state_activated="true"
         android:state_checked="false"
-        android:color="@color/uifabric_primary" />
+        android:color="@color/uifabric_calendar_week_day_text_active" />
 
     <item
         android:state_activated="true"

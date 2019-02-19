@@ -8,10 +8,7 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.Drawable
-import android.support.annotation.ArrayRes
-import android.support.annotation.AttrRes
-import android.support.annotation.ColorInt
-import android.support.annotation.DrawableRes
+import android.support.annotation.*
 import android.support.v4.content.ContextCompat
 import android.support.v4.graphics.ColorUtils
 import android.support.v4.graphics.drawable.DrawableCompat
@@ -90,14 +87,6 @@ object ThemeUtil {
         }
     }
 
-    fun getTintedDrawable(context: Context, @DrawableRes drawableId: Int, @AttrRes tintId: Int): Drawable {
-        val drawable = ContextCompat.getDrawable(context, drawableId)!!
-        val wrappedDrawable = DrawableCompat.wrap(drawable.mutate())
-        DrawableCompat.setTint(wrappedDrawable, getColor(context, tintId))
-        return wrappedDrawable
-    }
-
-
     fun getThemeAttrColorStateList(context: Context, @AttrRes attr: Int): ColorStateList? {
         TEMP_ARRAY.get()[0] = attr
         val a = context.obtainStyledAttributes(null, TEMP_ARRAY.get())
@@ -148,6 +137,14 @@ object ThemeUtil {
         } catch (e: Exception) {
             Log.e(TAG, "Failed to get theme name.", e)
         }
+
         return null
     }
+}
+
+fun Context.getTintedDrawable(@DrawableRes drawableId: Int, @ColorRes tintId: Int): Drawable? {
+    val drawable = ContextCompat.getDrawable(this, drawableId) ?: return null
+    val wrappedDrawable = DrawableCompat.wrap(drawable.mutate())
+    DrawableCompat.setTint(wrappedDrawable, ContextCompat.getColor(this, tintId))
+    return wrappedDrawable
 }

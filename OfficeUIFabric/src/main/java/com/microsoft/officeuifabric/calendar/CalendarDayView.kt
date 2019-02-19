@@ -38,11 +38,6 @@ import java.util.*
  * [CalendarDayView] View that displays a day of the week
  */
 internal class CalendarDayView: AppCompatButton, Checkable {
-    companion object {
-        private val MONTH = DateTimeFormatter.ofPattern("MMM")
-        private val CHECKED_STATE_SET = intArrayOf(android.R.attr.state_checked)
-    }
-
     /**
      * sets the date of the View
      */
@@ -218,7 +213,6 @@ internal class CalendarDayView: AppCompatButton, Checkable {
         }
 
         if (isChecked && selectedDrawable != null) {
-            selectedDrawable?.setColorFilter(config.selectionAccentColor, PorterDuff.Mode.SRC_ATOP)
             selectedDrawable?.draw(canvas)
         } else if (isActivated && config.isTodayHighlighted) {
             todayBackgroundDrawable?.draw(canvas)
@@ -232,7 +226,7 @@ internal class CalendarDayView: AppCompatButton, Checkable {
     override fun onCreateDrawableState(extraSpace: Int): IntArray {
         val drawableState = super.onCreateDrawableState(extraSpace + 1)
         if (isChecked) {
-            View.mergeDrawableStates(drawableState, CHECKED_STATE_SET)
+            View.mergeDrawableStates(drawableState, intArrayOf(android.R.attr.state_checked))
         }
         return drawableState
     }
@@ -267,7 +261,7 @@ internal class CalendarDayView: AppCompatButton, Checkable {
         if (dayOfMonth == 1 && !isChecked) {
             val stringBuilder = SpannableStringBuilder()
 
-            stringBuilder.append(MONTH.format(date))
+            stringBuilder.append(DateTimeFormatter.ofPattern("MMM").format(date))
             stringBuilder.setSpan(
                 AbsoluteSizeSpan(config.calendarDayMonthYearTextSize),
                 0,

@@ -9,6 +9,8 @@ import android.content.ClipDescription
 import android.content.Context
 import android.content.res.Configuration
 import android.graphics.Rect
+import android.graphics.drawable.ColorDrawable
+import android.os.Handler
 import android.os.Build
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
@@ -63,7 +65,7 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
     companion object {
         // Max number of personas the screen reader will announce on focus.
         private const val MAX_PERSONAS_TO_READ = 3
-
+        private const val BACKGROUND_DRAG_ALPHA = 75
         // Removes constraints to the input field
         private val noFilters = arrayOfNulls<InputFilter>(0)
         // Constrains changes that can be made to the input field to none
@@ -452,7 +454,8 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
         val personaChipView = getViewForObject(persona)
         personaChipView.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED)
         personaChipView.layout(0, 0, personaChipView.measuredWidth, personaChipView.measuredHeight)
-        personaChipView.background = ContextCompat.getDrawable(context, R.color.uifabric_people_picker_persona_chip_drag_background)
+        personaChipView.background = ColorDrawable(ContextCompat.getColor(context, R.color.uifabric_people_picker_text_view_drag_background))
+        personaChipView.background.alpha = BACKGROUND_DRAG_ALPHA
 
         // We pass the persona object as LocalState so we can restore it when dropping
         // [startDrag] is deprecated, but the new [startDragAndDrop] requires a higher api than our min

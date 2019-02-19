@@ -10,7 +10,6 @@ import android.graphics.ColorFilter
 import android.graphics.Paint
 import android.graphics.PixelFormat
 import android.graphics.drawable.Drawable
-import android.support.v4.content.ContextCompat
 
 import com.microsoft.officeuifabric.R
 
@@ -30,7 +29,6 @@ internal class CalendarDaySelectionDrawable : Drawable {
     constructor(context: Context, mode: Mode) {
         this.context = context
         this.mode = mode
-        paint.color = ContextCompat.getColor(context, R.color.uifabric_primary)
         circleSize = context.resources.getDimensionPixelSize(R.dimen.uifabric_calendar_day_selection_size)
     }
 

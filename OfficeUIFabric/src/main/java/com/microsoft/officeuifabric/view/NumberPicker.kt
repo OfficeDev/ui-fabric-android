@@ -719,8 +719,6 @@ internal class NumberPicker : LinearLayout {
     private fun init(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) {
         val attributesArray = context.obtainStyledAttributes(
             attrs, R.styleable.NumberPicker, defStyleAttr, defStyleRes)
-        /*val layoutResId = attributesArray.getResourceId(
-            R.styleable.NumberPicker_internalLayout, DEFAULT_LAYOUT_RESOURCE_ID)*/
 
         mHasSelectorWheel = true // layoutResId == DEFAULT_LAYOUT_RESOURCE_ID
 
@@ -746,10 +744,8 @@ internal class NumberPicker : LinearLayout {
             resources.displayMetrics).toInt()
         mSelectionDividersDistance = attributesArray.getDimensionPixelSize(
             R.styleable.NumberPicker_selectionDividersDistance, defSelectionDividerDistance)
-        mSelectedTextColor = attributesArray.getColor(
-            R.styleable.NumberPicker_numberPickerSelectedTextColor, ContextCompat.getColor(context, R.color.uifabric_number_picker_default_accent))
-        mTextColor = attributesArray.getColor(
-            R.styleable.NumberPicker_numberPickerTextColor, ContextCompat.getColor(context, R.color.uifabric_number_picker_default_text))
+        mSelectedTextColor = ContextCompat.getColor(context, R.color.uifabric_number_picker_selected_text)
+        mTextColor = ContextCompat.getColor(context, R.color.uifabric_number_picker_default_text)
         mMinHeight = attributesArray.getDimensionPixelSize(
             R.styleable.NumberPicker_internalMinHeight, SIZE_UNSPECIFIED)
         mMaxHeight = attributesArray.getDimensionPixelSize(

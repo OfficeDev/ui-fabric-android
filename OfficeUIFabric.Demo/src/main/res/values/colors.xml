@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <!--TODO change colorAccent with a theme color so that the cursor, etc, are themed properly-->
-    <color name="colorAccent">#FF4081</color>
+    <!--Demo Primary Colors-->
+    <color name="uifabric_demo_primary">@color/uifabric_communication_blue</color>
+    <color name="uifabric_demo_primary_dark">@color/uifabric_communication_shade_10</color>
+    <color name="uifabric_demo_primary_light">@color/uifabric_communication_tint_20</color>
+    <color name="uifabric_demo_primary_extra_light">@color/uifabric_communication_tint_40</color>
+
+    <!--Replace the uifabric_demo_* values to customize your app-->
+    <color name="uifabric_primary">@color/uifabric_demo_primary</color>
+    <color name="uifabric_primary_dark">@color/uifabric_demo_primary_dark</color>
+    <color name="uifabric_primary_light">@color/uifabric_demo_primary_light</color>
+    <color name="uifabric_primary_extra_light">@color/uifabric_demo_primary_extra_light</color>
+
     <color name="calendar_selected_date_text">#E1E1E1</color>
     <color name="calendar_selected_date_background">#333</color>
 </resources>
