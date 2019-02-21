@@ -36,6 +36,7 @@
     <string name="people_picker_drag_ended">Drag ended</string>
     <string name="people_picker_picked_personas_listener">Personas Listener</string>
     <string name="people_picker_suggestions_listener">Suggestions Listener</string>
+    <string name="people_picker_persona_chip_click">You clicked on %s</string>
 
     <plurals name="people_picker_accessibility_text_view_example">
         <item quantity="one">%1$s recipient</item>

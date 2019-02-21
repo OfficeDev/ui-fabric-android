@@ -35,6 +35,7 @@ import android.view.accessibility.AccessibilityEvent
 import android.view.accessibility.AccessibilityNodeInfo
 import android.view.inputmethod.InputMethodManager
 import com.microsoft.officeuifabric.R
+import com.microsoft.officeuifabric.peoplepicker.PeoplePickerView.PersonaChipClickListener
 import com.microsoft.officeuifabric.persona.IPersona
 import com.microsoft.officeuifabric.persona.PersonaChipView
 import com.microsoft.officeuifabric.persona.setPersona
@@ -58,8 +59,6 @@ import com.tokenautocomplete.TokenCompleteTextView
  * TODO Future work:
  * - Baseline align chips with other text.
  * - Improve vertical spacing for chips.
- * - Add click api for persona chip and relevant accessibility events, including handling deselection
- * - Announce already selected persona chips, may be related to this ^
  */
 internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
     companion object {
@@ -73,7 +72,7 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
     }
 
     /**
-     * Defines what happens when a user clicks on a [personaChip].
+     * Defines what happens when a user clicks on a persona chip.
      */
     var personaChipClickStyle: PeoplePickerPersonaChipClickStyle = PeoplePickerPersonaChipClickStyle.Select
         set(value) {
@@ -101,6 +100,11 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
             hint = value
         }
 
+    /**
+     * When a persona chip with a [PeoplePickerPersonaChipClickStyle] of SelectDeselect is selected,
+     * the next touch will fire [PersonaChipClickListener.onClick].
+     */
+    var personaChipClickListener: PeoplePickerView.PersonaChipClickListener? = null
     lateinit var onCreatePersona: (name: String, email: String) -> IPersona
 
     val countSpanStart: Int
@@ -335,6 +339,7 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
         override fun onTokenAdded(token: IPersona) {
             view.tokenListener?.onTokenAdded(token)
             view.announcePersonaAdded(token)
+            view.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_ACCESSIBILITY_FOCUS_CLEARED)
         }
 
         override fun onTokenRemoved(token: IPersona) {
@@ -382,8 +387,11 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
                 }
 
                 MotionEvent.ACTION_UP -> {
-                    if (isFocused && text != null && initialTouchedPersonaSpan == touchedPersonaSpan)
+                    if (isFocused && text != null && initialTouchedPersonaSpan == touchedPersonaSpan) {
                         touchedPersonaSpan.onClick()
+                        if (isPersonaChipClickable(touchedPersonaSpan.token))
+                            personaChipClickListener?.onClick(touchedPersonaSpan.token)
+                    }
                     if (!isFocused)
                         requestFocus()
                     initialTouchedPersonaSpan = null
@@ -401,6 +409,12 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
 
         return handled
     }
+
+    // This declares whether personaChipClickListener could be called
+    private fun isPersonaChipClickable(persona: IPersona): Boolean =
+        selectedPersona != null &&
+        personaChipClickStyle == PeoplePickerPersonaChipClickStyle.SelectDeselect &&
+        persona == selectedPersona
 
     override fun onDragEvent(event: DragEvent): Boolean {
         if (!allowPersonaChipDragAndDrop)
@@ -687,11 +701,11 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
             if (personaSpan != null)
                 event.contentDescription = accessibilityTextProvider.getPersonaDescription(persona)
 
-            if (event.eventType == AccessibilityEvent.TYPE_VIEW_SELECTED)
+            if (event.eventType == AccessibilityEvent.TYPE_VIEW_SELECTED || (personaSpan != null && persona == selectedPersona))
                 event.contentDescription = String.format(
                     resources.getString(R.string.people_picker_accessibility_selected_persona),
                     event.contentDescription
-                )
+                ) + getSelectedActionText(personaSpan)
         }
 
         override fun onPopulateNodeForVirtualView(virtualViewId: Int, node: AccessibilityNodeInfoCompat) {
@@ -710,15 +724,6 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
                 return
             }
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                val clickAction = AccessibilityNodeInfoCompat.AccessibilityActionCompat(
-                    AccessibilityNodeInfoCompat.ACTION_CLICK,
-                    resources.getString(R.string.people_picker_accessibility_select_persona)
-                )
-                node.addAction(clickAction)
-            } else {
-                node.addAction(AccessibilityNodeInfoCompat.ACTION_CLICK)
-            }
 
             if (virtualViewId == objects.size) {
                 if (searchConstraint.isNotEmpty()){
@@ -734,6 +739,7 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
             val persona = objects[virtualViewId]
             val personaSpan = getSpanForPersona(persona)
             if (personaSpan != null) {
+                setPersonaSpanClickAction(personaSpan, node)
                 if (node.isAccessibilityFocused)
                     node.contentDescription = accessibilityTextProvider.getPersonaDescription(persona)
                 else
@@ -761,14 +767,29 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
         }
 
         private fun onPersonaSpanAccessibilityClick(personaSpan: TokenImageSpan) {
+            val persona = personaSpan.token
             val personaSpanIndex = getPersonaSpans().indexOf(personaSpan)
             when (personaChipClickStyle) {
                 PeoplePickerPersonaChipClickStyle.Select, PeoplePickerPersonaChipClickStyle.SelectDeselect -> {
-                    if (selectedPersona != null && selectedPersona == personaSpan.token) {
+                    if (selectedPersona != null && selectedPersona == persona) {
                         invalidateVirtualView(personaSpanIndex)
                         sendEventForVirtualView(personaSpanIndex, AccessibilityEvent.TYPE_VIEW_CLICKED)
                         sendEventForVirtualView(personaSpanIndex, AccessibilityEvent.TYPE_VIEW_SELECTED)
                     } else {
+                        if (personaChipClickStyle == PeoplePickerPersonaChipClickStyle.SelectDeselect) {
+                            if (personaChipClickListener != null) {
+                                personaChipClickListener?.onClick(persona)
+                                announceForAccessibility(resources.getString(
+                                    R.string.people_picker_accessibility_clicked_persona,
+                                    accessibilityTextProvider.getDefaultPersonaDescription(persona)
+                                ))
+                            } else {
+                                announceForAccessibility(resources.getString(
+                                    R.string.people_picker_accessibility_deselected_persona,
+                                    accessibilityTextProvider.getDefaultPersonaDescription(persona)
+                                ))
+                            }
+                        }
                         sendEventForVirtualView(personaSpanIndex, AccessibilityEvent.TYPE_VIEW_CLICKED)
                         if (personaChipClickStyle == PeoplePickerPersonaChipClickStyle.Select && personaSpanIndex == -1)
                             invalidateRoot()
@@ -778,6 +799,67 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
                     sendEventForVirtualView(personaSpanIndex, AccessibilityEvent.TYPE_VIEW_CLICKED)
                     sendEventForVirtualView(personaSpanIndex, AccessibilityEvent.TYPE_VIEW_ACCESSIBILITY_FOCUS_CLEARED)
                 }
+            }
+        }
+
+        private fun setPersonaSpanClickAction(personaSpan: TokenImageSpan, node: AccessibilityNodeInfoCompat) {
+            if (personaChipClickStyle == PeoplePickerPersonaChipClickStyle.None)
+                return
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                val clickAction = AccessibilityNodeInfoCompat.AccessibilityActionCompat(
+                    AccessibilityNodeInfoCompat.ACTION_CLICK,
+                    getActionText(personaSpan)
+                )
+                node.addAction(clickAction)
+            } else {
+                node.addAction(AccessibilityNodeInfoCompat.ACTION_CLICK)
+            }
+        }
+
+        /**
+         * Sets text for the custom click action depending on persona chip click style and selection state.
+         */
+        private fun getActionText(personaSpan: TokenImageSpan): String {
+            return if (personaSpan.token == selectedPersona) {
+                when (personaChipClickStyle) {
+                    PeoplePickerPersonaChipClickStyle.Select ->
+                        resources.getString(R.string.people_picker_accessibility_delete_persona)
+                    PeoplePickerPersonaChipClickStyle.SelectDeselect ->
+                        if (personaChipClickListener != null)
+                            resources.getString(R.string.people_picker_accessibility_click_persona)
+                        else
+                            resources.getString(R.string.people_picker_accessibility_deselect_persona)
+                    else -> ""
+                }
+            } else {
+                when (personaChipClickStyle) {
+                    PeoplePickerPersonaChipClickStyle.Select, PeoplePickerPersonaChipClickStyle.SelectDeselect ->
+                        resources.getString(R.string.people_picker_accessibility_select_persona)
+                    PeoplePickerPersonaChipClickStyle.Delete ->
+                        resources.getString(R.string.people_picker_accessibility_delete_persona)
+                    else -> ""
+                }
+            }
+        }
+
+        /**
+         * Describes the action that will happen when already selected personas are activated.
+         * We can't set a second action for the the virtual view, so we describe it after the first event occurs.
+         */
+        private fun getSelectedActionText(personaSpan: TokenImageSpan?): String {
+            if (personaSpan == null || personaSpan.token != selectedPersona)
+                return ""
+
+            return when (personaChipClickStyle) {
+                PeoplePickerPersonaChipClickStyle.Select ->
+                    resources.getString(R.string.people_picker_accessibility_delete_selected_persona)
+                PeoplePickerPersonaChipClickStyle.SelectDeselect ->
+                    if (personaChipClickListener != null)
+                        resources.getString(R.string.people_picker_accessibility_click_selected_persona)
+                    else
+                        resources.getString(R.string.people_picker_accessibility_deselect_selected_persona)
+                else -> ""
             }
         }
     }

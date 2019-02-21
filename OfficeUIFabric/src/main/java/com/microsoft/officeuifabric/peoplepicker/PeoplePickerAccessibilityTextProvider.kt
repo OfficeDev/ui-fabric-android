@@ -13,7 +13,7 @@ import com.microsoft.officeuifabric.persona.IPersona
  */
 open class PeoplePickerAccessibilityTextProvider(val resources: Resources) {
     /**
-     * This text announces when the popup opens showing the list of suggested personas.
+     * Announces when the popup opens showing the list of suggested personas.
      */
     open fun getPersonaSuggestionsOpenedText(personas: ArrayList<IPersona>): String =
         resources.getQuantityString(
@@ -23,7 +23,7 @@ open class PeoplePickerAccessibilityTextProvider(val resources: Resources) {
         )
 
     /**
-     * This text announces how many personas are in the currently focused PeoplePickerTextView.
+     * Announces how many personas are in the currently focused PeoplePickerTextView.
      */
     open fun getPersonaQuantityText(personas: ArrayList<IPersona>): String =
         resources.getQuantityString(
@@ -33,8 +33,11 @@ open class PeoplePickerAccessibilityTextProvider(val resources: Resources) {
         )
 
     /**
-     * This content description is announced any time a specific persona has focus or receives an event.
+     * Announced any time a specific persona has focus or receives an event.
      */
     open fun getPersonaDescription(persona: IPersona): String =
+        getDefaultPersonaDescription(persona)
+
+    internal fun getDefaultPersonaDescription(persona: IPersona): String =
         if (persona.name.isNotEmpty()) persona.name else persona.email
 }

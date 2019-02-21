@@ -5,13 +5,13 @@
 package com.microsoft.officeuifabricdemo.demos
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.microsoft.officeuifabric.peoplepicker.PeoplePickerAccessibilityTextProvider
 import com.microsoft.officeuifabric.peoplepicker.PeoplePickerPersonaChipClickStyle
 import com.microsoft.officeuifabric.peoplepicker.PeoplePickerView
 import com.microsoft.officeuifabric.persona.IPersona
+import com.microsoft.officeuifabric.snackbar.Snackbar
 import com.microsoft.officeuifabricdemo.DemoActivity
 import com.microsoft.officeuifabricdemo.R
 import com.microsoft.officeuifabricdemo.util.createCustomPersona
@@ -62,6 +62,11 @@ class PeoplePickerViewActivity : DemoActivity() {
         people_picker_select_deselect.pickedPersonas = selectDeselectPickedPersonas
         people_picker_select_deselect.allowPersonaChipDragAndDrop = true
         people_picker_select_deselect.accessibilityTextProvider = accessibilityTextProvider
+        people_picker_select_deselect.personaChipClickListener = object : PeoplePickerView.PersonaChipClickListener {
+            override fun onClick(persona: IPersona) {
+                showSnackbar(getString(R.string.people_picker_persona_chip_click, accessibilityTextProvider.getPersonaDescription(persona)))
+            }
+        }
 
         // Use code to set personaChipClickStyle and label
 

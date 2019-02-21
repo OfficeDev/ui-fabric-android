@@ -105,6 +105,8 @@ class PeoplePickerView : TemplateView {
         }
     /**
      * Defines what happens when a user clicks on a persona chip.
+     * To use your own onClick callback, set this property to [PeoplePickerPersonaChipClickStyle.SelectDeselect]
+     * and set the [personaChipClickListener]'s onClick callback.
      */
     var personaChipClickStyle: PeoplePickerPersonaChipClickStyle = PeoplePickerPersonaChipClickStyle.Select
         set(value) {
@@ -178,6 +180,17 @@ class PeoplePickerView : TemplateView {
      * Callbacks for additional customized filtering when using the [showSearchDirectoryButton].
      */
     var searchDirectorySuggestionsListener: PersonaSuggestionsListener? = null
+    /**
+     * When a persona chip with a [PeoplePickerPersonaChipClickStyle] of SelectDeselect is selected,
+     * the next touch will fire [PersonaChipClickListener.onClick].
+     */
+    var personaChipClickListener: PersonaChipClickListener? = null
+        set(value) {
+            if (field == value)
+                return
+            field = value
+            updateViews()
+        }
 
     private var peoplePickerTextViewAdapter: PeoplePickerTextViewAdapter? = null
         set(value) {
@@ -257,6 +270,7 @@ class PeoplePickerView : TemplateView {
             allowPersonaChipDragAndDrop = this@PeoplePickerView.allowPersonaChipDragAndDrop
             onCreatePersona = ::createPersona
             setAccessibilityTextProvider(this@PeoplePickerView.accessibilityTextProvider)
+            personaChipClickListener = this@PeoplePickerView.personaChipClickListener
         }
         peoplePickerTextViewAdapter?.showSearchDirectoryButton = showSearchDirectoryButton
     }
@@ -396,6 +410,10 @@ class PeoplePickerView : TemplateView {
             pickedPersonas: ArrayList<IPersona>,
             completion: (suggestedPersonas: ArrayList<IPersona>) -> Unit
         )
+    }
+
+    interface PersonaChipClickListener {
+        fun onClick(persona: IPersona)
     }
 
     private class TokenListener(val view: PeoplePickerView) : TokenCompleteTextView.TokenListener<IPersona> {
