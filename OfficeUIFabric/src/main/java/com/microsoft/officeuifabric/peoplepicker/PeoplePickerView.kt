@@ -5,8 +5,6 @@
 package com.microsoft.officeuifabric.peoplepicker
 
 import android.content.Context
-import android.content.res.Configuration
-import android.graphics.Rect
 import android.util.AttributeSet
 import android.view.View.OnClickListener
 import android.view.ViewGroup
@@ -26,8 +24,6 @@ typealias PeoplePickerPersonaChipClickStyle = TokenCompleteTextView.TokenClickSt
 /**
  * [PeoplePickerView] is a customizable view comprised of a label and [PeoplePickerTextView].
  *
- * TODO Future work:
- * - Handle cases where [pickedPersonas] is modified programmatically.
  */
 class PeoplePickerView : TemplateView {
     /**
@@ -287,54 +283,6 @@ class PeoplePickerView : TemplateView {
 
     private fun createPersona(name: String, email: String): IPersona =
         onCreatePersona?.invoke(name, email) ?: Persona(name, email)
-
-    // Dropdown
-
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-        adjustDropDownHeight()
-    }
-
-    override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
-        super.onLayout(changed, left, top, right, bottom)
-        adjustDropDownHeight()
-    }
-
-    private fun adjustDropDownHeight() {
-        val dropDownHeight = getMaxAvailableHeight()
-        if (peoplePickerTextView?.dropDownHeight == dropDownHeight)
-            return
-        peoplePickerTextView?.dropDownHeight = dropDownHeight
-        if (peoplePickerTextView?.isPopupShowing == true)
-            // Force popup layout to refresh
-            peoplePickerTextView?.showDropDown()
-    }
-
-    /**
-     * Adapted from Android's PopupWindow.
-     */
-    private fun getMaxAvailableHeight(): Int {
-        val displayFrame = Rect()
-        getWindowVisibleDisplayFrame(displayFrame)
-
-        val anchorLocationOnScreen = IntArray(2)
-        getLocationOnScreen(anchorLocationOnScreen)
-
-        val anchorTop = anchorLocationOnScreen[1]
-        val yOffset = resources.getDimension(R.dimen.uifabric_people_picker_dropdown_vertical_offset).toInt()
-        val distanceToBottom = displayFrame.bottom - (anchorTop + height) - yOffset
-        val distanceToTop = anchorTop - displayFrame.top + yOffset
-        var returnedHeight = Math.max(distanceToBottom, distanceToTop)
-
-        val background = peoplePickerTextView?.dropDownBackground
-        if (background != null) {
-            val backgroundPadding = Rect()
-            background.getPadding(backgroundPadding)
-            returnedHeight -= backgroundPadding.top + backgroundPadding.bottom
-        }
-
-        return returnedHeight
-    }
 
     // Filter
 

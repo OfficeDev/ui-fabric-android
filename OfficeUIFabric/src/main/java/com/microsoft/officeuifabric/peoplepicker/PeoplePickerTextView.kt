@@ -10,7 +10,6 @@ import android.content.Context
 import android.content.res.Configuration
 import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
-import android.os.Handler
 import android.os.Build
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
@@ -28,9 +27,9 @@ import android.text.util.Rfc822Tokenizer
 import android.util.AttributeSet
 import android.util.Patterns
 import android.view.DragEvent
+import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.View
-import android.view.ViewConfiguration
 import android.view.accessibility.AccessibilityEvent
 import android.view.accessibility.AccessibilityNodeInfo
 import android.view.inputmethod.InputMethodManager
@@ -47,18 +46,16 @@ import com.tokenautocomplete.TokenCompleteTextView
  * into an [EditText] view.
  *
  * Functionality we add in addition to [TokenCompleteTextView]'s functionality includes:
- * - Hiding the cursor when a token is selected
- * - Styling the [CountSpan]
+ * - Click api for SelectDeselect persona chips
  * - Drag and drop option
  * - Accessibility
+ * - Hiding the cursor when a persona chip is selected
+ * - Styling the [CountSpan]
  *
  * TODO Known issues:
  * - Using backspace to delete a selected token does not work if other text is entered in the input;
  * [TokenCompleteTextView] overrides [onCreateInputConnection] which blocks our ability to control this functionality.
- *
- * TODO Future work:
- * - Baseline align chips with other text.
- * - Improve vertical spacing for chips.
+ * - [CountSpan] text should be centered
  */
 internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
     companion object {
@@ -114,6 +111,7 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
 
     private val accessibilityTouchHelper = AccessibilityTouchHelper(this)
     private var blockedMovementMethod: MovementMethod? = null
+    private var gestureDetector: GestureDetector
     // Keep track of persona selection for accessibility events
     private var selectedPersona: IPersona? = null
         set(value) {
@@ -128,12 +126,13 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
     private var searchConstraint: CharSequence = ""
 
     init {
-        ViewCompat.setAccessibilityDelegate(this, accessibilityTouchHelper)
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
             importantForAutofill = View.IMPORTANT_FOR_AUTOFILL_NO_EXCLUDE_DESCENDANTS
 
+        ViewCompat.setAccessibilityDelegate(this, accessibilityTouchHelper)
         super.setTokenListener(TokenListener(this))
+        gestureDetector = GestureDetector(context, SimpleGestureListener())
+        setLineSpacing(resources.getDimension(R.dimen.uifabric_people_picker_persona_chip_vertical_spacing), 1f)
     }
 
     // @JvmOverloads does not work in this scenario due to parameter defaults
@@ -205,14 +204,13 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
     override fun onFocusChanged(hasFocus: Boolean, direction: Int, previous: Rect?) {
         super.onFocusChanged(hasFocus, direction, previous)
 
-        val inputMethodManager: InputMethodManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        // Soft keyboard does not always show up without this
-        if (hasFocus)
+        // Soft keyboard does not always show up when the view first loads without this
+        if (hasFocus) {
+            val inputMethodManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             post {
                 inputMethodManager.showSoftInput(this, InputMethodManager.SHOW_IMPLICIT)
             }
-        else
-            inputMethodManager.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_IMPLICIT_ONLY)
+        }
     }
 
     override fun onSelectionChanged(selStart: Int, selEnd: Int) {
@@ -251,6 +249,11 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
         super.removeObject(`object`)
     }
 
+    override fun showDropDown() {
+        dropDownHeight = getMaxAvailableHeight()
+        super.showDropDown()
+    }
+
     internal fun addObjects(personas: List<IPersona>?) {
         personas?.forEach { addObject(it) }
     }
@@ -261,6 +264,30 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
 
         personas.forEach { removeObject(it) }
         removeCountSpanText()
+    }
+
+    /**
+     * Adapted from Android's PopupWindow.
+     */
+    private fun getMaxAvailableHeight(): Int {
+        val displayFrame = Rect()
+        getWindowVisibleDisplayFrame(displayFrame)
+
+        val anchorLocationOnScreen = IntArray(2)
+        getLocationOnScreen(anchorLocationOnScreen)
+
+        val anchorTop = anchorLocationOnScreen[1]
+        val distanceToBottom = displayFrame.bottom - (anchorTop + height)
+        val distanceToTop = anchorTop - displayFrame.top
+        var maxAvailableHeight = Math.max(distanceToBottom, distanceToTop)
+
+        if (dropDownBackground != null) {
+            val backgroundPadding = Rect()
+            dropDownBackground.getPadding(backgroundPadding)
+            maxAvailableHeight -= backgroundPadding.top + backgroundPadding.bottom
+        }
+
+        return maxAvailableHeight
     }
 
     private fun setupSearchConstraint(text: CharSequence?) {
@@ -351,70 +378,9 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
     // Drag and drop
 
     private var isDraggingPersonaChip: Boolean = false
-    private var firstTouchX: Float = 0f
-    private var firstTouchY: Float = 0f
     private var initialTouchedPersonaSpan: TokenImageSpan? = null
 
-    override fun onTouchEvent(event: MotionEvent): Boolean {
-        var handled = false
-
-        if (personaChipClickStyle == PeoplePickerPersonaChipClickStyle.None)
-            handled = super.onTouchEvent(event)
-
-        val touchedPersonaSpan = getPersonaSpanAt(event.x, event.y)
-
-        if (touchedPersonaSpan != null) {
-            when (event.actionMasked) {
-                MotionEvent.ACTION_DOWN -> {
-                    if (allowPersonaChipDragAndDrop) {
-                        initialTouchedPersonaSpan = touchedPersonaSpan
-                        firstTouchX = event.x
-                        firstTouchY = event.y
-                        parent.requestDisallowInterceptTouchEvent(true)
-                        handled = true
-                    }
-                }
-
-                MotionEvent.ACTION_MOVE -> {
-                    if (allowPersonaChipDragAndDrop && !isDraggingPersonaChip) {
-                        val deltaX = Math.ceil(Math.abs(firstTouchX - event.x).toDouble()).toInt()
-                        val deltaY = Math.ceil(Math.abs(firstTouchY - event.y).toDouble()).toInt()
-                        val touchSlop = ViewConfiguration.get(context).scaledTouchSlop
-                        if (deltaX >= touchSlop || deltaY >= touchSlop)
-                            startPersonaDragAndDrop(touchedPersonaSpan.token)
-                        handled = true
-                    }
-                }
-
-                MotionEvent.ACTION_UP -> {
-                    if (isFocused && text != null && initialTouchedPersonaSpan == touchedPersonaSpan) {
-                        touchedPersonaSpan.onClick()
-                        if (isPersonaChipClickable(touchedPersonaSpan.token))
-                            personaChipClickListener?.onClick(touchedPersonaSpan.token)
-                    }
-                    if (!isFocused)
-                        requestFocus()
-                    initialTouchedPersonaSpan = null
-                    handled = true
-                }
-
-                MotionEvent.ACTION_CANCEL -> {
-                    initialTouchedPersonaSpan = null
-                }
-            }
-        }
-
-        if (!handled && personaChipClickStyle != PeoplePickerPersonaChipClickStyle.None)
-            handled = super.onTouchEvent(event)
-
-        return handled
-    }
-
-    // This declares whether personaChipClickListener could be called
-    private fun isPersonaChipClickable(persona: IPersona): Boolean =
-        selectedPersona != null &&
-        personaChipClickStyle == PeoplePickerPersonaChipClickStyle.SelectDeselect &&
-        persona == selectedPersona
+    override fun onTouchEvent(event: MotionEvent): Boolean = gestureDetector.onTouchEvent(event)
 
     override fun onDragEvent(event: DragEvent): Boolean {
         if (!allowPersonaChipDragAndDrop)
@@ -435,6 +401,12 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
         }
         return false
     }
+
+    // This declares whether personaChipClickListener could be called
+    private fun isPersonaChipClickable(persona: IPersona): Boolean =
+        selectedPersona != null &&
+        personaChipClickStyle == PeoplePickerPersonaChipClickStyle.SelectDeselect &&
+        persona == selectedPersona
 
     private fun getClipDataForPersona(persona: IPersona): ClipData? {
         val name = persona.name
@@ -502,6 +474,37 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
         addObject(persona)
 
         return true
+    }
+
+    private inner class SimpleGestureListener : GestureDetector.SimpleOnGestureListener() {
+        override fun onLongPress(event: MotionEvent) {
+            val touchedPersonaSpan = getPersonaSpanAt(event.x, event.y) ?: return
+            if (allowPersonaChipDragAndDrop && !isDraggingPersonaChip)
+                startPersonaDragAndDrop(touchedPersonaSpan.token)
+        }
+
+        override fun onDown(event: MotionEvent): Boolean {
+            if (!isFocused)
+                requestFocus()
+
+            val touchedPersonaSpan = getPersonaSpanAt(event.x, event.y) ?: return true
+            if (allowPersonaChipDragAndDrop)
+                initialTouchedPersonaSpan = touchedPersonaSpan
+
+            return true
+        }
+
+        override fun onSingleTapUp(event: MotionEvent): Boolean {
+            val touchedPersonaSpan = getPersonaSpanAt(event.x, event.y) ?: return true
+            if (isFocused && initialTouchedPersonaSpan == touchedPersonaSpan) {
+                if (isPersonaChipClickable(touchedPersonaSpan.token))
+                    personaChipClickListener?.onClick(touchedPersonaSpan.token)
+                touchedPersonaSpan.onClick()
+            }
+
+            initialTouchedPersonaSpan = null
+            return true
+        }
     }
 
     // Accessibility
@@ -634,7 +637,7 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
                 infoText = accessibilityTextProvider.getPersonaQuantityText(personas as ArrayList<IPersona>)
 
             info.text = infoText +
-                // Also ready any entered text in the field
+                // Also read any entered text in the field
                 if (searchConstraint.isNotEmpty())
                     ", $searchConstraint"
                 else
@@ -723,7 +726,6 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
                 node.setBoundsInParent(peoplePickerTextViewBounds)
                 return
             }
-
 
             if (virtualViewId == objects.size) {
                 if (searchConstraint.isNotEmpty()){
