@@ -3,52 +3,9 @@
 
     <string name="date_at_time">%1$s at %2$s</string>
     <string name="date_time">%1$s, %2$s</string>
-    <string name="all_day">All Day</string>
-    <string name="to_syntax">%1$s to %2$s</string>
-    <string name="now">Now</string>
     <string name="today">Today</string>
     <string name="tomorrow">Tomorrow</string>
     <string name="yesterday">Yesterday</string>
-    <string name="today_at_format">Today at %s</string>
-    <string name="tomorrow_at_format">Tomorrow at %s</string>
-    <string name="this_day_of_week">This %s</string>
-    <string name="next_day_of_week">Next %s</string>
-    <string name="in_x_min">in %d min</string>
-
-    <plurals name="in_x_min">
-        <item quantity="zero">Now</item>
-        <item quantity="one">in 1 min</item>
-        <item quantity="other">in %d mins</item>
-    </plurals>
-
-    <plurals name="in_x_day">
-        <item quantity="zero">Today</item>
-        <item quantity="one">In 1 day</item>
-        <item quantity="other">In %d days</item>
-    </plurals>
-
-    <plurals name="in_x_month">
-        <item quantity="one">In 1 month</item>
-        <item quantity="other">In %d months</item>
-    </plurals>
-
-    <plurals name="in_x_year">
-        <item quantity="zero">This year</item>
-        <item quantity="one">Next year</item>
-        <item quantity="other">In %d years</item>
-    </plurals>
-
-    <plurals name="time_days_ago">
-        <item quantity="zero">today</item>
-        <item quantity="one">1 day ago</item>
-        <item quantity="other">%d days ago</item>
-    </plurals>
-
-    <plurals name="time_months_ago">
-        <item quantity="zero">0 months ago</item>
-        <item quantity="one">1 month ago</item>
-        <item quantity="other">%d months ago</item>
-    </plurals>
 
     <!-- weekday initials -->
     <string name="monday_initial" comment="initial for monday">M</string>
