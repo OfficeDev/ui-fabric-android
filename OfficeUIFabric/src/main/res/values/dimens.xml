@@ -77,4 +77,14 @@
     <dimen name="uifabric_snackbar_background_inset">8dp</dimen>
     <dimen name="uifabric_snackbar_background_corner_radius">4dp</dimen>
     <dimen name="uifabric_snackbar_content_inset">@dimen/uifabric_content_inset</dimen>
+
+    <!--Tooltip-->
+    <dimen name="uifabric_tooltip_max_width">176dp</dimen>
+    <dimen name="uifabric_tooltip_arrow_width">20dp</dimen>
+    <dimen name="uifabric_tooltip_arrow_height">10dp</dimen>
+    <dimen name="uifabric_tooltip_margin">8dp</dimen>
+    <dimen name="uifabric_tooltip_padding_vertical">8dp</dimen>
+    <dimen name="uifabric_tooltip_padding_horizontal">12dp</dimen>
+    <dimen name="uifabric_tooltip_radius">4dp</dimen>
+    <dimen name="uifabric_tooltip_background_padding">2dp</dimen>
 </resources>

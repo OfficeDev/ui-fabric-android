@@ -17,6 +17,7 @@ const val PERSONA_LIST_VIEW = "PersonaListView"
 const val PERSONA_VIEW = "PersonaView"
 const val SNACKBAR = "Snackbar"
 const val TEMPLATE_VIEW = "TemplateView"
+const val TOOLTIP = "Tooltip"
 const val TYPOGRAPHY = "Typography"
 
 val DEMOS = arrayListOf(
@@ -29,6 +30,7 @@ val DEMOS = arrayListOf(
     Demo(PERSONA_VIEW, PersonaViewActivity::class),
     Demo(SNACKBAR, SnackbarActivity::class),
     Demo(TEMPLATE_VIEW, TemplateViewActivity::class),
+    Demo(TOOLTIP, TooltipActivity::class),
     Demo(TYPOGRAPHY, TypographyActivity::class)
 )
 

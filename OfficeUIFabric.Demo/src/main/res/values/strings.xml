@@ -136,6 +136,16 @@
         Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
     <string name="snackbar_single_line">Single-line snackbar</string>
 
+    <!--Tooltip-->
+    <string name="tooltip_button">Tap for Tooltip</string>
+    <string name="tooltip_center_button">Tap for Dismiss Inside Tooltip</string>
+    <string name="tooltip_top_start_message">Top Start Tooltip</string>
+    <string name="tooltip_top_end_message">Top End Tooltip with 10dp offsetX</string>
+    <string name="tooltip_bottom_start_message">Bottom Start Tooltip</string>
+    <string name="tooltip_bottom_end_message">Bottom End Tooltip with 10dp offsetY</string>
+    <string name="tooltip_center_message">Dismiss inside Tooltip</string>
+    <string name="tooltip_dismiss_message">Tooltip dismissed</string>
+
     <!--Typography-->
     <string name="headline">Headline</string>
     <string name="title_1">Title 1</string>

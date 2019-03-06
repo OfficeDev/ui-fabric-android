@@ -32,6 +32,7 @@
         <activity android:name="com.microsoft.officeuifabricdemo.demos.PersonaViewActivity" />
         <activity android:name="com.microsoft.officeuifabricdemo.demos.SnackbarActivity" />
         <activity android:name="com.microsoft.officeuifabricdemo.demos.TemplateViewActivity" />
+        <activity android:name="com.microsoft.officeuifabricdemo.demos.TooltipActivity" />
         <activity android:name="com.microsoft.officeuifabricdemo.demos.TypographyActivity" />
 
     </application>

@@ -78,4 +78,9 @@
         <item name="android:textAllCaps">true</item>
     </style>
 
+    <!--Tooltip-->
+    <style name="TextAppearance.UIFabric.Tooltip" parent="TextAppearance.UIFabric.Body2">
+        <item name="android:textColor">@color/uifabric_tooltip_text</item>
+    </style>
+
 </resources>

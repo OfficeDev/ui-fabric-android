@@ -17,16 +17,13 @@ import android.view.WindowManager
 import kotlinx.android.synthetic.main.dialog_resizable.*
 
 import com.microsoft.officeuifabric.R
+import com.microsoft.officeuifabric.util.isTablet
 
 /**
  * [ResizableDialog] is a dialog that animates on resize. This enables a transition between views
  * housed in the same dialog
  */
 abstract class ResizableDialog : DialogFragment() {
-    companion object {
-        // Standard threshold for tablet width
-        const val TABLET_SIZE = 600
-    }
 
     private val Context.getDesiredDialogSize: IntArray
         get() {
@@ -34,7 +31,6 @@ abstract class ResizableDialog : DialogFragment() {
             val displaySize = Rect()
             displaySize.set(0, 0, metrics.widthPixels, metrics.heightPixels)
             val dialogSize = IntArray(2)
-
             if (isTablet) {
                 dialogSize[0] = WindowManager.LayoutParams.WRAP_CONTENT
             } else {
@@ -43,11 +39,6 @@ abstract class ResizableDialog : DialogFragment() {
             dialogSize[1] = WindowManager.LayoutParams.WRAP_CONTENT
 
             return dialogSize
-        }
-
-    private val Context.isTablet: Boolean
-        get() {
-            return resources.configuration.smallestScreenWidthDp >= TABLET_SIZE
         }
 
     private val layoutTransition = LayoutTransition()

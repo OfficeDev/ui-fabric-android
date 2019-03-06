@@ -13,4 +13,8 @@
     <dimen name="date_picker_example_range_title_padding_end">4dp</dimen>
     <dimen name="date_picker_example_range_title_width">50dp</dimen>
     <dimen name="date_picker_example_row_divider_height">1dp</dimen>
+
+    <!--Tooltip-->
+    <dimen name="tooltip_example_offset_x">10dp</dimen>
+    <dimen name="tooltip_example_offset_y">10dp</dimen>
 </resources>
