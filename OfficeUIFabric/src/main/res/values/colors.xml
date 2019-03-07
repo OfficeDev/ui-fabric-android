@@ -25,8 +25,8 @@
     <color name="uifabric_background_light_gray">#F8F8F8</color>
 
     <!--Borders-->
-    <color name="uifabric_border_gray">#E1E1E1</color>
-    <color name="uifabric_border_light_gray">#C8C8C8</color>
+    <color name="uifabric_border_gray">#C8C8C8</color>
+    <color name="uifabric_border_light_gray">#E1E1E1</color>
 
     <!-- *** Semantic Colors *** -->
 
@@ -55,7 +55,7 @@
 
     <!--CalendarView-->
     <color name="uifabric_calendar_week_heading_week_day_text">@color/uifabric_gray</color>
-    <color name="uifabric_calendar_week_heading_weekend_text">@color/uifabric_border_light_gray</color>
+    <color name="uifabric_calendar_week_heading_weekend_text">@color/uifabric_border_gray</color>
     <!-- TODO update after design adds #B2FFFFFF to toolkit -->
     <color name="uifabric_calendar_month_overlay_background">#B2FFFFFF</color>
     <color name="uifabric_calendar_month_overlay_text">@color/uifabric_black</color>
@@ -96,7 +96,7 @@
     <color name="uifabric_persona_chip_disabled_text">@color/uifabric_gray</color>
 
     <!--Shared-->
-    <color name="uifabric_divider">@color/uifabric_border_gray</color>
+    <color name="uifabric_divider">@color/uifabric_border_light_gray</color>
     <!-- TODO update after design adds #0E000000 to toolkit -->
     <color name="uifabric_item_highlight">#0E000000</color> <!-- 5% black -->
 
