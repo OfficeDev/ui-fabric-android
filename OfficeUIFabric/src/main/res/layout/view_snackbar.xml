@@ -23,7 +23,7 @@
         android:layout_gravity="center_vertical|start"
         android:ellipsize="end"
         android:gravity="center_vertical"
-        android:maxLines="@integer/snackbar_max_lines"
+        android:maxLines="@integer/uifabric_snackbar_max_lines"
         android:textAppearance="@style/TextAppearance.UIFabric.SnackbarText" />
 
     <android.support.v7.widget.AppCompatButton
