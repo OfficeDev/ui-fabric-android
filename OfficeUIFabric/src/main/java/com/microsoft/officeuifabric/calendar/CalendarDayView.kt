@@ -25,8 +25,8 @@ import android.view.accessibility.AccessibilityNodeInfo
 import android.widget.Checkable
 import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.util.DateStringUtils
-import com.microsoft.officeuifabric.util.AccessibilityUtils
 import com.microsoft.officeuifabric.util.DateTimeUtils
+import com.microsoft.officeuifabric.util.isAccessibilityEnabled
 import org.threeten.bp.DayOfWeek
 import org.threeten.bp.LocalDate
 import org.threeten.bp.ZonedDateTime
@@ -163,7 +163,7 @@ internal class CalendarDayView: AppCompatButton, Checkable {
         updateTypeface()
         refreshDrawableState()
 
-        if (AccessibilityUtils.isAccessibilityEnabled(context)) {
+        if (context.isAccessibilityEnabled) {
             sendAccessibilityEvent(AccessibilityEvent.CONTENT_CHANGE_TYPE_UNDEFINED)
         }
 

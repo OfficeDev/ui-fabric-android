@@ -72,4 +72,12 @@
     <!-- *** Shared *** -->
 
     <string name="done">Done</string>
+
+    <!-- *** Tooltip *** -->
+
+    <!--accessibility-->
+    <!--Announces action used to dismiss tooltip and is combined with system default "Double tap to"-->
+    <string name="tooltip_accessibility_dismiss_action">dismiss</string>
+    <!--Announcement when Tooltip is dismissed-->
+    <string name="tooltip_accessibility_dismiss_announcement">Tooltip dismissed</string>
 </resources>

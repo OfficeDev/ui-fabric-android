@@ -8,20 +8,10 @@ import android.content.Context
 import android.view.accessibility.AccessibilityManager
 
 /**
- * [AccessibilityUtils] utilities for accessibility
+ * Utilities for accessibility
  */
-object AccessibilityUtils {
-    /**
-     * Gets whether accessibility is enabled
-     * @return Boolean
-     */
-    @JvmStatic
-    fun isAccessibilityEnabled(context: Context): Boolean {
-        return getAccessibilityManager(context).isTouchExplorationEnabled
-    }
+val Context.isAccessibilityEnabled: Boolean
+    get() = accessibilityManager.isTouchExplorationEnabled
 
-    @JvmStatic
-    private fun getAccessibilityManager(context: Context): AccessibilityManager {
-        return context.getSystemService(Context.ACCESSIBILITY_SERVICE) as AccessibilityManager
-    }
-}
+private val Context.accessibilityManager: AccessibilityManager
+    get() = getSystemService(Context.ACCESSIBILITY_SERVICE) as AccessibilityManager

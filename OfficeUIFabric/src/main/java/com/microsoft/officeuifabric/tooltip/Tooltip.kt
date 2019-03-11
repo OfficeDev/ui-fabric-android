@@ -9,6 +9,9 @@ import android.graphics.Color
 import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
+import android.support.v4.view.AccessibilityDelegateCompat
+import android.support.v4.view.ViewCompat
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat
 import android.view.*
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -59,13 +62,11 @@ class Tooltip {
         arrowUpView = tooltipView.tooltip_arrow_up
         arrowDownView = tooltipView.tooltip_arrow_down
 
-        textView.setOnClickListener { dismiss() }
-
         margin = context.resources.getDimensionPixelSize(R.dimen.uifabric_tooltip_margin)
 
         popupWindow = PopupWindow(context).apply {
             isClippingEnabled = true
-            isFocusable = false
+            isFocusable = context.isAccessibilityEnabled
             isOutsideTouchable = true
             width = context.displaySize.x
             height = context.displaySize.y
@@ -82,7 +83,7 @@ class Tooltip {
         if (!(anchor.isAttachedToWindow && anchor.isVisibleOnScreen))
             return this
 
-        textView.text = text
+        initTextView(text)
 
         // Get location of anchor view on screen
         val screenPos = IntArray(2)
@@ -111,6 +112,7 @@ class Tooltip {
     }
 
     fun dismiss() {
+        tooltipView.announceForAccessibility(context.getString(R.string.tooltip_accessibility_dismiss_announcement))
         popupWindow.dismiss()
         onDismissListener?.onDismiss()
     }
@@ -152,6 +154,23 @@ class Tooltip {
 
         if (dismissLocation == TouchDismissLocation.INSIDE && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
             positionY -= context.statusBarHeight
+    }
+
+    private fun initTextView(text: String) {
+        textView.text = text
+
+        textView.setOnClickListener { dismiss() }
+
+        ViewCompat.setAccessibilityDelegate(textView, object : AccessibilityDelegateCompat() {
+            override fun onInitializeAccessibilityNodeInfo(host: View, info: AccessibilityNodeInfoCompat) {
+                super.onInitializeAccessibilityNodeInfo(host, info)
+                val clickAction = AccessibilityNodeInfoCompat.AccessibilityActionCompat(
+                    AccessibilityNodeInfoCompat.ACTION_CLICK,
+                    context.resources.getString(R.string.tooltip_accessibility_dismiss_action)
+                )
+                info.addAction(clickAction)
+            }
+        })
     }
 
     private fun initTooltipArrow(anchorRect: Rect, isRTL: Boolean, offsetX: Int) {
