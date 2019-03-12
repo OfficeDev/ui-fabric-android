@@ -7,7 +7,7 @@ package com.microsoft.officeuifabric.peoplepicker
 import android.content.ClipData
 import android.content.ClipDescription
 import android.content.Context
-import android.content.res.Configuration
+import android.graphics.Paint
 import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
@@ -38,6 +38,7 @@ import com.microsoft.officeuifabric.peoplepicker.PeoplePickerView.PersonaChipCli
 import com.microsoft.officeuifabric.persona.IPersona
 import com.microsoft.officeuifabric.persona.PersonaChipView
 import com.microsoft.officeuifabric.persona.setPersona
+import com.microsoft.officeuifabric.util.getTextSize
 import com.tokenautocomplete.CountSpan
 import com.tokenautocomplete.TokenCompleteTextView
 
@@ -55,7 +56,7 @@ import com.tokenautocomplete.TokenCompleteTextView
  * TODO Known issues:
  * - Using backspace to delete a selected token does not work if other text is entered in the input;
  * [TokenCompleteTextView] overrides [onCreateInputConnection] which blocks our ability to control this functionality.
- * - [CountSpan] text should be centered
+ * - Persona spans do not resize dynamically when the layout changes.
  */
 internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
     companion object {
@@ -177,26 +178,11 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
         return TokenImageSpan(getViewForObject(obj), obj, maxTextWidth().toInt() - countSpanWidth)
     }
 
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-
-        // To ensure persona chips are correctly laid out when orientation changes, redraw them by re-adding them.
-        val personas = objects
-        removeObjects(personas)
-        addObjects(personas)
-    }
-
     override fun performCollapse(hasFocus: Boolean) {
         if (getOriginalCountSpan() == null)
             removeCountSpanText()
 
         super.performCollapse(hasFocus)
-
-        // Remove viewPadding for single line to fix jittery virtual view bounds in ExploreByTouch.
-        if (!hasFocus())
-            setPadding(0, 0, 0, 0)
-        else
-            setPadding(0, resources.getDimension(R.dimen.uifabric_people_picker_text_view_padding).toInt(), 0, resources.getDimension(R.dimen.uifabric_people_picker_text_view_padding).toInt())
 
         updateCountSpanStyle()
     }
@@ -309,13 +295,29 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
         val originalCountSpan = getOriginalCountSpan() ?: return
 
         text.removeSpan(originalCountSpan)
+
         val replacementCountSpan = SpannableString(originalCountSpan.text)
+
+        // Set the TextAppearance of the count span
         replacementCountSpan.setSpan(
             TextAppearanceSpan(context, R.style.TextAppearance_UIFabric_PeoplePickerCountSpan),
             0,
             replacementCountSpan.length,
             Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
         )
+
+        // Center the count span
+        val replacementCountSpanPaint = Paint()
+        val replacementCountSpanBounds = Rect()
+        replacementCountSpanPaint.textSize = context.getTextSize(R.style.TextAppearance_UIFabric_PeoplePickerCountSpan)
+        replacementCountSpanPaint.getTextBounds(replacementCountSpan.toString(), 0, replacementCountSpan.length, replacementCountSpanBounds)
+        replacementCountSpan.setSpan(
+            CenterVerticalSpan(replacementCountSpanBounds),
+            0,
+            replacementCountSpan.length,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
         text.replace(countSpanStart, countSpanEnd, replacementCountSpan)
     }
 
@@ -345,14 +347,14 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
             movementMethod = blockedMovementMethod
     }
 
-    private fun getPersonaSpans(start: Int = 0, end: Int = text.length): Array<TokenCompleteTextView<IPersona>.TokenImageSpan> =
-        text.getSpans(start, end, TokenImageSpan::class.java) as Array<TokenCompleteTextView<IPersona>.TokenImageSpan>
+    private inline fun <reified T> getPersonaSpans(start: Int = 0, end: Int = text.length): Array<T> =
+        text.getSpans(start, end, TokenImageSpan::class.java) as Array<T>
 
     private fun getOriginalCountSpan(): CountSpan? =
         text.getSpans(0, text.length, CountSpan::class.java).firstOrNull()
 
     private fun getSpanForPersona(persona: Any): TokenImageSpan? =
-        getPersonaSpans().firstOrNull { it.token === persona }
+        getPersonaSpans<TokenCompleteTextView<IPersona>.TokenImageSpan>().firstOrNull { it.token === persona }
 
     // Token listener
 
@@ -458,7 +460,7 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
         if (offset == -1)
             return null
 
-        return getPersonaSpans(offset, offset).firstOrNull()
+        return getPersonaSpans<TokenCompleteTextView<IPersona>.TokenImageSpan>(offset, offset).firstOrNull()
     }
 
     private fun addPersonaFromDragEvent(event: DragEvent): Boolean {
@@ -484,9 +486,6 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
         }
 
         override fun onDown(event: MotionEvent): Boolean {
-            if (!isFocused)
-                requestFocus()
-
             val touchedPersonaSpan = getPersonaSpanAt(event.x, event.y) ?: return true
             if (allowPersonaChipDragAndDrop)
                 initialTouchedPersonaSpan = touchedPersonaSpan
@@ -495,12 +494,15 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
         }
 
         override fun onSingleTapUp(event: MotionEvent): Boolean {
-            val touchedPersonaSpan = getPersonaSpanAt(event.x, event.y) ?: return true
-            if (isFocused && initialTouchedPersonaSpan == touchedPersonaSpan) {
+            val touchedPersonaSpan = getPersonaSpanAt(event.x, event.y)
+            if (isFocused && initialTouchedPersonaSpan == touchedPersonaSpan && touchedPersonaSpan != null) {
                 if (isPersonaChipClickable(touchedPersonaSpan.token))
                     personaChipClickListener?.onClick(touchedPersonaSpan.token)
                 touchedPersonaSpan.onClick()
             }
+
+            if (!isFocused)
+                requestFocus()
 
             initialTouchedPersonaSpan = null
             return true
@@ -587,7 +589,7 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
             layout.getPrimaryHorizontal(start).toInt() - extraSpaceForLegibility,
             layout.getLineTop(line),
             layout.getPrimaryHorizontal(end).toInt() + extraSpaceForLegibility,
-            if (getPersonaSpans().isEmpty()) bottom else layout.getLineBottom(line)
+            if (getPersonaSpans<TokenCompleteTextView<IPersona>.TokenImageSpan>().isEmpty()) bottom else layout.getLineBottom(line)
         )
         bounds.offset(paddingLeft, paddingTop)
         return bounds
@@ -652,7 +654,7 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
 
             val offset = getOffsetForPosition(x, y)
             if (offset != -1) {
-                val personaSpan = getPersonaSpans(offset, offset).firstOrNull()
+                val personaSpan = getPersonaSpans<TokenCompleteTextView<IPersona>.TokenImageSpan>(offset, offset).firstOrNull()
                 if (personaSpan != null && positionIsInsidePersonaBounds(x, y, personaSpan) && isFocused)
                     return objects.indexOf(personaSpan.token)
                 else if (searchConstraint.isNotEmpty() && positionIsInsideSearchConstraintBounds(x, y))
@@ -770,7 +772,7 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
 
         private fun onPersonaSpanAccessibilityClick(personaSpan: TokenImageSpan) {
             val persona = personaSpan.token
-            val personaSpanIndex = getPersonaSpans().indexOf(personaSpan)
+            val personaSpanIndex = getPersonaSpans<TokenCompleteTextView<IPersona>.TokenImageSpan>().indexOf(personaSpan)
             when (personaChipClickStyle) {
                 PeoplePickerPersonaChipClickStyle.Select, PeoplePickerPersonaChipClickStyle.SelectDeselect -> {
                     if (selectedPersona != null && selectedPersona == persona) {
