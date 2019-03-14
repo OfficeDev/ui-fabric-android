@@ -16,10 +16,7 @@ import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewCompat
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat
 import android.support.v4.widget.ExploreByTouchHelper
-import android.text.InputFilter
-import android.text.SpannableString
-import android.text.Spanned
-import android.text.TextUtils
+import android.text.*
 import android.text.method.MovementMethod
 import android.text.style.TextAppearanceSpan
 import android.text.util.Rfc822Token
@@ -33,6 +30,7 @@ import android.view.View
 import android.view.accessibility.AccessibilityEvent
 import android.view.accessibility.AccessibilityNodeInfo
 import android.view.inputmethod.InputMethodManager
+import android.widget.MultiAutoCompleteTextView
 import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.peoplepicker.PeoplePickerView.PersonaChipClickListener
 import com.microsoft.officeuifabric.persona.IPersona
@@ -56,7 +54,6 @@ import com.tokenautocomplete.TokenCompleteTextView
  * TODO Known issues:
  * - Using backspace to delete a selected token does not work if other text is entered in the input;
  * [TokenCompleteTextView] overrides [onCreateInputConnection] which blocks our ability to control this functionality.
- * - Persona spans do not resize dynamically when the layout changes.
  */
 internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
     companion object {
@@ -81,6 +78,15 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
      * Flag for enabling Drag and Drop persona chips.
      */
     var allowPersonaChipDragAndDrop: Boolean = false
+    /**
+     * This will automatically remove persona chips from your text view, but you will need to do extra
+     * filtering work to ensure duplicates don't end up in your dropdown list.
+     */
+    var allowDuplicatePersonaChips: Boolean = false
+        set(value) {
+            field = value
+            allowDuplicates(value)
+        }
     /**
      * Limits the total number of persona chips that can be added to the field.
      */
@@ -113,6 +119,14 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
     private val accessibilityTouchHelper = AccessibilityTouchHelper(this)
     private var blockedMovementMethod: MovementMethod? = null
     private var gestureDetector: GestureDetector
+    private val hiddenPersonaSpans = ArrayList<TokenImageSpan>()
+    private val lastPositionForSingleLine: Int
+        get() {
+            if (layout == null)
+                onPreDraw()
+
+            return layout.getLineVisibleEnd(0)
+        }
     // Keep track of persona selection for accessibility events
     private var selectedPersona: IPersona? = null
         set(value) {
@@ -178,13 +192,16 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
         return TokenImageSpan(getViewForObject(obj), obj, maxTextWidth().toInt() - countSpanWidth)
     }
 
+    override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
+        super.onLayout(changed, left, top, right, bottom)
+
+        if (changed)
+            performCollapseAndAdjustLayout(hasFocus())
+    }
+
     override fun performCollapse(hasFocus: Boolean) {
-        if (getOriginalCountSpan() == null)
-            removeCountSpanText()
-
-        super.performCollapse(hasFocus)
-
-        updateCountSpanStyle()
+        // super.performCollapse is limited to handling focus changes. We adapted the method to handle layout changes as well.
+        performCollapseAndAdjustLayout(hasFocus)
     }
 
     override fun onFocusChanged(hasFocus: Boolean, direction: Int, previous: Rect?) {
@@ -217,7 +234,7 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
 
     override fun replaceText(text: CharSequence?) {
         // Enforce personaChipLimit. TokenCompleteTextView enforces the limit for other scenarios.
-        if (personaChipLimit != -1 && objects.size == personaChipLimit)
+        if (objects.size == personaChipLimit)
             return
 
         shouldAnnouncePersonaAddition = true
@@ -249,7 +266,7 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
             return
 
         personas.forEach { removeObject(it) }
-        removeCountSpanText()
+        removeCountSpan()
     }
 
     /**
@@ -288,15 +305,126 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
             else -> text ?: ""
         }
         // This keeps the entered text accessibility focused as the user types, which makes the suggested personas list the next focusable view.
-        accessibilityTouchHelper.sendEventForVirtualView(objects.size, AccessibilityEvent.TYPE_VIEW_ACCESSIBILITY_FOCUSED)
+        if (isFocused)
+            accessibilityTouchHelper.sendEventForVirtualView(objects.size, AccessibilityEvent.TYPE_VIEW_ACCESSIBILITY_FOCUSED)
     }
 
-    private fun updateCountSpanStyle() {
-        val originalCountSpan = getOriginalCountSpan() ?: return
+    /**
+     * Collapse the view by removing all the persona spans not on the first line.
+     * Displays a "+x" count span representing the number of hidden persona spans.
+     * Restores the hidden persona spans when the view gains focus.
+     * Adjusts persona span layout when the view's layout changes.
+     * Adapted from [performCollapse] in [TokenCompleteTextView].
+     **/
+    private fun performCollapseAndAdjustLayout(hasFocus: Boolean) {
+        if (!hasFocus) {
+            val spansToHide = ArrayList<TokenImageSpan>()
 
-        text.removeSpan(originalCountSpan)
+            // Spans don't always fit their new space so we rebuild the spans in available space.
+            rebuildPersonaSpans(lastPositionForSingleLine)
+            // Remove persona spans that won't fit in a single line and save them to later be restored.
+            hidePersonaSpansThatDontFit(spansToHide)
 
-        val replacementCountSpan = SpannableString(originalCountSpan.text)
+            // Sometimes we have room to restore the visibility of more hidden persona spans.
+            // We know if we hid persona spans, we won't need to add any.
+            if (spansToHide.isEmpty())
+                addHiddenPersonaSpansThatFit()
+
+            updateCountSpan()
+        } else {
+            removeCountSpan()
+            rebuildPersonaSpans()
+
+            // Restore the persona spans we have hidden.
+            hiddenPersonaSpans.forEach { span ->
+                // addObject does not work in this code block when in accessibility mode so we use insertPersonaSpan instead.
+                // The persona still gets added to objects through the TokenSpanWatcher.
+                insertPersonaSpan(span.token)
+            }
+
+            hiddenPersonaSpans.clear()
+        }
+    }
+
+    /**
+     * Insert a new span for an object.
+     * Adapted from [insertSpan] and [addObject] in [TokenCompleteTextView].
+     * Because [addObject] is in a post runnable sometimes the timing is off,
+     * which creates bugs for accessibility and adjusting layout of spans.
+     */
+    private fun insertPersonaSpan(persona: IPersona) {
+        if (!allowDuplicatePersonaChips && objects.contains(persona))
+            return
+        if (objects.size == personaChipLimit)
+            return
+
+        var offset = text.length
+        val completionText = currentCompletionText()
+        // The user has entered some text that has not yet been tokenized.
+        // Find the beginning of this text and insert the new token there.
+        if (!completionText.isNullOrEmpty())
+            offset = TextUtils.indexOf(text, completionText)
+
+        // We use "," to be consistent with splitChar in TokenCompleteTextView.
+        val spannableStringBuilder = SpannableStringBuilder("," + MultiAutoCompleteTextView.CommaTokenizer().terminateToken(""))
+        val personaSpan = buildSpanForObject(persona)
+        text.insert(offset, spannableStringBuilder)
+        text.setSpan(personaSpan, offset, offset + spannableStringBuilder.length - 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+    }
+
+    // Persona spans don't always fit their new space so we rebuild the spans in available space.
+    private fun rebuildPersonaSpans(end: Int = text.length) {
+        shouldAnnouncePersonaAddition = false
+        shouldAnnouncePersonaRemoval = false
+
+        // We can't cache this array without getting a crash from the generic types in API 19.
+        getPersonaSpans<TokenCompleteTextView<IPersona>.TokenImageSpan>(end = end).forEach { personaSpan ->
+            val rebuiltSpan = buildSpanForObject(personaSpan.token)
+            val spanStart = text.getSpanStart(personaSpan)
+            val spanEnd = text.getSpanEnd(personaSpan)
+            text.removeSpan(personaSpan)
+            text.setSpan(rebuiltSpan, spanStart, spanEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        }
+    }
+
+    private fun hidePersonaSpansThatDontFit(spansToHide: ArrayList<TokenImageSpan>) {
+        // Take spans from the back and add them to the front to maintain persona position.
+        for (span in getPersonaSpans<TokenCompleteTextView<IPersona>.TokenImageSpan>().reversed()) {
+            if (text.getSpanStart(span) > lastPositionForSingleLine && !hiddenPersonaSpans.contains(span)) {
+                spansToHide.add(span)
+                hiddenPersonaSpans.add(0, span)
+                removeObject(span.token)
+            }
+        }
+    }
+
+    private fun addHiddenPersonaSpansThatFit() {
+        if (hiddenPersonaSpans.isEmpty())
+            return
+
+        val addedPersonaSpans = ArrayList<TokenImageSpan>()
+        for (span in hiddenPersonaSpans) {
+            val personaChipView = getViewForObject(span.token)
+            personaChipView.measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED)
+
+            val countSpanWidth = resources.getDimension(R.dimen.uifabric_people_picker_count_span_width).toInt()
+            val endOfLastLine = layout.getPrimaryHorizontal(lastPositionForSingleLine).toInt()
+            val remainingAvailableWidth = width - endOfLastLine - countSpanWidth
+
+            if (personaChipView.measuredWidth <= remainingAvailableWidth) {
+                // Using insertPersonaSpan instead of addObject so that remaining available width is more accurate.
+                insertPersonaSpan(span.token)
+                addedPersonaSpans.add(span)
+            } else {
+                break
+            }
+        }
+
+        hiddenPersonaSpans.removeAll(addedPersonaSpans)
+    }
+
+    private fun createCountSpan(count: Int): SpannableString {
+        val replacementCountSpan = SpannableString("+$count")
 
         // Set the TextAppearance of the count span
         replacementCountSpan.setSpan(
@@ -318,10 +446,22 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
             Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
         )
 
-        text.replace(countSpanStart, countSpanEnd, replacementCountSpan)
+        return replacementCountSpan
     }
 
-    private fun removeCountSpanText() {
+    private fun updateCountSpan() {
+        post {
+            if (hiddenPersonaSpans.size > 0) {
+                val replacementCountSpan = createCountSpan(hiddenPersonaSpans.size)
+                removeCountSpan()
+                text.insert(text.length, replacementCountSpan)
+            } else {
+                removeCountSpan()
+            }
+        }
+    }
+
+    private fun removeCountSpan() {
         val countSpanStart = countSpanStart
         if (countSpanStart > -1)
             text.delete(countSpanStart, countSpanEnd)
@@ -350,9 +490,6 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
     private inline fun <reified T> getPersonaSpans(start: Int = 0, end: Int = text.length): Array<T> =
         text.getSpans(start, end, TokenImageSpan::class.java) as Array<T>
 
-    private fun getOriginalCountSpan(): CountSpan? =
-        text.getSpans(0, text.length, CountSpan::class.java).firstOrNull()
-
     private fun getSpanForPersona(persona: Any): TokenImageSpan? =
         getPersonaSpans<TokenCompleteTextView<IPersona>.TokenImageSpan>().firstOrNull { it.token === persona }
 
@@ -367,13 +504,15 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
     private class TokenListener(val view: PeoplePickerTextView) : TokenCompleteTextView.TokenListener<IPersona> {
         override fun onTokenAdded(token: IPersona) {
             view.tokenListener?.onTokenAdded(token)
-            view.announcePersonaAdded(token)
+            if (view.isFocused)
+                view.announcePersonaAdded(token)
             view.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_ACCESSIBILITY_FOCUS_CLEARED)
         }
 
         override fun onTokenRemoved(token: IPersona) {
             view.tokenListener?.onTokenRemoved(token)
-            view.announcePersonaRemoved(token)
+            if (view.isFocused)
+                view.announcePersonaRemoved(token)
         }
     }
 
@@ -631,12 +770,15 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
                 return
 
             var infoText = ""
+            val hiddenPersonas = hiddenPersonaSpans.map { it.token }
+            val totalPersonas = personas + hiddenPersonas
+
             // Read all of the personas if the list of personas in the field is short
             // Otherwise, read how many personas are in the field
-            if (personas.size <= MAX_PERSONAS_TO_READ)
-                infoText += personas.map { accessibilityTextProvider.getPersonaDescription(it) }.joinToString { it }
+            if (totalPersonas.size <= MAX_PERSONAS_TO_READ)
+                infoText += totalPersonas.map { accessibilityTextProvider.getPersonaDescription(it) }.joinToString { it }
             else
-                infoText = accessibilityTextProvider.getPersonaQuantityText(personas as ArrayList<IPersona>)
+                infoText = accessibilityTextProvider.getPersonaQuantityText(totalPersonas as ArrayList<IPersona>)
 
             info.text = infoText +
                 // Also read any entered text in the field

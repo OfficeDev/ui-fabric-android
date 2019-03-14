@@ -258,7 +258,7 @@ class PeoplePickerView : TemplateView {
         peoplePickerTextView?.apply {
             valueHint = this@PeoplePickerView.valueHint
             allowCollapse(allowCollapse)
-            allowDuplicates(allowDuplicatePersonaChips)
+            allowDuplicatePersonaChips = this@PeoplePickerView.allowDuplicatePersonaChips
             threshold = characterThreshold
             personaChipLimit = this@PeoplePickerView.personaChipLimit
             setAdapter(peoplePickerTextViewAdapter)
