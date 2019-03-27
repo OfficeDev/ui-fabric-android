@@ -147,13 +147,13 @@
     <string name="tooltip_dismiss_message">Tooltip dismissed</string>
 
     <!--Typography-->
-    <string name="headline">Headline</string>
-    <string name="title_1">Title 1</string>
-    <string name="title_2">Title 2</string>
-    <string name="heading">Heading</string>
-    <string name="subheading">Subheading</string>
-    <string name="body_1">Body 1</string>
-    <string name="body_2">Body 2</string>
-    <string name="caption">Caption</string>
+    <string name="headline">Headline is Light 28sp</string>
+    <string name="title_1">Title 1 is Medium 20sp</string>
+    <string name="title_2">Title 2 is Regular 20sp</string>
+    <string name="heading">Heading is Regular 18sp</string>
+    <string name="subheading">Subheading is Regular 16sp</string>
+    <string name="body_1">Body 1 is Regular 14sp</string>
+    <string name="body_2">Body 2 is Medium 14sp</string>
+    <string name="caption">Caption is Regular 12sp</string>
 
 </resources>

@@ -9,7 +9,6 @@
         android:id="@+id/typography_example_headline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/default_view_margin"
         android:text="@string/headline"
         android:textAppearance="@style/TextAppearance.UIFabric.Headline"/>
 
@@ -17,7 +16,7 @@
         android:id="@+id/typography_example_title_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/default_view_margin"
+        android:layout_marginTop="@dimen/default_layout_margin"
         android:text="@string/title_1"
         android:textAppearance="@style/TextAppearance.UIFabric.Title1"/>
 
@@ -25,7 +24,7 @@
         android:id="@+id/typography_example_title_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/default_view_margin"
+        android:layout_marginTop="@dimen/default_layout_margin"
         android:text="@string/title_2"
         android:textAppearance="@style/TextAppearance.UIFabric.Title2"/>
 
@@ -33,7 +32,7 @@
         android:id="@+id/typography_example_heading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/default_view_margin"
+        android:layout_marginTop="@dimen/default_layout_margin"
         android:text="@string/heading"
         android:textAppearance="@style/TextAppearance.UIFabric.Heading"/>
 
@@ -41,7 +40,7 @@
         android:id="@+id/typography_example_subheading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/default_view_margin"
+        android:layout_marginTop="@dimen/default_layout_margin"
         android:text="@string/subheading"
         android:textAppearance="@style/TextAppearance.UIFabric.SubHeading"/>
 
@@ -49,7 +48,7 @@
         android:id="@+id/typography_example_body_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/default_view_margin"
+        android:layout_marginTop="@dimen/default_layout_margin"
         android:text="@string/body_1"
         android:textAppearance="@style/TextAppearance.UIFabric.Body1"/>
 
@@ -57,7 +56,7 @@
         android:id="@+id/typography_example_body_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/default_view_margin"
+        android:layout_marginTop="@dimen/default_layout_margin"
         android:text="@string/body_2"
         android:textColor="@android:color/black"/>
 
@@ -65,7 +64,7 @@
         android:id="@+id/typography_example_caption"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/default_view_margin"
+        android:layout_marginTop="@dimen/default_layout_margin"
         android:text="@string/caption"
         android:textAppearance="@style/TextAppearance.UIFabric.Caption"
         android:textColor="@android:color/black"/>

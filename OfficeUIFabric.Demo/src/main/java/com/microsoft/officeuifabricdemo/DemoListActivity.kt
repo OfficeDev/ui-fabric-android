@@ -45,11 +45,10 @@ class DemoListActivity : AppCompatActivity() {
             view.context.startActivity(intent)
         }
 
-        override fun getItemCount() = DEMOS.size
+        override fun getItemCount(): Int = DEMOS.size
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            val view = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.demo_list_content, parent, false)
+            val view = LayoutInflater.from(parent.context).inflate(R.layout.demo_list_content, parent, false)
             return ViewHolder(view)
         }
 

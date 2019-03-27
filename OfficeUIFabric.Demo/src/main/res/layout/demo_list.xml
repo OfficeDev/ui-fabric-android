@@ -6,8 +6,6 @@
     android:name="com.microsoft.officeuifabricdemo.DemoListFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
     tools:context=".DemoListActivity"
     tools:listitem="@layout/demo_list_content" />
