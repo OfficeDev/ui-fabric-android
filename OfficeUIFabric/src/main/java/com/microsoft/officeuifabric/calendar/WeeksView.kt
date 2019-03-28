@@ -113,7 +113,7 @@ internal class WeeksView : MSRecyclerView {
 
         setHasFixedSize(true)
         layoutManager = GridLayoutManager(context, DAYS_IN_WEEK, LinearLayoutManager.VERTICAL, false)
-        layoutManager.scrollToPosition(pickerAdapter.todayPosition)
+        (layoutManager as GridLayoutManager).scrollToPosition(pickerAdapter.todayPosition)
 
         itemAnimator = null
 

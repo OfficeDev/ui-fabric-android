@@ -221,7 +221,7 @@ class CalendarView : LinearLayout, OnDateSelectedListener {
         }
 
         weeksView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 if (canExpand())
                     displayMode = DisplayMode.FULL_MODE
             }

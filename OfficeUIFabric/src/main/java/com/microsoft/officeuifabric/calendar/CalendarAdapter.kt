@@ -84,10 +84,10 @@ internal class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarDa
 
         val today = LocalDate.now()
         minDate = today.minusMonths(MONTH_LIMIT)
-        minDate = minDate.minusDays(firstDayOfWeekIndices.get(minDate.dayOfWeek).toLong())
+        minDate = minDate.minusDays(firstDayOfWeekIndices.get(minDate.dayOfWeek)!!.toLong())
 
         var maxDate = today.plusMonths(MONTH_LIMIT)
-        maxDate = maxDate.plusDays(lastDayOfWeekIndices.get(maxDate.dayOfWeek).toLong())
+        maxDate = maxDate.plusDays(lastDayOfWeekIndices.get(maxDate.dayOfWeek)!!.toLong())
 
         dayCount = ChronoUnit.DAYS.between(minDate, maxDate).toInt() + 1
     }

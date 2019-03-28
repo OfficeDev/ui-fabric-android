@@ -50,7 +50,7 @@ internal open class MSRecyclerView : RecyclerView {
                 childView.height + getTopDecorationHeight(childView) + getBottomDecorationHeight(childView)
 
 
-        private val ITEM_VIEWS_TOUCH_INPUTS_BLOCKER = object : RecyclerView.OnItemTouchListener {
+        private val ITEM_VIEWS_TOUCH_INPUTS_BLOCKER = object : OnItemTouchListener {
             override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
                 return true
             }
@@ -168,7 +168,7 @@ internal open class MSRecyclerView : RecyclerView {
     override fun onScrollStateChanged(state: Int) {
         super.onScrollStateChanged(state)
 
-        if (RecyclerView.SCROLL_STATE_IDLE == state)
+        if (SCROLL_STATE_IDLE == state)
             resetScrollVelocityTracking()
 
         if (!isSnappingEnabled || !hasFixedSize())
@@ -176,12 +176,12 @@ internal open class MSRecyclerView : RecyclerView {
 
         val linearLayoutManager = layoutManager as? LinearLayoutManager ?: return
 
-        if (RecyclerView.SCROLL_STATE_IDLE == state && !flingRequested) {
+        if (SCROLL_STATE_IDLE == state && !flingRequested) {
             val firstPosition = linearLayoutManager.findFirstVisibleItemPosition()
-            if (RecyclerView.NO_POSITION == firstPosition)
+            if (NO_POSITION == firstPosition)
                 return
 
-            val firstView = layoutManager.findViewByPosition(firstPosition)
+            val firstView = linearLayoutManager.findViewByPosition(firstPosition)!!
 
             var dx = 0
             var dy = 0
@@ -244,7 +244,10 @@ internal open class MSRecyclerView : RecyclerView {
 
     private fun flingAndSnap(velocityX: Int, velocityY: Int) {
         val linearLayoutManager = layoutManager as LinearLayoutManager
-        val firstView = linearLayoutManager.findViewByPosition(linearLayoutManager.findFirstVisibleItemPosition())
+        val firstViewPosition = linearLayoutManager.findFirstVisibleItemPosition()
+        if (firstViewPosition == NO_POSITION)
+            return
+        val firstView = linearLayoutManager.findViewByPosition(firstViewPosition)!!
         val velocity = Math.hypot(velocityX.toDouble(), velocityY.toDouble()).toFloat()
         val totalDistance = getSplineFlingDistance(velocity)
 
@@ -306,11 +309,11 @@ internal open class MSRecyclerView : RecyclerView {
         val linearLayoutManager = layoutManager as LinearLayoutManager
 
         val firstPosition = linearLayoutManager.findFirstVisibleItemPosition()
-        if (RecyclerView.NO_POSITION == firstPosition)
+        if (NO_POSITION == firstPosition)
             return
 
         val lastPosition = linearLayoutManager.findLastVisibleItemPosition()
-        if (RecyclerView.NO_POSITION == lastPosition)
+        if (NO_POSITION == lastPosition)
             return
 
         val now = SystemClock.uptimeMillis()
