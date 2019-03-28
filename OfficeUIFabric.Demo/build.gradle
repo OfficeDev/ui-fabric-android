@@ -10,8 +10,8 @@ android {
         applicationId 'com.microsoft.officeuifabricdemo'
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 6
-        versionName '0.1.7'
+        versionCode 7
+        versionName '0.1.8'
     }
     buildTypes {
         release {
