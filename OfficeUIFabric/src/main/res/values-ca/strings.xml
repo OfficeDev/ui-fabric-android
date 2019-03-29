@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="date_at_time">%1$s a les %2$s</string>
+  <string name="date_time">%1$s, %2$s</string>
+  <string name="today">Avui</string>
+  <string name="tomorrow">Demà</string>
+  <string name="yesterday">Ahir</string>
+  <string name="monday_initial">Dl.</string>
+  <string name="tuesday_initial">Dt.</string>
+  <string name="wednesday_initial">Dc.</string>
+  <string name="thursday_initial">Dj.</string>
+  <string name="friday_initial">Dv.</string>
+  <string name="saturday_initial">Ds.</string>
+  <string name="sunday_initial">Dg.</string>
+  <string name="accessibility_goto_next_week">Ves a la setmana següent</string>
+  <string name="accessibility_goto_previous_week">Ves a la setmana anterior</string>
+  <string name="accessibility_today">avui</string>
+  <string name="accessibility_selected">Seleccionat</string>
+  <string name="date_time_picker_start_time">Hora d\'inici</string>
+  <string name="date_time_picker_end_time">Hora de finalització</string>
+  <string name="date_time_picker_choose_time">Tria l\'hora</string>
+  <string name="date_time_picker_choose_date">Tria la data</string>
+  <string name="people_picker_sample_label">Etiqueta</string>
+  <string name="people_picker_search_directory">Cerca al directori</string>
+  <string name="people_picker_search_progress">S\'està cercant…</string>
+  <string name="people_picker_accessibility_default_hint">Escriu un nom o una adreça electrònica</string>
+  <string name="people_picker_accessibility_persona_added">S\'ha afegit %s.</string>
+  <string name="people_picker_accessibility_persona_removed">S\'ha suprimit %s.</string>
+  <string name="people_picker_accessibility_replaced">S\'ha substituït %s,</string>
+  <string name="people_picker_accessibility_click_persona">Fes clic aquí</string>
+  <string name="people_picker_accessibility_delete_persona">Suprimeix</string>
+  <string name="people_picker_accessibility_deselect_persona">Desselecciona</string>
+  <string name="people_picker_accessibility_select_persona">Selecciona</string>
+  <string name="people_picker_accessibility_clicked_persona">S\'ha fet clic a %s</string>
+  <string name="people_picker_accessibility_deselected_persona">S\'ha desseleccionat %s.</string>
+  <string name="people_picker_accessibility_selected_persona">S\'ha seleccionat %s.</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, en activar-ho s\'anul·larà la selecció de</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, en activar-ho se suprimirà</string>
+  <string name="people_picker_accessibility_click_selected_persona">, en activar-ho es farà clic a</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">Llista de suggeriments oberta amb %s persona</item>
+    <item quantity="other">Llista de suggeriments oberta amb %s persones</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">%s persona</item>
+    <item quantity="other">%s persones</item>
+  </plurals>
+  <string name="persona_title_placeholder">Sense nom</string>
+  <string name="done">Fet</string>
+  <string name="tooltip_accessibility_dismiss_action">descarta</string>
+  <string name="tooltip_accessibility_dismiss_announcement">Informació descartada</string>
+</resources>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="date_at_time">%1$s om %2$s</string>
+  <string name="date_time">%1$s, %2$s</string>
+  <string name="today">Vandag</string>
+  <string name="tomorrow">Môre</string>
+  <string name="yesterday">Gister</string>
+  <string name="monday_initial">M</string>
+  <string name="tuesday_initial">D</string>
+  <string name="wednesday_initial">W</string>
+  <string name="thursday_initial">D</string>
+  <string name="friday_initial">V</string>
+  <string name="saturday_initial">S</string>
+  <string name="sunday_initial">S</string>
+  <string name="accessibility_goto_next_week">Gaan na volgende week</string>
+  <string name="accessibility_goto_previous_week">Gaan na vorige week</string>
+  <string name="accessibility_today">vandag</string>
+  <string name="accessibility_selected">Gekies</string>
+  <string name="date_time_picker_start_time">Begintyd</string>
+  <string name="date_time_picker_end_time">Eindtyd</string>
+  <string name="date_time_picker_choose_time">Kies tyd</string>
+  <string name="date_time_picker_choose_date">Kies datum</string>
+  <string name="people_picker_sample_label">Etiket</string>
+  <string name="people_picker_search_directory">Deursoek gids</string>
+  <string name="people_picker_search_progress">Soek tans…</string>
+  <string name="people_picker_accessibility_default_hint">Voer \'n naam of e-posadres in</string>
+  <string name="people_picker_accessibility_persona_added">%s bygevoeg</string>
+  <string name="people_picker_accessibility_persona_removed">%s verwyder</string>
+  <string name="people_picker_accessibility_replaced">%s vervang,</string>
+  <string name="people_picker_accessibility_click_persona">Klik</string>
+  <string name="people_picker_accessibility_delete_persona">Skrap</string>
+  <string name="people_picker_accessibility_deselect_persona">Ontkies alles</string>
+  <string name="people_picker_accessibility_select_persona">Kies</string>
+  <string name="people_picker_accessibility_clicked_persona">Het %s geklik</string>
+  <string name="people_picker_accessibility_deselected_persona">Het %s ontkies</string>
+  <string name="people_picker_accessibility_selected_persona">Gekies %s</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, Aktivering sal ontkies</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, Aktivering sal skrap</string>
+  <string name="people_picker_accessibility_click_selected_persona">, Aktivering sal klik</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">Voorstellelys geopen met %s persoon</item>
+    <item quantity="other">Voorstellelys geopen met %s mense</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">%s persoon</item>
+    <item quantity="other">%s mense</item>
+  </plurals>
+  <string name="persona_title_placeholder">Geen naam nie</string>
+  <string name="done">Klaar</string>
+  <string name="tooltip_accessibility_dismiss_action">weier</string>
+  <string name="tooltip_accessibility_dismiss_announcement">Nutsmiddelwenk is geweier</string>
+</resources>

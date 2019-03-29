@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="date_at_time">%1$s %2$s</string>
+  <string name="date_time">%1$s、%2$s</string>
+  <string name="today">今日</string>
+  <string name="tomorrow">明日</string>
+  <string name="yesterday">昨日</string>
+  <string name="monday_initial">月</string>
+  <string name="tuesday_initial">火</string>
+  <string name="wednesday_initial">水</string>
+  <string name="thursday_initial">木</string>
+  <string name="friday_initial">金</string>
+  <string name="saturday_initial">土</string>
+  <string name="sunday_initial">日</string>
+  <string name="accessibility_goto_next_week">次の週に移動</string>
+  <string name="accessibility_goto_previous_week">前の週に移動</string>
+  <string name="accessibility_today">今日</string>
+  <string name="accessibility_selected">選択済み</string>
+  <string name="date_time_picker_start_time">開始時刻</string>
+  <string name="date_time_picker_end_time">終了時刻</string>
+  <string name="date_time_picker_choose_time">時間の選択</string>
+  <string name="date_time_picker_choose_date">日付を選択</string>
+  <string name="people_picker_sample_label">ラベル</string>
+  <string name="people_picker_search_directory">ディレクトリの検索</string>
+  <string name="people_picker_search_progress">検索しています…</string>
+  <string name="people_picker_accessibility_default_hint">名前またはメールを入力します</string>
+  <string name="people_picker_accessibility_persona_added">%s を追加しました</string>
+  <string name="people_picker_accessibility_persona_removed">%s を削除しました</string>
+  <string name="people_picker_accessibility_replaced">%s を置き換えました、</string>
+  <string name="people_picker_accessibility_click_persona">クリック</string>
+  <string name="people_picker_accessibility_delete_persona">削除</string>
+  <string name="people_picker_accessibility_deselect_persona">選択解除</string>
+  <string name="people_picker_accessibility_select_persona">選択</string>
+  <string name="people_picker_accessibility_clicked_persona">%s をクリックしました</string>
+  <string name="people_picker_accessibility_deselected_persona">%s の選択を解除しました</string>
+  <string name="people_picker_accessibility_selected_persona">%s を選択しました</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">、ライセンス認証の選択が解除されます</string>
+  <string name="people_picker_accessibility_delete_selected_persona">、ライセンス認証が削除されます</string>
+  <string name="people_picker_accessibility_click_selected_persona">、ライセンス認証をクリックします</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="other">候補の一覧を %s 人が開きました</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="other">%s 人</item>
+  </plurals>
+  <string name="persona_title_placeholder">名前なし</string>
+  <string name="done">完了</string>
+  <string name="tooltip_accessibility_dismiss_action">閉じる</string>
+  <string name="tooltip_accessibility_dismiss_announcement">ツールヒントを閉じました</string>
+</resources>

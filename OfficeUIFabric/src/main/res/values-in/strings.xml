@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="date_at_time">%1$s pada %2$s</string>
+  <string name="date_time">%1$s, %2$s</string>
+  <string name="today">Hari Ini</string>
+  <string name="tomorrow">Besok</string>
+  <string name="yesterday">Kemarin</string>
+  <string name="monday_initial">S</string>
+  <string name="tuesday_initial">S</string>
+  <string name="wednesday_initial">R</string>
+  <string name="thursday_initial">K</string>
+  <string name="friday_initial">J</string>
+  <string name="saturday_initial">S</string>
+  <string name="sunday_initial">M</string>
+  <string name="accessibility_goto_next_week">Ke minggu selanjutnya</string>
+  <string name="accessibility_goto_previous_week">Ke minggu sebelumnya</string>
+  <string name="accessibility_today">hari ini</string>
+  <string name="accessibility_selected">Dipilih</string>
+  <string name="date_time_picker_start_time">Waktu mulai</string>
+  <string name="date_time_picker_end_time">Waktu selesai</string>
+  <string name="date_time_picker_choose_time">Pilih waktu</string>
+  <string name="date_time_picker_choose_date">Pilih tanggal</string>
+  <string name="people_picker_sample_label">Label</string>
+  <string name="people_picker_search_directory">Cari Direktori</string>
+  <string name="people_picker_search_progress">Mencari…</string>
+  <string name="people_picker_accessibility_default_hint">Masukkan nama atau email</string>
+  <string name="people_picker_accessibility_persona_added">%s ditambahkan</string>
+  <string name="people_picker_accessibility_persona_removed">%s dihapus</string>
+  <string name="people_picker_accessibility_replaced">%s diganti,</string>
+  <string name="people_picker_accessibility_click_persona">Klik</string>
+  <string name="people_picker_accessibility_delete_persona">Hapus</string>
+  <string name="people_picker_accessibility_deselect_persona">Batalkan Pilihan</string>
+  <string name="people_picker_accessibility_select_persona">Pilih</string>
+  <string name="people_picker_accessibility_clicked_persona">Mengklik %s</string>
+  <string name="people_picker_accessibility_deselected_persona">Membatalkan pilihan %s</string>
+  <string name="people_picker_accessibility_selected_persona">Memilih %s</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, Pengaktifan akan membatalkan pilihan</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, Pengaktifan akan menghapus</string>
+  <string name="people_picker_accessibility_click_selected_persona">, Pengaktifan akan mengklik</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="other">Daftar saran dibuka dengan %s orang</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="other">%s orang</item>
+  </plurals>
+  <string name="persona_title_placeholder">Tanpa nama</string>
+  <string name="done">Selesai</string>
+  <string name="tooltip_accessibility_dismiss_action">tutup</string>
+  <string name="tooltip_accessibility_dismiss_announcement">Tooltip ditutup</string>
+</resources>

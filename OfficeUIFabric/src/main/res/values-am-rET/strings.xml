@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="date_at_time">%1$s በ %2$s</string>
+  <string name="date_time">%1$s፣ %2$s</string>
+  <string name="today">ዛሬ</string>
+  <string name="tomorrow">ነገ</string>
+  <string name="yesterday">ትላንት</string>
+  <string name="monday_initial">ሰ</string>
+  <string name="tuesday_initial">ማ</string>
+  <string name="wednesday_initial">ሮ</string>
+  <string name="thursday_initial">ሐ</string>
+  <string name="friday_initial">ዓ</string>
+  <string name="saturday_initial">ቅ</string>
+  <string name="sunday_initial">ቅ</string>
+  <string name="accessibility_goto_next_week">ወደሚቀጥለው ሳምንት ሂድ</string>
+  <string name="accessibility_goto_previous_week">ወዳለፈው ሳምንት ሂድ</string>
+  <string name="accessibility_today">ዛሬ</string>
+  <string name="accessibility_selected">ምርጥ</string>
+  <string name="date_time_picker_start_time">መጀመሪያ ጊዜ</string>
+  <string name="date_time_picker_end_time">መጨረሻ ጊዜ</string>
+  <string name="date_time_picker_choose_time">ጊዜ ይምረጡ</string>
+  <string name="date_time_picker_choose_date">ቀን ይምረጡ</string>
+  <string name="people_picker_sample_label">መለያ</string>
+  <string name="people_picker_search_directory">ማውጫ ውስጥ ፈልግ</string>
+  <string name="people_picker_search_progress">በፍለጋ ላይ...</string>
+  <string name="people_picker_accessibility_default_hint">ስም ወይም ኢሜይል አድራሻ ያስገቡ</string>
+  <string name="people_picker_accessibility_persona_added">%s ወደ ተቀባዮች ታክሏል</string>
+  <string name="people_picker_accessibility_persona_removed">%s ከተቀባዮች ተወግዷል</string>
+  <string name="people_picker_accessibility_replaced">%s ተተክቷል፣</string>
+  <string name="people_picker_accessibility_click_persona">ጠቅ አድርግ</string>
+  <string name="people_picker_accessibility_delete_persona">ሰርዝ</string>
+  <string name="people_picker_accessibility_deselect_persona">ሁሉንም ከምርጫ አውጣ</string>
+  <string name="people_picker_accessibility_select_persona">ምረጥ</string>
+  <string name="people_picker_accessibility_clicked_persona">%s ጠቅ ተደርጓል</string>
+  <string name="people_picker_accessibility_deselected_persona">%s ከምርጫ ወጥቷል</string>
+  <string name="people_picker_accessibility_selected_persona">%s ተመርጧል</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, ማንቃት ከምርጫ ይወጣል</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, ማንቃት ጠቅ ይደረጋል</string>
+  <string name="people_picker_accessibility_click_selected_persona">፣ ማንቃት ጠቅ ይደረጋል</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">የጥቆማ ዝርዝር በ %s ሰው ተከፍቷል</item>
+    <item quantity="other">የጥቆማዎች ዝርዝር በ%s ሰዎች ተከፍቷል</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">%s ሰው</item>
+    <item quantity="other">%s ሰዎች</item>
+  </plurals>
+  <string name="persona_title_placeholder">ስም የለም</string>
+  <string name="done">ተከናውኗል</string>
+  <string name="tooltip_accessibility_dismiss_action">አሰናብት</string>
+  <string name="tooltip_accessibility_dismiss_announcement">የመሳሪያ መግለጫ ተሰናብቷል</string>
+</resources>

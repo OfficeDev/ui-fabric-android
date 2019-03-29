@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="date_at_time">%2$s radəsində %1$s</string>
+  <string name="date_time">%1$s, %2$s</string>
+  <string name="today">Bu gün</string>
+  <string name="tomorrow">Sabah</string>
+  <string name="yesterday">Dünən</string>
+  <string name="monday_initial">BE</string>
+  <string name="tuesday_initial">ÇA</string>
+  <string name="wednesday_initial">Ç</string>
+  <string name="thursday_initial">CA</string>
+  <string name="friday_initial">C</string>
+  <string name="saturday_initial">Ş</string>
+  <string name="sunday_initial">B</string>
+  <string name="accessibility_goto_next_week">Növbəti həftəyə keçin</string>
+  <string name="accessibility_goto_previous_week">Əvvəlki həftəyə keçin</string>
+  <string name="accessibility_today">bu gün</string>
+  <string name="accessibility_selected">Seçilib</string>
+  <string name="date_time_picker_start_time">Başlama vaxtı</string>
+  <string name="date_time_picker_end_time">Bitmə vaxtı</string>
+  <string name="date_time_picker_choose_time">Vaxt seçin</string>
+  <string name="date_time_picker_choose_date">Tarix seçin</string>
+  <string name="people_picker_sample_label">Nişan</string>
+  <string name="people_picker_search_directory">Kataloqda axtarın</string>
+  <string name="people_picker_search_progress">Axtarılır…</string>
+  <string name="people_picker_accessibility_default_hint">Ad və ya e-poçt ünvanı daxil edin</string>
+  <string name="people_picker_accessibility_persona_added">%s əlavə edildi</string>
+  <string name="people_picker_accessibility_persona_removed">%s silindi</string>
+  <string name="people_picker_accessibility_replaced">%s əvəzləndi,</string>
+  <string name="people_picker_accessibility_click_persona">Kliklə</string>
+  <string name="people_picker_accessibility_delete_persona">Sil</string>
+  <string name="people_picker_accessibility_deselect_persona">Seçimi ləğv et</string>
+  <string name="people_picker_accessibility_select_persona">Seç</string>
+  <string name="people_picker_accessibility_clicked_persona">%s klikləndi</string>
+  <string name="people_picker_accessibility_deselected_persona">%s seçimi ləğv edildi</string>
+  <string name="people_picker_accessibility_selected_persona">%s seçildi</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, Aktivləşdirmə seçimi ləğv edəcəkdir</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, Aktivləşdirmə siləcəkdir</string>
+  <string name="people_picker_accessibility_click_selected_persona">, Aktivləşdirmə klikləyəcəkdir</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">Təkliflər siyahısı %s şəxslə açıldı</item>
+    <item quantity="other">Təkliflər siyahısı %s nəfərlə açıldı</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">%s şəxs</item>
+    <item quantity="other">%s nəfər</item>
+  </plurals>
+  <string name="persona_title_placeholder">Adsız</string>
+  <string name="done">Hazırdır</string>
+  <string name="tooltip_accessibility_dismiss_action">rədd et</string>
+  <string name="tooltip_accessibility_dismiss_announcement">Alət izahı rədd edilib</string>
+</resources>

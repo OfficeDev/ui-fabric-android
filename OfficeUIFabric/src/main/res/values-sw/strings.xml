@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="date_at_time">%1$s saa %2$s</string>
+  <string name="date_time">%1$s, %2$s</string>
+  <string name="today">Leo</string>
+  <string name="tomorrow">Kesho</string>
+  <string name="yesterday">Jana</string>
+  <string name="monday_initial">Jmt</string>
+  <string name="tuesday_initial">Jmn</string>
+  <string name="wednesday_initial">Jtn</string>
+  <string name="thursday_initial">Alh</string>
+  <string name="friday_initial">Februari</string>
+  <string name="saturday_initial">Jms</string>
+  <string name="sunday_initial">Jmp</string>
+  <string name="accessibility_goto_next_week">Nenda kwenye wiki ijayo</string>
+  <string name="accessibility_goto_previous_week">Nenda kwenye wiki ya awali</string>
+  <string name="accessibility_today">leo</string>
+  <string name="accessibility_selected">Imeteuliwa</string>
+  <string name="date_time_picker_start_time">Wakati wa kuanza</string>
+  <string name="date_time_picker_end_time">Wakati wa kuisha</string>
+  <string name="date_time_picker_choose_time">Chagua wakati</string>
+  <string name="date_time_picker_choose_date">Chagua tarehe</string>
+  <string name="people_picker_sample_label">Lebo</string>
+  <string name="people_picker_search_directory">Tafuta Saraka</string>
+  <string name="people_picker_search_progress">Inatafuta…</string>
+  <string name="people_picker_accessibility_default_hint">Andika jina au anwani ya barua pepe</string>
+  <string name="people_picker_accessibility_persona_added">%s imeongezwa</string>
+  <string name="people_picker_accessibility_persona_removed">%s imeondolewa</string>
+  <string name="people_picker_accessibility_replaced">%s imebadilishwa,</string>
+  <string name="people_picker_accessibility_click_persona">Bofya</string>
+  <string name="people_picker_accessibility_delete_persona">Futa</string>
+  <string name="people_picker_accessibility_deselect_persona">Ondoa zote uteuzi</string>
+  <string name="people_picker_accessibility_select_persona">Chagua</string>
+  <string name="people_picker_accessibility_clicked_persona">Imebofya %s</string>
+  <string name="people_picker_accessibility_deselected_persona">Imebatilishwa uteuzi %s</string>
+  <string name="people_picker_accessibility_selected_persona">Umeteua %s</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, Uamilisho utaondoa uteuzi</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, Uamilisho utafuta</string>
+  <string name="people_picker_accessibility_click_selected_persona">, Uamilisho utabofyiwa</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">Orodha ya mapendekezo ilifunguliwa na mtu %s</item>
+    <item quantity="other">Orodha ya mapendekezo ilifunguliwa na watu %s</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">Mtu %s</item>
+    <item quantity="other">Watu %s</item>
+  </plurals>
+  <string name="persona_title_placeholder">Hakuna jina</string>
+  <string name="done">Imekamilika</string>
+  <string name="tooltip_accessibility_dismiss_action">ondosha</string>
+  <string name="tooltip_accessibility_dismiss_announcement">Kidokezozana kimeondoshwa</string>
+</resources>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="date_at_time">%1$s, %2$s</string>
+  <string name="date_time">%1$s, %2$s</string>
+  <string name="today">Bugun</string>
+  <string name="tomorrow">Ertaga</string>
+  <string name="yesterday">Kecha</string>
+  <string name="monday_initial">D</string>
+  <string name="tuesday_initial">S</string>
+  <string name="wednesday_initial">CH</string>
+  <string name="thursday_initial">P</string>
+  <string name="friday_initial">J</string>
+  <string name="saturday_initial">S</string>
+  <string name="sunday_initial">Y</string>
+  <string name="accessibility_goto_next_week">Keyingi haftaga o‘tish</string>
+  <string name="accessibility_goto_previous_week">Avvalgi haftaga o‘tish</string>
+  <string name="accessibility_today">bugun</string>
+  <string name="accessibility_selected">Tanlangan</string>
+  <string name="date_time_picker_start_time">Boshlanish vaqti</string>
+  <string name="date_time_picker_end_time">Tugash vaqti</string>
+  <string name="date_time_picker_choose_time">Vaqtni tanlang</string>
+  <string name="date_time_picker_choose_date">Sanani tanlang</string>
+  <string name="people_picker_sample_label">Yorliq</string>
+  <string name="people_picker_search_directory">Qidiruv katalogi</string>
+  <string name="people_picker_search_progress">Qidirilmoqda…</string>
+  <string name="people_picker_accessibility_default_hint">Ismi yoki email manzilini kiriting</string>
+  <string name="people_picker_accessibility_persona_added">%s kiritildi</string>
+  <string name="people_picker_accessibility_persona_removed">%s olib tashlandi</string>
+  <string name="people_picker_accessibility_replaced">%s almashtirildi,</string>
+  <string name="people_picker_accessibility_click_persona">Bosish</string>
+  <string name="people_picker_accessibility_delete_persona">O‘chirish</string>
+  <string name="people_picker_accessibility_deselect_persona">Belgilashni bekor qilish</string>
+  <string name="people_picker_accessibility_select_persona">Belgilash</string>
+  <string name="people_picker_accessibility_clicked_persona">%s bosildi</string>
+  <string name="people_picker_accessibility_deselected_persona">%s belgilash bekor qilindi</string>
+  <string name="people_picker_accessibility_selected_persona">%s tanlandi</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, Faollashtirish belgilashni bekor qiladi</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, Faollashtirish o‘chiradi</string>
+  <string name="people_picker_accessibility_click_selected_persona">, Faollashtirish bosadi</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">%s kishilik tavsiyalar ro‘yxati ochildi</item>
+    <item quantity="other">%s kishilik tavsiyalar ro‘yxati ochildi</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">%s kishi</item>
+    <item quantity="other">%s kishi</item>
+  </plurals>
+  <string name="persona_title_placeholder">Nomsiz</string>
+  <string name="done">Tayyor</string>
+  <string name="tooltip_accessibility_dismiss_action">yopish</string>
+  <string name="tooltip_accessibility_dismiss_announcement">Vazifalar paneli yopildi</string>
+</resources>

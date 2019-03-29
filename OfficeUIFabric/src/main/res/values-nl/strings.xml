@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="date_at_time">%1$s om %2$s</string>
+  <string name="date_time">%1$s, %2$s</string>
+  <string name="today">Vandaag</string>
+  <string name="tomorrow">Morgen</string>
+  <string name="yesterday">Gisteren</string>
+  <string name="monday_initial">M</string>
+  <string name="tuesday_initial">D</string>
+  <string name="wednesday_initial">W</string>
+  <string name="thursday_initial">D</string>
+  <string name="friday_initial">V</string>
+  <string name="saturday_initial">Z</string>
+  <string name="sunday_initial">Z</string>
+  <string name="accessibility_goto_next_week">Naar volgende week</string>
+  <string name="accessibility_goto_previous_week">Naar vorige week</string>
+  <string name="accessibility_today">vandaag</string>
+  <string name="accessibility_selected">Geselecteerd</string>
+  <string name="date_time_picker_start_time">Begintijd</string>
+  <string name="date_time_picker_end_time">Eindtijd</string>
+  <string name="date_time_picker_choose_time">Tijd kiezen</string>
+  <string name="date_time_picker_choose_date">Datum kiezen</string>
+  <string name="people_picker_sample_label">Label</string>
+  <string name="people_picker_search_directory">Zoeken in adreslijst</string>
+  <string name="people_picker_search_progress">Zoeken…</string>
+  <string name="people_picker_accessibility_default_hint">Naam of e-mailadres invoeren</string>
+  <string name="people_picker_accessibility_persona_added">%s is toegevoegd</string>
+  <string name="people_picker_accessibility_persona_removed">%s is verwijderd</string>
+  <string name="people_picker_accessibility_replaced">%s is vervangen,</string>
+  <string name="people_picker_accessibility_click_persona">Klikken</string>
+  <string name="people_picker_accessibility_delete_persona">Verwijderen</string>
+  <string name="people_picker_accessibility_deselect_persona">Selectie opheffen</string>
+  <string name="people_picker_accessibility_select_persona">Selecteren</string>
+  <string name="people_picker_accessibility_clicked_persona">Geklikt op %s</string>
+  <string name="people_picker_accessibility_deselected_persona">Selectie van %s is opgeheven</string>
+  <string name="people_picker_accessibility_selected_persona">%s is geselecteerd</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, selectie wordt opgeheven bij activering</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, wordt verwijderd bij activering</string>
+  <string name="people_picker_accessibility_click_selected_persona">, wordt op geklikt bij activering</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">Lijst met suggesties is geopend met %s persoon</item>
+    <item quantity="other">Lijst met suggesties is geopend met %s personen</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">%s persoon</item>
+    <item quantity="other">%s personen</item>
+  </plurals>
+  <string name="persona_title_placeholder">Geen naam</string>
+  <string name="done">Gereed</string>
+  <string name="tooltip_accessibility_dismiss_action">sluiten</string>
+  <string name="tooltip_accessibility_dismiss_announcement">Knopinfo is gesloten</string>
+</resources>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="date_at_time">%1$s у %2$s</string>
+  <string name="date_time">%1$s, %2$s</string>
+  <string name="today">Сёння</string>
+  <string name="tomorrow">Заўтра</string>
+  <string name="yesterday">Учора</string>
+  <string name="monday_initial">пн</string>
+  <string name="tuesday_initial">аў</string>
+  <string name="wednesday_initial">ср</string>
+  <string name="thursday_initial">чц</string>
+  <string name="friday_initial">пт</string>
+  <string name="saturday_initial">суб</string>
+  <string name="sunday_initial">нд</string>
+  <string name="accessibility_goto_next_week">Перайсці да наступнага тыдня</string>
+  <string name="accessibility_goto_previous_week">Перайсці да папярэдняга тыдня</string>
+  <string name="accessibility_today">сёння</string>
+  <string name="accessibility_selected">Вылучана</string>
+  <string name="date_time_picker_start_time">Час пачатку</string>
+  <string name="date_time_picker_end_time">Час заканчэння</string>
+  <string name="date_time_picker_choose_time">Выбар часу</string>
+  <string name="date_time_picker_choose_date">Выбар даты</string>
+  <string name="people_picker_sample_label">Пазнака</string>
+  <string name="people_picker_search_directory">Пошук у каталогу</string>
+  <string name="people_picker_search_progress">Ідзе пошук…</string>
+  <string name="people_picker_accessibility_default_hint">Увядзіце імя або электронную пошту</string>
+  <string name="people_picker_accessibility_persona_added">Карыстальнік %s дададзены</string>
+  <string name="people_picker_accessibility_persona_removed">Карыстальнік %s выдалены</string>
+  <string name="people_picker_accessibility_replaced">Карыстальнік %s заменены,</string>
+  <string name="people_picker_accessibility_click_persona">Націснуць</string>
+  <string name="people_picker_accessibility_delete_persona">Выдаліць</string>
+  <string name="people_picker_accessibility_deselect_persona">Скасаваць вылучэнне</string>
+  <string name="people_picker_accessibility_select_persona">Вылучыць</string>
+  <string name="people_picker_accessibility_clicked_persona">Націснуты карыстальнік %s</string>
+  <string name="people_picker_accessibility_deselected_persona">Скасавана вылучэнне карыстальніка %s</string>
+  <string name="people_picker_accessibility_selected_persona">Вылучаны карыстальнік %s</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, Актывацыя прывядзе да скасавання вылучэння</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, Актывацыя прывядзе да выдалення</string>
+  <string name="people_picker_accessibility_click_selected_persona">, Актывацыя прывядзе да націскання</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">Спіс прапаноў адкрыты з %s карыстальнікам</item>
+    <item quantity="few">Спіс прапаноў адкрыты з %s карыстальнікамі</item>
+    <item quantity="many">Спіс прапаноў адкрыты з %s карыстальнікамі</item>
+    <item quantity="other">Спіс прапаноў адкрыты з %s карыстальнікамі</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">%s карыстальнік</item>
+    <item quantity="few">%s карыстальнікі</item>
+    <item quantity="many">%s карыстальнікаў</item>
+    <item quantity="other">%s карыстальнікаў</item>
+  </plurals>
+  <string name="persona_title_placeholder">Без імені</string>
+  <string name="done">Гатова</string>
+  <string name="tooltip_accessibility_dismiss_action">закрыць</string>
+  <string name="tooltip_accessibility_dismiss_announcement">Усплывальная падказка закрыта</string>
+</resources>

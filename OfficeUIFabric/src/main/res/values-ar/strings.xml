@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="date_at_time">%1$s في الساعة %2$s</string>
+  <string name="date_time">%1$s، %2$s</string>
+  <string name="today">اليوم</string>
+  <string name="tomorrow">غداً</string>
+  <string name="yesterday">أمس</string>
+  <string name="monday_initial">ن</string>
+  <string name="tuesday_initial">ث</string>
+  <string name="wednesday_initial">ر</string>
+  <string name="thursday_initial">خ</string>
+  <string name="friday_initial">ج</string>
+  <string name="saturday_initial">س</string>
+  <string name="sunday_initial">ح</string>
+  <string name="accessibility_goto_next_week">الانتقال إلى الأسبوع القادم</string>
+  <string name="accessibility_goto_previous_week">الانتقال إلى الأسبوع الماضي</string>
+  <string name="accessibility_today">اليوم</string>
+  <string name="accessibility_selected">محدد</string>
+  <string name="date_time_picker_start_time">وقت البدء</string>
+  <string name="date_time_picker_end_time">وقت الانتهاء</string>
+  <string name="date_time_picker_choose_time">اختيار الوقت</string>
+  <string name="date_time_picker_choose_date">اختيار التاريخ</string>
+  <string name="people_picker_sample_label">تسمية</string>
+  <string name="people_picker_search_directory">البحث في الدليل</string>
+  <string name="people_picker_search_progress">قيد البحث…</string>
+  <string name="people_picker_accessibility_default_hint">إدخال اسم أو بريد إلكتروني</string>
+  <string name="people_picker_accessibility_persona_added">تمت إضافة %s</string>
+  <string name="people_picker_accessibility_persona_removed">تمت إزالة %s</string>
+  <string name="people_picker_accessibility_replaced">تم استبدال %s،</string>
+  <string name="people_picker_accessibility_click_persona">النقر فوق</string>
+  <string name="people_picker_accessibility_delete_persona">حذف</string>
+  <string name="people_picker_accessibility_deselect_persona">إلغاء تحديد</string>
+  <string name="people_picker_accessibility_select_persona">تحديد</string>
+  <string name="people_picker_accessibility_clicked_persona">تم النقر فوق %s</string>
+  <string name="people_picker_accessibility_deselected_persona">تم إلغاء تحديد %s</string>
+  <string name="people_picker_accessibility_selected_persona">تم تحديد %s</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">، سيلغي التنشيط تحديد</string>
+  <string name="people_picker_accessibility_delete_selected_persona">، سيحذف التنشيط</string>
+  <string name="people_picker_accessibility_click_selected_persona">، سينقر التنشيط فوق</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="zero">قائمة اقتراحات مفتوحة بها %s من الأشخاص</item>
+    <item quantity="one">قائمة اقتراحات مفتوحة بها شخص %s</item>
+    <item quantity="two">قائمة اقتراحات مفتوحة بها %s من الأشخاص</item>
+    <item quantity="few">قائمة اقتراحات مفتوحة بها %s من الأشخاص</item>
+    <item quantity="many">قائمة اقتراحات مفتوحة بها %s شخصاً</item>
+    <item quantity="other">قائمة اقتراحات مفتوحة بها %s من الأشخاص</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="zero">%s من الأشخاص</item>
+    <item quantity="one">%s شخص</item>
+    <item quantity="two">%s من الأشخاص</item>
+    <item quantity="few">%s من الأشخاص</item>
+    <item quantity="many">%s شخصاً</item>
+    <item quantity="other">%s من الأشخاص</item>
+  </plurals>
+  <string name="persona_title_placeholder">لا يوجد اسم</string>
+  <string name="done">تم</string>
+  <string name="tooltip_accessibility_dismiss_action">تجاهل</string>
+  <string name="tooltip_accessibility_dismiss_announcement">تم تجاهل تعريف الأدوات</string>
+</resources>

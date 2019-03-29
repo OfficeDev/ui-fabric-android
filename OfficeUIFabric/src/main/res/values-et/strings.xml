@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="date_at_time">%1$s kl %2$s</string>
+  <string name="date_time">%1$s, %2$s</string>
+  <string name="today">Täna</string>
+  <string name="tomorrow">Homme</string>
+  <string name="yesterday">Eile</string>
+  <string name="monday_initial">E</string>
+  <string name="tuesday_initial">T</string>
+  <string name="wednesday_initial">K</string>
+  <string name="thursday_initial">N</string>
+  <string name="friday_initial">R</string>
+  <string name="saturday_initial">L</string>
+  <string name="sunday_initial">P</string>
+  <string name="accessibility_goto_next_week">Mine järgmisele nädalale</string>
+  <string name="accessibility_goto_previous_week">Mine eelmisele nädalale</string>
+  <string name="accessibility_today">täna</string>
+  <string name="accessibility_selected">Valitud</string>
+  <string name="date_time_picker_start_time">Algusaeg</string>
+  <string name="date_time_picker_end_time">Lõppaeg</string>
+  <string name="date_time_picker_choose_time">Valige kellaaeg</string>
+  <string name="date_time_picker_choose_date">Valige kuupäev</string>
+  <string name="people_picker_sample_label">Silt</string>
+  <string name="people_picker_search_directory">Otsige kataloogist</string>
+  <string name="people_picker_search_progress">Otsimine…</string>
+  <string name="people_picker_accessibility_default_hint">Sisestage nimi või meiliaadress</string>
+  <string name="people_picker_accessibility_persona_added">%s on lisatud</string>
+  <string name="people_picker_accessibility_persona_removed">%s on eemaldatud</string>
+  <string name="people_picker_accessibility_replaced">%s on asendatud,</string>
+  <string name="people_picker_accessibility_click_persona">Klõpsake</string>
+  <string name="people_picker_accessibility_delete_persona">Kustutage</string>
+  <string name="people_picker_accessibility_deselect_persona">Eemaldage valikust</string>
+  <string name="people_picker_accessibility_select_persona">Valige</string>
+  <string name="people_picker_accessibility_clicked_persona">%s on klõpsatud</string>
+  <string name="people_picker_accessibility_deselected_persona">%s on valikust eemaldatud</string>
+  <string name="people_picker_accessibility_selected_persona">%s on valitud</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, Aktiveerimisel valik tühistatakse</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, Aktiveerimisel kustutatakse</string>
+  <string name="people_picker_accessibility_click_selected_persona">, Aktiveerimisel klõpsatakse</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">Soovituste loend on avatud ja selles on %s inimene</item>
+    <item quantity="other">Soovituste loend on avatud ja selles on %s inimest</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">%s inimene</item>
+    <item quantity="other">%s inimest</item>
+  </plurals>
+  <string name="persona_title_placeholder">Nimetu</string>
+  <string name="done">Valmis</string>
+  <string name="tooltip_accessibility_dismiss_action">sule</string>
+  <string name="tooltip_accessibility_dismiss_announcement">Kohtspikker on suletud</string>
+</resources>

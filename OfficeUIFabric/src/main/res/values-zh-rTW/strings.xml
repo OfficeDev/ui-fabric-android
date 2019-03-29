@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="date_at_time">%1$s %2$s</string>
+  <string name="date_time">%1$s，%2$s</string>
+  <string name="today">今天</string>
+  <string name="tomorrow">明天</string>
+  <string name="yesterday">昨天</string>
+  <string name="monday_initial">一</string>
+  <string name="tuesday_initial">二</string>
+  <string name="wednesday_initial">三</string>
+  <string name="thursday_initial">四</string>
+  <string name="friday_initial">五</string>
+  <string name="saturday_initial">六</string>
+  <string name="sunday_initial">日</string>
+  <string name="accessibility_goto_next_week">移至下一週</string>
+  <string name="accessibility_goto_previous_week">移至上一週</string>
+  <string name="accessibility_today">今天</string>
+  <string name="accessibility_selected">已選取</string>
+  <string name="date_time_picker_start_time">開始時間</string>
+  <string name="date_time_picker_end_time">結束時間</string>
+  <string name="date_time_picker_choose_time">選擇時間</string>
+  <string name="date_time_picker_choose_date">選擇日期</string>
+  <string name="people_picker_sample_label">標籤</string>
+  <string name="people_picker_search_directory">搜尋目錄</string>
+  <string name="people_picker_search_progress">正在搜尋…</string>
+  <string name="people_picker_accessibility_default_hint">輸入名稱或電子郵件</string>
+  <string name="people_picker_accessibility_persona_added">已新增「%s」</string>
+  <string name="people_picker_accessibility_persona_removed">已移除「%s」</string>
+  <string name="people_picker_accessibility_replaced">已取代「%s」，</string>
+  <string name="people_picker_accessibility_click_persona">按一下</string>
+  <string name="people_picker_accessibility_delete_persona">刪除</string>
+  <string name="people_picker_accessibility_deselect_persona">取消選取</string>
+  <string name="people_picker_accessibility_select_persona">選取</string>
+  <string name="people_picker_accessibility_clicked_persona">已按一下「%s」</string>
+  <string name="people_picker_accessibility_deselected_persona">已取消選取「%s」</string>
+  <string name="people_picker_accessibility_selected_persona">已選取「%s」</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">，啟用將取消選取</string>
+  <string name="people_picker_accessibility_delete_selected_persona">，啟用將刪除</string>
+  <string name="people_picker_accessibility_click_selected_persona">，啟用將按一下</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="other">已由 %s 人開啟的建議清單</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="other">%s 人</item>
+  </plurals>
+  <string name="persona_title_placeholder">沒有名稱</string>
+  <string name="done">完成</string>
+  <string name="tooltip_accessibility_dismiss_action">關閉</string>
+  <string name="tooltip_accessibility_dismiss_announcement">工具提示已關閉</string>
+</resources>

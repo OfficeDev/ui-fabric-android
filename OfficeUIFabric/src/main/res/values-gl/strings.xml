@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="date_at_time">%1$s ás %2$s</string>
+  <string name="date_time">%1$s, %2$s</string>
+  <string name="today">Hoxe</string>
+  <string name="tomorrow">Mañá</string>
+  <string name="yesterday">Onte</string>
+  <string name="monday_initial">L</string>
+  <string name="tuesday_initial">M</string>
+  <string name="wednesday_initial">M</string>
+  <string name="thursday_initial">X</string>
+  <string name="friday_initial">V</string>
+  <string name="saturday_initial">D</string>
+  <string name="sunday_initial">D</string>
+  <string name="accessibility_goto_next_week">Ir á semana seguinte</string>
+  <string name="accessibility_goto_previous_week">Ir á semana anterior</string>
+  <string name="accessibility_today">hoxe</string>
+  <string name="accessibility_selected">Seleccionado</string>
+  <string name="date_time_picker_start_time">Hora de inicio</string>
+  <string name="date_time_picker_end_time">Hora de finalización</string>
+  <string name="date_time_picker_choose_time">Escoller hora</string>
+  <string name="date_time_picker_choose_date">Escoller data</string>
+  <string name="people_picker_sample_label">Etiqueta</string>
+  <string name="people_picker_search_directory">Buscar no directorio</string>
+  <string name="people_picker_search_progress">Buscando…</string>
+  <string name="people_picker_accessibility_default_hint">Introducir un nome ou un enderezo de correo</string>
+  <string name="people_picker_accessibility_persona_added">%s engadido</string>
+  <string name="people_picker_accessibility_persona_removed">%s eliminado</string>
+  <string name="people_picker_accessibility_replaced">%s substituído,</string>
+  <string name="people_picker_accessibility_click_persona">Premer</string>
+  <string name="people_picker_accessibility_delete_persona">Eliminar</string>
+  <string name="people_picker_accessibility_deselect_persona">Anular a selección</string>
+  <string name="people_picker_accessibility_select_persona">Seleccionar</string>
+  <string name="people_picker_accessibility_clicked_persona">Premido %s</string>
+  <string name="people_picker_accessibility_deselected_persona">Anulada a selección de %s</string>
+  <string name="people_picker_accessibility_selected_persona">Seleccionado %s</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, Activación anulará a selección</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, Activación eliminará</string>
+  <string name="people_picker_accessibility_click_selected_persona">, Activación premerá</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">Lista de suxestións aberta con %s persoa</item>
+    <item quantity="other">Lista de suxestións aberta con %s persoas</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">%s persoa</item>
+    <item quantity="other">%s persoas</item>
+  </plurals>
+  <string name="persona_title_placeholder">Sen nome</string>
+  <string name="done">Feito</string>
+  <string name="tooltip_accessibility_dismiss_action">rexeitar</string>
+  <string name="tooltip_accessibility_dismiss_announcement">Información sobre ferramentas rexeitada</string>
+</resources>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="date_at_time">%1$s в %2$s</string>
+  <string name="date_time">%1$s, %2$s</string>
+  <string name="today">Днес</string>
+  <string name="tomorrow">Утре</string>
+  <string name="yesterday">Вчера</string>
+  <string name="monday_initial">П</string>
+  <string name="tuesday_initial">В</string>
+  <string name="wednesday_initial">С</string>
+  <string name="thursday_initial">Ч</string>
+  <string name="friday_initial">П</string>
+  <string name="saturday_initial">С</string>
+  <string name="sunday_initial">Н</string>
+  <string name="accessibility_goto_next_week">Към следващата седмица</string>
+  <string name="accessibility_goto_previous_week">Към предишната седмица</string>
+  <string name="accessibility_today">днес</string>
+  <string name="accessibility_selected">Избрано</string>
+  <string name="date_time_picker_start_time">Начален час</string>
+  <string name="date_time_picker_end_time">Краен час</string>
+  <string name="date_time_picker_choose_time">Изберете час</string>
+  <string name="date_time_picker_choose_date">Изберете дата</string>
+  <string name="people_picker_sample_label">Етикет</string>
+  <string name="people_picker_search_directory">Търсене в указателя</string>
+  <string name="people_picker_search_progress">Търсене…</string>
+  <string name="people_picker_accessibility_default_hint">Въведете име или имейл</string>
+  <string name="people_picker_accessibility_persona_added">%s е добавен/а</string>
+  <string name="people_picker_accessibility_persona_removed">%s е премахнат/а</string>
+  <string name="people_picker_accessibility_replaced">%s е заместен/а,</string>
+  <string name="people_picker_accessibility_click_persona">Щракване</string>
+  <string name="people_picker_accessibility_delete_persona">Изтриване</string>
+  <string name="people_picker_accessibility_deselect_persona">Премахни избора</string>
+  <string name="people_picker_accessibility_select_persona">Избор</string>
+  <string name="people_picker_accessibility_clicked_persona">Щракнато върху %s</string>
+  <string name="people_picker_accessibility_deselected_persona">Премахнат избор от %s</string>
+  <string name="people_picker_accessibility_selected_persona">Избрано %s</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, активирането ще премахне избора</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, активирането ще изтрие</string>
+  <string name="people_picker_accessibility_click_selected_persona">, активирането ще щракне върху</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">Списъкът с предложения се отвори с %s човек</item>
+    <item quantity="other">Списъкът с предложения се отвори с %s души</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">%s човек</item>
+    <item quantity="other">%s души</item>
+  </plurals>
+  <string name="persona_title_placeholder">Без име</string>
+  <string name="done">Готово</string>
+  <string name="tooltip_accessibility_dismiss_action">отхвърляне</string>
+  <string name="tooltip_accessibility_dismiss_announcement">Пояснението е отхвърлено</string>
+</resources>

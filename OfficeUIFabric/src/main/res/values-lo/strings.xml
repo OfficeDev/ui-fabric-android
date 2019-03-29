@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="date_at_time">%1$s ເວລາ %2$s</string>
+  <string name="date_time">%1$s, %2$s</string>
+  <string name="today">ມື້ນີ້</string>
+  <string name="tomorrow">ມື້ອື່ນ</string>
+  <string name="yesterday">ມື້ວານນີ້</string>
+  <string name="monday_initial">M</string>
+  <string name="tuesday_initial">T</string>
+  <string name="wednesday_initial">W</string>
+  <string name="thursday_initial">T</string>
+  <string name="friday_initial">F</string>
+  <string name="saturday_initial">S</string>
+  <string name="sunday_initial">S</string>
+  <string name="accessibility_goto_next_week">ໄປທີ່ອາທິດໜ້າ</string>
+  <string name="accessibility_goto_previous_week">ໄປທີ່ອາທິດກ່ອນໜ້ານີ້</string>
+  <string name="accessibility_today">ມື້ນີ້</string>
+  <string name="accessibility_selected">ເລືອກແລ້ວ</string>
+  <string name="date_time_picker_start_time">ເວລາເລີ່ມຕົ້ນ</string>
+  <string name="date_time_picker_end_time">ເວລາສິ້ນສຸດ</string>
+  <string name="date_time_picker_choose_time">ເລືອກເວລາ</string>
+  <string name="date_time_picker_choose_date">ເລືອກວັນທີ</string>
+  <string name="people_picker_sample_label">ປ້າຍກຳກັບ</string>
+  <string name="people_picker_search_directory">ຊອກຫາໄດເຣັກທໍຣີ</string>
+  <string name="people_picker_search_progress">ກຳລັງຊອກຫາ…</string>
+  <string name="people_picker_accessibility_default_hint">ລະບຸຊື່ ຫຼື ອີເມວ</string>
+  <string name="people_picker_accessibility_persona_added">ເພີ່ມ %s ແລ້ວ</string>
+  <string name="people_picker_accessibility_persona_removed">ລຶບ %s ອອກແລ້ວ</string>
+  <string name="people_picker_accessibility_replaced">ແທນທີ່ %s ແລ້ວ,</string>
+  <string name="people_picker_accessibility_click_persona">ຄລິກ</string>
+  <string name="people_picker_accessibility_delete_persona">ລຶບ</string>
+  <string name="people_picker_accessibility_deselect_persona">ບໍ່ເລືອກ</string>
+  <string name="people_picker_accessibility_select_persona">ເລືອກ</string>
+  <string name="people_picker_accessibility_clicked_persona">ຄລິກ %s ແລ້ວ</string>
+  <string name="people_picker_accessibility_deselected_persona">ບໍ່ເລືອກ %s ແລ້ວ</string>
+  <string name="people_picker_accessibility_selected_persona">ເລືອກ %s ແລ້ວ</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, ການເປີດນຳໃຊ້ຈະເຊົາເລືອກ</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, ການເປີດນຳໃຊ້ຈະລຶບ</string>
+  <string name="people_picker_accessibility_click_selected_persona">, ການເປີດນຳໃຊ້ຈະຄລິກ</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="other">ເປີດລາຍຊື່ທີ່ແນະນຳກັບ %s ຄົນແລ້ວ</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="other">%s ຄົນ</item>
+  </plurals>
+  <string name="persona_title_placeholder">ບໍ່ມີຊື່</string>
+  <string name="done">ແລ້ວໆ</string>
+  <string name="tooltip_accessibility_dismiss_action">ປິດໄວ້</string>
+  <string name="tooltip_accessibility_dismiss_announcement">ປິດເຄັດລັບເຄື່ອງມືໄວ້</string>
+</resources>

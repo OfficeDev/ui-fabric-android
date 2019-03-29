@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="date_at_time">%1$s στις %2$s</string>
+  <string name="date_time">%1$s, %2$s</string>
+  <string name="today">Σήμερα</string>
+  <string name="tomorrow">Αύριο</string>
+  <string name="yesterday">Χθες</string>
+  <string name="monday_initial">Δ</string>
+  <string name="tuesday_initial">Τ</string>
+  <string name="wednesday_initial">Τ</string>
+  <string name="thursday_initial">Π</string>
+  <string name="friday_initial">Π</string>
+  <string name="saturday_initial">Σ</string>
+  <string name="sunday_initial">Κ</string>
+  <string name="accessibility_goto_next_week">Μετάβαση στην επόμενη εβδομάδα</string>
+  <string name="accessibility_goto_previous_week">Μετάβαση στην προηγούμενη εβδομάδα</string>
+  <string name="accessibility_today">σήμερα</string>
+  <string name="accessibility_selected">Επιλεγμένο</string>
+  <string name="date_time_picker_start_time">Ώρα έναρξης</string>
+  <string name="date_time_picker_end_time">Ώρα λήξης</string>
+  <string name="date_time_picker_choose_time">Επιλογή ώρας</string>
+  <string name="date_time_picker_choose_date">Επιλογή ημερομηνίας</string>
+  <string name="people_picker_sample_label">Ετικέτα</string>
+  <string name="people_picker_search_directory">Αναζήτηση στον κατάλογο</string>
+  <string name="people_picker_search_progress">Αναζήτηση…</string>
+  <string name="people_picker_accessibility_default_hint">Καταχωρήστε ένα όνομα ή μια διεύθυνση ηλεκτρονικού ταχυδρομείου</string>
+  <string name="people_picker_accessibility_persona_added">Ο χρήστης %s προστέθηκε</string>
+  <string name="people_picker_accessibility_persona_removed">Ο χρήστης %s καταργήθηκε</string>
+  <string name="people_picker_accessibility_replaced">Ο χρήστης %s αντικαταστάθηκε,</string>
+  <string name="people_picker_accessibility_click_persona">Κλικ</string>
+  <string name="people_picker_accessibility_delete_persona">Διαγραφή</string>
+  <string name="people_picker_accessibility_deselect_persona">Αποεπιλογή</string>
+  <string name="people_picker_accessibility_select_persona">Επιλογή</string>
+  <string name="people_picker_accessibility_clicked_persona">Έγινε κλικ στο \"%s\"</string>
+  <string name="people_picker_accessibility_deselected_persona">Αποεπιλέχθηκε το \"%s\"</string>
+  <string name="people_picker_accessibility_selected_persona">Επιλέχθηκε το \"%s\"</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, Με την ενεργοποίηση θα γίνει αποεπιλογή</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, Με την ενεργοποίηση θα γίνει διαγραφή</string>
+  <string name="people_picker_accessibility_click_selected_persona">, Με την ενεργοποίηση θα γίνει κλικ</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">Η λίστα προτάσεων άνοιξε με %s άτομο</item>
+    <item quantity="other">Η λίστα προτάσεων άνοιξε με %s άτομα</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">%s άτομο</item>
+    <item quantity="other">%s άτομα</item>
+  </plurals>
+  <string name="persona_title_placeholder">Χωρίς όνομα</string>
+  <string name="done">Τέλος</string>
+  <string name="tooltip_accessibility_dismiss_action">κλείσιμο</string>
+  <string name="tooltip_accessibility_dismiss_announcement">Η συμβουλή εργαλείου έκλεισε</string>
+</resources>

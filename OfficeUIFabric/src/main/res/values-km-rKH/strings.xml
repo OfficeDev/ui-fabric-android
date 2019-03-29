@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="date_at_time">%1$s នៅ %2$s</string>
+  <string name="date_time">%1$s, %2$s</string>
+  <string name="today">ថ្ងៃនេះ</string>
+  <string name="tomorrow">ថ្ងៃស្អែក</string>
+  <string name="yesterday">ម្សិលមិញ</string>
+  <string name="monday_initial">M</string>
+  <string name="tuesday_initial">T</string>
+  <string name="wednesday_initial">W</string>
+  <string name="thursday_initial">T</string>
+  <string name="friday_initial">F</string>
+  <string name="saturday_initial">S</string>
+  <string name="sunday_initial">S</string>
+  <string name="accessibility_goto_next_week">ទៅកាន់សប្ដាហ៍ក្រោយ</string>
+  <string name="accessibility_goto_previous_week">ទៅកាន់សប្ដាហ៍មុន</string>
+  <string name="accessibility_today">ថ្ងៃនេះ</string>
+  <string name="accessibility_selected">បានជ្រើសរើស</string>
+  <string name="date_time_picker_start_time">ពេលវេលាចាប់ផ្ដើម</string>
+  <string name="date_time_picker_end_time">ពេលវេលាបញ្ចប់</string>
+  <string name="date_time_picker_choose_time">ជ្រើសរើសពេលវេលា</string>
+  <string name="date_time_picker_choose_date">ជ្រើសរើសកាលបរិច្ឆេទ</string>
+  <string name="people_picker_sample_label">ស្លាក</string>
+  <string name="people_picker_search_directory">ស្វែងរកបញ្ជីទំនាក់ទំនង</string>
+  <string name="people_picker_search_progress">កំពុងស្វែងរក…</string>
+  <string name="people_picker_accessibility_default_hint">បញ្ចូលឈ្មោះ ឬអ៊ីម៉ែល</string>
+  <string name="people_picker_accessibility_persona_added">%s ត្រូវ​បាន​បន្ថែម</string>
+  <string name="people_picker_accessibility_persona_removed">%s ត្រូវបានយកចេញ</string>
+  <string name="people_picker_accessibility_replaced">%s ត្រូវបានជំនួស</string>
+  <string name="people_picker_accessibility_click_persona">ចុច</string>
+  <string name="people_picker_accessibility_delete_persona">លុប</string>
+  <string name="people_picker_accessibility_deselect_persona">ដក​ការជ្រើសរើស</string>
+  <string name="people_picker_accessibility_select_persona">ជ្រើសរើស</string>
+  <string name="people_picker_accessibility_clicked_persona">បានចុច %s</string>
+  <string name="people_picker_accessibility_deselected_persona">%s ត្រូវបានដកការជ្រើសរើស</string>
+  <string name="people_picker_accessibility_selected_persona">%s ត្រូវបានជ្រើសរើស</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, ការធ្វើឲ្យមានដំណើរការនឹងដកការជ្រើសរើស</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, ការធ្វើឲ្យមានដំណើរការនឹងលុប</string>
+  <string name="people_picker_accessibility_click_selected_persona">, ការធ្វើឲ្យមានដំណើរការនឹងចុច</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="other">បញ្ជីណែនាំត្រូវបានបើក​ដោយមនុស្ស %s នាក់</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="other">មនុស្ស %s នាក់</item>
+  </plurals>
+  <string name="persona_title_placeholder">គ្មានឈ្មោះ</string>
+  <string name="done">រួចរាល់</string>
+  <string name="tooltip_accessibility_dismiss_action">បោះបង់</string>
+  <string name="tooltip_accessibility_dismiss_announcement">ព័ត៌មានជំនួយឧបករណ៍ត្រូវបានបោះបង់</string>
+</resources>

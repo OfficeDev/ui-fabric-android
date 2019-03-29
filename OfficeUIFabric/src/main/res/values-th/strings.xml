@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="date_at_time">%1$s เวลา %2$s</string>
+  <string name="date_time">%1$s %2$s</string>
+  <string name="today">วันนี้</string>
+  <string name="tomorrow">พรุ่งนี้</string>
+  <string name="yesterday">เมื่อวานนี้</string>
+  <string name="monday_initial">จ.</string>
+  <string name="tuesday_initial">อ.</string>
+  <string name="wednesday_initial">พ.</string>
+  <string name="thursday_initial">พฤ.</string>
+  <string name="friday_initial">ศ.</string>
+  <string name="saturday_initial">ส.</string>
+  <string name="sunday_initial">อา.</string>
+  <string name="accessibility_goto_next_week">ไปยังสัปดาห์ถัดไป</string>
+  <string name="accessibility_goto_previous_week">ไปยังสัปดาห์ก่อนหน้า</string>
+  <string name="accessibility_today">วันนี้</string>
+  <string name="accessibility_selected">เลือกแล้ว</string>
+  <string name="date_time_picker_start_time">เวลาเริ่มต้น</string>
+  <string name="date_time_picker_end_time">เวลาสิ้นสุด</string>
+  <string name="date_time_picker_choose_time">เลือกเวลา</string>
+  <string name="date_time_picker_choose_date">เลือกวันที่</string>
+  <string name="people_picker_sample_label">ป้ายชื่อ</string>
+  <string name="people_picker_search_directory">ค้นหาในไดเรกทอรี</string>
+  <string name="people_picker_search_progress">กำลังค้นหา...</string>
+  <string name="people_picker_accessibility_default_hint">ใส่ชื่อหรืออีเมล</string>
+  <string name="people_picker_accessibility_persona_added">เพิ่ม %s แล้ว</string>
+  <string name="people_picker_accessibility_persona_removed">นำ %s ออกแล้ว</string>
+  <string name="people_picker_accessibility_replaced">แทนที่ %s แล้ว</string>
+  <string name="people_picker_accessibility_click_persona">คลิก</string>
+  <string name="people_picker_accessibility_delete_persona">ลบ</string>
+  <string name="people_picker_accessibility_deselect_persona">ยกเลิกการเลือก</string>
+  <string name="people_picker_accessibility_select_persona">เลือก</string>
+  <string name="people_picker_accessibility_clicked_persona">คลิก %s แล้ว</string>
+  <string name="people_picker_accessibility_deselected_persona">ยกเลิกการเลือก %s แล้ว</string>
+  <string name="people_picker_accessibility_selected_persona">เลือก %s แล้ว</string>
+  <string name="people_picker_accessibility_deselect_selected_persona"> การเปิดใช้งานจะยกเลิกการเลือก</string>
+  <string name="people_picker_accessibility_delete_selected_persona"> การเปิดใช้งานจะลบ</string>
+  <string name="people_picker_accessibility_click_selected_persona"> การเปิดใช้งานจะคลิก</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="other">รายการคำแนะนำที่เปิดโดยคน %s คน</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="other">%s คน</item>
+  </plurals>
+  <string name="persona_title_placeholder">ไม่มีชื่อ</string>
+  <string name="done">เสร็จสิ้น</string>
+  <string name="tooltip_accessibility_dismiss_action">ปิด</string>
+  <string name="tooltip_accessibility_dismiss_announcement">ปิดคำแนะนำเครื่องมือแล้ว</string>
+</resources>

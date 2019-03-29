@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="date_at_time">%1$sన %2$sకు</string>
+  <string name="date_time">%1$s, %2$s</string>
+  <string name="today">ఈరోజు</string>
+  <string name="tomorrow">రేపు</string>
+  <string name="yesterday">నిన్న</string>
+  <string name="monday_initial">M</string>
+  <string name="tuesday_initial">T</string>
+  <string name="wednesday_initial">W</string>
+  <string name="thursday_initial">T</string>
+  <string name="friday_initial">F</string>
+  <string name="saturday_initial">S</string>
+  <string name="sunday_initial">S</string>
+  <string name="accessibility_goto_next_week">తదుపరి వారానికి వెళ్లు</string>
+  <string name="accessibility_goto_previous_week">మునుపటి వారానికి వెళ్లు</string>
+  <string name="accessibility_today">ఈరోజు</string>
+  <string name="accessibility_selected">ఎంచుకోబడింది</string>
+  <string name="date_time_picker_start_time">ప్రారంభ సమయం</string>
+  <string name="date_time_picker_end_time">ముగింపు సమయం</string>
+  <string name="date_time_picker_choose_time">సమయాన్ని ఎంచుకోండి</string>
+  <string name="date_time_picker_choose_date">తేదీని ఎంచుకోండి</string>
+  <string name="people_picker_sample_label">లేబుల్</string>
+  <string name="people_picker_search_directory">డైరెక్టరీలో శోధించు</string>
+  <string name="people_picker_search_progress">శోధిస్తోంది…</string>
+  <string name="people_picker_accessibility_default_hint">పేరు లేదా ఇమెయిల్ చిరునామాను నమోదు చేయండి</string>
+  <string name="people_picker_accessibility_persona_added">%sని జోడించారు</string>
+  <string name="people_picker_accessibility_persona_removed">%sని తీసివేసారు</string>
+  <string name="people_picker_accessibility_replaced">%sని భర్తీ చేసారు,</string>
+  <string name="people_picker_accessibility_click_persona">క్లిక్ చేయి</string>
+  <string name="people_picker_accessibility_delete_persona">తొలగించు</string>
+  <string name="people_picker_accessibility_deselect_persona">ఎంపికను తీసివేయి</string>
+  <string name="people_picker_accessibility_select_persona">ఎంచుకోండి</string>
+  <string name="people_picker_accessibility_clicked_persona">%sని క్లిక్ చేసారు</string>
+  <string name="people_picker_accessibility_deselected_persona">%s ఎంపికను తీసివేసారు</string>
+  <string name="people_picker_accessibility_selected_persona">%sని ఎంచుకున్నారు</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, యాక్టివేషన్ ఎంపిక తీసివేయబడుతుంది</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, యాక్టివేషన్ తొలగించబడుతుంది</string>
+  <string name="people_picker_accessibility_click_selected_persona">, యాక్టివేషన్ క్లిక్ చేయబడుతుంది</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">%s వ్యక్తితో సూచనల జాబితా తెరవబడింది</item>
+    <item quantity="other">%s మంది వ్యక్తులతో సూచనల జాబితా తెరవబడింది</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">%s వ్యక్తి</item>
+    <item quantity="other">%s మంది వ్యక్తులు</item>
+  </plurals>
+  <string name="persona_title_placeholder">పేరు లేదు</string>
+  <string name="done">పూర్తయింది</string>
+  <string name="tooltip_accessibility_dismiss_action">విస్మరించు</string>
+  <string name="tooltip_accessibility_dismiss_announcement">టూల్‌టిప్ విస్మరించబడింది</string>
+</resources>

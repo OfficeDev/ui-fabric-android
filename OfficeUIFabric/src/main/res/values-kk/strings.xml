@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="date_at_time">%1$s, %2$s</string>
+  <string name="date_time">%1$s, %2$s</string>
+  <string name="today">Бүгін</string>
+  <string name="tomorrow">Ертең</string>
+  <string name="yesterday">Кеше</string>
+  <string name="monday_initial">Д</string>
+  <string name="tuesday_initial">С</string>
+  <string name="wednesday_initial">С</string>
+  <string name="thursday_initial">Б</string>
+  <string name="friday_initial">Ж</string>
+  <string name="saturday_initial">С</string>
+  <string name="sunday_initial">Ж</string>
+  <string name="accessibility_goto_next_week">Келесі аптаға өту</string>
+  <string name="accessibility_goto_previous_week">Алдыңғы аптаға өту</string>
+  <string name="accessibility_today">бүгін</string>
+  <string name="accessibility_selected">Таңдалған</string>
+  <string name="date_time_picker_start_time">Басталу уақыты</string>
+  <string name="date_time_picker_end_time">Аяқталу уақыты</string>
+  <string name="date_time_picker_choose_time">Уақытты таңдаңыз</string>
+  <string name="date_time_picker_choose_date">Күнді таңдаңыз</string>
+  <string name="people_picker_sample_label">Белгі</string>
+  <string name="people_picker_search_directory">Каталогтан іздеу</string>
+  <string name="people_picker_search_progress">Ізделуде…</string>
+  <string name="people_picker_accessibility_default_hint">Атын немесе электрондық поштаны енгізіңіз</string>
+  <string name="people_picker_accessibility_persona_added">%s қосылды</string>
+  <string name="people_picker_accessibility_persona_removed">%s жойылды</string>
+  <string name="people_picker_accessibility_replaced">%s алмастырылды,</string>
+  <string name="people_picker_accessibility_click_persona">Басу</string>
+  <string name="people_picker_accessibility_delete_persona">Жою</string>
+  <string name="people_picker_accessibility_deselect_persona">Таңдау белгілерін алу</string>
+  <string name="people_picker_accessibility_select_persona">Таңдау</string>
+  <string name="people_picker_accessibility_clicked_persona">%s басылды</string>
+  <string name="people_picker_accessibility_deselected_persona">%s таңдауы алынды</string>
+  <string name="people_picker_accessibility_selected_persona">%s таңдалды</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, белсендіру жасалғанда, таңдау алынады</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, белсендіру жасалғанда, жойылады</string>
+  <string name="people_picker_accessibility_click_selected_persona">, белсендіру жасалғанда, басылады</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">%s адамды қамтитын ұсыныстар тізімі ашылды</item>
+    <item quantity="other">%s адамды қамтитын ұсыныстар тізімі ашылды</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">%s адам</item>
+    <item quantity="other">%s адам</item>
+  </plurals>
+  <string name="persona_title_placeholder">Аты жоқ</string>
+  <string name="done">Дайын</string>
+  <string name="tooltip_accessibility_dismiss_action">жабу</string>
+  <string name="tooltip_accessibility_dismiss_announcement">Сөзкөмек жабылды</string>
+</resources>

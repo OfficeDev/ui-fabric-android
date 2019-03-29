@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="date_at_time">%1$s kl. %2$s</string>
+  <string name="date_time">%1$s, %2$s</string>
+  <string name="today">Í dag</string>
+  <string name="tomorrow">Á morgun</string>
+  <string name="yesterday">Í gær</string>
+  <string name="monday_initial">M</string>
+  <string name="tuesday_initial">Þ</string>
+  <string name="wednesday_initial">M</string>
+  <string name="thursday_initial">F</string>
+  <string name="friday_initial">F</string>
+  <string name="saturday_initial">L</string>
+  <string name="sunday_initial">S</string>
+  <string name="accessibility_goto_next_week">Fara í næstu viku</string>
+  <string name="accessibility_goto_previous_week">Fara í síðustu viku</string>
+  <string name="accessibility_today">í dag</string>
+  <string name="accessibility_selected">Valið</string>
+  <string name="date_time_picker_start_time">Upphafstími</string>
+  <string name="date_time_picker_end_time">Lokatími</string>
+  <string name="date_time_picker_choose_time">Veldu tíma</string>
+  <string name="date_time_picker_choose_date">Veldu dagsetningu</string>
+  <string name="people_picker_sample_label">Merki</string>
+  <string name="people_picker_search_directory">Leita í notendaskrá</string>
+  <string name="people_picker_search_progress">Leitar …</string>
+  <string name="people_picker_accessibility_default_hint">Sláðu inn nafn eða netfang</string>
+  <string name="people_picker_accessibility_persona_added">%s bætt við</string>
+  <string name="people_picker_accessibility_persona_removed">%s fjarlægð(ur)</string>
+  <string name="people_picker_accessibility_replaced">%s var skipt út,</string>
+  <string name="people_picker_accessibility_click_persona">Smella</string>
+  <string name="people_picker_accessibility_delete_persona">Eyða</string>
+  <string name="people_picker_accessibility_deselect_persona">Hætta við val</string>
+  <string name="people_picker_accessibility_select_persona">Velja</string>
+  <string name="people_picker_accessibility_clicked_persona">Smellt var á %s</string>
+  <string name="people_picker_accessibility_deselected_persona">Hætt var við val á %s</string>
+  <string name="people_picker_accessibility_selected_persona">%s var valið</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, virkjun mun hreinsa val</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, virkjun mun eyða</string>
+  <string name="people_picker_accessibility_click_selected_persona">, virkjun mun smella</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">Tillögulisti opnaður með %s aðila</item>
+    <item quantity="other">Tillögulisti opnaður með %s aðilum</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">%s aðili</item>
+    <item quantity="other">%s aðilar</item>
+  </plurals>
+  <string name="persona_title_placeholder">Ekkert nafn</string>
+  <string name="done">Lokið</string>
+  <string name="tooltip_accessibility_dismiss_action">hafna</string>
+  <string name="tooltip_accessibility_dismiss_announcement">Ábendingu hafnað</string>
+</resources>

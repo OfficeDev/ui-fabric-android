@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="date_at_time">%2$s पर %1$s</string>
+  <string name="date_time">%1$s, %2$s</string>
+  <string name="today">आज</string>
+  <string name="tomorrow">आने वाला दिन</string>
+  <string name="yesterday">बीता हुआ कल</string>
+  <string name="monday_initial">सो</string>
+  <string name="tuesday_initial">मं</string>
+  <string name="wednesday_initial">बु</string>
+  <string name="thursday_initial">गु</string>
+  <string name="friday_initial">शु</string>
+  <string name="saturday_initial">श</string>
+  <string name="sunday_initial">श</string>
+  <string name="accessibility_goto_next_week">अगले सप्ताह पर जाएँ</string>
+  <string name="accessibility_goto_previous_week">पिछले सप्ताह पर जाएँ</string>
+  <string name="accessibility_today">आज</string>
+  <string name="accessibility_selected">चयनित</string>
+  <string name="date_time_picker_start_time">प्रारंभ समय</string>
+  <string name="date_time_picker_end_time">समाप्ति समय</string>
+  <string name="date_time_picker_choose_time">समय चुनें</string>
+  <string name="date_time_picker_choose_date">दिनांक चुनें</string>
+  <string name="people_picker_sample_label">लेबल</string>
+  <string name="people_picker_search_directory">डायरेक्टरी खोजें</string>
+  <string name="people_picker_search_progress">खोज की जा रही है…</string>
+  <string name="people_picker_accessibility_default_hint">कोई नाम या ईमेल दर्ज करें</string>
+  <string name="people_picker_accessibility_persona_added">%s जोड़ा गया</string>
+  <string name="people_picker_accessibility_persona_removed">%s निकाला गया</string>
+  <string name="people_picker_accessibility_replaced">%s बदला गया,</string>
+  <string name="people_picker_accessibility_click_persona">क्लिक करें</string>
+  <string name="people_picker_accessibility_delete_persona">हटाएँ</string>
+  <string name="people_picker_accessibility_deselect_persona">चयन रद्द करें</string>
+  <string name="people_picker_accessibility_select_persona">चुनें</string>
+  <string name="people_picker_accessibility_clicked_persona">क्लिक किया गया %s</string>
+  <string name="people_picker_accessibility_deselected_persona">चयन रद्द किया गया %s</string>
+  <string name="people_picker_accessibility_selected_persona">चयनित %s</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, सक्रियण चयन रद्द कर देगा</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, सक्रियण हटा देगा</string>
+  <string name="people_picker_accessibility_click_selected_persona">, सक्रियण पर क्लिक किया जाएगा</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">%s व्यक्ति के साथ सुझाव सूची खोली गई</item>
+    <item quantity="other">%s लोगों के साथ सुझाव सूची खोली गई</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">%s व्यक्ति</item>
+    <item quantity="other">%s लोग</item>
+  </plurals>
+  <string name="persona_title_placeholder">कोई नाम नहीं</string>
+  <string name="done">पूर्ण</string>
+  <string name="tooltip_accessibility_dismiss_action">ख़ारिज करें</string>
+  <string name="tooltip_accessibility_dismiss_announcement">टूलटिप ख़ारिज की गई</string>
+</resources>

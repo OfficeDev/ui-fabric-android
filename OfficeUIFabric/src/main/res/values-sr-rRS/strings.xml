@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="date_at_time">%1$s у %2$s</string>
+  <string name="date_time">%1$s, %2$s</string>
+  <string name="today">Данас</string>
+  <string name="tomorrow">Сутра</string>
+  <string name="yesterday">Јуче</string>
+  <string name="monday_initial">П</string>
+  <string name="tuesday_initial">У</string>
+  <string name="wednesday_initial">С</string>
+  <string name="thursday_initial">Ч</string>
+  <string name="friday_initial">П</string>
+  <string name="saturday_initial">С</string>
+  <string name="sunday_initial">Н</string>
+  <string name="accessibility_goto_next_week">Иди на следећу седмицу</string>
+  <string name="accessibility_goto_previous_week">Иди на претходну седмицу</string>
+  <string name="accessibility_today">данас</string>
+  <string name="accessibility_selected">Изабрано</string>
+  <string name="date_time_picker_start_time">Време почетка</string>
+  <string name="date_time_picker_end_time">Време завршетка</string>
+  <string name="date_time_picker_choose_time">Одаберите време</string>
+  <string name="date_time_picker_choose_date">Одаберите датум</string>
+  <string name="people_picker_sample_label">Ознака</string>
+  <string name="people_picker_search_directory">Претражи именик</string>
+  <string name="people_picker_search_progress">Претраживање…</string>
+  <string name="people_picker_accessibility_default_hint">Унесите име или адресу е-поште</string>
+  <string name="people_picker_accessibility_persona_added">%s је додат/а</string>
+  <string name="people_picker_accessibility_persona_removed">%s је уклоњен/а</string>
+  <string name="people_picker_accessibility_replaced">%s је замењен/а,</string>
+  <string name="people_picker_accessibility_click_persona">Клик</string>
+  <string name="people_picker_accessibility_delete_persona">Избриши</string>
+  <string name="people_picker_accessibility_deselect_persona">Опозови избор</string>
+  <string name="people_picker_accessibility_select_persona">Изабери</string>
+  <string name="people_picker_accessibility_clicked_persona">Кликнуто на %s</string>
+  <string name="people_picker_accessibility_deselected_persona">Опозван је избор за %s</string>
+  <string name="people_picker_accessibility_selected_persona">Изабрано %s</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, Активација ће опозвати избор</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, Активација ће избрисати</string>
+  <string name="people_picker_accessibility_click_selected_persona">, Активација ће кликнути</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">Листа предлога отворених са %s особом</item>
+    <item quantity="few">Листа предлога отворених са %s људи</item>
+    <item quantity="other">Листа предлога отворених са %s људи</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">%s особа</item>
+    <item quantity="few">%s људи</item>
+    <item quantity="other">%s људи</item>
+  </plurals>
+  <string name="persona_title_placeholder">Нема имена</string>
+  <string name="done">Готово</string>
+  <string name="tooltip_accessibility_dismiss_action">одбаци</string>
+  <string name="tooltip_accessibility_dismiss_announcement">Опис алатке је одбачен</string>
+</resources>

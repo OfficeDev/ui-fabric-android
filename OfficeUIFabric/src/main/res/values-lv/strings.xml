@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="date_at_time">%1$s plkst. %2$s</string>
+  <string name="date_time">%1$s, %2$s</string>
+  <string name="today">Šodien</string>
+  <string name="tomorrow">Rīt</string>
+  <string name="yesterday">Vakar</string>
+  <string name="monday_initial">Pr</string>
+  <string name="tuesday_initial">Ot</string>
+  <string name="wednesday_initial">Tr</string>
+  <string name="thursday_initial">Ce</string>
+  <string name="friday_initial">Pk</string>
+  <string name="saturday_initial">Se</string>
+  <string name="sunday_initial">Sv</string>
+  <string name="accessibility_goto_next_week">Pāriet uz nākamo nedēļu</string>
+  <string name="accessibility_goto_previous_week">Pāriet uz iepriekšējo nedēļu</string>
+  <string name="accessibility_today">šodien</string>
+  <string name="accessibility_selected">Atlasīts</string>
+  <string name="date_time_picker_start_time">Sākuma laiks</string>
+  <string name="date_time_picker_end_time">Beigu laiks</string>
+  <string name="date_time_picker_choose_time">Izvēlieties laiku</string>
+  <string name="date_time_picker_choose_date">Izvēlieties datumu</string>
+  <string name="people_picker_sample_label">Etiķete</string>
+  <string name="people_picker_search_directory">Meklēt direktorijā</string>
+  <string name="people_picker_search_progress">Notiek meklēšana…</string>
+  <string name="people_picker_accessibility_default_hint">Ievadiet vārdu vai e-pasta adresi</string>
+  <string name="people_picker_accessibility_persona_added">Persona %s pievienota</string>
+  <string name="people_picker_accessibility_persona_removed">Persona %s noņemta</string>
+  <string name="people_picker_accessibility_replaced">Persona %s aizstāta,</string>
+  <string name="people_picker_accessibility_click_persona">Noklikšķināt</string>
+  <string name="people_picker_accessibility_delete_persona">Dzēst</string>
+  <string name="people_picker_accessibility_deselect_persona">Noņemt atlasi</string>
+  <string name="people_picker_accessibility_select_persona">Atlasīt</string>
+  <string name="people_picker_accessibility_clicked_persona">Noklikšķināts uz personas %s</string>
+  <string name="people_picker_accessibility_deselected_persona">Personas %s atlase noņemta</string>
+  <string name="people_picker_accessibility_selected_persona">Persona %s atlasīta</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, aktivizācija noņems atlasi</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, aktivizācija izdzēsīs</string>
+  <string name="people_picker_accessibility_click_selected_persona">, aktivizācijas noklikšķinās</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="zero">Ieteikumu saraksts ar %s personām atvērts</item>
+    <item quantity="one">Ieteikumu saraksts ar %s personu atvērts</item>
+    <item quantity="other">Ieteikumu saraksts ar %s personām atvērts</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="zero">%s personas</item>
+    <item quantity="one">%s persona</item>
+    <item quantity="other">%s personas</item>
+  </plurals>
+  <string name="persona_title_placeholder">Bez vārda</string>
+  <string name="done">Gatavs</string>
+  <string name="tooltip_accessibility_dismiss_action">nerādīt</string>
+  <string name="tooltip_accessibility_dismiss_announcement">Rīka padoms aizvērts</string>
+</resources>

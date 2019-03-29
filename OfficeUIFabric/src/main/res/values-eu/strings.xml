@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="date_at_time">%1$s (%2$s)</string>
+  <string name="date_time">%1$s, %2$s</string>
+  <string name="today">Gaur</string>
+  <string name="tomorrow">Bihar</string>
+  <string name="yesterday">Atzo</string>
+  <string name="monday_initial">Al.</string>
+  <string name="tuesday_initial">Ar.</string>
+  <string name="wednesday_initial">Az.</string>
+  <string name="thursday_initial">Og.</string>
+  <string name="friday_initial">Or.</string>
+  <string name="saturday_initial">Lr.</string>
+  <string name="sunday_initial">Ig.</string>
+  <string name="accessibility_goto_next_week">Joan hurrengo astera</string>
+  <string name="accessibility_goto_previous_week">Joan aurreko astera</string>
+  <string name="accessibility_today">gaur</string>
+  <string name="accessibility_selected">Hautatuta</string>
+  <string name="date_time_picker_start_time">Hasiera-ordua</string>
+  <string name="date_time_picker_end_time">Amaiera-ordua</string>
+  <string name="date_time_picker_choose_time">Aukeratu ordua</string>
+  <string name="date_time_picker_choose_date">Aukeratu data</string>
+  <string name="people_picker_sample_label">Etiketa</string>
+  <string name="people_picker_search_directory">Bilatu direktorioan</string>
+  <string name="people_picker_search_progress">Bilatzen…</string>
+  <string name="people_picker_accessibility_default_hint">Idatzi izena edo helbide elektronikoa</string>
+  <string name="people_picker_accessibility_persona_added">%s gehitu da</string>
+  <string name="people_picker_accessibility_persona_removed">%s kendu da</string>
+  <string name="people_picker_accessibility_replaced">%s ordeztu da,</string>
+  <string name="people_picker_accessibility_click_persona">Egin klik</string>
+  <string name="people_picker_accessibility_delete_persona">Ezabatu</string>
+  <string name="people_picker_accessibility_deselect_persona">Desautatu</string>
+  <string name="people_picker_accessibility_select_persona">Hautatu</string>
+  <string name="people_picker_accessibility_clicked_persona">%s(e)k klik egin du</string>
+  <string name="people_picker_accessibility_deselected_persona">%s desautatu da</string>
+  <string name="people_picker_accessibility_selected_persona">%s hautatu da</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, Aktibatzen baduzu, desautatu egingo da</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, Aktibatzen baduzu, ezabatu egingo da</string>
+  <string name="people_picker_accessibility_click_selected_persona">, Aktibatzen baduzu, sakatu egingo da</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">Iradokizunen zerrenda ireki da, %s pertsonarekin</item>
+    <item quantity="other">Iradokizunen zerrenda ireki da, %s pertsonarekin</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">%s pertsona</item>
+    <item quantity="other">%s pertsona</item>
+  </plurals>
+  <string name="persona_title_placeholder">Izengabea</string>
+  <string name="done">Eginda</string>
+  <string name="tooltip_accessibility_dismiss_action">baztertu</string>
+  <string name="tooltip_accessibility_dismiss_announcement">Baztertu da argibidea</string>
+</resources>

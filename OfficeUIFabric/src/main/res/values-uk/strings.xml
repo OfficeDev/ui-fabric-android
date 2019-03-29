@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="date_at_time">%1$s, %2$s</string>
+  <string name="date_time">%1$s, %2$s</string>
+  <string name="today">Сьогодні</string>
+  <string name="tomorrow">Завтра</string>
+  <string name="yesterday">Учора</string>
+  <string name="monday_initial">П</string>
+  <string name="tuesday_initial">В</string>
+  <string name="wednesday_initial">С</string>
+  <string name="thursday_initial">Ч</string>
+  <string name="friday_initial">П</string>
+  <string name="saturday_initial">С</string>
+  <string name="sunday_initial">Н</string>
+  <string name="accessibility_goto_next_week">Перейти до наступного тижня</string>
+  <string name="accessibility_goto_previous_week">Перейти до попереднього тижня</string>
+  <string name="accessibility_today">сьогодні</string>
+  <string name="accessibility_selected">Вибрано</string>
+  <string name="date_time_picker_start_time">Час початку</string>
+  <string name="date_time_picker_end_time">Час завершення</string>
+  <string name="date_time_picker_choose_time">Виберіть час</string>
+  <string name="date_time_picker_choose_date">Виберіть дату</string>
+  <string name="people_picker_sample_label">Мітка</string>
+  <string name="people_picker_search_directory">Пошук у каталозі</string>
+  <string name="people_picker_search_progress">Пошук…</string>
+  <string name="people_picker_accessibility_default_hint">Введіть ім’я або адресу електронної пошти</string>
+  <string name="people_picker_accessibility_persona_added">Додано користувача %s</string>
+  <string name="people_picker_accessibility_persona_removed">Вилучено користувача %s</string>
+  <string name="people_picker_accessibility_replaced">Замінено користувача %s,</string>
+  <string name="people_picker_accessibility_click_persona">Клацнути</string>
+  <string name="people_picker_accessibility_delete_persona">Видалити</string>
+  <string name="people_picker_accessibility_deselect_persona">Скасувати вибір</string>
+  <string name="people_picker_accessibility_select_persona">Вибрати</string>
+  <string name="people_picker_accessibility_clicked_persona">Клацнуто користувача %s</string>
+  <string name="people_picker_accessibility_deselected_persona">Скасовано вибір користувача %s</string>
+  <string name="people_picker_accessibility_selected_persona">Вибрано користувача %s</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, якщо активувати, вибір буде скасовано</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, якщо активувати, буде виконано видалення</string>
+  <string name="people_picker_accessibility_click_selected_persona">, якщо активувати, буде виконано клацання</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">Список пропозицій відкрити для %s особи</item>
+    <item quantity="few">Список пропозицій відкрити для %s осіб</item>
+    <item quantity="many">Список пропозицій відкрити для %s осіб</item>
+    <item quantity="other">Список пропозицій відкрити для %s осіб</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">%s особа</item>
+    <item quantity="few">%s особи</item>
+    <item quantity="many">%s осіб</item>
+    <item quantity="other">%s осіб</item>
+  </plurals>
+  <string name="persona_title_placeholder">Без імені</string>
+  <string name="done">Готово</string>
+  <string name="tooltip_accessibility_dismiss_action">закрити</string>
+  <string name="tooltip_accessibility_dismiss_announcement">Підказку закрито</string>
+</resources>

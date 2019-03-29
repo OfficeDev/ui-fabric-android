@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="date_at_time">am %1$s um %2$s</string>
+  <string name="date_time">%1$s, %2$s</string>
+  <string name="today">Heute</string>
+  <string name="tomorrow">Morgen</string>
+  <string name="yesterday">Gestern</string>
+  <string name="monday_initial">M</string>
+  <string name="tuesday_initial">D</string>
+  <string name="wednesday_initial">M</string>
+  <string name="thursday_initial">D</string>
+  <string name="friday_initial">F</string>
+  <string name="saturday_initial">S</string>
+  <string name="sunday_initial">S</string>
+  <string name="accessibility_goto_next_week">Zur nächsten Woche wechseln</string>
+  <string name="accessibility_goto_previous_week">Zur vorherigen Woche wechseln</string>
+  <string name="accessibility_today">heute</string>
+  <string name="accessibility_selected">Ausgewählt</string>
+  <string name="date_time_picker_start_time">Startzeit</string>
+  <string name="date_time_picker_end_time">Endzeit</string>
+  <string name="date_time_picker_choose_time">Zeit auswählen</string>
+  <string name="date_time_picker_choose_date">Datum auswählen</string>
+  <string name="people_picker_sample_label">Bezeichnung</string>
+  <string name="people_picker_search_directory">Verzeichnis durchsuchen</string>
+  <string name="people_picker_search_progress">Wird gesucht...</string>
+  <string name="people_picker_accessibility_default_hint">Namen oder E-Mail-Adresse eingeben</string>
+  <string name="people_picker_accessibility_persona_added">%s hinzugefügt.</string>
+  <string name="people_picker_accessibility_persona_removed">%s entfernt.</string>
+  <string name="people_picker_accessibility_replaced">%s ersetzt.</string>
+  <string name="people_picker_accessibility_click_persona">Klicken</string>
+  <string name="people_picker_accessibility_delete_persona">Löschen</string>
+  <string name="people_picker_accessibility_deselect_persona">Auswahl aufheben</string>
+  <string name="people_picker_accessibility_select_persona">Auswählen</string>
+  <string name="people_picker_accessibility_clicked_persona">Auf \"%s\" geklickt.</string>
+  <string name="people_picker_accessibility_deselected_persona">Auswahl von \"%s\" aufgehoben.</string>
+  <string name="people_picker_accessibility_selected_persona">\"%s\" ausgewählt.</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, Durch Aktivierung wird Auswahl aufgehoben.</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, Durch Aktivierung wird gelöscht.</string>
+  <string name="people_picker_accessibility_click_selected_persona">, Durch Aktivierung wird geklickt.</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">Vorschlägeliste mit %s Person geöffnet.</item>
+    <item quantity="other">Vorschlägeliste mit %s Personen geöffnet.</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">%s Person</item>
+    <item quantity="other">%s Personen</item>
+  </plurals>
+  <string name="persona_title_placeholder">Kein Name</string>
+  <string name="done">Fertig</string>
+  <string name="tooltip_accessibility_dismiss_action">schließen</string>
+  <string name="tooltip_accessibility_dismiss_announcement">QuickInfo geschlossen.</string>
+</resources>

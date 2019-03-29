@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="date_at_time">%1$s %2$s</string>
+  <string name="date_time">%1$s, %2$s</string>
+  <string name="today">오늘</string>
+  <string name="tomorrow">내일</string>
+  <string name="yesterday">어제</string>
+  <string name="monday_initial">월</string>
+  <string name="tuesday_initial">화</string>
+  <string name="wednesday_initial">수</string>
+  <string name="thursday_initial">목</string>
+  <string name="friday_initial">금</string>
+  <string name="saturday_initial">토</string>
+  <string name="sunday_initial">일</string>
+  <string name="accessibility_goto_next_week">다음 주로 이동</string>
+  <string name="accessibility_goto_previous_week">이전 주로 이동</string>
+  <string name="accessibility_today">오늘</string>
+  <string name="accessibility_selected">선택됨</string>
+  <string name="date_time_picker_start_time">시작 시간</string>
+  <string name="date_time_picker_end_time">종료 시간</string>
+  <string name="date_time_picker_choose_time">시간 선택</string>
+  <string name="date_time_picker_choose_date">날짜 선택</string>
+  <string name="people_picker_sample_label">레이블</string>
+  <string name="people_picker_search_directory">디렉터리 검색</string>
+  <string name="people_picker_search_progress">검색 중...</string>
+  <string name="people_picker_accessibility_default_hint">이름 또는 전자 메일 입력</string>
+  <string name="people_picker_accessibility_persona_added">%s 추가됨</string>
+  <string name="people_picker_accessibility_persona_removed">%s 제거됨</string>
+  <string name="people_picker_accessibility_replaced">%s 바뀜,</string>
+  <string name="people_picker_accessibility_click_persona">클릭</string>
+  <string name="people_picker_accessibility_delete_persona">삭제</string>
+  <string name="people_picker_accessibility_deselect_persona">선택 취소</string>
+  <string name="people_picker_accessibility_select_persona">선택</string>
+  <string name="people_picker_accessibility_clicked_persona">%s 클릭됨</string>
+  <string name="people_picker_accessibility_deselected_persona">%s 선택 취소됨</string>
+  <string name="people_picker_accessibility_selected_persona">선택된 %s</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, 활성화가 선택 취소됩니다.</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, 활성화가 삭제됩니다.</string>
+  <string name="people_picker_accessibility_click_selected_persona">, 활성화가 클릭합니다.</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="other">%s명이 포함된 추천 목록이 열렸습니다.</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="other">%s명</item>
+  </plurals>
+  <string name="persona_title_placeholder">이름 없음</string>
+  <string name="done">완료</string>
+  <string name="tooltip_accessibility_dismiss_action">해제</string>
+  <string name="tooltip_accessibility_dismiss_announcement">도구 설명 해제</string>
+</resources>

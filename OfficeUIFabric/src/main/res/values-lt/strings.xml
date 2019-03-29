@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="date_at_time">%1$s, %2$s</string>
+  <string name="date_time">%1$s, %2$s</string>
+  <string name="today">Šiandien</string>
+  <string name="tomorrow">Rytoj</string>
+  <string name="yesterday">Vakar</string>
+  <string name="monday_initial">Pr</string>
+  <string name="tuesday_initial">Kt</string>
+  <string name="wednesday_initial">Tr</string>
+  <string name="thursday_initial">Kt</string>
+  <string name="friday_initial">Pn</string>
+  <string name="saturday_initial">Sk</string>
+  <string name="sunday_initial">Sk</string>
+  <string name="accessibility_goto_next_week">Eiti į paskesnę savaitę</string>
+  <string name="accessibility_goto_previous_week">Eiti į ankstesnę savaitę</string>
+  <string name="accessibility_today">šiandien</string>
+  <string name="accessibility_selected">Pasirinkta</string>
+  <string name="date_time_picker_start_time">Pradžios laikas</string>
+  <string name="date_time_picker_end_time">Pabaigos laikas</string>
+  <string name="date_time_picker_choose_time">Pasirinkite laiką</string>
+  <string name="date_time_picker_choose_date">Pasirinkite datą</string>
+  <string name="people_picker_sample_label">Žyma</string>
+  <string name="people_picker_search_directory">Ieškoti kataloge</string>
+  <string name="people_picker_search_progress">Ieškoma…</string>
+  <string name="people_picker_accessibility_default_hint">Įveskite vardą arba el. paštą</string>
+  <string name="people_picker_accessibility_persona_added">Įtraukta: %s</string>
+  <string name="people_picker_accessibility_persona_removed">Pašalinta: %s</string>
+  <string name="people_picker_accessibility_replaced">Pakeista: %s</string>
+  <string name="people_picker_accessibility_click_persona">Spustelėkite</string>
+  <string name="people_picker_accessibility_delete_persona">Naikinti</string>
+  <string name="people_picker_accessibility_deselect_persona">Atžymėti</string>
+  <string name="people_picker_accessibility_select_persona">Pasirinkti</string>
+  <string name="people_picker_accessibility_clicked_persona">Spustelėta: %s</string>
+  <string name="people_picker_accessibility_deselected_persona">Atžymėta: %s</string>
+  <string name="people_picker_accessibility_selected_persona">Pasirinkta: %s</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, aktyvinant bus atžymėta</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, aktyvinant bus panaikinta</string>
+  <string name="people_picker_accessibility_click_selected_persona">, aktyvinant bus spustelėta</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">Atidaromas pasiūlymų sąrašas su %s asmeniu</item>
+    <item quantity="few">Atidaromas pasiūlymų sąrašas su tiek žmonių: %s</item>
+    <item quantity="many">Atidaromas pasiūlymų sąrašas su tiek žmonių: %s</item>
+    <item quantity="other">Atidaromas pasiūlymų sąrašas su tiek žmonių: %s</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">%s asmuo</item>
+    <item quantity="few">Žmonių: %s</item>
+    <item quantity="many">Žmonių: %s</item>
+    <item quantity="other">Žmonių: %s</item>
+  </plurals>
+  <string name="persona_title_placeholder">Nėra vardo</string>
+  <string name="done">Atlikta</string>
+  <string name="tooltip_accessibility_dismiss_action">išjungti</string>
+  <string name="tooltip_accessibility_dismiss_announcement">Patarimas atmestas</string>
+</resources>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="date_at_time">%1$s në %2$s</string>
+  <string name="date_time">%1$s, %2$s</string>
+  <string name="today">Sot</string>
+  <string name="tomorrow">Nesër</string>
+  <string name="yesterday">Dje</string>
+  <string name="monday_initial">H</string>
+  <string name="tuesday_initial">M</string>
+  <string name="wednesday_initial">M</string>
+  <string name="thursday_initial">E</string>
+  <string name="friday_initial">P</string>
+  <string name="saturday_initial">S</string>
+  <string name="sunday_initial">D</string>
+  <string name="accessibility_goto_next_week">Shko te java tjetër</string>
+  <string name="accessibility_goto_previous_week">Shko te java paraardhëse</string>
+  <string name="accessibility_today">sot</string>
+  <string name="accessibility_selected">E përzgjedhur</string>
+  <string name="date_time_picker_start_time">Ora e fillimit</string>
+  <string name="date_time_picker_end_time">Ora e mbarimit</string>
+  <string name="date_time_picker_choose_time">Zgjidh orën</string>
+  <string name="date_time_picker_choose_date">Zgjidh datën</string>
+  <string name="people_picker_sample_label">Etiketa</string>
+  <string name="people_picker_search_directory">Kërko te direktoria</string>
+  <string name="people_picker_search_progress">Duke kërkuar…</string>
+  <string name="people_picker_accessibility_default_hint">Fut një emër ose email</string>
+  <string name="people_picker_accessibility_persona_added">%s u shtua</string>
+  <string name="people_picker_accessibility_persona_removed">%s u hoq</string>
+  <string name="people_picker_accessibility_replaced">%s u zëvendësua,</string>
+  <string name="people_picker_accessibility_click_persona">Kliko</string>
+  <string name="people_picker_accessibility_delete_persona">Fshi</string>
+  <string name="people_picker_accessibility_deselect_persona">Anulo përzgjedhjen</string>
+  <string name="people_picker_accessibility_select_persona">Përzgjidh</string>
+  <string name="people_picker_accessibility_clicked_persona">U klikua %s</string>
+  <string name="people_picker_accessibility_deselected_persona">U anulua përzgjedhja e %s</string>
+  <string name="people_picker_accessibility_selected_persona">U përzgjodh %s</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, Aktivizimi do të anulojë përzgjedhjen</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, Aktivizimi do të fshijë</string>
+  <string name="people_picker_accessibility_click_selected_persona">, Aktivizimi do të klikojë</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">Lista e sugjerimeve e hapur me %s person</item>
+    <item quantity="other">Lista e sugjerimeve e hapur me %s kontakte</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">%s person</item>
+    <item quantity="other">%s njerëz</item>
+  </plurals>
+  <string name="persona_title_placeholder">Pa emër</string>
+  <string name="done">U krye</string>
+  <string name="tooltip_accessibility_dismiss_action">hiq</string>
+  <string name="tooltip_accessibility_dismiss_announcement">Këshilla u hoq</string>
+</resources>

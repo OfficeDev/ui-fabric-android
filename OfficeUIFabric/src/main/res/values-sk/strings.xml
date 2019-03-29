@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="date_at_time">%1$s o %2$s</string>
+  <string name="date_time">%1$s, %2$s</string>
+  <string name="today">Dnes</string>
+  <string name="tomorrow">Zajtra</string>
+  <string name="yesterday">Včera</string>
+  <string name="monday_initial">Po</string>
+  <string name="tuesday_initial">Ut</string>
+  <string name="wednesday_initial">St</string>
+  <string name="thursday_initial">Št</string>
+  <string name="friday_initial">Pi</string>
+  <string name="saturday_initial">So</string>
+  <string name="sunday_initial">Ne</string>
+  <string name="accessibility_goto_next_week">Prejsť na nasledujúci týždeň</string>
+  <string name="accessibility_goto_previous_week">Prejsť na predchádzajúci týždeň</string>
+  <string name="accessibility_today">dnes</string>
+  <string name="accessibility_selected">Vybraté</string>
+  <string name="date_time_picker_start_time">Čas začatia</string>
+  <string name="date_time_picker_end_time">Čas ukončenia</string>
+  <string name="date_time_picker_choose_time">Vyberte čas</string>
+  <string name="date_time_picker_choose_date">Vyberte dátum</string>
+  <string name="people_picker_sample_label">Označenie</string>
+  <string name="people_picker_search_directory">Prehľadať adresár</string>
+  <string name="people_picker_search_progress">Hľadá sa…</string>
+  <string name="people_picker_accessibility_default_hint">Zadajte meno alebo e-mail</string>
+  <string name="people_picker_accessibility_persona_added">Pridaný používateľ: %s</string>
+  <string name="people_picker_accessibility_persona_removed">Odobratý používateľ: %s</string>
+  <string name="people_picker_accessibility_replaced">Nahradený používateľ: %s</string>
+  <string name="people_picker_accessibility_click_persona">Kliknúť</string>
+  <string name="people_picker_accessibility_delete_persona">Odstrániť</string>
+  <string name="people_picker_accessibility_deselect_persona">Zrušiť výber</string>
+  <string name="people_picker_accessibility_select_persona">Vybrať</string>
+  <string name="people_picker_accessibility_clicked_persona">Kliklo sa na používateľa: %s</string>
+  <string name="people_picker_accessibility_deselected_persona">Zrušil sa výber používateľa: %s</string>
+  <string name="people_picker_accessibility_selected_persona">Vybratý používateľ %s</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, Počas aktivácie sa zruší výber</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, Počas aktivácie sa odstráni</string>
+  <string name="people_picker_accessibility_click_selected_persona">, Počas aktivácie sa klikne</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">Zoznam návrhov sa otvoril s %s osobou</item>
+    <item quantity="few">Zoznam návrhov sa otvoril s %s ľuďmi</item>
+    <item quantity="many">Zoznam návrhov sa otvoril s %s ľuďmi</item>
+    <item quantity="other">Zoznam návrhov sa otvoril s %s ľuďmi</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">%s osoba</item>
+    <item quantity="few">Počet ľudí: %s</item>
+    <item quantity="many">Počet ľudí: %s</item>
+    <item quantity="other">Počet ľudí: %s</item>
+  </plurals>
+  <string name="persona_title_placeholder">Bez mena</string>
+  <string name="done">Hotovo</string>
+  <string name="tooltip_accessibility_dismiss_action">zrušiť</string>
+  <string name="tooltip_accessibility_dismiss_announcement">Zrušil sa popis</string>
+</resources>

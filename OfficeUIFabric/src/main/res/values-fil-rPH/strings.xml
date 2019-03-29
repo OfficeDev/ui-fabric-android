@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="date_at_time">%1$s sa %2$s</string>
+  <string name="date_time">%1$s, %2$s</string>
+  <string name="today">Ngayon</string>
+  <string name="tomorrow">Bukas</string>
+  <string name="yesterday">Kahapon</string>
+  <string name="monday_initial">L</string>
+  <string name="tuesday_initial">M</string>
+  <string name="wednesday_initial">M</string>
+  <string name="thursday_initial">H</string>
+  <string name="friday_initial">B</string>
+  <string name="saturday_initial">S</string>
+  <string name="sunday_initial">L</string>
+  <string name="accessibility_goto_next_week">Pumunta sa susunod na linggo</string>
+  <string name="accessibility_goto_previous_week">Pumunta sa nakaraang linggo</string>
+  <string name="accessibility_today">ngayon</string>
+  <string name="accessibility_selected">Napili</string>
+  <string name="date_time_picker_start_time">Oras ng pagsisimula</string>
+  <string name="date_time_picker_end_time">Oras ng pagtatapos</string>
+  <string name="date_time_picker_choose_time">Pumili ng oras</string>
+  <string name="date_time_picker_choose_date">Pumili ng petsa</string>
+  <string name="people_picker_sample_label">Label</string>
+  <string name="people_picker_search_directory">Maghanap sa Directory</string>
+  <string name="people_picker_search_progress">Naghahanap…</string>
+  <string name="people_picker_accessibility_default_hint">Magpasok ng pangalan o email</string>
+  <string name="people_picker_accessibility_persona_added">%s ang idinagdag</string>
+  <string name="people_picker_accessibility_persona_removed">%s ang tinanggal</string>
+  <string name="people_picker_accessibility_replaced">%s ang pinalitan,</string>
+  <string name="people_picker_accessibility_click_persona">Mag-click</string>
+  <string name="people_picker_accessibility_delete_persona">Tanggalin</string>
+  <string name="people_picker_accessibility_deselect_persona">I-deselect</string>
+  <string name="people_picker_accessibility_select_persona">Pumili</string>
+  <string name="people_picker_accessibility_clicked_persona">Nag-click sa %s</string>
+  <string name="people_picker_accessibility_deselected_persona">Nag-deselect ng %s</string>
+  <string name="people_picker_accessibility_selected_persona">Pinili ang %s</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, ide-deselect kapag Isinaaktibo</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, tatanggalin kapag Isinaaktibo</string>
+  <string name="people_picker_accessibility_click_selected_persona">, iki-click kapag Isinaaktibo</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">Nakabukas ang listahan ng mga suhestiyon sa %s tao</item>
+    <item quantity="other">Nakabukas ang listahan ng mga suhestiyon sa %s (na) tao</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">%s tao</item>
+    <item quantity="other">%s (na) tao</item>
+  </plurals>
+  <string name="persona_title_placeholder">Walang pangalan</string>
+  <string name="done">Tapos na</string>
+  <string name="tooltip_accessibility_dismiss_action">alisin</string>
+  <string name="tooltip_accessibility_dismiss_announcement">Inalis ang tooltip</string>
+</resources>
