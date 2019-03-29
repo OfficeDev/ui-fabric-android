@@ -1,4 +1,4 @@
-[![Build status](https://onedrive.visualstudio.com/Design/_apis/build/status/fabric-mobile/fabric-android-CI-github)](https://onedrive.visualstudio.com/Design/_build/latest?definitionId=2945)
+![Build status](https://onedrive.visualstudio.com/Design/_apis/build/status/fabric-mobile/fabric-android-CI-github?branchName=master)
 
 # [Office UI Fabric for Android](http://dev.office.com/fabric)
 
