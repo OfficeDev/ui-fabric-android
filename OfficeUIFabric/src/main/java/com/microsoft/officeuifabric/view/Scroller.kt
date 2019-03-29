@@ -15,6 +15,7 @@ package com.microsoft.officeuifabric.view
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import android.content.Context
 import android.hardware.SensorManager
 import android.os.Build

@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
 <resources>
     <item name="uifabric_calendar_view_action_goto_previous_week" type="id" />
     <item name="uifabric_calendar_view_action_goto_next_week" type="id" />

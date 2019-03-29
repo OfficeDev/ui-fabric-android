@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
 <resources>
     <!--Demo Primary Colors-->
     <color name="uifabric_demo_primary">@color/uifabric_communication_blue</color>
