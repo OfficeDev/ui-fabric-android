@@ -9,6 +9,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
 
 android {
     compileSdkVersion 28
@@ -96,6 +97,21 @@ publishing {
                     }
                 }
             }
+        }
+    }
+}
+
+bintray {
+    user = project.hasProperty('bintrayUser') ? "$bintrayUser" : ""
+    key = project.hasProperty('bintrayKey') ? "$bintrayKey" : ""
+    publications = ['OfficeUIFabric']
+    publish = true
+    pkg {
+        repo = 'generic'
+        name = 'ui-fabric-android'
+        version {
+            name = android.defaultConfig.versionName
+            vcsTag = android.defaultConfig.versionName
         }
     }
 }
