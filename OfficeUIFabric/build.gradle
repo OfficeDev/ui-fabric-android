@@ -80,7 +80,7 @@ publishing {
     }
     publications {
         OfficeUIFabric(MavenPublication) {
-            groupId 'com.microsoft'
+            groupId 'com.microsoft.uifabric'
             artifactId "$name"
             version = android.defaultConfig.versionName
             artifact(sourceJar)
