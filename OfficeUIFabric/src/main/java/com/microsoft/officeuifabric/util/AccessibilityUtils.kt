@@ -14,5 +14,5 @@ import android.view.accessibility.AccessibilityManager
 val Context.isAccessibilityEnabled: Boolean
     get() = accessibilityManager.isTouchExplorationEnabled
 
-private val Context.accessibilityManager: AccessibilityManager
+val Context.accessibilityManager: AccessibilityManager
     get() = getSystemService(Context.ACCESSIBILITY_SERVICE) as AccessibilityManager

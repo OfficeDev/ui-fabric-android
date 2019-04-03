@@ -18,6 +18,8 @@
   <string name="accessibility_selected">E përzgjedhur</string>
   <string name="date_time_picker_start_time">Ora e fillimit</string>
   <string name="date_time_picker_end_time">Ora e mbarimit</string>
+  <string name="date_time_picker_start_date">Data e fillimit</string>
+  <string name="date_time_picker_end_date">Data e mbarimit</string>
   <string name="date_time_picker_choose_time">Zgjidh orën</string>
   <string name="date_time_picker_choose_date">Zgjidh datën</string>
   <string name="people_picker_sample_label">Etiketa</string>

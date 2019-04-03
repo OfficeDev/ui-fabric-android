@@ -18,6 +18,8 @@
   <string name="accessibility_selected">Выбрано</string>
   <string name="date_time_picker_start_time">Время начала</string>
   <string name="date_time_picker_end_time">Время окончания</string>
+  <string name="date_time_picker_start_date">Дата начала</string>
+  <string name="date_time_picker_end_date">Дата окончания</string>
   <string name="date_time_picker_choose_time">Выберите время</string>
   <string name="date_time_picker_choose_date">Выберите дату</string>
   <string name="people_picker_sample_label">Метка</string>

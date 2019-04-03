@@ -18,6 +18,8 @@
   <string name="accessibility_selected">Seçilib</string>
   <string name="date_time_picker_start_time">Başlama vaxtı</string>
   <string name="date_time_picker_end_time">Bitmə vaxtı</string>
+  <string name="date_time_picker_start_date">Başlama tarixi</string>
+  <string name="date_time_picker_end_date">Bitmə tarixi</string>
   <string name="date_time_picker_choose_time">Vaxt seçin</string>
   <string name="date_time_picker_choose_date">Tarix seçin</string>
   <string name="people_picker_sample_label">Nişan</string>

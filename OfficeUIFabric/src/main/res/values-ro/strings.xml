@@ -18,6 +18,8 @@
   <string name="accessibility_selected">Selectat</string>
   <string name="date_time_picker_start_time">Ora de început</string>
   <string name="date_time_picker_end_time">Ora de sfârșit</string>
+  <string name="date_time_picker_start_date">Data de început</string>
+  <string name="date_time_picker_end_date">Data de sfârșit</string>
   <string name="date_time_picker_choose_time">Alegeți ora</string>
   <string name="date_time_picker_choose_date">Alegeți data</string>
   <string name="people_picker_sample_label">Etichetă</string>

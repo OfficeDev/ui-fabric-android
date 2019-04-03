@@ -18,6 +18,8 @@
   <string name="accessibility_selected">Valittu</string>
   <string name="date_time_picker_start_time">Alkamisaika</string>
   <string name="date_time_picker_end_time">Päättymisaika</string>
+  <string name="date_time_picker_start_date">Alkamispäivä</string>
+  <string name="date_time_picker_end_date">Päättymispäivä</string>
   <string name="date_time_picker_choose_time">Valitse aika</string>
   <string name="date_time_picker_choose_date">Valitse päivämäärä</string>
   <string name="people_picker_sample_label">Otsikko</string>

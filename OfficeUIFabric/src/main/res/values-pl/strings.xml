@@ -18,6 +18,8 @@
   <string name="accessibility_selected">Zaznaczone</string>
   <string name="date_time_picker_start_time">Godzina rozpoczęcia</string>
   <string name="date_time_picker_end_time">Godzina zakończenia</string>
+  <string name="date_time_picker_start_date">Data rozpoczęcia</string>
+  <string name="date_time_picker_end_date">Data zakończenia</string>
   <string name="date_time_picker_choose_time">Wybierz czas</string>
   <string name="date_time_picker_choose_date">Wybierz datę</string>
   <string name="people_picker_sample_label">Etykieta</string>

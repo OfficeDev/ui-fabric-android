@@ -18,6 +18,8 @@
   <string name="accessibility_selected">انتخاب‌شده</string>
   <string name="date_time_picker_start_time">زمان شروع</string>
   <string name="date_time_picker_end_time">زمان پایان</string>
+  <string name="date_time_picker_start_date">تاریخ شروع</string>
+  <string name="date_time_picker_end_date">تاریخ پایان</string>
   <string name="date_time_picker_choose_time">انتخاب زمان</string>
   <string name="date_time_picker_choose_date">انتخاب تاریخ</string>
   <string name="people_picker_sample_label">برچسب</string>

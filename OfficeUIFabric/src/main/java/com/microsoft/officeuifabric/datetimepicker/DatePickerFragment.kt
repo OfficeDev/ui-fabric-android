@@ -32,7 +32,7 @@ internal class DatePickerFragment : Fragment(), OnDateSelectedListener {
 
     private lateinit var date: ZonedDateTime
     private lateinit var duration: Duration
-    private lateinit var datePickMode: DatePickMode
+    private lateinit var dateRangeMode: DateRangeMode
 
     fun setTimeSlot(timeSlot: TimeSlot) {
         date = timeSlot.start
@@ -54,7 +54,7 @@ internal class DatePickerFragment : Fragment(), OnDateSelectedListener {
         val bundle = savedInstanceState ?: arguments ?: return
         date = bundle.getSerializable(DateTimePickerExtras.DATE_TIME) as ZonedDateTime
         duration = bundle.getSerializable(DateTimePickerExtras.DURATION) as Duration
-        datePickMode = bundle.getSerializable(DateTimePickerExtras.DATE_PICK_MODE) as DatePickMode
+        dateRangeMode = bundle.getSerializable(DateTimePickerExtras.DATE_RANGE_MODE) as DateRangeMode
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -72,19 +72,19 @@ internal class DatePickerFragment : Fragment(), OnDateSelectedListener {
         super.onSaveInstanceState(bundle)
         bundle.putSerializable(DateTimePickerExtras.DATE_TIME, date)
         bundle.putSerializable(DateTimePickerExtras.DURATION, duration)
-        bundle.putSerializable(DateTimePickerExtras.DATE_PICK_MODE, datePickMode)
+        bundle.putSerializable(DateTimePickerExtras.DATE_RANGE_MODE, dateRangeMode)
     }
 
     override fun onDateSelected(date: ZonedDateTime) {
-        when (datePickMode) {
-            DatePickMode.SINGLE -> {
+        when (dateRangeMode) {
+            DateRangeMode.NONE -> {
                 this.date = date
                 duration = Duration.ZERO
             }
-            DatePickMode.RANGE_START -> {
+            DateRangeMode.START -> {
                 this.date = date
             }
-            DatePickMode.RANGE_END -> {
+            DateRangeMode.END -> {
                 if (date.isBefore(this.date))
                     this.date = date.minus(duration)
                 else
@@ -101,6 +101,6 @@ internal class DatePickerFragment : Fragment(), OnDateSelectedListener {
     }
 
     private fun updateCalendarSelectedDateRange() {
-        calendar_view.setSelectedDateRange(date.toLocalDate(), duration, datePickMode == DatePickMode.RANGE_END)
+        calendar_view.setSelectedDateRange(date.toLocalDate(), duration, dateRangeMode == DateRangeMode.END)
     }
 }

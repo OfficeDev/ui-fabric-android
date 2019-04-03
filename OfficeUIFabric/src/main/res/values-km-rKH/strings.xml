@@ -18,6 +18,8 @@
   <string name="accessibility_selected">បានជ្រើសរើស</string>
   <string name="date_time_picker_start_time">ពេលវេលាចាប់ផ្ដើម</string>
   <string name="date_time_picker_end_time">ពេលវេលាបញ្ចប់</string>
+  <string name="date_time_picker_start_date">កាលបរិច្ឆេទចាប់ផ្តើម</string>
+  <string name="date_time_picker_end_date">កាលបរិច្ឆេទបញ្ចប់</string>
   <string name="date_time_picker_choose_time">ជ្រើសរើសពេលវេលា</string>
   <string name="date_time_picker_choose_date">ជ្រើសរើសកាលបរិច្ឆេទ</string>
   <string name="people_picker_sample_label">ស្លាក</string>

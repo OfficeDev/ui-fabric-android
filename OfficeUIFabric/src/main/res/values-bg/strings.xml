@@ -18,6 +18,8 @@
   <string name="accessibility_selected">Избрано</string>
   <string name="date_time_picker_start_time">Начален час</string>
   <string name="date_time_picker_end_time">Краен час</string>
+  <string name="date_time_picker_start_date">Начална дата</string>
+  <string name="date_time_picker_end_date">Крайна дата</string>
   <string name="date_time_picker_choose_time">Изберете час</string>
   <string name="date_time_picker_choose_date">Изберете дата</string>
   <string name="people_picker_sample_label">Етикет</string>

@@ -18,6 +18,8 @@
   <string name="accessibility_selected">محدد</string>
   <string name="date_time_picker_start_time">وقت البدء</string>
   <string name="date_time_picker_end_time">وقت الانتهاء</string>
+  <string name="date_time_picker_start_date">تاريخ البدء</string>
+  <string name="date_time_picker_end_date">تاريخ الانتهاء</string>
   <string name="date_time_picker_choose_time">اختيار الوقت</string>
   <string name="date_time_picker_choose_date">اختيار التاريخ</string>
   <string name="people_picker_sample_label">تسمية</string>

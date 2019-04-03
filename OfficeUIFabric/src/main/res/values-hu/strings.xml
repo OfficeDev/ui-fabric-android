@@ -18,6 +18,8 @@
   <string name="accessibility_selected">Kijelölve</string>
   <string name="date_time_picker_start_time">Kezdés ideje</string>
   <string name="date_time_picker_end_time">Befejezés ideje</string>
+  <string name="date_time_picker_start_date">Kezdés</string>
+  <string name="date_time_picker_end_date">Befejezés</string>
   <string name="date_time_picker_choose_time">Időpont kiválasztása</string>
   <string name="date_time_picker_choose_date">Dátum kiválasztása</string>
   <string name="people_picker_sample_label">Címke</string>

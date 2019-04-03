@@ -18,6 +18,8 @@
   <string name="accessibility_selected">Seleccionat</string>
   <string name="date_time_picker_start_time">Hora d\'inici</string>
   <string name="date_time_picker_end_time">Hora de finalització</string>
+  <string name="date_time_picker_start_date">Data d\'inici</string>
+  <string name="date_time_picker_end_date">Data de finalització</string>
   <string name="date_time_picker_choose_time">Tria l\'hora</string>
   <string name="date_time_picker_choose_date">Tria la data</string>
   <string name="people_picker_sample_label">Etiqueta</string>

@@ -18,6 +18,8 @@
   <string name="accessibility_selected">선택됨</string>
   <string name="date_time_picker_start_time">시작 시간</string>
   <string name="date_time_picker_end_time">종료 시간</string>
+  <string name="date_time_picker_start_date">시작 날짜</string>
+  <string name="date_time_picker_end_date">종료 날짜</string>
   <string name="date_time_picker_choose_time">시간 선택</string>
   <string name="date_time_picker_choose_date">날짜 선택</string>
   <string name="people_picker_sample_label">레이블</string>

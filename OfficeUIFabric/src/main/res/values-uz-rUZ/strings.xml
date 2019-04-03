@@ -18,6 +18,8 @@
   <string name="accessibility_selected">Tanlangan</string>
   <string name="date_time_picker_start_time">Boshlanish vaqti</string>
   <string name="date_time_picker_end_time">Tugash vaqti</string>
+  <string name="date_time_picker_start_date">Boshlanish sanasi</string>
+  <string name="date_time_picker_end_date">Tugash sanasi</string>
   <string name="date_time_picker_choose_time">Vaqtni tanlang</string>
   <string name="date_time_picker_choose_date">Sanani tanlang</string>
   <string name="people_picker_sample_label">Yorliq</string>

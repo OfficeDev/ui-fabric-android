@@ -18,6 +18,8 @@
   <string name="accessibility_selected">Vybráno</string>
   <string name="date_time_picker_start_time">Počáteční čas</string>
   <string name="date_time_picker_end_time">Koncový čas</string>
+  <string name="date_time_picker_start_date">Počáteční datum</string>
+  <string name="date_time_picker_end_date">Koncové datum</string>
   <string name="date_time_picker_choose_time">Zvolte čas</string>
   <string name="date_time_picker_choose_date">Zvolte datum</string>
   <string name="people_picker_sample_label">Popisek</string>

@@ -6,12 +6,15 @@
 package com.microsoft.officeuifabricdemo.demos
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
-import com.microsoft.officeuifabric.datetimepicker.DatePickMode
+import com.microsoft.officeuifabric.datetimepicker.DateRangeMode
 import com.microsoft.officeuifabric.datetimepicker.DateTimePickerDialog
 import com.microsoft.officeuifabric.datetimepicker.DateTimePickerDialog.Mode
 import com.microsoft.officeuifabric.datetimepicker.OnDateTimePickedListener
 import com.microsoft.officeuifabric.util.DateStringUtils
+import com.microsoft.officeuifabric.util.accessibilityManager
+import com.microsoft.officeuifabric.util.isAccessibilityEnabled
 import com.microsoft.officeuifabricdemo.DemoActivity
 import com.microsoft.officeuifabricdemo.R
 import kotlinx.android.synthetic.main.activity_date_time_picker_dialog.*
@@ -37,13 +40,13 @@ class DateTimePickerDialogActivity : DemoActivity(), OnDateTimePickedListener {
         private const val DIALOG_TAG = "dialogTag"
     }
 
-    enum class DatePickerType(val buttonId: Int, val tag: String, val mode: Mode, val datePickMode: DatePickMode) {
-        DATE(R.id.date_picker_button, TAG_DATE_PICKER, Mode.DATE, DatePickMode.SINGLE),
-        DATE_TIME(R.id.date_time_picker_date_selected_button, TAG_DATE_TIME_PICKER, Mode.DATE_TIME, DatePickMode.SINGLE),
-        TIME_DATE(R.id.date_time_picker_time_selected_button, TAG_DATE_TIME_PICKER, Mode.TIME_DATE, DatePickMode.SINGLE),
-        START_DATE(R.id.date_range_start_button, TAG_START_DATE_PICKER, Mode.DATE, DatePickMode.RANGE_START),
-        END_DATE(R.id.date_range_end_button, TAG_END_DATE_PICKER, Mode.DATE, DatePickMode.RANGE_END),
-        START_DATE_TIME(R.id.date_time_range_start_button, TAG_DATE_TIME_RANGE_PICKER, Mode.DATE_TIME, DatePickMode.RANGE_START)
+    enum class DatePickerType(val buttonId: Int, val tag: String, val mode: Mode, val dateRangeMode: DateRangeMode) {
+        DATE(R.id.date_picker_button, TAG_DATE_PICKER, Mode.DATE, DateRangeMode.NONE),
+        DATE_TIME(R.id.date_time_picker_date_selected_button, TAG_DATE_TIME_PICKER, Mode.DATE_TIME, DateRangeMode.NONE),
+        TIME_DATE(R.id.date_time_picker_time_selected_button, TAG_DATE_TIME_PICKER, Mode.TIME_DATE, DateRangeMode.NONE),
+        START_DATE(R.id.date_range_start_button, TAG_START_DATE_PICKER, Mode.DATE, DateRangeMode.START),
+        END_DATE(R.id.date_range_end_button, TAG_END_DATE_PICKER, Mode.DATE, DateRangeMode.END),
+        START_DATE_TIME(R.id.date_time_range_start_button, TAG_DATE_TIME_RANGE_PICKER, Mode.DATE_TIME, DateRangeMode.START)
     }
 
     override val contentLayoutId: Int
@@ -55,11 +58,11 @@ class DateTimePickerDialogActivity : DemoActivity(), OnDateTimePickedListener {
     private var startDate: ZonedDateTime? = null
     private var startDateTime: ZonedDateTime? = null
 
-    private var datePickMode: DatePickMode = DatePickMode.SINGLE
+    private var dateRangeMode: DateRangeMode = DateRangeMode.NONE
     private var singleModeDialogTag: String? = null
     private var dialogTag: String? = null
         set(value) {
-            if (datePickMode == DatePickMode.SINGLE) {
+            if (dateRangeMode == DateRangeMode.NONE) {
                 singleModeDialogTag = value
             }
             field = value
@@ -84,16 +87,23 @@ class DateTimePickerDialogActivity : DemoActivity(), OnDateTimePickedListener {
 
         DatePickerType.values().forEach { picker ->
             findViewById<Button>(picker.buttonId).setOnClickListener {
-                datePickMode = picker.datePickMode
+                dateRangeMode = picker.dateRangeMode
                 dialogTag = picker.tag
                 val dialog = DateTimePickerDialog.newInstance(
+                    this,
                     getDateTime(),
                     getDuration(),
                     picker.mode,
-                    picker.datePickMode
+                    picker.dateRangeMode
                 )
                 dialog.show(supportFragmentManager, picker.tag)
             }
+        }
+
+        updateButtonsForAccessibility(isAccessibilityEnabled)
+
+        accessibilityManager.addAccessibilityStateChangeListener {
+            updateButtonsForAccessibility(it)
         }
     }
 
@@ -124,6 +134,16 @@ class DateTimePickerDialogActivity : DemoActivity(), OnDateTimePickedListener {
                 durationDateTime = duration
                 updateDateTimeRangeText()
             }
+        }
+    }
+
+    private fun updateButtonsForAccessibility(accessibilityEnabled: Boolean) {
+        if (accessibilityEnabled) {
+            date_time_picker_time_selected_button.visibility = View.GONE
+            date_time_picker_date_selected_button.setText(R.string.date_time_picker_dialog_date_time_button)
+        } else {
+            date_time_picker_time_selected_button.visibility = View.VISIBLE
+            date_time_picker_date_selected_button.setText(R.string.date_time_picker_dialog_calendar_date_time_button)
         }
     }
 

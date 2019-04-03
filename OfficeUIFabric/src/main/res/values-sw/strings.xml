@@ -18,6 +18,8 @@
   <string name="accessibility_selected">Imeteuliwa</string>
   <string name="date_time_picker_start_time">Wakati wa kuanza</string>
   <string name="date_time_picker_end_time">Wakati wa kuisha</string>
+  <string name="date_time_picker_start_date">Tarehe ya kuanza</string>
+  <string name="date_time_picker_end_date">Tarehe ya mwisho</string>
   <string name="date_time_picker_choose_time">Chagua wakati</string>
   <string name="date_time_picker_choose_date">Chagua tarehe</string>
   <string name="people_picker_sample_label">Lebo</string>

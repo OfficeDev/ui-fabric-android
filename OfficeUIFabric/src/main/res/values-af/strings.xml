@@ -18,6 +18,8 @@
   <string name="accessibility_selected">Gekies</string>
   <string name="date_time_picker_start_time">Begintyd</string>
   <string name="date_time_picker_end_time">Eindtyd</string>
+  <string name="date_time_picker_start_date">Begindatum</string>
+  <string name="date_time_picker_end_date">Einddatum</string>
   <string name="date_time_picker_choose_time">Kies tyd</string>
   <string name="date_time_picker_choose_date">Kies datum</string>
   <string name="people_picker_sample_label">Etiket</string>

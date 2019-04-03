@@ -18,6 +18,8 @@
   <string name="accessibility_selected">ಆಯ್ಕೆಮಾಡಲಾಗಿದೆ</string>
   <string name="date_time_picker_start_time">ಪ್ರಾರಂಭ ಸಮಯ</string>
   <string name="date_time_picker_end_time">ಅಂತ್ಯ ಸಮಯ</string>
+  <string name="date_time_picker_start_date">ಆರಂಭದ ದಿನಾಂಕ</string>
+  <string name="date_time_picker_end_date">ಅಂತ್ಯ ದಿನಾಂಕ</string>
   <string name="date_time_picker_choose_time">ಸಮಯ ಆರಿಸಿ</string>
   <string name="date_time_picker_choose_date">ದಿನಾಂಕ ಆರಿಸಿ</string>
   <string name="people_picker_sample_label">ಲೇಬಲ್</string>

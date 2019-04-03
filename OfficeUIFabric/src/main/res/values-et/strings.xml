@@ -18,6 +18,8 @@
   <string name="accessibility_selected">Valitud</string>
   <string name="date_time_picker_start_time">Algusaeg</string>
   <string name="date_time_picker_end_time">Lõppaeg</string>
+  <string name="date_time_picker_start_date">Alguskuupäev</string>
+  <string name="date_time_picker_end_date">Lõppkuupäev</string>
   <string name="date_time_picker_choose_time">Valige kellaaeg</string>
   <string name="date_time_picker_choose_date">Valige kuupäev</string>
   <string name="people_picker_sample_label">Silt</string>

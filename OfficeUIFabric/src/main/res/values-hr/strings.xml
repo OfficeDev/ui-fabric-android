@@ -18,6 +18,8 @@
   <string name="accessibility_selected">Odabrano</string>
   <string name="date_time_picker_start_time">Vrijeme početka</string>
   <string name="date_time_picker_end_time">Vrijeme završetka</string>
+  <string name="date_time_picker_start_date">Datum početka</string>
+  <string name="date_time_picker_end_date">Datum završetka</string>
   <string name="date_time_picker_choose_time">Odaberite vrijeme</string>
   <string name="date_time_picker_choose_date">Odaberite datum</string>
   <string name="people_picker_sample_label">Oznaka</string>

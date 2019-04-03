@@ -18,6 +18,8 @@
   <string name="accessibility_selected">Izbrano</string>
   <string name="date_time_picker_start_time">Čas začetka</string>
   <string name="date_time_picker_end_time">Čas konca</string>
+  <string name="date_time_picker_start_date">Začetni datum</string>
+  <string name="date_time_picker_end_date">Končni datum</string>
   <string name="date_time_picker_choose_time">Izberite uro</string>
   <string name="date_time_picker_choose_date">Izberite datum</string>
   <string name="people_picker_sample_label">Oznaka</string>

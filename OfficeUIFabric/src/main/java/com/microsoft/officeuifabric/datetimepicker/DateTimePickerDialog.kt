@@ -7,6 +7,7 @@ package com.microsoft.officeuifabric.datetimepicker
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
@@ -20,14 +21,15 @@ import android.view.ViewGroup
 
 import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.calendar.OnDateSelectedListener
+import com.microsoft.officeuifabric.datetimepicker.DateTimePicker.PickerMode
 import com.microsoft.officeuifabric.util.*
 import com.microsoft.officeuifabric.view.ResizableDialog
 import kotlinx.android.synthetic.main.dialog_date_time_picker.*
 import org.threeten.bp.Duration
 import org.threeten.bp.ZonedDateTime
 
-// TODO implement accessible Modes
-// TODO consider merging Mode and DatePickMode since not all combinations will work
+// TODO consider merging PickerMode and DateRangeMode since not all combinations will work
+// TODO KitKat design alignment
 /**
  * [DateTimePickerDialog] provides a dialog view housing both a [DatePickerFragment] and [DateTimePickerFragment] in a [WrapContentViewPager]
  * as well as includes toolbar UI and menu buttons to dismiss the dialog and accept a date/ time
@@ -38,57 +40,50 @@ class DateTimePickerDialog : ResizableDialog(), Toolbar.OnMenuItemClickListener,
 
         @JvmStatic
         fun newInstance(
+            context: Context,
             dateTime: ZonedDateTime,
             duration: Duration,
             mode: Mode,
-            datePickMode: DatePickMode
+            dateRangeMode: DateRangeMode
         ): DateTimePickerDialog {
             val args = Bundle()
             args.putSerializable(DateTimePickerExtras.DATE_TIME, dateTime)
             args.putSerializable(DateTimePickerExtras.DURATION, duration)
-            args.putSerializable(DateTimePickerExtras.DISPLAY_MODE, getDisplayMode(dateTime, duration, mode))
-            args.putSerializable(DateTimePickerExtras.DATE_PICK_MODE, datePickMode)
+            args.putSerializable(DateTimePickerExtras.DISPLAY_MODE, getDisplayMode(context, dateTime, duration, mode))
+            args.putSerializable(DateTimePickerExtras.DATE_RANGE_MODE, dateRangeMode)
 
             val dialog = DateTimePickerDialog()
             dialog.arguments = args
             return dialog
         }
 
-        private fun getDisplayMode(dateTime: ZonedDateTime, duration: Duration, mode: Mode): DisplayMode {
-            if (mode != Mode.DATE) {
+        private fun getDisplayMode(context: Context, dateTime: ZonedDateTime, duration: Duration, mode: Mode): DisplayMode {
+            if (context.isAccessibilityEnabled)  {
+                return mode.accessibleMode
+            } else {
                 val endTime = dateTime.plus(duration)
                 val isSameDayEvent = DateTimeUtils.isSameDay(dateTime, endTime)
-                return if (isSameDayEvent) mode.defaultMode else DisplayMode.TIME
+                if (isSameDayEvent || mode == Mode.DATE)
+                    return mode.defaultMode
+                else
+                    return DisplayMode.TIME
             }
-
-            return mode.defaultMode
         }
     }
 
     enum class Mode(internal val defaultMode: DisplayMode, internal val accessibleMode: DisplayMode) {
         DATE(DisplayMode.DATE, DisplayMode.ACCESSIBLE_DATE),
         DATE_TIME(DisplayMode.DATE_TIME, DisplayMode.ACCESSIBLE_DATE_TIME),
-        TIME_DATE(DisplayMode.TIME_DATE, DisplayMode.ACCESSIBLE_DATE_TIME),
-        DATE_TIME_RANGE(DisplayMode.DATE_TIME_RANGE, DisplayMode.ACCESSIBLE_DATE_TIME_RANGE)
+        TIME_DATE(DisplayMode.TIME_DATE, DisplayMode.ACCESSIBLE_DATE_TIME)
     }
 
-    private enum class DisplayMode(
-        val showDatePicker: Boolean,
-        val showDateTimePicker: Boolean,
-        val showTime: Boolean,
-        val showDateTimeRange: Boolean,
-        val dateTabIndex: Int,
-        val dateTimeTabIndex: Int,
-        val initialIndex: Int
-    ) {
-        ACCESSIBLE_DATE(false, true, false, false, -1, 0, 0),
-        ACCESSIBLE_DATE_TIME(false, true, true, false, -1, 0, 0),
-        ACCESSIBLE_DATE_TIME_RANGE(false, true, true, true, -1, 0, 0),
-        DATE(true, false, false, false, 0, -1, 0),
-        DATE_TIME(true, true, true, false, 0, 1, 0),
-        DATE_TIME_RANGE(true, true, true, true, 0, 1, 1),
-        TIME(false, false, true, true, -1, 0, 0),
-        TIME_DATE(true, true, true, false, 0, 1, 1),
+    private enum class DisplayMode(val dateTabIndex: Int, val dateTimeTabIndex: Int) {
+        ACCESSIBLE_DATE(0, -1),
+        ACCESSIBLE_DATE_TIME(-1, 0),
+        DATE(0, -1),
+        DATE_TIME(0, 1),
+        TIME(-1, 0),
+        TIME_DATE(0, 1)
     }
 
     var onDateTimePickedListener: OnDateTimePickedListener? = null
@@ -97,28 +92,28 @@ class DateTimePickerDialog : ResizableDialog(), Toolbar.OnMenuItemClickListener,
     private lateinit var dateTime: ZonedDateTime
     private lateinit var duration: Duration
     private lateinit var displayMode: DisplayMode
-    private lateinit var datePickMode: DatePickMode
+    private lateinit var dateRangeMode: DateRangeMode
     private lateinit var pagerAdapter: DateTimePagerAdapter
-    private var selectedDateTimeTab: DateTimePicker.Tab = DateTimePicker.Tab.START_TIME
-        get() = pagerAdapter.dateTimePicker?.selectedTab ?: field ?: DateTimePicker.Tab.START_TIME
+    private var selectedDateTimeTab: DateTimePicker.Tab = DateTimePicker.Tab.START
+        get() = pagerAdapter.dateTimePickerFragment?.selectedTab ?: field ?: DateTimePicker.Tab.START
 
     private val animatorListener = object : AnimatorListenerAdapter() {
         override fun onAnimationCancel(animation: Animator) {
             super.onAnimationCancel(animation)
-            pagerAdapter.datePicker?.collapseCalendarView()
+            pagerAdapter.datePickerFragment?.collapseCalendarView()
         }
 
         override fun onAnimationEnd(animation: Animator) {
             super.onAnimationEnd(animation)
-            pagerAdapter.datePicker?.collapseCalendarView()
+            pagerAdapter.datePickerFragment?.collapseCalendarView()
         }
     }
 
     private val pageChangeListener = object : ViewPager.SimpleOnPageChangeListener() {
         override fun onPageSelected(position: Int) {
             updateTitles()
-            val datePicker = pagerAdapter.datePicker
-            val dateTimePicker = pagerAdapter.dateTimePicker
+            val datePicker = pagerAdapter.datePickerFragment
+            val dateTimePicker = pagerAdapter.dateTimePickerFragment
             if (position == displayMode.dateTabIndex && datePicker != null) {
                 view_pager.currentObject = datePicker
                 // We're switching from the tall time picker to the short date picker. Layout transition
@@ -141,10 +136,11 @@ class DateTimePickerDialog : ResizableDialog(), Toolbar.OnMenuItemClickListener,
         dateTime = bundle.getSerializable(DateTimePickerExtras.DATE_TIME) as ZonedDateTime
         duration = bundle.getSerializable(DateTimePickerExtras.DURATION) as Duration
         displayMode = bundle.getSerializable(DateTimePickerExtras.DISPLAY_MODE) as DisplayMode
-        datePickMode = bundle.getSerializable(DateTimePickerExtras.DATE_PICK_MODE) as DatePickMode
+        dateRangeMode = bundle.getSerializable(DateTimePickerExtras.DATE_RANGE_MODE) as DateRangeMode
 
         savedInstanceState?.let {
             selectedDateTimeTab = it.getSerializable(SELECTED_DATE_TIME_TAB) as DateTimePicker.Tab
+            displayMode = it.getSerializable(DateTimePickerExtras.DISPLAY_MODE) as DisplayMode
         }
     }
 
@@ -183,7 +179,7 @@ class DateTimePickerDialog : ResizableDialog(), Toolbar.OnMenuItemClickListener,
         bundle.putSerializable(DateTimePickerExtras.DATE_TIME, dateTime)
         bundle.putSerializable(DateTimePickerExtras.DURATION, duration)
         bundle.putSerializable(DateTimePickerExtras.DISPLAY_MODE, displayMode)
-        bundle.putSerializable(DateTimePickerExtras.DATE_PICK_MODE, datePickMode)
+        bundle.putSerializable(DateTimePickerExtras.DATE_RANGE_MODE, dateRangeMode)
         bundle.putSerializable(SELECTED_DATE_TIME_TAB, selectedDateTimeTab)
     }
 
@@ -196,7 +192,7 @@ class DateTimePickerDialog : ResizableDialog(), Toolbar.OnMenuItemClickListener,
     }
 
     override fun onDateSelected(dateTime: ZonedDateTime) {
-        if (datePickMode === DatePickMode.RANGE_END) {
+        if (dateRangeMode === DateRangeMode.END) {
             if (dateTime.isBefore(this.dateTime))
                 this.dateTime = dateTime.minus(duration)
             else
@@ -207,7 +203,7 @@ class DateTimePickerDialog : ResizableDialog(), Toolbar.OnMenuItemClickListener,
 
         updateTitles()
 
-        pagerAdapter.dateTimePicker?.setDate(this.dateTime)
+        pagerAdapter.dateTimePickerFragment?.setDate(this.dateTime)
     }
 
     override fun onDateTimeSelected(dateTime: ZonedDateTime, duration: Duration) {
@@ -216,21 +212,27 @@ class DateTimePickerDialog : ResizableDialog(), Toolbar.OnMenuItemClickListener,
 
         updateTitles()
 
-        pagerAdapter.datePicker?.setTimeSlot(TimeSlot(this.dateTime, this.duration))
+        pagerAdapter.datePickerFragment?.setTimeSlot(TimeSlot(this.dateTime, this.duration))
     }
 
     private fun updateTitles() {
         val context = context ?: return
         when (displayMode) {
             DisplayMode.DATE -> {
-                toolbar.title = if (datePickMode == DatePickMode.RANGE_START)
+                toolbar.title = if (dateRangeMode == DateRangeMode.START)
                     DateStringUtils.formatDateAbbrevAll(context, dateTime)
                 else
                     DateStringUtils.formatDateAbbrevAll(context, dateTime.plus(duration))
             }
-            DisplayMode.ACCESSIBLE_DATE_TIME -> {
-                toolbar.title = if (datePickMode == DatePickMode.RANGE_START)
-                    DateStringUtils.formatAbbrevDateAtTime(context, dateTime)
+            DisplayMode.ACCESSIBLE_DATE -> {
+                toolbar.title = if (dateRangeMode != DateRangeMode.NONE)
+                    resources.getString(R.string.date_time_picker_choose_date)
+                else
+                    DateStringUtils.formatDateAbbrevAll(context, dateTime.plus(duration))
+            }
+            DisplayMode.TIME, DisplayMode.ACCESSIBLE_DATE_TIME -> {
+                toolbar.title = if (dateRangeMode != DateRangeMode.NONE)
+                    resources.getString(R.string.date_time_picker_choose_time)
                 else
                     DateStringUtils.formatAbbrevDateTime(context, dateTime.plus(duration))
             }
@@ -238,7 +240,7 @@ class DateTimePickerDialog : ResizableDialog(), Toolbar.OnMenuItemClickListener,
                 val currentTab = view_pager.currentItem
                 toolbar.setTitle(if (currentTab == displayMode.dateTabIndex) R.string.date_time_picker_choose_date else R.string.date_time_picker_choose_time)
 
-                val tabDate = if (selectedDateTimeTab == DateTimePicker.Tab.END_TIME) dateTime.plus(duration) else dateTime
+                val tabDate = if (selectedDateTimeTab == DateTimePicker.Tab.END) dateTime.plus(duration) else dateTime
 
                 // Set tab titles
                 if (displayMode.dateTabIndex != -1)
@@ -254,28 +256,35 @@ class DateTimePickerDialog : ResizableDialog(), Toolbar.OnMenuItemClickListener,
     }
 
     private inner class DateTimePagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager) {
-        var datePicker: DatePickerFragment? = null
-        var dateTimePicker: DateTimePickerFragment? = null
+        var datePickerFragment: DatePickerFragment? = null
+        var dateTimePickerFragment: DateTimePickerFragment? = null
 
         override fun getItem(position: Int): Fragment {
-            val fragment: Fragment = if (position == displayMode.dateTabIndex) DatePickerFragment() else DateTimePickerFragment()
+            val fragment: Fragment = if (useDatePickerFragment(position))
+                DatePickerFragment()
+            else
+                DateTimePickerFragment()
+
             fragment.arguments = arguments
+
             return fragment
         }
 
-        override fun getCount(): Int = if (displayMode == DisplayMode.DATE_TIME || displayMode == DisplayMode.TIME_DATE) 2 else 1
+        override fun getCount(): Int = if ((displayMode == DisplayMode.DATE_TIME || displayMode == DisplayMode.TIME_DATE)) 2 else 1
 
         override fun instantiateItem(container: ViewGroup, position: Int): Any {
             val fragment = super.instantiateItem(container, position) as Fragment
             val currentItem = view_pager.currentItem
+            if (fragment is DatePickerFragment) {
+                datePickerFragment = fragment
+                datePickerFragment?.arguments?.putBoolean(DateTimePickerExtras.EXPAND_ON_START, position != currentItem)
+                datePickerFragment?.onDateSelectedListener = this@DateTimePickerDialog
+            } else {
+                dateTimePickerFragment = fragment as DateTimePickerFragment
+                dateTimePickerFragment?.onDateTimeSelectedListener = this@DateTimePickerDialog
 
-            if (position == displayMode.dateTabIndex) {
-                datePicker = fragment as DatePickerFragment
-                datePicker?.arguments?.putBoolean(DateTimePickerExtras.EXPAND_ON_START, position != currentItem)
-                datePicker?.onDateSelectedListener = this@DateTimePickerDialog
-            } else if (position == displayMode.dateTimeTabIndex) {
-                dateTimePicker = fragment as DateTimePickerFragment
-                dateTimePicker?.onDateTimeSelectedListener = this@DateTimePickerDialog
+                val pickerMode = if (displayMode == DisplayMode.ACCESSIBLE_DATE) PickerMode.DATE else PickerMode.DATE_TIME
+                dateTimePickerFragment?.arguments?.putSerializable(DateTimePickerExtras.PICKER_MODE, pickerMode)
             }
 
             if (position == currentItem)
@@ -284,15 +293,8 @@ class DateTimePickerDialog : ResizableDialog(), Toolbar.OnMenuItemClickListener,
             return fragment
         }
 
-        override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
-            if (position == displayMode.dateTabIndex) {
-                datePicker = null
-            } else if (position == displayMode.dateTimeTabIndex) {
-                dateTimePicker = null
-            }
-
-            super.destroyItem(container, position, `object`)
-        }
+        private fun useDatePickerFragment(position: Int): Boolean =
+            position == displayMode.dateTabIndex && (displayMode == DisplayMode.DATE || displayMode == DisplayMode.TIME_DATE || displayMode == DisplayMode.DATE_TIME)
     }
 }
 

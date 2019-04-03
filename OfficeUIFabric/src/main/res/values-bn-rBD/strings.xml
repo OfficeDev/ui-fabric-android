@@ -18,6 +18,8 @@
   <string name="accessibility_selected">নির্বাচিত</string>
   <string name="date_time_picker_start_time">শুরু করার সময়</string>
   <string name="date_time_picker_end_time">সমাপ্তির সময়</string>
+  <string name="date_time_picker_start_date">শুরু করার তারিখ</string>
+  <string name="date_time_picker_end_date">শেষ করার তারিখ</string>
   <string name="date_time_picker_choose_time">সময় বেছে নিন</string>
   <string name="date_time_picker_choose_date">তারিখ বেছে নিন</string>
   <string name="people_picker_sample_label">লেবেল</string>

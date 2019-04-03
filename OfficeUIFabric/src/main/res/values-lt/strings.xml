@@ -18,6 +18,8 @@
   <string name="accessibility_selected">Pasirinkta</string>
   <string name="date_time_picker_start_time">Pradžios laikas</string>
   <string name="date_time_picker_end_time">Pabaigos laikas</string>
+  <string name="date_time_picker_start_date">Pradžios data</string>
+  <string name="date_time_picker_end_date">Pabaigos data</string>
   <string name="date_time_picker_choose_time">Pasirinkite laiką</string>
   <string name="date_time_picker_choose_date">Pasirinkite datą</string>
   <string name="people_picker_sample_label">Žyma</string>

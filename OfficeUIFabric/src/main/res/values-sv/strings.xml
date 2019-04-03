@@ -18,6 +18,8 @@
   <string name="accessibility_selected">Markerat</string>
   <string name="date_time_picker_start_time">Starttid</string>
   <string name="date_time_picker_end_time">Sluttid</string>
+  <string name="date_time_picker_start_date">Startdatum</string>
+  <string name="date_time_picker_end_date">Slutdatum</string>
   <string name="date_time_picker_choose_time">Välj tid</string>
   <string name="date_time_picker_choose_date">Välj datum</string>
   <string name="people_picker_sample_label">Etikett</string>

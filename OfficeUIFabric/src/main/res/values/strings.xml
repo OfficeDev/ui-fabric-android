@@ -30,9 +30,17 @@
 
     <!-- *** DateTimePicker *** -->
 
+    <!--date picker tab title for start time range-->
     <string name="date_time_picker_start_time">Start time</string>
+    <!--date picker tab title for end time range-->
     <string name="date_time_picker_end_time">End time</string>
+    <!--date picker tab title for start date range-->
+    <string name="date_time_picker_start_date">Start date</string>
+    <!--date picker tab title for end date range-->
+    <string name="date_time_picker_end_date">End date</string>
+    <!--date picker dialog title for time selection-->
     <string name="date_time_picker_choose_time">Choose time</string>
+    <!--date picker dialog title for date selection-->
     <string name="date_time_picker_choose_date">Choose date</string>
 
     <!-- *** PeoplePicker *** -->

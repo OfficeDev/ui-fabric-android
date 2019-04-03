@@ -18,6 +18,8 @@
   <string name="accessibility_selected">Merket</string>
   <string name="date_time_picker_start_time">Starttidspunkt</string>
   <string name="date_time_picker_end_time">Sluttidspunkt</string>
+  <string name="date_time_picker_start_date">Startdato</string>
+  <string name="date_time_picker_end_date">Sluttdato</string>
   <string name="date_time_picker_choose_time">Velg tidspunkt</string>
   <string name="date_time_picker_choose_date">Velg dato</string>
   <string name="people_picker_sample_label">Etikett</string>

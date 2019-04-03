@@ -18,6 +18,8 @@
   <string name="accessibility_selected">തിരഞ്ഞെടുത്തു</string>
   <string name="date_time_picker_start_time">ആരംഭിക്കുന്ന സമയം</string>
   <string name="date_time_picker_end_time">അവസാനിക്കുന്ന സമയം</string>
+  <string name="date_time_picker_start_date">ആരംഭിക്കുന്ന തീയതി</string>
+  <string name="date_time_picker_end_date">അവസാനിക്കുന്ന തീയതി</string>
   <string name="date_time_picker_choose_time">സമയം നോക്കിയെടുക്കുക</string>
   <string name="date_time_picker_choose_date">തീയതി നോക്കിയെടുക്കുക</string>
   <string name="people_picker_sample_label">ലേബൽ</string>

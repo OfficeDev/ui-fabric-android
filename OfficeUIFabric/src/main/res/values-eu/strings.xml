@@ -18,6 +18,8 @@
   <string name="accessibility_selected">Hautatuta</string>
   <string name="date_time_picker_start_time">Hasiera-ordua</string>
   <string name="date_time_picker_end_time">Amaiera-ordua</string>
+  <string name="date_time_picker_start_date">Hasiera-data</string>
+  <string name="date_time_picker_end_date">Amaiera-data</string>
   <string name="date_time_picker_choose_time">Aukeratu ordua</string>
   <string name="date_time_picker_choose_date">Aukeratu data</string>
   <string name="people_picker_sample_label">Etiketa</string>

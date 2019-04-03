@@ -18,6 +18,8 @@
   <string name="accessibility_selected">Изабрано</string>
   <string name="date_time_picker_start_time">Време почетка</string>
   <string name="date_time_picker_end_time">Време завршетка</string>
+  <string name="date_time_picker_start_date">Датум почетка</string>
+  <string name="date_time_picker_end_date">Датум завршетка</string>
   <string name="date_time_picker_choose_time">Одаберите време</string>
   <string name="date_time_picker_choose_date">Одаберите датум</string>
   <string name="people_picker_sample_label">Ознака</string>

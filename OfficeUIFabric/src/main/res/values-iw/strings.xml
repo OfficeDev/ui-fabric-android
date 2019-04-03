@@ -18,6 +18,8 @@
   <string name="accessibility_selected">נבחר</string>
   <string name="date_time_picker_start_time">שעת התחלה</string>
   <string name="date_time_picker_end_time">שעת סיום</string>
+  <string name="date_time_picker_start_date">תאריך התחלה</string>
+  <string name="date_time_picker_end_date">תאריך סיום</string>
   <string name="date_time_picker_choose_time">בחר שעה</string>
   <string name="date_time_picker_choose_date">בחר תאריך</string>
   <string name="people_picker_sample_label">תווית</string>

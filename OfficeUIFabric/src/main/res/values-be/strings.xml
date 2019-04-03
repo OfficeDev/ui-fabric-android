@@ -18,6 +18,8 @@
   <string name="accessibility_selected">Вылучана</string>
   <string name="date_time_picker_start_time">Час пачатку</string>
   <string name="date_time_picker_end_time">Час заканчэння</string>
+  <string name="date_time_picker_start_date">Дата пачатку</string>
+  <string name="date_time_picker_end_date">Дата заканчэння</string>
   <string name="date_time_picker_choose_time">Выбар часу</string>
   <string name="date_time_picker_choose_date">Выбар даты</string>
   <string name="people_picker_sample_label">Пазнака</string>

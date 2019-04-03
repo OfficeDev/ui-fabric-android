@@ -18,6 +18,8 @@
   <string name="accessibility_selected">ምርጥ</string>
   <string name="date_time_picker_start_time">መጀመሪያ ጊዜ</string>
   <string name="date_time_picker_end_time">መጨረሻ ጊዜ</string>
+  <string name="date_time_picker_start_date">የተጀመረበት ቀን</string>
+  <string name="date_time_picker_end_date">የመጨረሻ ቀን</string>
   <string name="date_time_picker_choose_time">ጊዜ ይምረጡ</string>
   <string name="date_time_picker_choose_date">ቀን ይምረጡ</string>
   <string name="people_picker_sample_label">መለያ</string>

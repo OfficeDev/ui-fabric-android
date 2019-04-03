@@ -18,6 +18,8 @@
   <string name="accessibility_selected">Valið</string>
   <string name="date_time_picker_start_time">Upphafstími</string>
   <string name="date_time_picker_end_time">Lokatími</string>
+  <string name="date_time_picker_start_date">Upphafsdagur</string>
+  <string name="date_time_picker_end_date">Lokadagur</string>
   <string name="date_time_picker_choose_time">Veldu tíma</string>
   <string name="date_time_picker_choose_date">Veldu dagsetningu</string>
   <string name="people_picker_sample_label">Merki</string>

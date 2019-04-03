@@ -18,7 +18,9 @@ import org.threeten.bp.Duration
 import org.threeten.bp.ZonedDateTime
 
 /**
- * [DateTimePickerFragment] houses a [DateTimePicker] instance and configures aspects of the view
+ * [DateTimePickerFragment] houses a [DateTimePicker] instance and configures aspects of the view.
+ * When in TalkBalk this takes over date picking responsibilities from [DatePickerFragment] and
+ * [DateTimePicker] shows months, days and years instead of date, hour, minute and period.
  */
 internal class DateTimePickerFragment : Fragment(), OnDateTimeSelectedListener {
     var onDateTimeSelectedListener: OnDateTimeSelectedListener? = null
@@ -26,7 +28,8 @@ internal class DateTimePickerFragment : Fragment(), OnDateTimeSelectedListener {
     val selectedTab: DateTimePicker.Tab
         get() = date_time_picker.selectedTab
 
-    private var datePickMode: DatePickMode? = null
+    private lateinit var dateRangeMode: DateRangeMode
+    private lateinit var pickerMode: DateTimePicker.PickerMode
 
     fun setDate(date: ZonedDateTime) {
         val range = date_time_picker.timeSlot ?: return
@@ -39,7 +42,7 @@ internal class DateTimePickerFragment : Fragment(), OnDateTimeSelectedListener {
         super.onCreate(savedInstanceState)
 
         val bundle = savedInstanceState ?: arguments ?: return
-        datePickMode = bundle.getSerializable(DateTimePickerExtras.DATE_PICK_MODE) as DatePickMode
+        dateRangeMode = bundle.getSerializable(DateTimePickerExtras.DATE_RANGE_MODE) as DateRangeMode
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -48,12 +51,17 @@ internal class DateTimePickerFragment : Fragment(), OnDateTimeSelectedListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val bundle = savedInstanceState ?: arguments
         if (bundle != null) {
+            pickerMode = bundle.getSerializable(DateTimePickerExtras.PICKER_MODE) as DateTimePicker.PickerMode
+
             val dateTime = bundle.getSerializable(DateTimePickerExtras.DATE_TIME) as ZonedDateTime
             val duration = bundle.getSerializable(DateTimePickerExtras.DURATION) as Duration
             date_time_picker.timeSlot = TimeSlot(dateTime, duration)
         }
+
+        date_time_picker.pickerMode = pickerMode
         date_time_picker.onDateTimeSelectedListener = this
 
         initUI()
@@ -62,16 +70,17 @@ internal class DateTimePickerFragment : Fragment(), OnDateTimeSelectedListener {
     override fun onSaveInstanceState(bundle: Bundle) {
         super.onSaveInstanceState(bundle)
 
-        if (datePickMode != DatePickMode.SINGLE) {
-            datePickMode = if (date_time_picker.selectedTab == DateTimePicker.Tab.START_TIME)
-                DatePickMode.RANGE_START
+        if (dateRangeMode != DateRangeMode.NONE) {
+            dateRangeMode = if (date_time_picker.selectedTab == DateTimePicker.Tab.START)
+                DateRangeMode.START
             else
-                DatePickMode.RANGE_END
+                DateRangeMode.END
         }
 
-        bundle.putSerializable(DateTimePickerExtras.DATE_PICK_MODE, datePickMode)
+        bundle.putSerializable(DateTimePickerExtras.DATE_RANGE_MODE, dateRangeMode)
         bundle.putSerializable(DateTimePickerExtras.DATE_TIME, date_time_picker.timeSlot?.start)
         bundle.putSerializable(DateTimePickerExtras.DURATION, date_time_picker.timeSlot?.duration)
+        bundle.putSerializable(DateTimePickerExtras.PICKER_MODE, pickerMode)
     }
 
     override fun onDateTimeSelected(dateTime: ZonedDateTime, duration: Duration) {
@@ -79,18 +88,18 @@ internal class DateTimePickerFragment : Fragment(), OnDateTimeSelectedListener {
     }
 
     private fun initUI() {
-        when (datePickMode) {
-            DatePickMode.RANGE_START -> {
-                date_time_picker.selectTab(DateTimePicker.Tab.START_TIME)
-                date_time_picker.displayTime(true, false)
+        when (dateRangeMode) {
+            DateRangeMode.START -> {
+                date_time_picker.selectTab(DateTimePicker.Tab.START)
+                date_time_picker.setPickerValues(false, false)
             }
-            DatePickMode.RANGE_END -> {
-                date_time_picker.selectTab(DateTimePicker.Tab.END_TIME)
-                date_time_picker.displayTime(false, false)
+            DateRangeMode.END -> {
+                date_time_picker.selectTab(DateTimePicker.Tab.END)
+                date_time_picker.setPickerValues(true, false)
             }
-            DatePickMode.SINGLE -> {
-                date_time_picker.selectTab(DateTimePicker.Tab.NO_DURATION)
-                date_time_picker.displayTime(true, false)
+            DateRangeMode.NONE -> {
+                date_time_picker.selectTab(DateTimePicker.Tab.NONE)
+                date_time_picker.setPickerValues(false, false)
             }
         }
     }

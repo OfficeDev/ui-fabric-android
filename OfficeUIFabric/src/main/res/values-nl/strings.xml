@@ -18,6 +18,8 @@
   <string name="accessibility_selected">Geselecteerd</string>
   <string name="date_time_picker_start_time">Begintijd</string>
   <string name="date_time_picker_end_time">Eindtijd</string>
+  <string name="date_time_picker_start_date">Begindatum</string>
+  <string name="date_time_picker_end_date">Einddatum</string>
   <string name="date_time_picker_choose_time">Tijd kiezen</string>
   <string name="date_time_picker_choose_date">Datum kiezen</string>
   <string name="people_picker_sample_label">Label</string>

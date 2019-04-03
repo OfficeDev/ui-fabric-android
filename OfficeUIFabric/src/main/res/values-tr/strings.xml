@@ -18,6 +18,8 @@
   <string name="accessibility_selected">Seçildi</string>
   <string name="date_time_picker_start_time">Başlangıç saati</string>
   <string name="date_time_picker_end_time">Bitiş saati</string>
+  <string name="date_time_picker_start_date">Başlangıç tarihi</string>
+  <string name="date_time_picker_end_date">Bitiş tarihi</string>
   <string name="date_time_picker_choose_time">Saat seçin</string>
   <string name="date_time_picker_choose_date">Tarih seçin</string>
   <string name="people_picker_sample_label">Etiket</string>

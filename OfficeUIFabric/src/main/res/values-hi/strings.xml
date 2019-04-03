@@ -18,6 +18,8 @@
   <string name="accessibility_selected">चयनित</string>
   <string name="date_time_picker_start_time">प्रारंभ समय</string>
   <string name="date_time_picker_end_time">समाप्ति समय</string>
+  <string name="date_time_picker_start_date">प्रारंभ दिनांक</string>
+  <string name="date_time_picker_end_date">समाप्ति दिनांक</string>
   <string name="date_time_picker_choose_time">समय चुनें</string>
   <string name="date_time_picker_choose_date">दिनांक चुनें</string>
   <string name="people_picker_sample_label">लेबल</string>

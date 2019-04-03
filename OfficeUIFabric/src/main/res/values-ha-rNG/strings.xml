@@ -18,6 +18,8 @@
   <string name="accessibility_selected">Zaɓaɓɓe</string>
   <string name="date_time_picker_start_time">Lokacin farawa</string>
   <string name="date_time_picker_end_time">Lokacin ƙarewa</string>
+  <string name="date_time_picker_start_date">Ranar farawa</string>
+  <string name="date_time_picker_end_date">Ranar ƙarewa</string>
   <string name="date_time_picker_choose_time">Zaɓi lokaci</string>
   <string name="date_time_picker_choose_date">Zaɓi kwanan wata</string>
   <string name="people_picker_sample_label">Lamba</string>

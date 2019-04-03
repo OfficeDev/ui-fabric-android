@@ -18,6 +18,8 @@
   <string name="accessibility_selected">Dipilih</string>
   <string name="date_time_picker_start_time">Waktu mulai</string>
   <string name="date_time_picker_end_time">Waktu selesai</string>
+  <string name="date_time_picker_start_date">Tanggal mulai</string>
+  <string name="date_time_picker_end_date">Tanggal selesai</string>
   <string name="date_time_picker_choose_time">Pilih waktu</string>
   <string name="date_time_picker_choose_date">Pilih tanggal</string>
   <string name="people_picker_sample_label">Label</string>

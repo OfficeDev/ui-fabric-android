@@ -18,6 +18,8 @@
   <string name="accessibility_selected">Dipilih</string>
   <string name="date_time_picker_start_time">Masa mula</string>
   <string name="date_time_picker_end_time">Masa tamat</string>
+  <string name="date_time_picker_start_date">Tarikh mula</string>
+  <string name="date_time_picker_end_date">Tarikh tamat</string>
   <string name="date_time_picker_choose_time">Pilih masa</string>
   <string name="date_time_picker_choose_date">Pilih tarikh</string>
   <string name="people_picker_sample_label">Label</string>

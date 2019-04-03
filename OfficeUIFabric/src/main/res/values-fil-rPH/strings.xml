@@ -18,6 +18,8 @@
   <string name="accessibility_selected">Napili</string>
   <string name="date_time_picker_start_time">Oras ng pagsisimula</string>
   <string name="date_time_picker_end_time">Oras ng pagtatapos</string>
+  <string name="date_time_picker_start_date">Petsa ng pagsisimula</string>
+  <string name="date_time_picker_end_date">Petsa ng pagtatapos</string>
   <string name="date_time_picker_choose_time">Pumili ng oras</string>
   <string name="date_time_picker_choose_date">Pumili ng petsa</string>
   <string name="people_picker_sample_label">Label</string>

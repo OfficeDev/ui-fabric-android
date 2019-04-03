@@ -18,6 +18,8 @@
   <string name="accessibility_selected">Đã chọn</string>
   <string name="date_time_picker_start_time">Thời gian bắt đầu</string>
   <string name="date_time_picker_end_time">Thời gian kết thúc</string>
+  <string name="date_time_picker_start_date">Ngày bắt đầu</string>
+  <string name="date_time_picker_end_date">Ngày kết thúc</string>
   <string name="date_time_picker_choose_time">Chọn thời gian</string>
   <string name="date_time_picker_choose_date">Chọn ngày</string>
   <string name="people_picker_sample_label">Nhãn</string>

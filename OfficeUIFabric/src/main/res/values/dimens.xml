@@ -29,6 +29,13 @@
 
     <!--DateTimePicker-->
     <dimen name="uifabric_date_time_picker_padding">16dp</dimen>
+    <dimen name="uifabric_date_time_picker_date_internal_min_width">160dp</dimen>
+    <dimen name="uifabric_date_time_picker_month_internal_min_width">100dp</dimen>
+    <dimen name="uifabric_date_time_picker_year_internal_min_width">80dp</dimen>
+    <dimen name="uifabric_date_time_picker_fading_edge_length">50dp</dimen>
+    <dimen name="uifabric_date_time_picker_internal_min_width">48dp</dimen>
+    <dimen name="uifabric_date_time_picker_max_height">336dp</dimen>
+    <dimen name="uifabric_date_time_picker_padding_right">8dp</dimen>
 
     <!--Dialog-->
     <dimen name="uifabric_dialog_background_light_shadow_width">8dp</dimen>
@@ -36,13 +43,6 @@
     <dimen name="uifabric_dialog_insets">@dimen/uifabric_content_inset</dimen>
     <dimen name="uifabric_resizable_dialog_card_elevation">2dp</dimen>
     <dimen name="uifabric_resizable_dialog_card_tools_width">300dp</dimen>
-
-    <!--NumberPicker-->
-    <dimen name="uifabric_number_picker_date_internalMinWidth">160dp</dimen>
-    <dimen name="uifabric_number_picker_fading_edge_length">50dp</dimen>
-    <dimen name="uifabric_number_picker_internal_min_width">48dp</dimen>
-    <dimen name="uifabric_number_picker_max_height">336dp</dimen>
-    <dimen name="uifabric_number_picker_padding_right">8dp</dimen>
 
     <!--PeoplePicker-->
     <dimen name="uifabric_people_picker_accessibility_search_constraint_extra_space">5dp</dimen>

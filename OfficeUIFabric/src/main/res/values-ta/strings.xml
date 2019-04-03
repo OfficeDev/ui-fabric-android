@@ -18,6 +18,8 @@
   <string name="accessibility_selected">தேர்ந்தெடுக்கப்பட்டது</string>
   <string name="date_time_picker_start_time">தொடக்க நேரம்</string>
   <string name="date_time_picker_end_time">முடிவு நேரம்</string>
+  <string name="date_time_picker_start_date">தொடக்கத் தேதி</string>
+  <string name="date_time_picker_end_date">முடிவுத் தேதி</string>
   <string name="date_time_picker_choose_time">நேரத்தைத் தேர்வுசெய்க</string>
   <string name="date_time_picker_choose_date">தேதியைத் தேர்வுசெய்க</string>
   <string name="people_picker_sample_label">சிட்டை இணை</string>

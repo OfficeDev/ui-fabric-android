@@ -18,6 +18,8 @@
   <string name="accessibility_selected">Atlasīts</string>
   <string name="date_time_picker_start_time">Sākuma laiks</string>
   <string name="date_time_picker_end_time">Beigu laiks</string>
+  <string name="date_time_picker_start_date">Sākuma datums</string>
+  <string name="date_time_picker_end_date">Beigu datums</string>
   <string name="date_time_picker_choose_time">Izvēlieties laiku</string>
   <string name="date_time_picker_choose_date">Izvēlieties datumu</string>
   <string name="people_picker_sample_label">Etiķete</string>

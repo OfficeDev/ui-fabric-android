@@ -18,6 +18,8 @@
   <string name="accessibility_selected">Selected</string>
   <string name="date_time_picker_start_time">Start time</string>
   <string name="date_time_picker_end_time">End time</string>
+  <string name="date_time_picker_start_date">Start date</string>
+  <string name="date_time_picker_end_date">End date</string>
   <string name="date_time_picker_choose_time">Choose time</string>
   <string name="date_time_picker_choose_date">Choose date</string>
   <string name="people_picker_sample_label">Label</string>

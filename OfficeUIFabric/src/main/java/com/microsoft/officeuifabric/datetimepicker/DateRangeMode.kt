@@ -5,6 +5,6 @@
 
 package com.microsoft.officeuifabric.datetimepicker
 
-enum class DatePickMode {
-    SINGLE, RANGE_START, RANGE_END
+enum class DateRangeMode {
+    NONE, START, END
 }

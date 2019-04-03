@@ -18,6 +18,8 @@
   <string name="accessibility_selected">Таңдалған</string>
   <string name="date_time_picker_start_time">Басталу уақыты</string>
   <string name="date_time_picker_end_time">Аяқталу уақыты</string>
+  <string name="date_time_picker_start_date">Басталу күні</string>
+  <string name="date_time_picker_end_date">Аяқталу күні</string>
   <string name="date_time_picker_choose_time">Уақытты таңдаңыз</string>
   <string name="date_time_picker_choose_date">Күнді таңдаңыз</string>
   <string name="people_picker_sample_label">Белгі</string>
