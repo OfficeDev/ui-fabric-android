@@ -15,9 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <!--Launch Screen: We use AppTheme.Launcher for the theme instead of AppTheme in order to load the app with a launch screen-->
         <activity
             android:name="com.microsoft.officeuifabricdemo.DemoListActivity"
-            android:label="@string/app_title">
+            android:label="@string/app_title"
+            android:theme="@style/AppTheme.Launcher">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

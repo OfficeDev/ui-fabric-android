@@ -24,6 +24,10 @@ import kotlinx.android.synthetic.main.demo_list_content.view.*
  */
 class DemoListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Launch Screen: Setting the theme here removes the launch screen, which was added to this activity
+        // by setting the theme to App.Launcher in the manifest.
+        setTheme(R.style.AppTheme)
+
         super.onCreate(savedInstanceState)
 
         AndroidThreeTen.init(this)
