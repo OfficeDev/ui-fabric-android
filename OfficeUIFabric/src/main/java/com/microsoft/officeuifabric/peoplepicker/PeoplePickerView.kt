@@ -20,8 +20,6 @@ import com.microsoft.officeuifabric.view.TemplateView
 import com.tokenautocomplete.TokenCompleteTextView
 import kotlinx.android.synthetic.main.view_people_picker.view.*
 
-typealias PeoplePickerPersonaChipClickStyle = TokenCompleteTextView.TokenClickStyle
-
 /**
  * [PeoplePickerView] is a customizable view comprised of a label and [PeoplePickerTextView].
  *
@@ -102,10 +100,10 @@ class PeoplePickerView : TemplateView {
         }
     /**
      * Defines what happens when a user clicks on a persona chip.
-     * To use your own onClick callback, set this property to [PeoplePickerPersonaChipClickStyle.SelectDeselect]
+     * To use your own onClick callback, set this property to [PeoplePickerPersonaChipClickStyle.SELECT_DESELECT]
      * and set the [personaChipClickListener]'s onClick callback.
      */
-    var personaChipClickStyle: PeoplePickerPersonaChipClickStyle = PeoplePickerPersonaChipClickStyle.Select
+    var personaChipClickStyle: PeoplePickerPersonaChipClickStyle = PeoplePickerPersonaChipClickStyle.SELECT
         set(value) {
             if (field == value)
                 return
@@ -178,7 +176,7 @@ class PeoplePickerView : TemplateView {
      */
     var searchDirectorySuggestionsListener: PersonaSuggestionsListener? = null
     /**
-     * When a persona chip with a [PeoplePickerPersonaChipClickStyle] of SelectDeselect is selected,
+     * When a persona chip with a [PeoplePickerPersonaChipClickStyle] of SELECT_DESELECT is selected,
      * the next touch will fire [PersonaChipClickListener.onClick].
      */
     var personaChipClickListener: PersonaChipClickListener? = null
@@ -215,7 +213,7 @@ class PeoplePickerView : TemplateView {
         val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.PeoplePickerView)
         label = styledAttrs.getString(R.styleable.PeoplePickerView_label) ?: ""
         valueHint = styledAttrs.getString(R.styleable.PeoplePickerView_valueHint) ?: context.getString(R.string.people_picker_accessibility_default_hint)
-        val personaChipClickStyleOrdinal = styledAttrs.getInt(R.styleable.PeoplePickerView_personaChipClickStyle, PeoplePickerPersonaChipClickStyle.Select.ordinal)
+        val personaChipClickStyleOrdinal = styledAttrs.getInt(R.styleable.PeoplePickerView_personaChipClickStyle, PeoplePickerPersonaChipClickStyle.SELECT.ordinal)
         personaChipClickStyle = PeoplePickerPersonaChipClickStyle.values()[personaChipClickStyleOrdinal]
 
         styledAttrs.recycle()

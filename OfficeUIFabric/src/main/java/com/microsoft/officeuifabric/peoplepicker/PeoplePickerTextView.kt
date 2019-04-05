@@ -41,12 +41,23 @@ import com.microsoft.officeuifabric.util.getTextSize
 import com.tokenautocomplete.CountSpan
 import com.tokenautocomplete.TokenCompleteTextView
 
+enum class PeoplePickerPersonaChipClickStyle(internal val tokenClickStyle: TokenCompleteTextView.TokenClickStyle) {
+    // Do nothing, but make sure the cursor is not in the persona chip.
+    NONE(TokenCompleteTextView.TokenClickStyle.None),
+    // Delete the persona chip.
+    DELETE(TokenCompleteTextView.TokenClickStyle.Delete),
+    // Select the persona chip. A second click will delete it.
+    SELECT(TokenCompleteTextView.TokenClickStyle.Select),
+    // Select the persona chip. A second click will deselect it.
+    SELECT_DESELECT(TokenCompleteTextView.TokenClickStyle.SelectDeselect)
+}
+
 /**
  * [PeoplePickerTextView] provides all of the functionality needed to add [PersonaChipView]s as [tokens]
  * into an [EditText] view.
  *
  * Functionality we add in addition to [TokenCompleteTextView]'s functionality includes:
- * - Click api for SelectDeselect persona chips
+ * - Click api for SELECT_DESELECT persona chips
  * - Drag and drop option
  * - Accessibility
  * - Hiding the cursor when a persona chip is selected
@@ -70,10 +81,10 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
     /**
      * Defines what happens when a user clicks on a persona chip.
      */
-    var personaChipClickStyle: PeoplePickerPersonaChipClickStyle = PeoplePickerPersonaChipClickStyle.Select
+    var personaChipClickStyle: PeoplePickerPersonaChipClickStyle = PeoplePickerPersonaChipClickStyle.SELECT
         set(value) {
             field = value
-            setTokenClickStyle(value)
+            setTokenClickStyle(value.tokenClickStyle)
         }
     /**
      * Flag for enabling Drag and Drop persona chips.
@@ -106,7 +117,7 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
         }
 
     /**
-     * When a persona chip with a [PeoplePickerPersonaChipClickStyle] of SelectDeselect is selected,
+     * When a persona chip with a [PeoplePickerPersonaChipClickStyle] of SELECT_DESELECT is selected,
      * the next touch will fire [PersonaChipClickListener.onClick].
      */
     var personaChipClickListener: PeoplePickerView.PersonaChipClickListener? = null
@@ -160,7 +171,7 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
 
     override fun getViewForObject(`object`: IPersona): View {
         val view = PersonaChipView(context)
-        view.showCloseIconWhenSelected = personaChipClickStyle == PeoplePickerPersonaChipClickStyle.Select
+        view.showCloseIconWhenSelected = personaChipClickStyle == PeoplePickerPersonaChipClickStyle.SELECT
         view.listener = object : PersonaChipView.Listener {
             override fun onClicked() {
                 // no op
@@ -547,7 +558,7 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
     // This declares whether personaChipClickListener could be called
     private fun isPersonaChipClickable(persona: IPersona): Boolean =
         selectedPersona != null &&
-        personaChipClickStyle == PeoplePickerPersonaChipClickStyle.SelectDeselect &&
+        personaChipClickStyle == PeoplePickerPersonaChipClickStyle.SELECT_DESELECT &&
         persona == selectedPersona
 
     private fun getClipDataForPersona(persona: IPersona): ClipData? {
@@ -917,13 +928,13 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
             val persona = personaSpan.token
             val personaSpanIndex = getPersonaSpans<TokenCompleteTextView<IPersona>.TokenImageSpan>().indexOf(personaSpan)
             when (personaChipClickStyle) {
-                PeoplePickerPersonaChipClickStyle.Select, PeoplePickerPersonaChipClickStyle.SelectDeselect -> {
+                PeoplePickerPersonaChipClickStyle.SELECT, PeoplePickerPersonaChipClickStyle.SELECT_DESELECT -> {
                     if (selectedPersona != null && selectedPersona == persona) {
                         invalidateVirtualView(personaSpanIndex)
                         sendEventForVirtualView(personaSpanIndex, AccessibilityEvent.TYPE_VIEW_CLICKED)
                         sendEventForVirtualView(personaSpanIndex, AccessibilityEvent.TYPE_VIEW_SELECTED)
                     } else {
-                        if (personaChipClickStyle == PeoplePickerPersonaChipClickStyle.SelectDeselect) {
+                        if (personaChipClickStyle == PeoplePickerPersonaChipClickStyle.SELECT_DESELECT) {
                             if (personaChipClickListener != null) {
                                 personaChipClickListener?.onClick(persona)
                                 announceForAccessibility(resources.getString(
@@ -938,11 +949,11 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
                             }
                         }
                         sendEventForVirtualView(personaSpanIndex, AccessibilityEvent.TYPE_VIEW_CLICKED)
-                        if (personaChipClickStyle == PeoplePickerPersonaChipClickStyle.Select && personaSpanIndex == -1)
+                        if (personaChipClickStyle == PeoplePickerPersonaChipClickStyle.SELECT && personaSpanIndex == -1)
                             invalidateRoot()
                     }
                 }
-                PeoplePickerPersonaChipClickStyle.Delete -> {
+                PeoplePickerPersonaChipClickStyle.DELETE -> {
                     sendEventForVirtualView(personaSpanIndex, AccessibilityEvent.TYPE_VIEW_CLICKED)
                     sendEventForVirtualView(personaSpanIndex, AccessibilityEvent.TYPE_VIEW_ACCESSIBILITY_FOCUS_CLEARED)
                 }
@@ -950,7 +961,7 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
         }
 
         private fun setPersonaSpanClickAction(personaSpan: TokenImageSpan, node: AccessibilityNodeInfoCompat) {
-            if (personaChipClickStyle == PeoplePickerPersonaChipClickStyle.None)
+            if (personaChipClickStyle == PeoplePickerPersonaChipClickStyle.NONE)
                 return
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -970,9 +981,9 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
         private fun getActionText(personaSpan: TokenImageSpan): String {
             return if (personaSpan.token == selectedPersona) {
                 when (personaChipClickStyle) {
-                    PeoplePickerPersonaChipClickStyle.Select ->
+                    PeoplePickerPersonaChipClickStyle.SELECT ->
                         resources.getString(R.string.people_picker_accessibility_delete_persona)
-                    PeoplePickerPersonaChipClickStyle.SelectDeselect ->
+                    PeoplePickerPersonaChipClickStyle.SELECT_DESELECT ->
                         if (personaChipClickListener != null)
                             resources.getString(R.string.people_picker_accessibility_click_persona)
                         else
@@ -981,9 +992,9 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
                 }
             } else {
                 when (personaChipClickStyle) {
-                    PeoplePickerPersonaChipClickStyle.Select, PeoplePickerPersonaChipClickStyle.SelectDeselect ->
+                    PeoplePickerPersonaChipClickStyle.SELECT, PeoplePickerPersonaChipClickStyle.SELECT_DESELECT ->
                         resources.getString(R.string.people_picker_accessibility_select_persona)
-                    PeoplePickerPersonaChipClickStyle.Delete ->
+                    PeoplePickerPersonaChipClickStyle.DELETE ->
                         resources.getString(R.string.people_picker_accessibility_delete_persona)
                     else -> ""
                 }
@@ -999,9 +1010,9 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
                 return ""
 
             return when (personaChipClickStyle) {
-                PeoplePickerPersonaChipClickStyle.Select ->
+                PeoplePickerPersonaChipClickStyle.SELECT ->
                     resources.getString(R.string.people_picker_accessibility_delete_selected_persona)
-                PeoplePickerPersonaChipClickStyle.SelectDeselect ->
+                PeoplePickerPersonaChipClickStyle.SELECT_DESELECT ->
                     if (personaChipClickListener != null)
                         resources.getString(R.string.people_picker_accessibility_click_selected_persona)
                     else

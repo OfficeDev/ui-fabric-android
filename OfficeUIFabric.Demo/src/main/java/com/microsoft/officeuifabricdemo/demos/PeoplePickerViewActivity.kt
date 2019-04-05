@@ -9,8 +9,8 @@ import android.os.Bundle
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.microsoft.officeuifabric.peoplepicker.PeoplePickerAccessibilityTextProvider
-import com.microsoft.officeuifabric.peoplepicker.PeoplePickerPersonaChipClickStyle
 import com.microsoft.officeuifabric.peoplepicker.PeoplePickerView
+import com.microsoft.officeuifabric.peoplepicker.PeoplePickerPersonaChipClickStyle
 import com.microsoft.officeuifabric.persona.IPersona
 import com.microsoft.officeuifabric.snackbar.Snackbar
 import com.microsoft.officeuifabricdemo.DemoActivity
@@ -74,12 +74,12 @@ class PeoplePickerViewActivity : DemoActivity() {
         setupPeoplePickerView(
             getString(R.string.people_picker_none_example),
             samplePersonas,
-            PeoplePickerPersonaChipClickStyle.None
+            PeoplePickerPersonaChipClickStyle.NONE
         )
         setupPeoplePickerView(
             getString(R.string.people_picker_delete_example),
             samplePersonas,
-            PeoplePickerPersonaChipClickStyle.Delete
+            PeoplePickerPersonaChipClickStyle.DELETE
         )
         setupPeoplePickerView(
             getString(R.string.people_picker_picked_personas_listener),
@@ -105,7 +105,7 @@ class PeoplePickerViewActivity : DemoActivity() {
     private fun setupPeoplePickerView(
         labelText: String,
         availablePersonas: ArrayList<IPersona> = ArrayList(),
-        personaChipClickStyle: PeoplePickerPersonaChipClickStyle = PeoplePickerPersonaChipClickStyle.Select,
+        personaChipClickStyle: PeoplePickerPersonaChipClickStyle = PeoplePickerPersonaChipClickStyle.SELECT,
         personaSuggestionsListener: PeoplePickerView.PersonaSuggestionsListener? = null,
         pickedPersonasChangeListener: PeoplePickerView.PickedPersonasChangeListener? = null
     ) {

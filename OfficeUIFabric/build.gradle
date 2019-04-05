@@ -56,7 +56,7 @@ dependencies {
     implementation 'com.android.support:design:28.0.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.jakewharton.threetenabp:threetenabp:1.1.0'
-    api 'com.splitwise:tokenautocomplete:2.0.8@aar'
+    implementation 'com.splitwise:tokenautocomplete:2.0.8'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     testImplementation 'junit:junit:4.12'
