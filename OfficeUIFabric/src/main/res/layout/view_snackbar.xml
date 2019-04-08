@@ -16,7 +16,6 @@
         android:layout_height="@dimen/uifabric_snackbar_announcement_icon_size"
         android:layout_gravity="center_vertical|start"
         android:layout_marginStart="@dimen/uifabric_snackbar_content_inset"
-        android:layout_marginTop="@dimen/uifabric_snackbar_content_inset"
         android:visibility="gone" />
 
     <TextView

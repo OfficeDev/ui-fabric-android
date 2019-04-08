@@ -133,12 +133,16 @@
     <string name="snackbar_action">Action</string>
     <string name="snackbar_action_long">Long Text Action</string>
     <string name="snackbar_announcement">This is an announcement snackbar. It’s used for communicating new features.</string>
-    <string name="snackbar_button_single_line">Single-line</string>
-    <string name="snackbar_button_multi_line">Multi-line</string>
-    <string name="snackbar_button_single_line_action">Single-line with action</string>
-    <string name="snackbar_button_multi_line_action">Multi-line with action</string>
-    <string name="snackbar_button_multi_line_action_long">Multi-line with long action text</string>
-    <string name="snackbar_button_announcement">Announcement style</string>
+    <string name="snackbar_button_single_line">Single-line, short</string>
+    <string name="snackbar_button_single_line_icon">Single-line with icon, short</string>
+    <string name="snackbar_button_single_line_action">Single-line with action, short</string>
+    <string name="snackbar_button_single_line_action_icon">Single-line with action and icon, short</string>
+    <string name="snackbar_button_multi_line">Multi-line, long</string>
+    <string name="snackbar_button_multi_line_icon">Multi-line with icon, long</string>
+    <string name="snackbar_button_multi_line_action">Multi-line with action, indefinite</string>
+    <string name="snackbar_button_multi_line_action_icon">Multi-line with action and icon, short</string>
+    <string name="snackbar_button_multi_line_action_long">Multi-line with long action text, short</string>
+    <string name="snackbar_button_announcement">Announcement style, short</string>
     <string name="snackbar_multi_line">This is a multi-line snackbar. Max lines are set to two, the rest of the text will truncate.
         Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
     <string name="snackbar_single_line">Single-line snackbar</string>

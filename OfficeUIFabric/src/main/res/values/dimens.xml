@@ -82,6 +82,7 @@
     <dimen name="uifabric_snackbar_background_inset">8dp</dimen>
     <dimen name="uifabric_snackbar_background_corner_radius">4dp</dimen>
     <dimen name="uifabric_snackbar_content_inset">@dimen/uifabric_content_inset</dimen>
+    <dimen name="uifabric_snackbar_icon_inset_regular">12dp</dimen>
 
     <!--Tooltip-->
     <dimen name="uifabric_tooltip_max_width">176dp</dimen>

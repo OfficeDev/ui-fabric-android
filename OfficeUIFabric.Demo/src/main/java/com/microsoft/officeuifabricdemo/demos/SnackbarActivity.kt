@@ -21,56 +21,79 @@ class SnackbarActivity : DemoActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
 
         btn_snackbar_single_line.setOnClickListener(this)
-        btn_snackbar_multi_line.setOnClickListener(this)
-        btn_snackbar_announcement.setOnClickListener(this)
-        btn_snackbar_multi_line_action.setOnClickListener(this)
-        btn_snackbar_multi_line_long_action.setOnClickListener(this)
+        btn_snackbar_single_line_icon.setOnClickListener(this)
         btn_snackbar_single_line_action.setOnClickListener(this)
+        btn_snackbar_single_line_action_icon.setOnClickListener(this)
+        btn_snackbar_multi_line.setOnClickListener(this)
+        btn_snackbar_multi_line_icon.setOnClickListener(this)
+        btn_snackbar_multi_line_action.setOnClickListener(this)
+        btn_snackbar_multi_line_action_icon.setOnClickListener(this)
+        btn_snackbar_multi_line_long_action.setOnClickListener(this)
+        btn_snackbar_announcement.setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
         when (v.id) {
-            R.id.btn_snackbar_single_line -> Snackbar.make(root_view, getString(R.string.snackbar_single_line), Snackbar.LENGTH_SHORT).show()
+            R.id.btn_snackbar_single_line ->
+                Snackbar.make(root_view, getString(R.string.snackbar_single_line)).show()
 
-            R.id.btn_snackbar_multi_line -> Snackbar.make(root_view, getString(R.string.snackbar_multi_line), Snackbar.LENGTH_LONG).show()
+            R.id.btn_snackbar_single_line_icon ->
+                Snackbar.make(root_view, getString(R.string.snackbar_single_line))
+                    .setIcon(R.drawable.ic_done_white)
+                    .show()
 
-            R.id.btn_snackbar_single_line_action -> {
-                val snackbar = Snackbar.make(root_view, getString(R.string.snackbar_single_line), Snackbar.LENGTH_SHORT)
-                snackbar.setAction(getString(R.string.snackbar_action), View.OnClickListener {
-                    // handle click here
-                })
-                snackbar.show()
-            }
+            R.id.btn_snackbar_single_line_action ->
+                Snackbar.make(root_view, getString(R.string.snackbar_single_line))
+                    .setAction(getString(R.string.snackbar_action), View.OnClickListener {
+                        // handle click here
+                    })
+                    .show()
 
-            R.id.btn_snackbar_multi_line_action -> {
-                val snackbar = Snackbar.make(root_view, getString(R.string.snackbar_multi_line), Snackbar.LENGTH_INDEFINITE)
-                snackbar.setAction(getString(R.string.snackbar_action), View.OnClickListener {
-                    // handle click here
-                })
-                snackbar.show()
-            }
+            R.id.btn_snackbar_single_line_action_icon ->
+                Snackbar.make(root_view, getString(R.string.snackbar_single_line))
+                    .setIcon(R.drawable.ic_done_white)
+                    .setAction(getString(R.string.snackbar_action), View.OnClickListener {
+                        // handle click here
+                    })
+                    .show()
 
-            R.id.btn_snackbar_multi_line_long_action -> {
-                val snackbar = Snackbar.make(root_view, getString(R.string.snackbar_multi_line), Snackbar.LENGTH_INDEFINITE)
-                snackbar.setAction(getString(R.string.snackbar_action_long), View.OnClickListener {
-                    // handle click here
-                })
-                snackbar.show()
-            }
+            R.id.btn_snackbar_multi_line ->
+                Snackbar.make(root_view, getString(R.string.snackbar_multi_line), Snackbar.LENGTH_LONG).show()
 
-            R.id.btn_snackbar_announcement -> {
-                val snackbar = Snackbar.make(
-                    root_view,
-                    getString(R.string.snackbar_announcement),
-                    Snackbar.LENGTH_INDEFINITE,
-                    Snackbar.Style.ANNOUNCEMENT
-                )
-                snackbar.setIcon(R.drawable.ms_ic_birthday)
-                snackbar.setAction(getString(R.string.snackbar_action), View.OnClickListener {
-                    // handle click here
-                })
-                snackbar.show()
-            }
+            R.id.btn_snackbar_multi_line_icon ->
+                Snackbar.make(root_view, getString(R.string.snackbar_multi_line), Snackbar.LENGTH_LONG)
+                    .setIcon(R.drawable.ic_done_white)
+                    .show()
+
+            R.id.btn_snackbar_multi_line_action ->
+                Snackbar.make(root_view, getString(R.string.snackbar_multi_line), Snackbar.LENGTH_INDEFINITE)
+                    .setAction(getString(R.string.snackbar_action), View.OnClickListener {
+                        // handle click here
+                    })
+                    .show()
+
+            R.id.btn_snackbar_multi_line_action_icon ->
+                Snackbar.make(root_view, getString(R.string.snackbar_multi_line))
+                    .setIcon(R.drawable.ic_done_white)
+                    .setAction(getString(R.string.snackbar_action), View.OnClickListener {
+                        // handle click here
+                    })
+                    .show()
+
+            R.id.btn_snackbar_multi_line_long_action ->
+                Snackbar.make(root_view, getString(R.string.snackbar_multi_line))
+                    .setAction(getString(R.string.snackbar_action_long), View.OnClickListener {
+                        // handle click here
+                    })
+                    .show()
+
+            R.id.btn_snackbar_announcement ->
+                Snackbar.make(root_view, getString(R.string.snackbar_announcement), style = Snackbar.Style.ANNOUNCEMENT)
+                    .setIcon(R.drawable.ic_birthday)
+                    .setAction(getString(R.string.snackbar_action), View.OnClickListener {
+                        // handle click here
+                    })
+                    .show()
         }
     }
 }
