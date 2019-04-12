@@ -13,6 +13,13 @@
     <dimen name="uifabric_avatar_size_xlarge">52dp</dimen>
     <dimen name="uifabric_avatar_size_xxlarge">64dp</dimen>
 
+    <!--Button-->
+    <dimen name="uifabric_button_padding_horizontal">@dimen/uifabric_content_inset</dimen>
+    <dimen name="uifabric_button_padding_vertical">8.5dp</dimen>
+    <dimen name="uifabric_button_borderless_padding_horizontal">8dp</dimen>
+    <dimen name="uifabric_button_corner_radius">@dimen/uifabric_corner_radius_small</dimen>
+    <dimen name="uifabric_button_min_height">36dp</dimen>
+
     <!--CalendarView-->
     <dimen name="uifabric_calendar_week_day_font_size">16sp</dimen>
     <dimen name="uifabric_calendar_month_year_font_size">12sp</dimen>
@@ -70,7 +77,7 @@
 
     <!--Shared-->
     <dimen name="uifabric_divider_height">.5dp</dimen>
-    <dimen name="uifabric_corner_radius_2dp">2dp</dimen>
+    <dimen name="uifabric_corner_radius_small">2dp</dimen>
     <dimen name="uifabric_min_touch_size">48dp</dimen>
     <dimen name="uifabric_content_inset">16dp</dimen>
 

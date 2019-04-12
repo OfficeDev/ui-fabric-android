@@ -11,6 +11,12 @@
     <string name="action_settings">Settings</string>
     <string name="title_demo_detail">Control Demo</string>
 
+    <!--Button-->
+    <string name="button">Button</string>
+    <string name="button_disabled">Disabled Button</string>
+    <string name="button_borderless">Borderless Button</string>
+    <string name="button_borderless_disabled">Borderless Disabled Button</string>
+
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">Choose a date</string>
 

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="@color/uifabric_button_background_disabled" android:state_enabled="false" />
+    <item android:color="@color/uifabric_button_background_pressed" android:state_pressed="true" />
+    <item android:color="@color/uifabric_button_background_default" />
+</selector>

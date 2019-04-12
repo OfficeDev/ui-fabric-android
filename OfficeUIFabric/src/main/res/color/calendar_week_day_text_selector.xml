@@ -5,22 +5,17 @@
   -->
 
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-
     <item
         android:state_activated="true"
         android:state_checked="false"
         android:color="@color/uifabric_calendar_week_day_text_active" />
-
     <item
         android:state_activated="true"
         android:state_checked="true"
         android:color="@android:color/white" />
-
     <item
         android:state_activated="false"
         android:state_checked="true"
         android:color="@android:color/white" />
-
     <item android:color="@color/uifabric_gray" />
-
 </selector>

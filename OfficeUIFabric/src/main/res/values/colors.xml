@@ -56,6 +56,18 @@
         <item>#69797E</item>
     </array>
 
+    <!--Button-->
+    <color name="uifabric_button_background_default">@color/uifabric_primary</color>
+    <color name="uifabric_button_background_pressed">@color/uifabric_primary_dark</color>
+    <color name="uifabric_button_background_disabled">@color/uifabric_background_gray</color>
+    <color name="uifabric_button_text_default">@color/uifabric_white</color>
+    <color name="uifabric_button_text_disabled">@color/uifabric_border_gray</color>
+    <!--Button Borderless-->
+    <color name="uifabric_button_borderless_background_default">@android:color/transparent</color>
+    <color name="uifabric_button_borderless_background_pressed">@color/uifabric_background_gray</color>
+    <color name="uifabric_button_borderless_background_disabled">@android:color/transparent</color>
+    <color name="uifabric_button_borderless_text">@color/uifabric_primary</color>
+
     <!--CalendarView-->
     <color name="uifabric_calendar_week_heading_week_day_text">@color/uifabric_gray</color>
     <color name="uifabric_calendar_week_heading_weekend_text">@color/uifabric_border_gray</color>

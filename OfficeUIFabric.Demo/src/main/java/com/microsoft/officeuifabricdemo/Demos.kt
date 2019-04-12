@@ -10,6 +10,7 @@ import java.util.*
 import kotlin.reflect.KClass
 
 const val AVATAR_VIEW = "AvatarView"
+const val BASIC_INPUTS = "Basic Inputs"
 const val CALENDAR_VIEW = "CalendarView"
 const val DATE_TIME_PICKER_DIALOG = "DateTimePickerDialog"
 const val PEOPLE_PICKER_VIEW = "PeoplePickerView"
@@ -23,6 +24,7 @@ const val TYPOGRAPHY = "Typography"
 
 val DEMOS = arrayListOf(
     Demo(AVATAR_VIEW, AvatarViewActivity::class),
+    Demo(BASIC_INPUTS, BasicInputsActivity::class),
     Demo(CALENDAR_VIEW, CalendarViewActivity::class),
     Demo(DATE_TIME_PICKER_DIALOG, DateTimePickerDialogActivity::class),
     Demo(PEOPLE_PICKER_VIEW, PeoplePickerViewActivity::class),

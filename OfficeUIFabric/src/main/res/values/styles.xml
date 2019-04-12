@@ -12,9 +12,35 @@
         <item name="colorPrimaryDark">@color/uifabric_primary_dark</item>
         <item name="colorAccent">@color/uifabric_primary</item>
         <item name="android:textColorPrimary">@color/uifabric_black</item>
+        <item name="buttonStyle">@style/Widget.UIFabric.Button</item>
     </style>
 
     <style name="Widget.UIFabric" parent="@android:style/Widget"/>
+
+    <!--Button-->
+    <style name="Widget.UIFabric.Button" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/button_background</item>
+        <!--This foreground attribute brings back the ripple effect after setting background-->
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+        <item name="android:textAppearance">@style/TextAppearance.UIFabric.Button</item>
+        <item name="android:paddingStart">@dimen/uifabric_button_padding_horizontal</item>
+        <item name="android:paddingEnd">@dimen/uifabric_button_padding_horizontal</item>
+        <item name="android:paddingTop">@dimen/uifabric_button_padding_vertical</item>
+        <item name="android:paddingBottom">@dimen/uifabric_button_padding_vertical</item>
+        <item name="android:minHeight">@dimen/uifabric_button_min_height</item>
+    </style>
+    <!--We use Borderless button style as the parent to avoid drop shadow issues in some APIs.-->
+    <style name="Widget.UIFabric.Button.Borderless" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:background">@drawable/button_borderless_background</item>
+        <!--This foreground attribute brings back the ripple effect after setting background-->
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+        <item name="android:textAppearance">@style/TextAppearance.UIFabric.Button.Borderless</item>
+        <item name="android:paddingStart">@dimen/uifabric_button_borderless_padding_horizontal</item>
+        <item name="android:paddingEnd">@dimen/uifabric_button_borderless_padding_horizontal</item>
+        <item name="android:paddingTop">@dimen/uifabric_button_padding_vertical</item>
+        <item name="android:paddingBottom">@dimen/uifabric_button_padding_vertical</item>
+        <item name="android:minHeight">@dimen/uifabric_button_min_height</item>
+    </style>
 
     <!--Calendar-->
     <!--calendar_week_day_text_selector sets the colors for these-->
@@ -51,7 +77,7 @@
     <style name="TextAppearance.UIFabric.PeoplePickerLabel" parent="TextAppearance.UIFabric.ListItemLabel" />
     <style name="TextAppearance.UIFabric.PeoplePickerText" parent="TextAppearance.UIFabric.Heading" />
     <style name="TextAppearance.UIFabric.PeoplePickerCountSpan" parent="TextAppearance.UIFabric.LightCaption" />
-    <style name="TextAppearance.UIFabric.PeoplePickerSearchDirectoryButton" parent="TextAppearance.UIFabric.Button" />
+    <style name="TextAppearance.UIFabric.PeoplePickerSearchDirectoryButton" parent="TextAppearance.UIFabric.Button.Borderless" />
 
     <!--Persona-->
     <style name="TextAppearance.UIFabric.PersonaTitle" parent="TextAppearance.UIFabric.SubHeading">
