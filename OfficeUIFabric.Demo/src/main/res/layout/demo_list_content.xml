@@ -13,6 +13,9 @@
         android:id="@+id/id_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/default_layout_margin"
-        android:textAppearance="?attr/textAppearanceListItem" />
+        android:layout_marginLeft="@dimen/demo_list_item_padding_horizontal"
+        android:layout_marginRight="@dimen/demo_list_item_padding_horizontal"
+        android:layout_marginTop="@dimen/demo_list_item_padding_vertical"
+        android:layout_marginBottom="@dimen/demo_list_item_padding_vertical"
+        android:textAppearance="@style/TextAppearance.DemoListItem" />
 </LinearLayout>

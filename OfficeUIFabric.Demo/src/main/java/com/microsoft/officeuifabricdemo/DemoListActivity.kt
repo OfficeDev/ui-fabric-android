@@ -6,8 +6,11 @@
 package com.microsoft.officeuifabricdemo
 
 import android.content.Intent
+import android.graphics.drawable.InsetDrawable
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -38,8 +41,19 @@ class DemoListActivity : AppCompatActivity() {
         toolbar.title = title
 
         demo_list.adapter = DemoListAdapter()
+        addDemoListDivider()
 
         Initializer.init(application)
+    }
+
+    private fun addDemoListDivider() {
+        val drawable = ContextCompat.getDrawable(this, com.microsoft.officeuifabric.R.drawable.ms_row_divider)
+        val spacing = resources.getDimension(R.dimen.default_layout_margin).toInt()
+        val insetDrawable = InsetDrawable(drawable, spacing, 0, spacing, 0)
+
+        val dividerItemDecoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
+        dividerItemDecoration.setDrawable(insetDrawable)
+        demo_list.addItemDecoration(dividerItemDecoration)
     }
 
     private class DemoListAdapter : RecyclerView.Adapter<DemoListAdapter.ViewHolder>() {

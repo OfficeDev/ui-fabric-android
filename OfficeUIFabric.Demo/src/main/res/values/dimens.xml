@@ -7,7 +7,7 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="app_bar_height">200dp</dimen>
-    <dimen name="default_layout_margin">16dp</dimen>
+    <dimen name="default_layout_margin">@dimen/uifabric_content_inset</dimen>
     <dimen name="default_view_margin">8dp</dimen>
     <dimen name="button_width">287dp</dimen>
     <dimen name="cell_horizontal_spacing">8dp</dimen>
@@ -17,6 +17,10 @@
     <!--DatePickerDialog-->
     <dimen name="date_picker_example_range_title_padding_end">4dp</dimen>
     <dimen name="date_picker_example_range_title_width">50dp</dimen>
+
+    <!--DemoListItem-->
+    <dimen name="demo_list_item_padding_horizontal">@dimen/default_layout_margin</dimen>
+    <dimen name="demo_list_item_padding_vertical">13.5dp</dimen>
 
     <!--Launch Screen-->
     <dimen name="uifabric_launch_logo_bottom_spacing">53dp</dimen>

@@ -27,4 +27,8 @@
         <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
     </style>
 
+    <style name="TextAppearance.DemoListItem" parent="@style/TextAppearance.UIFabric.SubHeading">
+        <item name="android:textColor">@color/uifabric_black</item>
+    </style>
+
 </resources>
