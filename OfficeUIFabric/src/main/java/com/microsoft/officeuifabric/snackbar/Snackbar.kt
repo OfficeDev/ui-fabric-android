@@ -33,6 +33,9 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
         const val LENGTH_SHORT: Int = BaseTransientBottomBar.LENGTH_SHORT
         const val LENGTH_LONG: Int = BaseTransientBottomBar.LENGTH_LONG
 
+        /**
+         * Use [make] to create your snackbar and attach it to a given [view]'s parent.
+         */
         fun make(view: View, text: CharSequence, duration: Int = LENGTH_SHORT, style: Style = Style.REGULAR): Snackbar {
             val parent = findSuitableParent(view) ?:
                 throw IllegalArgumentException("No suitable parent found from the given view. Please provide a valid view.")
@@ -45,7 +48,7 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
         }
 
         /**
-         * This is adapted from android.support.design.widget.snackbar
+         * This is adapted from android.support.design.widget.Snackbar
          * It ensures we can use Snackbars in complex ViewGroups like RecyclerView.
          */
         private fun findSuitableParent(view: View): ViewGroup? {
@@ -76,19 +79,23 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
     }
 
     /**
-     * Defines which style is applied to the Snackbar.
+     * Defines which style can be applied to the Snackbar.
      * Includes background color, text color, and action button placement.
      */
     enum class Style {
         REGULAR, ANNOUNCEMENT
     }
 
+    /**
+     * Defines which [Style] is applied to the Snackbar.
+     */
     var style: Style = Style.REGULAR
         set(value) {
             if (field == value)
                 return
             field = value
             updateStyle()
+            updateBackground()
         }
 
     private val textView: TextView = view.snackbar_text
@@ -97,14 +104,28 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
 
     private constructor(parent: ViewGroup, content: View, contentViewCallback: ContentViewCallback) : super(parent, content, contentViewCallback) {
         updateBackground()
+
+        // Set the margin on the FrameLayout (SnackbarLayout) instead of the content because the content's bottom margin is buggy in some APIs.
+        if (content.parent is FrameLayout) {
+            val lp = content.layoutParams as FrameLayout.LayoutParams
+            lp.bottomMargin = context.resources.getDimension(R.dimen.uifabric_snackbar_background_inset).toInt()
+            content.layoutParams = lp
+        }
     }
 
+    /**
+     * Use [setText] to set or update text on a snackbar.
+     */
     fun setText(text: CharSequence): Snackbar {
         textView.text = text
+        // Update style, but not background. Otherwise the background gets extra margins added when text is updated.
         updateStyle()
         return this
     }
 
+    /**
+     * Use [setAction] to add a button to your snackbar to prompt a user action.
+     */
     fun setAction(text: CharSequence, listener: View.OnClickListener): Snackbar {
         actionButtonView.text = text
         actionButtonView.visibility = View.VISIBLE
@@ -118,6 +139,9 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
         return this
     }
 
+    /**
+     * Use [setIcon] to add an icon from an [iconResourceId] to the start of the snackbar.
+     */
     fun setIcon(@DrawableRes iconResourceId: Int): Snackbar {
         iconImageView.setImageDrawable(ContextCompat.getDrawable(context, iconResourceId))
         iconImageView.visibility = View.VISIBLE
@@ -132,7 +156,6 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
     }
 
     private fun updateStyle() {
-        updateBackground()
         layoutTextAndActionButton()
 
         val iconImageViewLayoutParams = iconImageView.layoutParams as RelativeLayout.LayoutParams

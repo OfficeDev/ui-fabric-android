@@ -12,6 +12,7 @@ import com.microsoft.officeuifabricdemo.DemoActivity
 import com.microsoft.officeuifabricdemo.R
 import kotlinx.android.synthetic.main.activity_demo_detail.*
 import kotlinx.android.synthetic.main.activity_snackbar.*
+import java.util.*
 
 class SnackbarActivity : DemoActivity(), View.OnClickListener {
     override val contentLayoutId: Int
@@ -58,22 +59,32 @@ class SnackbarActivity : DemoActivity(), View.OnClickListener {
                     .show()
 
             R.id.btn_snackbar_multi_line ->
-                Snackbar.make(root_view, getString(R.string.snackbar_multi_line), Snackbar.LENGTH_LONG).show()
+                Snackbar.make(root_view, getString(R.string.snackbar_multiline), Snackbar.LENGTH_LONG).show()
 
             R.id.btn_snackbar_multi_line_icon ->
-                Snackbar.make(root_view, getString(R.string.snackbar_multi_line), Snackbar.LENGTH_LONG)
+                Snackbar.make(root_view, getString(R.string.snackbar_multiline), Snackbar.LENGTH_LONG)
                     .setIcon(R.drawable.ic_done_white)
                     .show()
 
-            R.id.btn_snackbar_multi_line_action ->
-                Snackbar.make(root_view, getString(R.string.snackbar_multi_line), Snackbar.LENGTH_INDEFINITE)
+            R.id.btn_snackbar_multi_line_action -> {
+                val snackbar = Snackbar.make(root_view, getString(R.string.snackbar_multiline), Snackbar.LENGTH_INDEFINITE)
                     .setAction(getString(R.string.snackbar_action), View.OnClickListener {
                         // handle click here
                     })
-                    .show()
+
+                snackbar.show()
+
+                Timer().schedule(object : TimerTask() {
+                        override fun run() {
+                            snackbar.view.post {
+                                snackbar.setText(getString(R.string.snackbar_description_updated))
+                            }
+                        }
+                    }, 2000)
+            }
 
             R.id.btn_snackbar_multi_line_action_icon ->
-                Snackbar.make(root_view, getString(R.string.snackbar_multi_line))
+                Snackbar.make(root_view, getString(R.string.snackbar_multiline))
                     .setIcon(R.drawable.ic_done_white)
                     .setAction(getString(R.string.snackbar_action), View.OnClickListener {
                         // handle click here
@@ -81,7 +92,7 @@ class SnackbarActivity : DemoActivity(), View.OnClickListener {
                     .show()
 
             R.id.btn_snackbar_multi_line_long_action ->
-                Snackbar.make(root_view, getString(R.string.snackbar_multi_line))
+                Snackbar.make(root_view, getString(R.string.snackbar_multiline))
                     .setAction(getString(R.string.snackbar_action_long), View.OnClickListener {
                         // handle click here
                     })

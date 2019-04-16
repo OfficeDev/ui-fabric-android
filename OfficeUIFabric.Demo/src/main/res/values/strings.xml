@@ -138,20 +138,25 @@
     <!--Snackbar-->
     <string name="snackbar_action">Action</string>
     <string name="snackbar_action_long">Long Text Action</string>
-    <string name="snackbar_announcement">This is an announcement snackbar. It’s used for communicating new features.</string>
-    <string name="snackbar_button_single_line">Single-line, short</string>
-    <string name="snackbar_button_single_line_icon">Single-line with icon, short</string>
-    <string name="snackbar_button_single_line_action">Single-line with action, short</string>
-    <string name="snackbar_button_single_line_action_icon">Single-line with action and icon, short</string>
-    <string name="snackbar_button_multi_line">Multi-line, long</string>
-    <string name="snackbar_button_multi_line_icon">Multi-line with icon, long</string>
-    <string name="snackbar_button_multi_line_action">Multi-line with action, indefinite</string>
-    <string name="snackbar_button_multi_line_action_icon">Multi-line with action and icon, short</string>
-    <string name="snackbar_button_multi_line_action_long">Multi-line with long action text, short</string>
-    <string name="snackbar_button_announcement">Announcement style, short</string>
-    <string name="snackbar_multi_line">This is a multi-line snackbar. Max lines are set to two, the rest of the text will truncate.
+    <string name="snackbar_single_line">Single line snackbar</string>
+    <string name="snackbar_multiline">This is a multiline snackbar. Max lines are set to two, the rest of the text will truncate.
         Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
-    <string name="snackbar_single_line">Single-line snackbar</string>
+    <string name="snackbar_announcement">This is an announcement snackbar. It’s used for communicating new features.</string>
+    <string name="snackbar_description_single_line">Short duration</string>
+    <string name="snackbar_description_single_line_icon">With icon, short duration</string>
+    <string name="snackbar_description_single_line_action">With action, short duration</string>
+    <string name="snackbar_description_single_line_action_icon">With action and icon, short duration</string>
+    <string name="snackbar_description_multiline">Long duration</string>
+    <string name="snackbar_description_multiline_icon">With icon, long duration</string>
+    <string name="snackbar_description_multiline_action">With action, indefinite duration, text updates</string>
+    <string name="snackbar_description_multiline_action_icon">With action and icon, short duration</string>
+    <string name="snackbar_description_multiline_action_long">With long action text, short duration</string>
+    <string name="snackbar_description_announcement">Short duration</string>
+    <string name="snackbar_description_updated">This text has been updated.</string>
+    <string name="snackbar_button_show">Show Snackbar</string>
+    <string name="snackbar_headline_single_line">Single line</string>
+    <string name="snackbar_headline_multiline">Multiline</string>
+    <string name="snackbar_headline_announcement_style">Announcement style</string>
 
     <!--Tooltip-->
     <string name="tooltip_button">Tap for Tooltip</string>

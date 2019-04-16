@@ -12,64 +12,168 @@
     android:padding="@dimen/default_layout_margin"
     android:showDividers="middle">
 
-    <android.support.v7.widget.AppCompatButton
+    <!--Single line-->
+
+    <TextView
+        style="@style/TextAppearance.UIFabric.Headline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/headline_padding_bottom"
+        android:text="@string/snackbar_headline_single_line" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/headline_divider_height"
+        android:background="@drawable/ms_row_divider" />
+
+    <TextView
+        style="@style/TextAppearance.DemoDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/snackbar_description_single_line" />
+
+    <Button
         android:id="@+id/btn_snackbar_single_line"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/snackbar_button_single_line" />
+        android:text="@string/snackbar_button_show" />
 
-    <android.support.v7.widget.AppCompatButton
+    <TextView
+        style="@style/TextAppearance.DemoDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/snackbar_description_single_line_icon" />
+
+    <Button
         android:id="@+id/btn_snackbar_single_line_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/snackbar_button_single_line_icon" />
+        android:text="@string/snackbar_button_show" />
 
-    <android.support.v7.widget.AppCompatButton
+    <TextView
+        style="@style/TextAppearance.DemoDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/snackbar_description_single_line_action" />
+
+    <Button
         android:id="@+id/btn_snackbar_single_line_action"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/snackbar_button_single_line_action" />
+        android:text="@string/snackbar_button_show" />
 
-    <android.support.v7.widget.AppCompatButton
+    <TextView
+        style="@style/TextAppearance.DemoDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/snackbar_description_single_line_action_icon" />
+
+    <Button
         android:id="@+id/btn_snackbar_single_line_action_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/snackbar_button_single_line_action_icon" />
+        android:text="@string/snackbar_button_show" />
 
-    <android.support.v7.widget.AppCompatButton
+    <!--Multiline-->
+
+    <TextView
+        style="@style/TextAppearance.UIFabric.Headline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_layout_margin"
+        android:paddingBottom="@dimen/headline_padding_bottom"
+        android:text="@string/snackbar_headline_multiline" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/headline_divider_height"
+        android:background="@drawable/ms_row_divider" />
+
+    <TextView
+        style="@style/TextAppearance.DemoDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/snackbar_description_multiline" />
+
+    <Button
         android:id="@+id/btn_snackbar_multi_line"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/snackbar_button_multi_line" />
+        android:text="@string/snackbar_button_show" />
 
-    <android.support.v7.widget.AppCompatButton
+    <TextView
+        style="@style/TextAppearance.DemoDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/snackbar_description_multiline_icon" />
+
+    <Button
         android:id="@+id/btn_snackbar_multi_line_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/snackbar_button_multi_line_icon" />
+        android:text="@string/snackbar_button_show" />
 
-    <android.support.v7.widget.AppCompatButton
+    <TextView
+        style="@style/TextAppearance.DemoDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/snackbar_description_multiline_action" />
+
+    <Button
         android:id="@+id/btn_snackbar_multi_line_action"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/snackbar_button_multi_line_action" />
+        android:text="@string/snackbar_button_show" />
 
-    <android.support.v7.widget.AppCompatButton
+    <TextView
+        style="@style/TextAppearance.DemoDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/snackbar_description_multiline_action_icon" />
+
+    <Button
         android:id="@+id/btn_snackbar_multi_line_action_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/snackbar_button_multi_line_action_icon" />
+        android:text="@string/snackbar_button_show" />
 
-    <android.support.v7.widget.AppCompatButton
+    <TextView
+        style="@style/TextAppearance.DemoDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/snackbar_description_multiline_action_long" />
+
+    <Button
         android:id="@+id/btn_snackbar_multi_line_long_action"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/snackbar_button_multi_line_action_long" />
+        android:text="@string/snackbar_button_show" />
 
-    <android.support.v7.widget.AppCompatButton
+    <!--Announcement style-->
+
+    <TextView
+        style="@style/TextAppearance.UIFabric.Headline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_layout_margin"
+        android:paddingBottom="@dimen/headline_padding_bottom"
+        android:text="@string/snackbar_headline_announcement_style" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/headline_divider_height"
+        android:background="@drawable/ms_row_divider" />
+
+    <TextView
+        style="@style/TextAppearance.DemoDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/snackbar_description_announcement" />
+
+    <Button
         android:id="@+id/btn_snackbar_announcement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/snackbar_button_announcement" />
+        android:text="@string/snackbar_button_show" />
 
 </LinearLayout>

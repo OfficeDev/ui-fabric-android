@@ -74,7 +74,9 @@
     </style>
 
     <!--PeoplePicker-->
-    <style name="TextAppearance.UIFabric.PeoplePickerLabel" parent="TextAppearance.UIFabric.ListItemLabel" />
+    <style name="TextAppearance.UIFabric.PeoplePickerLabel" parent="TextAppearance.UIFabric.SubHeading">
+        <item name="android:textColor">@color/uifabric_gray</item>
+    </style>
     <style name="TextAppearance.UIFabric.PeoplePickerText" parent="TextAppearance.UIFabric.Heading" />
     <style name="TextAppearance.UIFabric.PeoplePickerCountSpan" parent="TextAppearance.UIFabric.LightCaption" />
     <style name="TextAppearance.UIFabric.PeoplePickerSearchDirectoryButton" parent="TextAppearance.UIFabric.Button.Borderless" />
@@ -102,7 +104,6 @@
         <item name="tabSelectedTextColor">@color/uifabric_tab_selected_text</item>
         <item name="tabIndicatorColor">@color/uifabric_tab_selected_indicator</item>
     </style>
-
     <style name="TextAppearance.UIFabric.Tab.Light" parent="TextAppearance.UIFabric.Body2">
         <item name="android:textColor">@color/uifabric_tab_layout_text</item>
         <item name="textAllCaps">true</item>
