@@ -24,8 +24,8 @@ Office UI Fabric for Android provides [colors](OfficeUIFabric/src/main/res/value
 ## Controls
 
 Office UI Fabric for Android includes an expanding library of controls written in Kotlin. These controls implement the Fluent design language and bring consistency across Office app experiences.
-See the [Office UI Fabric Demo app](OfficeUIFabric.Demo/src/main/java/com/microsoft/officeuifabricdemo/demos) for the latest list of controls, which include:
 
+Some of the controls available include:
 - AvatarView
 - CalendarView
 - DateTimePickerDialog
@@ -36,6 +36,8 @@ See the [Office UI Fabric Demo app](OfficeUIFabric.Demo/src/main/java/com/micros
 - Snackbar
 - TemplateView
 - Tooltip
+
+A full list of currently supported controls can be found here: [OfficeUIFabric](OfficeUIFabric/src/main/java/com/microsoft/officeuifabric).
 
 ## Install and use Office UI Fabric
 
@@ -93,6 +95,8 @@ In XML:
 ```
 
 ## Demo app
+
+Included in this repository is a demo of currently implemented controls. A full list of implemented controls available in the demo can be found here:  [Demos](OfficeUIFabric.Demo/src/main/java/com/microsoft/officeuifabricdemo/demos).
 
 To see samples of all of our implemented controls and design language, run the [OfficeUIFabric.Demo](OfficeUIFabric.Demo) module in Android Studio.
 
