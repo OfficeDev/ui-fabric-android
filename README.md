@@ -47,6 +47,8 @@ API 19+
 
 ### 1. Using Gradle
 
+- Our library is published through JCenter, so make sure the `jcenter()` repository has been added to your project level build.gradle file (which usually is automatic).
+
 - Inside the dependency block in your build.gradle, add this line for the OfficeUIFabric library:
 ```gradle
 dependencies {
@@ -55,8 +57,6 @@ dependencies {
     ... 
 }
 ```
-
-- Our library is published through JCenter, so make sure the `jcenter()` repository has been added to your project level build.gradle file (which usually is automatic).
 
 - Make sure you replace `$version` with the latest version of OfficeUIFabric.
 
