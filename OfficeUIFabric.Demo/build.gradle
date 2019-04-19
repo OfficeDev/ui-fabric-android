@@ -27,9 +27,9 @@ android {
     signingConfigs {
         dogfood {
             keyAlias 'Dogfood'
-            keyPassword "$signingKeyPassword"
+            keyPassword = project.hasProperty("signingKeyPassword") ? "$signingKeyPassword" : ""
             storeFile file('keystore.jks')
-            storePassword "$signingKeyStorePassword"
+            storePassword = project.hasProperty("signingKeyStorePassword") ? "$signingKeyStorePassword" : ""
         }
     }
     flavorDimensions 'distribution'
@@ -41,7 +41,7 @@ android {
             dimension 'distribution'
             applicationIdSuffix '.df'
             signingConfig signingConfigs.dogfood
-            buildConfigField "String", "APP_CENTER_SECRET", "\"$appCenterSecret\""
+            buildConfigField "String", "APP_CENTER_SECRET", project.hasProperty("appCenterSecret") ? "\"$appCenterSecret\"" : ""
         }
     }
 }
