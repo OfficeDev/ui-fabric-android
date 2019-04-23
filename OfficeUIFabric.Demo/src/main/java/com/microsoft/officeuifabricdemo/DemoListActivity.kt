@@ -39,6 +39,7 @@ class DemoListActivity : AppCompatActivity() {
 
         setSupportActionBar(toolbar)
         toolbar.title = title
+        toolbar.subtitle = com.microsoft.officeuifabric.BuildConfig.VERSION_NAME
 
         demo_list.adapter = DemoListAdapter()
         addDemoListDivider()

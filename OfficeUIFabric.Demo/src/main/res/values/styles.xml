@@ -28,6 +28,9 @@
     </style>
 
     <!--Demo-->
+    <style name="TextAppearance.Toolbar.Subtitle" parent="TextAppearance.UIFabric.Caption">
+        <item name="android:textColor">@color/uifabric_white</item>
+    </style>
     <style name="TextAppearance.DemoListItem" parent="@style/TextAppearance.UIFabric.SubHeading">
         <item name="android:textColor">@color/uifabric_black</item>
     </style>
