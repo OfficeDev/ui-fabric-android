@@ -34,7 +34,7 @@
   <string name="people_picker_accessibility_deselect_persona">Fjern merkinga</string>
   <string name="people_picker_accessibility_select_persona">Merk</string>
   <string name="people_picker_accessibility_clicked_persona">Klikka på %s</string>
-  <string name="people_picker_accessibility_deselected_persona">Fjerna merking av %s</string>
+  <string name="people_picker_accessibility_deselected_persona">Fjerna val av %s</string>
   <string name="people_picker_accessibility_selected_persona">Merkt %s</string>
   <string name="people_picker_accessibility_deselect_selected_persona">, aktivering fjernar merking</string>
   <string name="people_picker_accessibility_delete_selected_persona">, aktivering slettar</string>
