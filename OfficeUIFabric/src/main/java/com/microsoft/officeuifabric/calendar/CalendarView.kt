@@ -16,6 +16,7 @@ import android.util.AttributeSet
 import android.util.Property
 import android.view.View
 import android.widget.LinearLayout
+import com.jakewharton.threetenabp.AndroidThreeTen
 
 import com.microsoft.officeuifabric.R
 import org.threeten.bp.*
@@ -99,6 +100,10 @@ class CalendarView : LinearLayout, OnDateSelectedListener {
             super.onAnimationEnd(animation)
             isViewModeChanging = false
         }
+    }
+
+    init {
+        AndroidThreeTen.init(context)
     }
 
     @JvmOverloads

@@ -16,7 +16,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import com.jakewharton.threetenabp.AndroidThreeTen
 import kotlinx.android.synthetic.main.activity_demo_list.*
 import kotlinx.android.synthetic.main.demo_list.*
 import kotlinx.android.synthetic.main.demo_list_content.view.*
@@ -32,8 +31,6 @@ class DemoListActivity : AppCompatActivity() {
         setTheme(R.style.AppTheme)
 
         super.onCreate(savedInstanceState)
-
-        AndroidThreeTen.init(this)
 
         setContentView(R.layout.activity_demo_list)
 

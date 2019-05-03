@@ -18,6 +18,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import com.jakewharton.threetenabp.AndroidThreeTen
 
 import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.calendar.OnDateSelectedListener
@@ -41,20 +42,25 @@ class DateTimePickerDialog : ResizableDialog(), Toolbar.OnMenuItemClickListener,
         @JvmStatic
         fun newInstance(
             context: Context,
-            dateTime: ZonedDateTime,
-            duration: Duration,
             mode: Mode,
-            dateRangeMode: DateRangeMode
+            dateRangeMode: DateRangeMode,
+            dateTime: ZonedDateTime = getDefaultDateTime(context),
+            duration: Duration = Duration.ZERO
         ): DateTimePickerDialog {
             val args = Bundle()
+            args.putSerializable(DateTimePickerExtras.DATE_RANGE_MODE, dateRangeMode)
+            args.putSerializable(DateTimePickerExtras.DISPLAY_MODE, getDisplayMode(context, dateTime, duration, mode))
             args.putSerializable(DateTimePickerExtras.DATE_TIME, dateTime)
             args.putSerializable(DateTimePickerExtras.DURATION, duration)
-            args.putSerializable(DateTimePickerExtras.DISPLAY_MODE, getDisplayMode(context, dateTime, duration, mode))
-            args.putSerializable(DateTimePickerExtras.DATE_RANGE_MODE, dateRangeMode)
 
             val dialog = DateTimePickerDialog()
             dialog.arguments = args
             return dialog
+        }
+
+        private fun getDefaultDateTime(context: Context): ZonedDateTime {
+            AndroidThreeTen.init(context)
+            return ZonedDateTime.now()
         }
 
         private fun getDisplayMode(context: Context, dateTime: ZonedDateTime, duration: Duration, mode: Mode): DisplayMode {

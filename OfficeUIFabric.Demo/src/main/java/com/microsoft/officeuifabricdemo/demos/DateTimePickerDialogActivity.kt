@@ -8,6 +8,7 @@ package com.microsoft.officeuifabricdemo.demos
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import com.jakewharton.threetenabp.AndroidThreeTen
 import com.microsoft.officeuifabric.datetimepicker.DateRangeMode
 import com.microsoft.officeuifabric.datetimepicker.DateTimePickerDialog
 import com.microsoft.officeuifabric.datetimepicker.DateTimePickerDialog.Mode
@@ -68,6 +69,11 @@ class DateTimePickerDialogActivity : DemoActivity(), OnDateTimePickedListener {
             field = value
         }
 
+    init {
+        // Initialization of ThreeTenABP maybe required in order to set ZonedDateTime for DateTimePickerDialog
+        AndroidThreeTen.init(this)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -91,10 +97,10 @@ class DateTimePickerDialogActivity : DemoActivity(), OnDateTimePickedListener {
                 dialogTag = picker.tag
                 val dialog = DateTimePickerDialog.newInstance(
                     this,
-                    getDateTime(),
-                    getDuration(),
                     picker.mode,
-                    picker.dateRangeMode
+                    picker.dateRangeMode,
+                    getDateTime(),
+                    getDuration()
                 )
                 dialog.show(supportFragmentManager, picker.tag)
             }
