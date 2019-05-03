@@ -195,10 +195,7 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
         return onCreatePersona("", completionText)
     }
 
-    override fun buildSpanForObject(obj: IPersona?): TokenImageSpan? {
-        if (obj == null)
-            return null
-
+    override fun buildSpanForObject(obj: IPersona): TokenImageSpan {
         // This ensures that persona spans will be short enough to leave room for the count span.
         val countSpanWidth = resources.getDimension(R.dimen.uifabric_people_picker_count_span_width).toInt()
         return TokenImageSpan(getViewForObject(obj), obj, maxTextWidth().toInt() - countSpanWidth)
@@ -270,7 +267,17 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
     }
 
     internal fun addObjects(personas: List<IPersona>?) {
-        personas?.forEach { addObject(it) }
+        if (personas == null || personas.isEmpty())
+            return
+
+        personas.forEach {
+            // Add the personas as hidden spans,
+            // then performCollapseAndAdjustLayout will figure out which to add based on available space.
+            hiddenPersonaSpans.add(buildSpanForObject(it))
+        }
+        // If personas are added during the initial load, performCollapseAndAdjustLayout will be called again from onLayout,
+        // which is the call that will add the hidden spans once available space can be determined.
+        performCollapseAndAdjustLayout(hasFocus())
     }
 
     internal fun removeObjects(personas: List<IPersona>?) {

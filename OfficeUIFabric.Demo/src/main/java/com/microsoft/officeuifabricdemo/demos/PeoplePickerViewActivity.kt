@@ -5,12 +5,13 @@
 
 package com.microsoft.officeuifabricdemo.demos
 
+import android.os.Build
 import android.os.Bundle
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.microsoft.officeuifabric.peoplepicker.PeoplePickerAccessibilityTextProvider
-import com.microsoft.officeuifabric.peoplepicker.PeoplePickerView
 import com.microsoft.officeuifabric.peoplepicker.PeoplePickerPersonaChipClickStyle
+import com.microsoft.officeuifabric.peoplepicker.PeoplePickerView
 import com.microsoft.officeuifabric.persona.IPersona
 import com.microsoft.officeuifabric.snackbar.Snackbar
 import com.microsoft.officeuifabricdemo.DemoActivity
@@ -90,6 +91,9 @@ class PeoplePickerViewActivity : DemoActivity() {
             getString(R.string.people_picker_suggestions_listener),
             personaSuggestionsListener = createPersonaSuggestionsListener(samplePersonas)
         )
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P)
+            people_picker_select.requestFocus()
     }
 
     private fun getAccessibilityTextProvider() = object : PeoplePickerAccessibilityTextProvider(resources) {
