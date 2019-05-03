@@ -12,7 +12,14 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:padding="@dimen/default_layout_margin"
-    tools:context=".demos.AvatarFragment">
+    tools:context=".demos.AvatarViewActivity">
+
+    <com.microsoft.officeuifabric.persona.AvatarView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/default_layout_margin"
+        app:name="@string/persona_name_erik_nason"
+        app:avatarSize="xsmall" />
 
     <com.microsoft.officeuifabric.persona.AvatarView
         android:id="@+id/avatar_example_initials"

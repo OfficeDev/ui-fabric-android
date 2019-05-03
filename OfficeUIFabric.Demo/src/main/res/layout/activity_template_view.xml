@@ -11,7 +11,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/default_layout_margin"
-    tools:context=".demos.TemplateViewFragment">
+    tools:context=".demos.TemplateViewActivity">
 
     <com.microsoft.officeuifabricdemo.demos.views.Cell
         android:id="@+id/horizontal_cell"

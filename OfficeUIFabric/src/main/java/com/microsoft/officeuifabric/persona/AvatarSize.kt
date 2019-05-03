@@ -13,7 +13,7 @@ import com.microsoft.officeuifabric.R
  * This int specifies the layout width and height for the AvatarView.
  */
 enum class AvatarSize(private val id: Int) {
-    XMALL(R.dimen.uifabric_avatar_size_xsmall),
+    XSMALL(R.dimen.uifabric_avatar_size_xsmall),
     SMALL(R.dimen.uifabric_avatar_size_small),
     MEDIUM(R.dimen.uifabric_avatar_size_medium),
     LARGE(R.dimen.uifabric_avatar_size_large),
