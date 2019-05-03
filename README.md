@@ -88,7 +88,7 @@ dependencies {
     ```gradle
     implementation 'com.jakewharton.threetenabp:threetenabp:1.1.0'
     ```
-  - Double check that these library versions correspond to the latest versions we implement in the OfficeUIFabric build.gradle.
+  - Double check that these library versions correspond to the latest versions we implement in the OfficeUIFabric [build.gradle](OfficeUIFabric/build.gradle).
 
 ### Import and use the library
 
