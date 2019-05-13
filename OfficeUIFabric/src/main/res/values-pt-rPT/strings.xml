@@ -62,8 +62,8 @@
   <string name="people_picker_search_directory">Procurar no Diretório</string>
   <string name="people_picker_search_progress">A procurar…</string>
   <string name="people_picker_accessibility_default_hint">Introduza um nome ou e-mail</string>
-  <string name="people_picker_accessibility_persona_added">%s adicionado</string>
-  <string name="people_picker_accessibility_persona_removed">%s removido</string>
+  <string name="people_picker_accessibility_persona_added">%s adicionado(a)</string>
+  <string name="people_picker_accessibility_persona_removed">%s removido(a)</string>
   <string name="people_picker_accessibility_replaced">%s substituído(a),</string>
   <string name="people_picker_accessibility_click_persona">Clique</string>
   <string name="people_picker_accessibility_delete_persona">Eliminar</string>
