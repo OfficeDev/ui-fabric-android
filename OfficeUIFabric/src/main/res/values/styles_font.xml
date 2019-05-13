@@ -70,4 +70,10 @@
         <item name="android:textColor">@color/button_text_borderless</item>
     </style>
 
+    <!--NumberPicker-->
+    <style name="TextAppearance.UIFabric.NumberPicker" parent="TextAppearance.UIFabric.Heading"/>
+    <style name="TextAppearance.UIFabric.NumberPicker.Selected">
+        <item name="android:fontFamily">"sans-serif-medium"</item>
+    </style>
+
 </resources>

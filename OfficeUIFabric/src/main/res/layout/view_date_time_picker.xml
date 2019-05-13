@@ -19,6 +19,7 @@
         android:layout_height="wrap_content"
         app:tabGravity="fill"
         app:tabMode="fixed"
+        android:visibility="gone"
         style="@style/Widget.UIFabric.TabLayout" />
 
     <LinearLayout

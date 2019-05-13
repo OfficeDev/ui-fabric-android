@@ -33,7 +33,6 @@
         <attr name="numberPickerTextColor" format="color|reference"/>
         <attr name="numberPickerSelectedTextColor" format="color|reference"/>
         <attr name="selectorWheelItemCount" format="integer" />
-        <attr name="allowKeyboardInput" format="boolean" />
         <attr name="textAlign" format="enum">
             <enum name="left" value="0" />
             <enum name="center" value="1" />

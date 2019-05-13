@@ -7,11 +7,13 @@ package com.microsoft.officeuifabric.datetimepicker
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
+import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewPager
 import android.support.v7.widget.Toolbar
 import android.view.LayoutInflater
@@ -19,6 +21,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import com.jakewharton.threetenabp.AndroidThreeTen
+import android.view.accessibility.AccessibilityEvent
 
 import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.calendar.OnDateSelectedListener
@@ -158,12 +161,12 @@ class DateTimePickerDialog : ResizableDialog(), Toolbar.OnMenuItemClickListener,
         super.onViewCreated(view, savedInstanceState)
 
         val context = context ?: return
-        val iconColor = R.color.uifabric_date_time_picker_toolbar_icon
         toolbar.inflateMenu(R.menu.menu_time_picker)
         toolbar.setOnMenuItemClickListener(this)
-        toolbar.navigationIcon = context.getTintedDrawable(R.drawable.ms_ic_close_grey, iconColor)
+        toolbar.navigationIcon = ContextCompat.getDrawable(context, R.drawable.ms_ic_close_grey)
+        toolbar.navigationContentDescription = resources.getString(R.string.date_time_picker_accessibility_close_dialog_button)
         toolbar.setNavigationOnClickListener { dismiss() }
-        toolbar.menu.findItem(R.id.action_done).icon = context.getTintedDrawable(R.drawable.ms_ic_done, iconColor)
+        toolbar.menu.findItem(R.id.action_done).icon = context.getTintedDrawable(R.drawable.ms_ic_done, R.color.uifabric_date_time_picker_toolbar_icon)
 
         pagerAdapter = DateTimePagerAdapter(childFragmentManager)
         view_pager.adapter = pagerAdapter
@@ -178,6 +181,10 @@ class DateTimePickerDialog : ResizableDialog(), Toolbar.OnMenuItemClickListener,
             tabs.setupWithViewPager(view_pager)
 
         updateTitles()
+    }
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        return ContentDialog(activity!!, theme)
     }
 
     override fun onSaveInstanceState(bundle: Bundle) {
@@ -234,7 +241,7 @@ class DateTimePickerDialog : ResizableDialog(), Toolbar.OnMenuItemClickListener,
                 toolbar.title = if (dateRangeMode != DateRangeMode.NONE)
                     resources.getString(R.string.date_time_picker_choose_date)
                 else
-                    DateStringUtils.formatDateAbbrevAll(context, dateTime.plus(duration))
+                    DateStringUtils.formatMonthDayYear(context, dateTime.plus(duration))
             }
             DisplayMode.TIME, DisplayMode.ACCESSIBLE_DATE_TIME -> {
                 toolbar.title = if (dateRangeMode != DateRangeMode.NONE)
@@ -301,6 +308,33 @@ class DateTimePickerDialog : ResizableDialog(), Toolbar.OnMenuItemClickListener,
 
         private fun useDatePickerFragment(position: Int): Boolean =
             position == displayMode.dateTabIndex && (displayMode == DisplayMode.DATE || displayMode == DisplayMode.TIME_DATE || displayMode == DisplayMode.DATE_TIME)
+    }
+
+    private inner class ContentDialog : Dialog {
+        constructor(context: Context, themeResId: Int) : super(context, themeResId)
+
+        override fun dispatchPopulateAccessibilityEvent(event: AccessibilityEvent): Boolean {
+            if (event.eventType == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) {
+                val announcement = when (displayMode) {
+                    DisplayMode.DATE, DisplayMode.ACCESSIBLE_DATE -> {
+                        if (dateRangeMode != DateRangeMode.NONE)
+                            R.string.date_picker_range_accessibility_dialog_title
+                        else
+                            R.string.date_picker_accessibility_dialog_title
+                    }
+                    else -> {
+                        if (dateRangeMode != DateRangeMode.NONE)
+                            R.string.date_time_picker_range_accessibility_dialog_title
+                        else
+                            R.string.date_time_picker_accessibility_dialog_title
+                    }
+                }
+
+                event.text.add(resources.getString(announcement))
+                return true
+            }
+            return super.dispatchPopulateAccessibilityEvent(event)
+        }
     }
 }
 

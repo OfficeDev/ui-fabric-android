@@ -7,23 +7,22 @@ package com.microsoft.officeuifabric.datetimepicker
 
 import android.content.Context
 import android.support.design.widget.TabLayout
+import android.support.v4.view.AccessibilityDelegateCompat
+import android.support.v4.view.ViewCompat
 import android.text.format.DateFormat
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
+import android.view.accessibility.AccessibilityEvent
 import android.widget.LinearLayout
-
 import com.microsoft.officeuifabric.R
+import com.microsoft.officeuifabric.datetimepicker.DateTimePicker.PickerMode
 import com.microsoft.officeuifabric.managers.PreferencesManager
 import com.microsoft.officeuifabric.util.DateStringUtils
 import com.microsoft.officeuifabric.util.DateTimeUtils
 import com.microsoft.officeuifabric.view.NumberPicker
 import kotlinx.android.synthetic.main.view_date_time_picker.view.*
-
-import org.threeten.bp.Duration
-import org.threeten.bp.LocalDate
-import org.threeten.bp.YearMonth
-import org.threeten.bp.ZonedDateTime
+import org.threeten.bp.*
 import org.threeten.bp.temporal.ChronoUnit
 import java.text.DateFormatSymbols
 
@@ -57,7 +56,7 @@ internal class DateTimePicker : LinearLayout, NumberPicker.OnValueChangeListener
     val selectedTab: Tab
         get() = Tab.values()[start_end_tabs.selectedTabPosition]
 
-    var timeSlot: TimeSlot? = null
+    var timeSlot: TimeSlot = TimeSlot(ZonedDateTime.now(), Duration.ZERO)
         get() {
             val updatedTime = pickerValue
 
@@ -70,11 +69,9 @@ internal class DateTimePicker : LinearLayout, NumberPicker.OnValueChangeListener
         }
         set(value) {
             field = value
-            value?.let {
-                dateTime = value.start.truncatedTo(ChronoUnit.MINUTES)
-                duration = value.duration
-                setPickerValues(selectedTab == Tab.END, false)
-            }
+            dateTime = value.start.truncatedTo(ChronoUnit.MINUTES)
+            duration = value.duration
+            setPickerValues(selectedTab == Tab.END, false)
         }
 
     /**
@@ -103,9 +100,12 @@ internal class DateTimePicker : LinearLayout, NumberPicker.OnValueChangeListener
     private var daysBack: Int = 0
     private var daysForward: Int = 0
 
+    private var shouldAnnounceHints: Boolean = true
+
     private val onTabSelectedListener = object : TabLayout.OnTabSelectedListener {
         override fun onTabSelected(tab: TabLayout.Tab) {
             // Adjust start time and duration when switching tabs
+            shouldAnnounceHints = false
             setPickerValues(tab.tag === Tab.END, true)
         }
 
@@ -147,6 +147,8 @@ internal class DateTimePicker : LinearLayout, NumberPicker.OnValueChangeListener
             PickerMode.DATE -> setDatePickerValues(showEndTime, animate)
             PickerMode.DATE_TIME -> setDateTimePickerValues(showEndTime, animate)
         }
+
+        updateRangeContentDescription()
     }
 
     override fun onFinishInflate() {
@@ -164,9 +166,39 @@ internal class DateTimePicker : LinearLayout, NumberPicker.OnValueChangeListener
 
     override fun onValueChange(picker: NumberPicker, oldVal: Int, newVal: Int) {
         if (pickerMode == PickerMode.DATE)
-            updateDayPicker()
+            updateDaysPerMonth(timeSlot.start)
 
-        timeSlot?.let { onDateTimeSelectedListener?.onDateTimeSelected(it.start, it.duration) }
+        onDateTimeSelectedListener?.onDateTimeSelected(timeSlot.start, timeSlot.duration)
+
+        if (shouldAnnounceHints)
+            announceNumberPickerValue(picker)
+
+        updateRangeContentDescription()
+
+        when (pickerMode) {
+            PickerMode.DATE -> updateDatePickerHints()
+            PickerMode.DATE_TIME -> updateDateTimePickerHints()
+        }
+    }
+
+    private fun getHour(time: ZonedDateTime): Int =
+        if (is24Hour || dateTimePickerValue.hour == MAX_HOURS_12_CLOCK )
+            time.hour
+        else
+            time.hour % MAX_HOURS_12_CLOCK
+
+    private fun getDate(dateValue: Int, dateTime: ZonedDateTime): String {
+        when (dateValue) {
+            daysBack -> return context.getString(R.string.today)
+            daysBack + 1 -> return context.getString(R.string.tomorrow)
+            daysBack - 1 -> return context.getString(R.string.yesterday)
+            else -> {
+                if (DateTimeUtils.isSameYear(LocalDate.now(), dateTime.toLocalDate()))
+                    return DateStringUtils.formatDateAbbrevAll(context, dateTime)
+                else
+                    return DateStringUtils.formatWeekdayDateYearAbbrev(context, dateTime)
+            }
+        }
     }
 
     private fun getTab(tab: Tab): TabLayout.Tab? = start_end_tabs.getTabAt(tab.ordinal)
@@ -195,6 +227,8 @@ internal class DateTimePicker : LinearLayout, NumberPicker.OnValueChangeListener
     private fun initDateTimeNumberPickers() {
         getTab(Tab.START)?.setText(R.string.date_time_picker_start_time)
         getTab(Tab.END)?.setText(R.string.date_time_picker_end_time)
+        getTab(Tab.START)?.contentDescription = resources.getString(R.string.date_time_picker_accessiblility_start_time)
+        getTab(Tab.END)?.contentDescription = resources.getString(R.string.date_time_picker_accessiblility_end_time)
 
         date_time_pickers.visibility = View.VISIBLE
 
@@ -202,6 +236,8 @@ internal class DateTimePicker : LinearLayout, NumberPicker.OnValueChangeListener
         initHourPicker()
         initMinutePicker()
         initPeriodPicker()
+
+        setNumberPickerGroupAccessibilityFocusChangeListener(date_time_pickers)
     }
 
     private fun initDatePicker() {
@@ -219,27 +255,35 @@ internal class DateTimePicker : LinearLayout, NumberPicker.OnValueChangeListener
             minValue = 0
             maxValue = daysBack + daysForward
             value = daysBack
-            setFormatter(DateFormatter(context, today, daysBack))
+            virtualIncrementButtonDescription = resources.getString(R.string.date_time_picker_accessibility_increment_date_button)
+            virtualDecrementButtonDescription = resources.getString(R.string.date_time_picker_accessibility_decrement_date_button)
+            virtualIncrementClickActionAnnouncement = resources.getString(R.string.date_picker_accessibility_next_date_click_action)
+            virtualDecrementClickActionAnnouncement = resources.getString(R.string.date_picker_accessibility_previous_date_click_action)
+            setFormatter(DateFormatter(today.atStartOfDay(ZoneId.systemDefault())))
             setOnValueChangedListener(this@DateTimePicker)
         }
     }
 
     private fun initHourPicker() {
-        if (is24Hour) {
-            hour_picker.minValue = MIN_HOURS_24_CLOCK
-            hour_picker.maxValue = MAX_HOURS_24_CLOCK
-        } else {
-            hour_picker.minValue = MIN_HOURS_12_CLOCK
-            hour_picker.maxValue = MAX_HOURS_12_CLOCK
+        with(hour_picker) {
+            minValue = if (is24Hour) MIN_HOURS_24_CLOCK else MIN_HOURS_12_CLOCK
+            maxValue = if (is24Hour) MAX_HOURS_24_CLOCK else MAX_HOURS_12_CLOCK
+            virtualIncrementButtonDescription = resources.getString(R.string.date_time_picker_accessibility_increment_hour_button)
+            virtualDecrementButtonDescription = resources.getString(R.string.date_time_picker_accessibility_decrement_hour_button)
+            virtualIncrementClickActionAnnouncement = resources.getString(R.string.date_picker_accessibility_next_hour_click_action)
+            virtualDecrementClickActionAnnouncement = resources.getString(R.string.date_picker_accessibility_previous_hour_click_action)
+            setOnValueChangedListener(this@DateTimePicker)
         }
-
-        hour_picker.setOnValueChangedListener(this)
     }
 
     private fun initMinutePicker() {
         with(minute_picker) {
             minValue = MIN_MINUTES
             maxValue = MAX_MINUTES
+            virtualIncrementButtonDescription = resources.getString(R.string.date_time_picker_accessibility_increment_minute_button)
+            virtualDecrementButtonDescription = resources.getString(R.string.date_time_picker_accessibility_decrement_minute_button)
+            virtualIncrementClickActionAnnouncement = resources.getString(R.string.date_picker_accessibility_next_minute_click_action)
+            virtualDecrementClickActionAnnouncement = resources.getString(R.string.date_picker_accessibility_previous_minute_click_action)
             setFormatter(NumberPicker.twoDigitFormatter)
             setOnValueChangedListener(this@DateTimePicker)
         }
@@ -251,6 +295,8 @@ internal class DateTimePicker : LinearLayout, NumberPicker.OnValueChangeListener
             maxValue = MAX_PERIOD
             displayedValues = DateStringUtils.amPmStrings
             visibility = if (is24Hour) View.GONE else View.VISIBLE
+            virtualToggleDescription = resources.getString(R.string.date_time_picker_accessibility_period_toggle_button)
+            virtualToggleClickActionAnnouncement = resources.getString(R.string.date_time_picker_accessibility_period_toggle_click_action)
             setOnValueChangedListener(this@DateTimePicker)
         }
     }
@@ -260,10 +306,7 @@ internal class DateTimePicker : LinearLayout, NumberPicker.OnValueChangeListener
         val today = LocalDate.now()
         val daysBetween = ChronoUnit.DAYS.between(today, time).toInt()
         val dateValue = daysBack + daysBetween
-        val hourValue = when {
-            is24Hour || time.hour == MAX_HOURS_12_CLOCK -> time.hour
-            else -> time.hour % MAX_HOURS_12_CLOCK
-        }
+        val hourValue = getHour(time)
         val minuteValue = time.minute
         val ampmValue = if (time.hour < 12) 0 else 1
 
@@ -280,6 +323,8 @@ internal class DateTimePicker : LinearLayout, NumberPicker.OnValueChangeListener
             if (!is24Hour)
                 period_picker.value = ampmValue
         }
+
+        updateDateTimePickerHints()
     }
 
     // Date NumberPickers
@@ -290,12 +335,16 @@ internal class DateTimePicker : LinearLayout, NumberPicker.OnValueChangeListener
     private fun initDateNumberPickers() {
         getTab(Tab.START)?.setText(R.string.date_time_picker_start_date)
         getTab(Tab.END)?.setText(R.string.date_time_picker_end_date)
+        getTab(Tab.START)?.contentDescription = resources.getString(R.string.date_picker_accessiblility_start_date)
+        getTab(Tab.END)?.contentDescription = resources.getString(R.string.date_picker_accessiblility_end_date)
 
         date_pickers.visibility = View.VISIBLE
 
         initMonthPicker()
         initDayPicker()
         initYearPicker()
+
+        setNumberPickerGroupAccessibilityFocusChangeListener(date_pickers)
     }
 
     private fun initMonthPicker() {
@@ -304,13 +353,24 @@ internal class DateTimePicker : LinearLayout, NumberPicker.OnValueChangeListener
             minValue = MIN_MONTHS
             maxValue = months.size
             displayedValues = months
+            virtualIncrementButtonDescription = resources.getString(R.string.date_picker_accessibility_increment_month_button)
+            virtualDecrementButtonDescription = resources.getString(R.string.date_picker_accessibility_decrement_month_button)
+            virtualIncrementClickActionAnnouncement = resources.getString(R.string.date_picker_accessibility_next_month_click_action)
+            virtualDecrementClickActionAnnouncement = resources.getString(R.string.date_picker_accessibility_previous_month_click_action)
             setOnValueChangedListener(this@DateTimePicker)
         }
     }
 
     private fun initDayPicker() {
-        updateDayPicker()
-        day_picker.setOnValueChangedListener(this@DateTimePicker)
+        // set default min and max
+        updateDaysPerMonth(ZonedDateTime.now())
+        with(day_picker) {
+            virtualIncrementButtonDescription = resources.getString(R.string.date_picker_accessibility_increment_day_button)
+            virtualDecrementButtonDescription = resources.getString(R.string.date_picker_accessibility_decrement_day_button)
+            virtualIncrementClickActionAnnouncement = resources.getString(R.string.date_picker_accessibility_next_day_click_action)
+            virtualDecrementClickActionAnnouncement = resources.getString(R.string.date_picker_accessibility_previous_day_click_action)
+            setOnValueChangedListener(this@DateTimePicker)
+        }
     }
 
     private fun initYearPicker() {
@@ -319,6 +379,10 @@ internal class DateTimePicker : LinearLayout, NumberPicker.OnValueChangeListener
             minValue = today.minusMonths(MONTH_LIMIT).year
             maxValue = today.plusMonths(MONTH_LIMIT).year
             wrapSelectorWheel = false
+            virtualIncrementButtonDescription = resources.getString(R.string.date_picker_accessibility_increment_year_button)
+            virtualDecrementButtonDescription = resources.getString(R.string.date_picker_accessibility_decrement_year_button)
+            virtualIncrementClickActionAnnouncement = resources.getString(R.string.date_picker_accessibility_next_year_click_action)
+            virtualDecrementClickActionAnnouncement = resources.getString(R.string.date_picker_accessibility_previous_year_click_action)
             setOnValueChangedListener(this@DateTimePicker)
         }
     }
@@ -328,46 +392,106 @@ internal class DateTimePicker : LinearLayout, NumberPicker.OnValueChangeListener
 
         if (animate) {
             month_picker.quicklyAnimateValueTo(time.monthValue)
-            day_picker.quicklyAnimateValueTo(time.dayOfMonth)
             year_picker.animateValueTo(time.year)
+            day_picker.quicklyAnimateValueTo(time.dayOfMonth)
         } else {
             month_picker.value = time.monthValue
-            day_picker.value = time.dayOfMonth
             year_picker.value = time.year
+            day_picker.value = time.dayOfMonth
         }
+
+        updateDaysPerMonth(time)
+        updateDatePickerHints()
     }
 
-    private fun updateDayPicker() {
-        val yearMonth = YearMonth.of(year_picker.value, month_picker.value)
+    private fun updateDaysPerMonth(time: ZonedDateTime) {
+        val time = if (selectedTab == Tab.END) time.plus(duration) else time
+        val yearMonth = YearMonth.of(time.year, time.month)
         with(day_picker) {
             minValue = MIN_DAYS
             maxValue = yearMonth.lengthOfMonth()
         }
     }
 
-    private class DateFormatter(
-        private val context: Context,
-        private val today: LocalDate,
-        private val todayIndex: Int
-    ) : android.widget.NumberPicker.Formatter {
-        private val todayString = context.getString(R.string.today)
-        private val tomorrowString = context.getString(R.string.tomorrow)
-        private val yesterdayString = context.getString(R.string.yesterday)
+    // Accessibility
 
-        override fun format(value: Int): String =
-            when (value) {
-                todayIndex -> todayString
-                todayIndex + 1 -> tomorrowString
-                todayIndex - 1 -> yesterdayString
-                else -> {
-                    val today = LocalDate.now()
-                    val date = this.today.plusDays((value - todayIndex).toLong())
-                    if (DateTimeUtils.isSameYear(today, date))
-                        DateStringUtils.formatDateAbbrevAll(context, date)
-                    else
-                        DateStringUtils.formatWeekdayDateYearAbbrev(context, date)
-                }
+    private fun updateRangeContentDescription() {
+        if (start_end_tabs.visibility == View.VISIBLE) {
+            when (pickerMode) {
+                PickerMode.DATE -> date_pickers.contentDescription = getAccessibilityDescription(true)
+                PickerMode.DATE_TIME -> date_time_pickers.contentDescription = getAccessibilityDescription(false)
             }
+        }
+    }
+
+    private fun getAccessibilityDescription(dateOnly: Boolean): String {
+        val time = if (selectedTab === Tab.END) dateTime.plus(duration) else dateTime
+        if (dateOnly)
+            return getSelectedValueString(DateStringUtils.formatMonthDayYear(context, time))
+
+        val label = when (selectedTab) {
+            Tab.START -> context.getString(R.string.date_time_picker_start_time)
+            Tab.END -> context.getString(R.string.date_time_picker_end_time)
+            else -> ""
+        }
+
+        val daysBetween = ChronoUnit.DAYS.between(LocalDate.now(), time).toInt()
+        val dateValue = daysBack + daysBetween
+        val dateDescription = getDate(dateValue, time)
+        val timeDescription = DateStringUtils.formatAbbrevTime(context, time)
+        return getSelectedValueString("$label $dateDescription $timeDescription")
+    }
+
+    private fun announceNumberPickerValue(picker: NumberPicker) {
+        val timePeriod = when(picker.id) {
+            R.id.date_picker -> getDate(date_picker.value, dateTimePickerValue)
+            R.id.hour_picker -> "${getHour(dateTimePickerValue)}"
+            R.id.minute_picker -> "${dateTimePickerValue.minute}"
+            R.id.period_picker -> DateStringUtils.amPmStrings[period_picker.value]
+            R.id.month_picker -> "${datePickerValue.month}"
+            R.id.day_picker -> "${datePickerValue.dayOfMonth}"
+            R.id.year_picker -> "${datePickerValue.year}"
+            else -> ""
+        }
+
+        announceForAccessibility(resources.getString(R.string.date_time_picker_accessibility_selected_date, timePeriod))
+    }
+
+    private fun updateDateTimePickerHints() {
+        setVirtualButtonHint(date_picker, getDate(date_picker.value, dateTimePickerValue))
+        setVirtualButtonHint(hour_picker, "${getHour(dateTimePickerValue)}")
+        setVirtualButtonHint(minute_picker, "${dateTimePickerValue.minute}")
+
+        val periodValue = DateStringUtils.amPmStrings[period_picker.value]
+        period_picker.virtualToggleHint = getSelectedValueString(periodValue)
+    }
+
+    private fun updateDatePickerHints() {
+        setVirtualButtonHint(month_picker,"${datePickerValue.month}")
+        setVirtualButtonHint(day_picker, "${datePickerValue.dayOfMonth}")
+        setVirtualButtonHint(year_picker, "${datePickerValue.year}")
+    }
+
+    private fun setVirtualButtonHint(picker: NumberPicker, value: String) {
+        picker.virtualIncrementHint = getSelectedValueString(value)
+        picker.virtualDecrementHint = picker.virtualIncrementHint
+    }
+
+    private fun setNumberPickerGroupAccessibilityFocusChangeListener(numberPickerGroup: LinearLayout) {
+        ViewCompat.setAccessibilityDelegate(numberPickerGroup, object : AccessibilityDelegateCompat() {
+            override fun onPopulateAccessibilityEvent(host: View, event: AccessibilityEvent) {
+                if (event.eventType == AccessibilityEvent.TYPE_VIEW_ACCESSIBILITY_FOCUSED)
+                    shouldAnnounceHints = true
+            }
+        })
+    }
+
+    private fun getSelectedValueString(value: String): String =
+        resources.getString(R.string.date_time_picker_accessibility_selected_date, value)
+
+    private inner class DateFormatter(private val today: ZonedDateTime) : android.widget.NumberPicker.Formatter {
+        override fun format(value: Int): String =
+            getDate(value, today.plusDays((value - daysBack).toLong()))
     }
 }
 

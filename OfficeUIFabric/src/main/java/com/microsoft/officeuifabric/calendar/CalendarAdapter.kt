@@ -217,7 +217,7 @@ internal class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarDa
             )
         }
 
-        override fun performAccessibilityAction(host: View, action: Int, args: Bundle): Boolean {
+        override fun performAccessibilityAction(host: View, action: Int, args: Bundle?): Boolean {
             val selectedDate = selectedDate ?: return super.performAccessibilityAction(host, action, args)
             val date: LocalDate = when(action) {
                 R.id.uifabric_calendar_view_action_goto_next_week -> selectedDate.plusDays(7)

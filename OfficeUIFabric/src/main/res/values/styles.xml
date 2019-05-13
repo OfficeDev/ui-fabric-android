@@ -61,7 +61,6 @@
 
     <!--NumberPicker-->
     <style name="Widget.UIFabric.NumberPicker">
-        <item name="allowKeyboardInput">false</item>
         <item name="android:orientation">vertical</item>
         <item name="android:fadingEdge">vertical</item>
         <item name="android:fadingEdgeLength">@dimen/uifabric_date_time_picker_fading_edge_length</item>

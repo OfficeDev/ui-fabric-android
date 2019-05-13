@@ -10,7 +10,6 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.util.DateTimeUtils
 import kotlinx.android.synthetic.main.fragment_date_time_picker.*
@@ -32,7 +31,7 @@ internal class DateTimePickerFragment : Fragment(), OnDateTimeSelectedListener {
     private lateinit var pickerMode: DateTimePicker.PickerMode
 
     fun setDate(date: ZonedDateTime) {
-        val range = date_time_picker.timeSlot ?: return
+        val range = date_time_picker.timeSlot
         if (DateTimeUtils.isSameDay(date, range.start))
             return
         date_time_picker.timeSlot = TimeSlot(range.start.with(date.toLocalDate()), range.duration)
