@@ -68,8 +68,11 @@ class CalendarView : LinearLayout, OnDateSelectedListener {
     /**
      * LocalDate used to set the selected date
      */
-    private var date: LocalDate? = null
-        set(value) { setSelectedDateRange(value, Duration.ZERO, false) }
+    private var date: LocalDate?
+        get() = weeksView.selectedDate
+        set(value) {
+            setSelectedDateRange(value, Duration.ZERO, false)
+        }
 
     private var dividerHeight = 0
     private val config: Config
@@ -98,6 +101,7 @@ class CalendarView : LinearLayout, OnDateSelectedListener {
     private val viewModeChangeAnimationListener = object : AnimatorListenerAdapter() {
         override fun onAnimationEnd(animation: Animator) {
             super.onAnimationEnd(animation)
+            weeksView.ensureDateVisible(date, displayMode, rowHeight, dividerHeight)
             isViewModeChanging = false
         }
     }
@@ -115,8 +119,6 @@ class CalendarView : LinearLayout, OnDateSelectedListener {
 
         orientation = LinearLayout.VERTICAL
         setBackgroundColor(Color.WHITE)
-
-        displayMode = if (config.isFullMode) DisplayMode.FULL_MODE else DisplayMode.NORMAL_MODE
 
         initSubViews()
     }
@@ -141,10 +143,7 @@ class CalendarView : LinearLayout, OnDateSelectedListener {
             resizeAnimator?.start()
         }
 
-        if (DisplayMode.NORMAL_MODE == displayMode) {
-            isViewModeChanging = true
-            weeksView.ensureDateVisible(date, displayMode, rowHeight, dividerHeight)
-        }
+        isViewModeChanging = true
     }
 
     fun setSelectedDateRange(startDate: LocalDate?, duration: Duration, scrollToEnd: Boolean) {
@@ -246,8 +245,6 @@ class CalendarView : LinearLayout, OnDateSelectedListener {
         var showWeekHeadingDivider = false
 
         var selectionAccentColor = ContextCompat.getColor(context, R.color.uifabric_calendar_selected)
-
-        var isFullMode = true
 
         var monthOverlayBackgroundColor = ContextCompat.getColor(context, R.color.uifabric_calendar_month_overlay_background)
         var monthOverlayTextSize = context.resources.getDimensionPixelSize(R.dimen.uifabric_calendar_month_overlay_text_size)

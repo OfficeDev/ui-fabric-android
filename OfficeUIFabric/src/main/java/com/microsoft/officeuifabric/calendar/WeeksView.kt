@@ -114,7 +114,7 @@ internal class WeeksView : MSRecyclerView {
 
         setHasFixedSize(true)
         layoutManager = GridLayoutManager(context, DAYS_IN_WEEK, LinearLayoutManager.VERTICAL, false)
-        (layoutManager as GridLayoutManager).scrollToPosition(pickerAdapter.todayPosition)
+        layoutManager?.scrollToPosition(pickerAdapter.todayPosition)
 
         itemAnimator = null
 
@@ -133,7 +133,7 @@ internal class WeeksView : MSRecyclerView {
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr)
 
     fun ensureDateVisible(date: LocalDate?, displayMode: CalendarView.DisplayMode, rowHeight: Int, dividerHeight: Int) {
-        val date = date ?: return
+        val date = date ?: LocalDate.now()
         smoothScrollBy(0, 0)
 
         val datePosition = ChronoUnit.DAYS.between(minDate, date).toInt()
