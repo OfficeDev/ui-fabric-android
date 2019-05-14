@@ -12,6 +12,7 @@
     <dimen name="uifabric_avatar_size_large">40dp</dimen>
     <dimen name="uifabric_avatar_size_xlarge">52dp</dimen>
     <dimen name="uifabric_avatar_size_xxlarge">64dp</dimen>
+    <dimen name="uifabric_avatar_square_corner_radius">@dimen/uifabric_corner_radius_medium</dimen>
 
     <!--Button-->
     <dimen name="uifabric_button_padding_horizontal">@dimen/uifabric_content_inset</dimen>
@@ -78,6 +79,7 @@
     <!--Shared-->
     <dimen name="uifabric_divider_height">.5dp</dimen>
     <dimen name="uifabric_corner_radius_small">2dp</dimen>
+    <dimen name="uifabric_corner_radius_medium">4dp</dimen>
     <dimen name="uifabric_min_touch_size">48dp</dimen>
     <dimen name="uifabric_content_inset">16dp</dimen>
 
@@ -87,7 +89,7 @@
     <dimen name="uifabric_snackbar_action_text_wrapping_width">100dp</dimen>
     <dimen name="uifabric_snackbar_announcement_icon_size">24dp</dimen>
     <dimen name="uifabric_snackbar_background_inset">8dp</dimen>
-    <dimen name="uifabric_snackbar_background_corner_radius">4dp</dimen>
+    <dimen name="uifabric_snackbar_background_corner_radius">@dimen/uifabric_corner_radius_medium</dimen>
     <dimen name="uifabric_snackbar_content_inset">@dimen/uifabric_content_inset</dimen>
     <dimen name="uifabric_snackbar_icon_inset_regular">12dp</dimen>
 
@@ -98,6 +100,6 @@
     <dimen name="uifabric_tooltip_margin">8dp</dimen>
     <dimen name="uifabric_tooltip_padding_vertical">8dp</dimen>
     <dimen name="uifabric_tooltip_padding_horizontal">12dp</dimen>
-    <dimen name="uifabric_tooltip_radius">4dp</dimen>
+    <dimen name="uifabric_tooltip_radius">@dimen/uifabric_corner_radius_medium</dimen>
     <dimen name="uifabric_tooltip_background_padding">2dp</dimen>
 </resources>

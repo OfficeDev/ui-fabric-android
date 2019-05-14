@@ -42,7 +42,7 @@ class PersonaView : TemplateView {
     /**
      * [AvatarSize] used to set internal [AvatarView]'s layout width and height.
      */
-    var avatarSize = AvatarView.defaultAvatarSize
+    var avatarSize = AvatarView.DEFAULT_AVATAR_SIZE
         set(value) {
             if (!personaAvatarSizes.contains(value)) {
                 throw UnsupportedOperationException("""
@@ -135,7 +135,7 @@ class PersonaView : TemplateView {
     @JvmOverloads
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
         val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.PersonaView)
-        val avatarSizeOrdinal = styledAttrs.getInt(R.styleable.PersonaView_avatarSize, AvatarView.defaultAvatarSize.ordinal)
+        val avatarSizeOrdinal = styledAttrs.getInt(R.styleable.PersonaView_avatarSize, AvatarView.DEFAULT_AVATAR_SIZE.ordinal)
         avatarSize = AvatarSize.values()[avatarSizeOrdinal]
         name = styledAttrs.getString(R.styleable.PersonaView_name) ?: ""
         email = styledAttrs.getString(R.styleable.PersonaView_email) ?: ""

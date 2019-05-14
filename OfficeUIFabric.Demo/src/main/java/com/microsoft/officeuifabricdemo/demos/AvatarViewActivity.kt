@@ -6,11 +6,10 @@
 package com.microsoft.officeuifabricdemo.demos
 
 import android.os.Bundle
-import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
 import com.bumptech.glide.Glide
 import com.microsoft.officeuifabric.persona.AvatarSize
+import com.microsoft.officeuifabric.persona.AvatarStyle
 import com.microsoft.officeuifabric.persona.AvatarView
 import com.microsoft.officeuifabricdemo.DemoActivity
 import com.microsoft.officeuifabricdemo.R
@@ -25,13 +24,18 @@ class AvatarViewActivity : DemoActivity() {
         super.onCreate(savedInstanceState)
 
         // Avatar drawables with bitmap
-        loadBitmapFromPicasso(avatar_example_picasso)
-        loadBitmapFromGlide(avatar_example_glide)
-        avatar_example_local.avatarImageResourceId = R.drawable.avatar_erik_nason
+        loadBitmapFromPicasso(avatar_example_medium_photo)
+        loadBitmapFromGlide(avatar_example_large_photo)
+
+        avatar_example_xlarge_photo.avatarImageResourceId = R.drawable.avatar_erik_nason
+
+        avatar_example_small_photo.name = getString(R.string.persona_name_kat_larsson)
+        avatar_example_small_photo.email = getString(R.string.persona_email_kat_larsson)
+        avatar_example_small_photo.avatarImageResourceId = R.drawable.avatar_kat_larsson
 
         // Avatar drawable with initials
-        avatar_example_initials.name = getString(R.string.persona_name_kat_larsson)
-        avatar_example_initials.email = getString(R.string.persona_email_kat_larsson)
+        avatar_example_large_initials_square.name = getString(R.string.persona_email_henry_brill)
+        avatar_example_large_initials_square.avatarStyle = AvatarStyle.SQUARE
 
         // Add AvatarView with code
         createNewAvatarFromCode()
@@ -54,8 +58,6 @@ class AvatarViewActivity : DemoActivity() {
         avatarView.avatarSize = AvatarSize.XXLARGE
         avatarView.name = getString(R.string.persona_name_mauricio_august)
         avatarView.email = getString(R.string.persona_email_mauricio_august)
-        avatarView.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-        avatarView.id = R.id.avatar_example_code
-        avatar_layout.addView(avatarView)
+        avatar_circle_example_xxlarge.addView(avatarView)
     }
 }

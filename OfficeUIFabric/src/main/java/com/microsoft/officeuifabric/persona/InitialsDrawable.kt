@@ -18,41 +18,32 @@ import java.util.*
 /**
  * [InitialsDrawable] generates initials and background color for the AvatarView.
  */
-internal class InitialsDrawable constructor(context: Context) : Drawable() {
+internal class InitialsDrawable : Drawable {
     companion object {
         // This is the displayed value for avatars / headers when the name starts with a symbol
-        val DEFAULT_SYMBOL_HEADER = '#'
-        private val DEFAULT_INITIALS_TEXT_SIZE_RATIO = 0.4f
+        private const val DEFAULT_SYMBOL_HEADER = '#'
+        private const val DEFAULT_INITIALS_TEXT_SIZE_RATIO = 0.4f
         private var backgroundColors: IntArray? = null
 
         fun getInitials(name: String, email: String): String {
             val names = name.split(" ".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
             var initials = ""
 
-            if (names.isNotEmpty()) {
-                var i = 0
-                val size = names.size
-                while (i < size) {
-                    val partialName = names[i]
+            if (names.isNotEmpty())
+                for (partialName in names) {
                     val trimmed = partialName.trim { it <= ' ' }
                     if (trimmed.isNotEmpty() && initials.length < 2) {
                         val initial = trimmed[0]
                         // Skip this character if it's in our ignored list
-                        if (!Character.isLetterOrDigit(initial)) {
-                            ++i
+                        if (!Character.isLetterOrDigit(initial))
                             continue
-                        }
+
                         initials += initial
                     }
-                    ++i
                 }
-            }
 
-            if (initials.isEmpty() && email.length > 1) {
-                initials = email.substring(0, 1)
-            } else if (initials.isEmpty()) {
-                initials = DEFAULT_SYMBOL_HEADER.toString()
-            }
+            if (initials.isEmpty())
+                initials = if (email.length > 1) email.substring(0, 1) else DEFAULT_SYMBOL_HEADER.toString()
 
             return initials.toUpperCase(Locale.getDefault())
         }
@@ -65,6 +56,9 @@ internal class InitialsDrawable constructor(context: Context) : Drawable() {
         }
     }
 
+    var avatarStyle: AvatarStyle = AvatarStyle.SQUARE
+
+    private val context: Context
     private val paint: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val path: Path = Path()
     private val textPaint: TextPaint = TextPaint(Paint.ANTI_ALIAS_FLAG)
@@ -72,12 +66,14 @@ internal class InitialsDrawable constructor(context: Context) : Drawable() {
     private var initialsBackgroundColor: Int = 0
     private var initialsLayout: Layout? = null
 
-    init {
+    constructor(context: Context) : super() {
+        this.context = context
+
         textPaint.color = Color.WHITE
         textPaint.density = context.resources.displayMetrics.density
-        if (backgroundColors == null) {
+
+        if (backgroundColors == null)
             backgroundColors = ThemeUtil.getColors(context, R.array.uifabric_avatar_background_colors)
-        }
     }
 
     override fun draw(canvas: Canvas) {
@@ -85,11 +81,19 @@ internal class InitialsDrawable constructor(context: Context) : Drawable() {
         val height = bounds.height()
 
         path.reset()
-        path.addCircle(width / 2f, height / 2f, width / 2f, Path.Direction.CW)
+
+        when (avatarStyle) {
+            AvatarStyle.CIRCLE ->
+                path.addCircle(width / 2f, height / 2f, width / 2f, Path.Direction.CW)
+            AvatarStyle.SQUARE -> {
+                val cornerRadius = context.resources.getDimension(R.dimen.uifabric_avatar_square_corner_radius)
+                path.addRoundRect(RectF(bounds), cornerRadius, cornerRadius, Path.Direction.CW)
+            }
+        }
+
         paint.color = initialsBackgroundColor
         paint.style = Paint.Style.FILL
 
-        // Draw color circle
         canvas.drawPath(path, paint)
 
         initialsLayout?.let {
@@ -102,26 +106,25 @@ internal class InitialsDrawable constructor(context: Context) : Drawable() {
 
     override fun setBounds(left: Int, top: Int, right: Int, bottom: Int) {
         super.setBounds(left, top, right, bottom)
-        if (TextUtils.isEmpty(initials)) {
+
+        if (TextUtils.isEmpty(initials))
             return
-        }
+
         val size = right - left
         textPaint.textSize = size * DEFAULT_INITIALS_TEXT_SIZE_RATIO
 
         val boringMetrics = BoringLayout.isBoring(initials, textPaint)
 
-        if (boringMetrics != null) {
-            if (initialsLayout is BoringLayout) {
+        if (boringMetrics != null)
+            if (initialsLayout is BoringLayout)
                 initialsLayout = (initialsLayout as BoringLayout).replaceOrMake(initials, textPaint, size,
-                        Layout.Alignment.ALIGN_CENTER, 1.0f, 0.0f, boringMetrics, false)
-            } else {
+                    Layout.Alignment.ALIGN_CENTER, 1.0f, 0.0f, boringMetrics, false)
+            else
                 initialsLayout = BoringLayout.make(initials, textPaint, size,
-                        Layout.Alignment.ALIGN_CENTER, 1.0f, 0.0f, boringMetrics, false)
-            }
-        } else {
+                    Layout.Alignment.ALIGN_CENTER, 1.0f, 0.0f, boringMetrics, false)
+        else
             initialsLayout = StaticLayout(initials, textPaint, size,
-                    Layout.Alignment.ALIGN_CENTER, 1.0f, 0.0f, false)
-        }
+                Layout.Alignment.ALIGN_CENTER, 1.0f, 0.0f, false)
     }
 
     override fun setAlpha(@IntRange(from = 0, to = 255) alpha: Int) {

@@ -33,4 +33,5 @@
     <!--Tooltip-->
     <dimen name="tooltip_example_offset_x">10dp</dimen>
     <dimen name="tooltip_example_offset_y">10dp</dimen>
+    <dimen name="avatar_size_text_margin_end">36dp</dimen>
 </resources>

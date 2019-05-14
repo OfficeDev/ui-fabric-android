@@ -6,19 +6,19 @@
 package com.microsoft.officeuifabric.persona
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Canvas
-import android.graphics.Rect
+import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Handler
 import android.provider.MediaStore
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory
 import android.support.v7.widget.AppCompatImageView
 import android.util.AttributeSet
 import com.microsoft.officeuifabric.R
+
+enum class AvatarStyle {
+    CIRCLE, SQUARE
+}
 
 /**
  * [AvatarView] is a custom ImageView that displays the initials of a person on top of a colored circular
@@ -27,18 +27,20 @@ import com.microsoft.officeuifabric.R
  */
 open class AvatarView : AppCompatImageView {
     companion object {
-        internal val defaultAvatarSize = AvatarSize.LARGE
+        internal val DEFAULT_AVATAR_SIZE = AvatarSize.LARGE
+        internal val DEFAULT_AVATAR_STYLE = AvatarStyle.CIRCLE
     }
 
     @JvmOverloads
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
-        if (attrs == null)
-            return
         val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.AvatarView)
-        val avatarSizeOrdinal = styledAttrs.getInt(R.styleable.AvatarView_avatarSize, defaultAvatarSize.ordinal)
+        val avatarSizeOrdinal = styledAttrs.getInt(R.styleable.AvatarView_avatarSize, DEFAULT_AVATAR_SIZE.ordinal)
+        val avatarStyleOrdinal = styledAttrs.getInt(R.styleable.AvatarView_avatarStyle, DEFAULT_AVATAR_STYLE.ordinal)
+
         name = styledAttrs.getString(R.styleable.AvatarView_name) ?: ""
         email = styledAttrs.getString(R.styleable.AvatarView_email) ?: ""
         avatarSize = AvatarSize.values()[avatarSizeOrdinal]
+        avatarStyle = AvatarStyle.values()[avatarStyleOrdinal]
 
         val avatarImageResourceId = styledAttrs.getResourceId(R.styleable.AvatarView_avatarImageDrawable, 0)
         if (avatarImageResourceId > 0 && resources.getResourceTypeName(avatarImageResourceId) == "drawable")
@@ -47,15 +49,6 @@ open class AvatarView : AppCompatImageView {
         styledAttrs.recycle()
     }
 
-    /**
-     * [avatarSize] is a reference to a dimen. [avatarDisplaySize] is the converted int value
-     * that is used to set [AvatarView]'s layout height and width.
-     */
-    var avatarSize: AvatarSize = defaultAvatarSize
-        set(value) {
-            field = value
-            avatarDisplaySize = value.getDisplayValue(context)
-        }
     var name: String = ""
         set(value) {
             field = value
@@ -86,31 +79,72 @@ open class AvatarView : AppCompatImageView {
             field = value
             setImageURI(value)
         }
+    /**
+     * Defines the [AvatarSize] applied to the avatar's height and width.
+     */
+    var avatarSize: AvatarSize = DEFAULT_AVATAR_SIZE
+        set(value) {
+            if (field == value)
+                return
+
+            field = value
+            requestLayout()
+        }
+    /**
+     * Defines the [AvatarStyle] applied to the avatar.
+     */
+    var avatarStyle: AvatarStyle = DEFAULT_AVATAR_STYLE
+        set(value) {
+            if (field == value)
+                return
+
+            field = value
+            invalidate()
+        }
 
     private val initials = InitialsDrawable(context)
-    private var avatarDisplaySize = defaultAvatarSize.getDisplayValue(context)
+    private val avatarDisplaySize: Int
+        get() = avatarSize.getDisplayValue(context)
+    private val path: Path = Path()
 
     override fun draw(canvas: Canvas) {
-        initials.bounds = Rect(0, 0, width, height)
+        val avatarBoundsRect = Rect(0, 0, avatarDisplaySize, avatarDisplaySize)
+
+        initials.avatarStyle = avatarStyle
+        initials.bounds = avatarBoundsRect
         initials.draw(canvas)
+
+        path.reset()
+        when (avatarStyle) {
+            AvatarStyle.CIRCLE ->
+                path.addCircle(
+                    avatarBoundsRect.width() / 2f,
+                    avatarBoundsRect.height() / 2f,
+                    avatarBoundsRect.width() / 2f,
+                    Path.Direction.CW
+                )
+            AvatarStyle.SQUARE -> {
+                val cornerRadius = resources.getDimension(R.dimen.uifabric_avatar_square_corner_radius)
+                path.addRoundRect(RectF(avatarBoundsRect), cornerRadius, cornerRadius, Path.Direction.CW)
+            }
+        }
+        canvas.clipPath(path)
+
         super.draw(canvas)
     }
 
     override fun setImageDrawable(drawable: Drawable?) {
-        if (drawable is BitmapDrawable) {
+        if (drawable is BitmapDrawable)
             setImageBitmap(drawable.bitmap)
-        } else {
+        else
             super.setImageDrawable(drawable)
-        }
     }
 
     override fun setImageBitmap(bitmap: Bitmap?) {
         if (bitmap == null)
             return
 
-        val roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(resources, bitmap)
-        roundedBitmapDrawable.isCircular = true
-        super.setImageDrawable(roundedBitmapDrawable)
+        super.setImageDrawable(BitmapDrawable(resources, bitmap))
     }
 
     override fun setImageResource(resId: Int) {
@@ -145,7 +179,6 @@ open class AvatarView : AppCompatImageView {
     }
 }
 
-// TODO: See if this can be used anywhere
 fun AvatarView.setAvatar(avatar: IAvatar) {
     name = avatar.name
     email = avatar.email

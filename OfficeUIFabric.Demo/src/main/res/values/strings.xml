@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright (c) Microsoft Corporation. All rights reserved.
-  ~ Licensed under the MIT License.
-  -->
+    <!--
+      ~ Copyright (c) Microsoft Corporation. All rights reserved.
+      ~ Licensed under the MIT License.
+      -->
 
 <resources>
     <!--App-->
@@ -10,6 +10,16 @@
     <string name="app_title">UI Fabric</string>
     <string name="action_settings">Settings</string>
     <string name="title_demo_detail">Control Demo</string>
+
+    <!--AvatarView-->
+    <string name="avatar_style_circle">Circle style</string>
+    <string name="avatar_style_square">Square style</string>
+    <string name="avatar_size_xxlarge">XXLarge</string>
+    <string name="avatar_size_xlarge">XLarge</string>
+    <string name="avatar_size_large">Large</string>
+    <string name="avatar_size_medium">Medium</string>
+    <string name="avatar_size_small">Small</string>
+    <string name="avatar_size_xsmall">XSmall</string>
 
     <!--Button-->
     <string name="button">Button</string>
