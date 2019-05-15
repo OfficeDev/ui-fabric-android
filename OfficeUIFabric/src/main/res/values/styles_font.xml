@@ -70,10 +70,53 @@
         <item name="android:textColor">@color/button_text_borderless</item>
     </style>
 
+    <!--Calendar-->
+    <!--calendar_week_day_text_selector sets the colors for these-->
+    <style name="TextAppearance.UIFabric.CalendarDay" parent="TextAppearance.UIFabric.SubHeading">
+        <item name="android:textColor">@null</item>
+    </style>
+    <style name="TextAppearance.UIFabric.CalendarDay2" parent="TextAppearance.UIFabric.SubHeading2">
+        <item name="android:textColor">@null</item>
+    </style>
+
     <!--NumberPicker-->
     <style name="TextAppearance.UIFabric.NumberPicker" parent="TextAppearance.UIFabric.Heading"/>
     <style name="TextAppearance.UIFabric.NumberPicker.Selected">
         <item name="android:fontFamily">"sans-serif-medium"</item>
+    </style>
+
+    <!--PeoplePicker-->
+    <style name="TextAppearance.UIFabric.PeoplePickerLabel" parent="TextAppearance.UIFabric.SubHeading">
+        <item name="android:textColor">@color/uifabric_gray</item>
+    </style>
+    <style name="TextAppearance.UIFabric.PeoplePickerText" parent="TextAppearance.UIFabric.Heading" />
+    <style name="TextAppearance.UIFabric.PeoplePickerCountSpan" parent="TextAppearance.UIFabric.LightCaption" />
+    <style name="TextAppearance.UIFabric.PeoplePickerSearchDirectoryButton" parent="TextAppearance.UIFabric.Button.Borderless" />
+
+    <!--Persona-->
+    <style name="TextAppearance.UIFabric.PersonaTitle" parent="TextAppearance.UIFabric.SubHeading">
+        <item name="android:textColor">@color/uifabric_black</item>
+    </style>
+    <style name="TextAppearance.UIFabric.PersonaSubtitle" parent="TextAppearance.UIFabric.Body1">
+        <item name="android:textColor">@color/uifabric_gray</item>
+    </style>
+    <style name="TextAppearance.UIFabric.PersonaFooter" parent="TextAppearance.UIFabric.LightCaption" />
+
+    <!--Snackbar-->
+    <style name="TextAppearance.UIFabric.SnackbarText" parent="TextAppearance.UIFabric.Body1">
+        <item name="android:textColor">@color/uifabric_snackbar_text</item>
+    </style>
+
+    <!-- TabLayout -->
+    <style name="TextAppearance.UIFabric.Tab.Light" parent="TextAppearance.UIFabric.Body2">
+        <item name="android:textColor">@color/uifabric_tab_layout_text</item>
+        <item name="textAllCaps">true</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <!--Tooltip-->
+    <style name="TextAppearance.UIFabric.Tooltip" parent="TextAppearance.UIFabric.Body2">
+        <item name="android:textColor">@color/uifabric_tooltip_text</item>
     </style>
 
 </resources>
