@@ -9,16 +9,16 @@
     android:id="@+id/persona_chip_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:divider="@drawable/demo_divider"
     android:orientation="vertical"
-    android:padding="@dimen/default_layout_margin"
-    android:showDividers="middle">
+    android:paddingStart="@dimen/default_layout_margin"
+    android:paddingEnd="@dimen/default_layout_margin"
+    android:paddingBottom="@dimen/default_layout_margin">
 
     <TextView
+        style="@style/Widget.DemoSubHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/persona_chip_example_basic"
-        android:textAppearance="@style/TextAppearance.UIFabric.Body2" />
+        android:text="@string/persona_chip_example_basic" />
 
     <com.microsoft.officeuifabric.persona.PersonaChipView
         android:id="@+id/persona_chip_example_basic"
@@ -28,10 +28,10 @@
         app:name="@string/persona_name_mauricio_august" />
 
     <TextView
+        style="@style/Widget.DemoSubHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/persona_chip_example_no_icon"
-        android:textAppearance="@style/TextAppearance.UIFabric.Body2" />
+        android:text="@string/persona_chip_example_no_icon" />
 
     <com.microsoft.officeuifabric.persona.PersonaChipView
         android:id="@+id/persona_chip_example_no_icon"
@@ -43,10 +43,10 @@
         app:showCloseIconWhenSelected="false" />
 
     <TextView
+        style="@style/Widget.DemoSubHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/persona_chip_example_error"
-        android:textAppearance="@style/TextAppearance.UIFabric.Body2" />
+        android:text="@string/persona_chip_example_error" />
 
     <com.microsoft.officeuifabric.persona.PersonaChipView
         android:id="@+id/persona_chip_example_error"
@@ -54,5 +54,11 @@
         android:layout_height="wrap_content"
         app:email="@string/persona_email_mona_kane"
         app:name="@string/persona_name_mona_kane" />
+
+    <TextView
+        style="@style/Widget.DemoSubHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/persona_chip_example_disabled" />
 
 </LinearLayout>

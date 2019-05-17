@@ -20,12 +20,12 @@
         style="@style/TextAppearance.UIFabric.Headline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/headline_padding_bottom"
+        android:paddingBottom="@dimen/demo_headline_padding_bottom"
         android:text="@string/snackbar_headline_single_line" />
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/headline_divider_height"
+        android:layout_height="@dimen/demo_headline_divider_height"
         android:background="@drawable/ms_row_divider" />
 
     <TextView
@@ -83,12 +83,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_layout_margin"
-        android:paddingBottom="@dimen/headline_padding_bottom"
+        android:paddingBottom="@dimen/demo_headline_padding_bottom"
         android:text="@string/snackbar_headline_multiline" />
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/headline_divider_height"
+        android:layout_height="@dimen/demo_headline_divider_height"
         android:background="@drawable/ms_row_divider" />
 
     <TextView
@@ -158,12 +158,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_layout_margin"
-        android:paddingBottom="@dimen/headline_padding_bottom"
+        android:paddingBottom="@dimen/demo_headline_padding_bottom"
         android:text="@string/snackbar_headline_announcement_style" />
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/headline_divider_height"
+        android:layout_height="@dimen/demo_headline_divider_height"
         android:background="@drawable/ms_row_divider" />
 
     <TextView

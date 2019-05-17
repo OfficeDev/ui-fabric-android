@@ -127,6 +127,9 @@
     <string name="persona_subtitle_manager">Manager</string>
     <string name="persona_subtitle_researcher">Researcher</string>
     <string name="persona_truncation">\ (long text example to test truncation)</string>
+    <string name="persona_view_description_xxlarge">XXLarge avatar with three lines of text</string>
+    <string name="persona_view_description_large">Large avatar with two lines of text</string>
+    <string name="persona_view_description_small">Small avatar with one line of text</string>
 
     <!--Persona Chip-->
     <string name="persona_chip_example_disabled">Disabled Persona Chip</string>

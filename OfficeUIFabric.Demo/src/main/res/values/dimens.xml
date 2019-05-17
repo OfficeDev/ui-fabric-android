@@ -14,6 +14,9 @@
     <dimen name="cell_vertical_spacing">2dp</dimen>
     <dimen name="calendar_date_title_text_size">18sp</dimen>
 
+    <!--Avatar-->
+    <dimen name="avatar_size_text_margin_end">36dp</dimen>
+
     <!--DatePickerDialog-->
     <dimen name="date_picker_example_range_title_padding_end">4dp</dimen>
     <dimen name="date_picker_example_range_title_width">50dp</dimen>
@@ -27,11 +30,13 @@
     <dimen name="uifabric_launch_microsoft_logo_bottom_spacing">32dp</dimen>
 
     <!--Shared-->
-    <dimen name="headline_divider_height">@dimen/uifabric_divider_height</dimen>
-    <dimen name="headline_padding_bottom">4dp</dimen>
+    <dimen name="demo_headline_divider_height">@dimen/uifabric_divider_height</dimen>
+    <dimen name="demo_headline_padding_bottom">4dp</dimen>
 
     <!--Tooltip-->
     <dimen name="tooltip_example_offset_x">10dp</dimen>
     <dimen name="tooltip_example_offset_y">10dp</dimen>
-    <dimen name="avatar_size_text_margin_end">36dp</dimen>
+
+    <!--TemplateView-->
+    <dimen name="template_view_list_height">500dp</dimen>
 </resources>

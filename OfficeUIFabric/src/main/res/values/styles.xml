@@ -4,7 +4,7 @@
   ~ Licensed under the MIT License.
   -->
 
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!--UIFabric application theme-->
     <style name="Theme.UIFabric" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -28,6 +28,7 @@
         <item name="android:paddingTop">@dimen/uifabric_button_padding_vertical</item>
         <item name="android:paddingBottom">@dimen/uifabric_button_padding_vertical</item>
         <item name="android:minHeight">@dimen/uifabric_button_min_height</item>
+        <item name="android:stateListAnimator" tools:ignore="NewApi">@null</item>
     </style>
     <!--We use Borderless button style as the parent to avoid drop shadow issues in some APIs.-->
     <style name="Widget.UIFabric.Button.Borderless" parent="Widget.AppCompat.Button.Borderless">

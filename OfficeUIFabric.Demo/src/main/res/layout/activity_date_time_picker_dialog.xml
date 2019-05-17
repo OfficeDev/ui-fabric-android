@@ -19,12 +19,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/date_time_picker_example_no_duration_title"
-        android:paddingBottom="@dimen/headline_padding_bottom"
+        android:paddingBottom="@dimen/demo_headline_padding_bottom"
         style="@style/TextAppearance.UIFabric.Headline" />
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/headline_divider_height"
+        android:layout_height="@dimen/demo_headline_divider_height"
         android:layout_marginBottom="@dimen/default_layout_margin"
         android:background="@drawable/ms_row_divider" />
 
@@ -62,12 +62,12 @@
         android:layout_height="wrap_content"
         android:text="@string/date_time_picker_example_date_range_title"
         android:layout_marginTop="@dimen/default_layout_margin"
-        android:paddingBottom="@dimen/headline_padding_bottom"
+        android:paddingBottom="@dimen/demo_headline_padding_bottom"
         style="@style/TextAppearance.UIFabric.Headline" />
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/headline_divider_height"
+        android:layout_height="@dimen/demo_headline_divider_height"
         android:layout_marginBottom="@dimen/default_layout_margin"
         android:background="@drawable/ms_row_divider" />
 
@@ -140,12 +140,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/date_time_picker_example_date_time_range_title"
-        android:paddingBottom="@dimen/headline_padding_bottom"
+        android:paddingBottom="@dimen/demo_headline_padding_bottom"
         style="@style/TextAppearance.UIFabric.Headline"/>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/headline_divider_height"
+        android:layout_height="@dimen/demo_headline_divider_height"
         android:layout_marginBottom="@dimen/default_layout_margin"
         android:background="@drawable/ms_row_divider"/>
 

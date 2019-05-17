@@ -7,11 +7,8 @@ package com.microsoft.officeuifabricdemo.demos
 
 import android.os.Bundle
 import android.support.design.widget.Snackbar
-import android.support.v4.content.ContextCompat
-import android.support.v4.widget.TextViewCompat
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import android.widget.TextView
 import com.microsoft.officeuifabric.persona.PersonaChipView
 import com.microsoft.officeuifabricdemo.DemoActivity
 import com.microsoft.officeuifabricdemo.R
@@ -40,13 +37,6 @@ class PersonaChipViewActivity : DemoActivity() {
     }
 
     private fun createDisabledPersonaChip() {
-        val textView = TextView(this)
-        textView.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-        textView.text = getString(R.string.persona_chip_example_disabled)
-        TextViewCompat.setTextAppearance(textView, R.style.TextAppearance_UIFabric_Body2)
-        textView.setTextColor(ContextCompat.getColor(this, R.color.uifabric_black))
-        persona_chip_layout.addView(textView)
-
         val personaChipView = PersonaChipView(this)
         personaChipView.isEnabled = false
         personaChipView.name = resources.getString(R.string.persona_name_kat_larsson)

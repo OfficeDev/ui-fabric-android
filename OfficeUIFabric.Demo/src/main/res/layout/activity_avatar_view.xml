@@ -19,12 +19,12 @@
         style="@style/TextAppearance.UIFabric.Headline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/headline_padding_bottom"
+        android:paddingBottom="@dimen/demo_headline_padding_bottom"
         android:text="@string/avatar_style_circle" />
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/headline_divider_height"
+        android:layout_height="@dimen/demo_headline_divider_height"
         android:background="@drawable/ms_row_divider" />
 
     <TableLayout
@@ -189,12 +189,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_layout_margin"
-        android:paddingBottom="@dimen/headline_padding_bottom"
+        android:paddingBottom="@dimen/demo_headline_padding_bottom"
         android:text="@string/avatar_style_square" />
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/headline_divider_height"
+        android:layout_height="@dimen/demo_headline_divider_height"
         android:background="@drawable/ms_row_divider" />
 
     <TableLayout

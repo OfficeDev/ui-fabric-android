@@ -16,12 +16,12 @@
         style="@style/TextAppearance.UIFabric.Headline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/headline_padding_bottom"
+        android:paddingBottom="@dimen/demo_headline_padding_bottom"
         android:text="@string/button" />
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/headline_divider_height"
+        android:layout_height="@dimen/demo_headline_divider_height"
         android:layout_marginBottom="@dimen/default_layout_margin"
         android:background="@drawable/ms_row_divider" />
 

@@ -45,17 +45,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:showDividers="middle"
+            android:divider="@drawable/demo_divider"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.DemoDescription"
                 android:text="@string/template_list" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/template_list_view"
                 android:layout_width="match_parent"
-                android:layout_height="500dp"
+                android:layout_height="@dimen/template_view_list_height"
                 android:layout_marginTop="@dimen/cell_vertical_spacing"
                 android:scrollbars="vertical" />
 
@@ -75,17 +78,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:showDividers="middle"
+            android:divider="@drawable/demo_divider"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.DemoDescription"
                 android:text="@string/regular_list" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/regular_list_view"
                 android:layout_width="match_parent"
-                android:layout_height="500dp"
+                android:layout_height="@dimen/template_view_list_height"
                 android:layout_marginTop="@dimen/cell_vertical_spacing"
                 android:scrollbars="vertical" />
 

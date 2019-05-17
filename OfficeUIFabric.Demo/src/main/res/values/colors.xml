@@ -17,8 +17,15 @@
     <color name="uifabric_primary_light">@color/uifabric_demo_primary_light</color>
     <color name="uifabric_primary_extra_light">@color/uifabric_demo_primary_extra_light</color>
 
+    <!--Demo other-->
+    <color name="demo_background">@color/uifabric_white</color>
+
+    <!--Calendar-->
     <color name="calendar_selected_date_text">#E1E1E1</color>
     <color name="calendar_selected_date_background">#333</color>
 
-    <color name="demo_list_background">@color/uifabric_white</color>
+    <!--TemplateView-->
+    <color name="template_view_cell_background_vertical">@color/uifabric_background_gray</color>
+    <color name="template_view_cell_background_horizontal">@color/uifabric_primary_extra_light</color>
+
 </resources>

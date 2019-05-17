@@ -9,8 +9,15 @@
     android:id="@+id/persona_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingTop="@dimen/default_layout_margin">
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/Widget.DemoSubHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_layout_margin"
+        android:layout_marginEnd="@dimen/default_layout_margin"
+        android:text="@string/persona_view_description_xxlarge" />
 
     <com.microsoft.officeuifabric.persona.PersonaView
         android:id="@+id/persona_example_xxlarge"
@@ -22,6 +29,14 @@
         app:name="@string/persona_name_kat_larsson"
         app:subtitle="@string/persona_email_kat_larsson" />
 
+    <TextView
+        style="@style/Widget.DemoSubHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_layout_margin"
+        android:layout_marginEnd="@dimen/default_layout_margin"
+        android:text="@string/persona_view_description_large" />
+
     <com.microsoft.officeuifabric.persona.PersonaView
         android:id="@+id/persona_example_large"
         android:layout_width="wrap_content"
@@ -31,5 +46,13 @@
         app:email="@string/persona_email_mauricio_august"
         app:name="@string/persona_name_mauricio_august"
         app:subtitle="@string/persona_email_mauricio_august" />
+
+    <TextView
+        style="@style/Widget.DemoSubHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_layout_margin"
+        android:layout_marginEnd="@dimen/default_layout_margin"
+        android:text="@string/persona_view_description_small" />
 
 </LinearLayout>

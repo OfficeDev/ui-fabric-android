@@ -11,7 +11,6 @@
     android:name="com.microsoft.officeuifabricdemo.DemoListFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/demo_list_background"
     app:layoutManager="LinearLayoutManager"
     tools:context=".DemoListActivity"
     tools:listitem="@layout/demo_list_content" />
