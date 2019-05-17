@@ -5,7 +5,8 @@
 
 package com.microsoft.officeuifabric.snackbar
 
-import android.support.annotation.DrawableRes
+import android.content.Context
+import android.os.Build
 import android.support.design.widget.BaseTransientBottomBar
 import android.support.design.widget.CoordinatorLayout
 import android.support.v4.content.ContextCompat
@@ -14,7 +15,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.microsoft.officeuifabric.R
@@ -25,7 +25,8 @@ import kotlinx.android.synthetic.main.view_snackbar.view.*
  * Snackbars provide lightweight feedback about an operation by showing a brief message at the bottom of the screen.
  * [Snackbar] can contain a custom action or use a style geared towards making special announcements to your users
  * in addition to custom text and duration.
- * To use a snackbar with a FAB, it is recommended that your parent layout be a CoordinatorLayout.
+ *
+ * To use a Snackbar with a FAB, it is recommended that your parent layout be a CoordinatorLayout.
  */
 class Snackbar : BaseTransientBottomBar<Snackbar> {
     companion object {
@@ -34,7 +35,7 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
         const val LENGTH_LONG: Int = BaseTransientBottomBar.LENGTH_LONG
 
         /**
-         * Use [make] to create your snackbar and attach it to a given [view]'s parent.
+         * Use [make] to create your Snackbar and attach it to a given [view]'s parent.
          */
         fun make(view: View, text: CharSequence, duration: Int = LENGTH_SHORT, style: Style = Style.REGULAR): Snackbar {
             val parent = findSuitableParent(view) ?:
@@ -42,7 +43,7 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
             val content = LayoutInflater.from(parent.context).inflate(R.layout.view_snackbar, parent, false)
             val snackbar = Snackbar(parent, content, ContentViewCallback(content))
             snackbar.duration = duration
-            snackbar.style = style
+            snackbar.setStyle(style)
             snackbar.setText(text)
             return snackbar
         }
@@ -79,6 +80,20 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
     }
 
     /**
+     * Defines the height and width applied to the Snackbar's [customView].
+     */
+    enum class CustomViewSize(private val id: Int) {
+        SMALL(R.dimen.uifabric_snackbar_custom_view_size_small),
+        MEDIUM(R.dimen.uifabric_snackbar_custom_view_size_medium);
+
+        /**
+         * This method uses [context] to convert the [id] resource into an Int that becomes
+         * [Snackbar.customView]'s layout width and height
+         */
+        fun getDimension(context: Context): Int = context.resources.getDimension(id).toInt()
+    }
+
+    /**
      * Defines which style can be applied to the Snackbar.
      * Includes background color, text color, and action button placement.
      */
@@ -86,27 +101,27 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
         REGULAR, ANNOUNCEMENT
     }
 
-    /**
-     * Defines which [Style] is applied to the Snackbar.
-     */
-    var style: Style = Style.REGULAR
-        set(value) {
-            if (field == value)
-                return
-            field = value
-            updateStyle()
-            updateBackground()
-        }
-
+    private val snackbarContainer: RelativeLayout = view.snackbar_container
+    private var customView: View? = null
     private val textView: TextView = view.snackbar_text
     private val actionButtonView: AppCompatButton = view.snackbar_action
-    private val iconImageView: ImageView = view.snackbar_icon
+
+    private var customViewSize: CustomViewSize = CustomViewSize.SMALL
+    private var style: Style = Style.REGULAR
+
+    private val customViewVerticalMargin: Int
+        get() = when(customViewSize) {
+            CustomViewSize.SMALL ->
+                context.resources.getDimension(R.dimen.uifabric_snackbar_custom_view_margin_vertical_small).toInt()
+            CustomViewSize.MEDIUM ->
+                context.resources.getDimension(R.dimen.uifabric_snackbar_custom_view_margin_vertical_medium).toInt()
+        }
 
     private constructor(parent: ViewGroup, content: View, contentViewCallback: ContentViewCallback) : super(parent, content, contentViewCallback) {
         updateBackground()
 
         // Set the margin on the FrameLayout (SnackbarLayout) instead of the content because the content's bottom margin is buggy in some APIs.
-        if (content.parent is FrameLayout) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && content.parent is FrameLayout) {
             val lp = content.layoutParams as FrameLayout.LayoutParams
             lp.bottomMargin = context.resources.getDimension(R.dimen.uifabric_snackbar_background_inset).toInt()
             content.layoutParams = lp
@@ -114,7 +129,7 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
     }
 
     /**
-     * Use [setText] to set or update text on a snackbar.
+     * Use [setText] to set or update text on a Snackbar.
      */
     fun setText(text: CharSequence): Snackbar {
         textView.text = text
@@ -124,7 +139,7 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
     }
 
     /**
-     * Use [setAction] to add a button to your snackbar to prompt a user action.
+     * Use [setAction] to add a button to your Snackbar to prompt a user action.
      */
     fun setAction(text: CharSequence, listener: View.OnClickListener): Snackbar {
         actionButtonView.text = text
@@ -140,12 +155,44 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
     }
 
     /**
-     * Use [setIcon] to add an icon from an [iconResourceId] to the start of the snackbar.
+     * Use [setCustomView] to add or update an icon or other custom view at the start of the Snackbar.
      */
-    fun setIcon(@DrawableRes iconResourceId: Int): Snackbar {
-        iconImageView.setImageDrawable(ContextCompat.getDrawable(context, iconResourceId))
-        iconImageView.visibility = View.VISIBLE
+    fun setCustomView(customView: View?, customViewSize: CustomViewSize = CustomViewSize.SMALL): Snackbar {
+        snackbarContainer.removeView(this.customView)
+
+        this.customView = customView
+        this.customView?.id = uifabric_snackbar_custom_view
+        this.customViewSize = customViewSize
+
+        updateCustomViewLayoutParams()
+
+        if (this.customView != null)
+            snackbarContainer.addView(this.customView, 0)
+
+        updateStyle()
+
         return this
+    }
+
+    /**
+     * Defines which [Style] is applied to the Snackbar.
+     */
+    fun setStyle(style: Style): Snackbar {
+        if (this.style == style)
+            return this
+
+        this.style = style
+        updateStyle()
+        updateBackground()
+        return this
+    }
+
+    private fun updateCustomViewLayoutParams() {
+        val size = customViewSize.getDimension(context)
+        val lp = RelativeLayout.LayoutParams(size, size)
+        lp.addRule(RelativeLayout.CENTER_VERTICAL)
+        lp.marginStart = context.resources.getDimension(R.dimen.uifabric_snackbar_custom_view_margin_start).toInt()
+        customView?.layoutParams = lp
     }
 
     private fun updateBackground() {
@@ -158,24 +205,26 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
     private fun updateStyle() {
         layoutTextAndActionButton()
 
-        val iconImageViewLayoutParams = iconImageView.layoutParams as RelativeLayout.LayoutParams
+        val customViewLayoutParams = customView?.layoutParams as? RelativeLayout.LayoutParams
+
         when (style) {
             Style.REGULAR -> {
                 actionButtonView.setTextColor(ContextCompat.getColor(context, R.color.uifabric_snackbar_action_text))
-                iconImageViewLayoutParams.topMargin = context.resources.getDimension(R.dimen.uifabric_snackbar_icon_inset_regular).toInt()
-                iconImageViewLayoutParams.addRule(RelativeLayout.CENTER_VERTICAL)
+                customViewLayoutParams?.addRule(RelativeLayout.CENTER_VERTICAL)
             }
             Style.ANNOUNCEMENT -> {
                 actionButtonView.setTextColor(ContextCompat.getColor(context, R.color.uifabric_snackbar_action_text_announcement))
-                iconImageViewLayoutParams.topMargin = context.resources.getDimension(R.dimen.uifabric_snackbar_content_inset).toInt()
-                iconImageViewLayoutParams.removeRule(RelativeLayout.CENTER_VERTICAL)
+                customViewLayoutParams?.removeRule(RelativeLayout.CENTER_VERTICAL)
             }
         }
-        iconImageView.layoutParams = iconImageViewLayoutParams
+
+        customViewLayoutParams?.topMargin = customViewVerticalMargin
+        customViewLayoutParams?.bottomMargin = customViewVerticalMargin
+        customView?.layoutParams = customViewLayoutParams
     }
 
     private fun layoutTextAndActionButton() {
-        val inset = context.resources.getDimension(R.dimen.uifabric_snackbar_content_inset).toInt()
+        val contentInset = context.resources.getDimension(R.dimen.uifabric_snackbar_content_inset).toInt()
         val textLayoutParams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
         val buttonLayoutParams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
 
@@ -184,24 +233,33 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
             // Action button moves to the bottom of the root view
             textLayoutParams.removeRule(RelativeLayout.START_OF)
             textLayoutParams.removeRule(RelativeLayout.CENTER_VERTICAL)
-            textLayoutParams.marginEnd = inset
+            textLayoutParams.marginEnd = contentInset
             buttonLayoutParams.addRule(RelativeLayout.BELOW, snackbar_text)
-            actionButtonView.setPaddingRelative(inset, inset, inset, inset)
+            actionButtonView.setPaddingRelative(contentInset, contentInset, contentInset, contentInset)
         } else {
             // Action button moves to the end of the text view
             textLayoutParams.addRule(RelativeLayout.START_OF, snackbar_action)
             textLayoutParams.addRule(RelativeLayout.CENTER_VERTICAL)
-            textLayoutParams.bottomMargin = inset
+            textLayoutParams.bottomMargin = contentInset
             if (actionButtonView.text.isNullOrEmpty())
-                textLayoutParams.marginEnd = inset
+                textLayoutParams.marginEnd = contentInset
             buttonLayoutParams.removeRule(RelativeLayout.BELOW)
-            actionButtonView.setPaddingRelative(context.resources.getDimension(R.dimen.uifabric_snackbar_action_spacing).toInt(), inset, inset, inset)
+            actionButtonView.setPaddingRelative(
+                context.resources.getDimension(R.dimen.uifabric_snackbar_action_spacing).toInt(),
+                contentInset,
+                contentInset,
+                contentInset
+            )
         }
 
-        textLayoutParams.addRule(RelativeLayout.END_OF, snackbar_icon)
+        if (customView != null)
+            textLayoutParams.addRule(RelativeLayout.END_OF, uifabric_snackbar_custom_view)
+        else
+            textLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_START)
+
         textLayoutParams.alignWithParent = true
-        textLayoutParams.marginStart = inset
-        textLayoutParams.topMargin = inset
+        textLayoutParams.marginStart = contentInset
+        textLayoutParams.topMargin = contentInset
         textView.layoutParams = textLayoutParams
 
         buttonLayoutParams.addRule(RelativeLayout.CENTER_VERTICAL)
@@ -211,7 +269,7 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
 
     private class ContentViewCallback(private val content: View) : BaseTransientBottomBar.ContentViewCallback {
         override fun animateContentIn(delay: Int, duration: Int) {
-            // These animations are from the Android snackbar
+            // These animations are from the Android Snackbar
             content.snackbar_text.alpha = 0f
             content.snackbar_text.animate().alpha(1f).setDuration(duration.toLong()).setStartDelay(delay.toLong()).start()
 
@@ -222,7 +280,7 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
         }
 
         override fun animateContentOut(delay: Int, duration: Int) {
-            // These animations are from the Android snackbar
+            // These animations are from the Android Snackbar
             content.snackbar_text.alpha = 1f
             content.snackbar_text.animate().alpha(0f).setDuration(duration.toLong()).setStartDelay(delay.toLong()).start()
 

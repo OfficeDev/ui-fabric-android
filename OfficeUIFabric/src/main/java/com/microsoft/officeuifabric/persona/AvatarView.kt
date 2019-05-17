@@ -10,7 +10,6 @@ import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.net.Uri
-import android.os.Handler
 import android.provider.MediaStore
 import android.support.v7.widget.AppCompatImageView
 import android.util.AttributeSet
@@ -174,7 +173,7 @@ open class AvatarView : AppCompatImageView {
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         layoutParams.width = avatarDisplaySize
         layoutParams.height = avatarDisplaySize
-        Handler().post { requestLayout() }
+
         super.onSizeChanged(w, h, oldw, oldh)
     }
 }

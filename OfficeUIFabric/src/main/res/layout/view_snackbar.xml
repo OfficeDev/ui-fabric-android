@@ -5,17 +5,10 @@
   -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/snackbar_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:minHeight="@dimen/uifabric_min_touch_size">
-
-    <ImageView
-        android:id="@+id/snackbar_icon"
-        android:layout_width="@dimen/uifabric_snackbar_announcement_icon_size"
-        android:layout_height="@dimen/uifabric_snackbar_announcement_icon_size"
-        android:layout_gravity="center_vertical|start"
-        android:layout_marginStart="@dimen/uifabric_snackbar_content_inset"
-        android:visibility="gone" />
 
     <TextView
         android:id="@+id/snackbar_text"

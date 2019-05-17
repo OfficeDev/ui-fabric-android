@@ -9,4 +9,5 @@
     <item name="uifabric_calendar_view_action_goto_next_week" type="id" />
     <item name="uifabric_number_picker_increment" type="id" />
     <item name="uifabric_number_picker_decrement" type="id" />
+    <item name="uifabric_snackbar_custom_view" type="id" />
 </resources>

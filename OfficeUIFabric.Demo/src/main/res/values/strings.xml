@@ -153,14 +153,14 @@
         Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
     <string name="snackbar_announcement">This is an announcement snackbar. It’s used for communicating new features.</string>
     <string name="snackbar_description_single_line">Short duration</string>
-    <string name="snackbar_description_single_line_icon">With icon, short duration</string>
-    <string name="snackbar_description_single_line_action">With action, short duration</string>
-    <string name="snackbar_description_single_line_action_icon">With action and icon, short duration</string>
+    <string name="snackbar_description_single_line_custom_view">Short duration with medium custom view</string>
+    <string name="snackbar_description_single_line_action">Short duration with action</string>
+    <string name="snackbar_description_single_line_action_custom_view">Short duration with action and small custom view</string>
     <string name="snackbar_description_multiline">Long duration</string>
-    <string name="snackbar_description_multiline_icon">With icon, long duration</string>
-    <string name="snackbar_description_multiline_action">With action, indefinite duration, text updates</string>
-    <string name="snackbar_description_multiline_action_icon">With action and icon, short duration</string>
-    <string name="snackbar_description_multiline_action_long">With long action text, short duration</string>
+    <string name="snackbar_description_multiline_custom_view">Long duration with small custom view</string>
+    <string name="snackbar_description_multiline_action">Indefinite duration with action and text updates</string>
+    <string name="snackbar_description_multiline_action_custom_view">Short duration with action and medium custom view</string>
+    <string name="snackbar_description_multiline_action_long">Short duration with long action text</string>
     <string name="snackbar_description_announcement">Short duration</string>
     <string name="snackbar_description_updated">This text has been updated.</string>
     <string name="snackbar_button_show">Show Snackbar</string>
