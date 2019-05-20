@@ -20,8 +20,8 @@
   <string name="date_time_picker_end_time">Päättymisaika</string>
   <string name="date_time_picker_start_date">Alkamispäivä</string>
   <string name="date_time_picker_end_date">Päättymispäivä</string>
-  <string name="date_time_picker_choose_time">Valitse aika</string>
-  <string name="date_time_picker_choose_date">Valitse päivämäärä</string>
+  <string name="date_time_picker_choose_time">Choose Time</string>
+  <string name="date_time_picker_choose_date">Choose Date</string>
   <string name="date_time_picker_accessibility_dialog_title">Päivämäärän ja ajan valitsin</string>
   <string name="date_picker_accessibility_dialog_title">Päivämäärän valitsin</string>
   <string name="date_time_picker_range_accessibility_dialog_title">Päivämäärän ja ajan valitsimen alue</string>

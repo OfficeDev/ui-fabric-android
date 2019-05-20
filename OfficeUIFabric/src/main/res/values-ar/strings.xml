@@ -20,8 +20,8 @@
   <string name="date_time_picker_end_time">وقت الانتهاء</string>
   <string name="date_time_picker_start_date">تاريخ البدء</string>
   <string name="date_time_picker_end_date">تاريخ الانتهاء</string>
-  <string name="date_time_picker_choose_time">اختيار الوقت</string>
-  <string name="date_time_picker_choose_date">اختيار التاريخ</string>
+  <string name="date_time_picker_choose_time">Choose Time</string>
+  <string name="date_time_picker_choose_date">Choose Date</string>
   <string name="date_time_picker_accessibility_dialog_title">منتقي التاريخ والوقت</string>
   <string name="date_picker_accessibility_dialog_title">منتقي التاريخ</string>
   <string name="date_time_picker_range_accessibility_dialog_title">نطاق منتقي التاريخ الوقت</string>

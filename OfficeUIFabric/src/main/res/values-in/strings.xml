@@ -20,8 +20,8 @@
   <string name="date_time_picker_end_time">Waktu selesai</string>
   <string name="date_time_picker_start_date">Tanggal mulai</string>
   <string name="date_time_picker_end_date">Tanggal selesai</string>
-  <string name="date_time_picker_choose_time">Pilih waktu</string>
-  <string name="date_time_picker_choose_date">Pilih tanggal</string>
+  <string name="date_time_picker_choose_time">Choose Time</string>
+  <string name="date_time_picker_choose_date">Choose Date</string>
   <string name="date_time_picker_accessibility_dialog_title">Pemilih Tanggal Waktu</string>
   <string name="date_picker_accessibility_dialog_title">Pemilih Tanggal</string>
   <string name="date_time_picker_range_accessibility_dialog_title">Rentang Pemilih Tanggal Waktu</string>

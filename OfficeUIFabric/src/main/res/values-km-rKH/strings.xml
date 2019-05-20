@@ -20,8 +20,8 @@
   <string name="date_time_picker_end_time">ពេលវេលាបញ្ចប់</string>
   <string name="date_time_picker_start_date">កាលបរិច្ឆេទចាប់ផ្តើម</string>
   <string name="date_time_picker_end_date">កាលបរិច្ឆេទបញ្ចប់</string>
-  <string name="date_time_picker_choose_time">ជ្រើសរើសពេលវេលា</string>
-  <string name="date_time_picker_choose_date">ជ្រើសរើសកាលបរិច្ឆេទ</string>
+  <string name="date_time_picker_choose_time">Choose Time</string>
+  <string name="date_time_picker_choose_date">Choose Date</string>
   <string name="date_time_picker_accessibility_dialog_title">ផ្ទាំងជ្រើសរើសកាលបរិច្ឆេទពេលវេលា</string>
   <string name="date_picker_accessibility_dialog_title">ផ្ទាំងជ្រើសរើសកាលបរិច្ឆេទ</string>
   <string name="date_time_picker_range_accessibility_dialog_title">លំដាប់ផ្ទាំងជ្រើសរើសកាលបរិច្ឆេទពេលវេលា</string>

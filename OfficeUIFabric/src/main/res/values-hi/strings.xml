@@ -20,8 +20,8 @@
   <string name="date_time_picker_end_time">समाप्ति समय</string>
   <string name="date_time_picker_start_date">प्रारंभ दिनांक</string>
   <string name="date_time_picker_end_date">समाप्ति दिनांक</string>
-  <string name="date_time_picker_choose_time">समय चुनें</string>
-  <string name="date_time_picker_choose_date">दिनांक चुनें</string>
+  <string name="date_time_picker_choose_time">Choose Time</string>
+  <string name="date_time_picker_choose_date">Choose Date</string>
   <string name="date_time_picker_accessibility_dialog_title">दिनांक समय पिकर</string>
   <string name="date_picker_accessibility_dialog_title">दिनांक पिकर</string>
   <string name="date_time_picker_range_accessibility_dialog_title">दिनांक समय पिकर श्रेणी</string>

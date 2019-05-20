@@ -20,8 +20,8 @@
   <string name="date_time_picker_end_time">Thời gian kết thúc</string>
   <string name="date_time_picker_start_date">Ngày bắt đầu</string>
   <string name="date_time_picker_end_date">Ngày kết thúc</string>
-  <string name="date_time_picker_choose_time">Chọn thời gian</string>
-  <string name="date_time_picker_choose_date">Chọn ngày</string>
+  <string name="date_time_picker_choose_time">Choose Time</string>
+  <string name="date_time_picker_choose_date">Choose Date</string>
   <string name="date_time_picker_accessibility_dialog_title">Bộ chọn ngày giờ</string>
   <string name="date_picker_accessibility_dialog_title">Bộ chọn ngày</string>
   <string name="date_time_picker_range_accessibility_dialog_title">Phạm vi bộ chọn ngày giờ</string>

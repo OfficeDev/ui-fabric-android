@@ -20,8 +20,8 @@
   <string name="date_time_picker_end_time">Bitiş saati</string>
   <string name="date_time_picker_start_date">Başlangıç tarihi</string>
   <string name="date_time_picker_end_date">Bitiş tarihi</string>
-  <string name="date_time_picker_choose_time">Saat seçin</string>
-  <string name="date_time_picker_choose_date">Tarih seçin</string>
+  <string name="date_time_picker_choose_time">Choose Time</string>
+  <string name="date_time_picker_choose_date">Choose Date</string>
   <string name="date_time_picker_accessibility_dialog_title">Tarih Saat Seçici</string>
   <string name="date_picker_accessibility_dialog_title">Tarih Seçici</string>
   <string name="date_time_picker_range_accessibility_dialog_title">Tarih Saat Seçici Aralığı</string>

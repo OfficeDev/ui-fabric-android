@@ -20,8 +20,8 @@
   <string name="date_time_picker_end_time">Lokatími</string>
   <string name="date_time_picker_start_date">Upphafsdagur</string>
   <string name="date_time_picker_end_date">Lokadagur</string>
-  <string name="date_time_picker_choose_time">Veldu tíma</string>
-  <string name="date_time_picker_choose_date">Veldu dagsetningu</string>
+  <string name="date_time_picker_choose_time">Choose Time</string>
+  <string name="date_time_picker_choose_date">Choose Date</string>
   <string name="date_time_picker_accessibility_dialog_title">Val á dagsetningu og tíma</string>
   <string name="date_picker_accessibility_dialog_title">Dagsetningarval</string>
   <string name="date_time_picker_range_accessibility_dialog_title">Svið dagsetningar og tíma</string>

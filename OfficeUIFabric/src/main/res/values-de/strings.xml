@@ -20,8 +20,8 @@
   <string name="date_time_picker_end_time">Endzeit</string>
   <string name="date_time_picker_start_date">Startdatum</string>
   <string name="date_time_picker_end_date">Enddatum</string>
-  <string name="date_time_picker_choose_time">Zeit auswählen</string>
-  <string name="date_time_picker_choose_date">Datum auswählen</string>
+  <string name="date_time_picker_choose_time">Choose Time</string>
+  <string name="date_time_picker_choose_date">Choose Date</string>
   <string name="date_time_picker_accessibility_dialog_title">Datums-/Zeitauswahl</string>
   <string name="date_picker_accessibility_dialog_title">Datumsauswahl</string>
   <string name="date_time_picker_range_accessibility_dialog_title">Datums-/Zeitauswahlbereich</string>

@@ -20,8 +20,8 @@
   <string name="date_time_picker_end_time">Време завршетка</string>
   <string name="date_time_picker_start_date">Датум почетка</string>
   <string name="date_time_picker_end_date">Датум завршетка</string>
-  <string name="date_time_picker_choose_time">Одаберите време</string>
-  <string name="date_time_picker_choose_date">Одаберите датум</string>
+  <string name="date_time_picker_choose_time">Choose Time</string>
+  <string name="date_time_picker_choose_date">Choose Date</string>
   <string name="date_time_picker_accessibility_dialog_title">Бирач датума и времена</string>
   <string name="date_picker_accessibility_dialog_title">Бирач датума</string>
   <string name="date_time_picker_range_accessibility_dialog_title">Опсег бирача датума и времена</string>

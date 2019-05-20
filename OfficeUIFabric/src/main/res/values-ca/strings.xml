@@ -20,8 +20,8 @@
   <string name="date_time_picker_end_time">Hora de finalització</string>
   <string name="date_time_picker_start_date">Data d\'inici</string>
   <string name="date_time_picker_end_date">Data de finalització</string>
-  <string name="date_time_picker_choose_time">Tria l\'hora</string>
-  <string name="date_time_picker_choose_date">Tria la data</string>
+  <string name="date_time_picker_choose_time">Choose Time</string>
+  <string name="date_time_picker_choose_date">Choose Date</string>
   <string name="date_time_picker_accessibility_dialog_title">Selector de data i hora</string>
   <string name="date_picker_accessibility_dialog_title">Selector de data</string>
   <string name="date_time_picker_range_accessibility_dialog_title">Interval del selector de data i hora</string>

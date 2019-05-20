@@ -31,7 +31,7 @@ internal class WeekHeadingView : LinearLayout {
 
         var dayOfWeek = PreferencesManager.getWeekStart(context)
 
-        val headingTextAppearance = R.style.TextAppearance_UIFabric_CalendarDay2
+        val headingTextAppearance = R.style.TextAppearance_UIFabric_WeekDayHeader
 
         val weekDayHeadingColor = config.weekdayHeadingTextColor
         val weekendHeadingColor = config.weekendHeadingTextColor
@@ -42,15 +42,13 @@ internal class WeekHeadingView : LinearLayout {
             TextViewCompat.setTextAppearance(textView, headingTextAppearance)
             textView.text = strDayOfWeek[dayOfWeek.value - 1]
 
-            if (DayOfWeek.SATURDAY == dayOfWeek || DayOfWeek.SUNDAY == dayOfWeek) {
+            if (DayOfWeek.SATURDAY == dayOfWeek || DayOfWeek.SUNDAY == dayOfWeek)
                 textView.setTextColor(weekendHeadingColor)
-            } else {
+            else
                 textView.setTextColor(weekDayHeadingColor)
-            }
 
             textView.gravity = Gravity.CENTER
-            textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, config.weekHeadingTextSize.toFloat())
-            addView(textView, LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1.0f))
+            addView(textView, LayoutParams(0, LayoutParams.MATCH_PARENT, 1.0f))
 
             dayOfWeek = dayOfWeek.plus(1)
         }
@@ -64,7 +62,7 @@ internal class WeekHeadingView : LinearLayout {
     public override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(
             widthMeasureSpec,
-            View.MeasureSpec.makeMeasureSpec(config.weekHeadingHeight, View.MeasureSpec.EXACTLY)
+            MeasureSpec.makeMeasureSpec(config.weekHeadingHeight, View.MeasureSpec.EXACTLY)
         )
     }
 }

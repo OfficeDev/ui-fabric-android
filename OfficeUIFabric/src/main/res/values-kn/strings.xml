@@ -20,8 +20,8 @@
   <string name="date_time_picker_end_time">ಅಂತ್ಯ ಸಮಯ</string>
   <string name="date_time_picker_start_date">ಆರಂಭದ ದಿನಾಂಕ</string>
   <string name="date_time_picker_end_date">ಅಂತ್ಯ ದಿನಾಂಕ</string>
-  <string name="date_time_picker_choose_time">ಸಮಯ ಆರಿಸಿ</string>
-  <string name="date_time_picker_choose_date">ದಿನಾಂಕ ಆರಿಸಿ</string>
+  <string name="date_time_picker_choose_time">Choose Time</string>
+  <string name="date_time_picker_choose_date">Choose Date</string>
   <string name="date_time_picker_accessibility_dialog_title">ದಿನಾಂಕ ಸಮಯ ಪಿಕ್ಕರ್</string>
   <string name="date_picker_accessibility_dialog_title">ದಿನಾಂಕ ಪಿಕ್ಕರ್</string>
   <string name="date_time_picker_range_accessibility_dialog_title">ದಿನಾಂಕ ಸಮಯ ಪಿಕ್ಕರ್ ಶ್ರೇಣಿ</string>

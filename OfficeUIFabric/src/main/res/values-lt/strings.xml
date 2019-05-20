@@ -20,8 +20,8 @@
   <string name="date_time_picker_end_time">Pabaigos laikas</string>
   <string name="date_time_picker_start_date">Pradžios data</string>
   <string name="date_time_picker_end_date">Pabaigos data</string>
-  <string name="date_time_picker_choose_time">Pasirinkite laiką</string>
-  <string name="date_time_picker_choose_date">Pasirinkite datą</string>
+  <string name="date_time_picker_choose_time">Choose Time</string>
+  <string name="date_time_picker_choose_date">Choose Date</string>
   <string name="date_time_picker_accessibility_dialog_title">Datos/laiko parinkiklis</string>
   <string name="date_picker_accessibility_dialog_title">Datos parinkiklis</string>
   <string name="date_time_picker_range_accessibility_dialog_title">Datos/laiko parinkiklio diapazonas</string>

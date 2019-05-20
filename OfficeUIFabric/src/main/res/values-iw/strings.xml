@@ -20,8 +20,8 @@
   <string name="date_time_picker_end_time">שעת סיום</string>
   <string name="date_time_picker_start_date">תאריך התחלה</string>
   <string name="date_time_picker_end_date">תאריך סיום</string>
-  <string name="date_time_picker_choose_time">בחר שעה</string>
-  <string name="date_time_picker_choose_date">בחר תאריך</string>
+  <string name="date_time_picker_choose_time">Choose Time</string>
+  <string name="date_time_picker_choose_date">Choose Date</string>
   <string name="date_time_picker_accessibility_dialog_title">בורר תאריכים ושעות</string>
   <string name="date_picker_accessibility_dialog_title">בורר תאריכים</string>
   <string name="date_time_picker_range_accessibility_dialog_title">טווח בורר תאריכים ושעות</string>

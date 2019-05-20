@@ -20,8 +20,8 @@
   <string name="date_time_picker_end_time">முடிவு நேரம்</string>
   <string name="date_time_picker_start_date">தொடக்கத் தேதி</string>
   <string name="date_time_picker_end_date">முடிவுத் தேதி</string>
-  <string name="date_time_picker_choose_time">நேரத்தைத் தேர்வுசெய்க</string>
-  <string name="date_time_picker_choose_date">தேதியைத் தேர்வுசெய்க</string>
+  <string name="date_time_picker_choose_time">Choose Time</string>
+  <string name="date_time_picker_choose_date">Choose Date</string>
   <string name="date_time_picker_accessibility_dialog_title">தேதி நேர தேர்வி</string>
   <string name="date_picker_accessibility_dialog_title">தேதித் தேர்வி</string>
   <string name="date_time_picker_range_accessibility_dialog_title">தேதி நேர தேர்வி வரம்பு</string>

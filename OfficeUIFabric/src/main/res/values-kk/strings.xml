@@ -20,8 +20,8 @@
   <string name="date_time_picker_end_time">Аяқталу уақыты</string>
   <string name="date_time_picker_start_date">Басталу күні</string>
   <string name="date_time_picker_end_date">Аяқталу күні</string>
-  <string name="date_time_picker_choose_time">Уақытты таңдаңыз</string>
-  <string name="date_time_picker_choose_date">Күнді таңдаңыз</string>
+  <string name="date_time_picker_choose_time">Choose Time</string>
+  <string name="date_time_picker_choose_date">Choose Date</string>
   <string name="date_time_picker_accessibility_dialog_title">Күн мен уақытты таңдау</string>
   <string name="date_picker_accessibility_dialog_title">Күнді таңдау</string>
   <string name="date_time_picker_range_accessibility_dialog_title">Күн мен уақытты таңдау ауқымы</string>

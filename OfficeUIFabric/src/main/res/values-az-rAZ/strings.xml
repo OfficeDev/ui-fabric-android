@@ -20,8 +20,8 @@
   <string name="date_time_picker_end_time">Bitmə vaxtı</string>
   <string name="date_time_picker_start_date">Başlama tarixi</string>
   <string name="date_time_picker_end_date">Bitmə tarixi</string>
-  <string name="date_time_picker_choose_time">Vaxt seçin</string>
-  <string name="date_time_picker_choose_date">Tarix seçin</string>
+  <string name="date_time_picker_choose_time">Choose Time</string>
+  <string name="date_time_picker_choose_date">Choose Date</string>
   <string name="date_time_picker_accessibility_dialog_title">Tarix və Vaxt Seçicisi</string>
   <string name="date_picker_accessibility_dialog_title">Tarix Seçicisi</string>
   <string name="date_time_picker_range_accessibility_dialog_title">Tarix Vaxt Seçicisi Diapazonu</string>

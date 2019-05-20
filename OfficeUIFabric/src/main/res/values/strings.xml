@@ -39,9 +39,9 @@
     <!--date picker tab title for end date range-->
     <string name="date_time_picker_end_date">End date</string>
     <!--date picker dialog title for time selection-->
-    <string name="date_time_picker_choose_time">Choose time</string>
+    <string name="date_time_picker_choose_time">Choose Time</string>
     <!--date picker dialog title for date selection-->
-    <string name="date_time_picker_choose_date">Choose date</string>
+    <string name="date_time_picker_choose_date">Choose Date</string>
 
     <!--accessibility-->
     <!--Announcement for date time picker-->

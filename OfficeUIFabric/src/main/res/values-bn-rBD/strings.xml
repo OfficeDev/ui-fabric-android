@@ -20,8 +20,8 @@
   <string name="date_time_picker_end_time">সমাপ্তির সময়</string>
   <string name="date_time_picker_start_date">শুরু করার তারিখ</string>
   <string name="date_time_picker_end_date">শেষ করার তারিখ</string>
-  <string name="date_time_picker_choose_time">সময় বেছে নিন</string>
-  <string name="date_time_picker_choose_date">তারিখ বেছে নিন</string>
+  <string name="date_time_picker_choose_time">Choose Time</string>
+  <string name="date_time_picker_choose_date">Choose Date</string>
   <string name="date_time_picker_accessibility_dialog_title">তারিখ সময় চয়নকারি</string>
   <string name="date_picker_accessibility_dialog_title">তারিখ চয়নকারি</string>
   <string name="date_time_picker_range_accessibility_dialog_title">তারিখ সময় চয়নকারি সীমা</string>

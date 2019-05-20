@@ -20,8 +20,8 @@
   <string name="date_time_picker_end_time">അവസാനിക്കുന്ന സമയം</string>
   <string name="date_time_picker_start_date">ആരംഭിക്കുന്ന തീയതി</string>
   <string name="date_time_picker_end_date">അവസാനിക്കുന്ന തീയതി</string>
-  <string name="date_time_picker_choose_time">സമയം നോക്കിയെടുക്കുക</string>
-  <string name="date_time_picker_choose_date">തീയതി നോക്കിയെടുക്കുക</string>
+  <string name="date_time_picker_choose_time">Choose Time</string>
+  <string name="date_time_picker_choose_date">Choose Date</string>
   <string name="date_time_picker_accessibility_dialog_title">തീയതി-സമയ പിക്കർ</string>
   <string name="date_picker_accessibility_dialog_title">തീയതി പിക്കർ</string>
   <string name="date_time_picker_range_accessibility_dialog_title">തീയതി-സമയ പിക്കർ പരിധി</string>

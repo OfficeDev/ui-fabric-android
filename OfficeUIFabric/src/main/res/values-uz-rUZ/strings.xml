@@ -20,8 +20,8 @@
   <string name="date_time_picker_end_time">Tugash vaqti</string>
   <string name="date_time_picker_start_date">Boshlanish sanasi</string>
   <string name="date_time_picker_end_date">Tugash sanasi</string>
-  <string name="date_time_picker_choose_time">Vaqtni tanlang</string>
-  <string name="date_time_picker_choose_date">Sanani tanlang</string>
+  <string name="date_time_picker_choose_time">Choose Time</string>
+  <string name="date_time_picker_choose_date">Choose Date</string>
   <string name="date_time_picker_accessibility_dialog_title">Sana-vaqt tanlagich</string>
   <string name="date_picker_accessibility_dialog_title">Sana tanlagich</string>
   <string name="date_time_picker_range_accessibility_dialog_title">Sana-vaqt tanlagich oraligʻi</string>

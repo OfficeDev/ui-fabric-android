@@ -78,6 +78,9 @@
     <style name="TextAppearance.UIFabric.CalendarDay2" parent="TextAppearance.UIFabric.SubHeading2">
         <item name="android:textColor">@null</item>
     </style>
+    <style name="TextAppearance.UIFabric.WeekDayHeader" parent="TextAppearance.UIFabric.Body2">
+        <item name="android:textColor">@null</item>
+    </style>
 
     <!--NumberPicker-->
     <style name="TextAppearance.UIFabric.NumberPicker" parent="TextAppearance.UIFabric.Heading"/>

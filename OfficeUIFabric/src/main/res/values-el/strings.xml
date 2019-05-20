@@ -20,8 +20,8 @@
   <string name="date_time_picker_end_time">Ώρα λήξης</string>
   <string name="date_time_picker_start_date">Ημερομηνία έναρξης</string>
   <string name="date_time_picker_end_date">Ημερομηνία λήξης</string>
-  <string name="date_time_picker_choose_time">Επιλογή ώρας</string>
-  <string name="date_time_picker_choose_date">Επιλογή ημερομηνίας</string>
+  <string name="date_time_picker_choose_time">Choose Time</string>
+  <string name="date_time_picker_choose_date">Choose Date</string>
   <string name="date_time_picker_accessibility_dialog_title">Επιλογή ημερομηνίας/ώρας</string>
   <string name="date_picker_accessibility_dialog_title">Επιλογή ημερομηνίας</string>
   <string name="date_time_picker_range_accessibility_dialog_title">Περιοχή επιλογής ημερομηνίας/ώρας</string>
