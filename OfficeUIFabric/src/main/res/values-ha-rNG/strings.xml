@@ -20,8 +20,8 @@
   <string name="date_time_picker_end_time">Lokacin ƙarewa</string>
   <string name="date_time_picker_start_date">Ranar farawa</string>
   <string name="date_time_picker_end_date">Ranar ƙarewa</string>
-  <string name="date_time_picker_choose_time">Choose Time</string>
-  <string name="date_time_picker_choose_date">Choose Date</string>
+  <string name="date_time_picker_choose_time">Zaɓi Lokaci</string>
+  <string name="date_time_picker_choose_date">Zaɓi Kwanan Wata</string>
   <string name="date_time_picker_accessibility_dialog_title">Maɗaukin Lokacin Kwanan wata</string>
   <string name="date_picker_accessibility_dialog_title">Maɗaukin Kwanan wata</string>
   <string name="date_time_picker_range_accessibility_dialog_title">Ranjin Maɗaukin Kwanan wata Lokaci</string>

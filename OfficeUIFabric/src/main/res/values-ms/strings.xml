@@ -20,8 +20,8 @@
   <string name="date_time_picker_end_time">Masa tamat</string>
   <string name="date_time_picker_start_date">Tarikh mula</string>
   <string name="date_time_picker_end_date">Tarikh tamat</string>
-  <string name="date_time_picker_choose_time">Choose Time</string>
-  <string name="date_time_picker_choose_date">Choose Date</string>
+  <string name="date_time_picker_choose_time">Pilih Masa</string>
+  <string name="date_time_picker_choose_date">Pilih Tarikh</string>
   <string name="date_time_picker_accessibility_dialog_title">Pemilih Tarikh Masa</string>
   <string name="date_picker_accessibility_dialog_title">Pemilih Tarikh</string>
   <string name="date_time_picker_range_accessibility_dialog_title">Julat Pemilih Tarikh Masa</string>
