@@ -20,8 +20,8 @@
   <string name="date_time_picker_end_time">Oras ng pagtatapos</string>
   <string name="date_time_picker_start_date">Petsa ng pagsisimula</string>
   <string name="date_time_picker_end_date">Petsa ng pagtatapos</string>
-  <string name="date_time_picker_choose_time">Choose Time</string>
-  <string name="date_time_picker_choose_date">Choose Date</string>
+  <string name="date_time_picker_choose_time">Pumili ng Oras</string>
+  <string name="date_time_picker_choose_date">Pumili ng Petsa</string>
   <string name="date_time_picker_accessibility_dialog_title">Tagapili ng Petsa at Oras</string>
   <string name="date_picker_accessibility_dialog_title">Tagapili ng Petsa</string>
   <string name="date_time_picker_range_accessibility_dialog_title">Hanay ng Tagapili ng Petsa at Oras</string>

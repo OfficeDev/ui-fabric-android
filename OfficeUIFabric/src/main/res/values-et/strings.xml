@@ -20,8 +20,8 @@
   <string name="date_time_picker_end_time">Lõppaeg</string>
   <string name="date_time_picker_start_date">Alguskuupäev</string>
   <string name="date_time_picker_end_date">Lõppkuupäev</string>
-  <string name="date_time_picker_choose_time">Choose Time</string>
-  <string name="date_time_picker_choose_date">Choose Date</string>
+  <string name="date_time_picker_choose_time">Valige kellaaeg</string>
+  <string name="date_time_picker_choose_date">Valige kuupäev</string>
   <string name="date_time_picker_accessibility_dialog_title">Kuupäeva- ja kellaajavalija</string>
   <string name="date_picker_accessibility_dialog_title">Kuupäevavalija</string>
   <string name="date_time_picker_range_accessibility_dialog_title">Kuupäeva- ja kellaajavalija ajavahemik</string>

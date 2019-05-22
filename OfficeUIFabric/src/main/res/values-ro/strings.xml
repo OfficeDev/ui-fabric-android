@@ -20,8 +20,8 @@
   <string name="date_time_picker_end_time">Ora de sfârșit</string>
   <string name="date_time_picker_start_date">Data de început</string>
   <string name="date_time_picker_end_date">Data de sfârșit</string>
-  <string name="date_time_picker_choose_time">Choose Time</string>
-  <string name="date_time_picker_choose_date">Choose Date</string>
+  <string name="date_time_picker_choose_time">Alegeți ora</string>
+  <string name="date_time_picker_choose_date">Alegeți data</string>
   <string name="date_time_picker_accessibility_dialog_title">Selector de dată și oră</string>
   <string name="date_picker_accessibility_dialog_title">Selector de dată</string>
   <string name="date_time_picker_range_accessibility_dialog_title">Interval selector de dată și oră</string>
