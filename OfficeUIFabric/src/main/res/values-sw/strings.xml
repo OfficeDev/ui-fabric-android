@@ -20,8 +20,8 @@
   <string name="date_time_picker_end_time">Wakati wa kuisha</string>
   <string name="date_time_picker_start_date">Tarehe ya kuanza</string>
   <string name="date_time_picker_end_date">Tarehe ya mwisho</string>
-  <string name="date_time_picker_choose_time">Choose Time</string>
-  <string name="date_time_picker_choose_date">Choose Date</string>
+  <string name="date_time_picker_choose_time">Chagua Wakati</string>
+  <string name="date_time_picker_choose_date">Chagua Tarehe</string>
   <string name="date_time_picker_accessibility_dialog_title">Kiteua cha Wakati na Tarehe</string>
   <string name="date_picker_accessibility_dialog_title">Kiteua Tarehe</string>
   <string name="date_time_picker_range_accessibility_dialog_title">Masafa ya Kiteua Wakati na Tarehe</string>
