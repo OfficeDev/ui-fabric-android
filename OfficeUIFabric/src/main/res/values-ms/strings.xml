@@ -82,6 +82,7 @@
     <item quantity="other">%s individu</item>
   </plurals>
   <string name="persona_title_placeholder">Tiada nama</string>
+  <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
   <string name="done">Selesai</string>
   <string name="tooltip_accessibility_dismiss_action">tolak</string>
   <string name="tooltip_accessibility_dismiss_announcement">Petua alat ditolak</string>

@@ -84,6 +84,7 @@
     <item quantity="other">%s ആളുകൾ</item>
   </plurals>
   <string name="persona_title_placeholder">പേരില്ല</string>
+  <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
   <string name="done">ചെയ്‌തു</string>
   <string name="tooltip_accessibility_dismiss_action">നിരാകരിക്കുക</string>
   <string name="tooltip_accessibility_dismiss_announcement">ഉപകരണടിപ്പ് നിരാകരിച്ചു</string>

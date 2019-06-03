@@ -157,6 +157,10 @@
 
     <string name="persona_title_placeholder">No name</string>
 
+    <!-- ** Progress ** -->
+    <!--Describes a progress indicator that spins indefinitely.-->
+    <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
+
     <!-- *** Shared *** -->
 
     <string name="done">Done</string>

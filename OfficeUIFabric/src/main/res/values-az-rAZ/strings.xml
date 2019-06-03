@@ -84,6 +84,7 @@
     <item quantity="other">%s nəfər</item>
   </plurals>
   <string name="persona_title_placeholder">Adsız</string>
+  <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
   <string name="done">Hazırdır</string>
   <string name="tooltip_accessibility_dismiss_action">rədd et</string>
   <string name="tooltip_accessibility_dismiss_announcement">Alət izahı rədd edilib</string>

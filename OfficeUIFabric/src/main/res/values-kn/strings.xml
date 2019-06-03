@@ -84,6 +84,7 @@
     <item quantity="other">%s ಜನರು</item>
   </plurals>
   <string name="persona_title_placeholder">ಹೆಸರಿಲ್ಲ</string>
+  <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
   <string name="done">ಮುಗಿದಿದೆ</string>
   <string name="tooltip_accessibility_dismiss_action">ವಜಾಗೊಳಿಸು</string>
   <string name="tooltip_accessibility_dismiss_announcement">ಪರಿಕರಸೂಚಿಯನ್ನು ವಜಾಗೊಳಿಸಲಾಗಿದೆ</string>

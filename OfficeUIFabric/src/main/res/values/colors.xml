@@ -110,6 +110,9 @@
     <color name="uifabric_persona_chip_error_text">#A80000</color>
     <color name="uifabric_persona_chip_disabled_text">@color/uifabric_gray</color>
 
+    <!--Progress-->
+    <color name="uifabric_progress_primary">@color/uifabric_primary</color>
+
     <!--Shared-->
     <color name="uifabric_divider">@color/uifabric_border_light_gray</color>
     <!-- TODO update after design adds #0E000000 to toolkit -->

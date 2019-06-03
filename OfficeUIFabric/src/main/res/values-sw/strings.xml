@@ -84,6 +84,7 @@
     <item quantity="other">Watu %s</item>
   </plurals>
   <string name="persona_title_placeholder">Hakuna jina</string>
+  <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
   <string name="done">Imekamilika</string>
   <string name="tooltip_accessibility_dismiss_action">ondosha</string>
   <string name="tooltip_accessibility_dismiss_announcement">Kidokezozana kimeondoshwa</string>

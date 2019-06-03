@@ -84,6 +84,7 @@
     <item quantity="other">%s लोग</item>
   </plurals>
   <string name="persona_title_placeholder">कोई नाम नहीं</string>
+  <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
   <string name="done">पूर्ण</string>
   <string name="tooltip_accessibility_dismiss_action">ख़ारिज करें</string>
   <string name="tooltip_accessibility_dismiss_announcement">टूलटिप ख़ारिज की गई</string>

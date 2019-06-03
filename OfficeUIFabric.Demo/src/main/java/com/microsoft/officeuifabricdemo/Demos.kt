@@ -17,6 +17,7 @@ const val PEOPLE_PICKER_VIEW = "PeoplePickerView"
 const val PERSONA_CHIP_VIEW = "PersonaChipView"
 const val PERSONA_LIST_VIEW = "PersonaListView"
 const val PERSONA_VIEW = "PersonaView"
+const val PROGRESS = "Progress"
 const val SNACKBAR = "Snackbar"
 const val TEMPLATE_VIEW = "TemplateView"
 const val TOOLTIP = "Tooltip"
@@ -31,6 +32,7 @@ val DEMOS = arrayListOf(
     Demo(PERSONA_CHIP_VIEW, PersonaChipViewActivity::class),
     Demo(PERSONA_LIST_VIEW, PersonaListViewActivity::class),
     Demo(PERSONA_VIEW, PersonaViewActivity::class),
+    Demo(PROGRESS, ProgressActivity::class),
     Demo(SNACKBAR, SnackbarActivity::class),
     Demo(TEMPLATE_VIEW, TemplateViewActivity::class),
     Demo(TOOLTIP, TooltipActivity::class),

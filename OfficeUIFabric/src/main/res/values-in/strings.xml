@@ -82,6 +82,7 @@
     <item quantity="other">%s orang</item>
   </plurals>
   <string name="persona_title_placeholder">Tanpa nama</string>
+  <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
   <string name="done">Selesai</string>
   <string name="tooltip_accessibility_dismiss_action">tutup</string>
   <string name="tooltip_accessibility_dismiss_announcement">Tooltip ditutup</string>

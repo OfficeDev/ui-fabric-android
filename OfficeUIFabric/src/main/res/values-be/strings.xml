@@ -88,6 +88,7 @@
     <item quantity="other">%s карыстальнікаў</item>
   </plurals>
   <string name="persona_title_placeholder">Без імені</string>
+  <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
   <string name="done">Гатова</string>
   <string name="tooltip_accessibility_dismiss_action">закрыць</string>
   <string name="tooltip_accessibility_dismiss_announcement">Усплывальная падказка закрыта</string>

@@ -84,6 +84,7 @@
     <item quantity="other">%s জন লোক</item>
   </plurals>
   <string name="persona_title_placeholder">নাম নেই</string>
+  <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
   <string name="done">সম্পন্ন</string>
   <string name="tooltip_accessibility_dismiss_action">বাতিল করুন</string>
   <string name="tooltip_accessibility_dismiss_announcement">টুলটিপ খারিজ করা হয়েছে</string>

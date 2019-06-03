@@ -84,6 +84,7 @@
     <item quantity="other">%s луѓе</item>
   </plurals>
   <string name="persona_title_placeholder">Без име</string>
+  <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
   <string name="done">Готово</string>
   <string name="tooltip_accessibility_dismiss_action">отфрли</string>
   <string name="tooltip_accessibility_dismiss_announcement">Екранскиот совет се отфрли</string>

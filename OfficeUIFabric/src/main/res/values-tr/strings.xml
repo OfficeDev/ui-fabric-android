@@ -84,6 +84,7 @@
     <item quantity="other">%s kişi</item>
   </plurals>
   <string name="persona_title_placeholder">Adsız</string>
+  <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
   <string name="done">Bitti</string>
   <string name="tooltip_accessibility_dismiss_action">kapat</string>
   <string name="tooltip_accessibility_dismiss_announcement">Araç ipucu kapatıldı</string>

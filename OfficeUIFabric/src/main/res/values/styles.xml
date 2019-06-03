@@ -64,6 +64,57 @@
         <item name="android:paddingRight">@dimen/uifabric_date_time_picker_padding_right</item>
     </style>
 
+    <!--Progress: Circular-->
+    <style name="Widget.UIFabric.CircularProgress.XSmall" parent="@style/Widget.AppCompat.ProgressBar">
+        <item name="android:contentDescription">@string/progress_circular_content_description_indeterminate</item>
+        <item name="android:indeterminate">true</item>
+        <item name="android:indeterminateDrawable">@drawable/anim_progress_circular_gray_xsmall</item>
+        <item name="android:minHeight">@dimen/uifabric_progress_circular_xsmall</item>
+        <item name="android:minWidth">@dimen/uifabric_progress_circular_xsmall</item>
+        <item name="android:maxHeight">@dimen/uifabric_progress_circular_xsmall</item>
+        <item name="android:maxWidth">@dimen/uifabric_progress_circular_xsmall</item>
+    </style>
+    <style name="Widget.UIFabric.CircularProgress.Small" parent="@style/Widget.AppCompat.ProgressBar">
+        <item name="android:contentDescription">@string/progress_circular_content_description_indeterminate</item>
+        <item name="android:indeterminate">true</item>
+        <item name="android:indeterminateDrawable">@drawable/anim_progress_circular_gray_small</item>
+        <item name="android:minHeight">@dimen/uifabric_progress_circular_small</item>
+        <item name="android:minWidth">@dimen/uifabric_progress_circular_small</item>
+        <item name="android:maxHeight">@dimen/uifabric_progress_circular_small</item>
+        <item name="android:maxWidth">@dimen/uifabric_progress_circular_small</item>
+    </style>
+    <style name="Widget.UIFabric.CircularProgress.Medium" parent="@style/Widget.AppCompat.ProgressBar">
+        <item name="android:contentDescription">@string/progress_circular_content_description_indeterminate</item>
+        <item name="android:indeterminate">true</item>
+        <item name="android:indeterminateDrawable">@drawable/anim_progress_circular_gray_medium</item>
+        <item name="android:minHeight">@dimen/uifabric_progress_circular_medium</item>
+        <item name="android:minWidth">@dimen/uifabric_progress_circular_medium</item>
+        <item name="android:maxHeight">@dimen/uifabric_progress_circular_medium</item>
+        <item name="android:maxWidth">@dimen/uifabric_progress_circular_medium</item>
+    </style>
+    <style name="Widget.UIFabric.CircularProgress.Large" parent="@style/Widget.AppCompat.ProgressBar">
+        <item name="android:contentDescription">@string/progress_circular_content_description_indeterminate</item>
+        <item name="android:indeterminate">true</item>
+        <item name="android:indeterminateDrawable">@drawable/anim_progress_circular_gray_large</item>
+        <item name="android:minHeight">@dimen/uifabric_progress_circular_large</item>
+        <item name="android:minWidth">@dimen/uifabric_progress_circular_large</item>
+        <item name="android:maxHeight">@dimen/uifabric_progress_circular_large</item>
+        <item name="android:maxWidth">@dimen/uifabric_progress_circular_large</item>
+    </style>
+    <!--For earlier APIs, you can set the color in code using setColorFilter on the indeterminateDrawable.-->
+    <style name="Widget.UIFabric.CircularProgress.XSmall.Primary">
+        <item name="android:indeterminateTint" tools:targetApi="lollipop">@color/uifabric_progress_primary</item>
+    </style>
+    <style name="Widget.UIFabric.CircularProgress.Small.Primary">
+        <item name="android:indeterminateTint" tools:targetApi="lollipop">@color/uifabric_progress_primary</item>
+    </style>
+    <style name="Widget.UIFabric.CircularProgress.Medium.Primary">
+        <item name="android:indeterminateTint" tools:targetApi="lollipop">@color/uifabric_progress_primary</item>
+    </style>
+    <style name="Widget.UIFabric.CircularProgress.Large.Primary">
+        <item name="android:indeterminateTint" tools:targetApi="lollipop">@color/uifabric_progress_primary</item>
+    </style>
+
     <!-- TabLayout -->
     <style name="Widget.UIFabric.TabLayout" parent="Widget.Design.TabLayout">
         <item name="tabGravity">center</item>

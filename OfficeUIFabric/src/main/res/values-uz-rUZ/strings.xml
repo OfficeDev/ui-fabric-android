@@ -84,6 +84,7 @@
     <item quantity="other">%s kishi</item>
   </plurals>
   <string name="persona_title_placeholder">Nomsiz</string>
+  <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
   <string name="done">Tayyor</string>
   <string name="tooltip_accessibility_dismiss_action">yopish</string>
   <string name="tooltip_accessibility_dismiss_announcement">Vazifalar paneli yopildi</string>

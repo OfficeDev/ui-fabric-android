@@ -84,6 +84,7 @@
     <item quantity="other">Mutane %s</item>
   </plurals>
   <string name="persona_title_placeholder">Babu suna</string>
+  <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
   <string name="done">An gama</string>
   <string name="tooltip_accessibility_dismiss_action">watsar</string>
   <string name="tooltip_accessibility_dismiss_announcement">An watsar da Tooltip</string>

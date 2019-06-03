@@ -84,6 +84,7 @@
     <item quantity="other">%s Personen</item>
   </plurals>
   <string name="persona_title_placeholder">Kein Name</string>
+  <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
   <string name="done">Fertig</string>
   <string name="tooltip_accessibility_dismiss_action">schließen</string>
   <string name="tooltip_accessibility_dismiss_announcement">QuickInfo geschlossen.</string>

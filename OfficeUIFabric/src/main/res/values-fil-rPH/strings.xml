@@ -84,6 +84,7 @@
     <item quantity="other">%s (na) tao</item>
   </plurals>
   <string name="persona_title_placeholder">Walang pangalan</string>
+  <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
   <string name="done">Tapos na</string>
   <string name="tooltip_accessibility_dismiss_action">alisin</string>
   <string name="tooltip_accessibility_dismiss_announcement">Inalis ang tooltip</string>

@@ -88,6 +88,7 @@
     <item quantity="other">Žmonių: %s</item>
   </plurals>
   <string name="persona_title_placeholder">Nėra vardo</string>
+  <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
   <string name="done">Atlikta</string>
   <string name="tooltip_accessibility_dismiss_action">išjungti</string>
   <string name="tooltip_accessibility_dismiss_announcement">Patarimas atmestas</string>

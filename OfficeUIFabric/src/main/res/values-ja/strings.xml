@@ -82,6 +82,7 @@
     <item quantity="other">%s 人</item>
   </plurals>
   <string name="persona_title_placeholder">名前なし</string>
+  <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
   <string name="done">完了</string>
   <string name="tooltip_accessibility_dismiss_action">閉じる</string>
   <string name="tooltip_accessibility_dismiss_announcement">ツールヒントを閉じました</string>

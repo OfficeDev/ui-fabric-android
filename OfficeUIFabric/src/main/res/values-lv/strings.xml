@@ -86,6 +86,7 @@
     <item quantity="other">%s personas</item>
   </plurals>
   <string name="persona_title_placeholder">Bez vārda</string>
+  <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
   <string name="done">Gatavs</string>
   <string name="tooltip_accessibility_dismiss_action">nerādīt</string>
   <string name="tooltip_accessibility_dismiss_announcement">Rīka padoms aizvērts</string>
