@@ -88,7 +88,7 @@
     <item quantity="other">%s ljudi</item>
   </plurals>
   <string name="persona_title_placeholder">Brez imena</string>
-  <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
+  <string name="progress_circular_content_description_indeterminate">Nedoločeno</string>
   <string name="done">Dokončano</string>
   <string name="tooltip_accessibility_dismiss_action">opusti</string>
   <string name="tooltip_accessibility_dismiss_announcement">Opis orodja je opuščen</string>

@@ -84,7 +84,7 @@
     <item quantity="other">%s άτομα</item>
   </plurals>
   <string name="persona_title_placeholder">Χωρίς όνομα</string>
-  <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
+  <string name="progress_circular_content_description_indeterminate">Ακαθόριστο</string>
   <string name="done">Τέλος</string>
   <string name="tooltip_accessibility_dismiss_action">κλείσιμο</string>
   <string name="tooltip_accessibility_dismiss_announcement">Η συμβουλή εργαλείου έκλεισε</string>
