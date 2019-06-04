@@ -82,7 +82,7 @@
     <item quantity="other">%s명</item>
   </plurals>
   <string name="persona_title_placeholder">이름 없음</string>
-  <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
+  <string name="progress_circular_content_description_indeterminate">계산 중...</string>
   <string name="done">완료</string>
   <string name="tooltip_accessibility_dismiss_action">해제</string>
   <string name="tooltip_accessibility_dismiss_announcement">도구 설명 해제</string>

@@ -84,7 +84,7 @@
     <item quantity="other">%s pessoas</item>
   </plurals>
   <string name="persona_title_placeholder">Sem nome</string>
-  <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
+  <string name="progress_circular_content_description_indeterminate">Indeterminado</string>
   <string name="done">Concluído</string>
   <string name="tooltip_accessibility_dismiss_action">dispensar</string>
   <string name="tooltip_accessibility_dismiss_announcement">Descrição dispensada</string>

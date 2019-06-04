@@ -84,7 +84,7 @@
     <item quantity="other">%s aðilar</item>
   </plurals>
   <string name="persona_title_placeholder">Ekkert nafn</string>
-  <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
+  <string name="progress_circular_content_description_indeterminate">Óljóst</string>
   <string name="done">Lokið</string>
   <string name="tooltip_accessibility_dismiss_action">hafna</string>
   <string name="tooltip_accessibility_dismiss_announcement">Ábendingu hafnað</string>

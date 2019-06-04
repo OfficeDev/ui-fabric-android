@@ -84,7 +84,7 @@
     <item quantity="other">%s మంది వ్యక్తులు</item>
   </plurals>
   <string name="persona_title_placeholder">పేరు లేదు</string>
-  <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
+  <string name="progress_circular_content_description_indeterminate">మధ్యంతరం</string>
   <string name="done">పూర్తయింది</string>
   <string name="tooltip_accessibility_dismiss_action">విస్మరించు</string>
   <string name="tooltip_accessibility_dismiss_announcement">టూల్‌టిప్ విస్మరించబడింది</string>

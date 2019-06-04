@@ -84,7 +84,7 @@
     <item quantity="other">%s نفر</item>
   </plurals>
   <string name="persona_title_placeholder">بدون نام</string>
-  <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
+  <string name="progress_circular_content_description_indeterminate">نامشخص</string>
   <string name="done">انجام شد</string>
   <string name="tooltip_accessibility_dismiss_action">بستن</string>
   <string name="tooltip_accessibility_dismiss_announcement">راهنمای یک خطی بسته شد</string>

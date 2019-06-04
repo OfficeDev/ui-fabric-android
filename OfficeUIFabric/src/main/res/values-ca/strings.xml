@@ -84,7 +84,7 @@
     <item quantity="other">%s persones</item>
   </plurals>
   <string name="persona_title_placeholder">Sense nom</string>
-  <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
+  <string name="progress_circular_content_description_indeterminate">Indeterminat</string>
   <string name="done">Fet</string>
   <string name="tooltip_accessibility_dismiss_action">descarta</string>
   <string name="tooltip_accessibility_dismiss_announcement">Informació descartada</string>

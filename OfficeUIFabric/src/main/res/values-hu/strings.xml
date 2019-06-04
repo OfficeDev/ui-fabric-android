@@ -84,7 +84,7 @@
     <item quantity="other">%s személy</item>
   </plurals>
   <string name="persona_title_placeholder">Névtelen</string>
-  <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
+  <string name="progress_circular_content_description_indeterminate">Nem meghatározott</string>
   <string name="done">Kész</string>
   <string name="tooltip_accessibility_dismiss_action">bezárás</string>
   <string name="tooltip_accessibility_dismiss_announcement">Elemleírás bezárva</string>

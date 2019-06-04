@@ -84,7 +84,7 @@
     <item quantity="other">%s personnes</item>
   </plurals>
   <string name="persona_title_placeholder">Aucun nom</string>
-  <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
+  <string name="progress_circular_content_description_indeterminate">Indéterminé</string>
   <string name="done">OK</string>
   <string name="tooltip_accessibility_dismiss_action">ignorer</string>
   <string name="tooltip_accessibility_dismiss_announcement">Infobulle fermée</string>

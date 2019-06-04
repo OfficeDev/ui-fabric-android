@@ -84,7 +84,7 @@
     <item quantity="other">%s inimest</item>
   </plurals>
   <string name="persona_title_placeholder">Nimetu</string>
-  <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
+  <string name="progress_circular_content_description_indeterminate">Määramata</string>
   <string name="done">Valmis</string>
   <string name="tooltip_accessibility_dismiss_action">sule</string>
   <string name="tooltip_accessibility_dismiss_announcement">Kohtspikker on suletud</string>

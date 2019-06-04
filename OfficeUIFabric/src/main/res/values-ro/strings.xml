@@ -86,7 +86,7 @@
     <item quantity="other">%s persoane</item>
   </plurals>
   <string name="persona_title_placeholder">Fără nume</string>
-  <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
+  <string name="progress_circular_content_description_indeterminate">Nedeterminat</string>
   <string name="done">Gata</string>
   <string name="tooltip_accessibility_dismiss_action">îndepărtare</string>
   <string name="tooltip_accessibility_dismiss_announcement">Sfat ecran îndepărtat</string>

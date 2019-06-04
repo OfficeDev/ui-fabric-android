@@ -82,7 +82,7 @@
     <item quantity="other">មនុស្ស %s នាក់</item>
   </plurals>
   <string name="persona_title_placeholder">គ្មានឈ្មោះ</string>
-  <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
+  <string name="progress_circular_content_description_indeterminate">ដែលមិនច្បាស់លាស់</string>
   <string name="done">រួចរាល់</string>
   <string name="tooltip_accessibility_dismiss_action">បោះបង់</string>
   <string name="tooltip_accessibility_dismiss_announcement">ព័ត៌មានជំនួយឧបករណ៍ត្រូវបានបោះបង់</string>
