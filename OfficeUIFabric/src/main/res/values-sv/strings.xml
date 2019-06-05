@@ -84,7 +84,7 @@
     <item quantity="other">%s personer</item>
   </plurals>
   <string name="persona_title_placeholder">Namnlös</string>
-  <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
+  <string name="progress_circular_content_description_indeterminate">Obestämd</string>
   <string name="done">Klar</string>
   <string name="tooltip_accessibility_dismiss_action">stäng</string>
   <string name="tooltip_accessibility_dismiss_announcement">Knappbeskrivningen har stängts</string>

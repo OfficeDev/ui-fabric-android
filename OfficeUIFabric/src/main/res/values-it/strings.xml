@@ -84,7 +84,7 @@
     <item quantity="other">%s persone</item>
   </plurals>
   <string name="persona_title_placeholder">Nessun nome</string>
-  <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
+  <string name="progress_circular_content_description_indeterminate">Indeterminato</string>
   <string name="done">Fatto</string>
   <string name="tooltip_accessibility_dismiss_action">Ignora</string>
   <string name="tooltip_accessibility_dismiss_announcement">Descrizione comando ignorata</string>

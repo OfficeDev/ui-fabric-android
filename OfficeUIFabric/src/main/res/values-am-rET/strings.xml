@@ -84,7 +84,7 @@
     <item quantity="other">%s ሰዎች</item>
   </plurals>
   <string name="persona_title_placeholder">ስም የለም</string>
-  <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
+  <string name="progress_circular_content_description_indeterminate">መታወቅ የማይችል</string>
   <string name="done">ተከናውኗል</string>
   <string name="tooltip_accessibility_dismiss_action">አሰናብት</string>
   <string name="tooltip_accessibility_dismiss_announcement">የመሳሪያ መግለጫ ተሰናብቷል</string>

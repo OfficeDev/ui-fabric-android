@@ -88,7 +88,7 @@
     <item quantity="other">%s осіб</item>
   </plurals>
   <string name="persona_title_placeholder">Без імені</string>
-  <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
+  <string name="progress_circular_content_description_indeterminate">Не визначено</string>
   <string name="done">Готово</string>
   <string name="tooltip_accessibility_dismiss_action">закрити</string>
   <string name="tooltip_accessibility_dismiss_announcement">Підказку закрито</string>
