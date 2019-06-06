@@ -84,7 +84,7 @@
     <item quantity="other">%s personas</item>
   </plurals>
   <string name="persona_title_placeholder">Sin nombre</string>
-  <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
+  <string name="progress_circular_content_description_indeterminate">Indeterminado</string>
   <string name="done">Listo</string>
   <string name="tooltip_accessibility_dismiss_action">descartar</string>
   <string name="tooltip_accessibility_dismiss_announcement">Información sobre herramientas descartada</string>
