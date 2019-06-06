@@ -20,8 +20,8 @@
   <string name="date_time_picker_end_time">Время окончания</string>
   <string name="date_time_picker_start_date">Дата начала</string>
   <string name="date_time_picker_end_date">Дата окончания</string>
-  <string name="date_time_picker_choose_time">Choose Time</string>
-  <string name="date_time_picker_choose_date">Choose Date</string>
+  <string name="date_time_picker_choose_time">Выберите время</string>
+  <string name="date_time_picker_choose_date">Выберите дату</string>
   <string name="date_time_picker_accessibility_dialog_title">Выбор даты и времени</string>
   <string name="date_picker_accessibility_dialog_title">Управляющий элемент выбора даты</string>
   <string name="date_time_picker_range_accessibility_dialog_title">Диапазон выбора даты и времени</string>

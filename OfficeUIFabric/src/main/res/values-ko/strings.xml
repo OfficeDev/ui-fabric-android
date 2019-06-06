@@ -20,8 +20,8 @@
   <string name="date_time_picker_end_time">종료 시간</string>
   <string name="date_time_picker_start_date">시작 날짜</string>
   <string name="date_time_picker_end_date">종료 날짜</string>
-  <string name="date_time_picker_choose_time">Choose Time</string>
-  <string name="date_time_picker_choose_date">Choose Date</string>
+  <string name="date_time_picker_choose_time">시간 선택</string>
+  <string name="date_time_picker_choose_date">날짜 선택</string>
   <string name="date_time_picker_accessibility_dialog_title">날짜 시간 선택기</string>
   <string name="date_picker_accessibility_dialog_title">날짜 선택기</string>
   <string name="date_time_picker_range_accessibility_dialog_title">날짜 시간 선택기 범위</string>
