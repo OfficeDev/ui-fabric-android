@@ -52,6 +52,11 @@
     <dimen name="uifabric_resizable_dialog_card_elevation">2dp</dimen>
     <dimen name="uifabric_resizable_dialog_card_tools_width">300dp</dimen>
 
+    <!--Drawer-->
+    <dimen name="uifabric_drawer_corner_radius">@dimen/uifabric_corner_radius_large</dimen>
+    <dimen name="uifabric_drawer_peak_height">0dp</dimen>
+    <dimen name="uifabric_drawer_elevation">5dp</dimen>
+
     <!--PeoplePicker-->
     <dimen name="uifabric_people_picker_accessibility_search_constraint_extra_space">5dp</dimen>
     <!--30dp is an approximation of how much space 3 digits take up for the count span-->
@@ -91,6 +96,7 @@
     <dimen name="uifabric_divider_height">.5dp</dimen>
     <dimen name="uifabric_corner_radius_small">2dp</dimen>
     <dimen name="uifabric_corner_radius_medium">4dp</dimen>
+    <dimen name="uifabric_corner_radius_large">12dp</dimen>
     <dimen name="uifabric_min_touch_size">48dp</dimen>
     <dimen name="uifabric_content_inset">16dp</dimen>
 

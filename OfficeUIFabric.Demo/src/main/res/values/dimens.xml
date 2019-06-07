@@ -5,11 +5,8 @@
   -->
 
 <resources>
-    <dimen name="fab_margin">16dp</dimen>
-    <dimen name="app_bar_height">200dp</dimen>
     <dimen name="default_layout_margin">@dimen/uifabric_content_inset</dimen>
     <dimen name="default_view_margin">8dp</dimen>
-    <dimen name="button_width">287dp</dimen>
     <dimen name="cell_horizontal_spacing">8dp</dimen>
     <dimen name="cell_vertical_spacing">2dp</dimen>
     <dimen name="calendar_date_title_text_size">18sp</dimen>
@@ -24,6 +21,9 @@
     <!--DemoListItem-->
     <dimen name="demo_list_item_padding_horizontal">@dimen/default_layout_margin</dimen>
     <dimen name="demo_list_item_padding_vertical">13.5dp</dimen>
+
+    <!--Drawer-->
+    <dimen name="drawer_persona_list_height">400dp</dimen>
 
     <!--Launch Screen-->
     <dimen name="uifabric_launch_logo_bottom_spacing">53dp</dimen>

@@ -13,6 +13,7 @@ const val AVATAR_VIEW = "AvatarView"
 const val BASIC_INPUTS = "Basic Inputs"
 const val CALENDAR_VIEW = "CalendarView"
 const val DATE_TIME_PICKER_DIALOG = "DateTimePickerDialog"
+const val DRAWER = "Drawer"
 const val PEOPLE_PICKER_VIEW = "PeoplePickerView"
 const val PERSONA_CHIP_VIEW = "PersonaChipView"
 const val PERSONA_LIST_VIEW = "PersonaListView"
@@ -28,6 +29,7 @@ val DEMOS = arrayListOf(
     Demo(BASIC_INPUTS, BasicInputsActivity::class),
     Demo(CALENDAR_VIEW, CalendarViewActivity::class),
     Demo(DATE_TIME_PICKER_DIALOG, DateTimePickerDialogActivity::class),
+    Demo(DRAWER, DrawerActivity::class),
     Demo(PEOPLE_PICKER_VIEW, PeoplePickerViewActivity::class),
     Demo(PERSONA_CHIP_VIEW, PersonaChipViewActivity::class),
     Demo(PERSONA_LIST_VIEW, PersonaListViewActivity::class),

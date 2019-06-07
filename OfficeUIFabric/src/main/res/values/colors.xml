@@ -86,6 +86,9 @@
     <color name="uifabric_date_time_picker_dialog_background">@color/uifabric_white</color>
     <color name="uifabric_date_time_picker_toolbar_icon">@color/uifabric_primary</color>
 
+    <!--Drawer-->
+    <color name="uifabric_drawer_background">@color/uifabric_background</color>
+
     <!--NumberPicker-->
     <color name="uifabric_number_picker_default_text">@color/uifabric_gray</color>
     <color name="uifabric_number_picker_selected_text">@color/uifabric_primary</color>
@@ -117,6 +120,7 @@
     <color name="uifabric_divider">@color/uifabric_border_light_gray</color>
     <!-- TODO update after design adds #0E000000 to toolkit -->
     <color name="uifabric_item_highlight">#0E000000</color> <!-- 5% black -->
+    <color name="uifabric_background">@color/uifabric_white</color>
 
     <!--Snackbar-->
     <color name="uifabric_snackbar_action_text">@color/uifabric_primary_light</color>

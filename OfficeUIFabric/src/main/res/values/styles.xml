@@ -51,6 +51,17 @@
         <item name="android:textAppearance">@style/TextAppearance.UIFabric.Title1</item>
     </style>
 
+    <!--Drawer-->
+    <style name="Drawer.UIFabric" parent="Drawer.Base.UIFabric" />
+    <style name="Drawer.Base.UIFabric" parent="@style/Theme.AppCompat.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@style/Drawer.UIFabric.Animation</item>
+    </style>
+    <style name="Drawer.UIFabric.Animation">
+        <item name="android:windowEnterAnimation">@anim/drawer_background_fade_in</item>
+        <item name="android:windowExitAnimation">@anim/drawer_background_fade_out</item>
+    </style>
+
     <!--NumberPicker-->
     <style name="Widget.UIFabric.NumberPicker">
         <item name="android:orientation">vertical</item>

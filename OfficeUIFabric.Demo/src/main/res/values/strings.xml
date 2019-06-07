@@ -47,6 +47,9 @@
     <string name="date_time_picker_example_date_range_start_title">Start:</string>
     <string name="date_time_picker_example_date_range_end_title">End:</string>
 
+    <!--Drawer-->
+    <string name="drawer_button">Open drawer</string>
+
     <!--PeoplePicker-->
     <string name="people_picker_select_example">Select</string>
     <string name="people_picker_select_deselect_example">SelectDeselect</string>
