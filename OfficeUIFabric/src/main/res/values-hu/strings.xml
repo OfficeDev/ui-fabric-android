@@ -20,8 +20,8 @@
   <string name="date_time_picker_end_time">Befejezés ideje</string>
   <string name="date_time_picker_start_date">Kezdés</string>
   <string name="date_time_picker_end_date">Befejezés</string>
-  <string name="date_time_picker_choose_time">Choose Time</string>
-  <string name="date_time_picker_choose_date">Choose Date</string>
+  <string name="date_time_picker_choose_time">Időpont kiválasztása</string>
+  <string name="date_time_picker_choose_date">Dátum kiválasztása</string>
   <string name="date_time_picker_accessibility_dialog_title">Dátum- és időválasztó</string>
   <string name="date_picker_accessibility_dialog_title">Dátumválasztó</string>
   <string name="date_time_picker_range_accessibility_dialog_title">Dátum- és időválasztási tartomány</string>

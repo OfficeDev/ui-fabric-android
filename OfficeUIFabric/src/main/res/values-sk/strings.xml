@@ -20,8 +20,8 @@
   <string name="date_time_picker_end_time">Čas ukončenia</string>
   <string name="date_time_picker_start_date">Dátum začatia</string>
   <string name="date_time_picker_end_date">Dátum ukončenia</string>
-  <string name="date_time_picker_choose_time">Choose Time</string>
-  <string name="date_time_picker_choose_date">Choose Date</string>
+  <string name="date_time_picker_choose_time">Vybrať čas</string>
+  <string name="date_time_picker_choose_date"> Vybrať dátum</string>
   <string name="date_time_picker_accessibility_dialog_title">Výber dátumu a času</string>
   <string name="date_picker_accessibility_dialog_title">Výber dátumu</string>
   <string name="date_time_picker_range_accessibility_dialog_title">Rozsah nástroja na výber dátumu a času</string>

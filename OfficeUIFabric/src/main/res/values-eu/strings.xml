@@ -20,8 +20,8 @@
   <string name="date_time_picker_end_time">Amaiera-ordua</string>
   <string name="date_time_picker_start_date">Hasiera-data</string>
   <string name="date_time_picker_end_date">Amaiera-data</string>
-  <string name="date_time_picker_choose_time">Choose Time</string>
-  <string name="date_time_picker_choose_date">Choose Date</string>
+  <string name="date_time_picker_choose_time">Aukeratu ordua</string>
+  <string name="date_time_picker_choose_date">Aukeratu data</string>
   <string name="date_time_picker_accessibility_dialog_title">Ordua hautatzeko barrutia</string>
   <string name="date_picker_accessibility_dialog_title">Data-hautatzailea</string>
   <string name="date_time_picker_range_accessibility_dialog_title">Data eta ordua hautatzeko barrutia</string>

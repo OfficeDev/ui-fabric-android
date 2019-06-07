@@ -20,8 +20,8 @@
   <string name="date_time_picker_end_time">Sluttidspunkt</string>
   <string name="date_time_picker_start_date">Startdato</string>
   <string name="date_time_picker_end_date">Sluttdato</string>
-  <string name="date_time_picker_choose_time">Choose Time</string>
-  <string name="date_time_picker_choose_date">Choose Date</string>
+  <string name="date_time_picker_choose_time">Velg tidspunkt</string>
+  <string name="date_time_picker_choose_date">Velg dato</string>
   <string name="date_time_picker_accessibility_dialog_title">Dato-/klokkeslettvelger</string>
   <string name="date_picker_accessibility_dialog_title">Datovelger</string>
   <string name="date_time_picker_range_accessibility_dialog_title">Dato-/klokkeslettvelger-intervall</string>
