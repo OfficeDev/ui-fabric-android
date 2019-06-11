@@ -42,6 +42,9 @@
     <style name="TextAppearance.DemoListItem" parent="@style/TextAppearance.UIFabric.SubHeading">
         <item name="android:textColor">@color/uifabric_black</item>
     </style>
+    <style name="TextAppearance.ListItemValue" parent="@style/TextAppearance.UIFabric.SubHeading">
+        <item name="android:textColor">@color/uifabric_gray</item>
+    </style>
     <style name="TextAppearance.DemoListItemSubtitle" parent="TextAppearance.UIFabric.Body1">
         <item name="android:textColor">@color/uifabric_gray</item>
     </style>

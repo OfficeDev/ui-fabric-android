@@ -6,9 +6,9 @@
 package com.microsoft.officeuifabricdemo.demos
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import com.microsoft.officeuifabric.persona.IPersona
 import com.microsoft.officeuifabric.persona.PersonaListView
+import com.microsoft.officeuifabric.snackbar.Snackbar
 import com.microsoft.officeuifabricdemo.DemoActivity
 import com.microsoft.officeuifabricdemo.R
 import com.microsoft.officeuifabricdemo.util.createPersonaList
@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.activity_persona_list_view.*
 class PersonaListViewActivity : DemoActivity() {
     override val contentLayoutId: Int
         get() = R.layout.activity_persona_list_view
+
     override val contentNeedsScrollableContainer: Boolean
         get() = false
 

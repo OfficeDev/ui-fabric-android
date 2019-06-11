@@ -57,6 +57,28 @@
     <dimen name="uifabric_drawer_peak_height">0dp</dimen>
     <dimen name="uifabric_drawer_elevation">5dp</dimen>
 
+    <!--ListItem-->
+    <dimen name="uifabric_list_item_min_height">48dp</dimen>
+    <dimen name="uifabric_list_item_text_area_inset_custom_view">72dp</dimen>
+    <!--Custom view sizes-->
+    <dimen name="uifabric_list_item_custom_view_size_small">24dp</dimen>
+    <dimen name="uifabric_list_item_custom_view_size_medium">40dp</dimen>
+    <!--List item margins and spacing-->
+    <dimen name="uifabric_list_item_vertical_margin_text_one_line">13dp</dimen>
+    <dimen name="uifabric_list_item_vertical_margin_text_two_line">15dp</dimen>
+    <dimen name="uifabric_list_item_vertical_margin_text_two_line_compact">11dp</dimen>
+    <dimen name="uifabric_list_item_vertical_margin_text_three_line">14dp</dimen>
+    <dimen name="uifabric_list_item_vertical_margin_custom_view_minimum">8dp</dimen>
+    <dimen name="uifabric_list_item_horizontal_margin_regular">@dimen/uifabric_content_inset</dimen>
+    <dimen name="uifabric_list_item_margin_end_custom_view_small">16dp</dimen>
+    <dimen name="uifabric_list_item_text_vertical_spacing">2dp</dimen>
+    <dimen name="uifabric_list_item_spacing">16dp</dimen>
+    <dimen name="uifabric_list_item_horizontal_spacing_custom_accessory_view_start">8dp</dimen>
+
+    <!--ListSubHeader-->
+    <dimen name="uifabric_list_sub_header_divider_padding">8dp</dimen>
+    <dimen name="uifabric_list_sub_header_height">48dp</dimen>
+
     <!--PeoplePicker-->
     <dimen name="uifabric_people_picker_accessibility_search_constraint_extra_space">5dp</dimen>
     <!--30dp is an approximation of how much space 3 digits take up for the count span-->
@@ -71,9 +93,9 @@
 
     <!--Persona-->
     <dimen name="uifabric_persona_horizontal_spacing">@dimen/uifabric_content_inset</dimen>
-    <dimen name="uifabric_persona_horizontal_padding">@dimen/uifabric_content_inset</dimen>
+    <dimen name="uifabric_persona_horizontal_padding">@dimen/uifabric_list_item_horizontal_margin_regular</dimen>
     <dimen name="uifabric_persona_vertical_padding">12dp</dimen>
-    <dimen name="uifabric_persona_text_spacing">2dp</dimen>
+    <dimen name="uifabric_persona_text_spacing">@dimen/uifabric_list_item_text_vertical_spacing</dimen>
     <dimen name="uifabric_persona_label_spacing">8dp</dimen>
 
     <!--PersonaChip-->

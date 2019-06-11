@@ -33,6 +33,7 @@ class TooltipActivity : DemoActivity(), Tooltip.OnDismissListener {
 
     override val contentNeedsScrollableContainer: Boolean
         get() = false
+
     override val contentLayoutId: Int
         get() = R.layout.activity_tooltip
 

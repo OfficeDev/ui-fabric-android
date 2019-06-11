@@ -82,6 +82,24 @@
         <item name="android:textColor">@null</item>
     </style>
 
+    <!--ListItem-->
+    <style name="TextAppearance.UIFabric.ListItemTitle" parent="TextAppearance.UIFabric.SubHeading">
+        <item name="android:textColor">@color/uifabric_black</item>
+    </style>
+    <style name="TextAppearance.UIFabric.ListItemSubtitle" parent="TextAppearance.UIFabric.Body1">
+        <item name="android:textColor">@color/uifabric_gray</item>
+    </style>
+    <style name="TextAppearance.UIFabric.ListItemFooter" parent="TextAppearance.UIFabric.LightCaption" />
+
+    <!--ListSubHeader-->
+    <style name="TextAppearance.UIFabric.ListSubHeaderTitle" parent="TextAppearance.UIFabric.Body2" />
+    <style name="TextAppearance.UIFabric.ListSubHeaderTitle.Primary">
+        <item name="android:textColor">@color/uifabric_list_sub_header_title_primary</item>
+    </style>
+    <style name="TextAppearance.UIFabric.ListSubHeaderTitle.Black">
+        <item name="android:textColor">@color/uifabric_list_sub_header_title_black</item>
+    </style>
+
     <!--NumberPicker-->
     <style name="TextAppearance.UIFabric.NumberPicker" parent="TextAppearance.UIFabric.Heading"/>
     <style name="TextAppearance.UIFabric.NumberPicker.Selected">

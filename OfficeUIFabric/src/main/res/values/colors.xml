@@ -83,19 +83,24 @@
 
     <!--DateTimePicker-->
     <color name="uifabric_date_time_picker_tab_text">@color/uifabric_gray</color>
-    <color name="uifabric_date_time_picker_dialog_background">@color/uifabric_white</color>
+    <color name="uifabric_date_time_picker_dialog_background">@color/uifabric_background</color>
     <color name="uifabric_date_time_picker_toolbar_icon">@color/uifabric_primary</color>
 
     <!--Drawer-->
     <color name="uifabric_drawer_background">@color/uifabric_background</color>
+
+    <!--ListItem-->
+    <color name="uifabric_list_item_background">@color/uifabric_background</color>
+    <color name="uifabric_list_sub_header_title_primary">@color/uifabric_primary</color>
+    <color name="uifabric_list_sub_header_title_black">@color/uifabric_black</color>
 
     <!--NumberPicker-->
     <color name="uifabric_number_picker_default_text">@color/uifabric_gray</color>
     <color name="uifabric_number_picker_selected_text">@color/uifabric_primary</color>
 
     <!--PeoplePicker-->
-    <color name="uifabric_people_picker_popup_background">@color/uifabric_white</color>
-    <color name="uifabric_people_picker_text_view_background">@color/uifabric_white</color>
+    <color name="uifabric_people_picker_popup_background">@color/uifabric_background</color>
+    <color name="uifabric_people_picker_text_view_background">@color/uifabric_background</color>
     <color name="uifabric_people_picker_text_view_drag_background">@color/uifabric_primary</color>
 
     <!--Persona Chip-->

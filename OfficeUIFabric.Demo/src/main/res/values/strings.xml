@@ -4,7 +4,9 @@
       ~ Licensed under the MIT License.
       -->
 
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
+
     <!--App-->
     <string name="app_name">Office UI Fabric Demo</string>
     <string name="app_title">UI Fabric</string>
@@ -49,6 +51,24 @@
 
     <!--Drawer-->
     <string name="drawer_button">Open drawer</string>
+
+    <!--ListItem-->
+    <string name="list_item_title">Title, primary text</string>
+    <string name="list_item_subtitle">Subtitle, secondary text</string>
+    <string name="list_item_footer">Footer, tertiary text</string>
+    <string name="list_item_sub_header_single_line">Single-line list</string>
+    <string name="list_item_sub_header_two_line">Two-line list</string>
+    <string name="list_item_sub_header_two_line_dense">Two-line list with dense spacing</string>
+    <string name="list_item_sub_header_three_line">Three-line list</string>
+    <string name="list_item_sub_header_no_custom_views">List items with no custom views</string>
+    <string name="list_item_sub_header_wrapped_text">List items with wrapped text</string>
+    <string name="list_item_sub_header_truncated_text">List items with truncated text</string>
+    <string name="list_item_truncation_middle">Middle truncation.</string>
+    <string name="list_item_truncation_end">End truncation.</string>
+    <string name="list_item_truncation_start">Start truncation.</string>
+    <string name="list_item_custom_text_view">Value</string>
+    <string name="list_item_click">You clicked on the list item.</string>
+    <string name="list_item_click_custom_accessory_view">You clicked on the custom accessory view.</string>
 
     <!--PeoplePicker-->
     <string name="people_picker_select_example">Select</string>
@@ -152,15 +172,10 @@
     <string name="circular_progress_large">Large</string>
     <string name="circular_progress_large_size">44dp</string>
 
-    <!--TemplateView-->
-    <string name="cell_sample_title">Title</string>
-    <string name="cell_sample_description">Description</string>
-    <string name="calculate_cells">Load/calculate 100 cells</string>
-    <string name="calculate_layouts">Load/calculate 100 layouts</string>
-    <string name="template_list">Template List</string>
-    <string name="regular_list">Regular List</string>
-    <string name="cell_example_title">Title: Cell</string>
-    <string name="cell_example_description">Description: Tap to change orientation</string>
+    <!--Shared-->
+    <string name="long_placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam.</string>
 
     <!--Snackbar-->
     <string name="snackbar_action">Action</string>
@@ -184,6 +199,16 @@
     <string name="snackbar_headline_single_line">Single line</string>
     <string name="snackbar_headline_multiline">Multiline</string>
     <string name="snackbar_headline_announcement_style">Announcement style</string>
+
+    <!--TemplateView-->
+    <string name="cell_sample_title">Title</string>
+    <string name="cell_sample_description">Description</string>
+    <string name="calculate_cells">Load/calculate 100 cells</string>
+    <string name="calculate_layouts">Load/calculate 100 layouts</string>
+    <string name="template_list">Template List</string>
+    <string name="regular_list">Regular List</string>
+    <string name="cell_example_title">Title: Cell</string>
+    <string name="cell_example_description">Description: Tap to change orientation</string>
 
     <!--Tooltip-->
     <string name="tooltip_button">Tap for Tooltip</string>

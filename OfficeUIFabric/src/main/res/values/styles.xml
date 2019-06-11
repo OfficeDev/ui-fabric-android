@@ -126,7 +126,7 @@
         <item name="android:indeterminateTint" tools:targetApi="lollipop">@color/uifabric_progress_primary</item>
     </style>
 
-    <!-- TabLayout -->
+    <!--TabLayout-->
     <style name="Widget.UIFabric.TabLayout" parent="Widget.Design.TabLayout">
         <item name="tabGravity">center</item>
         <item name="tabMode">scrollable</item>

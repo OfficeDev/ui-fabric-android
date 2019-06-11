@@ -60,7 +60,7 @@ class PersonaView : TemplateView {
     /**
      * Text for the top hierarchy of the three TextViews.
      */
-    var name = ""
+    var name: String = ""
         set(value) {
             if (field == value)
                 return
@@ -68,7 +68,7 @@ class PersonaView : TemplateView {
             updateViews()
         }
 
-    var email = ""
+    var email: String = ""
         set(value) {
             if (field == value)
                 return
