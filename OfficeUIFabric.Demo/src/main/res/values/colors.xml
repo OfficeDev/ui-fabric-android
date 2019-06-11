@@ -24,6 +24,9 @@
     <color name="calendar_selected_date_text">#E1E1E1</color>
     <color name="calendar_selected_date_background">#333</color>
 
+    <!--Snackbar-->
+    <color name="snackbar_circular_progress_drawable">@color/uifabric_white</color>
+
     <!--TemplateView-->
     <color name="template_view_cell_background_vertical">@color/uifabric_background_gray</color>
     <color name="template_view_cell_background_horizontal">@color/uifabric_primary_extra_light</color>

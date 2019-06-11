@@ -128,14 +128,14 @@
                     style="@style/TextAppearance.DemoDescription"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/circular_progress_small_default" />
+                    android:text="@string/circular_progress_small" />
 
                 <TextView
                     android:id="@+id/progress_bar_label_size"
                     style="@style/TextAppearance.DemoDescription.Label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/circular_progress_small_default_size" />
+                    android:text="@string/circular_progress_small_size" />
 
             </LinearLayout>
 

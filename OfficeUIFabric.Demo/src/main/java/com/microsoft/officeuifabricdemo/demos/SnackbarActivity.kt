@@ -6,11 +6,14 @@
 package com.microsoft.officeuifabricdemo.demos
 
 import android.graphics.BitmapFactory
+import android.graphics.PorterDuff
+import android.os.Build
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory
 import android.view.View
 import android.widget.ImageView
+import android.widget.ProgressBar
 import com.microsoft.officeuifabric.persona.AvatarSize
 import com.microsoft.officeuifabric.persona.AvatarView
 import com.microsoft.officeuifabric.snackbar.Snackbar
@@ -32,19 +35,16 @@ class SnackbarActivity : DemoActivity(), View.OnClickListener {
         btn_snackbar_single_line_action.setOnClickListener(this)
         btn_snackbar_single_line_action_custom_view.setOnClickListener(this)
 
-        btn_snackbar_multi_line.setOnClickListener(this)
-        btn_snackbar_multi_line_custom_view.setOnClickListener(this)
-        btn_snackbar_multi_line_action.setOnClickListener(this)
-        btn_snackbar_multi_line_action_custom_view.setOnClickListener(this)
-        btn_snackbar_multi_line_long_action.setOnClickListener(this)
+        btn_snackbar_multiline.setOnClickListener(this)
+        btn_snackbar_multiline_custom_view.setOnClickListener(this)
+        btn_snackbar_multiline_action.setOnClickListener(this)
+        btn_snackbar_multiline_action_custom_view.setOnClickListener(this)
+        btn_snackbar_multiline_long_action.setOnClickListener(this)
 
         btn_snackbar_announcement.setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
-        val doneIconImageView = ImageView(this)
-        doneIconImageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_done_white))
-
         val avatarView = AvatarView(this)
         avatarView.avatarSize = AvatarSize.MEDIUM
         avatarView.name = resources.getString(R.string.persona_name_johnie_mcconnell)
@@ -56,12 +56,24 @@ class SnackbarActivity : DemoActivity(), View.OnClickListener {
         thumbnailImageView.setImageDrawable(roundedCornerThumbnailDrawable)
 
         when (v.id) {
+            // Single line
+
             R.id.btn_snackbar_single_line ->
                 Snackbar.make(root_view, getString(R.string.snackbar_single_line)).show()
 
             R.id.btn_snackbar_single_line_custom_view -> {
-                Snackbar.make(root_view, getString(R.string.snackbar_single_line))
-                    .setCustomView(avatarView, Snackbar.CustomViewSize.MEDIUM)
+                val circularProgress = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+                    ProgressBar(this, null, 0, R.style.Widget_UIFabric_CircularProgress_Small)
+                else
+                    layoutInflater.inflate(R.layout.view_snackbar_circular_progress, null, false) as ProgressBar
+
+                circularProgress.indeterminateDrawable.setColorFilter(
+                    ContextCompat.getColor(this, R.color.snackbar_circular_progress_drawable),
+                    PorterDuff.Mode.SRC_IN
+                )
+
+                Snackbar.make(root_view, getString(R.string.snackbar_single_line), Snackbar.LENGTH_LONG)
+                    .setCustomView(circularProgress)
                     .show()
             }
 
@@ -74,21 +86,27 @@ class SnackbarActivity : DemoActivity(), View.OnClickListener {
 
             R.id.btn_snackbar_single_line_action_custom_view ->
                 Snackbar.make(root_view, getString(R.string.snackbar_single_line))
-                    .setCustomView(doneIconImageView)
+                    .setCustomView(avatarView, Snackbar.CustomViewSize.MEDIUM)
                     .setAction(getString(R.string.snackbar_action), View.OnClickListener {
                         // handle click here
                     })
                     .show()
 
-            R.id.btn_snackbar_multi_line ->
+            // Multiline
+
+            R.id.btn_snackbar_multiline ->
                 Snackbar.make(root_view, getString(R.string.snackbar_multiline), Snackbar.LENGTH_LONG).show()
 
-            R.id.btn_snackbar_multi_line_custom_view ->
+            R.id.btn_snackbar_multiline_custom_view -> {
+                val doneIconImageView = ImageView(this)
+                doneIconImageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_done_white))
+
                 Snackbar.make(root_view, getString(R.string.snackbar_multiline), Snackbar.LENGTH_LONG)
                     .setCustomView(doneIconImageView)
                     .show()
+            }
 
-            R.id.btn_snackbar_multi_line_action -> {
+            R.id.btn_snackbar_multiline_action -> {
                 val snackbar = Snackbar.make(root_view, getString(R.string.snackbar_multiline), Snackbar.LENGTH_INDEFINITE)
                     .setAction(getString(R.string.snackbar_action), View.OnClickListener {
                         // handle click here
@@ -105,7 +123,7 @@ class SnackbarActivity : DemoActivity(), View.OnClickListener {
                     }, 2000)
             }
 
-            R.id.btn_snackbar_multi_line_action_custom_view ->
+            R.id.btn_snackbar_multiline_action_custom_view ->
                 Snackbar.make(root_view, getString(R.string.snackbar_multiline))
                     .setCustomView(thumbnailImageView, Snackbar.CustomViewSize.MEDIUM)
                     .setAction(getString(R.string.snackbar_action), View.OnClickListener {
@@ -113,12 +131,14 @@ class SnackbarActivity : DemoActivity(), View.OnClickListener {
                     })
                     .show()
 
-            R.id.btn_snackbar_multi_line_long_action ->
+            R.id.btn_snackbar_multiline_long_action ->
                 Snackbar.make(root_view, getString(R.string.snackbar_multiline))
                     .setAction(getString(R.string.snackbar_action_long), View.OnClickListener {
                         // handle click here
                     })
                     .show()
+
+            // Announcement style
 
             R.id.btn_snackbar_announcement -> {
                 val announcementIconImageView = ImageView(this)

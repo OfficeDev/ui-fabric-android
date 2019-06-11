@@ -165,8 +165,8 @@
     <string name="circular_progress">Circular Progress</string>
     <string name="circular_progress_xsmall">XSmall</string>
     <string name="circular_progress_xsmall_size">20dp</string>
-    <string name="circular_progress_small_default">Small</string>
-    <string name="circular_progress_small_default_size">24dp, default</string>
+    <string name="circular_progress_small">Small</string>
+    <string name="circular_progress_small_size">24dp</string>
     <string name="circular_progress_medium">Medium</string>
     <string name="circular_progress_medium_size">36dp</string>
     <string name="circular_progress_large">Large</string>
@@ -185,9 +185,9 @@
         Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
     <string name="snackbar_announcement">This is an announcement snackbar. It’s used for communicating new features.</string>
     <string name="snackbar_description_single_line">Short duration</string>
-    <string name="snackbar_description_single_line_custom_view">Short duration with medium custom view</string>
+    <string name="snackbar_description_single_line_custom_view">Long duration with circular progress as small custom view</string>
     <string name="snackbar_description_single_line_action">Short duration with action</string>
-    <string name="snackbar_description_single_line_action_custom_view">Short duration with action and small custom view</string>
+    <string name="snackbar_description_single_line_action_custom_view">Short duration with action and medium custom view</string>
     <string name="snackbar_description_multiline">Long duration</string>
     <string name="snackbar_description_multiline_custom_view">Long duration with small custom view</string>
     <string name="snackbar_description_multiline_action">Indefinite duration with action and text updates</string>

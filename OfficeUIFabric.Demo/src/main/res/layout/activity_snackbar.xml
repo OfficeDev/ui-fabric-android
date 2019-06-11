@@ -98,7 +98,7 @@
         android:text="@string/snackbar_description_multiline" />
 
     <Button
-        android:id="@+id/btn_snackbar_multi_line"
+        android:id="@+id/btn_snackbar_multiline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/snackbar_button_show" />
@@ -110,7 +110,7 @@
         android:text="@string/snackbar_description_multiline_action" />
 
     <Button
-        android:id="@+id/btn_snackbar_multi_line_action"
+        android:id="@+id/btn_snackbar_multiline_action"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/snackbar_button_show" />
@@ -122,7 +122,7 @@
         android:text="@string/snackbar_description_multiline_custom_view" />
 
     <Button
-        android:id="@+id/btn_snackbar_multi_line_custom_view"
+        android:id="@+id/btn_snackbar_multiline_custom_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/snackbar_button_show" />
@@ -134,7 +134,7 @@
         android:text="@string/snackbar_description_multiline_action_custom_view" />
 
     <Button
-        android:id="@+id/btn_snackbar_multi_line_action_custom_view"
+        android:id="@+id/btn_snackbar_multiline_action_custom_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/snackbar_button_show" />
@@ -146,7 +146,7 @@
         android:text="@string/snackbar_description_multiline_action_long" />
 
     <Button
-        android:id="@+id/btn_snackbar_multi_line_long_action"
+        android:id="@+id/btn_snackbar_multiline_long_action"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/snackbar_button_show" />
