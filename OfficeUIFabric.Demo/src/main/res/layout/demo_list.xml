@@ -12,5 +12,4 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layoutManager="LinearLayoutManager"
-    tools:context=".DemoListActivity"
-    tools:listitem="@layout/demo_list_content" />
+    tools:context=".DemoListActivity" />
