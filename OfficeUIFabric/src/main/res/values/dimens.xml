@@ -60,14 +60,17 @@
     <!--ListItem-->
     <dimen name="uifabric_list_item_min_height">48dp</dimen>
     <dimen name="uifabric_list_item_text_area_inset_custom_view">72dp</dimen>
+    <dimen name="uifabric_list_item_text_area_inset_custom_view_large_header">96dp</dimen>
     <!--Custom view sizes-->
     <dimen name="uifabric_list_item_custom_view_size_small">24dp</dimen>
     <dimen name="uifabric_list_item_custom_view_size_medium">40dp</dimen>
+    <dimen name="uifabric_list_item_custom_view_size_large">64dp</dimen>
     <!--List item margins and spacing-->
     <dimen name="uifabric_list_item_vertical_margin_text_one_line">13dp</dimen>
     <dimen name="uifabric_list_item_vertical_margin_text_two_line">15dp</dimen>
     <dimen name="uifabric_list_item_vertical_margin_text_two_line_compact">11dp</dimen>
     <dimen name="uifabric_list_item_vertical_margin_text_three_line">14dp</dimen>
+    <dimen name="uifabric_list_item_vertical_margin_large_header">12dp</dimen>
     <dimen name="uifabric_list_item_vertical_margin_custom_view_minimum">8dp</dimen>
     <dimen name="uifabric_list_item_horizontal_margin_regular">@dimen/uifabric_content_inset</dimen>
     <dimen name="uifabric_list_item_margin_end_custom_view_small">16dp</dimen>

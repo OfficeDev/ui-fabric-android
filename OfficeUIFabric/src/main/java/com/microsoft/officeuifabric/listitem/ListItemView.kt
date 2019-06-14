@@ -6,6 +6,7 @@
 package com.microsoft.officeuifabric.listitem
 
 import android.content.Context
+import android.support.v4.widget.TextViewCompat
 import android.text.TextUtils
 import android.util.AttributeSet
 import android.view.Gravity
@@ -24,7 +25,6 @@ import com.microsoft.officeuifabric.view.TemplateView
  *
  * TODO: Variants still needed:
  * - Large preview
- * - Large header
  */
 open class ListItemView : TemplateView {
     companion object {
@@ -40,7 +40,9 @@ open class ListItemView : TemplateView {
      */
     enum class CustomViewSize(private val id: Int) {
         SMALL(R.dimen.uifabric_list_item_custom_view_size_small),
-        MEDIUM(R.dimen.uifabric_list_item_custom_view_size_medium);
+        MEDIUM(R.dimen.uifabric_list_item_custom_view_size_medium),
+        // Using a large custom view will apply "Large Header" style text appearance and margins to your list item.
+        LARGE(R.dimen.uifabric_list_item_custom_view_size_large);
 
         /**
          * This method provides the actual physical size that is applied to custom view.
@@ -203,11 +205,13 @@ open class ListItemView : TemplateView {
      */
     internal val textAreaStartInset: Float
         get() {
-            return if (customView != null)
-                resources.getDimension(R.dimen.uifabric_list_item_text_area_inset_custom_view)
-            else
-                resources.getDimension(R.dimen.uifabric_list_item_horizontal_margin_regular)
+            return when {
+                useLargeHeaderStyle -> resources.getDimension(R.dimen.uifabric_list_item_text_area_inset_custom_view_large_header)
+                customView != null -> resources.getDimension(R.dimen.uifabric_list_item_text_area_inset_custom_view)
+                else -> resources.getDimension(R.dimen.uifabric_list_item_horizontal_margin_regular)
+            }
         }
+
     /**
      * Defines the end inset for the text area.
      */
@@ -228,6 +232,9 @@ open class ListItemView : TemplateView {
     private var customAccessoryViewOriginalPaddingTop: Int = 0
     private var customAccessoryViewOriginalPaddingEnd: Int = 0
     private var customAccessoryViewOriginalPaddingBottom: Int = 0
+
+    private val useLargeHeaderStyle: Boolean
+        get() = customView != null && customViewSize == CustomViewSize.LARGE
 
     @JvmOverloads
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
@@ -288,6 +295,7 @@ open class ListItemView : TemplateView {
     }
 
     private fun updateTemplate() {
+        updateTextAppearance()
         updateTextView(titleView, title, titleMaxLines, titleTruncateAt)
         updateTextView(subtitleView, subtitle, subtitleMaxLines, subtitleTruncateAt)
         updateTextView(footerView, footer, footerMaxLines, footerTruncateAt)
@@ -297,6 +305,18 @@ open class ListItemView : TemplateView {
 
         customViewContainer?.setContentAndUpdateVisibility(customView, ::updateCustomViewLayout)
         customAccessoryViewContainer?.setContentAndUpdateVisibility(customAccessoryView)
+    }
+
+    private fun updateTextAppearance() {
+        if (useLargeHeaderStyle) {
+            titleView?.let { TextViewCompat.setTextAppearance(it, R.style.TextAppearance_UIFabric_ListItemTitle_LargeHeader) }
+            subtitleView?.let { TextViewCompat.setTextAppearance(it, R.style.TextAppearance_UIFabric_ListItemSubtitle_LargeHeader) }
+            footerView?.let { TextViewCompat.setTextAppearance(it, R.style.TextAppearance_UIFabric_ListItemFooter_LargeHeader) }
+        } else {
+            titleView?.let { TextViewCompat.setTextAppearance(it, R.style.TextAppearance_UIFabric_ListItemTitle) }
+            subtitleView?.let { TextViewCompat.setTextAppearance(it, R.style.TextAppearance_UIFabric_ListItemSubtitle) }
+            footerView?.let { TextViewCompat.setTextAppearance(it, R.style.TextAppearance_UIFabric_ListItemFooter) }
+        }
     }
 
     private fun updateTextView(textView: TextView?, text: String, maxLines: Int, truncateAt: TextUtils.TruncateAt) {
@@ -351,16 +371,17 @@ open class ListItemView : TemplateView {
         val customViewSizeDisplayValue = customViewSize.getDisplayValue(context)
         val lp = LinearLayout.LayoutParams(customViewSizeDisplayValue, customViewSizeDisplayValue)
 
-        val customViewContainerVerticalMargin = resources.getDimension(R.dimen.uifabric_list_item_vertical_margin_custom_view_minimum).toInt()
+        val customViewContainerVerticalMargin = if (!useLargeHeaderStyle)
+            resources.getDimension(R.dimen.uifabric_list_item_vertical_margin_custom_view_minimum).toInt()
+        else
+            resources.getDimension(R.dimen.uifabric_list_item_vertical_margin_large_header).toInt()
+
         val customViewSmallMarginEnd = resources.getDimension(R.dimen.uifabric_list_item_margin_end_custom_view_small).toInt()
         val listItemHorizontalMargin = resources.getDimension(R.dimen.uifabric_list_item_spacing).toInt()
 
         lp.gravity = Gravity.CENTER_VERTICAL
 
-        val extraMarginEnd = when (customViewSize) {
-            CustomViewSize.SMALL -> customViewSmallMarginEnd
-            CustomViewSize.MEDIUM -> 0
-        }
+        val extraMarginEnd = if (customViewSize == CustomViewSize.SMALL) customViewSmallMarginEnd else 0
         lp.setMargins(
             0,
             customViewContainerVerticalMargin,
@@ -375,6 +396,7 @@ open class ListItemView : TemplateView {
         val textViewContainer = textViewContainer ?: return
         val lp = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f)
 
+        val largeHeaderVerticalMargin = resources.getDimension(R.dimen.uifabric_list_item_vertical_margin_large_header).toInt()
         val oneLineVerticalMargin = resources.getDimension(R.dimen.uifabric_list_item_vertical_margin_text_one_line).toInt()
         val twoLineVerticalMargin = resources.getDimension(R.dimen.uifabric_list_item_vertical_margin_text_two_line).toInt()
         val twoLineCompactVerticalMargin = resources.getDimension(R.dimen.uifabric_list_item_vertical_margin_text_two_line_compact).toInt()
@@ -383,6 +405,7 @@ open class ListItemView : TemplateView {
 
         lp.gravity = Gravity.CENTER_VERTICAL
         lp.topMargin = when {
+            useLargeHeaderStyle -> largeHeaderVerticalMargin
             layoutType == LayoutType.TWO_LINES && layoutDensity == LayoutDensity.REGULAR -> twoLineVerticalMargin
             layoutType == LayoutType.TWO_LINES && layoutDensity == LayoutDensity.COMPACT -> twoLineCompactVerticalMargin
             layoutType == LayoutType.THREE_LINES -> threeLineVerticalMargin

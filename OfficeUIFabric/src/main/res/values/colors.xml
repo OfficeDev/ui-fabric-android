@@ -91,6 +91,12 @@
 
     <!--ListItem-->
     <color name="uifabric_list_item_background">@color/uifabric_background</color>
+    <color name="uifabric_list_item_title">@color/uifabric_black</color>
+    <color name="uifabric_list_item_subtitle">@color/uifabric_gray</color>
+    <color name="uifabric_list_item_subtitle_large_header">@color/uifabric_black</color>
+    <color name="uifabric_list_item_footer">@color/uifabric_gray</color>
+
+    <!--ListSubHeader-->
     <color name="uifabric_list_sub_header_title_primary">@color/uifabric_primary</color>
     <color name="uifabric_list_sub_header_title_black">@color/uifabric_black</color>
 

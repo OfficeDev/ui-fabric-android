@@ -19,6 +19,7 @@ import com.microsoft.officeuifabric.listitem.ListItemDivider
 import com.microsoft.officeuifabric.listitem.ListItemView
 import com.microsoft.officeuifabric.listitem.ListItemView.Companion.DEFAULT_CUSTOM_VIEW_SIZE
 import com.microsoft.officeuifabric.listitem.ListItemView.Companion.DEFAULT_LAYOUT_DENSITY
+import com.microsoft.officeuifabric.persona.AvatarSize
 import com.microsoft.officeuifabric.persona.AvatarView
 import com.microsoft.officeuifabric.snackbar.Snackbar
 import com.microsoft.officeuifabricdemo.DemoActivity
@@ -164,7 +165,8 @@ class ListItemViewActivity : DemoActivity() {
                     customViewSize = ListItemView.CustomViewSize.MEDIUM,
                     customAccessoryView = createExampleTextView()
                 )
-            ))
+            )
+        )
 
 
         // Layout variant examples
@@ -181,6 +183,31 @@ class ListItemViewActivity : DemoActivity() {
                     getString(R.string.list_item_title),
                     getString(R.string.list_item_subtitle),
                     getString(R.string.list_item_footer)
+                )
+            )
+        )
+
+        val largeHeaderSection = createSection(
+            ListSubHeader(getString(R.string.list_item_sub_header_large_header)),
+            arrayListOf(
+                createListItem(
+                    getString(R.string.list_item_title),
+                    getString(R.string.list_item_subtitle),
+                    getString(R.string.list_item_footer),
+                    customView = createExampleAvatarView(R.drawable.avatar_johnie_mcconnell, avatarSize = AvatarSize.XXLARGE),
+                    customViewSize = ListItemView.CustomViewSize.LARGE
+                ),
+                createListItem(
+                    getString(R.string.list_item_title),
+                    footer = getString(R.string.list_item_footer),
+                    customView = createExampleAvatarView(avatarNameStringId = R.string.persona_name_elliot_woodward, avatarSize = AvatarSize.XXLARGE),
+                    customViewSize = ListItemView.CustomViewSize.LARGE
+                ),
+                createListItem(
+                    getString(R.string.list_item_title),
+                    getString(R.string.list_item_subtitle),
+                    customView = createExampleAvatarView(R.drawable.avatar_miguel_garcia, avatarSize = AvatarSize.XXLARGE),
+                    customViewSize = ListItemView.CustomViewSize.LARGE
                 )
             )
         )
@@ -246,7 +273,7 @@ class ListItemViewActivity : DemoActivity() {
         )
 
         val twoLineListSections = twoLineSection + twoLineDenseSection
-        val layoutVariantSections = noCustomViewSection + truncationSection + wrappingSection
+        val layoutVariantSections = noCustomViewSection + largeHeaderSection + truncationSection + wrappingSection
         return (singleLineSection + twoLineListSections + threeLineSection + layoutVariantSections) as ArrayList<IBaseListItem>
     }
 
@@ -312,9 +339,10 @@ class ListItemViewActivity : DemoActivity() {
         return textCustomAccessoryView
     }
 
-    private fun createExampleAvatarView(avatarImageResourceId: Int = -1, avatarNameStringId: Int = -1): AvatarView {
+    private fun createExampleAvatarView(avatarImageResourceId: Int = -1, avatarNameStringId: Int = -1, avatarSize: AvatarSize = AvatarSize.LARGE): AvatarView {
         val avatarView = AvatarView(this)
         avatarView.avatarImageResourceId = avatarImageResourceId
+        avatarView.avatarSize = avatarSize
         if (avatarNameStringId != -1)
             avatarView.name = getString(avatarNameStringId)
         return avatarView

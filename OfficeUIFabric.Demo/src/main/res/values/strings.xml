@@ -61,6 +61,7 @@
     <string name="list_item_sub_header_two_line_dense">Two-line list with dense spacing</string>
     <string name="list_item_sub_header_three_line">Three-line list</string>
     <string name="list_item_sub_header_no_custom_views">List items with no custom views</string>
+    <string name="list_item_sub_header_large_header">List items with large custom views</string>
     <string name="list_item_sub_header_wrapped_text">List items with wrapped text</string>
     <string name="list_item_sub_header_truncated_text">List items with truncated text</string>
     <string name="list_item_truncation_middle">Middle truncation.</string>

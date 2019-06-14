@@ -37,6 +37,7 @@
         <attr name="customViewSize" format="enum">
             <enum name="small" value="0" />
             <enum name="medium" value="1" />
+            <enum name="large" value="2" />
         </attr>
     </declare-styleable>
 </resources>

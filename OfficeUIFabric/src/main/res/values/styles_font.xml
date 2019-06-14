@@ -84,12 +84,23 @@
 
     <!--ListItem-->
     <style name="TextAppearance.UIFabric.ListItemTitle" parent="TextAppearance.UIFabric.SubHeading">
-        <item name="android:textColor">@color/uifabric_black</item>
+        <item name="android:textColor">@color/uifabric_list_item_title</item>
     </style>
     <style name="TextAppearance.UIFabric.ListItemSubtitle" parent="TextAppearance.UIFabric.Body1">
-        <item name="android:textColor">@color/uifabric_gray</item>
+        <item name="android:textColor">@color/uifabric_list_item_subtitle</item>
     </style>
-    <style name="TextAppearance.UIFabric.ListItemFooter" parent="TextAppearance.UIFabric.LightCaption" />
+    <style name="TextAppearance.UIFabric.ListItemFooter" parent="TextAppearance.UIFabric.Caption">
+        <item name="android:textColor">@color/uifabric_list_item_footer</item>
+    </style>
+    <style name="TextAppearance.UIFabric.ListItemTitle.LargeHeader" parent="TextAppearance.UIFabric.Title1">
+        <item name="android:textColor">@color/uifabric_list_item_title</item>
+    </style>
+    <style name="TextAppearance.UIFabric.ListItemSubtitle.LargeHeader">
+        <item name="android:textColor">@color/uifabric_list_item_subtitle_large_header</item>
+    </style>
+    <style name="TextAppearance.UIFabric.ListItemFooter.LargeHeader" parent="TextAppearance.UIFabric.Body1">
+        <item name="android:textColor">@color/uifabric_list_item_footer</item>
+    </style>
 
     <!--ListSubHeader-->
     <style name="TextAppearance.UIFabric.ListSubHeaderTitle" parent="TextAppearance.UIFabric.Body2" />
