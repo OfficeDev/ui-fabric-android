@@ -12,6 +12,7 @@ import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import com.microsoft.officeuifabric.listitem.ListItemDivider
 import com.microsoft.officeuifabric.listitem.ListItemView
 import kotlinx.android.synthetic.main.activity_demo_list.*
@@ -52,7 +53,9 @@ class DemoListActivity : AppCompatActivity() {
         override fun getItemCount(): Int = DEMOS.size
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            return ViewHolder(ListItemView(parent.context))
+            val listItemView = ListItemView(parent.context)
+            listItemView.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+            return ViewHolder(listItemView)
         }
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
