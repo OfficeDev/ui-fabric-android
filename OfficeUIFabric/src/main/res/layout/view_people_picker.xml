@@ -9,19 +9,19 @@
     android:id="@+id/people_picker_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/uifabric_persona_vertical_padding"
-    android:layout_marginBottom="@dimen/uifabric_persona_vertical_padding"
+    android:layout_marginTop="@dimen/uifabric_people_picker_vertical_padding"
+    android:layout_marginBottom="@dimen/uifabric_people_picker_vertical_padding"
     android:background="@drawable/people_picker_background"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:paddingStart="@dimen/uifabric_persona_horizontal_spacing"
-    android:paddingEnd="@dimen/uifabric_persona_horizontal_spacing">
+    android:paddingStart="@dimen/uifabric_people_picker_horizontal_padding"
+    android:paddingEnd="@dimen/uifabric_people_picker_horizontal_padding">
 
     <TextView
         android:id="@+id/people_picker_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/uifabric_persona_label_spacing"
+        android:layout_marginEnd="@dimen/uifabric_people_picker_label_margin_end"
         android:labelFor="@id/people_picker_text_view"
         android:gravity="center_vertical"
         android:minHeight="@dimen/uifabric_min_touch_size"

@@ -6,13 +6,11 @@
 package com.microsoft.officeuifabric.persona
 
 import android.content.Context
-import android.graphics.drawable.InsetDrawable
-import android.support.v4.content.ContextCompat
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
-import com.microsoft.officeuifabric.R
+import com.microsoft.officeuifabric.listitem.ListItemDivider
 import java.util.*
 
 /**
@@ -44,15 +42,7 @@ class PersonaListView : RecyclerView {
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
         adapter = personaListAdapter
         layoutManager = LinearLayoutManager(context)
-        addCustomDivider((layoutManager as LinearLayoutManager).orientation)
-    }
-
-    private fun addCustomDivider(orientation: Int) {
-        val dividerItemDecoration = DividerItemDecoration(context, orientation)
-        val spacing = PersonaView.getSpacing(context, AvatarSize.LARGE)
-        val insetDrawable = InsetDrawable(ContextCompat.getDrawable(context, R.drawable.ms_row_divider), spacing.insetLeft, 0, spacing.cellPadding, 0)
-        dividerItemDecoration.setDrawable(insetDrawable)
-        addItemDecoration(dividerItemDecoration)
+        addItemDecoration(ListItemDivider(context, DividerItemDecoration.VERTICAL))
     }
 
     interface OnItemClickedListener {

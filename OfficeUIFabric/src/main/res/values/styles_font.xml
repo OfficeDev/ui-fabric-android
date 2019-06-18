@@ -125,15 +125,6 @@
     <style name="TextAppearance.UIFabric.PeoplePickerCountSpan" parent="TextAppearance.UIFabric.LightCaption" />
     <style name="TextAppearance.UIFabric.PeoplePickerSearchDirectoryButton" parent="TextAppearance.UIFabric.Button.Borderless" />
 
-    <!--Persona-->
-    <style name="TextAppearance.UIFabric.PersonaTitle" parent="TextAppearance.UIFabric.SubHeading">
-        <item name="android:textColor">@color/uifabric_black</item>
-    </style>
-    <style name="TextAppearance.UIFabric.PersonaSubtitle" parent="TextAppearance.UIFabric.Body1">
-        <item name="android:textColor">@color/uifabric_gray</item>
-    </style>
-    <style name="TextAppearance.UIFabric.PersonaFooter" parent="TextAppearance.UIFabric.LightCaption" />
-
     <!--Snackbar-->
     <style name="TextAppearance.UIFabric.SnackbarText" parent="TextAppearance.UIFabric.Body1">
         <item name="android:textColor">@color/uifabric_snackbar_text</item>

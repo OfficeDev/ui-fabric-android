@@ -15,7 +15,6 @@ import android.widget.TextView
 import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.persona.IPersona
 import com.microsoft.officeuifabric.persona.Persona
-import com.microsoft.officeuifabric.persona.PersonaView
 import com.microsoft.officeuifabric.view.TemplateView
 import com.tokenautocomplete.TokenCompleteTextView
 import kotlinx.android.synthetic.main.view_people_picker.view.*
@@ -54,9 +53,8 @@ class PeoplePickerView : TemplateView {
             field = value
             peoplePickerTextViewAdapter = PeoplePickerTextViewAdapter(
                 context,
-                PersonaView.layoutId,
-                value ?: ArrayList(),
-                PersonaFilter(this)
+                objects = value ?: ArrayList(),
+                filter = PersonaFilter(this)
             )
         }
     /**

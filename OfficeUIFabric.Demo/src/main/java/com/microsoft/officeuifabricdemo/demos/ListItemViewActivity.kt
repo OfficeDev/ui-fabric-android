@@ -10,10 +10,10 @@ import android.os.Build
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v4.widget.TextViewCompat
+import android.support.v7.widget.DividerItemDecoration
 import android.text.TextUtils
 import android.view.View
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import com.microsoft.officeuifabric.listitem.ListItemDivider
 import com.microsoft.officeuifabric.listitem.ListItemView
@@ -44,7 +44,7 @@ class ListItemViewActivity : DemoActivity() {
         listAdapter.listItems = createList()
 
         list_example.adapter = listAdapter
-        list_example.addItemDecoration(ListItemDivider(this, LinearLayout.VERTICAL))
+        list_example.addItemDecoration(ListItemDivider(this, DividerItemDecoration.VERTICAL))
     }
 
     private fun createList(): ArrayList<IBaseListItem> {

@@ -13,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.microsoft.officeuifabric.R
+import com.microsoft.officeuifabric.listitem.ListItemView
 import com.microsoft.officeuifabric.persona.*
 import kotlinx.android.synthetic.main.people_picker_search_directory.view.*
 import java.util.*
@@ -73,7 +74,7 @@ internal class PeoplePickerTextViewAdapter : ArrayAdapter<IPersona>, Filterable 
             updateSearchDirectoryText()
         }
 
-    constructor(context: Context, resource: Int, objects: List<IPersona>, filter: Filter) : super(context, resource, objects) {
+    constructor(context: Context, resource: Int = -1, objects: List<IPersona>, filter: Filter) : super(context, resource, objects) {
         personas.addAll(objects)
         this.filter = filter
     }
@@ -108,6 +109,7 @@ internal class PeoplePickerTextViewAdapter : ArrayAdapter<IPersona>, Filterable 
     private fun getPersonaView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val view = convertView as? PersonaView ?: PersonaView(context)
         view.avatarSize = AvatarSize.LARGE
+        view.layoutDensity = ListItemView.LayoutDensity.COMPACT
         view.setPersona(personas[position])
         listView = parent as? ListView
         return view
