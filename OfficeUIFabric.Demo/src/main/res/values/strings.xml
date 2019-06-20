@@ -23,6 +23,17 @@
     <string name="avatar_size_small">Small</string>
     <string name="avatar_size_xsmall">XSmall</string>
 
+    <!--BottomSheet-->
+    <string name="bottom_sheet_button">Open Bottom Sheet</string>
+    <string name="bottom_sheet_item_flag_label">Flag</string>
+    <string name="bottom_sheet_item_reply_label">Reply</string>
+    <string name="bottom_sheet_item_forward_label">Forward</string>
+    <string name="bottom_sheet_item_delete_label">Delete</string>
+    <string name="bottom_sheet_item_flag_toast">Flag list item clicked</string>
+    <string name="bottom_sheet_item_reply_toast">Reply list item clicked</string>
+    <string name="bottom_sheet_item_forward_toast">Forward list item clicked</string>
+    <string name="bottom_sheet_item_delete_toast">Delete list item clicked</string>
+
     <!--Button-->
     <string name="button">Button</string>
     <string name="button_disabled">Disabled Button</string>

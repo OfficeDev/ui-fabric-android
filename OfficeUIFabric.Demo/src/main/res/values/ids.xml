@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+    <item name="bottom_sheet_item_flag" type="id" />
+    <item name="bottom_sheet_item_reply" type="id" />
+    <item name="bottom_sheet_item_forward" type="id" />
+    <item name="bottom_sheet_item_delete" type="id" />
+</resources>

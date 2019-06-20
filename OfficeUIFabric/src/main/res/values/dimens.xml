@@ -14,6 +14,9 @@
     <dimen name="uifabric_avatar_size_xxlarge">64dp</dimen>
     <dimen name="uifabric_avatar_square_corner_radius">@dimen/uifabric_corner_radius_medium</dimen>
 
+    <!--BottomSheet-->
+    <dimen name="uifabric_bottom_sheet_vertical_padding">8dp</dimen>
+
     <!--Button-->
     <dimen name="uifabric_button_padding_horizontal">@dimen/uifabric_content_inset</dimen>
     <dimen name="uifabric_button_padding_vertical">8.5dp</dimen>

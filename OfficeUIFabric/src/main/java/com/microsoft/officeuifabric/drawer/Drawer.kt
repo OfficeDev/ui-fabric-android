@@ -19,7 +19,7 @@ import com.microsoft.officeuifabric.R
 import kotlinx.android.synthetic.main.fragment_drawer.*
 
 // TODO investigate why over scroll "bow" animation is not showing and fix
-
+// TODO add callbacks for Dismiss etc. See iOS implementation
 /**
  * [Drawer] is used for displaying a modal dialog in the form of an expanding and collapsing bottom sheet
  * to which contents are added.
@@ -28,10 +28,12 @@ open class Drawer : AppCompatDialogFragment() {
     companion object {
         private const val CONTENT_LAYOUT_ID = "contentLayoutId"
         private const val BOTTOM_SHEET_STATE = "bottomSheetState"
+        private const val DISMISS_THRESHOLD = 0.005f
 
         /**
          * @param contentLayoutId the layout id of the drawer contents.
          */
+        @JvmStatic
         fun newInstance(@LayoutRes contentLayoutId: Int): Drawer {
             val bundle = Bundle()
             bundle.putInt(CONTENT_LAYOUT_ID, contentLayoutId)
@@ -42,8 +44,22 @@ open class Drawer : AppCompatDialogFragment() {
         }
     }
 
-    private var contentLayoutId: Int = -1
+    protected var contentView: View? = null
+        set(value) {
+            if (field == value)
+                return
+            if (field != null)
+                drawer.removeView(field)
+            field = value
+            if (field != null)
+                drawer.addView(field)
+        }
+
+    // Layout resource id can never be 0 as all resources start numbering with 0x7f0
+    private var contentLayoutId: Int = 0
+
     private var bottomSheetState: Int = BottomSheetBehavior.STATE_HIDDEN
+    private var hasExpanded: Boolean = false
 
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<View>
 
@@ -66,22 +82,28 @@ open class Drawer : AppCompatDialogFragment() {
         bottomSheetBehavior = BottomSheetBehavior.from(drawer)
         bottomSheetBehavior.state = bottomSheetState
 
+        // BottomSheetBehavior state becomes STATE_SETTLING right after STATE_EXPANDED, but we need to know if
+        // the drawer has expanded in order to dismiss later on
+        if (bottomSheetState == BottomSheetBehavior.STATE_EXPANDED)
+            hasExpanded = true
+
         drawer_container.setOnClickListener {
             collapse()
         }
 
         bottomSheetBehavior.setBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
             override fun onStateChanged(bottomSheet: View, newState: Int) {
-                // No op
+                if (newState == BottomSheetBehavior.STATE_EXPANDED)
+                    hasExpanded = true
             }
 
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                if (slideOffset == 0f)
+                if (hasExpanded && slideOffset < DISMISS_THRESHOLD)
                     dismiss()
             }
         })
 
-        if (contentLayoutId > -1) {
+        if (contentLayoutId > 0) {
             val drawerContents = layoutInflater.inflate(contentLayoutId, drawer, true)
             (parentFragment as? OnDrawerContentCreatedListener)?.onDrawerContentCreated(drawerContents)
             (activity as? OnDrawerContentCreatedListener)?.onDrawerContentCreated(drawerContents)
@@ -114,7 +136,7 @@ open class Drawer : AppCompatDialogFragment() {
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
     }
 
-    private fun collapse() {
+    protected fun collapse() {
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
     }
 }
