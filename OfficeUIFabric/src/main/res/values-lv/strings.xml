@@ -74,7 +74,7 @@
   <string name="people_picker_accessibility_selected_persona">Persona %s atlasīta</string>
   <string name="people_picker_accessibility_deselect_selected_persona">, aktivizācija noņems atlasi</string>
   <string name="people_picker_accessibility_delete_selected_persona">, aktivizācija izdzēsīs</string>
-  <string name="people_picker_accessibility_click_selected_persona">, aktivizācijas noklikšķinās</string>
+  <string name="people_picker_accessibility_click_selected_persona">, aktivizējot tiks noklikšķināts</string>
   <plurals name="people_picker_accessibility_suggestions_opened">
     <item quantity="zero">Ieteikumu saraksts ar %s personām atvērts</item>
     <item quantity="one">Ieteikumu saraksts ar %s personu atvērts</item>
