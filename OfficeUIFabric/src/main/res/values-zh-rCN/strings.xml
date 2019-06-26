@@ -74,7 +74,7 @@
   <string name="people_picker_accessibility_selected_persona">已选择 %s</string>
   <string name="people_picker_accessibility_deselect_selected_persona">，激活将取消选择</string>
   <string name="people_picker_accessibility_delete_selected_persona">，激活将删除</string>
-  <string name="people_picker_accessibility_click_selected_persona">，单击将激活</string>
+  <string name="people_picker_accessibility_click_selected_persona">，单击激活</string>
   <plurals name="people_picker_accessibility_suggestions_opened">
     <item quantity="other">向 %s 个人打开的建议列表</item>
   </plurals>
