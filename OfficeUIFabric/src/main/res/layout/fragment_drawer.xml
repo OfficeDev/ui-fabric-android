@@ -11,17 +11,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!--TODO add clipping mask for content-->
-    <android.support.v7.widget.LinearLayoutCompat
+    <com.microsoft.officeuifabric.drawer.DrawerView
         android:id="@+id/drawer"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="@dimen/uifabric_drawer_elevation"
+        android:background="@color/uifabric_drawer_background"
         android:clipToPadding="true"
-        android:background="@drawable/drawer_background"
         app:behavior_hideable="true"
         app:behavior_peekHeight="@dimen/uifabric_drawer_peak_height"
-        app:layout_behavior="@string/bottom_sheet_behavior" />
+        app:layout_behavior="@string/bottom_sheet_behavior">
+
+        <LinearLayout
+            android:id="@+id/drawer_content"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.microsoft.officeuifabric.drawer.DrawerView>
 
 </android.support.design.widget.CoordinatorLayout>

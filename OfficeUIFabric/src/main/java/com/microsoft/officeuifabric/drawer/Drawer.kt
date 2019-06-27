@@ -49,10 +49,10 @@ open class Drawer : AppCompatDialogFragment() {
             if (field == value)
                 return
             if (field != null)
-                drawer.removeView(field)
+                drawer_content.removeView(field)
             field = value
             if (field != null)
-                drawer.addView(field)
+                drawer_content.addView(field)
         }
 
     // Layout resource id can never be 0 as all resources start numbering with 0x7f0
