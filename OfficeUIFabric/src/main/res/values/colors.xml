@@ -99,6 +99,7 @@
     <!--ListSubHeader-->
     <color name="uifabric_list_sub_header_title_primary">@color/uifabric_primary</color>
     <color name="uifabric_list_sub_header_title_black">@color/uifabric_black</color>
+    <color name="uifabric_list_sub_header_title_gray">@color/uifabric_gray</color>
 
     <!--NumberPicker-->
     <color name="uifabric_number_picker_default_text">@color/uifabric_gray</color>

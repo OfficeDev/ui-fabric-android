@@ -19,6 +19,7 @@ import com.microsoft.officeuifabric.listitem.ListItemDivider
 import com.microsoft.officeuifabric.listitem.ListItemView
 import com.microsoft.officeuifabric.listitem.ListItemView.Companion.DEFAULT_CUSTOM_VIEW_SIZE
 import com.microsoft.officeuifabric.listitem.ListItemView.Companion.DEFAULT_LAYOUT_DENSITY
+import com.microsoft.officeuifabric.listitem.ListSubHeaderView
 import com.microsoft.officeuifabric.persona.AvatarSize
 import com.microsoft.officeuifabric.persona.AvatarView
 import com.microsoft.officeuifabric.snackbar.Snackbar
@@ -54,7 +55,7 @@ class ListItemViewActivity : DemoActivity() {
         // Single-line list example
 
         val singleLineSection = createSection(
-            ListSubHeader(getString(R.string.list_item_sub_header_single_line)),
+            createListSubHeader(getString(R.string.list_item_sub_header_single_line), ListSubHeaderView.TitleColor.GRAY, true),
             arrayListOf(
                 createListItem(
                     getString(R.string.list_item_title),
@@ -80,7 +81,7 @@ class ListItemViewActivity : DemoActivity() {
         // Two-line list examples
 
         val twoLineSection = createSection(
-            ListSubHeader(getString(R.string.list_item_sub_header_two_line)),
+            createListSubHeader(getString(R.string.list_item_sub_header_two_line)),
             arrayListOf(
                 createListItem(
                     getString(R.string.list_item_title),
@@ -107,7 +108,7 @@ class ListItemViewActivity : DemoActivity() {
         )
 
         val twoLineDenseSection = createSection(
-            ListSubHeader(getString(R.string.list_item_sub_header_two_line_dense)),
+            createListSubHeader(getString(R.string.list_item_sub_header_two_line_dense)),
             arrayListOf(
                 createListItem(
                     getString(R.string.list_item_title),
@@ -139,7 +140,7 @@ class ListItemViewActivity : DemoActivity() {
         // Three-line list example
 
         val threeLineSection = createSection(
-            ListSubHeader(getString(R.string.list_item_sub_header_three_line)),
+            createListSubHeader(getString(R.string.list_item_sub_header_three_line), ListSubHeaderView.TitleColor.BLACK, true),
             arrayListOf(
                 createListItem(
                     getString(R.string.list_item_title),
@@ -172,7 +173,7 @@ class ListItemViewActivity : DemoActivity() {
         // Layout variant examples
 
         val noCustomViewSection = createSection(
-            ListSubHeader(getString(R.string.list_item_sub_header_no_custom_views)),
+            createListSubHeader(getString(R.string.list_item_sub_header_no_custom_views)),
             arrayListOf(
                 createListItem(getString(R.string.list_item_title)),
                 createListItem(
@@ -188,7 +189,7 @@ class ListItemViewActivity : DemoActivity() {
         )
 
         val largeHeaderSection = createSection(
-            ListSubHeader(getString(R.string.list_item_sub_header_large_header)),
+            createListSubHeader(getString(R.string.list_item_sub_header_large_header)),
             arrayListOf(
                 createListItem(
                     getString(R.string.list_item_title),
@@ -213,7 +214,7 @@ class ListItemViewActivity : DemoActivity() {
         )
 
         val truncationSection = createSection(
-            ListSubHeader(getString(R.string.list_item_sub_header_truncated_text)),
+            createListSubHeader(getString(R.string.list_item_sub_header_truncated_text)),
             arrayListOf(
                 createListItem(
                     "${getString(R.string.list_item_truncation_middle)} ${getString(R.string.long_placeholder)}",
@@ -243,7 +244,7 @@ class ListItemViewActivity : DemoActivity() {
         )
 
         val wrappingSection = createSection(
-            ListSubHeader(getString(R.string.list_item_sub_header_wrapped_text)),
+            createListSubHeader(getString(R.string.list_item_sub_header_wrapped_text)),
             arrayListOf(
                 createListItem(
                     getString(R.string.long_placeholder),
@@ -281,6 +282,31 @@ class ListItemViewActivity : DemoActivity() {
         val itemArray = arrayListOf(subHeader) as ArrayList<IBaseListItem>
         itemArray.addAll(items)
         return itemArray
+    }
+
+    private fun createListSubHeader(
+        text: String,
+        titleColor: ListSubHeaderView.TitleColor = ListSubHeaderView.DEFAULT_TITLE_COLOR,
+        useCustomAccessoryView: Boolean = false
+    ): ListSubHeader {
+        val listSubHeader = ListSubHeader(text)
+        listSubHeader.titleColor = titleColor
+
+        if (useCustomAccessoryView) {
+            val customTextView = TextView(this)
+            customTextView.text = getString(R.string.list_item_sub_header_custom_accessory_text)
+            TextViewCompat.setTextAppearance(customTextView, R.style.TextAppearance_UIFabric_ListSubHeaderTitle_Gray)
+            customTextView.setOnClickListener {
+                Snackbar.make(
+                    it,
+                    resources.getString(R.string.list_item_click_sub_header_custom_accessory_view),
+                    Snackbar.LENGTH_SHORT
+                ).show()
+            }
+            listSubHeader.customAccessoryView = customTextView
+        }
+
+        return listSubHeader
     }
 
     private fun createListItem(

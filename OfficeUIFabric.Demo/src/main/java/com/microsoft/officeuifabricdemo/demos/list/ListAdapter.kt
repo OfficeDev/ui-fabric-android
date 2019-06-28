@@ -41,7 +41,8 @@ class ListAdapter(private val context: Context) : RecyclerView.Adapter<RecyclerV
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val listItem = listItems[position]
 
-        (holder as? ListSubHeaderViewHolder)?.setTitle(listItem.title)
+        if (listItem is IListSubHeader)
+            (holder as? ListSubHeaderViewHolder)?.setListSubHeader(listItem)
 
         if (listItem is IListItem)
             (holder as? ListItemViewHolder)?.setListItem(listItem)
@@ -88,28 +89,34 @@ class ListAdapter(private val context: Context) : RecyclerView.Adapter<RecyclerV
             listSubHeaderView = view
         }
 
-        fun setTitle(title: String) {
-            listSubHeaderView.title = title
+        fun setListSubHeader(listSubHeader: IListSubHeader) {
+            listSubHeaderView.setListSubHeader(listSubHeader)
         }
     }
 }
 
-fun ListItemView.setListItem(listItem: IListItem?) {
-    title = listItem?.title ?: ""
-    subtitle = listItem?.subtitle ?: ""
-    footer = listItem?.footer ?: ""
+fun ListItemView.setListItem(listItem: IListItem) {
+    title = listItem.title
+    subtitle = listItem.subtitle
+    footer = listItem.footer
 
-    titleMaxLines = listItem?.titleMaxLines ?: ListItemView.DEFAULT_MAX_LINES
-    subtitleMaxLines = listItem?.subtitleMaxLines ?: ListItemView.DEFAULT_MAX_LINES
-    footerMaxLines = listItem?.footerMaxLines ?: ListItemView.DEFAULT_MAX_LINES
+    titleMaxLines = listItem.titleMaxLines
+    subtitleMaxLines = listItem.subtitleMaxLines
+    footerMaxLines = listItem.footerMaxLines
 
-    titleTruncateAt = listItem?.titleTruncateAt ?: ListItemView.DEFAULT_TRUNCATION
-    subtitleTruncateAt = listItem?.subtitleTruncateAt ?: ListItemView.DEFAULT_TRUNCATION
-    footerTruncateAt = listItem?.footerTruncateAt ?: ListItemView.DEFAULT_TRUNCATION
+    titleTruncateAt = listItem.titleTruncateAt
+    subtitleTruncateAt = listItem.subtitleTruncateAt
+    footerTruncateAt = listItem.footerTruncateAt
 
-    customView = listItem?.customView
-    customViewSize = listItem?.customViewSize ?: ListItemView.DEFAULT_CUSTOM_VIEW_SIZE
-    customAccessoryView = listItem?.customAccessoryView
+    customView = listItem.customView
+    customViewSize = listItem.customViewSize
+    customAccessoryView = listItem.customAccessoryView
 
-    layoutDensity = listItem?.layoutDensity ?: ListItemView.DEFAULT_LAYOUT_DENSITY
+    layoutDensity = listItem.layoutDensity
+}
+
+fun ListSubHeaderView.setListSubHeader(listSubHeader: IListSubHeader) {
+    title = listSubHeader.title
+    titleColor = listSubHeader.titleColor
+    customAccessoryView = listSubHeader.customAccessoryView
 }

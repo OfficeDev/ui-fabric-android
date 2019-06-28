@@ -53,8 +53,8 @@ class PeoplePickerView : TemplateView {
             field = value
             peoplePickerTextViewAdapter = PeoplePickerTextViewAdapter(
                 context,
-                objects = value ?: ArrayList(),
-                filter = PersonaFilter(this)
+                value ?: ArrayList(),
+                PersonaFilter(this)
             )
         }
     /**

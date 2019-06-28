@@ -12,8 +12,7 @@
     android:baselineAligned="true"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:paddingStart="@dimen/uifabric_list_item_horizontal_margin_regular"
-    android:paddingEnd="@dimen/uifabric_list_item_horizontal_margin_regular">
+    android:paddingStart="@dimen/uifabric_list_item_horizontal_margin_regular">
 
     <TextView
         android:id="@+id/list_sub_header_title"
@@ -28,7 +27,6 @@
         android:id="@+id/list_sub_header_custom_accessory_view_container"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginStart="@dimen/uifabric_list_item_spacing"
         android:gravity="center_vertical"
         android:visibility="gone" />
 

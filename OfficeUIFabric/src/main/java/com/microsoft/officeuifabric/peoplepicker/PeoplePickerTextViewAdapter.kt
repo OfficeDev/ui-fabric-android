@@ -74,7 +74,7 @@ internal class PeoplePickerTextViewAdapter : ArrayAdapter<IPersona>, Filterable 
             updateSearchDirectoryText()
         }
 
-    constructor(context: Context, resource: Int = -1, objects: List<IPersona>, filter: Filter) : super(context, resource, objects) {
+    constructor(context: Context, objects: List<IPersona>, filter: Filter) : super(context, -1, objects) {
         personas.addAll(objects)
         this.filter = filter
     }

@@ -110,6 +110,9 @@
     <style name="TextAppearance.UIFabric.ListSubHeaderTitle.Black">
         <item name="android:textColor">@color/uifabric_list_sub_header_title_black</item>
     </style>
+    <style name="TextAppearance.UIFabric.ListSubHeaderTitle.Gray">
+        <item name="android:textColor">@color/uifabric_list_sub_header_title_gray</item>
+    </style>
 
     <!--NumberPicker-->
     <style name="TextAppearance.UIFabric.NumberPicker" parent="TextAppearance.UIFabric.Heading"/>

@@ -10,6 +10,7 @@ import android.support.v4.widget.TextViewCompat
 import android.text.TextUtils
 import android.util.AttributeSet
 import android.view.View
+import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.microsoft.officeuifabric.R
@@ -28,7 +29,7 @@ class ListSubHeaderView : TemplateView {
     }
 
     enum class TitleColor {
-        PRIMARY, BLACK
+        PRIMARY, BLACK, GRAY
     }
 
     /**
@@ -71,9 +72,16 @@ class ListSubHeaderView : TemplateView {
         set(value) {
             if (field == value)
                 return
+            resetCustomAccessoryViewPadding()
             field = value
+            updateCustomAccessoryViewPadding()
             updateTemplate()
         }
+
+    private var customAccessoryViewOriginalPaddingStart: Int = 0
+    private var customAccessoryViewOriginalPaddingTop: Int = 0
+    private var customAccessoryViewOriginalPaddingEnd: Int = 0
+    private var customAccessoryViewOriginalPaddingBottom: Int = 0
 
     @JvmOverloads
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
@@ -122,6 +130,45 @@ class ListSubHeaderView : TemplateView {
         when (titleColor) {
             TitleColor.PRIMARY -> TextViewCompat.setTextAppearance(titleView, R.style.TextAppearance_UIFabric_ListSubHeaderTitle_Primary)
             TitleColor.BLACK -> TextViewCompat.setTextAppearance(titleView, R.style.TextAppearance_UIFabric_ListSubHeaderTitle_Black)
+            TitleColor.GRAY -> TextViewCompat.setTextAppearance(titleView, R.style.TextAppearance_UIFabric_ListSubHeaderTitle_Gray)
         }
+
+        val lp = titleView.layoutParams as LinearLayout.LayoutParams
+        lp.marginEnd = if (customAccessoryView == null)
+            resources.getDimension(R.dimen.uifabric_list_item_horizontal_margin_regular).toInt()
+        else
+            0
+    }
+
+    private fun resetCustomAccessoryViewPadding() {
+        // Reset paddings with cached values to ensure paddings set in updateCustomAccessoryViewPadding
+        // only get adjusted once (which is an issue in RecyclerViews).
+        customAccessoryView?.setPaddingRelative(
+            customAccessoryViewOriginalPaddingStart,
+            customAccessoryViewOriginalPaddingTop,
+            customAccessoryViewOriginalPaddingEnd,
+            customAccessoryViewOriginalPaddingBottom
+        )
+    }
+
+    private fun updateCustomAccessoryViewPadding() {
+        val customAccessoryView = customAccessoryView ?: return
+
+        // Cache original paddings to preserve paddings set by the consumer.
+        customAccessoryViewOriginalPaddingStart = customAccessoryView.paddingStart
+        customAccessoryViewOriginalPaddingTop = customAccessoryView.paddingTop
+        customAccessoryViewOriginalPaddingEnd = customAccessoryView.paddingEnd
+        customAccessoryViewOriginalPaddingBottom = customAccessoryView.paddingBottom
+
+        // Use padding instead of margins here to increase touch area for potential click listeners.
+        val verticalPadding = resources.getDimension(R.dimen.uifabric_list_item_vertical_margin_custom_view_minimum).toInt()
+        val paddingStart = resources.getDimension(R.dimen.uifabric_list_item_horizontal_spacing_custom_accessory_view_start).toInt()
+        val paddingEnd = resources.getDimension(R.dimen.uifabric_list_item_horizontal_margin_regular).toInt()
+        customAccessoryView.setPaddingRelative(
+            customAccessoryView.paddingStart + paddingStart,
+            customAccessoryView.paddingTop + verticalPadding,
+            customAccessoryView.paddingEnd + paddingEnd,
+            customAccessoryView.paddingBottom + verticalPadding
+        )
     }
 }
