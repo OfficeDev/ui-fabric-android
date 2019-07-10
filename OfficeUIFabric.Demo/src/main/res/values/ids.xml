@@ -9,4 +9,8 @@
     <item name="bottom_sheet_item_reply" type="id" />
     <item name="bottom_sheet_item_forward" type="id" />
     <item name="bottom_sheet_item_delete" type="id" />
+    <item name="bottom_sheet_item_camera" type="id" />
+    <item name="bottom_sheet_item_gallery" type="id" />
+    <item name="bottom_sheet_item_videos" type="id" />
+    <item name="bottom_sheet_item_manage" type="id" />
 </resources>

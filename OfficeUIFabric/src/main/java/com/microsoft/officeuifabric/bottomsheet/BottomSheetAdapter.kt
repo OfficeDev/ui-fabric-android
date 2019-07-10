@@ -32,7 +32,7 @@ internal class BottomSheetAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as? BottomSheetItemViewHolder)?.setListItem(items[position])
+        (holder as? BottomSheetItemViewHolder)?.setBottomSheetItem(items[position])
     }
 
     override fun getItemCount(): Int = items.size
@@ -44,9 +44,12 @@ internal class BottomSheetAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder
             listItemView = itemView
         }
 
-        fun setListItem(item: BottomSheetItem) {
-            listItemView.title = item.title
+        fun setBottomSheetItem(item: BottomSheetItem) {
             listItemView.customView = createImageView(item.imageId)
+            listItemView.title = item.title
+            listItemView.subtitle = item.subtitle
+            listItemView.layoutDensity = ListItemView.LayoutDensity.COMPACT
+
             listItemView.setOnClickListener {
                 onBottomSheetItemClickListener?.onBottomSheetItemClick(item.id)
             }

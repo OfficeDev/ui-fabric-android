@@ -9,17 +9,33 @@ import android.os.Parcel
 import android.os.Parcelable
 import android.support.annotation.DrawableRes
 
-class BottomSheetItem(val id: Int, @DrawableRes val imageId: Int, val title: String) : Parcelable {
+class BottomSheetItem : Parcelable {
+    val id: Int
+    @DrawableRes
+    val imageId: Int
+    val title: String
+    val subtitle: String
+
+    @JvmOverloads
+    constructor(id: Int, @DrawableRes imageId: Int, title: String, subtitle: String = "") {
+        this.id = id
+        this.imageId = imageId
+        this.title = title
+        this.subtitle = subtitle
+    }
+
     private constructor(parcel: Parcel) : this(
         id = parcel.readInt(),
         imageId = parcel.readInt(),
-        title = parcel.readString() ?: ""
+        title = parcel.readString() ?: "",
+        subtitle = parcel.readString() ?: ""
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeInt(id)
         parcel.writeInt(imageId)
         parcel.writeString(title)
+        parcel.writeString(subtitle)
     }
 
     override fun describeContents(): Int = 0

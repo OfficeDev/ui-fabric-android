@@ -18,4 +18,11 @@
         android:layout_height="wrap_content"
         android:text="@string/bottom_sheet_button" />
 
+    <Button
+        android:id="@+id/open_bottom_sheet_with_double_line_items_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/uifabric_content_inset"
+        android:text="@string/bottom_sheet_double_line_items_button" />
+
 </LinearLayout>
