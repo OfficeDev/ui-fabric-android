@@ -33,7 +33,7 @@ internal class DrawerView(context: Context, attrs: AttributeSet) : LinearLayoutC
     }
 
     private fun updateClipPath(width: Float, height: Float) {
-        val cornerRadius = resources.getDimension(R.dimen.uifabric_corner_radius_large)
+        val cornerRadius = resources.getDimension(R.dimen.uifabric_drawer_corner_radius)
         val radii = FloatArray(RADII_SIZE)
 
         // top left corner

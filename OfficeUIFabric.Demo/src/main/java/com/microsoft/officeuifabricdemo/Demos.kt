@@ -11,7 +11,7 @@ import kotlin.reflect.KClass
 
 const val AVATAR_VIEW = "AvatarView"
 const val BASIC_INPUTS = "Basic Inputs"
-const val BOTTOM_SHEET = "Bottom Sheet"
+const val BOTTOM_SHEET = "BottomSheet"
 const val CALENDAR_VIEW = "CalendarView"
 const val DATE_TIME_PICKER_DIALOG = "DateTimePickerDialog"
 const val DRAWER = "Drawer"

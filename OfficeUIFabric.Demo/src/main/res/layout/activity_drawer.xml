@@ -13,9 +13,16 @@
     tools:context=".demos.DrawerActivity">
 
     <Button
-        android:id="@+id/open_drawer_button"
+        android:id="@+id/show_drawer_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/drawer_button" />
+
+    <Button
+        android:id="@+id/show_drawer_dialog_button"
+        android:layout_marginTop="@dimen/uifabric_content_inset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/drawer_dialog_button" />
 
 </LinearLayout>

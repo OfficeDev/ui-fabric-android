@@ -5,20 +5,15 @@
 
 package com.microsoft.officeuifabric.bottomsheet
 
-import android.content.Context
+import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.view.View
-import android.widget.LinearLayout
-import com.microsoft.officeuifabric.R
-import com.microsoft.officeuifabric.drawer.Drawer
+import android.support.v7.app.AppCompatDialogFragment
 
 /**
- * [BottomSheet] is used to display a list of menu items in a [Drawer].
+ * [BottomSheet] is used to display a list of menu items in a modal dialog inside of a Fragment that retains state.
  */
-class BottomSheet : Drawer(), OnBottomSheetItemClickListener {
+class BottomSheet : AppCompatDialogFragment() {
     companion object {
         private const val ITEMS = "items"
 
@@ -36,23 +31,15 @@ class BottomSheet : Drawer(), OnBottomSheetItemClickListener {
         }
     }
 
+    private lateinit var bottomSheetDialog: BottomSheetDialog
+
     private lateinit var items: ArrayList<BottomSheetItem>
-    private var clickedItemId: Int = -1
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        val context = context ?: return
-
-        val bundle = savedInstanceState ?: arguments ?: return
-        items = bundle.getParcelableArrayList<BottomSheetItem>(ITEMS) ?: return
-
-        val adapter = BottomSheetAdapter(context, items)
-        adapter.onBottomSheetItemClickListener = this
-
-        val recyclerView = createRecyclerView(context)
-        contentView = recyclerView
-        recyclerView.adapter = adapter
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val bundle = savedInstanceState ?: arguments
+        items = bundle?.getParcelableArrayList<BottomSheetItem>(ITEMS) ?: arrayListOf()
+        bottomSheetDialog = BottomSheetDialog(context!!, items)
+        return bottomSheetDialog
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -60,31 +47,14 @@ class BottomSheet : Drawer(), OnBottomSheetItemClickListener {
         outState.putParcelableArrayList(ITEMS, items)
     }
 
+    // According to Android documentation, DialogFragment owns the Dialog setOnDismissListener callback so this
+    // can't be set on the Dialog. Instead onDismiss(android.content.DialogInterface) must be overridden.
     override fun onDismiss(dialog: DialogInterface?) {
         super.onDismiss(dialog)
+        val clickedItemId = bottomSheetDialog.clickedItemId
         if (clickedItemId > -1) {
             (parentFragment as? OnBottomSheetItemClickListener)?.onBottomSheetItemClick(clickedItemId)
             (activity as? OnBottomSheetItemClickListener)?.onBottomSheetItemClick(clickedItemId)
         }
     }
-
-    override fun onBottomSheetItemClick(id: Int) {
-        clickedItemId = id
-        collapse()
-    }
-
-    private fun createRecyclerView(context: Context): RecyclerView {
-        val recyclerView = RecyclerView(context)
-        recyclerView.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
-        recyclerView.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
-
-        val verticalPadding = resources.getDimension(R.dimen.uifabric_bottom_sheet_vertical_padding).toInt()
-        recyclerView.setPadding(0, verticalPadding, 0, verticalPadding)
-
-        return recyclerView
-    }
-}
-
-interface OnBottomSheetItemClickListener {
-    fun onBottomSheetItemClick(id: Int)
 }

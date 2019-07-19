@@ -24,8 +24,11 @@
     <string name="avatar_size_xsmall">XSmall</string>
 
     <!--BottomSheet-->
-    <string name="bottom_sheet_button">Open bottom sheet</string>
-    <string name="bottom_sheet_double_line_items_button">Open bottom sheet with double line items</string>
+    <string name="bottom_sheet">BottomSheet</string>
+    <string name="bottom_sheet_dialog">BottomSheetDialog</string>
+    <string name="bottom_sheet_with_single_line_items">Show with single line items</string>
+    <string name="bottom_sheet_with_double_line_items">Show with double line items</string>
+    <string name="bottom_sheet_dialog_button">Show</string>
     <!--Single line items-->
     <string name="bottom_sheet_item_flag_title">Flag</string>
     <string name="bottom_sheet_item_flag_toast">Flag item clicked</string>
@@ -48,6 +51,15 @@
     <string name="bottom_sheet_item_manage_title">Manage</string>
     <string name="bottom_sheet_item_manage_subtitle">Manage your media library</string>
     <string name="bottom_sheet_item_manage_toast">Manage item clicked</string>
+    <!--BottomSheetDialog-->
+    <string name="bottom_sheet_item_clock_title">Clock</string>
+    <string name="bottom_sheet_item_clock_toast">Clock item clicked</string>
+    <string name="bottom_sheet_item_alarm_title">Alarm</string>
+    <string name="bottom_sheet_item_alarm_toast">Alarm item clicked</string>
+    <string name="bottom_sheet_item_stop_watch_title">Stop watch</string>
+    <string name="bottom_sheet_item_stop_watch_toast">Stop watch item clicked</string>
+    <string name="bottom_sheet_item_time_zone_title">Time zone</string>
+    <string name="bottom_sheet_item_time_zone_toast">Time zone item clicked</string>
 
     <!--Button-->
     <string name="button">Button</string>
@@ -76,7 +88,8 @@
     <string name="date_time_picker_example_date_range_end_title">End:</string>
 
     <!--Drawer-->
-    <string name="drawer_button">Open drawer</string>
+    <string name="drawer_button">Show drawer</string>
+    <string name="drawer_dialog_button">Show drawer dialog</string>
 
     <!--ListItem-->
     <string name="list_item_title">Title, primary text</string>
