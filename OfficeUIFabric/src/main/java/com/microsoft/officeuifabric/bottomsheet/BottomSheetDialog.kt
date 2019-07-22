@@ -44,8 +44,8 @@ class BottomSheetDialog : DrawerDialog, OnBottomSheetItemClickListener {
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
         recyclerView.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
 
-        val verticalPadding = context.resources.getDimension(R.dimen.uifabric_bottom_sheet_vertical_padding).toInt()
-        recyclerView.setPadding(0, verticalPadding, 0, verticalPadding)
+        val bottomPadding = context.resources.getDimension(R.dimen.uifabric_bottom_sheet_bottom_padding).toInt()
+        recyclerView.setPadding(0, 0, 0, bottomPadding)
 
         return recyclerView
     }

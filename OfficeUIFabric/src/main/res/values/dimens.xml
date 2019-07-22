@@ -15,7 +15,7 @@
     <dimen name="uifabric_avatar_square_corner_radius">@dimen/uifabric_corner_radius_medium</dimen>
 
     <!--BottomSheet-->
-    <dimen name="uifabric_bottom_sheet_vertical_padding">8dp</dimen>
+    <dimen name="uifabric_bottom_sheet_bottom_padding">8dp</dimen>
 
     <!--Button-->
     <dimen name="uifabric_button_padding_horizontal">@dimen/uifabric_content_inset</dimen>
@@ -59,6 +59,7 @@
     <dimen name="uifabric_drawer_corner_radius">@dimen/uifabric_corner_radius_large</dimen>
     <dimen name="uifabric_drawer_peak_height">0dp</dimen>
     <dimen name="uifabric_drawer_elevation">5dp</dimen>
+    <dimen name="uifabric_drawer_handle_vertical_margin">8dp</dimen>
 
     <!--ListItem-->
     <dimen name="uifabric_list_item_min_height">48dp</dimen>

@@ -7,10 +7,9 @@ package com.microsoft.officeuifabricdemo.demos
 
 import android.os.Bundle
 import android.view.View
-import com.microsoft.officeuifabric.drawer.DrawerDialog
 import com.microsoft.officeuifabric.drawer.Drawer
+import com.microsoft.officeuifabric.drawer.DrawerDialog
 import com.microsoft.officeuifabric.drawer.OnDrawerContentCreatedListener
-import com.microsoft.officeuifabric.persona.PersonaListView
 import com.microsoft.officeuifabricdemo.DemoActivity
 import com.microsoft.officeuifabricdemo.R
 import com.microsoft.officeuifabricdemo.util.createPersonaList

@@ -23,6 +23,14 @@
         app:behavior_peekHeight="@dimen/uifabric_drawer_peak_height"
         app:layout_behavior="@string/bottom_sheet_behavior">
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_drawer_handle"
+            android:layout_marginTop="@dimen/uifabric_drawer_handle_vertical_margin"
+            android:layout_marginBottom="@dimen/uifabric_drawer_handle_vertical_margin"
+            android:layout_gravity="center"/>
+
         <LinearLayout
             android:id="@+id/drawer_content"
             android:orientation="vertical"
