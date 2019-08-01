@@ -6,6 +6,7 @@
 package com.microsoft.officeuifabric.listitem
 
 import android.content.Context
+import android.support.annotation.DrawableRes
 import android.support.v4.widget.TextViewCompat
 import android.text.TextUtils
 import android.util.AttributeSet
@@ -201,6 +202,19 @@ open class ListItemView : TemplateView {
         }
 
     /**
+     * Sets the background color or drawable resource.
+     * The default drawable has a ripple animation for selection state.
+     */
+    @DrawableRes
+    var background: Int = R.drawable.list_item_view_background
+        set(value) {
+            if (field == value)
+                return
+            field = value
+            updateTemplate()
+        }
+
+    /**
      * Defines the start inset for the text area.
      */
     internal val textAreaStartInset: Float
@@ -305,6 +319,8 @@ open class ListItemView : TemplateView {
 
         customViewContainer?.setContentAndUpdateVisibility(customView, ::updateCustomViewLayout)
         customAccessoryViewContainer?.setContentAndUpdateVisibility(customAccessoryView)
+
+        setBackgroundResource(background)
     }
 
     private fun updateTextAppearance() {

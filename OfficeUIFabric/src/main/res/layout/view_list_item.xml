@@ -9,7 +9,6 @@
     android:id="@+id/list_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/uifabric_list_item_background"
     android:baselineAligned="true"
     android:minHeight="@dimen/uifabric_list_item_min_height"
     android:orientation="horizontal"

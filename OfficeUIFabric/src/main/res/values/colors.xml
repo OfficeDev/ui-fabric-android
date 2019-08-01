@@ -91,6 +91,7 @@
 
     <!--ListItem-->
     <color name="uifabric_list_item_background">@color/uifabric_background</color>
+    <color name="uifabric_list_item_background_ripple">@color/uifabric_background_ripple</color>
     <color name="uifabric_list_item_title">@color/uifabric_black</color>
     <color name="uifabric_list_item_subtitle">@color/uifabric_gray</color>
     <color name="uifabric_list_item_subtitle_large_header">@color/uifabric_black</color>
@@ -133,6 +134,7 @@
     <!-- TODO update after design adds #0E000000 to toolkit -->
     <color name="uifabric_item_highlight">#0E000000</color> <!-- 5% black -->
     <color name="uifabric_background">@color/uifabric_white</color>
+    <color name="uifabric_background_ripple">@color/uifabric_border_light_gray</color>
 
     <!--Snackbar-->
     <color name="uifabric_snackbar_action_text">@color/uifabric_primary_light</color>
