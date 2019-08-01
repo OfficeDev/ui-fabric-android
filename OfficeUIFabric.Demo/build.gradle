@@ -13,7 +13,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId 'com.microsoft.officeuifabricdemo'
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 28
         versionCode 20
         versionName '0.2.10'
