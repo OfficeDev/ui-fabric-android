@@ -5,6 +5,7 @@
 
 package com.microsoft.officeuifabricdemo.demos
 
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.ImageView
 import com.bumptech.glide.Glide
@@ -36,6 +37,9 @@ class AvatarViewActivity : DemoActivity() {
         // Avatar drawable with initials
         avatar_example_large_initials_square.name = getString(R.string.persona_email_henry_brill)
         avatar_example_large_initials_square.avatarStyle = AvatarStyle.SQUARE
+
+        // Change initials background color
+        avatar_example_xsmall_initials.backgroundColor = Color.RED
 
         // Add AvatarView with code
         createNewAvatarFromCode()

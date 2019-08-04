@@ -19,4 +19,5 @@ interface IAvatar {
     var avatarImageDrawable: Drawable?
     var avatarImageResourceId: Int?
     var avatarImageUri: Uri?
+    var backgroundColor: Int?
 }

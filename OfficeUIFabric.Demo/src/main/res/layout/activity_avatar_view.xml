@@ -344,7 +344,8 @@
                 android:layout_gravity="start"
                 app:avatarSize="small"
                 app:avatarStyle="square"
-                app:name="@string/persona_name_erik_nason" />
+                app:name="@string/persona_name_erik_nason"
+                app:backgroundColor="@android:color/holo_blue_bright"/>
 
         </TableRow>
 

@@ -20,6 +20,7 @@
         </attr>
         <attr name="name" />
         <attr name="email" />
+        <attr name="backgroundColor" format="reference" />
         <attr name="avatarImageDrawable" format="reference" />
     </declare-styleable>
 </resources>
