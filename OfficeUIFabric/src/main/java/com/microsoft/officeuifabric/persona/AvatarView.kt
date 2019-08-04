@@ -11,6 +11,8 @@ import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.provider.MediaStore
+import android.support.annotation.ColorInt
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.AppCompatImageView
 import android.util.AttributeSet
 import com.microsoft.officeuifabric.R
@@ -45,18 +47,22 @@ open class AvatarView : AppCompatImageView {
         if (avatarImageResourceId > 0 && resources.getResourceTypeName(avatarImageResourceId) == "drawable")
             avatarImageDrawable = styledAttrs.getDrawable(R.styleable.AvatarView_avatarImageDrawable)
 
+        val avatarBackgroundColorResourceId = styledAttrs.getResourceId(R.styleable.AvatarView_avatarBackgroundColor, 0)
+        if (avatarBackgroundColorResourceId > 0 && resources.getResourceTypeName(avatarBackgroundColorResourceId) == "color")
+            avatarBackgroundColor = ContextCompat.getColor(context, avatarBackgroundColorResourceId)
+
         styledAttrs.recycle()
     }
 
     var name: String = ""
         set(value) {
             field = value
-            initials.setInfo(name, email)
+            initials.setInfo(name, email, avatarBackgroundColor)
         }
     var email: String = ""
         set(value) {
             field = value
-            initials.setInfo(name, email)
+            initials.setInfo(name, email, avatarBackgroundColor)
         }
     var avatarImageBitmap: Bitmap? = null
         set(value) {
@@ -77,6 +83,12 @@ open class AvatarView : AppCompatImageView {
         set(value) {
             field = value
             setImageURI(value)
+        }
+    @ColorInt
+    var avatarBackgroundColor: Int? = null
+        set(value) {
+            field = value
+            initials.setInfo(name, email, avatarBackgroundColor)
         }
     /**
      * Defines the [AvatarSize] applied to the avatar's height and width.
@@ -185,4 +197,5 @@ fun AvatarView.setAvatar(avatar: IAvatar) {
     avatarImageDrawable = avatar.avatarImageDrawable
     avatarImageResourceId = avatar.avatarImageResourceId
     avatarImageUri = avatar.avatarImageUri
+    avatarBackgroundColor = avatar.avatarBackgroundColor
 }

@@ -212,4 +212,5 @@ internal data class CustomPersona(override var name: String = "", override var e
     override var avatarImageDrawable: Drawable? = null
     override var avatarImageResourceId: Int? = null
     override var avatarImageUri: Uri? = null
+    override var avatarBackgroundColor: Int? = null
 }
