@@ -17,18 +17,8 @@ import com.microsoft.officeuifabric.drawer.DrawerDialog
  */
 class BottomSheetDialog : DrawerDialog, OnBottomSheetItemClickListener {
     var onItemClickListener: OnBottomSheetItemClickListener? = null
-        set(value) {
-            field = value
-            setOnDismissListener {
-                if (clickedItemId > -1) {
-                    field?.onBottomSheetItemClick(clickedItemId)
-                    clickedItemId = -1
-                }
-            }
-        }
 
-    internal var clickedItemId: Int = -1
-        private set
+    private var clickedItemId: Int = -1
 
     constructor(context: Context, items: ArrayList<BottomSheetItem>) : super(context) {
         val adapter = BottomSheetAdapter(context, items)
@@ -53,6 +43,14 @@ class BottomSheetDialog : DrawerDialog, OnBottomSheetItemClickListener {
     override fun onBottomSheetItemClick(id: Int) {
         clickedItemId = id
         collapse()
+    }
+
+    override fun dismiss() {
+        if (clickedItemId > -1) {
+            onItemClickListener?.onBottomSheetItemClick(clickedItemId)
+            clickedItemId = -1
+        }
+        super.dismiss()
     }
 }
 

@@ -17,6 +17,8 @@ class BottomSheetActivity : DemoActivity(), OnBottomSheetItemClickListener {
     override val contentLayoutId: Int
         get() = R.layout.activity_bottom_sheet
 
+    private var bottomSheetDialog: BottomSheetDialog? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -81,7 +83,7 @@ class BottomSheetActivity : DemoActivity(), OnBottomSheetItemClickListener {
         }
 
         show_bottom_sheet_dialog_button.setOnClickListener {
-            val bottomSheetDialog = BottomSheetDialog(
+            bottomSheetDialog = BottomSheetDialog(
                 this,
                 arrayListOf(
                     BottomSheetItem(
@@ -106,9 +108,15 @@ class BottomSheetActivity : DemoActivity(), OnBottomSheetItemClickListener {
                     )
                 )
             )
-            bottomSheetDialog.onItemClickListener = this
-            bottomSheetDialog.show()
+
+            bottomSheetDialog?.onItemClickListener = this
+            bottomSheetDialog?.show()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        bottomSheetDialog?.dismiss()
     }
 
     override fun onBottomSheetItemClick(id: Int) {

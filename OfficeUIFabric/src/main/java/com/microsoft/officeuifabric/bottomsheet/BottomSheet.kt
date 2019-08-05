@@ -13,7 +13,7 @@ import android.support.v7.app.AppCompatDialogFragment
 /**
  * [BottomSheet] is used to display a list of menu items in a modal dialog inside of a Fragment that retains state.
  */
-class BottomSheet : AppCompatDialogFragment() {
+class BottomSheet : AppCompatDialogFragment(), OnBottomSheetItemClickListener {
     companion object {
         private const val ITEMS = "items"
 
@@ -32,13 +32,14 @@ class BottomSheet : AppCompatDialogFragment() {
     }
 
     private lateinit var bottomSheetDialog: BottomSheetDialog
-
     private lateinit var items: ArrayList<BottomSheetItem>
+    private var clickedItemId: Int = -1
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val bundle = savedInstanceState ?: arguments
         items = bundle?.getParcelableArrayList<BottomSheetItem>(ITEMS) ?: arrayListOf()
         bottomSheetDialog = BottomSheetDialog(context!!, items)
+        bottomSheetDialog.onItemClickListener = this
         return bottomSheetDialog
     }
 
@@ -47,14 +48,18 @@ class BottomSheet : AppCompatDialogFragment() {
         outState.putParcelableArrayList(ITEMS, items)
     }
 
+    override fun onBottomSheetItemClick(id: Int) {
+        clickedItemId = id
+    }
+
     // According to Android documentation, DialogFragment owns the Dialog setOnDismissListener callback so this
     // can't be set on the Dialog. Instead onDismiss(android.content.DialogInterface) must be overridden.
     override fun onDismiss(dialog: DialogInterface?) {
         super.onDismiss(dialog)
-        val clickedItemId = bottomSheetDialog.clickedItemId
         if (clickedItemId > -1) {
             (parentFragment as? OnBottomSheetItemClickListener)?.onBottomSheetItemClick(clickedItemId)
             (activity as? OnBottomSheetItemClickListener)?.onBottomSheetItemClick(clickedItemId)
+            clickedItemId = -1
         }
     }
 }
