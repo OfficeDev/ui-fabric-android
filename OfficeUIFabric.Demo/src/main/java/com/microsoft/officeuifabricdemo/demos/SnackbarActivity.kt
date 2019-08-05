@@ -7,7 +7,6 @@ package com.microsoft.officeuifabricdemo.demos
 
 import android.graphics.BitmapFactory
 import android.graphics.PorterDuff
-import android.os.Build
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory
@@ -62,11 +61,7 @@ class SnackbarActivity : DemoActivity(), View.OnClickListener {
                 Snackbar.make(root_view, getString(R.string.snackbar_single_line)).show()
 
             R.id.btn_snackbar_single_line_custom_view -> {
-                val circularProgress = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-                    ProgressBar(this, null, 0, R.style.Widget_UIFabric_CircularProgress_Small)
-                else
-                    layoutInflater.inflate(R.layout.view_snackbar_circular_progress, null, false) as ProgressBar
-
+                val circularProgress = ProgressBar(this, null, 0, R.style.Widget_UIFabric_CircularProgress_Small)
                 circularProgress.indeterminateDrawable.setColorFilter(
                     ContextCompat.getColor(this, R.color.snackbar_circular_progress_drawable),
                     PorterDuff.Mode.SRC_IN

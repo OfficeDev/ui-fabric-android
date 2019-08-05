@@ -971,15 +971,11 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
             if (personaChipClickStyle == PeoplePickerPersonaChipClickStyle.NONE)
                 return
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                val clickAction = AccessibilityNodeInfoCompat.AccessibilityActionCompat(
-                    AccessibilityNodeInfoCompat.ACTION_CLICK,
-                    getActionText(personaSpan)
-                )
-                node.addAction(clickAction)
-            } else {
-                node.addAction(AccessibilityNodeInfoCompat.ACTION_CLICK)
-            }
+            val clickAction = AccessibilityNodeInfoCompat.AccessibilityActionCompat(
+                AccessibilityNodeInfoCompat.ACTION_CLICK,
+                getActionText(personaSpan)
+            )
+            node.addAction(clickAction)
         }
 
         /**

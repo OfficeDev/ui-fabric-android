@@ -112,18 +112,21 @@
         <item name="android:maxHeight">@dimen/uifabric_progress_circular_large</item>
         <item name="android:maxWidth">@dimen/uifabric_progress_circular_large</item>
     </style>
-    <!--For earlier APIs, you can set the color in code using setColorFilter on the indeterminateDrawable.-->
     <style name="Widget.UIFabric.CircularProgress.XSmall.Primary">
-        <item name="android:indeterminateTint" tools:targetApi="lollipop">@color/uifabric_progress_primary</item>
+        <item name="android:indeterminateTint">@color/uifabric_progress_primary</item>
+        <item name="android:indeterminateTintMode">src_in</item>
     </style>
     <style name="Widget.UIFabric.CircularProgress.Small.Primary">
-        <item name="android:indeterminateTint" tools:targetApi="lollipop">@color/uifabric_progress_primary</item>
+        <item name="android:indeterminateTint">@color/uifabric_progress_primary</item>
+        <item name="android:indeterminateTintMode">src_in</item>
     </style>
     <style name="Widget.UIFabric.CircularProgress.Medium.Primary">
-        <item name="android:indeterminateTint" tools:targetApi="lollipop">@color/uifabric_progress_primary</item>
+        <item name="android:indeterminateTint">@color/uifabric_progress_primary</item>
+        <item name="android:indeterminateTintMode">src_in</item>
     </style>
     <style name="Widget.UIFabric.CircularProgress.Large.Primary">
-        <item name="android:indeterminateTint" tools:targetApi="lollipop">@color/uifabric_progress_primary</item>
+        <item name="android:indeterminateTint">@color/uifabric_progress_primary</item>
+        <item name="android:indeterminateTintMode">src_in</item>
     </style>
 
     <!--TabLayout-->

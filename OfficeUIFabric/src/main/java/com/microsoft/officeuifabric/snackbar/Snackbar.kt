@@ -6,7 +6,6 @@
 package com.microsoft.officeuifabric.snackbar
 
 import android.content.Context
-import android.os.Build
 import android.support.design.widget.BaseTransientBottomBar
 import android.support.design.widget.CoordinatorLayout
 import android.support.v4.content.ContextCompat
@@ -121,7 +120,7 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
         updateBackground()
 
         // Set the margin on the FrameLayout (SnackbarLayout) instead of the content because the content's bottom margin is buggy in some APIs.
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && content.parent is FrameLayout) {
+        if (content.parent is FrameLayout) {
             val lp = content.layoutParams as FrameLayout.LayoutParams
             lp.bottomMargin = context.resources.getDimension(R.dimen.uifabric_snackbar_background_inset).toInt()
             content.layoutParams = lp

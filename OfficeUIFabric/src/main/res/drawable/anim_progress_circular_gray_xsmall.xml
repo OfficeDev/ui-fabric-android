@@ -4,9 +4,7 @@
   ~ Licensed under the MIT License.
   -->
 
-<rotate xmlns:android="http://schemas.android.com/apk/res/android"
-    android:drawable="@drawable/ms_ic_progress_circular_gray_xsmall"
-    android:fromDegrees="0"
-    android:toDegrees="@dimen/uifabric_progress_circular_anim_to_degrees"
-    android:pivotX="@dimen/uifabric_progress_circular_anim_pivot"
-    android:pivotY="@dimen/uifabric_progress_circular_anim_pivot" />
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/ms_ic_progress_circular_gray_xsmall">
+    <target android:name="root" android:animation="@animator/circular_indeterminate_rotation" />
+</animated-vector>

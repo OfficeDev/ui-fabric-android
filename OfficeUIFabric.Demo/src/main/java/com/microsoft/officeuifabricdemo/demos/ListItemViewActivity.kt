@@ -335,7 +335,7 @@ class ListItemViewActivity : DemoActivity() {
             item.footerMaxLines = 4
         } else {
             item.titleTruncateAt = TextUtils.TruncateAt.MIDDLE
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP)
                 // In earlier APIs this crashes with an ArrayIndexOutOfBoundsException
                 item.subtitleTruncateAt = TextUtils.TruncateAt.START
         }

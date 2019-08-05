@@ -19,6 +19,7 @@ android {
         versionCode 20
         versionName '0.2.10'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
         release {

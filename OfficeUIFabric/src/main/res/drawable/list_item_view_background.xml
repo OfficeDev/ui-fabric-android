@@ -4,7 +4,8 @@
   ~ Licensed under the MIT License.
   -->
 
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@color/uifabric_list_item_background_ripple" android:state_pressed="true"/>
-    <item android:drawable="@color/uifabric_list_item_background"/>
-</selector>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/uifabric_list_item_background_ripple">
+    <item android:id="@android:id/mask" android:drawable="@color/uifabric_list_item_background" />
+    <item android:drawable="@color/uifabric_list_item_background" />
+</ripple>
