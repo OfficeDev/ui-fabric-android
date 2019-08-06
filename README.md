@@ -28,9 +28,9 @@ Office UI Fabric for Android includes an expanding library of controls written i
 Some of the controls available include:
 - AvatarView
 - Button styles
+- BottomSheet
 - CalendarView
 - CircularProgress styles
-- BottomSheet
 - DateTimePickerDialog
 - Drawer
 - ListItemView
