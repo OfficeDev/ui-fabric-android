@@ -20,6 +20,8 @@ class DrawerActivity : DemoActivity(), OnDrawerContentCreatedListener {
     override val contentLayoutId: Int
         get() = R.layout.activity_drawer
 
+    private var drawerDialogDemo: DrawerDialog? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -29,11 +31,16 @@ class DrawerActivity : DemoActivity(), OnDrawerContentCreatedListener {
         }
 
         show_drawer_dialog_button.setOnClickListener {
-            val drawerDialogDemo = DrawerDialog(this)
-            drawerDialogDemo.onDrawerContentCreatedListener = this
-            drawerDialogDemo.setContentView(R.layout.demo_drawer_content)
-            drawerDialogDemo.show()
+            drawerDialogDemo = DrawerDialog(this)
+            drawerDialogDemo?.onDrawerContentCreatedListener = this
+            drawerDialogDemo?.setContentView(R.layout.demo_drawer_content)
+            drawerDialogDemo?.show()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        drawerDialogDemo?.dismiss()
     }
 
     override fun onDrawerContentCreated(drawerContents: View) {

@@ -20,7 +20,7 @@
         android:background="@color/uifabric_drawer_background"
         android:clipToPadding="true"
         app:behavior_hideable="true"
-        app:behavior_peekHeight="@dimen/uifabric_drawer_peak_height"
+        app:behavior_peekHeight="@dimen/uifabric_drawer_peek_height"
         app:layout_behavior="@string/bottom_sheet_behavior">
 
         <ImageView

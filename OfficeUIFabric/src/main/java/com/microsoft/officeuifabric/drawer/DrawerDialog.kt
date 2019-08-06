@@ -35,10 +35,8 @@ open class DrawerDialog(context: Context) : AppCompatDialog(context, R.style.Dra
         }
 
         override fun onSlide(bottomSheet: View, slideOffset: Float) {
-            if (isExpanded && slideOffset < DISMISS_THRESHOLD) {
-                isExpanded = false
+            if (isExpanded && slideOffset < DISMISS_THRESHOLD && slideOffset > 0)
                 dismiss()
-            }
         }
     }
 
@@ -72,7 +70,18 @@ open class DrawerDialog(context: Context) : AppCompatDialog(context, R.style.Dra
         collapse()
     }
 
+    override fun dismiss() {
+        isExpanded = false
+        // Dismiss may be called by external objects so state is set to STATE_COLLAPSED in order for
+        // the drawer to animate up
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+        super.dismiss()
+    }
+
     private fun expand() {
+        // For persistent instances calling requestLayout fixes incorrect positioning of the drawer
+        // after rotation from landscape to portrait
+        drawer.requestLayout()
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
         isExpanded = true
     }

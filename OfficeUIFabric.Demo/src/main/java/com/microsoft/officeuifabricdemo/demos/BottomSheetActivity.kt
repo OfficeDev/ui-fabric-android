@@ -6,7 +6,10 @@
 package com.microsoft.officeuifabricdemo.demos
 
 import android.os.Bundle
-import com.microsoft.officeuifabric.bottomsheet.*
+import com.microsoft.officeuifabric.bottomsheet.BottomSheet
+import com.microsoft.officeuifabric.bottomsheet.BottomSheetDialog
+import com.microsoft.officeuifabric.bottomsheet.BottomSheetItem
+import com.microsoft.officeuifabric.bottomsheet.OnBottomSheetItemClickListener
 import com.microsoft.officeuifabric.snackbar.Snackbar
 import com.microsoft.officeuifabricdemo.DemoActivity
 import com.microsoft.officeuifabricdemo.R
@@ -28,22 +31,22 @@ class BottomSheetActivity : DemoActivity(), OnBottomSheetItemClickListener {
                     BottomSheetItem(
                         R.id.bottom_sheet_item_flag,
                         R.drawable.ic_flag,
-                        resources.getString(R.string.bottom_sheet_item_flag_title)
+                        getString(R.string.bottom_sheet_item_flag_title)
                     ),
                     BottomSheetItem(
                         R.id.bottom_sheet_item_reply,
                         R.drawable.ic_reply,
-                        resources.getString(R.string.bottom_sheet_item_reply_title)
+                        getString(R.string.bottom_sheet_item_reply_title)
                     ),
                     BottomSheetItem(
                         R.id.bottom_sheet_item_forward,
                         R.drawable.ic_forward,
-                        resources.getString(R.string.bottom_sheet_item_forward_title)
+                        getString(R.string.bottom_sheet_item_forward_title)
                     ),
                     BottomSheetItem(
                         R.id.bottom_sheet_item_delete,
                         R.drawable.ic_trash_can,
-                        resources.getString(R.string.bottom_sheet_item_delete_title)
+                        getString(R.string.bottom_sheet_item_delete_title)
                     )
                 )
             )
@@ -56,26 +59,26 @@ class BottomSheetActivity : DemoActivity(), OnBottomSheetItemClickListener {
                     BottomSheetItem(
                         R.id.bottom_sheet_item_camera,
                         R.drawable.ic_camera,
-                        resources.getString(R.string.bottom_sheet_item_camera_title),
-                        resources.getString(R.string.bottom_sheet_item_camera_subtitle)
+                        getString(R.string.bottom_sheet_item_camera_title),
+                        getString(R.string.bottom_sheet_item_camera_subtitle)
                     ),
                     BottomSheetItem(
                         R.id.bottom_sheet_item_gallery,
                         R.drawable.ic_gallery,
-                        resources.getString(R.string.bottom_sheet_item_gallery_title),
-                        resources.getString(R.string.bottom_sheet_item_gallery_subtitle)
+                        getString(R.string.bottom_sheet_item_gallery_title),
+                        getString(R.string.bottom_sheet_item_gallery_subtitle)
                     ),
                     BottomSheetItem(
                         R.id.bottom_sheet_item_videos,
                         R.drawable.ic_videos,
-                        resources.getString(R.string.bottom_sheet_item_videos_title),
-                        resources.getString(R.string.bottom_sheet_item_videos_subtitle)
+                        getString(R.string.bottom_sheet_item_videos_title),
+                        getString(R.string.bottom_sheet_item_videos_subtitle)
                     ),
                     BottomSheetItem(
                         R.id.bottom_sheet_item_manage,
                         R.drawable.ic_wrench,
-                        resources.getString(R.string.bottom_sheet_item_manage_title),
-                        resources.getString(R.string.bottom_sheet_item_manage_subtitle)
+                        getString(R.string.bottom_sheet_item_manage_title),
+                        getString(R.string.bottom_sheet_item_manage_subtitle)
                     )
                 )
             )
@@ -83,33 +86,35 @@ class BottomSheetActivity : DemoActivity(), OnBottomSheetItemClickListener {
         }
 
         show_bottom_sheet_dialog_button.setOnClickListener {
-            bottomSheetDialog = BottomSheetDialog(
-                this,
-                arrayListOf(
-                    BottomSheetItem(
-                        R.id.bottom_sheet_item_clock,
-                        R.drawable.ic_clock,
-                        resources.getString(R.string.bottom_sheet_item_clock_title)
-                    ),
-                    BottomSheetItem(
-                        R.id.bottom_sheet_item_alarm,
-                        R.drawable.ic_alarm,
-                        resources.getString(R.string.bottom_sheet_item_alarm_title)
-                    ),
-                    BottomSheetItem(
-                        R.id.bottom_sheet_item_stop_watch,
-                        R.drawable.ic_stop_watch,
-                        resources.getString(R.string.bottom_sheet_item_stop_watch_title)
-                    ),
-                    BottomSheetItem(
-                        R.id.bottom_sheet_item_time_zone,
-                        R.drawable.ic_time_zone,
-                        resources.getString(R.string.bottom_sheet_item_time_zone_title)
+            if (bottomSheetDialog == null) {
+                bottomSheetDialog = BottomSheetDialog(
+                    this,
+                    arrayListOf(
+                        BottomSheetItem(
+                            R.id.bottom_sheet_item_flag,
+                            R.drawable.ic_flag,
+                            getString(R.string.bottom_sheet_item_flag_title)
+                        ),
+                        BottomSheetItem(
+                            R.id.bottom_sheet_item_reply,
+                            R.drawable.ic_reply,
+                            getString(R.string.bottom_sheet_item_reply_title)
+                        ),
+                        BottomSheetItem(
+                            R.id.bottom_sheet_item_forward,
+                            R.drawable.ic_forward,
+                            getString(R.string.bottom_sheet_item_forward_title)
+                        ),
+                        BottomSheetItem(
+                            R.id.bottom_sheet_item_delete,
+                            R.drawable.ic_trash_can,
+                            getString(R.string.bottom_sheet_item_delete_title)
+                        )
                     )
                 )
-            )
+                bottomSheetDialog?.onItemClickListener = this
+            }
 
-            bottomSheetDialog?.onItemClickListener = this
             bottomSheetDialog?.show()
         }
     }
