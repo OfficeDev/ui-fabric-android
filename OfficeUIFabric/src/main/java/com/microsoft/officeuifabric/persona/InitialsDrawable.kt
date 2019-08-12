@@ -140,8 +140,8 @@ internal class InitialsDrawable : Drawable {
     /**
      * Uses [name] and [email] to generate initials
      */
-    fun setInfo(name: String, email: String) {
-        val initialsBackgroundColor = getInitialsBackgroundColor(backgroundColors, name, email)
+    fun setInfo(name: String, email: String, @ColorInt customBackgroundColor: Int? = null) {
+        val initialsBackgroundColor = customBackgroundColor ?: getInitialsBackgroundColor(backgroundColors, name, email)
         initials = getInitials(name, email)
         this.initialsBackgroundColor = initialsBackgroundColor
         invalidateSelf()
