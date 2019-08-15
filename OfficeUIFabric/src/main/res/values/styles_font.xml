@@ -122,7 +122,7 @@
 
     <!--PeoplePicker-->
     <style name="TextAppearance.UIFabric.PeoplePickerLabel" parent="TextAppearance.UIFabric.SubHeading">
-        <item name="android:textColor">@color/uifabric_gray</item>
+        <item name="android:textColor">@color/uifabric_people_picker_label_text_color</item>
     </style>
     <style name="TextAppearance.UIFabric.PeoplePickerText" parent="TextAppearance.UIFabric.Heading" />
     <style name="TextAppearance.UIFabric.PeoplePickerCountSpan" parent="TextAppearance.UIFabric.LightCaption" />

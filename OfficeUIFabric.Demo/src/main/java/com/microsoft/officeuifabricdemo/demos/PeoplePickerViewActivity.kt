@@ -73,9 +73,11 @@ class PeoplePickerViewActivity : DemoActivity() {
         // Use code to set personaChipClickStyle and label
 
         setupPeoplePickerView(
-            getString(R.string.people_picker_none_example),
+            "",
             samplePersonas,
-            PeoplePickerPersonaChipClickStyle.NONE
+            PeoplePickerPersonaChipClickStyle.NONE,
+            valueHint = getString(R.string.people_picker_hint),
+            showHint = true
         )
         setupPeoplePickerView(
             getString(R.string.people_picker_delete_example),
@@ -111,7 +113,9 @@ class PeoplePickerViewActivity : DemoActivity() {
         availablePersonas: ArrayList<IPersona> = ArrayList(),
         personaChipClickStyle: PeoplePickerPersonaChipClickStyle = PeoplePickerPersonaChipClickStyle.SELECT,
         personaSuggestionsListener: PeoplePickerView.PersonaSuggestionsListener? = null,
-        pickedPersonasChangeListener: PeoplePickerView.PickedPersonasChangeListener? = null
+        pickedPersonasChangeListener: PeoplePickerView.PickedPersonasChangeListener? = null,
+        valueHint: String = "",
+        showHint: Boolean = false
     ) {
         val peoplePickerView = PeoplePickerView(this)
         peoplePickerView.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
@@ -122,6 +126,8 @@ class PeoplePickerViewActivity : DemoActivity() {
             this.personaSuggestionsListener = personaSuggestionsListener
             this.pickedPersonasChangeListener = pickedPersonasChangeListener
             allowPersonaChipDragAndDrop = true
+            this.valueHint = valueHint
+            this.showHint = showHint
         }
         people_picker_layout.addView(peoplePickerView)
     }

@@ -110,6 +110,8 @@
     <color name="uifabric_people_picker_popup_background">@color/uifabric_background</color>
     <color name="uifabric_people_picker_text_view_background">@color/uifabric_background</color>
     <color name="uifabric_people_picker_text_view_drag_background">@color/uifabric_primary</color>
+    <color name="uifabric_people_picker_hint_text_color">@color/uifabric_light_gray</color>
+    <color name="uifabric_people_picker_label_text_color">@color/uifabric_gray</color>
 
     <!--Persona Chip-->
     <color name="uifabric_persona_chip_active">@color/uifabric_primary</color>

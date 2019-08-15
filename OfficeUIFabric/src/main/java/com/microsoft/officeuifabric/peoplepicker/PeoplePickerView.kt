@@ -6,6 +6,7 @@
 package com.microsoft.officeuifabric.peoplepicker
 
 import android.content.Context
+import android.support.v4.content.ContextCompat
 import android.util.AttributeSet
 import android.view.View.OnClickListener
 import android.view.ViewGroup
@@ -18,6 +19,7 @@ import com.microsoft.officeuifabric.persona.Persona
 import com.microsoft.officeuifabric.view.TemplateView
 import com.tokenautocomplete.TokenCompleteTextView
 import kotlinx.android.synthetic.main.view_people_picker.view.*
+import kotlin.math.max
 
 /**
  * [PeoplePickerView] is a customizable view comprised of a label and [PeoplePickerTextView].
@@ -35,9 +37,20 @@ class PeoplePickerView : TemplateView {
             updateViews()
         }
     /**
-     * [valueHint] is important for accessibility but will not be displayed.
+     * [valueHint] is important for accessibility but will not be displayed unless
+     * you set the flag [showHint] to true.
      */
     var valueHint: String = context.getString(R.string.people_picker_accessibility_default_hint)
+        set(value) {
+            if (field == value)
+                return
+            field = value
+            updateViews()
+        }
+    /**
+     * Determines whether the hint will be displayed.
+     */
+    var showHint: Boolean = false
         set(value) {
             if (field == value)
                 return
@@ -67,12 +80,13 @@ class PeoplePickerView : TemplateView {
         }
     /**
      * The number of characters required to be entered before showing the dropdown of filtered suggestions.
+     * Accepts positive and 0 value integers only.
      */
     var characterThreshold: Int = 1
         set(value) {
             if (field == value)
                 return
-            field = value
+            field = max(0, value)
             updateViews()
         }
     /**
@@ -209,9 +223,17 @@ class PeoplePickerView : TemplateView {
     @JvmOverloads
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
         val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.PeoplePickerView)
+
         label = styledAttrs.getString(R.styleable.PeoplePickerView_label) ?: ""
-        valueHint = styledAttrs.getString(R.styleable.PeoplePickerView_valueHint) ?: context.getString(R.string.people_picker_accessibility_default_hint)
-        val personaChipClickStyleOrdinal = styledAttrs.getInt(R.styleable.PeoplePickerView_personaChipClickStyle, PeoplePickerPersonaChipClickStyle.SELECT.ordinal)
+        valueHint = styledAttrs.getString(R.styleable.PeoplePickerView_valueHint)
+            ?: context.getString(R.string.people_picker_accessibility_default_hint)
+        showHint = styledAttrs.getBoolean(R.styleable.PeoplePickerView_showHint, false)
+        characterThreshold = styledAttrs.getInteger(R.styleable.PeoplePickerView_characterThreshold, 1)
+
+        val personaChipClickStyleOrdinal = styledAttrs.getInt(
+            R.styleable.PeoplePickerView_personaChipClickStyle,
+            PeoplePickerPersonaChipClickStyle.SELECT.ordinal
+        )
         personaChipClickStyle = PeoplePickerPersonaChipClickStyle.values()[personaChipClickStyleOrdinal]
 
         styledAttrs.recycle()
@@ -256,7 +278,7 @@ class PeoplePickerView : TemplateView {
             valueHint = this@PeoplePickerView.valueHint
             allowCollapse(allowCollapse)
             allowDuplicatePersonaChips = this@PeoplePickerView.allowDuplicatePersonaChips
-            threshold = characterThreshold
+            characterThreshold = this@PeoplePickerView.characterThreshold
             personaChipLimit = this@PeoplePickerView.personaChipLimit
             setAdapter(peoplePickerTextViewAdapter)
             personaChipClickStyle = this@PeoplePickerView.personaChipClickStyle
@@ -266,6 +288,13 @@ class PeoplePickerView : TemplateView {
             personaChipClickListener = this@PeoplePickerView.personaChipClickListener
         }
         peoplePickerTextViewAdapter?.showSearchDirectoryButton = showSearchDirectoryButton
+
+        updateHintVisibility()
+    }
+
+    private fun updateHintVisibility() {
+        val hintColor = if (showHint) R.color.uifabric_people_picker_hint_text_color else android.R.color.transparent
+        peoplePickerTextView?.setHintTextColor(ContextCompat.getColor(context, hintColor))
     }
 
     private fun addLabelClickListenerForAccessibility() {

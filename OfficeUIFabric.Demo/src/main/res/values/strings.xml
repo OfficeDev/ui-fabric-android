@@ -195,6 +195,7 @@
     <string name="persona_view_description_xxlarge">XXLarge avatar with three lines of text</string>
     <string name="persona_view_description_large">Large avatar with two lines of text</string>
     <string name="persona_view_description_small">Small avatar with one line of text</string>
+    <string name="people_picker_hint">None with hint shown</string>
 
     <!--Persona Chip-->
     <string name="persona_chip_example_disabled">Disabled Persona Chip</string>

@@ -28,7 +28,6 @@
         android:textAppearance="@style/TextAppearance.UIFabric.PeoplePickerLabel"
         tools:text="@string/people_picker_sample_label" />
 
-    <!--Hint is for accessibility, but we don't want to see it. Hint is set programmatically.-->
     <com.microsoft.officeuifabric.peoplepicker.PeoplePickerTextView
         android:id="@+id/people_picker_text_view"
         android:layout_width="match_parent"

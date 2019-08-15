@@ -8,6 +8,8 @@
     <declare-styleable name="PeoplePickerView">
         <attr name="label" format="string" />
         <attr name="valueHint" format="string" />
+        <attr name="showHint" format="boolean" />
+        <attr name="characterThreshold" format="integer" />
         <attr name="personaChipClickStyle" format="enum">
             <enum name="none" value="0"/>
             <enum name="delete" value="1"/>

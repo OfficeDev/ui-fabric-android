@@ -111,6 +111,7 @@ internal class PeoplePickerTextViewAdapter : ArrayAdapter<IPersona>, Filterable 
         view.avatarSize = AvatarSize.LARGE
         view.layoutDensity = ListItemView.LayoutDensity.COMPACT
         view.setPersona(personas[position])
+        view.background = ContextCompat.getColor(context, android.R.color.transparent)
         listView = parent as? ListView
         return view
     }

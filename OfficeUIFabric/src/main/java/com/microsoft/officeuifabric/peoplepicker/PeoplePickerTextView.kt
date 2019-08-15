@@ -40,6 +40,7 @@ import com.microsoft.officeuifabric.persona.setPersona
 import com.microsoft.officeuifabric.util.getTextSize
 import com.tokenautocomplete.CountSpan
 import com.tokenautocomplete.TokenCompleteTextView
+import kotlin.math.max
 
 enum class PeoplePickerPersonaChipClickStyle(internal val tokenClickStyle: TokenCompleteTextView.TokenClickStyle) {
     // Do nothing, but make sure the cursor is not in the persona chip.
@@ -108,12 +109,21 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
             setTokenLimit(value)
         }
     /**
-     * Store the hint so that we can control when it is announced for accessibility
+     * Store the hint so that we can control when it is announced for accessibility.
+     * [PeoplePickerView.showHint] will also display the hint.
      */
     var valueHint: CharSequence = ""
         set(value) {
             field = value
             hint = value
+        }
+    /**
+     * This proxy for [setThreshold] allows a threshold of 0 input characters.
+     */
+    var characterThreshold: Int = 1
+        set(value) {
+            field = max(0, value)
+            threshold = characterThreshold
         }
 
     /**
@@ -223,7 +233,19 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
                 inputMethodManager.showSoftInput(this, InputMethodManager.SHOW_IMPLICIT)
             }
         }
+
+        /**
+        * Along with [enoughToFilter], this is a work around for AutoCompleteTextView preventing filtering when no characters are input.
+        */
+        if (hasFocus && characterThreshold == 0)
+            post {
+                showDropDown()
+                requestLayout()
+            }
     }
+
+    // super.enoughToFilter() sometimes does not allow for showing suggestions when the threshold is 0.
+    override fun enoughToFilter(): Boolean = characterThreshold == 0 || super.enoughToFilter()
 
     override fun onSelectionChanged(selStart: Int, selEnd: Int) {
         // super.onSelectionChanged is buggy, but we still need the accessibility event from the super super call.
@@ -301,7 +323,7 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
         val anchorTop = anchorLocationOnScreen[1]
         val distanceToBottom = displayFrame.bottom - (anchorTop + height)
         val distanceToTop = anchorTop - displayFrame.top
-        var maxAvailableHeight = Math.max(distanceToBottom, distanceToTop)
+        var maxAvailableHeight = max(distanceToBottom, distanceToTop)
 
         if (dropDownBackground != null) {
             val backgroundPadding = Rect()
