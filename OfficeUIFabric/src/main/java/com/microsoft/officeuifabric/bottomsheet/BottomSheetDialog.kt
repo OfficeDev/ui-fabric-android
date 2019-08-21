@@ -11,14 +11,15 @@ import android.support.v7.widget.RecyclerView
 import android.widget.LinearLayout
 import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.drawer.DrawerDialog
+import com.microsoft.officeuifabric.bottomsheet.BottomSheetItem.OnClickListener
 
 /**
  * [BottomSheetDialog] is used to display a list of menu items in a modal dialog.
  */
-class BottomSheetDialog : DrawerDialog, OnBottomSheetItemClickListener {
-    var onItemClickListener: OnBottomSheetItemClickListener? = null
+class BottomSheetDialog : DrawerDialog, OnClickListener {
+    var onItemClickListener: OnClickListener? = null
 
-    private var clickedItemId: Int = -1
+    private var clickedItem: BottomSheetItem? = null
 
     constructor(context: Context, items: ArrayList<BottomSheetItem>) : super(context) {
         val adapter = BottomSheetAdapter(context, items)
@@ -40,20 +41,17 @@ class BottomSheetDialog : DrawerDialog, OnBottomSheetItemClickListener {
         return recyclerView
     }
 
-    override fun onBottomSheetItemClick(id: Int) {
-        clickedItemId = id
+    override fun onBottomSheetItemClick(item: BottomSheetItem) {
+        clickedItem = item
         collapse()
     }
 
     override fun dismiss() {
-        if (clickedItemId > -1) {
-            onItemClickListener?.onBottomSheetItemClick(clickedItemId)
-            clickedItemId = -1
+        clickedItem?.let {
+            onItemClickListener?.onBottomSheetItemClick(it)
+            clickedItem = null
         }
+
         super.dismiss()
     }
-}
-
-interface OnBottomSheetItemClickListener {
-    fun onBottomSheetItemClick(id: Int)
 }

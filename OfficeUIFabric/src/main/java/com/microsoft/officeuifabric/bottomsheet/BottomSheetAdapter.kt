@@ -12,9 +12,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import com.microsoft.officeuifabric.listitem.ListItemView
+import com.microsoft.officeuifabric.bottomsheet.BottomSheetItem.OnClickListener
 
 internal class BottomSheetAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    var onBottomSheetItemClickListener: OnBottomSheetItemClickListener? = null
+    var onBottomSheetItemClickListener: OnClickListener? = null
 
     private val context: Context
     private val items: ArrayList<BottomSheetItem>
@@ -51,7 +52,7 @@ internal class BottomSheetAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder
             listItemView.layoutDensity = ListItemView.LayoutDensity.COMPACT
 
             listItemView.setOnClickListener {
-                onBottomSheetItemClickListener?.onBottomSheetItemClick(item.id)
+                onBottomSheetItemClickListener?.onBottomSheetItemClick(item)
             }
         }
 

@@ -10,6 +10,10 @@ import android.os.Parcelable
 import android.support.annotation.DrawableRes
 
 class BottomSheetItem : Parcelable {
+    interface OnClickListener {
+        fun onBottomSheetItemClick(item: BottomSheetItem)
+    }
+
     val id: Int
     @DrawableRes
     val imageId: Int

@@ -9,11 +9,12 @@ import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
 import android.support.v7.app.AppCompatDialogFragment
+import com.microsoft.officeuifabric.bottomsheet.BottomSheetItem.OnClickListener
 
 /**
  * [BottomSheet] is used to display a list of menu items in a modal dialog inside of a Fragment that retains state.
  */
-class BottomSheet : AppCompatDialogFragment(), OnBottomSheetItemClickListener {
+class BottomSheet : AppCompatDialogFragment(), OnClickListener {
     companion object {
         private const val ITEMS = "items"
 
@@ -33,7 +34,7 @@ class BottomSheet : AppCompatDialogFragment(), OnBottomSheetItemClickListener {
 
     private lateinit var bottomSheetDialog: BottomSheetDialog
     private lateinit var items: ArrayList<BottomSheetItem>
-    private var clickedItemId: Int = -1
+    private var clickedItem: BottomSheetItem? = null
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val bundle = savedInstanceState ?: arguments
@@ -48,18 +49,18 @@ class BottomSheet : AppCompatDialogFragment(), OnBottomSheetItemClickListener {
         outState.putParcelableArrayList(ITEMS, items)
     }
 
-    override fun onBottomSheetItemClick(id: Int) {
-        clickedItemId = id
+    override fun onBottomSheetItemClick(item: BottomSheetItem) {
+        clickedItem = item
     }
 
     // According to Android documentation, DialogFragment owns the Dialog setOnDismissListener callback so this
     // can't be set on the Dialog. Instead onDismiss(android.content.DialogInterface) must be overridden.
     override fun onDismiss(dialog: DialogInterface?) {
         super.onDismiss(dialog)
-        if (clickedItemId > -1) {
-            (parentFragment as? OnBottomSheetItemClickListener)?.onBottomSheetItemClick(clickedItemId)
-            (activity as? OnBottomSheetItemClickListener)?.onBottomSheetItemClick(clickedItemId)
-            clickedItemId = -1
+        clickedItem?.let {
+            (parentFragment as? OnClickListener)?.onBottomSheetItemClick(it)
+            (activity as? OnClickListener)?.onBottomSheetItemClick(it)
+            clickedItem = null
         }
     }
 }

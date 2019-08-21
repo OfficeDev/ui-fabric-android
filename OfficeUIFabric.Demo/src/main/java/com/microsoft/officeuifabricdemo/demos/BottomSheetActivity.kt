@@ -9,14 +9,14 @@ import android.os.Bundle
 import com.microsoft.officeuifabric.bottomsheet.BottomSheet
 import com.microsoft.officeuifabric.bottomsheet.BottomSheetDialog
 import com.microsoft.officeuifabric.bottomsheet.BottomSheetItem
-import com.microsoft.officeuifabric.bottomsheet.OnBottomSheetItemClickListener
+import com.microsoft.officeuifabric.bottomsheet.BottomSheetItem.OnClickListener
 import com.microsoft.officeuifabric.snackbar.Snackbar
 import com.microsoft.officeuifabricdemo.DemoActivity
 import com.microsoft.officeuifabricdemo.R
 import kotlinx.android.synthetic.main.activity_bottom_sheet.*
 import kotlinx.android.synthetic.main.activity_demo_detail.*
 
-class BottomSheetActivity : DemoActivity(), OnBottomSheetItemClickListener {
+class BottomSheetActivity : DemoActivity(), OnClickListener {
     override val contentLayoutId: Int
         get() = R.layout.activity_bottom_sheet
 
@@ -124,8 +124,8 @@ class BottomSheetActivity : DemoActivity(), OnBottomSheetItemClickListener {
         bottomSheetDialog?.dismiss()
     }
 
-    override fun onBottomSheetItemClick(id: Int) {
-        when(id) {
+    override fun onBottomSheetItemClick(item: BottomSheetItem) {
+        when(item.id) {
             // single line items
             R.id.bottom_sheet_item_flag -> showSnackbar(resources.getString(R.string.bottom_sheet_item_flag_toast))
             R.id.bottom_sheet_item_reply -> showSnackbar(resources.getString(R.string.bottom_sheet_item_reply_toast))
