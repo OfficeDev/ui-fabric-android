@@ -128,6 +128,9 @@
     <style name="TextAppearance.UIFabric.PeoplePickerCountSpan" parent="TextAppearance.UIFabric.LightCaption" />
     <style name="TextAppearance.UIFabric.PeoplePickerSearchDirectoryButton" parent="TextAppearance.UIFabric.Button.Borderless" />
 
+    <!--PopupMenu-->
+    <style name="TextAppearance.UIFabric.PopupMenuTitle" parent="TextAppearance.UIFabric.Body1" />
+
     <!--Snackbar-->
     <style name="TextAppearance.UIFabric.SnackbarText" parent="TextAppearance.UIFabric.Body1">
         <item name="android:textColor">@color/uifabric_snackbar_text</item>

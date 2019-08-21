@@ -29,3 +29,12 @@ fun ViewGroup.setContentAndUpdateVisibility(view: View?, updateLayout: (() -> Un
     addView(view)
     visibility = View.VISIBLE
 }
+
+/**
+ * Sets a view's visibility based on a boolean [isVisible].
+ */
+var View.isVisible: Boolean
+    get() = visibility == View.VISIBLE
+    set(value) {
+        visibility = if (value) View.VISIBLE else View.GONE
+    }

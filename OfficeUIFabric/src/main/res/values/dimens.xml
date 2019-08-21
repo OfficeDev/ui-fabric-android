@@ -110,6 +110,14 @@
     <dimen name="uifabric_persona_chip_padding">6dp</dimen>
     <dimen name="uifabric_persona_chip_spacing">6dp</dimen>
 
+    <!--PopupMenu-->
+    <dimen name="uifabric_popup_menu_corner_radius">@dimen/uifabric_corner_radius_medium</dimen>
+    <dimen name="uifabric_popup_menu_item_icon_size">24dp</dimen>
+    <dimen name="uifabric_popup_menu_item_margin_horizontal">8dp</dimen>
+    <dimen name="uifabric_popup_menu_item_min_height">42dp</dimen>
+    <dimen name="uifabric_popup_menu_item_min_width_no_icon">132dp</dimen>
+    <dimen name="uifabric_popup_menu_item_min_width_icon">172dp</dimen>
+
     <!--Progress: Circular-->
     <dimen name="uifabric_progress_circular_xsmall">20dp</dimen>
     <dimen name="uifabric_progress_circular_small">24dp</dimen>

@@ -128,6 +128,12 @@
     <color name="uifabric_persona_chip_error_text">#A80000</color>
     <color name="uifabric_persona_chip_disabled_text">@color/uifabric_gray</color>
 
+    <!--PopupMenu-->
+    <color name="uifabric_popup_menu_background">@color/uifabric_background</color>
+    <color name="uifabric_popup_menu_item_title">@color/uifabric_black</color>
+    <color name="uifabric_popup_menu_item_foreground_selected">@color/uifabric_primary</color>
+    <color name="uifabric_popup_menu_item_check_background_ripple">@color/uifabric_light_gray</color>
+
     <!--Progress-->
     <color name="uifabric_progress_primary">@color/uifabric_primary</color>
 

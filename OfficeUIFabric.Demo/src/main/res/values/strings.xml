@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <!--
-      ~ Copyright (c) Microsoft Corporation. All rights reserved.
-      ~ Licensed under the MIT License.
-      -->
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
 
 <resources xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="MissingTranslation">
@@ -203,6 +203,24 @@
     <string name="persona_chip_example_no_icon">Persona Chip with no close icon</string>
     <string name="persona_chip_example_basic">Basic Persona Chip</string>
     <string name="persona_chip_example_click">You clicked on a selected Persona Chip.</string>
+
+    <!--PopupMenu-->
+    <string name="popup_menu_item_share">Share</string>
+    <string name="popup_menu_item_follow">Follow</string>
+    <string name="popup_menu_item_invite_people">Invite people</string>
+    <string name="popup_menu_item_refresh_page">Refresh page</string>
+    <string name="popup_menu_item_open_in_browser">Open in browser</string>
+    <string name="popup_menu_item_all_news">All news</string>
+    <string name="popup_menu_item_saved_news">Saved news</string>
+    <string name="popup_menu_item_news_from_sites">News from sites</string>
+    <string name="popup_menu_item_contoso_travel">Contoso</string>
+    <string name="popup_menu_item_notify_outside">Notify outside of working hours</string>
+    <string name="popup_menu_item_notify_inactive">Notify when inactive on desktop</string>
+    <string name="popup_menu_item_clicked">You clicked on the item:</string>
+    <string name="popup_menu_simple">Simple menu</string>
+    <string name="popup_menu_single_check">Menu with one selectable item and a divider</string>
+    <string name="popup_menu_all_check">Menu with all selectable items, icons, and long text</string>
+    <string name="popup_menu_show">Show</string>
 
     <!--Progress-->
     <string name="circular_progress">Circular Progress</string>
