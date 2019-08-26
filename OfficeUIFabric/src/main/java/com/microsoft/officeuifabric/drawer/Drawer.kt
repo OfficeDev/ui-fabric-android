@@ -6,8 +6,10 @@
 package com.microsoft.officeuifabric.drawer
 
 import android.app.Dialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.support.annotation.LayoutRes
+import android.support.v4.app.DialogFragment
 import android.support.v7.app.AppCompatDialogFragment
 import android.view.View
 
@@ -18,11 +20,13 @@ import android.view.View
  */
 open class Drawer : AppCompatDialogFragment(), OnDrawerContentCreatedListener {
     companion object {
+        const val STYLE = DialogFragment.STYLE_NO_TITLE
         private const val CONTENT_LAYOUT_ID = "contentLayoutId"
 
         /**
          * @param contentLayoutId the layout id of the drawer contents.
          */
+        @JvmStatic
         fun newInstance(@LayoutRes contentLayoutId: Int): Drawer {
             val bundle = Bundle()
             bundle.putInt(CONTENT_LAYOUT_ID, contentLayoutId)
@@ -33,13 +37,17 @@ open class Drawer : AppCompatDialogFragment(), OnDrawerContentCreatedListener {
         }
     }
 
+    interface OnDismissListener {
+        fun onDrawerDismissListener()
+    }
+
     private var contentLayoutId: Int = 0
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val bundle = savedInstanceState ?: arguments
         contentLayoutId = bundle?.getInt(CONTENT_LAYOUT_ID) ?: 0
 
-        val drawerDialog = DrawerDialog(context!!)
+        val drawerDialog = DrawerDialog(context!!, theme)
         drawerDialog.onDrawerContentCreatedListener = this
         drawerDialog.setContentView(contentLayoutId)
         return drawerDialog
@@ -48,6 +56,12 @@ open class Drawer : AppCompatDialogFragment(), OnDrawerContentCreatedListener {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putInt(CONTENT_LAYOUT_ID, contentLayoutId)
+    }
+
+    override fun onDismiss(dialog: DialogInterface?) {
+        super.onDismiss(dialog)
+        (parentFragment as? OnDismissListener)?.onDrawerDismissListener()
+        (activity as? OnDismissListener)?.onDrawerDismissListener()
     }
 
     override fun onDrawerContentCreated(drawerContents: View) {

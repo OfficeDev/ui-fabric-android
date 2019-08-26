@@ -32,6 +32,10 @@ class BottomSheet : AppCompatDialogFragment(), OnClickListener {
         }
     }
 
+    interface OnDismissListener {
+        fun onBottomSheetDismiss()
+    }
+
     private lateinit var bottomSheetDialog: BottomSheetDialog
     private lateinit var items: ArrayList<BottomSheetItem>
     private var clickedItem: BottomSheetItem? = null
@@ -39,8 +43,10 @@ class BottomSheet : AppCompatDialogFragment(), OnClickListener {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val bundle = savedInstanceState ?: arguments
         items = bundle?.getParcelableArrayList<BottomSheetItem>(ITEMS) ?: arrayListOf()
-        bottomSheetDialog = BottomSheetDialog(context!!, items)
+
+        bottomSheetDialog = BottomSheetDialog(context!!, items, theme)
         bottomSheetDialog.onItemClickListener = this
+
         return bottomSheetDialog
     }
 
@@ -62,5 +68,8 @@ class BottomSheet : AppCompatDialogFragment(), OnClickListener {
             (activity as? OnClickListener)?.onBottomSheetItemClick(it)
             clickedItem = null
         }
+
+        (parentFragment as? OnDismissListener)?.onBottomSheetDismiss()
+        (activity as? OnDismissListener)?.onBottomSheetDismiss()
     }
 }

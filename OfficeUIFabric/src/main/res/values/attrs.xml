@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+    <!-- *** Base Semantic Colors *** -->
+
+    <attr name="uifabricBackgroundColor" format="reference|color"/>
+    <attr name="uifabricForegroundColor" format="reference|color"/>
+
+    <!-- *** Semantic Colors *** -->
+
+    <!--Drawer-->
+    <attr name="uifabricDrawerBackgroundColor" format="reference|color"/>
+
+    <!--ListItemView-->
+    <attr name="uifabricListItemBackgroundColor" format="reference|color"/>
+    <attr name="uifabricListItemTitleColor" format="reference|color"/>
+    <attr name="uifabricListItemSubtitleColor" format="reference|color"/>
+    <attr name="uifabricListItemRippleColor" format="reference|color"/>
+</resources>

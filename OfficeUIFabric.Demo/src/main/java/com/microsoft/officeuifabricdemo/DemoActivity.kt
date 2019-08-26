@@ -33,7 +33,7 @@ abstract class DemoActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         // Set demo title
-        val demoID = intent.getSerializableExtra(DemoActivity.DEMO_ID) as UUID
+        val demoID = intent.getSerializableExtra(DEMO_ID) as UUID
         val demo = DEMOS.find { it.id == demoID }
         title = demo?.title
 

@@ -6,12 +6,14 @@
 package com.microsoft.officeuifabric.bottomsheet
 
 import android.content.Context
+import android.support.annotation.StyleRes
+import android.support.v4.app.DialogFragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.widget.LinearLayout
 import com.microsoft.officeuifabric.R
-import com.microsoft.officeuifabric.drawer.DrawerDialog
 import com.microsoft.officeuifabric.bottomsheet.BottomSheetItem.OnClickListener
+import com.microsoft.officeuifabric.drawer.DrawerDialog
 
 /**
  * [BottomSheetDialog] is used to display a list of menu items in a modal dialog.
@@ -21,8 +23,10 @@ class BottomSheetDialog : DrawerDialog, OnClickListener {
 
     private var clickedItem: BottomSheetItem? = null
 
-    constructor(context: Context, items: ArrayList<BottomSheetItem>) : super(context) {
-        val adapter = BottomSheetAdapter(context, items)
+    @JvmOverloads
+    constructor(context: Context, items: ArrayList<BottomSheetItem>, @StyleRes theme: Int = 0) : super(context, theme) {
+        supportRequestWindowFeature(DialogFragment.STYLE_NO_TITLE)
+        val adapter = BottomSheetAdapter(context, items, theme)
         adapter.onBottomSheetItemClickListener = this
 
         val recyclerView = createRecyclerView(context)

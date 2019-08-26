@@ -6,11 +6,14 @@
 package com.microsoft.officeuifabric.bottomsheet
 
 import android.content.Context
+import android.support.annotation.StyleRes
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
+import android.view.ContextThemeWrapper
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
+import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.listitem.ListItemView
 import com.microsoft.officeuifabric.bottomsheet.BottomSheetItem.OnClickListener
 
@@ -19,17 +22,23 @@ internal class BottomSheetAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder
 
     private val context: Context
     private val items: ArrayList<BottomSheetItem>
+    private val themeId: Int
 
-    constructor(context: Context, items: ArrayList<BottomSheetItem>) {
+    constructor(context: Context, items: ArrayList<BottomSheetItem>, @StyleRes themeId: Int) {
         this.context = context
         this.items = items
+        this.themeId = themeId
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val itemView = ListItemView(context)
-        itemView.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
-        itemView.customViewSize = ListItemView.CustomViewSize.SMALL
-        return BottomSheetItemViewHolder(itemView)
+        var inflater = LayoutInflater.from(parent.context)
+        if (themeId != 0) {
+            val contextThemeWrapper = ContextThemeWrapper(parent.context, themeId)
+            inflater = inflater.cloneInContext(contextThemeWrapper)
+        }
+
+        val itemView = inflater.inflate(R.layout.view_bottom_sheet_item, parent, false)
+        return BottomSheetItemViewHolder(itemView as ListItemView)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {

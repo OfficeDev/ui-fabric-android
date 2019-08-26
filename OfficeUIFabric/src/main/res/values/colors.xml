@@ -32,6 +32,9 @@
     <color name="uifabric_border_gray">#C8C8C8</color>
     <color name="uifabric_border_light_gray">#E1E1E1</color>
 
+    <!--Foregrounds-->
+    <color name="uifabric_foreground">@color/uifabric_black</color>
+
     <!-- *** Semantic Colors *** -->
 
     <!--Avatar-->

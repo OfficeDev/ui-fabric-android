@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="@dimen/uifabric_drawer_elevation"
-        android:background="@color/uifabric_drawer_background"
+        android:background="?attr/uifabricDrawerBackgroundColor"
         android:clipToPadding="true"
         app:behavior_hideable="true"
         app:behavior_peekHeight="@dimen/uifabric_drawer_peek_height"

@@ -13,6 +13,22 @@
         <item name="colorAccent">@color/uifabric_primary</item>
         <item name="android:textColorPrimary">@color/uifabric_black</item>
         <item name="buttonStyle">@style/Widget.UIFabric.Button</item>
+
+        <!-- *** Base Semantic Colors *** -->
+
+        <item name="uifabricBackgroundColor">@color/uifabric_background</item>
+        <item name="uifabricForegroundColor">@color/uifabric_foreground</item>
+
+        <!-- *** Semantic Colors *** -->
+
+        <!--Drawer-->
+        <item name="uifabricDrawerBackgroundColor">?attr/uifabricBackgroundColor</item>
+
+        <!--ListItemView-->
+        <item name="uifabricListItemBackgroundColor">?attr/uifabricBackgroundColor</item>
+        <item name="uifabricListItemTitleColor">?attr/uifabricForegroundColor</item>
+        <item name="uifabricListItemSubtitleColor">@color/uifabric_list_item_subtitle</item>
+        <item name="uifabricListItemRippleColor">@color/uifabric_list_item_background_ripple</item>
     </style>
 
     <style name="Widget.UIFabric" parent="@android:style/Widget"/>
