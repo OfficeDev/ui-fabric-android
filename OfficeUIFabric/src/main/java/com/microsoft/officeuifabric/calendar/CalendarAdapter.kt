@@ -202,7 +202,6 @@ internal class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarDa
     private inner class DayViewAccessibilityDelegate : AccessibilityDelegateCompat() {
         override fun onInitializeAccessibilityNodeInfo(host: View, info: AccessibilityNodeInfoCompat) {
             super.onInitializeAccessibilityNodeInfo(host, info)
-            // custom accessibility action only works for API level 21 (Lollipop) and higher (will be ignored in previous versions)
             info.addAction(
                 AccessibilityNodeInfoCompat.AccessibilityActionCompat(
                     R.id.uifabric_calendar_view_action_goto_next_week,

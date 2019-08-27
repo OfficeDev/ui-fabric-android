@@ -9,16 +9,16 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
-import android.os.Build
 import android.support.v4.view.AccessibilityDelegateCompat
 import android.support.v4.view.ViewCompat
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat
-import android.view.*
+import android.view.Gravity
+import android.view.LayoutInflater
+import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.PopupWindow
 import android.widget.TextView
-
 import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.util.*
 import kotlinx.android.synthetic.main.view_tooltip.view.*
@@ -153,7 +153,7 @@ class Tooltip {
             positionY = anchor.top - contentHeight - offsetY
         }
 
-        if (dismissLocation == TouchDismissLocation.INSIDE && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+        if (dismissLocation == TouchDismissLocation.INSIDE)
             positionY -= context.statusBarHeight
     }
 

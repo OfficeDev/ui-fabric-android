@@ -6,7 +6,7 @@
 
 <set xmlns:android="http://schemas.android.com/apk/res/android"
     android:duration="@integer/uifabric_drawer_fade_out_milliseconds"
-    android:interpolator="@android:anim/accelerate_decelerate_interpolator">
+    android:interpolator="@android:interpolator/fast_out_linear_in">
 
     <alpha
         android:fromAlpha="1.0"

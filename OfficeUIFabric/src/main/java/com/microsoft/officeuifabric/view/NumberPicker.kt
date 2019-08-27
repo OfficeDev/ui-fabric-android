@@ -21,7 +21,6 @@ package com.microsoft.officeuifabric.view
  * limitations under the License.
  */
 
-import android.annotation.TargetApi
 import android.app.Activity
 import android.content.Context
 import android.graphics.Canvas
@@ -30,7 +29,6 @@ import android.graphics.Paint.Align
 import android.graphics.Rect
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
-import android.os.Build
 import android.os.Bundle
 import android.support.annotation.IntDef
 import android.support.v4.content.ContextCompat
@@ -663,7 +661,6 @@ internal class NumberPicker : LinearLayout {
         init(context, attrs, defStyleAttr, 0)
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int, defStyleRes: Int) : super(context, attrs, defStyleAttr, defStyleRes) {
         init(context, attrs, defStyleAttr, defStyleRes)
     }
@@ -781,7 +778,7 @@ internal class NumberPicker : LinearLayout {
         numberPickerTextView = NumberPickerTextView(context)
         numberPickerTextView.visibility = View.INVISIBLE
 
-        // NumberPickerTextView must be added manually to prevent NPE on Lollipop and focus trapping issue on KitKat.
+        // NumberPickerTextView must be added manually to prevent NPE on Lollipop.
         addView(numberPickerTextView)
 
         TextViewCompat.setTextAppearance(numberPickerTextView, R.style.TextAppearance_UIFabric_NumberPicker)
@@ -1892,16 +1889,12 @@ internal class NumberPicker : LinearLayout {
             setNodeInfoDescriptions(virtualViewId, info)
             setInfoBounds(info, rect)
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                val clickAction = AccessibilityNodeInfoCompat.AccessibilityActionCompat(
-                    AccessibilityNodeInfo.ACTION_CLICK,
-                    getNodeInfoClickActionAnnouncement(virtualViewId)
-                )
-                info.addAction(clickAction)
-            } else {
-                info.addAction(AccessibilityNodeInfoCompat.ACTION_CLICK)
-            }
+            val clickAction = AccessibilityNodeInfoCompat.AccessibilityActionCompat(
+                AccessibilityNodeInfo.ACTION_CLICK,
+                getNodeInfoClickActionAnnouncement(virtualViewId)
+            )
 
+            info.addAction(clickAction)
         }
 
         private fun setNodeInfoDescriptions(virtualViewId: Int, info: AccessibilityNodeInfoCompat) {

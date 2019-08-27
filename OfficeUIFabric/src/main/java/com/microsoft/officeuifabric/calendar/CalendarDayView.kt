@@ -5,12 +5,13 @@
 
 package com.microsoft.officeuifabric.calendar
 
-import android.annotation.TargetApi
 import android.content.Context
 import android.content.res.ColorStateList
-import android.graphics.*
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
+import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
-import android.os.Build
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewCompat
 import android.support.v4.widget.TextViewCompat
@@ -246,7 +247,6 @@ internal class CalendarDayView: AppCompatButton, Checkable {
         _foregroundDrawable?.let { if (it.isStateful) it.state = drawableState }
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     override fun drawableHotspotChanged(x: Float, y: Float) {
         super.drawableHotspotChanged(x, y)
         _foregroundDrawable?.setHotspot(x, y)

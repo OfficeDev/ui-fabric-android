@@ -68,10 +68,10 @@
     </style>
 
     <!--Drawer-->
-    <style name="Drawer.UIFabric" parent="Drawer.Base.UIFabric" />
-    <style name="Drawer.Base.UIFabric" parent="@style/Theme.AppCompat.Dialog">
+    <style name="Drawer.UIFabric" parent="@style/Theme.AppCompat.Dialog">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowAnimationStyle">@style/Drawer.UIFabric.Animation</item>
+        <item name="android:windowTranslucentStatus">true</item>
     </style>
     <style name="Drawer.UIFabric.Animation">
         <item name="android:windowEnterAnimation">@anim/drawer_background_fade_in</item>
