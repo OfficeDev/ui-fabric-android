@@ -82,6 +82,15 @@
     <item quantity="other">%s individu</item>
   </plurals>
   <string name="persona_title_placeholder">Tiada nama</string>
+  <string name="popup_menu_accessibility_item_toggle">toggle</string>
+  <string name="popup_menu_accessibility_item_select">select</string>
+  <string name="popup_menu_accessibility_item_click_selected">%s selected</string>
+  <string name="popup_menu_accessibility_item_click_checked">%s checked</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">%s unchecked</string>
+  <string name="popup_menu_accessibility_item_radio_button">radio button</string>
+  <string name="popup_menu_accessibility_item_check_box">checkbox</string>
+  <string name="popup_menu_accessibility_item_state_checked">checked</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">not checked</string>
   <string name="progress_circular_content_description_indeterminate">Tidak dapat ditentukan</string>
   <string name="done">Selesai</string>
   <string name="tooltip_accessibility_dismiss_action">tolak</string>

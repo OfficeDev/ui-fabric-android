@@ -70,6 +70,7 @@ class PopupMenu : ListPopupWindow, PopupMenuItem.OnClickListener {
 
         setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.popup_menu_background))
 
+        isModal = true
         width = adapter.calculateWidth()
     }
 

@@ -9,9 +9,13 @@ import android.content.Context
 import android.graphics.PorterDuff
 import android.support.annotation.DrawableRes
 import android.support.v4.content.ContextCompat
+import android.support.v4.view.AccessibilityDelegateCompat
+import android.support.v4.view.ViewCompat
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
+import android.view.accessibility.AccessibilityNodeInfo
 import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.RadioButton
@@ -42,6 +46,8 @@ internal class PopupMenuItemView : TemplateView {
                     showCheckBox = false
                 }
             }
+
+            updateViews()
         }
 
     private var title: String = ""
@@ -119,6 +125,7 @@ internal class PopupMenuItemView : TemplateView {
         dividerView?.isVisible = showDividerBelow
 
         updateCheckedState(isChecked)
+        updateAccessibilityClickAction()
     }
 
     private fun setPressedState(isPressed: Boolean) {
@@ -130,6 +137,8 @@ internal class PopupMenuItemView : TemplateView {
     private fun updateCheckedState(isChecked: Boolean) {
         radioButton?.isChecked = isChecked
         checkBox?.isChecked = isChecked
+
+        // Update text and icon color
 
         if (isChecked) {
             val foregroundSelectedColor = ContextCompat.getColor(context, R.color.uifabric_popup_menu_item_foreground_selected)
@@ -146,5 +155,41 @@ internal class PopupMenuItemView : TemplateView {
                 iconImageView?.invalidate()
             }
         }
+
+        // Update content description
+
+        val checkViewType = when {
+            showRadioButton -> context.getString(R.string.popup_menu_accessibility_item_radio_button)
+            showCheckBox -> context.getString(R.string.popup_menu_accessibility_item_check_box)
+            else -> ""
+        }
+
+        val checkedState = if (isChecked)
+            context.getString(R.string.popup_menu_accessibility_item_state_checked)
+        else
+            context.getString(R.string.popup_menu_accessibility_item_state_not_checked)
+
+        contentDescription = if (showRadioButton || showCheckBox)
+            "$title, $checkViewType $checkedState"
+        else
+            title
+    }
+
+    private fun updateAccessibilityClickAction() {
+        ViewCompat.setAccessibilityDelegate(this, object : AccessibilityDelegateCompat() {
+            override fun onInitializeAccessibilityNodeInfo(host: View, info: AccessibilityNodeInfoCompat) {
+                super.onInitializeAccessibilityNodeInfo(host, info)
+
+                val clickLabel = if (itemCheckableBehavior == PopupMenu.ItemCheckableBehavior.NONE)
+                    R.string.popup_menu_accessibility_item_select
+                else
+                    R.string.popup_menu_accessibility_item_toggle
+
+                info.addAction(AccessibilityNodeInfoCompat.AccessibilityActionCompat(
+                    AccessibilityNodeInfo.ACTION_CLICK,
+                    context.getString(clickLabel)
+                ))
+            }
+        })
     }
 }

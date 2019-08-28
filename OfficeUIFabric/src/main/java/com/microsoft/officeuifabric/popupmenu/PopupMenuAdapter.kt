@@ -43,7 +43,10 @@ internal class PopupMenuAdapter : BaseAdapter {
 
         view.itemCheckableBehavior = itemCheckableBehavior
         view.setMenuItem(item)
-        view.setOnClickListener { onItemClickListener.onPopupMenuItemClicked(item) }
+        view.setOnClickListener {
+            onItemClickListener.onPopupMenuItemClicked(item)
+            announceItemStateForAccessibility(item, it)
+        }
 
         return view
     }
@@ -65,5 +68,17 @@ internal class PopupMenuAdapter : BaseAdapter {
         }
 
         return max(minWidth, maxWidth)
+    }
+
+    private fun announceItemStateForAccessibility(item: PopupMenuItem, itemView: View) {
+        val announcementResourceId = if (itemCheckableBehavior == PopupMenu.ItemCheckableBehavior.NONE)
+            R.string.popup_menu_accessibility_item_click_selected
+        else
+            if (item.isChecked)
+                R.string.popup_menu_accessibility_item_click_checked
+            else
+                R.string.popup_menu_accessibility_item_click_unchecked
+
+        itemView.announceForAccessibility(context.resources.getString(announcementResourceId, item.title))
     }
 }
