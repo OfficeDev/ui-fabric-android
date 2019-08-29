@@ -145,7 +145,7 @@
 
     <!--Tooltip-->
     <style name="TextAppearance.UIFabric.Tooltip" parent="TextAppearance.UIFabric.Body2">
-        <item name="android:textColor">@color/uifabric_tooltip_text</item>
+        <item name="android:textColor">?attr/uifabricTooltipTextColor</item>
     </style>
 
 </resources>

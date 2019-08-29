@@ -32,6 +32,10 @@
 
         <!--Progress-->
         <item name="uifabricProgressPrimaryColor">?attr/colorPrimary</item>
+
+        <!--Tooltip-->
+        <item name="uifabricTooltipBackgroundColor">@color/uifabric_black</item>
+        <item name="uifabricTooltipTextColor">@color/uifabric_white</item>
     </style>
 
     <style name="Widget.UIFabric" parent="@android:style/Widget"/>

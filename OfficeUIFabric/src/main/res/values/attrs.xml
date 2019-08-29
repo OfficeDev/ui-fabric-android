@@ -23,4 +23,8 @@
 
     <!--Progress-->
     <attr name="uifabricProgressPrimaryColor" format="reference|color"/>
+
+    <!--Tooltip-->
+    <attr name="uifabricTooltipBackgroundColor" format="reference|color"/>
+    <attr name="uifabricTooltipTextColor" format="reference|color"/>
 </resources>

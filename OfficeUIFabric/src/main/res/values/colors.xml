@@ -159,8 +159,4 @@
     <!--Toolbar-->
     <color name="uifabric_toolbar_title_text">@color/uifabric_primary</color>
 
-    <!--Tooltip-->
-    <color name="uifabric_tooltip_background">@color/uifabric_black</color>
-    <color name="uifabric_tooltip_text">@color/uifabric_white</color>
-
 </resources>
