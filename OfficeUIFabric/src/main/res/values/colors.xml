@@ -137,9 +137,6 @@
     <color name="uifabric_popup_menu_item_foreground_selected">@color/uifabric_primary</color>
     <color name="uifabric_popup_menu_item_check_background_ripple">@color/uifabric_light_gray</color>
 
-    <!--Progress-->
-    <color name="uifabric_progress_primary">@color/uifabric_primary</color>
-
     <!--Shared-->
     <color name="uifabric_divider">@color/uifabric_border_light_gray</color>
     <!-- TODO update after design adds #0E000000 to toolkit -->

@@ -29,6 +29,9 @@
         <item name="uifabricListItemTitleColor">?attr/uifabricForegroundColor</item>
         <item name="uifabricListItemSubtitleColor">@color/uifabric_list_item_subtitle</item>
         <item name="uifabricListItemRippleColor">@color/uifabric_list_item_background_ripple</item>
+
+        <!--Progress-->
+        <item name="uifabricProgressPrimaryColor">?attr/colorPrimary</item>
     </style>
 
     <style name="Widget.UIFabric" parent="@android:style/Widget"/>
@@ -129,19 +132,19 @@
         <item name="android:maxWidth">@dimen/uifabric_progress_circular_large</item>
     </style>
     <style name="Widget.UIFabric.CircularProgress.XSmall.Primary">
-        <item name="android:indeterminateTint">@color/uifabric_progress_primary</item>
+        <item name="android:indeterminateTint">?attr/uifabricProgressPrimaryColor</item>
         <item name="android:indeterminateTintMode">src_in</item>
     </style>
     <style name="Widget.UIFabric.CircularProgress.Small.Primary">
-        <item name="android:indeterminateTint">@color/uifabric_progress_primary</item>
+        <item name="android:indeterminateTint">?attr/uifabricProgressPrimaryColor</item>
         <item name="android:indeterminateTintMode">src_in</item>
     </style>
     <style name="Widget.UIFabric.CircularProgress.Medium.Primary">
-        <item name="android:indeterminateTint">@color/uifabric_progress_primary</item>
+        <item name="android:indeterminateTint">?attr/uifabricProgressPrimaryColor</item>
         <item name="android:indeterminateTintMode">src_in</item>
     </style>
     <style name="Widget.UIFabric.CircularProgress.Large.Primary">
-        <item name="android:indeterminateTint">@color/uifabric_progress_primary</item>
+        <item name="android:indeterminateTint">?attr/uifabricProgressPrimaryColor</item>
         <item name="android:indeterminateTintMode">src_in</item>
     </style>
 

@@ -20,4 +20,7 @@
     <attr name="uifabricListItemTitleColor" format="reference|color"/>
     <attr name="uifabricListItemSubtitleColor" format="reference|color"/>
     <attr name="uifabricListItemRippleColor" format="reference|color"/>
+
+    <!--Progress-->
+    <attr name="uifabricProgressPrimaryColor" format="reference|color"/>
 </resources>
