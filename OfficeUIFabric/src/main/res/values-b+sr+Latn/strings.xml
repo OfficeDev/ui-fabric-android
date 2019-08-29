@@ -86,15 +86,15 @@
     <item quantity="other">%s ljudi</item>
   </plurals>
   <string name="persona_title_placeholder">Nema imena</string>
-  <string name="popup_menu_accessibility_item_toggle">toggle</string>
-  <string name="popup_menu_accessibility_item_select">select</string>
-  <string name="popup_menu_accessibility_item_click_selected">%s selected</string>
-  <string name="popup_menu_accessibility_item_click_checked">%s checked</string>
-  <string name="popup_menu_accessibility_item_click_unchecked">%s unchecked</string>
-  <string name="popup_menu_accessibility_item_radio_button">radio button</string>
-  <string name="popup_menu_accessibility_item_check_box">checkbox</string>
-  <string name="popup_menu_accessibility_item_state_checked">checked</string>
-  <string name="popup_menu_accessibility_item_state_not_checked">not checked</string>
+  <string name="popup_menu_accessibility_item_toggle">prekidač</string>
+  <string name="popup_menu_accessibility_item_select">izaberite</string>
+  <string name="popup_menu_accessibility_item_click_selected">Izabrano: %s</string>
+  <string name="popup_menu_accessibility_item_click_checked">Potvrđen je izbor stavke %s</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">Opozvan je izbor stavke %s</string>
+  <string name="popup_menu_accessibility_item_radio_button">radio dugme</string>
+  <string name="popup_menu_accessibility_item_check_box">polje za potvrdu</string>
+  <string name="popup_menu_accessibility_item_state_checked">potvrđen izbor</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">nije potvrđen izbor</string>
   <string name="progress_circular_content_description_indeterminate">Neodređeno</string>
   <string name="done">Gotovo</string>
   <string name="tooltip_accessibility_dismiss_action">odbaci</string>

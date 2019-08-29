@@ -84,15 +84,15 @@
     <item quantity="other">%s personnes</item>
   </plurals>
   <string name="persona_title_placeholder">Aucun nom</string>
-  <string name="popup_menu_accessibility_item_toggle">toggle</string>
-  <string name="popup_menu_accessibility_item_select">select</string>
-  <string name="popup_menu_accessibility_item_click_selected">%s selected</string>
-  <string name="popup_menu_accessibility_item_click_checked">%s checked</string>
-  <string name="popup_menu_accessibility_item_click_unchecked">%s unchecked</string>
-  <string name="popup_menu_accessibility_item_radio_button">radio button</string>
-  <string name="popup_menu_accessibility_item_check_box">checkbox</string>
-  <string name="popup_menu_accessibility_item_state_checked">checked</string>
-  <string name="popup_menu_accessibility_item_state_not_checked">not checked</string>
+  <string name="popup_menu_accessibility_item_toggle">activer/désactiver</string>
+  <string name="popup_menu_accessibility_item_select">sélectionner</string>
+  <string name="popup_menu_accessibility_item_click_selected">Vous avez sélectionné %s</string>
+  <string name="popup_menu_accessibility_item_click_checked">Vous avez coché %s</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">Vous avez décoché %s</string>
+  <string name="popup_menu_accessibility_item_radio_button">case d’option</string>
+  <string name="popup_menu_accessibility_item_check_box">case à cocher</string>
+  <string name="popup_menu_accessibility_item_state_checked">coché</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">non coché</string>
   <string name="progress_circular_content_description_indeterminate">Indéterminé</string>
   <string name="done">OK</string>
   <string name="tooltip_accessibility_dismiss_action">ignorer</string>
