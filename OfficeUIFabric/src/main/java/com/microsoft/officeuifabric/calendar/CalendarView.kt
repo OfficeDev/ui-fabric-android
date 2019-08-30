@@ -19,6 +19,7 @@ import android.widget.LinearLayout
 import com.jakewharton.threetenabp.AndroidThreeTen
 
 import com.microsoft.officeuifabric.R
+import com.microsoft.officeuifabric.util.ThemeUtil
 import org.threeten.bp.*
 
 // TODO: Convert to TemplateView along with other things that extend LinearLayout
@@ -237,22 +238,21 @@ class CalendarView : LinearLayout, OnDateSelectedListener {
      * The [Config] contains attributes allowing for objects down the line to consume them
      */
     inner class Config {
-        var weekHeadingBackgroundColor = Color.WHITE
-        var weekdayHeadingTextColor = ContextCompat.getColor(context, R.color.uifabric_calendar_week_heading_week_day_text)
-        var weekendHeadingTextColor = ContextCompat.getColor(context, R.color.uifabric_calendar_week_heading_weekend_text)
+        var weekHeadingBackgroundColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarWeekHeadingBackgroundColor)
+        var weekdayHeadingTextColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarWeekHeadingWeekDayTextColor)
+        var weekendHeadingTextColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarWeekHeadingWeekendTextColor)
         var weekHeadingHeight = context.resources.getDimensionPixelSize(R.dimen.uifabric_calendar_week_heading_height)
-        var weekHeadingTextSize = context.resources.getDimensionPixelSize(R.dimen.uifabric_calendar_week_heading_text_size)
         var showWeekHeadingDivider = false
 
-        var selectionAccentColor = ContextCompat.getColor(context, R.color.uifabric_calendar_selected)
+        var selectionAccentColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarSelectedColor)
 
-        var monthOverlayBackgroundColor = ContextCompat.getColor(context, R.color.uifabric_calendar_month_overlay_background)
+        var monthOverlayBackgroundColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarMonthOverlayBackgroundColor, 0.7f)
         var monthOverlayTextSize = context.resources.getDimensionPixelSize(R.dimen.uifabric_calendar_month_overlay_text_size)
-        var monthOverlayTextColor = ContextCompat.getColor(context, R.color.uifabric_calendar_month_overlay_text)
+        var monthOverlayTextColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarMonthOverlayTextColor)
 
         var differentiateOddEvenMonth = true
         var isTodayHighlighted = true
-        var otherMonthBackgroundColor = ContextCompat.getColor(context, R.color.uifabric_calendar_other_month_background)
+        var otherMonthBackgroundColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarOtherMonthBackgroundColor)
         var calendarDayMonthYearTextSize = context.resources.getDimensionPixelSize(R.dimen.uifabric_calendar_month_year_font_size)
 
         var calendarDayWeekdayTextColorId =  R.color.uifabric_calendar_week_day_text

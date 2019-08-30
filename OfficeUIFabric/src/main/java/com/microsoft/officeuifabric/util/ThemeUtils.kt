@@ -115,7 +115,8 @@ object ThemeUtil {
     }
 
     @ColorInt
-    fun getThemeAttrColor(context: Context, @AttrRes attr: Int, alpha: Float): Int {
+    @JvmOverloads
+    fun getThemeAttrColor(context: Context, @AttrRes attr: Int, alpha: Float = 1f): Int {
         TEMP_ARRAY.get()[0] = attr
         val a = context.obtainStyledAttributes(null, TEMP_ARRAY.get())
         try {

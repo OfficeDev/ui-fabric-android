@@ -5,12 +5,31 @@
   -->
 
 <resources>
+    <!-- *** Theme Semantic Colors *** -->
+
+    <attr name="uifabricColorPrimaryExtraLight" format="reference|color"/>
+
     <!-- *** Base Semantic Colors *** -->
 
     <attr name="uifabricBackgroundColor" format="reference|color"/>
     <attr name="uifabricForegroundColor" format="reference|color"/>
 
     <!-- *** Semantic Colors *** -->
+
+    <!--CalendarView-->
+    <attr name="uifabricCalendarWeekHeadingBackgroundColor" format="reference|color"/>
+    <attr name="uifabricCalendarWeekHeadingWeekDayTextColor" format="reference|color"/>
+    <attr name="uifabricCalendarWeekHeadingWeekendTextColor" format="reference|color"/>
+    <attr name="uifabricCalendarMonthOverlayBackgroundColor" format="reference|color"/>
+    <attr name="uifabricCalendarMonthOverlayTextColor" format="reference|color"/>
+    <attr name="uifabricCalendarOtherMonthBackgroundColor" format="reference|color"/>
+    <attr name="uifabricCalendarSelectedColor" format="reference|color"/>
+    <attr name="uifabricCalendarDayTodayBackgroundColor" format="reference|color"/>
+    <!--weekday selector-->
+    <attr name="uifabricCalendarWeekDayTextActiveColor" format="reference|color"/>
+    <attr name="uifabricCalendarWeekDayTextActiveCheckedColor" format="reference|color"/>
+    <attr name="uifabricCalendarWeekDayTextInactiveCheckedColor" format="reference|color"/>
+    <attr name="uifabricCalendarWeekDayTextDefaultColor" format="reference|color"/>
 
     <!--Drawer-->
     <attr name="uifabricDrawerBackgroundColor" format="reference|color"/>

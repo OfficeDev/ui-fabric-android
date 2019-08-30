@@ -14,12 +14,31 @@
         <item name="android:textColorPrimary">@color/uifabric_black</item>
         <item name="buttonStyle">@style/Widget.UIFabric.Button</item>
 
+        <!-- *** Theme Semantic Colors *** -->
+
+        <item name="uifabricColorPrimaryExtraLight">@color/uifabric_communication_tint_40</item>
+
         <!-- *** Base Semantic Colors *** -->
 
         <item name="uifabricBackgroundColor">@color/uifabric_background</item>
         <item name="uifabricForegroundColor">@color/uifabric_foreground</item>
 
         <!-- *** Semantic Colors *** -->
+
+        <!--CalendarView-->
+        <item name="uifabricCalendarWeekHeadingBackgroundColor">@color/uifabric_white</item>
+        <item name="uifabricCalendarWeekHeadingWeekDayTextColor">@color/uifabric_gray</item>
+        <item name="uifabricCalendarWeekHeadingWeekendTextColor">@color/uifabric_border_gray</item>
+        <item name="uifabricCalendarMonthOverlayBackgroundColor">@color/uifabric_white</item>
+        <item name="uifabricCalendarMonthOverlayTextColor">@color/uifabric_black</item>
+        <item name="uifabricCalendarOtherMonthBackgroundColor">@color/uifabric_background_light_gray</item>
+        <item name="uifabricCalendarSelectedColor">?attr/colorPrimary</item>
+        <item name="uifabricCalendarDayTodayBackgroundColor">?attr/uifabricColorPrimaryExtraLight</item>
+        <!--weekday selector-->
+        <item name="uifabricCalendarWeekDayTextActiveColor">?attr/colorPrimary</item>
+        <item name="uifabricCalendarWeekDayTextActiveCheckedColor">@color/uifabric_white</item>
+        <item name="uifabricCalendarWeekDayTextInactiveCheckedColor">@color/uifabric_white</item>
+        <item name="uifabricCalendarWeekDayTextDefaultColor">@color/uifabric_gray</item>
 
         <!--Drawer-->
         <item name="uifabricDrawerBackgroundColor">?attr/uifabricBackgroundColor</item>

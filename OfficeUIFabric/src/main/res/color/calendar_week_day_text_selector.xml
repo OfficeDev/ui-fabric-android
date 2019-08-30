@@ -8,14 +8,14 @@
     <item
         android:state_activated="true"
         android:state_checked="false"
-        android:color="@color/uifabric_calendar_week_day_text_active" />
+        android:color="?attr/uifabricCalendarWeekDayTextActiveColor" />
     <item
         android:state_activated="true"
         android:state_checked="true"
-        android:color="@android:color/white" />
+        android:color="?attr/uifabricCalendarWeekDayTextActiveCheckedColor" />
     <item
         android:state_activated="false"
         android:state_checked="true"
-        android:color="@android:color/white" />
-    <item android:color="@color/uifabric_gray" />
+        android:color="?attr/uifabricCalendarWeekDayTextInactiveCheckedColor" />
+    <item android:color="?attr/uifabricCalendarWeekDayTextDefaultColor" />
 </selector>
