@@ -88,15 +88,15 @@
     <item quantity="other">%s ljudi</item>
   </plurals>
   <string name="persona_title_placeholder">Brez imena</string>
-  <string name="popup_menu_accessibility_item_toggle">toggle</string>
-  <string name="popup_menu_accessibility_item_select">select</string>
-  <string name="popup_menu_accessibility_item_click_selected">%s selected</string>
-  <string name="popup_menu_accessibility_item_click_checked">%s checked</string>
-  <string name="popup_menu_accessibility_item_click_unchecked">%s unchecked</string>
-  <string name="popup_menu_accessibility_item_radio_button">radio button</string>
-  <string name="popup_menu_accessibility_item_check_box">checkbox</string>
-  <string name="popup_menu_accessibility_item_state_checked">checked</string>
-  <string name="popup_menu_accessibility_item_state_not_checked">not checked</string>
+  <string name="popup_menu_accessibility_item_toggle">preklopi</string>
+  <string name="popup_menu_accessibility_item_select">izberi</string>
+  <string name="popup_menu_accessibility_item_click_selected">Izbran element %s</string>
+  <string name="popup_menu_accessibility_item_click_checked">Potrjen element %s</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">Preklicana potrditev elementa %s</string>
+  <string name="popup_menu_accessibility_item_radio_button">izbirni gumb</string>
+  <string name="popup_menu_accessibility_item_check_box">potrditveno polje</string>
+  <string name="popup_menu_accessibility_item_state_checked">potrjeno</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">ni potrjeno</string>
   <string name="progress_circular_content_description_indeterminate">Nedoločeno</string>
   <string name="done">Dokončano</string>
   <string name="tooltip_accessibility_dismiss_action">opusti</string>

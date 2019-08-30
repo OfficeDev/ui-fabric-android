@@ -88,7 +88,7 @@
   <string name="persona_title_placeholder">Bez vārda</string>
   <string name="popup_menu_accessibility_item_toggle">pārslēgt</string>
   <string name="popup_menu_accessibility_item_select">atlasīt</string>
-  <string name="popup_menu_accessibility_item_click_selected">%s selected</string>
+  <string name="popup_menu_accessibility_item_click_selected">Atlasīts vienums: %s</string>
   <string name="popup_menu_accessibility_item_click_checked">%s: atzīmēts</string>
   <string name="popup_menu_accessibility_item_click_unchecked">%s: nav atzīmēts</string>
   <string name="popup_menu_accessibility_item_radio_button">radiopoga</string>

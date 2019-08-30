@@ -84,7 +84,7 @@
     <item quantity="other">%s адам</item>
   </plurals>
   <string name="persona_title_placeholder">Аты жоқ</string>
-  <string name="popup_menu_accessibility_item_toggle">ауыстырып-қосқыш</string>
+  <string name="popup_menu_accessibility_item_toggle">ауыстырып-қосу</string>
   <string name="popup_menu_accessibility_item_select">таңдау</string>
   <string name="popup_menu_accessibility_item_click_selected">%s мәні таңдалды</string>
   <string name="popup_menu_accessibility_item_click_checked">%s құсбелгі қойылды</string>
