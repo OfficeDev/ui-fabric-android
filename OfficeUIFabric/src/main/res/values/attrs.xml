@@ -16,6 +16,17 @@
 
     <!-- *** Semantic Colors *** -->
 
+    <!--Button-->
+    <attr name="uifabricButtonBackgroundDefaultColor" format="reference|color"/>
+    <attr name="uifabricButtonBackgroundDisabledColor" format="reference|color"/>
+    <attr name="uifabricButtonTextDefaultColor" format="reference|color"/>
+    <attr name="uifabricButtonTextDisabledColor" format="reference|color"/>
+
+    <!--Button Borderless-->
+    <attr name="uifabricButtonBorderlessBackgroundDefaultColor" format="reference|color"/>
+    <attr name="uifabricButtonBorderlessBackgroundDisabledColor" format="reference|color"/>
+    <attr name="uifabricButtonBorderlessTextDefaultColor" format="reference|color"/>
+
     <!--CalendarView-->
     <attr name="uifabricCalendarWeekHeadingBackgroundColor" format="reference|color"/>
     <attr name="uifabricCalendarWeekHeadingWeekDayTextColor" format="reference|color"/>

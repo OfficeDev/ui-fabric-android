@@ -25,6 +25,17 @@
 
         <!-- *** Semantic Colors *** -->
 
+        <!--Button-->
+        <item name="uifabricButtonBackgroundDefaultColor">?attr/colorPrimary</item>
+        <item name="uifabricButtonBackgroundDisabledColor">@color/uifabric_background_gray</item>
+        <item name="uifabricButtonTextDefaultColor">@color/uifabric_white</item>
+        <item name="uifabricButtonTextDisabledColor">@color/uifabric_border_gray</item>
+
+        <!--Button Borderless-->
+        <item name="uifabricButtonBorderlessBackgroundDefaultColor">@android:color/transparent</item>
+        <item name="uifabricButtonBorderlessBackgroundDisabledColor">@android:color/transparent</item>
+        <item name="uifabricButtonBorderlessTextDefaultColor">?attr/colorPrimary</item>
+
         <!--CalendarView-->
         <item name="uifabricCalendarWeekHeadingBackgroundColor">@color/uifabric_white</item>
         <item name="uifabricCalendarWeekHeadingWeekDayTextColor">@color/uifabric_gray</item>

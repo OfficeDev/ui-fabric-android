@@ -5,6 +5,6 @@
   -->
 
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:color="@color/uifabric_button_text_disabled" android:state_enabled="false" />
-    <item android:color="@color/uifabric_button_borderless_text" />
+    <item android:color="?attr/uifabricButtonTextDisabledColor" android:state_enabled="false" />
+    <item android:color="?attr/uifabricButtonBorderlessTextDefaultColor" />
 </selector>
