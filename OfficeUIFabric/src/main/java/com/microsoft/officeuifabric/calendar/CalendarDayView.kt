@@ -38,6 +38,8 @@ import java.util.*
 
 /**
  * [CalendarDayView] View that displays a day of the week
+ *
+ * TODO add ripple
  */
 internal class CalendarDayView: AppCompatButton, Checkable {
     /**
@@ -215,6 +217,7 @@ internal class CalendarDayView: AppCompatButton, Checkable {
         }
 
         if (isChecked && selectedDrawable != null) {
+            selectedDrawable?.setBounds(0, 0, measuredWidth, measuredHeight)
             selectedDrawable?.draw(canvas)
         } else if (isActivated && config.isTodayHighlighted) {
             todayBackgroundDrawable?.draw(canvas)
