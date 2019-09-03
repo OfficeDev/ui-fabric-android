@@ -88,7 +88,7 @@
   <string name="popup_menu_accessibility_item_select">таңдау</string>
   <string name="popup_menu_accessibility_item_click_selected">%s мәні таңдалды</string>
   <string name="popup_menu_accessibility_item_click_checked">%s құсбелгі қойылды</string>
-  <string name="popup_menu_accessibility_item_click_unchecked">%s құсбелгі алынды</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">\"%s\" құсбелгісі алынды</string>
   <string name="popup_menu_accessibility_item_radio_button">айырып-қосқыш</string>
   <string name="popup_menu_accessibility_item_check_box">құсбелгі</string>
   <string name="popup_menu_accessibility_item_state_checked">құсбелгі қойылды</string>
