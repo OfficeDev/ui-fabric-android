@@ -138,7 +138,7 @@
 
     <!-- TabLayout -->
     <style name="TextAppearance.UIFabric.Tab.Light" parent="TextAppearance.UIFabric.Body2">
-        <item name="android:textColor">@color/uifabric_tab_layout_text</item>
+        <item name="android:textColor">?attr/uifabricTabLayoutTextColor</item>
         <item name="textAllCaps">true</item>
         <item name="android:textAllCaps">true</item>
     </style>

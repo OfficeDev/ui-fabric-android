@@ -22,6 +22,7 @@
 
         <item name="uifabricBackgroundColor">@color/uifabric_background</item>
         <item name="uifabricForegroundColor">@color/uifabric_foreground</item>
+        <item name="uifabricDividerColor">@color/uifabric_border_light_gray</item>
 
         <!-- *** Semantic Colors *** -->
 
@@ -51,6 +52,12 @@
         <item name="uifabricCalendarWeekDayTextInactiveCheckedColor">@color/uifabric_white</item>
         <item name="uifabricCalendarWeekDayTextDefaultColor">@color/uifabric_gray</item>
 
+        <!--DateTimePicker-->
+        <item name="uifabricDateTimePickerToolbarTitleTextColor">?attr/colorPrimary</item>
+        <item name="uifabricDateTimePickerTabTextColor">@color/uifabric_gray</item>
+        <item name="uifabricDateTimePickerDialogBackgroundColor">?attr/uifabricBackgroundColor</item>
+        <item name="uifabricDateTimePickerToolbarIconColor">?attr/colorPrimary</item>
+
         <!--Drawer-->
         <item name="uifabricDrawerBackgroundColor">?attr/uifabricBackgroundColor</item>
 
@@ -60,8 +67,19 @@
         <item name="uifabricListItemSubtitleColor">@color/uifabric_list_item_subtitle</item>
         <item name="uifabricListItemRippleColor">@color/uifabric_list_item_background_ripple</item>
 
+        <!--NumberPicker-->
+        <item name="uifabricNumberPickerBackgroundColor">?attr/uifabricBackgroundColor</item>
+        <item name="uifabricNumberPickerDefaultTextColor">@color/uifabric_gray</item>
+        <item name="uifabricNumberPickerSelectedTextColor">?attr/colorPrimary</item>
+
         <!--Progress-->
         <item name="uifabricProgressPrimaryColor">?attr/colorPrimary</item>
+
+        <!--TabLayout-->
+        <item name="uifabricTabLayoutBackgroundColor">?attr/uifabricBackgroundColor</item>
+        <item name="uifabricTabLayoutTextColor">@color/uifabric_gray</item>
+        <item name="uifabricTabSelectedTextColor">?attr/colorPrimary</item>
+        <item name="uifabricTabSelectedIndicatorColor">?attr/colorPrimary</item>
 
         <!--Tooltip-->
         <item name="uifabricTooltipBackgroundColor">@color/uifabric_black</item>
@@ -188,8 +206,9 @@
         <item name="tabMode">scrollable</item>
         <item name="tabTextAppearance">@style/TextAppearance.UIFabric.Tab.Light</item>
         <item name="tabMinWidth">90dp</item>
-        <item name="tabSelectedTextColor">@color/uifabric_tab_selected_text</item>
-        <item name="tabIndicatorColor">@color/uifabric_tab_selected_indicator</item>
+        <item name="tabSelectedTextColor">?attr/uifabricTabSelectedTextColor</item>
+        <item name="tabIndicatorColor">?attr/uifabricTabSelectedIndicatorColor</item>
+        <item name="android:background">?attr/uifabricTabLayoutBackgroundColor</item>
     </style>
 
 </resources>

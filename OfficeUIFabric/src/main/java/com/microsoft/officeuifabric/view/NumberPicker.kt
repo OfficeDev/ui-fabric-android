@@ -52,6 +52,7 @@ import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.microsoft.officeuifabric.R
+import com.microsoft.officeuifabric.util.ThemeUtil
 import com.microsoft.officeuifabric.util.isAccessibilityEnabled
 import java.lang.annotation.Retention
 import java.lang.annotation.RetentionPolicy
@@ -689,8 +690,8 @@ internal class NumberPicker : LinearLayout {
             resources.displayMetrics).toInt()
         mSelectionDividersDistance = attributesArray.getDimensionPixelSize(
             R.styleable.NumberPicker_selectionDividersDistance, defSelectionDividerDistance)
-        mSelectedTextColor = ContextCompat.getColor(context, R.color.uifabric_number_picker_selected_text)
-        mTextColor = ContextCompat.getColor(context, R.color.uifabric_number_picker_default_text)
+        mSelectedTextColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricNumberPickerSelectedTextColor)
+        mTextColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricNumberPickerDefaultTextColor)
         mMinHeight = attributesArray.getDimensionPixelSize(
             R.styleable.NumberPicker_internalMinHeight, SIZE_UNSPECIFIED)
         mMaxHeight = attributesArray.getDimensionPixelSize(

@@ -13,6 +13,7 @@
 
     <attr name="uifabricBackgroundColor" format="reference|color"/>
     <attr name="uifabricForegroundColor" format="reference|color"/>
+    <attr name="uifabricDividerColor" format="reference|color"/>
 
     <!-- *** Semantic Colors *** -->
 
@@ -42,6 +43,12 @@
     <attr name="uifabricCalendarWeekDayTextInactiveCheckedColor" format="reference|color"/>
     <attr name="uifabricCalendarWeekDayTextDefaultColor" format="reference|color"/>
 
+    <!--DateTimePicker-->
+    <attr name="uifabricDateTimePickerToolbarTitleTextColor" format="reference|color"/>
+    <attr name="uifabricDateTimePickerTabTextColor" format="reference|color"/>
+    <attr name="uifabricDateTimePickerDialogBackgroundColor" format="reference|color"/>
+    <attr name="uifabricDateTimePickerToolbarIconColor" format="reference|color"/>
+
     <!--Drawer-->
     <attr name="uifabricDrawerBackgroundColor" format="reference|color"/>
 
@@ -51,8 +58,19 @@
     <attr name="uifabricListItemSubtitleColor" format="reference|color"/>
     <attr name="uifabricListItemRippleColor" format="reference|color"/>
 
+    <!--NumberPicker-->
+    <attr name="uifabricNumberPickerBackgroundColor" format="reference|color"/>
+    <attr name="uifabricNumberPickerDefaultTextColor" format="reference|color"/>
+    <attr name="uifabricNumberPickerSelectedTextColor" format="reference|color"/>
+
     <!--Progress-->
     <attr name="uifabricProgressPrimaryColor" format="reference|color"/>
+
+    <!--TabLayout-->
+    <attr name="uifabricTabLayoutBackgroundColor" format="reference|color"/>
+    <attr name="uifabricTabLayoutTextColor" format="reference|color"/>
+    <attr name="uifabricTabSelectedTextColor" format="reference|color"/>
+    <attr name="uifabricTabSelectedIndicatorColor" format="reference|color"/>
 
     <!--Tooltip-->
     <attr name="uifabricTooltipBackgroundColor" format="reference|color"/>

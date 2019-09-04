@@ -166,7 +166,8 @@ class DateTimePickerDialog : ResizableDialog(), Toolbar.OnMenuItemClickListener,
         toolbar.navigationIcon = ContextCompat.getDrawable(context, R.drawable.ms_ic_close_grey)
         toolbar.navigationContentDescription = resources.getString(R.string.date_time_picker_accessibility_close_dialog_button)
         toolbar.setNavigationOnClickListener { dismiss() }
-        toolbar.menu.findItem(R.id.action_done).icon = context.getTintedDrawable(R.drawable.ms_ic_done, R.color.uifabric_date_time_picker_toolbar_icon)
+        val iconColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricDateTimePickerToolbarIconColor)
+        toolbar.menu.findItem(R.id.action_done).icon = context.getTintedDrawable(R.drawable.ms_ic_done, iconColor)
 
         pagerAdapter = DateTimePagerAdapter(childFragmentManager)
         view_pager.adapter = pagerAdapter

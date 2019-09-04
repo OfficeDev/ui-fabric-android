@@ -6,5 +6,5 @@
 
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <size android:height="@dimen/uifabric_divider_height" />
-    <solid android:color="@color/uifabric_divider" />
+    <solid android:color="?attr/uifabricDividerColor" />
 </shape>

@@ -15,8 +15,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="@dimen/uifabric_calendar_toolbar_elevation"
-        app:titleTextColor="@color/uifabric_toolbar_title_text"
-        android:background="@color/uifabric_date_time_picker_dialog_background"/>
+        app:titleTextColor="?attr/uifabricDateTimePickerToolbarTitleTextColor"
+        android:background="?attr/uifabricDateTimePickerDialogBackgroundColor"/>
 
     <LinearLayout
         android:id="@+id/tab_container"
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:elevation="@dimen/uifabric_calendar_toolbar_elevation"
-        android:background="@color/uifabric_date_time_picker_dialog_background">
+        android:background="?attr/uifabricDateTimePickerDialogBackgroundColor">
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tabs"

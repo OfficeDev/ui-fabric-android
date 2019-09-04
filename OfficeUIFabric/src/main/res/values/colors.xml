@@ -62,11 +62,6 @@
     <color name="uifabric_calendar_week_day_text">@color/calendar_week_day_text_selector</color>
     <color name="uifabric_calendar_monochrome_text">@color/calendar_week_day_text_selector</color>
 
-    <!--DateTimePicker-->
-    <color name="uifabric_date_time_picker_tab_text">@color/uifabric_gray</color>
-    <color name="uifabric_date_time_picker_dialog_background">@color/uifabric_background</color>
-    <color name="uifabric_date_time_picker_toolbar_icon">@color/uifabric_primary</color>
-
     <!--Drawer-->
     <color name="uifabric_drawer_background">@color/uifabric_background</color>
 
@@ -82,10 +77,6 @@
     <color name="uifabric_list_sub_header_title_primary">@color/uifabric_primary</color>
     <color name="uifabric_list_sub_header_title_black">@color/uifabric_black</color>
     <color name="uifabric_list_sub_header_title_gray">@color/uifabric_gray</color>
-
-    <!--NumberPicker-->
-    <color name="uifabric_number_picker_default_text">@color/uifabric_gray</color>
-    <color name="uifabric_number_picker_selected_text">@color/uifabric_primary</color>
 
     <!--PeoplePicker-->
     <color name="uifabric_people_picker_popup_background">@color/uifabric_background</color>
@@ -116,7 +107,6 @@
     <color name="uifabric_popup_menu_item_check_background_ripple">@color/uifabric_light_gray</color>
 
     <!--Shared-->
-    <color name="uifabric_divider">@color/uifabric_border_light_gray</color>
     <!-- TODO update after design adds #0E000000 to toolkit -->
     <color name="uifabric_item_highlight">#0E000000</color> <!-- 5% black -->
     <color name="uifabric_background">@color/uifabric_white</color>
@@ -128,13 +118,5 @@
     <color name="uifabric_snackbar_announcement_background">@color/uifabric_primary</color>
     <color name="uifabric_snackbar_background">@color/uifabric_black</color>
     <color name="uifabric_snackbar_text">@color/uifabric_white</color>
-
-    <!--TabLayout-->
-    <color name="uifabric_tab_layout_text">@color/uifabric_gray</color>
-    <color name="uifabric_tab_selected_text">@color/uifabric_primary</color>
-    <color name="uifabric_tab_selected_indicator">@color/uifabric_primary</color>
-
-    <!--Toolbar-->
-    <color name="uifabric_toolbar_title_text">@color/uifabric_primary</color>
 
 </resources>

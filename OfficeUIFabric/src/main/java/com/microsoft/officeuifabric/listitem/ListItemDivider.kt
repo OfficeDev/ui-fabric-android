@@ -14,6 +14,7 @@ import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.microsoft.officeuifabric.R
+import com.microsoft.officeuifabric.util.ThemeUtil
 
 /**
  * This [DividerItemDecoration] is designed to be used with [RecyclerView]s containing [ListItemView]s.
@@ -39,7 +40,7 @@ class ListItemDivider : DividerItemDecoration {
         subHeaderDividerPadding = context.resources.getDimension(R.dimen.uifabric_list_sub_header_divider_padding)
 
         dividerPaint.style = Paint.Style.FILL
-        dividerPaint.color = ContextCompat.getColor(context, R.color.uifabric_divider)
+        dividerPaint.color = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricDividerColor)
 
         spacerPaint.style = Paint.Style.FILL
         spacerPaint.color = ContextCompat.getColor(context, android.R.color.transparent)
