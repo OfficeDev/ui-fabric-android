@@ -85,9 +85,9 @@
 
         <!--TabLayout-->
         <item name="uifabricTabLayoutBackgroundColor">?attr/uifabricBackgroundColor</item>
-        <item name="uifabricTabLayoutTextColor">@color/uifabric_gray</item>
+        <item name="uifabricTabTextColor">@color/uifabric_gray</item>
         <item name="uifabricTabSelectedTextColor">?attr/colorPrimary</item>
-        <item name="uifabricTabSelectedIndicatorColor">?attr/colorPrimary</item>
+        <item name="uifabricTabIndicatorColor">?attr/colorPrimary</item>
 
         <!--Tooltip-->
         <item name="uifabricTooltipBackgroundColor">@color/uifabric_black</item>
@@ -215,7 +215,7 @@
         <item name="tabTextAppearance">@style/TextAppearance.UIFabric.Tab.Light</item>
         <item name="tabMinWidth">90dp</item>
         <item name="tabSelectedTextColor">?attr/uifabricTabSelectedTextColor</item>
-        <item name="tabIndicatorColor">?attr/uifabricTabSelectedIndicatorColor</item>
+        <item name="tabIndicatorColor">?attr/uifabricTabIndicatorColor</item>
         <item name="android:background">?attr/uifabricTabLayoutBackgroundColor</item>
     </style>
 

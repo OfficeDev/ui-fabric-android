@@ -76,9 +76,9 @@
 
     <!--TabLayout-->
     <attr name="uifabricTabLayoutBackgroundColor" format="reference|color"/>
-    <attr name="uifabricTabLayoutTextColor" format="reference|color"/>
+    <attr name="uifabricTabTextColor" format="reference|color"/>
     <attr name="uifabricTabSelectedTextColor" format="reference|color"/>
-    <attr name="uifabricTabSelectedIndicatorColor" format="reference|color"/>
+    <attr name="uifabricTabIndicatorColor" format="reference|color"/>
 
     <!--Tooltip-->
     <attr name="uifabricTooltipBackgroundColor" format="reference|color"/>
