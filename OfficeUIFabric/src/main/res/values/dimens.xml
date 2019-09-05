@@ -146,6 +146,7 @@
     <dimen name="uifabric_snackbar_custom_view_margin_start">@dimen/uifabric_snackbar_content_inset</dimen>
     <dimen name="uifabric_snackbar_custom_view_margin_vertical_medium">8dp</dimen>
     <dimen name="uifabric_snackbar_custom_view_margin_vertical_small">12dp</dimen>
+    <dimen name="uifabric_snackbar_custom_view_margin_vertical_announcement">16dp</dimen>
 
     <!--Tooltip-->
     <dimen name="uifabric_tooltip_max_width">176dp</dimen>

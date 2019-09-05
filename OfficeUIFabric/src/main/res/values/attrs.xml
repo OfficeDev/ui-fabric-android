@@ -7,6 +7,7 @@
 <resources>
     <!-- *** Theme Semantic Colors *** -->
 
+    <attr name="uifabricColorPrimaryLight" format="reference|color"/>
     <attr name="uifabricColorPrimaryExtraLight" format="reference|color"/>
 
     <!-- *** Base Semantic Colors *** -->
@@ -65,6 +66,13 @@
 
     <!--Progress-->
     <attr name="uifabricProgressPrimaryColor" format="reference|color"/>
+
+    <!--Snackbar-->
+    <attr name="uifabricSnackbarBackgroundColor" format="reference|color"/>
+    <attr name="uifabricSnackbarBackgroundAnnouncementColor" format="reference|color"/>
+    <attr name="uifabricSnackbarTextColor" format="reference|color"/>
+    <attr name="uifabricSnackbarActionTextColor" format="reference|color"/>
+    <attr name="uifabricSnackbarActionTextAnnouncementColor" format="reference|color"/>
 
     <!--TabLayout-->
     <attr name="uifabricTabLayoutBackgroundColor" format="reference|color"/>

@@ -18,6 +18,7 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.R.id.*
+import com.microsoft.officeuifabric.util.ThemeUtil
 import kotlinx.android.synthetic.main.view_snackbar.view.*
 
 /**
@@ -109,11 +110,18 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
     private var style: Style = Style.REGULAR
 
     private val customViewVerticalMargin: Int
-        get() = when(customViewSize) {
-            CustomViewSize.SMALL ->
-                context.resources.getDimension(R.dimen.uifabric_snackbar_custom_view_margin_vertical_small).toInt()
-            CustomViewSize.MEDIUM ->
-                context.resources.getDimension(R.dimen.uifabric_snackbar_custom_view_margin_vertical_medium).toInt()
+        get() {
+            val marginResourceId = if (style == Style.ANNOUNCEMENT)
+                R.dimen.uifabric_snackbar_custom_view_margin_vertical_announcement
+            else
+                when(customViewSize) {
+                    CustomViewSize.SMALL ->
+                        R.dimen.uifabric_snackbar_custom_view_margin_vertical_small
+                    CustomViewSize.MEDIUM ->
+                        R.dimen.uifabric_snackbar_custom_view_margin_vertical_medium
+                }
+
+            return context.resources.getDimension(marginResourceId).toInt()
         }
 
     private constructor(parent: ViewGroup, content: View, contentViewCallback: ContentViewCallback) : super(parent, content, contentViewCallback) {
@@ -208,11 +216,11 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
 
         when (style) {
             Style.REGULAR -> {
-                actionButtonView.setTextColor(ContextCompat.getColor(context, R.color.uifabric_snackbar_action_text))
+                actionButtonView.setTextColor(ThemeUtil.getThemeAttrColor(context, R.attr.uifabricSnackbarActionTextColor))
                 customViewLayoutParams?.addRule(RelativeLayout.CENTER_VERTICAL)
             }
             Style.ANNOUNCEMENT -> {
-                actionButtonView.setTextColor(ContextCompat.getColor(context, R.color.uifabric_snackbar_action_text_announcement))
+                actionButtonView.setTextColor(ThemeUtil.getThemeAttrColor(context, R.attr.uifabricSnackbarActionTextAnnouncementColor))
                 customViewLayoutParams?.removeRule(RelativeLayout.CENTER_VERTICAL)
             }
         }

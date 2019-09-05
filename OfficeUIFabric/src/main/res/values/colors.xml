@@ -112,11 +112,4 @@
     <color name="uifabric_background">@color/uifabric_white</color>
     <color name="uifabric_background_ripple">@color/uifabric_border_light_gray</color>
 
-    <!--Snackbar-->
-    <color name="uifabric_snackbar_action_text">@color/uifabric_primary_light</color>
-    <color name="uifabric_snackbar_action_text_announcement">@color/uifabric_white</color>
-    <color name="uifabric_snackbar_announcement_background">@color/uifabric_primary</color>
-    <color name="uifabric_snackbar_background">@color/uifabric_black</color>
-    <color name="uifabric_snackbar_text">@color/uifabric_white</color>
-
 </resources>

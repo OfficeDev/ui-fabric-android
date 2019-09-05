@@ -133,7 +133,7 @@
 
     <!--Snackbar-->
     <style name="TextAppearance.UIFabric.SnackbarText" parent="TextAppearance.UIFabric.Body1">
-        <item name="android:textColor">@color/uifabric_snackbar_text</item>
+        <item name="android:textColor">?attr/uifabricSnackbarTextColor</item>
     </style>
 
     <!-- TabLayout -->

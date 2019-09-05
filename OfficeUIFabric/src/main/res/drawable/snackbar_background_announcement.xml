@@ -10,6 +10,6 @@
     android:insetRight="@dimen/uifabric_snackbar_background_inset">
     <shape android:shape="rectangle">
         <corners android:radius="@dimen/uifabric_snackbar_background_corner_radius"/>
-        <solid android:color="@color/uifabric_snackbar_announcement_background"/>
+        <solid android:color="?attr/uifabricSnackbarBackgroundAnnouncementColor"/>
     </shape>
 </inset>

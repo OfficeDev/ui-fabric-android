@@ -16,6 +16,7 @@
 
         <!-- *** Theme Semantic Colors *** -->
 
+        <item name="uifabricColorPrimaryLight">@color/uifabric_communication_tint_20</item>
         <item name="uifabricColorPrimaryExtraLight">@color/uifabric_communication_tint_40</item>
 
         <!-- *** Base Semantic Colors *** -->
@@ -74,6 +75,13 @@
 
         <!--Progress-->
         <item name="uifabricProgressPrimaryColor">?attr/colorPrimary</item>
+
+        <!--Snackbar-->
+        <item name="uifabricSnackbarBackgroundColor">@color/uifabric_black</item>
+        <item name="uifabricSnackbarBackgroundAnnouncementColor">?attr/colorPrimary</item>
+        <item name="uifabricSnackbarTextColor">@color/uifabric_white</item>
+        <item name="uifabricSnackbarActionTextColor">?attr/uifabricColorPrimaryLight</item>
+        <item name="uifabricSnackbarActionTextAnnouncementColor">@color/uifabric_white</item>
 
         <!--TabLayout-->
         <item name="uifabricTabLayoutBackgroundColor">?attr/uifabricBackgroundColor</item>
