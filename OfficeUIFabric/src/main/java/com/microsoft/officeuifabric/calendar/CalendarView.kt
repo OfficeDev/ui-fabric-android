@@ -9,7 +9,6 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.content.Context
-import android.graphics.Color
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
@@ -17,7 +16,6 @@ import android.util.Property
 import android.view.View
 import android.widget.LinearLayout
 import com.jakewharton.threetenabp.AndroidThreeTen
-
 import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.util.ThemeUtil
 import org.threeten.bp.*
@@ -25,6 +23,7 @@ import org.threeten.bp.*
 // TODO: Convert to TemplateView along with other things that extend LinearLayout
 // TODO: implement ability to add icon to CalendarDayView
 // TODO: implement ability to change background color of CalendarDayView cell
+// TODO: ability to change month differentiation behavior through View attributes
 
 /**
  * [CalendarView] is a custom LinearLayout that groups together views used to display
@@ -118,8 +117,8 @@ class CalendarView : LinearLayout, OnDateSelectedListener {
 
         config = Config()
 
-        orientation = LinearLayout.VERTICAL
-        setBackgroundColor(Color.WHITE)
+        orientation = VERTICAL
+        setBackgroundColor(config.backgroundColor)
 
         initSubViews()
     }
@@ -180,9 +179,9 @@ class CalendarView : LinearLayout, OnDateSelectedListener {
 
     public override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         var widthMeasureSpec = widthMeasureSpec
-        val viewWidth = View.MeasureSpec.getSize(widthMeasureSpec)
+        val viewWidth = MeasureSpec.getSize(widthMeasureSpec)
         rowHeight = viewWidth / DAYS_IN_WEEK
-        widthMeasureSpec = View.MeasureSpec.makeMeasureSpec(rowHeight * DAYS_IN_WEEK, View.MeasureSpec.EXACTLY)
+        widthMeasureSpec = MeasureSpec.makeMeasureSpec(rowHeight * DAYS_IN_WEEK, View.MeasureSpec.EXACTLY)
 
         resizeAnimator?.let {
             if (it.isRunning) {
@@ -219,12 +218,8 @@ class CalendarView : LinearLayout, OnDateSelectedListener {
         weeksView.importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO
         addView(weeksView)
 
-        if (config.showWeekHeadingDivider) {
-            dividerDrawable = ContextCompat.getDrawable(context, R.drawable.ms_row_divider)
-            showDividers = LinearLayout.SHOW_DIVIDER_MIDDLE
-        } else {
-            showDividers = LinearLayout.SHOW_DIVIDER_NONE
-        }
+        dividerDrawable = ContextCompat.getDrawable(context, R.drawable.ms_row_divider)
+        showDividers = SHOW_DIVIDER_MIDDLE
 
         weeksView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
@@ -238,27 +233,25 @@ class CalendarView : LinearLayout, OnDateSelectedListener {
      * The [Config] contains attributes allowing for objects down the line to consume them
      */
     inner class Config {
-        var weekHeadingBackgroundColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarWeekHeadingBackgroundColor)
-        var weekdayHeadingTextColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarWeekHeadingWeekDayTextColor)
-        var weekendHeadingTextColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarWeekHeadingWeekendTextColor)
-        var weekHeadingHeight = context.resources.getDimensionPixelSize(R.dimen.uifabric_calendar_week_heading_height)
-        var showWeekHeadingDivider = false
+        val backgroundColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarBackgroundColor)
+        val weekHeadingBackgroundColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarWeekHeadingBackgroundColor)
+        val weekdayHeadingTextColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarWeekHeadingWeekDayTextColor)
+        val weekendHeadingTextColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarWeekHeadingWeekendTextColor)
+        val weekHeadingHeight = context.resources.getDimensionPixelSize(R.dimen.uifabric_calendar_week_heading_height)
 
-        var selectionAccentColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarSelectedColor)
+        val selectionAccentColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarSelectedColor)
 
-        var monthOverlayBackgroundColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarMonthOverlayBackgroundColor, 0.7f)
-        var monthOverlayTextSize = context.resources.getDimensionPixelSize(R.dimen.uifabric_calendar_month_overlay_text_size)
-        var monthOverlayTextColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarMonthOverlayTextColor)
+        val monthOverlayBackgroundColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarMonthOverlayBackgroundColor, 0.7f)
+        val monthOverlayTextSize = context.resources.getDimensionPixelSize(R.dimen.uifabric_calendar_month_overlay_text_size)
+        val monthOverlayTextColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarMonthOverlayTextColor)
 
-        var differentiateOddEvenMonth = true
-        var isTodayHighlighted = true
-        var otherMonthBackgroundColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarOtherMonthBackgroundColor)
-        var calendarDayMonthYearTextSize = context.resources.getDimensionPixelSize(R.dimen.uifabric_calendar_month_year_font_size)
+        val differentiateOddEvenMonth = true
+        val otherMonthBackgroundColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarOtherMonthBackgroundColor)
+        val calendarDayMonthYearTextSize = context.resources.getDimensionPixelSize(R.dimen.uifabric_calendar_month_year_font_size)
 
-        var calendarDayWeekdayTextColorId =  R.color.uifabric_calendar_week_day_text
-        var calendarDayWeekendTextColorId = R.color.uifabric_calendar_week_day_text
-        var calendarDayFirstDayOfMonthTextColorId = R.color.uifabric_calendar_week_day_text
-        var calendarDayMonochromeTextColorId = R.color.uifabric_calendar_monochrome_text
+        val calendarDayWeekdayTextColorId =  R.color.uifabric_calendar_week_day_text
+        val calendarDayWeekendTextColorId = R.color.uifabric_calendar_week_day_text
+        val calendarDayFirstDayOfMonthTextColorId = R.color.uifabric_calendar_week_day_text
     }
 }
 

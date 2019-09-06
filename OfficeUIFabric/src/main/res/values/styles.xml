@@ -39,6 +39,7 @@
         <item name="uifabricButtonBorderlessTextDefaultColor">?attr/colorPrimary</item>
 
         <!--CalendarView-->
+        <item name="uifabricCalendarBackgroundColor">?attr/uifabricBackgroundColor</item>
         <item name="uifabricCalendarWeekHeadingBackgroundColor">?attr/uifabricBackgroundColor</item>
         <item name="uifabricCalendarWeekHeadingWeekDayTextColor">@color/uifabric_gray</item>
         <item name="uifabricCalendarWeekHeadingWeekendTextColor">@color/uifabric_border_gray</item>

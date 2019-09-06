@@ -38,8 +38,6 @@ import java.util.*
 
 /**
  * [CalendarDayView] View that displays a day of the week
- *
- * TODO add ripple
  */
 internal class CalendarDayView: AppCompatButton, Checkable {
     /**
@@ -124,27 +122,9 @@ internal class CalendarDayView: AppCompatButton, Checkable {
         todayAppearance = R.style.TextAppearance_UIFabric_CalendarDay2
         checkedAppearance = R.style.TextAppearance_UIFabric_CalendarDay2
 
-        textWeekDayColor = ContextCompat.getColorStateList(
-            context,
-            if (config.isTodayHighlighted)
-                config.calendarDayWeekdayTextColorId
-            else
-                config.calendarDayMonochromeTextColorId
-        )
-        textWeekEndColor = ContextCompat.getColorStateList(
-            context,
-            if (config.isTodayHighlighted)
-                config.calendarDayWeekendTextColorId
-            else
-                config.calendarDayMonochromeTextColorId
-        )
-        textFirstDayOfMonthColor = ContextCompat.getColorStateList(
-            context,
-            if (config.isTodayHighlighted)
-                config.calendarDayFirstDayOfMonthTextColorId
-            else
-                config.calendarDayMonochromeTextColorId
-        )
+        textWeekDayColor = ContextCompat.getColorStateList(context, config.calendarDayWeekdayTextColorId)
+        textWeekEndColor = ContextCompat.getColorStateList(context, config.calendarDayWeekendTextColorId )
+        textFirstDayOfMonthColor = ContextCompat.getColorStateList(context, config.calendarDayFirstDayOfMonthTextColorId)
 
         background = null
         gravity = Gravity.CENTER
@@ -219,7 +199,7 @@ internal class CalendarDayView: AppCompatButton, Checkable {
         if (isChecked && selectedDrawable != null) {
             selectedDrawable?.setBounds(0, 0, measuredWidth, measuredHeight)
             selectedDrawable?.draw(canvas)
-        } else if (isActivated && config.isTodayHighlighted) {
+        } else if (isActivated) {
             todayBackgroundDrawable?.draw(canvas)
         }
 

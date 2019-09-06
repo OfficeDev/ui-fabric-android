@@ -30,6 +30,7 @@
     <attr name="uifabricButtonBorderlessTextDefaultColor" format="reference|color"/>
 
     <!--CalendarView-->
+    <attr name="uifabricCalendarBackgroundColor" format="reference|color"/>
     <attr name="uifabricCalendarWeekHeadingBackgroundColor" format="reference|color"/>
     <attr name="uifabricCalendarWeekHeadingWeekDayTextColor" format="reference|color"/>
     <attr name="uifabricCalendarWeekHeadingWeekendTextColor" format="reference|color"/>

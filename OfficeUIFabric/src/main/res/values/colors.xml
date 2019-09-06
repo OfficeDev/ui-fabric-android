@@ -60,7 +60,6 @@
 
     <!--CalendarView selectors-->
     <color name="uifabric_calendar_week_day_text">@color/calendar_week_day_text_selector</color>
-    <color name="uifabric_calendar_monochrome_text">@color/calendar_week_day_text_selector</color>
 
     <!--Drawer-->
     <color name="uifabric_drawer_background">@color/uifabric_background</color>
