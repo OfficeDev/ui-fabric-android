@@ -13,6 +13,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import com.microsoft.officeuifabric.BuildConfig
 import com.microsoft.officeuifabric.listitem.ListItemDivider
 import com.microsoft.officeuifabric.listitem.ListItemView
 import kotlinx.android.synthetic.main.activity_demo_list.*
@@ -33,8 +34,8 @@ class DemoListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_demo_list)
 
         setSupportActionBar(toolbar)
-        toolbar.title = title
-        toolbar.subtitle = com.microsoft.officeuifabric.BuildConfig.VERSION_NAME
+
+        toolbar.subtitle = BuildConfig.VERSION_NAME
 
         demo_list.adapter = DemoListAdapter()
         demo_list.addItemDecoration(ListItemDivider(this, DividerItemDecoration.VERTICAL))

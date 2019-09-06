@@ -13,6 +13,7 @@
         <item name="colorAccent">@color/uifabric_primary</item>
         <item name="android:textColorPrimary">@color/uifabric_black</item>
         <item name="buttonStyle">@style/Widget.UIFabric.Button</item>
+        <item name="toolbarStyle">@style/Theme.UIFabric.Toolbar</item>
 
         <!-- *** Theme Semantic Colors *** -->
 
@@ -89,6 +90,10 @@
         <item name="uifabricTabTextColor">@color/uifabric_gray</item>
         <item name="uifabricTabSelectedTextColor">?attr/colorPrimary</item>
         <item name="uifabricTabIndicatorColor">?attr/colorPrimary</item>
+
+        <!--Toolbar-->
+        <item name="uifabricToolbarTitleTextColor">@color/uifabric_white</item>
+        <item name="uifabricToolbarSubtitleTextColor">@color/uifabric_white</item>
 
         <!--Tooltip-->
         <item name="uifabricTooltipBackgroundColor">@color/uifabric_black</item>
@@ -218,6 +223,17 @@
         <item name="tabSelectedTextColor">?attr/uifabricTabSelectedTextColor</item>
         <item name="tabIndicatorColor">?attr/uifabricTabIndicatorColor</item>
         <item name="android:background">?attr/uifabricTabLayoutBackgroundColor</item>
+    </style>
+
+    <!--Toolbar-->
+    <style name="Theme.UIFabric.Toolbar" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <item name="titleTextAppearance">@style/TextAppearance.UIFabric.ToolbarTitle</item>
+        <item name="subtitleTextAppearance">@style/TextAppearance.UIFabric.ToolbarSubtitle</item>
+        <item name="toolbarNavigationButtonStyle">@style/Widget.UIFabric.NavigationButton</item>
+    </style>
+    <style name="Widget.UIFabric.NavigationButton" parent="@style/Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="android:minWidth">@dimen/uifabric_toolbar_navigation_icon_container_size</item>
+        <item name="android:minHeight">@dimen/uifabric_toolbar_navigation_icon_container_size</item>
     </style>
 
 </resources>

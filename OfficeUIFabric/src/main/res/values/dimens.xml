@@ -148,6 +148,15 @@
     <dimen name="uifabric_snackbar_custom_view_margin_vertical_small">12dp</dimen>
     <dimen name="uifabric_snackbar_custom_view_margin_vertical_announcement">16dp</dimen>
 
+    <!--Toolbar-->
+    <!--Hard coding the min height instead of using actionBarSize so we can set this attribute in code.-->
+    <dimen name="uifabric_toolbar_min_height">56dp</dimen>
+    <dimen name="uifabric_toolbar_navigation_icon_container_size">@dimen/uifabric_min_touch_size</dimen>
+    <dimen name="uifabric_toolbar_padding_start">16dp</dimen>
+    <dimen name="uifabric_toolbar_padding_start_with_avatar">8dp</dimen>
+    <dimen name="uifabric_toolbar_title_margin_start">0dp</dimen>
+    <dimen name="uifabric_toolbar_title_margin_start_with_avatar">16dp</dimen>
+
     <!--Tooltip-->
     <dimen name="uifabric_tooltip_max_width">176dp</dimen>
     <dimen name="uifabric_tooltip_arrow_width">20dp</dimen>

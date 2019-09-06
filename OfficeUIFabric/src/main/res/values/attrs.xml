@@ -81,6 +81,10 @@
     <attr name="uifabricTabSelectedTextColor" format="reference|color"/>
     <attr name="uifabricTabIndicatorColor" format="reference|color"/>
 
+    <!--Toolbar-->
+    <attr name="uifabricToolbarTitleTextColor" format="reference|color"/>
+    <attr name="uifabricToolbarSubtitleTextColor" format="reference|color"/>
+
     <!--Tooltip-->
     <attr name="uifabricTooltipBackgroundColor" format="reference|color"/>
     <attr name="uifabricTooltipTextColor" format="reference|color"/>

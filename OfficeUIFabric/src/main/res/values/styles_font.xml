@@ -136,11 +136,19 @@
         <item name="android:textColor">?attr/uifabricSnackbarTextColor</item>
     </style>
 
-    <!-- TabLayout -->
+    <!--TabLayout-->
     <style name="TextAppearance.UIFabric.Tab.Light" parent="TextAppearance.UIFabric.Body2">
         <item name="android:textColor">?attr/uifabricTabTextColor</item>
         <item name="textAllCaps">true</item>
         <item name="android:textAllCaps">true</item>
+    </style>
+
+    <!--Toolbar-->
+    <style name="TextAppearance.UIFabric.ToolbarTitle" parent="TextAppearance.UIFabric.Title1">
+        <item name="android:textColor">?attr/uifabricToolbarTitleTextColor</item>
+    </style>
+    <style name="TextAppearance.UIFabric.ToolbarSubtitle" parent="TextAppearance.UIFabric.Caption">
+        <item name="android:textColor">?attr/uifabricToolbarSubtitleTextColor</item>
     </style>
 
     <!--Tooltip-->

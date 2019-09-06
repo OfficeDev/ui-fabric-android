@@ -12,7 +12,7 @@
         <item name="android:windowBackground">@color/demo_background</item>
         <!--Launch Screen: Remove the background that was set in the launch screen theme-->
         <item name="android:background">@null</item>
-        <item name="android:statusBarColor" tools:targetApi="21">?android:colorPrimaryDark</item>
+        <item name="android:statusBarColor">?android:colorPrimary</item>
         <item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
     </style>
 
@@ -24,7 +24,7 @@
     <style name="AppTheme.Launcher">
         <!--Use background instead of windowBackground to account for differences in bottom nav bar height treatment-->
         <item name="android:background">@drawable/uifabric_launch_screen</item>
-        <item name="android:statusBarColor" tools:targetApi="21">@color/uifabric_white</item>
+        <item name="android:statusBarColor">@color/uifabric_white</item>
         <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
     </style>
 
@@ -36,9 +36,6 @@
     </style>
 
     <!--Demo font-->
-    <style name="TextAppearance.Toolbar.Subtitle" parent="TextAppearance.UIFabric.Caption">
-        <item name="android:textColor">@color/uifabric_white</item>
-    </style>
     <style name="TextAppearance.DemoListItem" parent="@style/TextAppearance.UIFabric.SubHeading">
         <item name="android:textColor">@color/uifabric_black</item>
     </style>
