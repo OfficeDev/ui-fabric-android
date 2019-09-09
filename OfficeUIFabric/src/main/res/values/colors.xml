@@ -5,34 +5,52 @@
   -->
 
 <resources>
+    <!--TODO Remove deprecated colors in favor of new base semantic or more specific semantic colors-->
+    <!--Deprecated-->
+    <color name="uifabric_light_gray">@color/uifabric_gray_300</color>
+    <color name="uifabric_gray">@color/uifabric_gray_400</color>
+    <color name="uifabric_dark_gray">@color/uifabric_gray_500</color>
+    <color name="uifabric_background_gray">@color/uifabric_gray_50</color>
+    <color name="uifabric_background_light_gray">@color/uifabric_gray_25</color>
+    <color name="uifabric_border_gray">@color/uifabric_gray_200</color>
+    <color name="uifabric_border_light_gray">@color/uifabric_gray_100</color>
+
     <!-- *** Physical Colors *** -->
 
-    <!--Product Primary-->
+    <!--Communication Colors-->
+    <color name="uifabric_communication_blue">#0078D4</color>
+    <color name="uifabric_communication_shade_10">#005A9E</color>
+    <color name="uifabric_communication_tint_20">#C7E0F4</color>
+    <color name="uifabric_communication_tint_40">#EFF6FC</color>
+
+    <!--Neutral Colors-->
+    <color name="uifabric_black">#000000</color>
+    <color name="uifabric_gray_950">#141414</color>
+    <color name="uifabric_gray_900">#212121</color>
+    <color name="uifabric_gray_800">#292929</color>
+    <color name="uifabric_gray_700">#303030</color>
+    <color name="uifabric_gray_600">#404040</color>
+    <color name="uifabric_gray_500">#767676</color>
+    <color name="uifabric_gray_400">#8E8E8E</color>
+    <color name="uifabric_gray_300">#ACACAC</color>
+    <color name="uifabric_gray_200">#C8C8C8</color>
+    <color name="uifabric_gray_100">#E1E1E1</color>
+    <color name="uifabric_gray_50">#F1F1F1</color>
+    <color name="uifabric_gray_25">#F8F8F8</color>
+    <color name="uifabric_white">#FFFFFF</color>
+
+    <!-- *** Product Primary *** -->
+
     <color name="uifabric_primary">@color/uifabric_communication_blue</color>
     <color name="uifabric_primary_dark">@color/uifabric_communication_shade_10</color>
     <color name="uifabric_primary_light">@color/uifabric_communication_tint_20</color>
 
-    <!--Multi-Use-->
-    <color name="uifabric_communication_blue">#0078D4</color>
-    <color name="uifabric_communication_shade_10">#005a9e</color>
-    <color name="uifabric_communication_tint_20">#C7E0F4</color>
-    <color name="uifabric_communication_tint_40">#EFF6FC</color>
-    <color name="uifabric_white">#FFFFFF</color>
-    <color name="uifabric_black">#222222</color>
-    <color name="uifabric_light_gray">#A8A8AC</color>
-    <color name="uifabric_gray">#8E8E93</color>
-    <color name="uifabric_dark_gray">#777777</color>
+    <!--TODO Replace usages of these semantic colors with their corresponding attributes-->
+    <!-- *** Base Semantic Colors *** -->
 
     <!--Backgrounds-->
-    <color name="uifabric_background_gray">#F1F1F1</color>
-    <color name="uifabric_background_light_gray">#F8F8F8</color>
-
-    <!--Borders-->
-    <color name="uifabric_border_gray">#C8C8C8</color>
-    <color name="uifabric_border_light_gray">#E1E1E1</color>
-
-    <!--Foregrounds-->
-    <color name="uifabric_foreground">@color/uifabric_black</color>
+    <color name="uifabric_background">@color/uifabric_white</color>
+    <color name="uifabric_background_pressed">@color/uifabric_gray_100</color>
 
     <!-- *** Semantic Colors *** -->
 
@@ -66,7 +84,7 @@
 
     <!--ListItem-->
     <color name="uifabric_list_item_background">@color/uifabric_background</color>
-    <color name="uifabric_list_item_background_ripple">@color/uifabric_background_ripple</color>
+    <color name="uifabric_list_item_background_ripple">@color/uifabric_background_pressed</color>
     <color name="uifabric_list_item_title">@color/uifabric_black</color>
     <color name="uifabric_list_item_subtitle">@color/uifabric_gray</color>
     <color name="uifabric_list_item_subtitle_large_header">@color/uifabric_black</color>
@@ -108,7 +126,5 @@
     <!--Shared-->
     <!-- TODO update after design adds #0E000000 to toolkit -->
     <color name="uifabric_item_highlight">#0E000000</color> <!-- 5% black -->
-    <color name="uifabric_background">@color/uifabric_white</color>
-    <color name="uifabric_background_ripple">@color/uifabric_border_light_gray</color>
 
 </resources>
