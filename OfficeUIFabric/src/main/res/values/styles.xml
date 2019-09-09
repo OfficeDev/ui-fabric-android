@@ -226,7 +226,7 @@
     </style>
 
     <!--Toolbar-->
-    <style name="Theme.UIFabric.Toolbar" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+    <style name="Theme.UIFabric.Toolbar" parent="@style/Widget.AppCompat.Toolbar">
         <item name="titleTextAppearance">@style/TextAppearance.UIFabric.ToolbarTitle</item>
         <item name="subtitleTextAppearance">@style/TextAppearance.UIFabric.ToolbarSubtitle</item>
         <item name="toolbarNavigationButtonStyle">@style/Widget.UIFabric.NavigationButton</item>
