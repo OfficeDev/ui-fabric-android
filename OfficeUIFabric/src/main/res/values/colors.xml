@@ -84,12 +84,12 @@
 
     <!--ListItem-->
     <color name="uifabric_list_item_subtitle">@color/uifabric_gray</color>
-    <color name="uifabric_list_item_subtitle_large_header">@color/uifabric_black</color>
+    <color name="uifabric_list_item_subtitle_large_header">@color/uifabric_gray_900</color>
     <color name="uifabric_list_item_footer">@color/uifabric_gray</color>
 
     <!--ListSubHeader-->
     <color name="uifabric_list_sub_header_title_primary">@color/uifabric_primary</color>
-    <color name="uifabric_list_sub_header_title_black">@color/uifabric_black</color>
+    <color name="uifabric_list_sub_header_title_black">@color/uifabric_gray_900</color>
     <color name="uifabric_list_sub_header_title_gray">@color/uifabric_gray</color>
 
     <!--PeoplePicker-->
@@ -102,7 +102,7 @@
     <!--Persona Chip-->
     <color name="uifabric_persona_chip_active">@color/uifabric_primary</color>
     <color name="uifabric_persona_chip_normal">@color/uifabric_background_gray</color>
-    <color name="uifabric_persona_chip_normal_text">@color/uifabric_black</color>
+    <color name="uifabric_persona_chip_normal_text">@color/uifabric_gray_900</color>
     <!-- TODO update after design adds #0D000000 to toolkit -->
     <color name="uifabric_persona_chip_pressed">#0D000000</color>
     <color name="uifabric_persona_chip_active_text">@color/uifabric_white</color>

@@ -37,7 +37,7 @@
 
     <!--Demo font-->
     <style name="TextAppearance.DemoListItem" parent="@style/TextAppearance.UIFabric.SubHeading">
-        <item name="android:textColor">@color/uifabric_black</item>
+        <item name="android:textColor">@color/uifabric_gray_900</item>
     </style>
     <style name="TextAppearance.ListItemValue" parent="@style/TextAppearance.UIFabric.SubHeading">
         <item name="android:textColor">@color/uifabric_gray</item>
@@ -49,7 +49,7 @@
         <item name="android:textColor">@color/uifabric_primary</item>
     </style>
     <style name="TextAppearance.DemoDescription" parent="@style/TextAppearance.UIFabric.SubHeading">
-        <item name="android:textColor">@color/uifabric_black</item>
+        <item name="android:textColor">@color/uifabric_gray_900</item>
     </style>
     <style name="TextAppearance.DemoDescription.Label" parent="@style/TextAppearance.UIFabric.SubHeading">
         <item name="android:textColor">@color/uifabric_gray</item>
