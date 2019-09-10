@@ -38,9 +38,9 @@
         <!-- *** Semantic Colors *** -->
 
         <!--Button-->
-        <item name="uifabricButtonBackgroundDefaultColor">?attr/colorPrimary</item>
+        <item name="uifabricButtonBackgroundDefaultColor">?attr/uifabricBackgroundPrimaryColor</item>
         <item name="uifabricButtonBackgroundDisabledColor">@color/uifabric_background_gray</item>
-        <item name="uifabricButtonTextDefaultColor">@color/uifabric_white</item>
+        <item name="uifabricButtonTextDefaultColor">?attr/uifabricForegroundOnPrimaryColor</item>
         <item name="uifabricButtonTextDisabledColor">@color/uifabric_border_gray</item>
 
         <!--Button Borderless-->
@@ -51,7 +51,7 @@
         <!--CalendarView-->
         <item name="uifabricCalendarBackgroundColor">?attr/uifabricBackgroundColor</item>
         <item name="uifabricCalendarWeekHeadingBackgroundColor">?attr/uifabricBackgroundColor</item>
-        <item name="uifabricCalendarWeekHeadingWeekDayTextColor">@color/uifabric_gray</item>
+        <item name="uifabricCalendarWeekHeadingWeekDayTextColor">?attr/uifabricForegroundSecondaryColor</item>
         <item name="uifabricCalendarWeekHeadingWeekendTextColor">@color/uifabric_border_gray</item>
         <item name="uifabricCalendarMonthOverlayBackgroundColor">?attr/uifabricBackgroundColor</item>
         <item name="uifabricCalendarMonthOverlayTextColor">?attr/uifabricForegroundColor</item>
@@ -60,13 +60,13 @@
         <item name="uifabricCalendarDayTodayBackgroundColor">?attr/uifabricColorPrimaryExtraLight</item>
         <!--weekday selector-->
         <item name="uifabricCalendarWeekDayTextActiveColor">?attr/colorPrimary</item>
-        <item name="uifabricCalendarWeekDayTextActiveCheckedColor">@color/uifabric_white</item>
-        <item name="uifabricCalendarWeekDayTextInactiveCheckedColor">@color/uifabric_white</item>
-        <item name="uifabricCalendarWeekDayTextDefaultColor">@color/uifabric_gray</item>
+        <item name="uifabricCalendarWeekDayTextActiveCheckedColor">?attr/uifabricForegroundOnPrimaryColor</item>
+        <item name="uifabricCalendarWeekDayTextInactiveCheckedColor">?attr/uifabricForegroundOnPrimaryColor</item>
+        <item name="uifabricCalendarWeekDayTextDefaultColor">?attr/uifabricForegroundSecondaryColor</item>
 
         <!--DateTimePicker-->
         <item name="uifabricDateTimePickerToolbarTitleTextColor">?attr/colorPrimary</item>
-        <item name="uifabricDateTimePickerTabTextColor">@color/uifabric_gray</item>
+        <item name="uifabricDateTimePickerTabTextColor">?attr/uifabricForegroundSecondaryColor</item>
         <item name="uifabricDateTimePickerDialogBackgroundColor">?attr/uifabricBackgroundColor</item>
         <item name="uifabricDateTimePickerToolbarIconColor">?attr/colorPrimary</item>
 
@@ -76,12 +76,12 @@
         <!--ListItemView-->
         <item name="uifabricListItemBackgroundColor">?attr/uifabricBackgroundColor</item>
         <item name="uifabricListItemTitleColor">?attr/uifabricForegroundColor</item>
-        <item name="uifabricListItemSubtitleColor">@color/uifabric_list_item_subtitle</item>
+        <item name="uifabricListItemSubtitleColor">?attr/uifabricForegroundSecondaryColor</item>
         <item name="uifabricListItemRippleColor">?attr/uifabricBackgroundPressedColor</item>
 
         <!--NumberPicker-->
         <item name="uifabricNumberPickerBackgroundColor">?attr/uifabricBackgroundColor</item>
-        <item name="uifabricNumberPickerDefaultTextColor">@color/uifabric_gray</item>
+        <item name="uifabricNumberPickerDefaultTextColor">?attr/uifabricForegroundSecondaryColor</item>
         <item name="uifabricNumberPickerSelectedTextColor">?attr/colorPrimary</item>
 
         <!--PopupMenu-->
@@ -95,25 +95,25 @@
         <item name="uifabricProgressPrimaryColor">?attr/colorPrimary</item>
 
         <!--Snackbar-->
-        <item name="uifabricSnackbarBackgroundColor">@color/uifabric_black</item>
-        <item name="uifabricSnackbarBackgroundAnnouncementColor">?attr/colorPrimary</item>
-        <item name="uifabricSnackbarTextColor">@color/uifabric_white</item>
+        <item name="uifabricSnackbarBackgroundColor">?attr/uifabricBackgroundSecondaryColor</item>
+        <item name="uifabricSnackbarBackgroundAnnouncementColor">?attr/uifabricBackgroundPrimaryColor</item>
+        <item name="uifabricSnackbarTextColor">?attr/uifabricForegroundOnSecondaryColor</item>
         <item name="uifabricSnackbarActionTextColor">?attr/uifabricColorPrimaryLight</item>
-        <item name="uifabricSnackbarActionTextAnnouncementColor">@color/uifabric_white</item>
+        <item name="uifabricSnackbarActionTextAnnouncementColor">?attr/uifabricForegroundOnPrimaryColor</item>
 
         <!--TabLayout-->
         <item name="uifabricTabLayoutBackgroundColor">?attr/uifabricBackgroundColor</item>
-        <item name="uifabricTabTextColor">@color/uifabric_gray</item>
+        <item name="uifabricTabTextColor">?attr/uifabricForegroundSecondaryColor</item>
         <item name="uifabricTabSelectedTextColor">?attr/colorPrimary</item>
         <item name="uifabricTabIndicatorColor">?attr/colorPrimary</item>
 
         <!--Toolbar-->
-        <item name="uifabricToolbarTitleTextColor">@color/uifabric_white</item>
-        <item name="uifabricToolbarSubtitleTextColor">@color/uifabric_white</item>
+        <item name="uifabricToolbarTitleTextColor">?attr/uifabricForegroundOnPrimaryColor</item>
+        <item name="uifabricToolbarSubtitleTextColor">?attr/uifabricForegroundOnPrimaryColor</item>
 
         <!--Tooltip-->
-        <item name="uifabricTooltipBackgroundColor">@color/uifabric_black</item>
-        <item name="uifabricTooltipTextColor">@color/uifabric_white</item>
+        <item name="uifabricTooltipBackgroundColor">?attr/uifabricBackgroundSecondaryColor</item>
+        <item name="uifabricTooltipTextColor">?attr/uifabricForegroundOnSecondaryColor</item>
     </style>
 
     <style name="Widget.UIFabric" parent="@android:style/Widget"/>
