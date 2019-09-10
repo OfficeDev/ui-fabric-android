@@ -74,6 +74,13 @@
     <attr name="uifabricNumberPickerDefaultTextColor" format="reference|color"/>
     <attr name="uifabricNumberPickerSelectedTextColor" format="reference|color"/>
 
+    <!--PopupMenu-->
+    <attr name="uifabricPopupMenuBackgroundColor" format="reference|color"/>
+    <attr name="uifabricPopupMenuItemBackgroundRippleColor" format="reference|color"/>
+    <attr name="uifabricPopupMenuItemTitleColor" format="reference|color"/>
+    <attr name="uifabricPopupMenuItemForegroundSelectedColor" format="reference|color"/>
+    <attr name="uifabricPopupMenuItemCheckBackgroundRippleColor" format="reference|color"/>
+
     <!--Progress-->
     <attr name="uifabricProgressPrimaryColor" format="reference|color"/>
 

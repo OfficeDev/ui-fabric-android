@@ -6,5 +6,5 @@
 
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <corners android:radius="@dimen/uifabric_popup_menu_corner_radius" />
-    <solid android:color="@color/uifabric_popup_menu_background" />
+    <solid android:color="?attr/uifabricPopupMenuBackgroundColor" />
 </shape>

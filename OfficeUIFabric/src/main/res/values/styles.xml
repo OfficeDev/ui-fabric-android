@@ -77,12 +77,19 @@
         <item name="uifabricListItemBackgroundColor">?attr/uifabricBackgroundColor</item>
         <item name="uifabricListItemTitleColor">?attr/uifabricForegroundColor</item>
         <item name="uifabricListItemSubtitleColor">@color/uifabric_list_item_subtitle</item>
-        <item name="uifabricListItemRippleColor">@color/uifabric_list_item_background_ripple</item>
+        <item name="uifabricListItemRippleColor">?attr/uifabricBackgroundPressedColor</item>
 
         <!--NumberPicker-->
         <item name="uifabricNumberPickerBackgroundColor">?attr/uifabricBackgroundColor</item>
         <item name="uifabricNumberPickerDefaultTextColor">@color/uifabric_gray</item>
         <item name="uifabricNumberPickerSelectedTextColor">?attr/colorPrimary</item>
+
+        <!--PopupMenu-->
+        <item name="uifabricPopupMenuBackgroundColor">?attr/uifabricBackgroundColor</item>
+        <item name="uifabricPopupMenuItemBackgroundRippleColor">?attr/uifabricBackgroundPressedColor</item>
+        <item name="uifabricPopupMenuItemTitleColor">?attr/uifabricForegroundColor</item>
+        <item name="uifabricPopupMenuItemForegroundSelectedColor">?attr/colorPrimary</item>
+        <item name="uifabricPopupMenuItemCheckBackgroundRippleColor">@color/uifabric_gray_300</item>
 
         <!--Progress-->
         <item name="uifabricProgressPrimaryColor">?attr/colorPrimary</item>

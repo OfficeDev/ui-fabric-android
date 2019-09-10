@@ -83,9 +83,6 @@
     <color name="uifabric_drawer_background">@color/uifabric_background</color>
 
     <!--ListItem-->
-    <color name="uifabric_list_item_background">@color/uifabric_background</color>
-    <color name="uifabric_list_item_background_ripple">@color/uifabric_background_pressed</color>
-    <color name="uifabric_list_item_title">@color/uifabric_black</color>
     <color name="uifabric_list_item_subtitle">@color/uifabric_gray</color>
     <color name="uifabric_list_item_subtitle_large_header">@color/uifabric_black</color>
     <color name="uifabric_list_item_footer">@color/uifabric_gray</color>
@@ -116,12 +113,6 @@
     <!-- TODO update after design adds #A80000 to toolkit -->
     <color name="uifabric_persona_chip_error_text">#A80000</color>
     <color name="uifabric_persona_chip_disabled_text">@color/uifabric_gray</color>
-
-    <!--PopupMenu-->
-    <color name="uifabric_popup_menu_background">@color/uifabric_background</color>
-    <color name="uifabric_popup_menu_item_title">@color/uifabric_black</color>
-    <color name="uifabric_popup_menu_item_foreground_selected">@color/uifabric_primary</color>
-    <color name="uifabric_popup_menu_item_check_background_ripple">@color/uifabric_light_gray</color>
 
     <!--Shared-->
     <!-- TODO update after design adds #0E000000 to toolkit -->

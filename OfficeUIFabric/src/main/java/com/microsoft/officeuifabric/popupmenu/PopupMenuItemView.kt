@@ -8,7 +8,6 @@ package com.microsoft.officeuifabric.popupmenu
 import android.content.Context
 import android.graphics.PorterDuff
 import android.support.annotation.DrawableRes
-import android.support.v4.content.ContextCompat
 import android.support.v4.view.AccessibilityDelegateCompat
 import android.support.v4.view.ViewCompat
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat
@@ -22,6 +21,7 @@ import android.widget.RadioButton
 import android.widget.TextView
 import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.popupmenu.PopupMenu.Companion.DEFAULT_ITEM_CHECKABLE_BEHAVIOR
+import com.microsoft.officeuifabric.util.ThemeUtil
 import com.microsoft.officeuifabric.util.isVisible
 import com.microsoft.officeuifabric.view.TemplateView
 
@@ -141,7 +141,7 @@ internal class PopupMenuItemView : TemplateView {
         // Update text and icon color
 
         if (isChecked) {
-            val foregroundSelectedColor = ContextCompat.getColor(context, R.color.uifabric_popup_menu_item_foreground_selected)
+            val foregroundSelectedColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricPopupMenuItemForegroundSelectedColor)
             titleView?.setTextColor(foregroundSelectedColor)
             // Using post helps ensure that the color filter is applied to the correct image in API <= Lollipop.
             iconImageView?.post {
@@ -149,7 +149,7 @@ internal class PopupMenuItemView : TemplateView {
                 iconImageView?.invalidate()
             }
         } else {
-            titleView?.setTextColor(ContextCompat.getColor(context, R.color.uifabric_popup_menu_item_title))
+            titleView?.setTextColor(ThemeUtil.getThemeAttrColor(context, R.attr.uifabricPopupMenuItemTitleColor))
             iconImageView?.post {
                 iconImageView?.clearColorFilter()
                 iconImageView?.invalidate()
