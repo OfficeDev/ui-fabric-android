@@ -99,21 +99,6 @@
     <color name="uifabric_people_picker_hint_text_color">@color/uifabric_light_gray</color>
     <color name="uifabric_people_picker_label_text_color">@color/uifabric_gray</color>
 
-    <!--Persona Chip-->
-    <color name="uifabric_persona_chip_active">@color/uifabric_primary</color>
-    <color name="uifabric_persona_chip_normal">@color/uifabric_background_gray</color>
-    <color name="uifabric_persona_chip_normal_text">@color/uifabric_gray_900</color>
-    <!-- TODO update after design adds #0D000000 to toolkit -->
-    <color name="uifabric_persona_chip_pressed">#0D000000</color>
-    <color name="uifabric_persona_chip_active_text">@color/uifabric_white</color>
-    <!-- TODO update after design adds #FFF3F4 to toolkit -->
-    <color name="uifabric_persona_chip_error">#FFF3F4</color>
-    <!-- TODO update after design adds #E8484C to toolkit -->
-    <color name="uifabric_persona_chip_error_active">#E8484C</color>
-    <!-- TODO update after design adds #A80000 to toolkit -->
-    <color name="uifabric_persona_chip_error_text">#A80000</color>
-    <color name="uifabric_persona_chip_disabled_text">@color/uifabric_gray</color>
-
     <!--Shared-->
     <!-- TODO update after design adds #0E000000 to toolkit -->
     <color name="uifabric_item_highlight">#0E000000</color> <!-- 5% black -->

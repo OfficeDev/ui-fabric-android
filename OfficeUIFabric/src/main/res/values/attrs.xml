@@ -74,6 +74,17 @@
     <attr name="uifabricNumberPickerDefaultTextColor" format="reference|color"/>
     <attr name="uifabricNumberPickerSelectedTextColor" format="reference|color"/>
 
+    <!--Persona Chip-->
+    <attr name="uifabricPersonaChipBackgroundNormalColor" format="reference|color"/>
+    <attr name="uifabricPersonaChipBackgroundActiveColor" format="reference|color"/>
+    <attr name="uifabricPersonaChipBackgroundErrorColor" format="reference|color"/>
+    <attr name="uifabricPersonaChipBackgroundErrorActiveColor" format="reference|color"/>
+    <attr name="uifabricPersonaChipBackgroundPressedColor" format="reference|color"/>
+    <attr name="uifabricPersonaChipTextNormalColor" format="reference|color"/>
+    <attr name="uifabricPersonaChipTextActiveColor" format="reference|color"/>
+    <attr name="uifabricPersonaChipTextErrorColor" format="reference|color"/>
+    <attr name="uifabricPersonaChipTextDisabledColor" format="reference|color"/>
+
     <!--PopupMenu-->
     <attr name="uifabricPopupMenuBackgroundColor" format="reference|color"/>
     <attr name="uifabricPopupMenuItemBackgroundRippleColor" format="reference|color"/>

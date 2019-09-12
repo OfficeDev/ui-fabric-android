@@ -84,6 +84,18 @@
         <item name="uifabricNumberPickerDefaultTextColor">?attr/uifabricForegroundSecondaryColor</item>
         <item name="uifabricNumberPickerSelectedTextColor">?attr/colorPrimary</item>
 
+        <!--Persona Chip-->
+        <!--TODO add hex values to the colors file when they get added to the toolkit-->
+        <item name="uifabricPersonaChipBackgroundNormalColor">@color/uifabric_gray_50</item>
+        <item name="uifabricPersonaChipBackgroundActiveColor">?attr/uifabricBackgroundPrimaryColor</item>
+        <item name="uifabricPersonaChipBackgroundErrorColor">#FFF3F4</item>
+        <item name="uifabricPersonaChipBackgroundErrorActiveColor">#E8484C</item>
+        <item name="uifabricPersonaChipBackgroundPressedColor">#0D000000</item>
+        <item name="uifabricPersonaChipTextNormalColor">@color/uifabric_gray_900</item>
+        <item name="uifabricPersonaChipTextActiveColor">?attr/uifabricForegroundOnPrimaryColor</item>
+        <item name="uifabricPersonaChipTextErrorColor">#E63237</item>
+        <item name="uifabricPersonaChipTextDisabledColor">@color/uifabric_gray_400</item>
+
         <!--PopupMenu-->
         <item name="uifabricPopupMenuBackgroundColor">?attr/uifabricBackgroundColor</item>
         <item name="uifabricPopupMenuItemBackgroundRippleColor">?attr/uifabricBackgroundPressedColor</item>

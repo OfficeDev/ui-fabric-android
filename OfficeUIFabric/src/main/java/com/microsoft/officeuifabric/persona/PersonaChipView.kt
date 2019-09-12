@@ -12,10 +12,10 @@ import android.net.Uri
 import android.support.v4.content.ContextCompat
 import android.util.AttributeSet
 import android.view.MotionEvent
-import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import com.microsoft.officeuifabric.R
+import com.microsoft.officeuifabric.util.isVisible
 import com.microsoft.officeuifabric.view.TemplateView
 import kotlinx.android.synthetic.main.view_persona_chip.view.*
 
@@ -68,8 +68,10 @@ class PersonaChipView : TemplateView {
      */
     var hasError: Boolean = false
         set(value) {
+            if (field == value)
+                return
             field = value
-            updateState()
+            updateViews()
         }
     /**
      * Determines whether the [closeIcon] is shown in place of the [avatarView]
@@ -110,18 +112,12 @@ class PersonaChipView : TemplateView {
         textView = persona_chip_text
         avatarView = persona_chip_avatar
         closeIcon = persona_chip_close
-        updateCloseIconVisibility(false)
         updateState()
         updateViews()
     }
 
     override fun setEnabled(enabled: Boolean) {
         super.setEnabled(enabled)
-        updateState()
-    }
-
-    override fun setPressed(pressed: Boolean) {
-        super.setPressed(pressed)
         updateState()
     }
 
@@ -156,73 +152,27 @@ class PersonaChipView : TemplateView {
 
     override fun performClick(): Boolean {
         super.performClick()
-        if (isSelected) {
+
+        if (isSelected)
             listener?.onClicked()
-        }
+
         return true
     }
 
     private fun updateState() {
-        when {
-            !isEnabled -> setDisabledState()
-            isSelected -> setSelectedState()
-            isPressed && !hasError -> setPressedState()
-            else -> setNormalState()
-        }
-    }
+        isActivated = isSelected
+        textView?.isEnabled = isEnabled
+        avatarView?.alpha = if (isEnabled) ENABLED_BACKGROUND_OPACITY else DISABLED_BACKGROUND_OPACITY
 
-    private fun setDisabledState() {
-        avatarView?.alpha = DISABLED_BACKGROUND_OPACITY
-        updateStateStyles(R.drawable.persona_chip_background_normal, R.color.uifabric_persona_chip_disabled_text)
-    }
-
-    private fun setNormalState() {
-        avatarView?.alpha = ENABLED_BACKGROUND_OPACITY
-        if (showCloseIconWhenSelected) {
-            updateCloseIconVisibility(false)
-        }
-        if (hasError) {
-            updateStateStyles(R.drawable.persona_chip_background_normal_error, R.color.uifabric_persona_chip_error_text)
-
-        } else {
-            updateStateStyles(R.drawable.persona_chip_background_normal, R.color.uifabric_persona_chip_normal_text)
-        }
-    }
-
-    private fun setPressedState() {
-        updateStateStyles(R.drawable.persona_chip_background_pressed, R.color.uifabric_persona_chip_normal_text)
-    }
-
-    private fun setSelectedState() {
-        if (showCloseIconWhenSelected) {
-            updateCloseIconVisibility(true)
-        }
-        if (hasError) {
-            updateStateStyles(R.drawable.persona_chip_background_active_error, R.color.uifabric_persona_chip_active_text)
-        } else {
-            updateStateStyles(R.drawable.persona_chip_background_active, R.color.uifabric_persona_chip_active_text)
-        }
-    }
-
-    private fun updateStateStyles(backgroundDrawable: Int, textColor: Int) {
-        background = ContextCompat.getDrawable(context, backgroundDrawable)
-        textView?.setTextColor(ContextCompat.getColor(context, textColor))
-    }
-
-    private fun updateCloseIconVisibility(visible: Boolean) {
-        if (visible) {
-            closeIcon?.visibility = View.VISIBLE
-            avatarView?.visibility = View.GONE
-        } else {
-            closeIcon?.visibility = View.GONE
-            avatarView?.visibility = View.VISIBLE
-        }
+        val showCloseIcon = showCloseIconWhenSelected && isSelected
+        closeIcon?.isVisible = showCloseIcon
+        avatarView?.isVisible = !showCloseIcon
     }
 
     private fun updateViews() {
         textView?.text = when {
-            !name.isEmpty() -> name
-            !email.isEmpty() -> email
+            name.isNotEmpty() -> name
+            email.isNotEmpty() -> email
             else -> context.getString(R.string.persona_title_placeholder)
         }
 
@@ -233,6 +183,16 @@ class PersonaChipView : TemplateView {
             avatarImageBitmap = this@PersonaChipView.avatarImageBitmap
             avatarImageUri = this@PersonaChipView.avatarImageUri
         }
+
+        if (hasError)
+            updateStyles(R.drawable.persona_chip_background_error, R.color.persona_chip_text_error_selector)
+        else
+            updateStyles(R.drawable.persona_chip_background_normal, R.color.persona_chip_text_normal_selector)
+    }
+
+    private fun updateStyles(backgroundDrawableId: Int, textColorId: Int) {
+        background = ContextCompat.getDrawable(context, backgroundDrawableId)
+        textView?.setTextColor(ContextCompat.getColorStateList(context, textColorId))
     }
 
     interface Listener {

@@ -11,7 +11,7 @@
             <item android:id="@android:id/mask" android:drawable="@android:color/white" />
             <item>
                 <shape>
-                    <solid android:color="?attr/uifabricPersonaChipBackgroundActiveColor" />
+                    <solid android:color="?attr/uifabricPersonaChipBackgroundErrorActiveColor" />
                     <corners android:radius="@dimen/uifabric_corner_radius_small" />
                 </shape>
             </item>
@@ -22,7 +22,7 @@
             <item android:id="@android:id/mask" android:drawable="@android:color/white" />
             <item>
                 <shape>
-                    <solid android:color="?attr/uifabricPersonaChipBackgroundNormalColor" />
+                    <solid android:color="?attr/uifabricPersonaChipBackgroundErrorColor" />
                     <corners android:radius="@dimen/uifabric_corner_radius_small" />
                 </shape>
             </item>

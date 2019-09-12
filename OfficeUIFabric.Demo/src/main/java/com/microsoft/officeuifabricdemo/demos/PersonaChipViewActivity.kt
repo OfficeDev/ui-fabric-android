@@ -6,10 +6,10 @@
 package com.microsoft.officeuifabricdemo.demos
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.microsoft.officeuifabric.persona.PersonaChipView
+import com.microsoft.officeuifabric.snackbar.Snackbar
 import com.microsoft.officeuifabricdemo.DemoActivity
 import com.microsoft.officeuifabricdemo.R
 import kotlinx.android.synthetic.main.activity_demo_detail.*
