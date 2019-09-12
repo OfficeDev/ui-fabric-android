@@ -28,7 +28,7 @@
     <color name="snackbar_circular_progress_drawable">@color/uifabric_white</color>
 
     <!--TemplateView-->
-    <color name="template_view_cell_background_vertical">@color/uifabric_background_gray</color>
+    <color name="template_view_cell_background_vertical">@color/uifabric_gray_50</color>
     <color name="template_view_cell_background_horizontal">@color/uifabric_primary_extra_light</color>
 
 </resources>

@@ -39,9 +39,9 @@
 
         <!--Button-->
         <item name="uifabricButtonBackgroundDefaultColor">?attr/uifabricBackgroundPrimaryColor</item>
-        <item name="uifabricButtonBackgroundDisabledColor">@color/uifabric_background_gray</item>
+        <item name="uifabricButtonBackgroundDisabledColor">@color/uifabric_gray_50</item>
         <item name="uifabricButtonTextDefaultColor">?attr/uifabricForegroundOnPrimaryColor</item>
-        <item name="uifabricButtonTextDisabledColor">@color/uifabric_border_gray</item>
+        <item name="uifabricButtonTextDisabledColor">@color/uifabric_gray_300</item>
 
         <!--Button Borderless-->
         <item name="uifabricButtonBorderlessBackgroundDefaultColor">@android:color/transparent</item>
@@ -52,10 +52,10 @@
         <item name="uifabricCalendarBackgroundColor">?attr/uifabricBackgroundColor</item>
         <item name="uifabricCalendarWeekHeadingBackgroundColor">?attr/uifabricBackgroundColor</item>
         <item name="uifabricCalendarWeekHeadingWeekDayTextColor">?attr/uifabricForegroundSecondaryColor</item>
-        <item name="uifabricCalendarWeekHeadingWeekendTextColor">@color/uifabric_border_gray</item>
+        <item name="uifabricCalendarWeekHeadingWeekendTextColor">@color/uifabric_gray_200</item>
         <item name="uifabricCalendarMonthOverlayBackgroundColor">?attr/uifabricBackgroundColor</item>
         <item name="uifabricCalendarMonthOverlayTextColor">?attr/uifabricForegroundColor</item>
-        <item name="uifabricCalendarOtherMonthBackgroundColor">@color/uifabric_background_light_gray</item>
+        <item name="uifabricCalendarOtherMonthBackgroundColor">@color/uifabric_gray_25</item>
         <item name="uifabricCalendarSelectedColor">?attr/colorPrimary</item>
         <item name="uifabricCalendarDayTodayBackgroundColor">?attr/uifabricColorPrimaryExtraLight</item>
         <!--weekday selector-->
