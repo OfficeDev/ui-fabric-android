@@ -55,7 +55,7 @@ class ListItemViewActivity : DemoActivity() {
         // Single-line list example
 
         val singleLineSection = createSection(
-            createListSubHeader(getString(R.string.list_item_sub_header_single_line), ListSubHeaderView.TitleColor.GRAY, true),
+            createListSubHeader(getString(R.string.list_item_sub_header_single_line), ListSubHeaderView.TitleColor.TERTIARY, true),
             arrayListOf(
                 createListItem(
                     getString(R.string.list_item_title),
@@ -140,7 +140,7 @@ class ListItemViewActivity : DemoActivity() {
         // Three-line list example
 
         val threeLineSection = createSection(
-            createListSubHeader(getString(R.string.list_item_sub_header_three_line), ListSubHeaderView.TitleColor.BLACK, true),
+            createListSubHeader(getString(R.string.list_item_sub_header_three_line), ListSubHeaderView.TitleColor.SECONDARY, true),
             arrayListOf(
                 createListItem(
                     getString(R.string.list_item_title),
@@ -295,7 +295,7 @@ class ListItemViewActivity : DemoActivity() {
         if (useCustomAccessoryView) {
             val customTextView = TextView(this)
             customTextView.text = getString(R.string.list_item_sub_header_custom_accessory_text)
-            TextViewCompat.setTextAppearance(customTextView, R.style.TextAppearance_UIFabric_ListSubHeaderTitle_Gray)
+            TextViewCompat.setTextAppearance(customTextView, R.style.TextAppearance_UIFabric_ListSubHeaderTitle_Tertiary)
             customTextView.setOnClickListener {
                 Snackbar.make(
                     it,

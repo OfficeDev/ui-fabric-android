@@ -67,7 +67,14 @@
     <attr name="uifabricListItemBackgroundColor" format="reference|color"/>
     <attr name="uifabricListItemTitleColor" format="reference|color"/>
     <attr name="uifabricListItemSubtitleColor" format="reference|color"/>
+    <attr name="uifabricListItemSubtitleLargeHeaderColor" format="reference|color"/>
+    <attr name="uifabricListItemFooterColor" format="reference|color"/>
     <attr name="uifabricListItemRippleColor" format="reference|color"/>
+
+    <!--ListSubHeader-->
+    <attr name="uifabricListSubHeaderTitlePrimaryColor" format="reference|color"/>
+    <attr name="uifabricListSubHeaderTitleSecondaryColor" format="reference|color"/>
+    <attr name="uifabricListSubHeaderTitleTertiaryColor" format="reference|color"/>
 
     <!--NumberPicker-->
     <attr name="uifabricNumberPickerBackgroundColor" format="reference|color"/>

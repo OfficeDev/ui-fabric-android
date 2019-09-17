@@ -90,28 +90,28 @@
         <item name="android:textColor">?attr/uifabricListItemSubtitleColor</item>
     </style>
     <style name="TextAppearance.UIFabric.ListItemFooter" parent="TextAppearance.UIFabric.Caption">
-        <item name="android:textColor">@color/uifabric_list_item_footer</item>
+        <item name="android:textColor">?attr/uifabricListItemFooterColor</item>
     </style>
     <style name="TextAppearance.UIFabric.ListItemTitle.LargeHeader" parent="TextAppearance.UIFabric.Title1">
         <item name="android:textColor">?attr/uifabricListItemTitleColor</item>
     </style>
     <style name="TextAppearance.UIFabric.ListItemSubtitle.LargeHeader">
-        <item name="android:textColor">@color/uifabric_list_item_subtitle_large_header</item>
+        <item name="android:textColor">?attr/uifabricListItemSubtitleLargeHeaderColor</item>
     </style>
     <style name="TextAppearance.UIFabric.ListItemFooter.LargeHeader" parent="TextAppearance.UIFabric.Body1">
-        <item name="android:textColor">@color/uifabric_list_item_footer</item>
+        <item name="android:textColor">?attr/uifabricListItemFooterColor</item>
     </style>
 
     <!--ListSubHeader-->
     <style name="TextAppearance.UIFabric.ListSubHeaderTitle" parent="TextAppearance.UIFabric.Body2" />
     <style name="TextAppearance.UIFabric.ListSubHeaderTitle.Primary">
-        <item name="android:textColor">@color/uifabric_list_sub_header_title_primary</item>
+        <item name="android:textColor">?attr/uifabricListSubHeaderTitlePrimaryColor</item>
     </style>
-    <style name="TextAppearance.UIFabric.ListSubHeaderTitle.Black">
-        <item name="android:textColor">@color/uifabric_list_sub_header_title_black</item>
+    <style name="TextAppearance.UIFabric.ListSubHeaderTitle.Secondary">
+        <item name="android:textColor">?attr/uifabricListSubHeaderTitleSecondaryColor</item>
     </style>
-    <style name="TextAppearance.UIFabric.ListSubHeaderTitle.Gray">
-        <item name="android:textColor">@color/uifabric_list_sub_header_title_gray</item>
+    <style name="TextAppearance.UIFabric.ListSubHeaderTitle.Tertiary">
+        <item name="android:textColor">?attr/uifabricListSubHeaderTitleTertiaryColor</item>
     </style>
 
     <!--NumberPicker-->

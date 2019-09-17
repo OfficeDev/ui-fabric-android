@@ -29,7 +29,7 @@ class ListSubHeaderView : TemplateView {
     }
 
     enum class TitleColor {
-        PRIMARY, BLACK, GRAY
+        PRIMARY, SECONDARY, TERTIARY
     }
 
     /**
@@ -129,8 +129,8 @@ class ListSubHeaderView : TemplateView {
 
         when (titleColor) {
             TitleColor.PRIMARY -> TextViewCompat.setTextAppearance(titleView, R.style.TextAppearance_UIFabric_ListSubHeaderTitle_Primary)
-            TitleColor.BLACK -> TextViewCompat.setTextAppearance(titleView, R.style.TextAppearance_UIFabric_ListSubHeaderTitle_Black)
-            TitleColor.GRAY -> TextViewCompat.setTextAppearance(titleView, R.style.TextAppearance_UIFabric_ListSubHeaderTitle_Gray)
+            TitleColor.SECONDARY -> TextViewCompat.setTextAppearance(titleView, R.style.TextAppearance_UIFabric_ListSubHeaderTitle_Secondary)
+            TitleColor.TERTIARY -> TextViewCompat.setTextAppearance(titleView, R.style.TextAppearance_UIFabric_ListSubHeaderTitle_Tertiary)
         }
 
         val lp = titleView.layoutParams as LinearLayout.LayoutParams

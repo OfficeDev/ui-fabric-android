@@ -77,7 +77,14 @@
         <item name="uifabricListItemBackgroundColor">?attr/uifabricBackgroundColor</item>
         <item name="uifabricListItemTitleColor">?attr/uifabricForegroundColor</item>
         <item name="uifabricListItemSubtitleColor">?attr/uifabricForegroundSecondaryColor</item>
+        <item name="uifabricListItemSubtitleLargeHeaderColor">?attr/uifabricForegroundColor</item>
+        <item name="uifabricListItemFooterColor">?attr/uifabricForegroundSecondaryColor</item>
         <item name="uifabricListItemRippleColor">?attr/uifabricBackgroundPressedColor</item>
+
+        <!--ListSubHeader-->
+        <item name="uifabricListSubHeaderTitlePrimaryColor">?attr/colorPrimary</item>
+        <item name="uifabricListSubHeaderTitleSecondaryColor">?attr/uifabricForegroundColor</item>
+        <item name="uifabricListSubHeaderTitleTertiaryColor">?attr/uifabricForegroundSecondaryColor</item>
 
         <!--NumberPicker-->
         <item name="uifabricNumberPickerBackgroundColor">?attr/uifabricBackgroundColor</item>
