@@ -30,6 +30,7 @@
 
         <!--Foregrounds-->
         <item name="uifabricForegroundColor">@color/uifabric_gray_900</item>
+        <item name="uifabricForegroundSelectedColor">?attr/colorPrimary</item>
         <item name="uifabricForegroundSecondaryColor">@color/uifabric_gray_400</item>
         <item name="uifabricForegroundOnPrimaryColor">@color/uifabric_white</item>
         <item name="uifabricForegroundOnSecondaryColor">@color/uifabric_white</item>
@@ -56,10 +57,10 @@
         <item name="uifabricCalendarMonthOverlayBackgroundColor">?attr/uifabricBackgroundColor</item>
         <item name="uifabricCalendarMonthOverlayTextColor">?attr/uifabricForegroundColor</item>
         <item name="uifabricCalendarOtherMonthBackgroundColor">@color/uifabric_gray_25</item>
-        <item name="uifabricCalendarSelectedColor">?attr/colorPrimary</item>
+        <item name="uifabricCalendarSelectedColor">?attr/uifabricForegroundSelectedColor</item>
         <item name="uifabricCalendarDayTodayBackgroundColor">?attr/uifabricColorPrimaryExtraLight</item>
         <!--weekday selector-->
-        <item name="uifabricCalendarWeekDayTextActiveColor">?attr/colorPrimary</item>
+        <item name="uifabricCalendarWeekDayTextActiveColor">?attr/uifabricForegroundSelectedColor</item>
         <item name="uifabricCalendarWeekDayTextActiveCheckedColor">?attr/uifabricForegroundOnPrimaryColor</item>
         <item name="uifabricCalendarWeekDayTextInactiveCheckedColor">?attr/uifabricForegroundOnPrimaryColor</item>
         <item name="uifabricCalendarWeekDayTextDefaultColor">?attr/uifabricForegroundSecondaryColor</item>
@@ -89,7 +90,7 @@
         <!--NumberPicker-->
         <item name="uifabricNumberPickerBackgroundColor">?attr/uifabricBackgroundColor</item>
         <item name="uifabricNumberPickerDefaultTextColor">?attr/uifabricForegroundSecondaryColor</item>
-        <item name="uifabricNumberPickerSelectedTextColor">?attr/colorPrimary</item>
+        <item name="uifabricNumberPickerSelectedTextColor">?attr/uifabricForegroundSelectedColor</item>
 
         <!--Persona Chip-->
         <!--TODO add hex values to the colors file when they get added to the toolkit-->
@@ -107,7 +108,7 @@
         <item name="uifabricPopupMenuBackgroundColor">?attr/uifabricBackgroundColor</item>
         <item name="uifabricPopupMenuItemBackgroundRippleColor">?attr/uifabricBackgroundPressedColor</item>
         <item name="uifabricPopupMenuItemTitleColor">?attr/uifabricForegroundColor</item>
-        <item name="uifabricPopupMenuItemForegroundSelectedColor">?attr/colorPrimary</item>
+        <item name="uifabricPopupMenuItemForegroundSelectedColor">?attr/uifabricForegroundSelectedColor</item>
         <item name="uifabricPopupMenuItemCheckBackgroundRippleColor">@color/uifabric_gray_300</item>
 
         <!--Progress-->
@@ -123,8 +124,8 @@
         <!--TabLayout-->
         <item name="uifabricTabLayoutBackgroundColor">?attr/uifabricBackgroundColor</item>
         <item name="uifabricTabTextColor">?attr/uifabricForegroundSecondaryColor</item>
-        <item name="uifabricTabSelectedTextColor">?attr/colorPrimary</item>
-        <item name="uifabricTabIndicatorColor">?attr/colorPrimary</item>
+        <item name="uifabricTabSelectedTextColor">?attr/uifabricForegroundSelectedColor</item>
+        <item name="uifabricTabIndicatorColor">?attr/uifabricForegroundSelectedColor</item>
 
         <!--Toolbar-->
         <item name="uifabricToolbarTitleTextColor">?attr/uifabricForegroundOnPrimaryColor</item>
