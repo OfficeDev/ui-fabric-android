@@ -16,6 +16,7 @@ import android.widget.TextView
 import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.persona.IPersona
 import com.microsoft.officeuifabric.persona.Persona
+import com.microsoft.officeuifabric.util.ThemeUtil
 import com.microsoft.officeuifabric.view.TemplateView
 import com.tokenautocomplete.TokenCompleteTextView
 import kotlinx.android.synthetic.main.view_people_picker.view.*
@@ -293,8 +294,11 @@ class PeoplePickerView : TemplateView {
     }
 
     private fun updateHintVisibility() {
-        val hintColor = if (showHint) R.color.uifabric_people_picker_hint_text_color else android.R.color.transparent
-        peoplePickerTextView?.setHintTextColor(ContextCompat.getColor(context, hintColor))
+        val hintColor = if (showHint)
+            ThemeUtil.getThemeAttrColor(context, R.attr.uifabricPeoplePickerHintTextColor)
+        else
+            ContextCompat.getColor(context, android.R.color.transparent)
+        peoplePickerTextView?.setHintTextColor(hintColor)
     }
 
     private fun addLabelClickListenerForAccessibility() {

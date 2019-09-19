@@ -92,6 +92,14 @@
         <item name="uifabricNumberPickerDefaultTextColor">?attr/uifabricForegroundSecondaryColor</item>
         <item name="uifabricNumberPickerSelectedTextColor">?attr/uifabricForegroundSelectedColor</item>
 
+        <!--PeoplePicker-->
+        <item name="uifabricPeoplePickerBackgroundColor">?attr/uifabricBackgroundColor</item>
+        <item name="uifabricPeoplePickerPopupBackgroundColor">?attr/uifabricBackgroundColor</item>
+        <item name="uifabricPeoplePickerTextViewBackgroundColor">?attr/uifabricBackgroundColor</item>
+        <item name="uifabricPeoplePickerTextViewDragBackgroundColor">?attr/uifabricBackgroundPrimaryColor</item>
+        <item name="uifabricPeoplePickerHintTextColor">@color/uifabric_gray_300</item>
+        <item name="uifabricPeoplePickerLabelTextColor">?attr/uifabricForegroundSecondaryColor</item>
+
         <!--Persona Chip-->
         <!--TODO add hex values to the colors file when they get added to the toolkit-->
         <item name="uifabricPersonaChipBackgroundNormalColor">@color/uifabric_gray_50</item>
@@ -106,7 +114,6 @@
 
         <!--PopupMenu-->
         <item name="uifabricPopupMenuBackgroundColor">?attr/uifabricBackgroundColor</item>
-        <item name="uifabricPopupMenuItemBackgroundRippleColor">?attr/uifabricBackgroundPressedColor</item>
         <item name="uifabricPopupMenuItemTitleColor">?attr/uifabricForegroundColor</item>
         <item name="uifabricPopupMenuItemForegroundSelectedColor">?attr/uifabricForegroundSelectedColor</item>
         <item name="uifabricPopupMenuItemCheckBackgroundRippleColor">@color/uifabric_gray_300</item>

@@ -9,6 +9,6 @@
         android:drawable="@drawable/ms_row_divider"
         android:gravity="bottom" />
     <item android:bottom="@dimen/uifabric_divider_height">
-        <color android:color="@color/uifabric_people_picker_popup_background" />
+        <color android:color="?attr/uifabricPeoplePickerPopupBackgroundColor" />
     </item>
 </layer-list>

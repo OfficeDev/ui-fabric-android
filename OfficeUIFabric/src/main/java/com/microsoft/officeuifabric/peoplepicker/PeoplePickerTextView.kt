@@ -13,7 +13,6 @@ import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewCompat
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat
 import android.support.v4.widget.ExploreByTouchHelper
@@ -37,6 +36,7 @@ import com.microsoft.officeuifabric.peoplepicker.PeoplePickerView.PersonaChipCli
 import com.microsoft.officeuifabric.persona.IPersona
 import com.microsoft.officeuifabric.persona.PersonaChipView
 import com.microsoft.officeuifabric.persona.setPersona
+import com.microsoft.officeuifabric.util.ThemeUtil
 import com.microsoft.officeuifabric.util.getTextSize
 import com.tokenautocomplete.CountSpan
 import com.tokenautocomplete.TokenCompleteTextView
@@ -544,14 +544,16 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
 
     private class TokenListener(val view: PeoplePickerTextView) : TokenCompleteTextView.TokenListener<IPersona> {
         override fun onTokenAdded(token: IPersona) {
-            view.tokenListener?.onTokenAdded(token)
+            if (view.shouldAnnouncePersonaAddition)
+                view.tokenListener?.onTokenAdded(token)
             if (view.isFocused)
                 view.announcePersonaAdded(token)
             view.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_ACCESSIBILITY_FOCUS_CLEARED)
         }
 
         override fun onTokenRemoved(token: IPersona) {
-            view.tokenListener?.onTokenRemoved(token)
+            if (view.shouldAnnouncePersonaRemoval)
+                view.tokenListener?.onTokenRemoved(token)
             if (view.isFocused)
                 view.announcePersonaRemoved(token)
         }
@@ -622,7 +624,7 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
         val personaChipView = getViewForObject(persona)
         personaChipView.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED)
         personaChipView.layout(0, 0, personaChipView.measuredWidth, personaChipView.measuredHeight)
-        personaChipView.background = ColorDrawable(ContextCompat.getColor(context, R.color.uifabric_people_picker_text_view_drag_background))
+        personaChipView.background = ColorDrawable(ThemeUtil.getThemeAttrColor(context, R.attr.uifabricPeoplePickerTextViewDragBackgroundColor))
         personaChipView.background.alpha = BACKGROUND_DRAG_ALPHA
 
         // We pass the persona object as LocalState so we can restore it when dropping

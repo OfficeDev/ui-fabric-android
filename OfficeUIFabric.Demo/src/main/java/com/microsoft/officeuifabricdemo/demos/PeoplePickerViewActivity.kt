@@ -135,11 +135,11 @@ class PeoplePickerViewActivity : DemoActivity() {
     private fun createPickedPersonasChangeListener(): PeoplePickerView.PickedPersonasChangeListener {
         return object : PeoplePickerView.PickedPersonasChangeListener {
             override fun onPersonaAdded(persona: IPersona) {
-                showSnackbar("${getString(R.string.people_picker_dialog_title_added)} ${if (!persona.name.isEmpty()) persona.name else persona.email}")
+                showSnackbar("${getString(R.string.people_picker_dialog_title_added)} ${if (persona.name.isNotEmpty()) persona.name else persona.email}")
             }
 
             override fun onPersonaRemoved(persona: IPersona) {
-                showSnackbar("${getString(R.string.people_picker_dialog_title_removed)} ${if (!persona.name.isEmpty()) persona.name else persona.email}")
+                showSnackbar("${getString(R.string.people_picker_dialog_title_removed)} ${if (persona.name.isNotEmpty()) persona.name else persona.email}")
             }
         }
     }

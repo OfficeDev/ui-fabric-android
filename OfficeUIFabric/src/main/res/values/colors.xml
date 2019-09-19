@@ -82,13 +82,6 @@
     <!--Drawer-->
     <color name="uifabric_drawer_background">@color/uifabric_background</color>
 
-    <!--PeoplePicker-->
-    <color name="uifabric_people_picker_popup_background">@color/uifabric_background</color>
-    <color name="uifabric_people_picker_text_view_background">@color/uifabric_background</color>
-    <color name="uifabric_people_picker_text_view_drag_background">@color/uifabric_primary</color>
-    <color name="uifabric_people_picker_hint_text_color">@color/uifabric_light_gray</color>
-    <color name="uifabric_people_picker_label_text_color">@color/uifabric_gray</color>
-
     <!--Shared-->
     <!-- TODO update after design adds #0E000000 to toolkit -->
     <color name="uifabric_item_highlight">#0E000000</color> <!-- 5% black -->
