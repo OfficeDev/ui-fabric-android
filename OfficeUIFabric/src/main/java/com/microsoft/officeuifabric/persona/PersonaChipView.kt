@@ -6,15 +6,18 @@
 package com.microsoft.officeuifabric.persona
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.net.Uri
+import android.support.annotation.AttrRes
 import android.support.v4.content.ContextCompat
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.widget.ImageView
 import android.widget.TextView
 import com.microsoft.officeuifabric.R
+import com.microsoft.officeuifabric.util.ThemeUtil
 import com.microsoft.officeuifabric.util.isVisible
 import com.microsoft.officeuifabric.view.TemplateView
 import kotlinx.android.synthetic.main.view_persona_chip.view.*
@@ -185,14 +188,30 @@ class PersonaChipView : TemplateView {
         }
 
         if (hasError)
-            updateStyles(R.drawable.persona_chip_background_error, R.color.persona_chip_text_error_selector)
+            updateStyles(R.drawable.persona_chip_background_error, R.attr.uifabricPersonaChipTextErrorColor)
         else
-            updateStyles(R.drawable.persona_chip_background_normal, R.color.persona_chip_text_normal_selector)
+            updateStyles(R.drawable.persona_chip_background_normal, R.attr.uifabricPersonaChipTextNormalColor)
     }
 
-    private fun updateStyles(backgroundDrawableId: Int, textColorId: Int) {
+    private fun updateStyles(backgroundDrawableId: Int, @AttrRes defaultTextColor: Int) {
         background = ContextCompat.getDrawable(context, backgroundDrawableId)
-        textView?.setTextColor(ContextCompat.getColorStateList(context, textColorId))
+        textView?.setTextColor(createColorStateList(defaultTextColor))
+    }
+
+    // Create this in code instead of xml to support Lollipop, which does not allow attributes in xml selectors.
+    private fun createColorStateList(@AttrRes defaultTextColor: Int): ColorStateList {
+        return ColorStateList(
+            arrayOf(
+                intArrayOf(-android.R.attr.state_enabled),
+                intArrayOf(android.R.attr.state_activated),
+                intArrayOf()
+            ),
+            intArrayOf(
+                ThemeUtil.getThemeAttrColor(context, R.attr.uifabricPersonaChipTextDisabledColor),
+                ThemeUtil.getThemeAttrColor(context, R.attr.uifabricPersonaChipTextActiveColor),
+                ThemeUtil.getThemeAttrColor(context, defaultTextColor)
+            )
+        )
     }
 
     interface Listener {
