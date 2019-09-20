@@ -37,8 +37,8 @@
     <!--Dialog-->
     <style name="Dialog.UIFabric" parent="@style/Theme.AppCompat.Light.Dialog.Alert">
         <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:colorBackground">@color/uifabric_white</item>
-        <item name="android:colorBackgroundCacheHint">@color/uifabric_white</item>
+        <item name="android:colorBackground">?attr/uifabricDialogBackgroundColor</item>
+        <item name="android:colorBackgroundCacheHint">?attr/uifabricDialogBackgroundColor</item>
         <item name="android:textAppearance">@style/TextAppearance.UIFabric.Title1</item>
     </style>
 

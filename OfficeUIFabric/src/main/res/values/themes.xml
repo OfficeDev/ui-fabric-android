@@ -7,9 +7,9 @@
 <resources>
 
     <style name="Theme.UIFabric" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@color/uifabric_primary</item>
-        <item name="colorPrimaryDark">@color/uifabric_primary_dark</item>
-        <item name="colorAccent">@color/uifabric_primary</item>
+        <item name="colorPrimary">@color/uifabric_communication_blue</item>
+        <item name="colorPrimaryDark">@color/uifabric_communication_shade_10</item>
+        <item name="colorAccent">@color/uifabric_communication_blue</item>
         <item name="android:textColorPrimary">@color/uifabric_gray_900</item>
         <item name="buttonStyle">@style/Widget.UIFabric.Button</item>
         <item name="toolbarStyle">@style/Theme.UIFabric.Toolbar</item>
@@ -70,6 +70,9 @@
         <item name="uifabricDateTimePickerDialogBackgroundColor">?attr/uifabricBackgroundColor</item>
         <item name="uifabricDateTimePickerToolbarIconColor">?attr/colorPrimary</item>
 
+        <!--Dialog-->
+        <item name="uifabricDialogBackgroundColor">?attr/uifabricBackgroundColor</item>
+
         <!--Drawer-->
         <item name="uifabricDrawerBackgroundColor">?attr/uifabricBackgroundColor</item>
 
@@ -98,6 +101,7 @@
         <item name="uifabricPeoplePickerTextViewDragBackgroundColor">?attr/uifabricBackgroundPrimaryColor</item>
         <item name="uifabricPeoplePickerHintTextColor">@color/uifabric_gray_300</item>
         <item name="uifabricPeoplePickerLabelTextColor">?attr/uifabricForegroundSecondaryColor</item>
+        <item name="uifabricPeoplePickerCountSpanTextColor">?attr/uifabricForegroundSecondaryColor</item>
 
         <!--Persona Chip-->
         <!--TODO add hex values to the colors file when they get added to the toolkit-->

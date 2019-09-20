@@ -57,10 +57,6 @@
 
     <!-- *** UIFabric Semantic Styles *** -->
 
-    <style name="TextAppearance.UIFabric.LightCaption" parent="TextAppearance.UIFabric.Caption">
-        <item name="android:textColor">@color/uifabric_gray</item>
-    </style>
-
     <!--Button-->
     <style name="TextAppearance.UIFabric.Button" parent="TextAppearance.UIFabric.Body2">
         <item name="android:textColor">@color/button_text</item>
@@ -125,7 +121,9 @@
         <item name="android:textColor">?attr/uifabricPeoplePickerLabelTextColor</item>
     </style>
     <style name="TextAppearance.UIFabric.PeoplePickerText" parent="TextAppearance.UIFabric.Heading" />
-    <style name="TextAppearance.UIFabric.PeoplePickerCountSpan" parent="TextAppearance.UIFabric.LightCaption" />
+    <style name="TextAppearance.UIFabric.PeoplePickerCountSpan" parent="TextAppearance.UIFabric.Caption">
+        <item name="android:textColor">?attr/uifabricPeoplePickerCountSpanTextColor</item>
+    </style>
     <style name="TextAppearance.UIFabric.PeoplePickerSearchDirectoryButton" parent="TextAppearance.UIFabric.Button.Borderless" />
 
     <!--PopupMenu-->

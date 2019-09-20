@@ -61,6 +61,9 @@
     <attr name="uifabricDateTimePickerDialogBackgroundColor" format="reference|color"/>
     <attr name="uifabricDateTimePickerToolbarIconColor" format="reference|color"/>
 
+    <!--Dialog-->
+    <attr name="uifabricDialogBackgroundColor" format="reference|color"/>
+
     <!--Drawer-->
     <attr name="uifabricDrawerBackgroundColor" format="reference|color"/>
 
@@ -89,6 +92,7 @@
     <attr name="uifabricPeoplePickerTextViewDragBackgroundColor" format="reference|color"/>
     <attr name="uifabricPeoplePickerHintTextColor" format="reference|color"/>
     <attr name="uifabricPeoplePickerLabelTextColor" format="reference|color"/>
+    <attr name="uifabricPeoplePickerCountSpanTextColor" format="reference|color"/>
 
     <!--PersonaChip-->
     <attr name="uifabricPersonaChipBackgroundNormalColor" format="reference|color"/>

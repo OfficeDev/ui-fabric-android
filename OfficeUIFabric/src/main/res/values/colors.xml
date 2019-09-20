@@ -5,15 +5,14 @@
   -->
 
 <resources>
-    <!--TODO Remove deprecated colors in favor of new base semantic or more specific semantic colors-->
-    <!--Deprecated-->
-    <color name="uifabric_light_gray">@color/uifabric_gray_300</color>
-    <color name="uifabric_gray">@color/uifabric_gray_400</color>
-    <color name="uifabric_dark_gray">@color/uifabric_gray_500</color>
-    <color name="uifabric_background_gray">@color/uifabric_gray_50</color>
-    <color name="uifabric_background_light_gray">@color/uifabric_gray_25</color>
-    <color name="uifabric_border_gray">@color/uifabric_gray_200</color>
-    <color name="uifabric_border_light_gray">@color/uifabric_gray_100</color>
+    <!--Deprecated: Replace these colors in your app with the new semantic theme attributes or the "Neutral Colors" below.-->
+    <!--<color name="uifabric_light_gray">@color/uifabric_gray_300</color>-->
+    <!--<color name="uifabric_gray">@color/uifabric_gray_400</color>-->
+    <!--<color name="uifabric_dark_gray">@color/uifabric_gray_500</color>-->
+    <!--<color name="uifabric_background_gray">@color/uifabric_gray_50</color>-->
+    <!--<color name="uifabric_background_light_gray">@color/uifabric_gray_25</color>-->
+    <!--<color name="uifabric_border_gray">@color/uifabric_gray_200</color>-->
+    <!--<color name="uifabric_border_light_gray">@color/uifabric_gray_100</color>-->
 
     <!-- *** Physical Colors *** -->
 
@@ -38,19 +37,6 @@
     <color name="uifabric_gray_50">#F1F1F1</color>
     <color name="uifabric_gray_25">#F8F8F8</color>
     <color name="uifabric_white">#FFFFFF</color>
-
-    <!-- *** Product Primary *** -->
-
-    <color name="uifabric_primary">@color/uifabric_communication_blue</color>
-    <color name="uifabric_primary_dark">@color/uifabric_communication_shade_10</color>
-    <color name="uifabric_primary_light">@color/uifabric_communication_tint_20</color>
-
-    <!--TODO Replace usages of these semantic colors with their corresponding attributes-->
-    <!-- *** Base Semantic Colors *** -->
-
-    <!--Backgrounds-->
-    <color name="uifabric_background">@color/uifabric_white</color>
-    <color name="uifabric_background_pressed">@color/uifabric_gray_100</color>
 
     <!-- *** Semantic Colors *** -->
 
@@ -78,9 +64,6 @@
 
     <!--CalendarView selectors-->
     <color name="uifabric_calendar_week_day_text">@color/calendar_week_day_text_selector</color>
-
-    <!--Drawer-->
-    <color name="uifabric_drawer_background">@color/uifabric_background</color>
 
     <!--Shared-->
     <!-- TODO update after design adds #0E000000 to toolkit -->
