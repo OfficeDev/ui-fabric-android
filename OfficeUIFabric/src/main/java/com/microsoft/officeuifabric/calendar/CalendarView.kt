@@ -9,6 +9,7 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.content.Context
+import android.content.res.ColorStateList
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
@@ -249,9 +250,21 @@ class CalendarView : LinearLayout, OnDateSelectedListener {
         val otherMonthBackgroundColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarOtherMonthBackgroundColor)
         val calendarDayMonthYearTextSize = context.resources.getDimensionPixelSize(R.dimen.uifabric_calendar_month_year_font_size)
 
-        val calendarDayWeekdayTextColorId =  R.color.uifabric_calendar_week_day_text
-        val calendarDayWeekendTextColorId = R.color.uifabric_calendar_week_day_text
-        val calendarDayFirstDayOfMonthTextColorId = R.color.uifabric_calendar_week_day_text
+        // Create this in code instead of xml to support Lollipop, which does not allow attributes in xml selectors.
+        val calendarDayTextColor = ColorStateList(
+            arrayOf(
+                intArrayOf(android.R.attr.state_activated, -android.R.attr.state_checked),
+                intArrayOf(android.R.attr.state_activated, android.R.attr.state_checked),
+                intArrayOf(-android.R.attr.state_activated, android.R.attr.state_checked),
+                intArrayOf()
+            ),
+            intArrayOf(
+                ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarDayTextActiveColor),
+                ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarDayTextActiveCheckedColor),
+                ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarDayTextInactiveCheckedColor),
+                ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarDayTextDefaultColor)
+            )
+        )
     }
 }
 

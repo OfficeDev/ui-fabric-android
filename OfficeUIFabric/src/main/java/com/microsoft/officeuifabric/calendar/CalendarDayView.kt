@@ -29,7 +29,6 @@ import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.util.DateStringUtils
 import com.microsoft.officeuifabric.util.DateTimeUtils
 import com.microsoft.officeuifabric.util.isAccessibilityEnabled
-import org.threeten.bp.DayOfWeek
 import org.threeten.bp.LocalDate
 import org.threeten.bp.ZonedDateTime
 import org.threeten.bp.format.DateTimeFormatter
@@ -49,7 +48,7 @@ internal class CalendarDayView: AppCompatButton, Checkable {
             val today = LocalDate.now()
             updateBackgroundColor(today)
             updateText()
-            updateTextColor()
+            setTextColor(textDayColor)
             updateContentDescription()
             isActivated = DateTimeUtils.isSameDay(today, field)
 
@@ -100,9 +99,7 @@ internal class CalendarDayView: AppCompatButton, Checkable {
 
     private var todayBackgroundDrawable: Drawable? = null
 
-    private var textWeekDayColor: ColorStateList? = null
-    private var textWeekEndColor: ColorStateList? = null
-    private var textFirstDayOfMonthColor: ColorStateList? = null
+    private var textDayColor: ColorStateList? = null
     private var viewBackgroundColor = Color.TRANSPARENT
 
     /**
@@ -122,9 +119,7 @@ internal class CalendarDayView: AppCompatButton, Checkable {
         todayAppearance = R.style.TextAppearance_UIFabric_CalendarDay2
         checkedAppearance = R.style.TextAppearance_UIFabric_CalendarDay2
 
-        textWeekDayColor = ContextCompat.getColorStateList(context, config.calendarDayWeekdayTextColorId)
-        textWeekEndColor = ContextCompat.getColorStateList(context, config.calendarDayWeekendTextColorId )
-        textFirstDayOfMonthColor = ContextCompat.getColorStateList(context, config.calendarDayFirstDayOfMonthTextColorId)
+        textDayColor = config.calendarDayTextColor
 
         background = null
         gravity = Gravity.CENTER
@@ -169,7 +164,7 @@ internal class CalendarDayView: AppCompatButton, Checkable {
             return
 
         updateText()
-        updateTextColor()
+        setTextColor(textDayColor)
         updateTypeface()
 
         ViewCompat.postInvalidateOnAnimation(this)
@@ -271,20 +266,6 @@ internal class CalendarDayView: AppCompatButton, Checkable {
             text = stringBuilder
         } else {
             text = String.format(Locale.ROOT, Integer.toString(dayOfMonth))
-        }
-    }
-
-    private fun updateTextColor() {
-        val dayOfMonth = date.dayOfMonth
-        if (dayOfMonth == 1) {
-            setTextColor(textFirstDayOfMonthColor)
-        } else {
-            val dayOfWeek = date.dayOfWeek
-            if (DayOfWeek.SATURDAY == dayOfWeek || DayOfWeek.SUNDAY == dayOfWeek) {
-                setTextColor(textWeekEndColor)
-            } else {
-                setTextColor(textWeekDayColor)
-            }
         }
     }
 

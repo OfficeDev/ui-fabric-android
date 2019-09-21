@@ -49,11 +49,11 @@
     <attr name="uifabricCalendarOtherMonthBackgroundColor" format="reference|color"/>
     <attr name="uifabricCalendarSelectedColor" format="reference|color"/>
     <attr name="uifabricCalendarDayTodayBackgroundColor" format="reference|color"/>
-    <!--weekday selector-->
-    <attr name="uifabricCalendarWeekDayTextActiveColor" format="reference|color"/>
-    <attr name="uifabricCalendarWeekDayTextActiveCheckedColor" format="reference|color"/>
-    <attr name="uifabricCalendarWeekDayTextInactiveCheckedColor" format="reference|color"/>
-    <attr name="uifabricCalendarWeekDayTextDefaultColor" format="reference|color"/>
+    <!--day selector-->
+    <attr name="uifabricCalendarDayTextActiveColor" format="reference|color"/>
+    <attr name="uifabricCalendarDayTextActiveCheckedColor" format="reference|color"/>
+    <attr name="uifabricCalendarDayTextInactiveCheckedColor" format="reference|color"/>
+    <attr name="uifabricCalendarDayTextDefaultColor" format="reference|color"/>
 
     <!--DateTimePicker-->
     <attr name="uifabricDateTimePickerToolbarTitleTextColor" format="reference|color"/>

@@ -58,11 +58,11 @@
         <item name="uifabricCalendarOtherMonthBackgroundColor">@color/uifabric_gray_25</item>
         <item name="uifabricCalendarSelectedColor">?attr/uifabricForegroundSelectedColor</item>
         <item name="uifabricCalendarDayTodayBackgroundColor">?attr/uifabricColorPrimaryExtraLight</item>
-        <!--weekday selector-->
-        <item name="uifabricCalendarWeekDayTextActiveColor">?attr/uifabricForegroundSelectedColor</item>
-        <item name="uifabricCalendarWeekDayTextActiveCheckedColor">?attr/uifabricForegroundOnPrimaryColor</item>
-        <item name="uifabricCalendarWeekDayTextInactiveCheckedColor">?attr/uifabricForegroundOnPrimaryColor</item>
-        <item name="uifabricCalendarWeekDayTextDefaultColor">?attr/uifabricForegroundSecondaryColor</item>
+        <!--day selector-->
+        <item name="uifabricCalendarDayTextActiveColor">?attr/uifabricForegroundSelectedColor</item>
+        <item name="uifabricCalendarDayTextActiveCheckedColor">?attr/uifabricForegroundOnPrimaryColor</item>
+        <item name="uifabricCalendarDayTextInactiveCheckedColor">?attr/uifabricForegroundOnPrimaryColor</item>
+        <item name="uifabricCalendarDayTextDefaultColor">?attr/uifabricForegroundSecondaryColor</item>
 
         <!--DateTimePicker-->
         <item name="uifabricDateTimePickerToolbarTitleTextColor">?attr/colorPrimary</item>
