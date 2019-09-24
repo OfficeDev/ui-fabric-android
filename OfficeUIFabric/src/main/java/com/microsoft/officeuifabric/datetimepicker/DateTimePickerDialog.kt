@@ -33,7 +33,6 @@ import org.threeten.bp.Duration
 import org.threeten.bp.ZonedDateTime
 
 // TODO consider merging PickerMode and DateRangeMode since not all combinations will work
-// TODO KitKat design alignment
 /**
  * [DateTimePickerDialog] provides a dialog view housing both a [DatePickerFragment] and [DateTimePickerFragment] in a [WrapContentViewPager]
  * as well as includes toolbar UI and menu buttons to dismiss the dialog and accept a date/ time

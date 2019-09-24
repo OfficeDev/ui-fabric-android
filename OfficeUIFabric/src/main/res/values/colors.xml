@@ -62,9 +62,4 @@
         <item>#69797E</item>
     </array>
 
-    <!--Shared-->
-    <!-- TODO create attribute for this and convert ms_item_background from xml to programmatic creation -->
-    <!-- TODO update after design adds #0E000000 to toolkit -->
-    <color name="uifabric_item_highlight">#0E000000</color> <!-- 5% black -->
-
 </resources>

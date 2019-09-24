@@ -11,7 +11,10 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.PorterDuff
+import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
+import android.graphics.drawable.StateListDrawable
+import android.os.Build
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewCompat
 import android.support.v4.widget.TextViewCompat
@@ -28,12 +31,15 @@ import android.widget.Checkable
 import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.util.DateStringUtils
 import com.microsoft.officeuifabric.util.DateTimeUtils
+import com.microsoft.officeuifabric.util.ThemeUtil
 import com.microsoft.officeuifabric.util.isAccessibilityEnabled
 import org.threeten.bp.LocalDate
 import org.threeten.bp.ZonedDateTime
 import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.temporal.ChronoUnit
 import java.util.*
+
+// TODO add ripple for Lollipop
 
 /**
  * [CalendarDayView] View that displays a day of the week
@@ -125,8 +131,11 @@ internal class CalendarDayView: AppCompatButton, Checkable {
         gravity = Gravity.CENTER
         includeFontPadding = false
         TextViewCompat.setTextAppearance(this, regularAppearance)
-        setAllCaps(false)
-        ContextCompat.getDrawable(context, R.drawable.ms_item_background)?.let { _foregroundDrawable = it }
+        isAllCaps = false
+
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M)
+            _foregroundDrawable = createBackgroundStateList()
+
         setPadding(0, 0, 0, 0)
     }
 
@@ -296,7 +305,6 @@ internal class CalendarDayView: AppCompatButton, Checkable {
         contentDescription = stringBuilder.toString()
     }
 
-
     private fun updateTypeface() {
         val appearance = when {
             isActivated -> todayAppearance
@@ -304,5 +312,32 @@ internal class CalendarDayView: AppCompatButton, Checkable {
             else -> regularAppearance
         }
         TextViewCompat.setTextAppearance(this, appearance)
+    }
+
+    // Create this in code instead of xml to support Lollipop, which does not allow attributes in xml selectors.
+    private fun createBackgroundStateList(): StateListDrawable {
+        val colorDrawable = ColorDrawable(ThemeUtil.getThemeAttrColor(context, R.attr.uifabricBackgroundPressedColor))
+        val stateListDrawable = StateListDrawable()
+        stateListDrawable.addState(
+            intArrayOf(android.R.attr.state_focused, android.R.attr.state_pressed),
+            colorDrawable
+        )
+        stateListDrawable.addState(
+            intArrayOf(-android.R.attr.state_focused, android.R.attr.state_pressed),
+            colorDrawable
+        )
+        stateListDrawable.addState(
+            intArrayOf(android.R.attr.state_focused),
+            colorDrawable
+        )
+        stateListDrawable.addState(
+            intArrayOf(android.R.attr.state_selected),
+            colorDrawable
+        )
+        stateListDrawable.addState(
+            intArrayOf(),
+            ColorDrawable(viewBackgroundColor)
+        )
+        return stateListDrawable
     }
 }
