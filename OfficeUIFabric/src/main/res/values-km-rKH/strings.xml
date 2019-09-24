@@ -92,6 +92,9 @@
   <string name="popup_menu_accessibility_item_state_checked">បានធីក</string>
   <string name="popup_menu_accessibility_item_state_not_checked">មិនបានធីក</string>
   <string name="progress_circular_content_description_indeterminate">ដែលមិនច្បាស់លាស់</string>
+  <string name="searchbar_clear_search">Clear search</string>
+  <string name="searchbar_back">Back</string>
+  <string name="searchbar_query_hint_default">Search</string>
   <string name="done">រួចរាល់</string>
   <string name="tooltip_accessibility_dismiss_action">បោះបង់</string>
   <string name="tooltip_accessibility_dismiss_announcement">ព័ត៌មានជំនួយឧបករណ៍ត្រូវបានបោះបង់</string>

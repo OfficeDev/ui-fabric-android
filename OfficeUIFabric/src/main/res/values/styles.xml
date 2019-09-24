@@ -120,6 +120,21 @@
         <item name="android:indeterminateTintMode">src_in</item>
     </style>
 
+    <!--Searchbar-->
+    <style name="Widget.UIFabric.SearchView" parent="Widget.AppCompat.SearchView">
+        <item name="colorControlActivated">?attr/uifabricForegroundOnPrimaryColor</item>
+        <item name="android:textColorHint">?attr/uifabricSearchbarSearchViewTextHintColor</item>
+        <item name="android:textAppearance">@style/TextAppearance.UIFabric.SearchbarSearchViewText</item>
+    </style>
+    <style name="Widget.UIFabric.CircularProgress.XSmall.Search">
+        <item name="android:indeterminateTint">?attr/uifabricSearchbarProgressColor</item>
+        <item name="android:indeterminateTintMode">src_in</item>
+        <item name="android:minHeight">@dimen/uifabric_searchbar_progress_size</item>
+        <item name="android:minWidth">@dimen/uifabric_searchbar_progress_size</item>
+        <item name="android:maxHeight">@dimen/uifabric_searchbar_progress_size</item>
+        <item name="android:maxWidth">@dimen/uifabric_searchbar_progress_size</item>
+    </style>
+
     <!--TabLayout-->
     <style name="Widget.UIFabric.TabLayout" parent="Widget.Design.TabLayout">
         <item name="tabGravity">center</item>

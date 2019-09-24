@@ -179,9 +179,19 @@
     <!--Describes the state of a menu item that is not checked.-->
     <string name="popup_menu_accessibility_item_state_not_checked">not checked</string>
 
-    <!-- ** Progress ** -->
+    <!-- *** Progress *** -->
+
     <!--Describes a progress indicator that spins indefinitely.-->
     <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
+
+    <!-- *** Searchbar *** -->
+
+    <!--Content description for the button that clears the query text entered in the search field.-->
+    <string name="searchbar_clear_search">Clear search</string>
+    <!--Content description for the button that navigates out of the search experience back to a previous state.-->
+    <string name="searchbar_back">Back</string>
+    <!--Hint for the search field.-->
+    <string name="searchbar_query_hint_default">Search</string>
 
     <!-- *** Shared *** -->
 

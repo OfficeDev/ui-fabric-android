@@ -27,6 +27,9 @@
         <item name="uifabricBackgroundPrimaryColor">?attr/colorPrimary</item>
         <item name="uifabricBackgroundSecondaryColor">@color/uifabric_gray_900</item>
 
+        <!--Backgrounds, Transparent-->
+        <item name="uifabricBackgroundSecondary20Color">#33000000</item>
+
         <!--Foregrounds-->
         <item name="uifabricForegroundColor">@color/uifabric_gray_900</item>
         <item name="uifabricForegroundSelectedColor">?attr/colorPrimary</item>
@@ -34,6 +37,10 @@
         <item name="uifabricForegroundOnPrimaryColor">@color/uifabric_white</item>
         <item name="uifabricForegroundOnSecondaryColor">@color/uifabric_white</item>
         <item name="uifabricDividerColor">@color/uifabric_gray_100</item>
+
+        <!--Foregrounds, Transparent-->
+        <item name="uifabricForegroundOnPrimary90Color">#E6FFFFFF</item>
+        <item name="uifabricForegroundOnPrimary70Color">#B3FFFFFF</item>
 
         <!-- *** Semantic Colors *** -->
 
@@ -123,6 +130,16 @@
 
         <!--Progress-->
         <item name="uifabricProgressPrimaryColor">?attr/colorPrimary</item>
+
+        <!--Searchbar-->
+        <item name="uifabricSearchbarBackgroundColor">?attr/uifabricBackgroundPrimaryColor</item>
+        <item name="uifabricSearchbarSearchViewContainerBackgroundColor">?attr/uifabricBackgroundSecondary20Color</item>
+        <item name="uifabricSearchbarBackButtonColor">?attr/uifabricForegroundOnPrimaryColor</item>
+        <item name="uifabricSearchbarSearchIconColor">?attr/uifabricForegroundOnPrimary90Color</item>
+        <item name="uifabricSearchbarSearchViewTextColor">?attr/uifabricForegroundOnPrimaryColor</item>
+        <item name="uifabricSearchbarSearchViewTextHintColor">?attr/uifabricForegroundOnPrimary90Color</item>
+        <item name="uifabricSearchbarProgressColor">?attr/uifabricForegroundOnPrimary70Color</item>
+        <item name="uifabricSearchbarCloseIconColor">?attr/uifabricForegroundOnPrimary70Color</item>
 
         <!--Snackbar-->
         <item name="uifabricSnackbarBackgroundColor">?attr/uifabricBackgroundSecondaryColor</item>

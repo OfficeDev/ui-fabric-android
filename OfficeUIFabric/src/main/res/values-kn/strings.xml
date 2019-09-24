@@ -94,6 +94,9 @@
   <string name="popup_menu_accessibility_item_state_checked">ಪರಿಶೀಲಿಸಲಾಗಿದೆ</string>
   <string name="popup_menu_accessibility_item_state_not_checked">ಪರಿಶೀಲಿಸಲಾಗಿಲ್ಲ</string>
   <string name="progress_circular_content_description_indeterminate">ಅನಿರ್ದಿಷ್ಟ</string>
+  <string name="searchbar_clear_search">Clear search</string>
+  <string name="searchbar_back">Back</string>
+  <string name="searchbar_query_hint_default">Search</string>
   <string name="done">ಮುಗಿದಿದೆ</string>
   <string name="tooltip_accessibility_dismiss_action">ವಜಾಗೊಳಿಸು</string>
   <string name="tooltip_accessibility_dismiss_announcement">ಪರಿಕರಸೂಚಿಯನ್ನು ವಜಾಗೊಳಿಸಲಾಗಿದೆ</string>

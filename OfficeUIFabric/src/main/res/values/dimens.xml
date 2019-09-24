@@ -126,6 +126,22 @@
     <dimen name="uifabric_progress_circular_anim_value_to">360</dimen>
     <dimen name="uifabric_progress_circular_anim_pivot">50%</dimen>
 
+    <!--Searchbar-->
+    <dimen name="uifabric_searchbar_padding_bottom">3dp</dimen>
+    <dimen name="uifabric_searchbar_search_view_container_margin_vertical">8dp</dimen>
+    <dimen name="uifabric_searchbar_search_view_container_margin_horizontal">16dp</dimen>
+    <dimen name="uifabric_searchbar_search_view_container_with_icons_margin_end">4dp</dimen>
+    <dimen name="uifabric_searchbar_search_view_container_corner_radius">6dp</dimen>
+    <dimen name="uifabric_searchbar_search_view_height">34dp</dimen>
+    <dimen name="uifabric_searchbar_search_icon_padding_start">16dp</dimen>
+    <dimen name="uifabric_searchbar_search_icon_padding_end">8dp</dimen>
+    <dimen name="uifabric_searchbar_with_search_icon_search_view_margin_start">4dp</dimen>
+    <dimen name="uifabric_searchbar_with_back_button_search_view_margin_start">0dp</dimen>
+    <dimen name="uifabric_searchbar_with_search_icon_search_view_text_padding_start">8dp</dimen>
+    <!--This 1dp padding difference helps make room for the cursor and keep the hint aligned between focus states.-->
+    <dimen name="uifabric_searchbar_with_back_button_search_view_text_padding_start">7dp</dimen>
+    <dimen name="uifabric_searchbar_progress_size">28dp</dimen>
+
     <!--Shared-->
     <dimen name="uifabric_divider_height">.5dp</dimen>
     <dimen name="uifabric_corner_radius_small">2dp</dimen>

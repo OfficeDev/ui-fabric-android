@@ -94,6 +94,9 @@
   <string name="popup_menu_accessibility_item_state_checked">құсбелгі қойылды</string>
   <string name="popup_menu_accessibility_item_state_not_checked">құсбелгі қойылмаған</string>
   <string name="progress_circular_content_description_indeterminate">Анықталмаған</string>
+  <string name="searchbar_clear_search">Clear search</string>
+  <string name="searchbar_back">Back</string>
+  <string name="searchbar_query_hint_default">Search</string>
   <string name="done">Дайын</string>
   <string name="tooltip_accessibility_dismiss_action">жабу</string>
   <string name="tooltip_accessibility_dismiss_announcement">Сөзкөмек жабылды</string>

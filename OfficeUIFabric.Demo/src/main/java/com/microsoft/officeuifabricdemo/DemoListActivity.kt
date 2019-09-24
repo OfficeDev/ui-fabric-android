@@ -7,9 +7,11 @@ package com.microsoft.officeuifabricdemo
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.SearchView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
@@ -23,7 +25,7 @@ import kotlinx.android.synthetic.main.demo_list.*
  * This activity presents a list of [Demo]s, which when touched,
  * lead to a subclass of [DemoActivity] representing demo details.
  */
-class DemoListActivity : AppCompatActivity() {
+class DemoListActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         // Launch Screen: Setting the theme here removes the launch screen, which was added to this activity
         // by setting the theme to App.Launcher in the manifest.
@@ -37,13 +39,39 @@ class DemoListActivity : AppCompatActivity() {
 
         toolbar.subtitle = BuildConfig.VERSION_NAME
 
+        searchbar.onQueryTextListener = this
+
         demo_list.adapter = DemoListAdapter()
         demo_list.addItemDecoration(ListItemDivider(this, DividerItemDecoration.VERTICAL))
 
         Initializer.init(application)
     }
 
+    override fun onQueryTextSubmit(query: String): Boolean {
+        return false
+    }
+
+    override fun onQueryTextChange(query: String): Boolean {
+        val userInput = query.toLowerCase()
+        val filteredDemoList = DEMOS.filter { it.title.toLowerCase().contains(userInput) }
+
+        searchbar.showSearchProgress = true
+
+        Handler().postDelayed({
+            (demo_list.adapter as DemoListAdapter).demos = filteredDemoList as ArrayList<Demo>
+            searchbar.showSearchProgress = false
+        }, 500)
+
+        return true
+    }
+
     private class DemoListAdapter : RecyclerView.Adapter<DemoListAdapter.ViewHolder>() {
+        var demos = DEMOS
+            set(value) {
+                field = value
+                notifyDataSetChanged()
+            }
+
         private val onClickListener = View.OnClickListener { view ->
             val demo = view.tag as Demo
             val intent = Intent(view.context, demo.demoClass.java)
@@ -51,7 +79,7 @@ class DemoListActivity : AppCompatActivity() {
             view.context.startActivity(intent)
         }
 
-        override fun getItemCount(): Int = DEMOS.size
+        override fun getItemCount(): Int = demos.size
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val listItemView = ListItemView(parent.context)
@@ -60,7 +88,7 @@ class DemoListActivity : AppCompatActivity() {
         }
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-            val demo = DEMOS[position]
+            val demo = demos[position]
             holder.listItem.title = demo.title
             with(holder.itemView) {
                 tag = demo

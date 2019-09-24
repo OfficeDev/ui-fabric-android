@@ -92,6 +92,9 @@
   <string name="popup_menu_accessibility_item_state_checked">선택함</string>
   <string name="popup_menu_accessibility_item_state_not_checked">선택하지 않음</string>
   <string name="progress_circular_content_description_indeterminate">계산 중...</string>
+  <string name="searchbar_clear_search">Clear search</string>
+  <string name="searchbar_back">Back</string>
+  <string name="searchbar_query_hint_default">Search</string>
   <string name="done">완료</string>
   <string name="tooltip_accessibility_dismiss_action">해제</string>
   <string name="tooltip_accessibility_dismiss_announcement">도구 설명 해제</string>

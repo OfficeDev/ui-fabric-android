@@ -98,6 +98,9 @@
   <string name="popup_menu_accessibility_item_state_checked">pažymėta</string>
   <string name="popup_menu_accessibility_item_state_not_checked">nepažymėta</string>
   <string name="progress_circular_content_description_indeterminate">Neapibrėžtas</string>
+  <string name="searchbar_clear_search">Clear search</string>
+  <string name="searchbar_back">Back</string>
+  <string name="searchbar_query_hint_default">Search</string>
   <string name="done">Atlikta</string>
   <string name="tooltip_accessibility_dismiss_action">išjungti</string>
   <string name="tooltip_accessibility_dismiss_announcement">Patarimas atmestas</string>

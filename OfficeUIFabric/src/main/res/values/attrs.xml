@@ -26,6 +26,13 @@
     <attr name="uifabricForegroundOnSecondaryColor" format="reference|color"/>
     <attr name="uifabricDividerColor" format="reference|color"/>
 
+    <!--Transparent Backgrounds-->
+    <attr name="uifabricBackgroundSecondary20Color" format="reference|color"/>
+
+    <!--Transparent Foregrounds-->
+    <attr name="uifabricForegroundOnPrimary90Color" format="reference|color"/>
+    <attr name="uifabricForegroundOnPrimary70Color" format="reference|color"/>
+
     <!-- *** Semantic Colors *** -->
 
     <!--Button-->
@@ -113,6 +120,16 @@
 
     <!--Progress-->
     <attr name="uifabricProgressPrimaryColor" format="reference|color"/>
+
+    <!--Searchbar-->
+    <attr name="uifabricSearchbarBackgroundColor" format="reference|color"/>
+    <attr name="uifabricSearchbarSearchViewContainerBackgroundColor" format="reference|color"/>
+    <attr name="uifabricSearchbarBackButtonColor" format="reference|color"/>
+    <attr name="uifabricSearchbarSearchIconColor" format="reference|color"/>
+    <attr name="uifabricSearchbarSearchViewTextColor" format="reference|color"/>
+    <attr name="uifabricSearchbarSearchViewTextHintColor" format="reference|color"/>
+    <attr name="uifabricSearchbarProgressColor" format="reference|color"/>
+    <attr name="uifabricSearchbarCloseIconColor" format="reference|color"/>
 
     <!--Snackbar-->
     <attr name="uifabricSnackbarBackgroundColor" format="reference|color"/>
