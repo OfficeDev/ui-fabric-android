@@ -10,4 +10,5 @@
     <item name="uifabric_number_picker_increment" type="id" />
     <item name="uifabric_number_picker_decrement" type="id" />
     <item name="uifabric_snackbar_custom_view" type="id" />
+    <item name="uifabric_bottom_sheet_item_divider" type="id" />
 </resources>

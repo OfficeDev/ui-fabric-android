@@ -35,7 +35,7 @@
             android:id="@+id/drawer_content"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"/>
 
     </com.microsoft.officeuifabric.drawer.DrawerView>
 

@@ -28,6 +28,8 @@
     <string name="bottom_sheet_dialog">BottomSheetDialog</string>
     <string name="bottom_sheet_with_single_line_items">Show with single line items</string>
     <string name="bottom_sheet_with_double_line_items">Show with double line items</string>
+    <string name="bottom_sheet_with_single_line_header">Show with single line header</string>
+    <string name="bottom_sheet_with_double_line_title_and_dividers">Show with double line header and dividers</string>
     <string name="bottom_sheet_dialog_button">Show</string>
     <!--Single line items-->
     <string name="bottom_sheet_item_flag_title">Flag</string>
@@ -51,6 +53,19 @@
     <string name="bottom_sheet_item_manage_title">Manage</string>
     <string name="bottom_sheet_item_manage_subtitle">Manage your media library</string>
     <string name="bottom_sheet_item_manage_toast">Manage item clicked</string>
+    <!--Single line header-->
+    <string name="bottom_sheet_item_single_line_header">Email Actions</string>
+    <!--Double line header-->
+    <string name="bottom_sheet_item_double_line_header">Documents</string>
+    <string name="bottom_sheet_item_double_line_header_subtitle">Last updated 2:14PM</string>
+    <string name="bottom_sheet_item_double_line_header_share">Share</string>
+    <string name="bottom_sheet_item_double_line_header_share_toast">Share item clicked</string>
+    <string name="bottom_sheet_item_double_line_header_move">Move</string>
+    <string name="bottom_sheet_item_double_line_header_move_toast">Move item clicked</string>
+    <string name="bottom_sheet_item_double_line_header_delete">Delete</string>
+    <string name="bottom_sheet_item_double_line_header_delete_toast">Delete item clicked</string>
+    <string name="bottom_sheet_item_double_line_header_info">Info</string>
+    <string name="bottom_sheet_item_double_line_header_info_toast">Info item clicked</string>
     <!--BottomSheetDialog-->
     <string name="bottom_sheet_item_clock_title">Clock</string>
     <string name="bottom_sheet_item_clock_toast">Clock item clicked</string>

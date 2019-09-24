@@ -7,18 +7,16 @@ package com.microsoft.officeuifabric.bottomsheet
 
 import android.content.Context
 import android.support.annotation.StyleRes
-import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
 import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.listitem.ListItemView
-import com.microsoft.officeuifabric.bottomsheet.BottomSheetItem.OnClickListener
+import com.microsoft.officeuifabric.util.createImageView
 
 internal class BottomSheetAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    var onBottomSheetItemClickListener: OnClickListener? = null
+    var onBottomSheetItemClickListener: BottomSheetItem.OnClickListener? = null
 
     private val context: Context
     private val items: ArrayList<BottomSheetItem>
@@ -55,21 +53,15 @@ internal class BottomSheetAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder
         }
 
         fun setBottomSheetItem(item: BottomSheetItem) {
-            listItemView.customView = createImageView(item.imageId)
+            listItemView.customView = context.createImageView(item.imageId)
             listItemView.title = item.title
             listItemView.subtitle = item.subtitle
+            listItemView.setTag(R.id.uifabric_bottom_sheet_item_divider, item.useDivider)
             listItemView.layoutDensity = ListItemView.LayoutDensity.COMPACT
 
             listItemView.setOnClickListener {
                 onBottomSheetItemClickListener?.onBottomSheetItemClick(item)
             }
-        }
-
-        private fun createImageView(imageId: Int): ImageView {
-            val drawable = ContextCompat.getDrawable(context, imageId)
-            val imageView = ImageView(context)
-            imageView.setImageDrawable(drawable)
-            return imageView
         }
     }
 }

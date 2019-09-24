@@ -18,6 +18,10 @@
     <item name="bottom_sheet_item_alarm" type="id" />
     <item name="bottom_sheet_item_stop_watch" type="id" />
     <item name="bottom_sheet_item_time_zone" type="id" />
+    <item name="bottom_sheet_item_double_line_header_delete" type="id" />
+    <item name="bottom_sheet_item_double_line_header_share" type="id" />
+    <item name="bottom_sheet_item_double_line_header_move" type="id" />
+    <item name="bottom_sheet_item_double_line_header_info" type="id" />
 
     <!--PopupMenu-->
     <item name="popup_menu_item_share" type="id" />

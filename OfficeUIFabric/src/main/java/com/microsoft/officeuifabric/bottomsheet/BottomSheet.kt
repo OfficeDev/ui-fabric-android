@@ -9,22 +9,24 @@ import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
 import android.support.v7.app.AppCompatDialogFragment
-import com.microsoft.officeuifabric.bottomsheet.BottomSheetItem.OnClickListener
 
 /**
  * [BottomSheet] is used to display a list of menu items in a modal dialog inside of a Fragment that retains state.
  */
-class BottomSheet : AppCompatDialogFragment(), OnClickListener {
+class BottomSheet : AppCompatDialogFragment(), BottomSheetItem.OnClickListener {
     companion object {
         private const val ITEMS = "items"
+        private const val HEADER_ITEM = "headerItem"
 
         /**
          * @param items is an ArrayList of [BottomSheetItem]s.
          */
         @JvmStatic
-        fun newInstance(items: ArrayList<BottomSheetItem>): BottomSheet {
+        @JvmOverloads
+        fun newInstance(items: ArrayList<BottomSheetItem>, headerItem: BottomSheetItem? = null): BottomSheet {
             val bundle = Bundle()
             bundle.putParcelableArrayList(ITEMS, items)
+            bundle.putParcelable(HEADER_ITEM, headerItem)
 
             val bottomSheet = BottomSheet()
             bottomSheet.arguments = bundle
@@ -38,13 +40,15 @@ class BottomSheet : AppCompatDialogFragment(), OnClickListener {
 
     private lateinit var bottomSheetDialog: BottomSheetDialog
     private lateinit var items: ArrayList<BottomSheetItem>
+    private var headerItem: BottomSheetItem? = null
     private var clickedItem: BottomSheetItem? = null
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val bundle = savedInstanceState ?: arguments
-        items = bundle?.getParcelableArrayList<BottomSheetItem>(ITEMS) ?: arrayListOf()
+        items = bundle?.getParcelableArrayList(ITEMS) ?: arrayListOf()
+        headerItem = bundle?.getParcelable(HEADER_ITEM)
 
-        bottomSheetDialog = BottomSheetDialog(context!!, items, theme)
+        bottomSheetDialog = BottomSheetDialog(context!!, items, headerItem, theme)
         bottomSheetDialog.onItemClickListener = this
 
         return bottomSheetDialog
@@ -53,6 +57,7 @@ class BottomSheet : AppCompatDialogFragment(), OnClickListener {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putParcelableArrayList(ITEMS, items)
+        outState.putParcelable(HEADER_ITEM, headerItem)
     }
 
     override fun onBottomSheetItemClick(item: BottomSheetItem) {
@@ -64,8 +69,8 @@ class BottomSheet : AppCompatDialogFragment(), OnClickListener {
     override fun onDismiss(dialog: DialogInterface?) {
         super.onDismiss(dialog)
         clickedItem?.let {
-            (parentFragment as? OnClickListener)?.onBottomSheetItemClick(it)
-            (activity as? OnClickListener)?.onBottomSheetItemClick(it)
+            (parentFragment as? BottomSheetItem.OnClickListener)?.onBottomSheetItemClick(it)
+            (activity as? BottomSheetItem.OnClickListener)?.onBottomSheetItemClick(it)
             clickedItem = null
         }
 

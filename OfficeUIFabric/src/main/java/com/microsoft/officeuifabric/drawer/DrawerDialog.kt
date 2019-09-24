@@ -14,6 +14,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.theming.UIFabricContextThemeWrapper
+import com.microsoft.officeuifabric.util.displaySize
+import com.microsoft.officeuifabric.util.statusBarHeight
 import kotlinx.android.synthetic.main.dialog_drawer.*
 import kotlinx.android.synthetic.main.dialog_drawer.view.*
 
@@ -43,7 +45,7 @@ open class DrawerDialog : AppCompatDialog {
     }
 
     private var isExpanded: Boolean = false
-    private val container: View = layoutInflater.inflate(R.layout.dialog_drawer, null)
+    protected val container: View = layoutInflater.inflate(R.layout.dialog_drawer, null)
 
     @JvmOverloads
     constructor(context: Context, @StyleRes theme: Int = 0) : super(UIFabricContextThemeWrapper(context), if (theme == 0) R.style.Drawer_UIFabric else theme) {
@@ -92,8 +94,19 @@ open class DrawerDialog : AppCompatDialog {
         // For persistent instances calling requestLayout fixes incorrect positioning of the drawer
         // after rotation from landscape to portrait
         drawer.requestLayout()
+        updateHeight()
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
         isExpanded = true
+    }
+
+    // Make sure dialog is not under status bar and is fully visible
+    private fun updateHeight() {
+        val maxHeight = context.displaySize.y - context.statusBarHeight
+        if (drawer.height > maxHeight) {
+            val layoutParams = drawer.layoutParams
+            layoutParams.height = maxHeight
+            drawer.layoutParams = layoutParams
+        }
     }
 
     protected fun collapse() {

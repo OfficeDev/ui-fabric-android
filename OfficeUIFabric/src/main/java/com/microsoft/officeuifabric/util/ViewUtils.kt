@@ -5,8 +5,12 @@
 
 package com.microsoft.officeuifabric.util
 
+import android.content.Context
+import android.support.annotation.DrawableRes
+import android.support.v4.content.ContextCompat
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 
 /**
  * Adds a given [view] to a [ViewGroup]. Especially useful when you need a custom view in a control.
@@ -28,6 +32,17 @@ fun ViewGroup.setContentAndUpdateVisibility(view: View?, updateLayout: (() -> Un
     updateLayout?.invoke()
     addView(view)
     visibility = View.VISIBLE
+}
+
+/**
+ * Returns an ImageView containing a Drawable.
+ * @param imageId a Drawable resource id.
+ */
+fun Context.createImageView(@DrawableRes imageId: Int): ImageView {
+    val drawable = ContextCompat.getDrawable(this, imageId)
+    val imageView = ImageView(this)
+    imageView.setImageDrawable(drawable)
+    return imageView
 }
 
 /**

@@ -19,7 +19,7 @@
             android:fillType="evenOdd"
             android:pathData="M34,18C34,9.1634 26.8366,2 18,2C9.1634,2 2,9.1634 2,18L2,18C2,26.8366 9.1634,34 18,34C22.4417,34 26.4607,32.1901 29.3596,29.2676"
             android:strokeWidth="4"
-            android:strokeColor="#8E8E93"
+            android:strokeColor="#8E8E8E"
             android:strokeLineCap="round"
             android:strokeLineJoin="round" />
     </group>

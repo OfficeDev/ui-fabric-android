@@ -19,20 +19,29 @@ class BottomSheetItem : Parcelable {
     val imageId: Int
     val title: String
     val subtitle: String
+    val useDivider: Boolean
 
     @JvmOverloads
-    constructor(id: Int, @DrawableRes imageId: Int, title: String, subtitle: String = "") {
+    constructor(
+        id: Int = NO_ID,
+        @DrawableRes imageId: Int = NO_ID,
+        title: String,
+        subtitle: String = "",
+        useDivider: Boolean = false
+    ) {
         this.id = id
         this.imageId = imageId
         this.title = title
         this.subtitle = subtitle
+        this.useDivider = useDivider
     }
 
     private constructor(parcel: Parcel) : this(
         id = parcel.readInt(),
         imageId = parcel.readInt(),
         title = parcel.readString() ?: "",
-        subtitle = parcel.readString() ?: ""
+        subtitle = parcel.readString() ?: "",
+        useDivider = parcel.readInt() == 1
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -40,12 +49,18 @@ class BottomSheetItem : Parcelable {
         parcel.writeInt(imageId)
         parcel.writeString(title)
         parcel.writeString(subtitle)
+        parcel.writeInt(if (useDivider) 1 else 0)
     }
 
     override fun describeContents(): Int = 0
 
-    companion object CREATOR : Parcelable.Creator<BottomSheetItem> {
-        override fun createFromParcel(source: Parcel): BottomSheetItem = BottomSheetItem(source)
-        override fun newArray(size: Int): Array<BottomSheetItem?> = arrayOfNulls(size)
+    companion object {
+        const val NO_ID = -1
+
+        @JvmField
+        val CREATOR = object : Parcelable.Creator<BottomSheetItem> {
+            override fun createFromParcel(source: Parcel): BottomSheetItem = BottomSheetItem(source)
+            override fun newArray(size: Int): Array<BottomSheetItem?> = arrayOfNulls(size)
+        }
     }
 }

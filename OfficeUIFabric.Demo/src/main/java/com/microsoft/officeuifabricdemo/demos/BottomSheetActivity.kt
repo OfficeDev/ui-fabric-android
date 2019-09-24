@@ -9,14 +9,13 @@ import android.os.Bundle
 import com.microsoft.officeuifabric.bottomsheet.BottomSheet
 import com.microsoft.officeuifabric.bottomsheet.BottomSheetDialog
 import com.microsoft.officeuifabric.bottomsheet.BottomSheetItem
-import com.microsoft.officeuifabric.bottomsheet.BottomSheetItem.OnClickListener
 import com.microsoft.officeuifabric.snackbar.Snackbar
 import com.microsoft.officeuifabricdemo.DemoActivity
 import com.microsoft.officeuifabricdemo.R
 import kotlinx.android.synthetic.main.activity_bottom_sheet.*
 import kotlinx.android.synthetic.main.activity_demo_detail.*
 
-class BottomSheetActivity : DemoActivity(), OnClickListener {
+class BottomSheetActivity : DemoActivity(), BottomSheetItem.OnClickListener {
     override val contentLayoutId: Int
         get() = R.layout.activity_bottom_sheet
 
@@ -25,6 +24,7 @@ class BottomSheetActivity : DemoActivity(), OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // Single line items
         show_with_single_line_items_button.setOnClickListener {
             val bottomSheet = BottomSheet.newInstance(
                 arrayListOf(
@@ -53,6 +53,7 @@ class BottomSheetActivity : DemoActivity(), OnClickListener {
             bottomSheet.show(supportFragmentManager, null)
         }
 
+        // Double line items
         show_with_double_line_items_button.setOnClickListener {
             val bottomSheet = BottomSheet.newInstance(
                 arrayListOf(
@@ -85,30 +86,98 @@ class BottomSheetActivity : DemoActivity(), OnClickListener {
             bottomSheet.show(supportFragmentManager, null)
         }
 
+        // Single line header
+        show_with_single_line_items_and_header_button.setOnClickListener {
+            val bottomSheet = BottomSheet.newInstance(
+                arrayListOf(
+                    BottomSheetItem(
+                        R.id.bottom_sheet_item_flag,
+                        R.drawable.ic_flag,
+                        getString(R.string.bottom_sheet_item_flag_title)
+                    ),
+                    BottomSheetItem(
+                        R.id.bottom_sheet_item_reply,
+                        R.drawable.ic_reply,
+                        getString(R.string.bottom_sheet_item_reply_title)
+                    ),
+                    BottomSheetItem(
+                        R.id.bottom_sheet_item_forward,
+                        R.drawable.ic_forward,
+                        getString(R.string.bottom_sheet_item_forward_title)
+                    ),
+                    BottomSheetItem(
+                        R.id.bottom_sheet_item_delete,
+                        R.drawable.ic_trash_can,
+                        getString(R.string.bottom_sheet_item_delete_title)
+                    )
+                ),
+                BottomSheetItem(
+                   title = getString(R.string.bottom_sheet_item_single_line_header)
+                )
+            )
+            bottomSheet.show(supportFragmentManager, null)
+        }
+
+        // Double line header
+        show_with_double_line_items_and_two_line_header_button.setOnClickListener {
+            val bottomSheet = BottomSheet.newInstance(
+                arrayListOf(
+                    BottomSheetItem(
+                        R.id.bottom_sheet_item_double_line_header_share,
+                        R.drawable.ic_share,
+                        getString(R.string.bottom_sheet_item_double_line_header_share)
+                    ),
+                    BottomSheetItem(
+                        R.id.bottom_sheet_item_double_line_header_move,
+                        R.drawable.ic_folder_move,
+                        getString(R.string.bottom_sheet_item_double_line_header_move)
+                    ),
+                    BottomSheetItem(
+                        R.id.bottom_sheet_item_double_line_header_delete,
+                        R.drawable.ic_trash_can,
+                        getString(R.string.bottom_sheet_item_double_line_header_delete)
+                    ),
+                    BottomSheetItem(
+                        R.id.bottom_sheet_item_double_line_header_info,
+                        R.drawable.ic_info,
+                        getString(R.string.bottom_sheet_item_double_line_header_info),
+                        useDivider = true
+                    )
+                ),
+                BottomSheetItem(
+                    imageId = R.drawable.ic_folder,
+                    title = getString(R.string.bottom_sheet_item_double_line_header),
+                    subtitle = getString(R.string.bottom_sheet_item_double_line_header_subtitle)
+                )
+            )
+            bottomSheet.show(supportFragmentManager, null)
+        }
+
+        // Dialog
         show_bottom_sheet_dialog_button.setOnClickListener {
             if (bottomSheetDialog == null) {
                 bottomSheetDialog = BottomSheetDialog(
                     this,
                     arrayListOf(
                         BottomSheetItem(
-                            R.id.bottom_sheet_item_flag,
-                            R.drawable.ic_flag,
-                            getString(R.string.bottom_sheet_item_flag_title)
+                            R.id.bottom_sheet_item_clock,
+                            R.drawable.ic_clock_16,
+                            getString(R.string.bottom_sheet_item_clock_title)
                         ),
                         BottomSheetItem(
-                            R.id.bottom_sheet_item_reply,
-                            R.drawable.ic_reply,
-                            getString(R.string.bottom_sheet_item_reply_title)
+                            R.id.bottom_sheet_item_alarm,
+                            R.drawable.ic_alarm,
+                            getString(R.string.bottom_sheet_item_alarm_title)
                         ),
                         BottomSheetItem(
-                            R.id.bottom_sheet_item_forward,
-                            R.drawable.ic_forward,
-                            getString(R.string.bottom_sheet_item_forward_title)
+                            R.id.bottom_sheet_item_stop_watch,
+                            R.drawable.ic_stop_watch,
+                            getString(R.string.bottom_sheet_item_stop_watch_title)
                         ),
                         BottomSheetItem(
-                            R.id.bottom_sheet_item_delete,
-                            R.drawable.ic_trash_can,
-                            getString(R.string.bottom_sheet_item_delete_title)
+                            R.id.bottom_sheet_item_time_zone,
+                            R.drawable.ic_time_zone,
+                            getString(R.string.bottom_sheet_item_time_zone_title)
                         )
                     )
                 )
@@ -126,19 +195,25 @@ class BottomSheetActivity : DemoActivity(), OnClickListener {
 
     override fun onBottomSheetItemClick(item: BottomSheetItem) {
         when(item.id) {
-            // single line items
+            // Single line items & single line header
             R.id.bottom_sheet_item_flag -> showSnackbar(resources.getString(R.string.bottom_sheet_item_flag_toast))
             R.id.bottom_sheet_item_reply -> showSnackbar(resources.getString(R.string.bottom_sheet_item_reply_toast))
             R.id.bottom_sheet_item_forward -> showSnackbar(resources.getString(R.string.bottom_sheet_item_forward_toast))
             R.id.bottom_sheet_item_delete -> showSnackbar(resources.getString(R.string.bottom_sheet_item_delete_toast))
 
-            // double line items
+            // Double line items
             R.id.bottom_sheet_item_camera -> showSnackbar(resources.getString(R.string.bottom_sheet_item_camera_toast))
             R.id.bottom_sheet_item_gallery -> showSnackbar(resources.getString(R.string.bottom_sheet_item_gallery_toast))
             R.id.bottom_sheet_item_videos -> showSnackbar(resources.getString(R.string.bottom_sheet_item_videos_toast))
             R.id.bottom_sheet_item_manage -> showSnackbar(resources.getString(R.string.bottom_sheet_item_manage_toast))
 
-            // dialog
+            // Double line header
+            R.id.bottom_sheet_item_double_line_header_move -> showSnackbar(getString(R.string.bottom_sheet_item_double_line_header_move_toast))
+            R.id.bottom_sheet_item_double_line_header_share -> showSnackbar(getString(R.string.bottom_sheet_item_double_line_header_share_toast))
+            R.id.bottom_sheet_item_double_line_header_delete -> showSnackbar(getString(R.string.bottom_sheet_item_double_line_header_delete_toast))
+            R.id.bottom_sheet_item_double_line_header_info -> showSnackbar(getString(R.string.bottom_sheet_item_double_line_header_info_toast))
+
+            // Dialog
             R.id.bottom_sheet_item_clock -> showSnackbar(resources.getString(R.string.bottom_sheet_item_clock_toast))
             R.id.bottom_sheet_item_alarm -> showSnackbar(resources.getString(R.string.bottom_sheet_item_alarm_toast))
             R.id.bottom_sheet_item_stop_watch -> showSnackbar(resources.getString(R.string.bottom_sheet_item_stop_watch_toast))

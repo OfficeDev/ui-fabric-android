@@ -7,14 +7,11 @@ package com.microsoft.officeuifabric.listitem
 
 import android.content.Context
 import android.graphics.Canvas
-import android.graphics.Paint
 import android.graphics.Rect
-import android.support.v4.content.ContextCompat
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import com.microsoft.officeuifabric.R
-import com.microsoft.officeuifabric.util.ThemeUtil
+import com.microsoft.officeuifabric.view.BaseDividerItemDecoration
 
 /**
  * This [DividerItemDecoration] is designed to be used with [RecyclerView]s containing [ListItemView]s.
@@ -24,34 +21,13 @@ import com.microsoft.officeuifabric.util.ThemeUtil
  * If your view has multiple [ListSubHeaderView]s, this class draws a section divider with no inset
  * between the last list item view in the section and next section's sub header view.
  */
-class ListItemDivider : DividerItemDecoration {
-    private val context: Context
-
-    private val dividerPaint: Paint = Paint()
-    private val spacerPaint: Paint = Paint()
-
-    private val dividerHeight: Float
-    private val subHeaderDividerPadding: Float
-
-    constructor(context: Context, orientation: Int) : super(context, orientation) {
-        this.context = context
-
-        dividerHeight = context.resources.getDimension(R.dimen.uifabric_divider_height)
-        subHeaderDividerPadding = context.resources.getDimension(R.dimen.uifabric_list_sub_header_divider_padding)
-
-        dividerPaint.style = Paint.Style.FILL
-        dividerPaint.color = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricDividerColor)
-
-        spacerPaint.style = Paint.Style.FILL
-        spacerPaint.color = ContextCompat.getColor(context, android.R.color.transparent)
-    }
-
+class ListItemDivider(context: Context, orientation: Int) : BaseDividerItemDecoration(context, orientation) {
     override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
         val viewPosition = parent.getChildAdapterPosition(view)
         val previousView = parent.getChildAt(viewPosition - 1)
 
         outRect.top = when {
-            viewPosition == 0  && view is ListSubHeaderView -> subHeaderDividerPadding.toInt()
+            viewPosition == 0 && view is ListSubHeaderView -> subHeaderDividerPadding.toInt()
             view is ListSubHeaderView -> ((subHeaderDividerPadding * 2) + dividerHeight).toInt()
             previousView is ListSubHeaderView -> 0
             else -> dividerHeight.toInt()
@@ -72,31 +48,19 @@ class ListItemDivider : DividerItemDecoration {
 
             val useSectionDivider = itemView is ListSubHeaderView
 
-            val topOfFirstSpacer = itemView.top.toFloat() - (subHeaderDividerPadding * 2) - dividerHeight
-            val bottomOfFirstSpacer = topOfFirstSpacer + subHeaderDividerPadding
-
-            val topOfDivider = if (useSectionDivider) bottomOfFirstSpacer else itemView.top.toFloat() - dividerHeight
-            val bottomOfDivider = topOfDivider + dividerHeight
-
-            val topOfSecondSpacer = bottomOfDivider
-            val bottomOfSecondSpacer = topOfSecondSpacer + subHeaderDividerPadding
+            val spacerLeft = itemView.left.toFloat()
+            val spacerRight = itemView.right.toFloat()
 
             val leftOfDivider = if (useSectionDivider) 0f else listItemView?.textAreaStartInset ?: 0f
             val rightOfDivider = itemView.right - if (useSectionDivider) 0f else listItemView?.textAreaEndInset ?: 0f
 
-            val spacerLeft = itemView.left.toFloat()
-            val spacerRight = itemView.right.toFloat()
+            if (useSectionDivider)
+                drawTopSpacer(canvas, itemView, spacerLeft, spacerRight)
+
+            drawDivider(canvas, itemView, leftOfDivider, rightOfDivider, useSectionDivider)
 
             if (useSectionDivider)
-                // Draw the spacer
-                canvas.drawRect(spacerLeft, topOfFirstSpacer, spacerRight, bottomOfFirstSpacer, spacerPaint)
-
-            // Draw the divider
-            canvas.drawRect(leftOfDivider, topOfDivider, rightOfDivider, bottomOfDivider, dividerPaint)
-
-            if (useSectionDivider)
-                // Draw the spacer
-                canvas.drawRect(spacerLeft, topOfSecondSpacer, spacerRight, bottomOfSecondSpacer, spacerPaint)
+                drawBottomSpacer(canvas, itemView, spacerLeft, spacerRight)
         }
     }
 }
