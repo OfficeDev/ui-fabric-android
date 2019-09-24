@@ -12,6 +12,7 @@ import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.microsoft.officeuifabric.view.BaseDividerItemDecoration
+import kotlin.math.ceil
 
 /**
  * This [DividerItemDecoration] is designed to be used with [RecyclerView]s containing [ListItemView]s.
@@ -30,7 +31,7 @@ class ListItemDivider(context: Context, orientation: Int) : BaseDividerItemDecor
             viewPosition == 0 && view is ListSubHeaderView -> subHeaderDividerPadding.toInt()
             view is ListSubHeaderView -> ((subHeaderDividerPadding * 2) + dividerHeight).toInt()
             previousView is ListSubHeaderView -> 0
-            else -> dividerHeight.toInt()
+            else -> ceil(dividerHeight).toInt()
         }
 
         outRect.bottom = 0
