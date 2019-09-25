@@ -11,8 +11,6 @@
     <!--Button-->
     <style name="Widget.UIFabric.Button" parent="Widget.AppCompat.Button">
         <item name="android:background">@drawable/button_background</item>
-        <!--This foreground attribute brings back the ripple effect after setting background-->
-        <item name="android:foreground">?attr/selectableItemBackground</item>
         <item name="android:textAppearance">@style/TextAppearance.UIFabric.Button</item>
         <item name="android:paddingStart">@dimen/uifabric_button_padding_horizontal</item>
         <item name="android:paddingEnd">@dimen/uifabric_button_padding_horizontal</item>
@@ -24,8 +22,6 @@
     <!--We use Borderless button style as the parent to avoid drop shadow issues in some APIs.-->
     <style name="Widget.UIFabric.Button.Borderless" parent="Widget.AppCompat.Button.Borderless">
         <item name="android:background">@drawable/button_borderless_background</item>
-        <!--This foreground attribute brings back the ripple effect after setting background-->
-        <item name="android:foreground">?attr/selectableItemBackground</item>
         <item name="android:textAppearance">@style/TextAppearance.UIFabric.Button.Borderless</item>
         <item name="android:paddingStart">@dimen/uifabric_button_borderless_padding_horizontal</item>
         <item name="android:paddingEnd">@dimen/uifabric_button_borderless_padding_horizontal</item>

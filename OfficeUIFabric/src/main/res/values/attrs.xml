@@ -38,6 +38,7 @@
     <!--Button-->
     <attr name="uifabricButtonBackgroundDefaultColor" format="reference|color"/>
     <attr name="uifabricButtonBackgroundDisabledColor" format="reference|color"/>
+    <attr name="uifabricButtonBackgroundPressedColor" format="reference|color"/>
     <attr name="uifabricButtonTextDefaultColor" format="reference|color"/>
     <attr name="uifabricButtonTextDisabledColor" format="reference|color"/>
 

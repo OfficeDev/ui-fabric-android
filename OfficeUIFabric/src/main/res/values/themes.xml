@@ -47,6 +47,7 @@
         <!--Button-->
         <item name="uifabricButtonBackgroundDefaultColor">?attr/uifabricBackgroundPrimaryColor</item>
         <item name="uifabricButtonBackgroundDisabledColor">@color/uifabric_gray_50</item>
+        <item name="uifabricButtonBackgroundPressedColor">?attr/colorControlHighlight</item>
         <item name="uifabricButtonTextDefaultColor">?attr/uifabricForegroundOnPrimaryColor</item>
         <item name="uifabricButtonTextDisabledColor">@color/uifabric_gray_300</item>
 
