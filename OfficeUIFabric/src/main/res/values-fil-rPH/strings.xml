@@ -94,9 +94,9 @@
   <string name="popup_menu_accessibility_item_state_checked">naka-check</string>
   <string name="popup_menu_accessibility_item_state_not_checked">hindi naka-check</string>
   <string name="progress_circular_content_description_indeterminate">Hindi Matukoy</string>
-  <string name="searchbar_clear_search">Clear search</string>
-  <string name="searchbar_back">Back</string>
-  <string name="searchbar_query_hint_default">Search</string>
+  <string name="searchbar_clear_search">I-clear ang paghahanap</string>
+  <string name="searchbar_back">Bumalik</string>
+  <string name="searchbar_query_hint_default">Maghanap</string>
   <string name="done">Tapos na</string>
   <string name="tooltip_accessibility_dismiss_action">alisin</string>
   <string name="tooltip_accessibility_dismiss_announcement">Inalis ang tooltip</string>

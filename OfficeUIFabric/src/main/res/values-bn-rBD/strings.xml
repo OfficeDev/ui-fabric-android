@@ -94,9 +94,9 @@
   <string name="popup_menu_accessibility_item_state_checked">টিক চিহ্ন দেওয়া হয়েছে</string>
   <string name="popup_menu_accessibility_item_state_not_checked">টিক চিহ্ন দেওয়া হয়নি</string>
   <string name="progress_circular_content_description_indeterminate">অনির্দিষ্ট</string>
-  <string name="searchbar_clear_search">Clear search</string>
-  <string name="searchbar_back">Back</string>
-  <string name="searchbar_query_hint_default">Search</string>
+  <string name="searchbar_clear_search">সন্ধান সাফ করুন</string>
+  <string name="searchbar_back">ফিরে যান</string>
+  <string name="searchbar_query_hint_default">সন্ধান করুন</string>
   <string name="done">সম্পন্ন</string>
   <string name="tooltip_accessibility_dismiss_action">বাতিল করুন</string>
   <string name="tooltip_accessibility_dismiss_announcement">টুলটিপ খারিজ করা হয়েছে</string>
