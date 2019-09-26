@@ -96,9 +96,9 @@
   <string name="popup_menu_accessibility_item_state_checked">bifat</string>
   <string name="popup_menu_accessibility_item_state_not_checked">debifat</string>
   <string name="progress_circular_content_description_indeterminate">Nedeterminat</string>
-  <string name="searchbar_clear_search">Clear search</string>
-  <string name="searchbar_back">Back</string>
-  <string name="searchbar_query_hint_default">Search</string>
+  <string name="searchbar_clear_search">Goliți căutarea</string>
+  <string name="searchbar_back">Înapoi</string>
+  <string name="searchbar_query_hint_default">Căutare</string>
   <string name="done">Gata</string>
   <string name="tooltip_accessibility_dismiss_action">îndepărtare</string>
   <string name="tooltip_accessibility_dismiss_announcement">Sfat ecran îndepărtat</string>

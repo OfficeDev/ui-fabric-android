@@ -94,9 +94,9 @@
   <string name="popup_menu_accessibility_item_state_checked">e zgjedhur</string>
   <string name="popup_menu_accessibility_item_state_not_checked">nuk është zgjedhur</string>
   <string name="progress_circular_content_description_indeterminate"> I papërcaktuar</string>
-  <string name="searchbar_clear_search">Clear search</string>
-  <string name="searchbar_back">Back</string>
-  <string name="searchbar_query_hint_default">Search</string>
+  <string name="searchbar_clear_search">Pastro kërkimin</string>
+  <string name="searchbar_back">Prapa</string>
+  <string name="searchbar_query_hint_default">Kërko</string>
   <string name="done">U krye</string>
   <string name="tooltip_accessibility_dismiss_action">hiq</string>
   <string name="tooltip_accessibility_dismiss_announcement">Këshilla u hoq</string>

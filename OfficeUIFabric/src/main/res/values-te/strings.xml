@@ -94,9 +94,9 @@
   <string name="popup_menu_accessibility_item_state_checked">ఎంచుకున్నారు</string>
   <string name="popup_menu_accessibility_item_state_not_checked">ఎంపిక తీసివేసారు</string>
   <string name="progress_circular_content_description_indeterminate">మధ్యంతరం</string>
-  <string name="searchbar_clear_search">Clear search</string>
-  <string name="searchbar_back">Back</string>
-  <string name="searchbar_query_hint_default">Search</string>
+  <string name="searchbar_clear_search">శోధనను క్లియర్ చేయి</string>
+  <string name="searchbar_back">వెనుకకు</string>
+  <string name="searchbar_query_hint_default">శోధన</string>
   <string name="done">పూర్తయింది</string>
   <string name="tooltip_accessibility_dismiss_action">విస్మరించు</string>
   <string name="tooltip_accessibility_dismiss_announcement">టూల్‌టిప్ విస్మరించబడింది</string>

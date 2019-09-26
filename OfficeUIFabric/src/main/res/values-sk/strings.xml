@@ -98,9 +98,9 @@
   <string name="popup_menu_accessibility_item_state_checked">začiarknuté</string>
   <string name="popup_menu_accessibility_item_state_not_checked">nezačiarknuté</string>
   <string name="progress_circular_content_description_indeterminate">Neurčené</string>
-  <string name="searchbar_clear_search">Clear search</string>
-  <string name="searchbar_back">Back</string>
-  <string name="searchbar_query_hint_default">Search</string>
+  <string name="searchbar_clear_search">Vymazať vyhľadávanie</string>
+  <string name="searchbar_back">Dozadu</string>
+  <string name="searchbar_query_hint_default">Hľadať</string>
   <string name="done">Hotovo</string>
   <string name="tooltip_accessibility_dismiss_action">zrušiť</string>
   <string name="tooltip_accessibility_dismiss_announcement">Zrušil sa popis</string>
