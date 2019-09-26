@@ -98,7 +98,7 @@
   <string name="popup_menu_accessibility_item_state_checked">установлен</string>
   <string name="popup_menu_accessibility_item_state_not_checked">снят</string>
   <string name="progress_circular_content_description_indeterminate">Не определено</string>
-  <string name="searchbar_clear_search">Clear search</string>
+  <string name="searchbar_clear_search">Очистить поисковый запрос</string>
   <string name="searchbar_back">Назад</string>
   <string name="searchbar_query_hint_default">Поиск</string>
   <string name="done">Готово</string>
