@@ -98,9 +98,9 @@
   <string name="popup_menu_accessibility_item_state_checked">zaškrtnuto</string>
   <string name="popup_menu_accessibility_item_state_not_checked">nezaškrtnuto</string>
   <string name="progress_circular_content_description_indeterminate">Neurčitý</string>
-  <string name="searchbar_clear_search">Clear search</string>
-  <string name="searchbar_back">Back</string>
-  <string name="searchbar_query_hint_default">Search</string>
+  <string name="searchbar_clear_search">Vymazat hledání</string>
+  <string name="searchbar_back">Zpět</string>
+  <string name="searchbar_query_hint_default">Hledat</string>
   <string name="done">Hotovo</string>
   <string name="tooltip_accessibility_dismiss_action">zavřít</string>
   <string name="tooltip_accessibility_dismiss_announcement">Popis ovládacího prvku byl zavřen.</string>

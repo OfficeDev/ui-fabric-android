@@ -98,9 +98,9 @@
   <string name="popup_menu_accessibility_item_state_checked">установлено</string>
   <string name="popup_menu_accessibility_item_state_not_checked">не встановлено</string>
   <string name="progress_circular_content_description_indeterminate">Не визначено</string>
-  <string name="searchbar_clear_search">Clear search</string>
-  <string name="searchbar_back">Back</string>
-  <string name="searchbar_query_hint_default">Search</string>
+  <string name="searchbar_clear_search">Очистити пошук</string>
+  <string name="searchbar_back">Назад</string>
+  <string name="searchbar_query_hint_default">Пошук</string>
   <string name="done">Готово</string>
   <string name="tooltip_accessibility_dismiss_action">закрити</string>
   <string name="tooltip_accessibility_dismiss_announcement">Підказку закрито</string>
