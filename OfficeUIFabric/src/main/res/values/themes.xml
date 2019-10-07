@@ -76,7 +76,8 @@
         <item name="uifabricDateTimePickerToolbarTitleTextColor">?attr/colorPrimary</item>
         <item name="uifabricDateTimePickerTabTextColor">?attr/uifabricForegroundSecondaryColor</item>
         <item name="uifabricDateTimePickerDialogBackgroundColor">?attr/uifabricBackgroundColor</item>
-        <item name="uifabricDateTimePickerToolbarIconColor">?attr/colorPrimary</item>
+        <item name="uifabricDateTimePickerToolbarDoneIconColor">?attr/colorPrimary</item>
+        <item name="uifabricDateTimePickerToolbarNavigationIconColor">@color/uifabric_gray_400</item>
 
         <!--Dialog-->
         <item name="uifabricDialogBackgroundColor">?attr/uifabricBackgroundColor</item>
@@ -118,8 +119,8 @@
         <item name="uifabricPersonaChipBackgroundErrorColor">#FFF3F4</item>
         <item name="uifabricPersonaChipBackgroundErrorActiveColor">#E8484C</item>
         <item name="uifabricPersonaChipBackgroundPressedColor">#0D000000</item>
+        <item name="uifabricPersonaChipForegroundActiveColor">?attr/uifabricForegroundOnPrimaryColor</item>
         <item name="uifabricPersonaChipTextNormalColor">@color/uifabric_gray_900</item>
-        <item name="uifabricPersonaChipTextActiveColor">?attr/uifabricForegroundOnPrimaryColor</item>
         <item name="uifabricPersonaChipTextErrorColor">#E63237</item>
         <item name="uifabricPersonaChipTextDisabledColor">@color/uifabric_gray_400</item>
 

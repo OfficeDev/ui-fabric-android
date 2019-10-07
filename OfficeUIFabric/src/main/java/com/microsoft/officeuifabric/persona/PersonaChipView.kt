@@ -208,7 +208,7 @@ class PersonaChipView : TemplateView {
             ),
             intArrayOf(
                 ThemeUtil.getThemeAttrColor(context, R.attr.uifabricPersonaChipTextDisabledColor),
-                ThemeUtil.getThemeAttrColor(context, R.attr.uifabricPersonaChipTextActiveColor),
+                ThemeUtil.getThemeAttrColor(context, R.attr.uifabricPersonaChipForegroundActiveColor),
                 ThemeUtil.getThemeAttrColor(context, defaultTextColor)
             )
         )

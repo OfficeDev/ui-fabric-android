@@ -67,7 +67,8 @@
     <attr name="uifabricDateTimePickerToolbarTitleTextColor" format="reference|color"/>
     <attr name="uifabricDateTimePickerTabTextColor" format="reference|color"/>
     <attr name="uifabricDateTimePickerDialogBackgroundColor" format="reference|color"/>
-    <attr name="uifabricDateTimePickerToolbarIconColor" format="reference|color"/>
+    <attr name="uifabricDateTimePickerToolbarDoneIconColor" format="reference|color"/>
+    <attr name="uifabricDateTimePickerToolbarNavigationIconColor" format="reference|color"/>
 
     <!--Dialog-->
     <attr name="uifabricDialogBackgroundColor" format="reference|color"/>
@@ -108,8 +109,8 @@
     <attr name="uifabricPersonaChipBackgroundErrorColor" format="reference|color"/>
     <attr name="uifabricPersonaChipBackgroundErrorActiveColor" format="reference|color"/>
     <attr name="uifabricPersonaChipBackgroundPressedColor" format="reference|color"/>
+    <attr name="uifabricPersonaChipForegroundActiveColor" format="reference|color"/>
     <attr name="uifabricPersonaChipTextNormalColor" format="reference|color"/>
-    <attr name="uifabricPersonaChipTextActiveColor" format="reference|color"/>
     <attr name="uifabricPersonaChipTextErrorColor" format="reference|color"/>
     <attr name="uifabricPersonaChipTextDisabledColor" format="reference|color"/>
 

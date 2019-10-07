@@ -93,11 +93,13 @@ class SnackbarActivity : DemoActivity(), View.OnClickListener {
                 Snackbar.make(root_view, getString(R.string.snackbar_multiline), Snackbar.LENGTH_LONG).show()
 
             R.id.btn_snackbar_multiline_custom_view -> {
-                val doneIconImageView = ImageView(this)
-                doneIconImageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_done_white))
+                val checkmarkIconImageView = ImageView(this)
+                val checkmarkDrawable = ContextCompat.getDrawable(this, R.drawable.ms_ic_checkmark_24_filled)
+                checkmarkDrawable?.setTint(ContextCompat.getColor(this, R.color.uifabric_white))
+                checkmarkIconImageView.setImageDrawable(checkmarkDrawable)
 
                 Snackbar.make(root_view, getString(R.string.snackbar_multiline), Snackbar.LENGTH_LONG)
-                    .setCustomView(doneIconImageView)
+                    .setCustomView(checkmarkIconImageView)
                     .show()
             }
 
@@ -137,7 +139,7 @@ class SnackbarActivity : DemoActivity(), View.OnClickListener {
 
             R.id.btn_snackbar_announcement -> {
                 val announcementIconImageView = ImageView(this)
-                announcementIconImageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_birthday))
+                announcementIconImageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_gift_24_filled))
 
                 Snackbar.make(root_view, getString(R.string.snackbar_announcement), style = Snackbar.Style.ANNOUNCEMENT)
                     .setCustomView(announcementIconImageView)

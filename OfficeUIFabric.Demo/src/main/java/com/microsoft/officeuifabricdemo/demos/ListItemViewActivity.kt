@@ -49,8 +49,8 @@ class ListItemViewActivity : DemoActivity() {
     }
 
     private fun createList(): ArrayList<IBaseListItem> {
-        val smallIcon = ContextCompat.getDrawable(this, R.drawable.ms_ic_people)
-        val overflowIcon = ContextCompat.getDrawable(this, R.drawable.ms_ic_more)
+        val smallIcon = ContextCompat.getDrawable(this, R.drawable.ic_folder_24_outlined)
+        val overflowIcon = ContextCompat.getDrawable(this, R.drawable.ic_more_vertical_24_filled)
 
         // Single-line list example
 
