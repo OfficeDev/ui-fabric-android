@@ -101,8 +101,8 @@ class PopupMenuActivity : DemoActivity(), View.OnClickListener {
     private fun showPopupAllCheck(anchorView: View) {
         if (allCheckedItems == null)
             allCheckedItems = arrayListOf(
-                PopupMenuItem(R.id.popup_menu_item_notify_outside, getString(R.string.popup_menu_item_notify_outside), R.drawable.ic_sync_24_filled),
-                PopupMenuItem(R.id.popup_menu_item_notify_inactive, getString(R.string.popup_menu_item_notify_inactive), R.drawable.ic_clock_24_filled)
+                PopupMenuItem(R.id.popup_menu_item_notify_outside, getString(R.string.popup_menu_item_notify_outside), R.drawable.ic_sync),
+                PopupMenuItem(R.id.popup_menu_item_notify_inactive, getString(R.string.popup_menu_item_notify_inactive), R.drawable.ic_clock_24)
             )
 
         val onPopupMenuItemClickListener = object : PopupMenuItem.OnClickListener {

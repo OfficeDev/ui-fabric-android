@@ -13,14 +13,16 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewPager
 import android.support.v7.widget.Toolbar
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.view.accessibility.AccessibilityEvent
 import com.jakewharton.threetenabp.AndroidThreeTen
+import android.view.accessibility.AccessibilityEvent
+
 import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.calendar.OnDateSelectedListener
 import com.microsoft.officeuifabric.datetimepicker.DateTimePicker.PickerMode
@@ -160,14 +162,11 @@ class DateTimePickerDialog : ResizableDialog(), Toolbar.OnMenuItemClickListener,
         val context = context ?: return
         toolbar.inflateMenu(R.menu.menu_time_picker)
         toolbar.setOnMenuItemClickListener(this)
-
-        val navigationIconColor = ThemeUtil.getColor(context, R.attr.uifabricDateTimePickerToolbarNavigationIconColor)
-        toolbar.navigationIcon = context.getTintedDrawable(R.drawable.ms_ic_dismiss_24_filled, navigationIconColor)
+        toolbar.navigationIcon = ContextCompat.getDrawable(context, R.drawable.ms_ic_close_grey)
         toolbar.navigationContentDescription = resources.getString(R.string.date_time_picker_accessibility_close_dialog_button)
         toolbar.setNavigationOnClickListener { dismiss() }
-
-        val doneIconColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricDateTimePickerToolbarDoneIconColor)
-        toolbar.menu.findItem(R.id.action_done).icon = context.getTintedDrawable(R.drawable.ms_ic_checkmark_24_filled, doneIconColor)
+        val iconColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricDateTimePickerToolbarIconColor)
+        toolbar.menu.findItem(R.id.action_done).icon = context.getTintedDrawable(R.drawable.ms_ic_done, iconColor)
 
         pagerAdapter = DateTimePagerAdapter(childFragmentManager)
         view_pager.adapter = pagerAdapter
