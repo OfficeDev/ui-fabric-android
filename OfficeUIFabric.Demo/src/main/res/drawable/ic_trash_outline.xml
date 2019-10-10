@@ -1,0 +1,14 @@
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+  <path
+      android:pathData="M21.75,4.5h-1.5v17.25c0,0.31 -0.06,0.61 -0.18,0.88s-0.28,0.51 -0.48,0.71s-0.44,0.36 -0.71,0.48S18.31,24 18,24H6c-0.31,0 -0.61,-0.06 -0.88,-0.18s-0.51,-0.28 -0.71,-0.48s-0.36,-0.44 -0.48,-0.71s-0.18,-0.57 -0.18,-0.88V4.5h-1.5V3h6V1.5c0,-0.21 0.04,-0.41 0.12,-0.59s0.19,-0.34 0.32,-0.47S8.98,0.2 9.16,0.12S9.54,0 9.75,0h4.5c0.21,0 0.41,0.04 0.59,0.12s0.34,0.19 0.47,0.32s0.24,0.29 0.32,0.47s0.12,0.38 0.12,0.59V3h6V4.5zM18.75,4.5H5.25v17.25c0,0.2 0.07,0.38 0.22,0.53S5.8,22.5 6,22.5h12c0.2,0 0.38,-0.07 0.53,-0.22s0.22,-0.32 0.22,-0.53V4.5zM9.75,19.5h-1.5v-12h1.5V19.5zM9.75,3h4.5V1.5h-4.5V3zM12.75,19.5h-1.5v-12h1.5V19.5zM15.75,19.5h-1.5v-12h1.5V19.5z"
+      android:fillColor="#8E8E8E"/>
+</vector>

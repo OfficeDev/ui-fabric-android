@@ -134,7 +134,7 @@ class BottomSheetActivity : DemoActivity(), BottomSheetItem.OnClickListener {
                     ),
                     BottomSheetItem(
                         R.id.bottom_sheet_item_double_line_header_delete,
-                        R.drawable.ic_trash_can,
+                        R.drawable.ic_trash_outline,
                         getString(R.string.bottom_sheet_item_double_line_header_delete)
                     ),
                     BottomSheetItem(
