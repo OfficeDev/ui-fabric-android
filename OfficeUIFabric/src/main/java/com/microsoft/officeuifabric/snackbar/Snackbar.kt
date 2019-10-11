@@ -18,6 +18,7 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.R.id.*
+import com.microsoft.officeuifabric.theming.UIFabricContextThemeWrapper
 import com.microsoft.officeuifabric.util.ThemeUtil
 import kotlinx.android.synthetic.main.view_snackbar.view.*
 
@@ -40,7 +41,8 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
         fun make(view: View, text: CharSequence, duration: Int = LENGTH_SHORT, style: Style = Style.REGULAR): Snackbar {
             val parent = findSuitableParent(view) ?:
                 throw IllegalArgumentException("No suitable parent found from the given view. Please provide a valid view.")
-            val content = LayoutInflater.from(parent.context).inflate(R.layout.view_snackbar, parent, false)
+            // Need the theme wrapper to avoid crashing in Dark theme.
+            val content = LayoutInflater.from(UIFabricContextThemeWrapper(parent.context)).inflate(R.layout.view_snackbar, parent, false)
             val snackbar = Snackbar(parent, content, ContentViewCallback(content))
             snackbar.duration = duration
             snackbar.setStyle(style)

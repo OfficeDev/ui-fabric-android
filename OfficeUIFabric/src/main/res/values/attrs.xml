@@ -129,6 +129,7 @@
     <attr name="uifabricSearchbarSearchIconColor" format="reference|color"/>
     <attr name="uifabricSearchbarSearchViewTextColor" format="reference|color"/>
     <attr name="uifabricSearchbarSearchViewTextHintColor" format="reference|color"/>
+    <attr name="uifabricSearchbarSearchViewCursorColor" format="reference|color"/>
     <attr name="uifabricSearchbarProgressColor" format="reference|color"/>
     <attr name="uifabricSearchbarCloseIconColor" format="reference|color"/>
 

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+
+    <!--
+        All dark theme specific semantic colors should be defined here.
+        Light theme semantic colors should be defined in themes.xml as the default.
+    -->
+    <style name="Theme.UIFabric" parent="Base.Theme.UIFabric">
+        <item name="android:textColorPrimary">@color/uifabric_white</item>
+        <item name="toolbarStyle">@style/Theme.UIFabric.Toolbar.Dark</item>
+
+        <!-- *** Base Semantic Colors *** -->
+
+        <!--Backgrounds-->
+        <item name="uifabricBackgroundColor">@color/uifabric_black</item>
+        <item name="uifabricBackgroundPressedColor">@color/uifabric_gray_900</item>
+
+        <!--Foregrounds-->
+        <item name="uifabricForegroundColor">@color/uifabric_white</item>
+        <item name="uifabricForegroundOnPrimaryColor">@color/uifabric_black</item>
+        <item name="uifabricDividerColor">@color/uifabric_gray_800</item>
+
+        <!-- *** Semantic Colors *** -->
+
+        <!--Searchbar-->
+        <item name="uifabricSearchbarBackgroundColor">?attr/uifabricBackgroundSecondaryColor</item>
+        <item name="uifabricSearchbarSearchViewContainerBackgroundColor">@color/uifabric_gray_700</item>
+        <item name="uifabricSearchbarBackButtonColor">?attr/uifabricForegroundOnSecondaryColor</item>
+        <item name="uifabricSearchbarSearchViewCursorColor">?attr/uifabricForegroundOnSecondaryColor</item>
+
+        <!--Toolbar-->
+        <item name="uifabricToolbarTitleTextColor">?attr/uifabricForegroundOnSecondaryColor</item>
+        <item name="uifabricToolbarSubtitleTextColor">?attr/uifabricForegroundOnSecondaryColor</item>
+    </style>
+
+</resources>

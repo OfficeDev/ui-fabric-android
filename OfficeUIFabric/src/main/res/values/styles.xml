@@ -118,7 +118,7 @@
 
     <!--Searchbar-->
     <style name="Widget.UIFabric.SearchView" parent="Widget.AppCompat.SearchView">
-        <item name="colorControlActivated">?attr/uifabricForegroundOnPrimaryColor</item>
+        <item name="colorControlActivated">?attr/uifabricSearchbarSearchViewCursorColor</item>
         <item name="android:textColorHint">?attr/uifabricSearchbarSearchViewTextHintColor</item>
         <item name="android:textAppearance">@style/TextAppearance.UIFabric.SearchbarSearchViewText</item>
     </style>

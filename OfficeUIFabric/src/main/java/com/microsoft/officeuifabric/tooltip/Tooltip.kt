@@ -20,6 +20,7 @@ import android.widget.LinearLayout
 import android.widget.PopupWindow
 import android.widget.TextView
 import com.microsoft.officeuifabric.R
+import com.microsoft.officeuifabric.theming.UIFabricContextThemeWrapper
 import com.microsoft.officeuifabric.util.*
 import kotlinx.android.synthetic.main.view_tooltip.view.*
 
@@ -58,7 +59,9 @@ class Tooltip {
     constructor(context: Context) {
         this.context = context
 
-        tooltipView = LayoutInflater.from(context).inflate(R.layout.view_tooltip, null)
+        // Need the theme wrapper to avoid crashing in Dark theme.
+        // TODO Change to inflate(R.layout.view_tooltip, parent, false) and refactor dismiss inside listener accordingly.
+        tooltipView = LayoutInflater.from(UIFabricContextThemeWrapper(context)).inflate(R.layout.view_tooltip, null)
         textView = tooltipView.tooltip_text
         arrowUpView = tooltipView.tooltip_arrow_up
         arrowDownView = tooltipView.tooltip_arrow_down

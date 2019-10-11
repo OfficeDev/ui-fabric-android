@@ -6,7 +6,11 @@
 
 <resources>
 
-    <style name="Theme.UIFabric" parent="Theme.AppCompat.Light.DarkActionBar">
+    <!--
+        All semantic colors should be defined here in their light theme state as the default.
+        If they have a different semantic color for dark theme, define that color in "themes.xml (night)" as well.
+    -->
+    <style name="Base.Theme.UIFabric" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/uifabric_communication_blue</item>
         <item name="colorPrimaryDark">@color/uifabric_communication_shade_10</item>
         <item name="colorAccent">@color/uifabric_communication_blue</item>
@@ -139,6 +143,7 @@
         <item name="uifabricSearchbarSearchIconColor">?attr/uifabricForegroundOnPrimary90Color</item>
         <item name="uifabricSearchbarSearchViewTextColor">?attr/uifabricForegroundOnPrimaryColor</item>
         <item name="uifabricSearchbarSearchViewTextHintColor">?attr/uifabricForegroundOnPrimary90Color</item>
+        <item name="uifabricSearchbarSearchViewCursorColor">?attr/uifabricForegroundOnPrimaryColor</item>
         <item name="uifabricSearchbarProgressColor">?attr/uifabricForegroundOnPrimary70Color</item>
         <item name="uifabricSearchbarCloseIconColor">?attr/uifabricForegroundOnPrimary70Color</item>
 
@@ -163,5 +168,11 @@
         <item name="uifabricTooltipBackgroundColor">?attr/uifabricBackgroundSecondaryColor</item>
         <item name="uifabricTooltipTextColor">?attr/uifabricForegroundOnSecondaryColor</item>
     </style>
+
+    <!--
+        All light theme semantic colors should be defined in the base theme as the default.
+        Dark theme specific semantic colors should be defined in "themes.xml (night)".
+    -->
+    <style name="Theme.UIFabric" parent="Base.Theme.UIFabric"/>
 
 </resources>
