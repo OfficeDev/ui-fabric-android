@@ -129,11 +129,6 @@
     <!--PopupMenu-->
     <style name="TextAppearance.UIFabric.PopupMenuTitle" parent="TextAppearance.UIFabric.Body1" />
 
-    <!--Searchbar-->
-    <style name="TextAppearance.UIFabric.SearchbarSearchViewText" parent="TextAppearance.UIFabric.SubHeading">
-        <item name="android:textColor">?attr/uifabricSearchbarSearchViewTextColor</item>
-    </style>
-
     <!--Snackbar-->
     <style name="TextAppearance.UIFabric.SnackbarText" parent="TextAppearance.UIFabric.Body1">
         <item name="android:textColor">?attr/uifabricSnackbarTextColor</item>

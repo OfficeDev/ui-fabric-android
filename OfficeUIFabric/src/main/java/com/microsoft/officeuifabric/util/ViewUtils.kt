@@ -6,8 +6,10 @@
 package com.microsoft.officeuifabric.util
 
 import android.content.Context
+import android.content.ContextWrapper
 import android.support.annotation.DrawableRes
 import android.support.v4.content.ContextCompat
+import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
@@ -62,3 +64,17 @@ fun View.showKeyboard() {
     val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, InputMethodManager.HIDE_IMPLICIT_ONLY)
 }
+
+/**
+ * Retrieves the current activity from the context.
+ */
+val Context.activity: AppCompatActivity?
+    get() {
+        if (this is ContextWrapper)
+            return if (this is AppCompatActivity)
+                this
+            else
+                baseContext.activity
+
+        return null
+    }

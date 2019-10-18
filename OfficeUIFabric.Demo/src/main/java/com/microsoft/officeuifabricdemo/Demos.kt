@@ -9,6 +9,7 @@ import com.microsoft.officeuifabricdemo.demos.*
 import java.util.*
 import kotlin.reflect.KClass
 
+const val APP_BAR_LAYOUT = "AppBarLayout"
 const val AVATAR_VIEW = "AvatarView"
 const val BASIC_INPUTS = "Basic Inputs"
 const val BOTTOM_SHEET = "BottomSheet"
@@ -28,6 +29,7 @@ const val TOOLTIP = "Tooltip"
 const val TYPOGRAPHY = "Typography"
 
 val DEMOS = arrayListOf(
+    Demo(APP_BAR_LAYOUT, AppBarLayoutActivity::class),
     Demo(AVATAR_VIEW, AvatarViewActivity::class),
     Demo(BASIC_INPUTS, BasicInputsActivity::class),
     Demo(BOTTOM_SHEET, BottomSheetActivity::class),

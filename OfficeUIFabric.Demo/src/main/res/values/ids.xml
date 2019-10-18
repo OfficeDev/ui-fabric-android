@@ -5,6 +5,13 @@
   -->
 
 <resources>
+    <!--AppBarLayout-->
+    <item name="app_bar_layout_toggle_scroll_behavior_sub_header" type="id" />
+    <item name="app_bar_layout_toggle_scroll_behavior_button" type="id" />
+    <item name="app_bar_layout_toggle_navigation_icon_button" type="id" />
+    <item name="app_bar_layout_toggle_accessory_view_button" type="id" />
+    <item name="app_bar_layout_toggle_theme_button" type="id" />
+
     <!--BottomSheet-->
     <item name="bottom_sheet_item_flag" type="id" />
     <item name="bottom_sheet_item_reply" type="id" />

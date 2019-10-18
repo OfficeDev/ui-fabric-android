@@ -12,6 +12,7 @@ import android.graphics.BitmapFactory
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.support.v4.content.ContextCompat
+import com.microsoft.officeuifabric.persona.IAvatar
 import com.microsoft.officeuifabric.persona.IPersona
 import com.microsoft.officeuifabric.persona.Persona
 import com.microsoft.officeuifabricdemo.R
@@ -193,7 +194,7 @@ private fun createPersona(
     return persona
 }
 
-internal fun createCustomPersona(
+fun createCustomPersona(
     context: Context,
     name: String = context.getString(R.string.persona_name_robert_tolbert),
     email: String = ""
@@ -204,10 +205,19 @@ internal fun createCustomPersona(
     return customPersona
 }
 
-internal data class CustomPersona(override var name: String = "", override var email: String = "") : IPersona, Serializable {
+data class CustomPersona(override var name: String = "", override var email: String = "") : IPersona, Serializable {
     var description: String = ""
     override var subtitle: String = ""
     override var footer: String = ""
+    override var avatarImageBitmap: Bitmap? = null
+    override var avatarImageDrawable: Drawable? = null
+    override var avatarImageResourceId: Int? = null
+    override var avatarImageUri: Uri? = null
+    override var avatarBackgroundColor: Int? = null
+}
+
+data class Avatar(override var name: String) : IAvatar {
+    override var email: String = ""
     override var avatarImageBitmap: Bitmap? = null
     override var avatarImageDrawable: Drawable? = null
     override var avatarImageResourceId: Int? = null

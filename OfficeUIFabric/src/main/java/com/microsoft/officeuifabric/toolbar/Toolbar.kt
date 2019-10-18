@@ -9,6 +9,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import android.support.v7.widget.Toolbar
 import android.util.AttributeSet
 import android.view.ViewGroup
@@ -29,34 +30,40 @@ class Toolbar : Toolbar {
     }
 
     /**
-     * [avatarView] is used as the navigation icon and appears at the start of the [Toolbar].
+     * [avatar] is used as the navigation icon and appears at the start of the [Toolbar].
      */
     var avatar: IAvatar? = null
         set(value) {
-            if (field == value)
-                return
             field = value
-            updateStylesAndIcon()
+            navigationIcon = if (value != null) getAvatarBitmapDrawable() else null
         }
 
     @JvmOverloads
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(UIFabricContextThemeWrapper(context), attrs, R.attr.toolbarStyle) {
         // minHeight can't be set in theme or it will also set title height. Having minHeight helps center option menu icons.
-        minimumHeight = context.resources.getDimension(R.dimen.uifabric_toolbar_min_height).toInt()
+        val styledAttributes = context.theme.obtainStyledAttributes(intArrayOf(android.R.attr.actionBarSize))
+        val actionBarSize = styledAttributes.getDimensionPixelSize(0, -1)
+        styledAttributes.recycle()
+        minimumHeight = actionBarSize
+
+        updateStylesAndIcon()
+    }
+
+    override fun setNavigationIcon(icon: Drawable?) {
+        super.setNavigationIcon(icon)
+
         updateStylesAndIcon()
     }
 
     private fun updateStylesAndIcon() {
-        if (avatar == null) {
+        if (navigationIcon == null) {
             setPaddingRelative(context.resources.getDimension(R.dimen.uifabric_toolbar_padding_start).toInt(), 0, 0, 0)
             titleMarginStart = context.resources.getDimension(R.dimen.uifabric_toolbar_title_margin_start).toInt()
-            navigationIcon = null
             return
         }
 
         setPaddingRelative(context.resources.getDimension(R.dimen.uifabric_toolbar_padding_start_with_avatar).toInt(), 0, 0, 0)
         titleMarginStart = context.resources.getDimension(R.dimen.uifabric_toolbar_title_margin_start_with_avatar).toInt()
-        navigationIcon = getAvatarBitmapDrawable()
     }
 
     /**

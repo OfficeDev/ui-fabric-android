@@ -15,9 +15,9 @@ import android.support.v7.widget.SearchView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import com.microsoft.officeuifabric.BuildConfig
 import com.microsoft.officeuifabric.listitem.ListItemDivider
 import com.microsoft.officeuifabric.listitem.ListItemView
+import com.microsoft.officeuifabric.search.Searchbar
 import kotlinx.android.synthetic.main.activity_demo_list.*
 import kotlinx.android.synthetic.main.demo_list.*
 
@@ -26,6 +26,8 @@ import kotlinx.android.synthetic.main.demo_list.*
  * lead to a subclass of [DemoActivity] representing demo details.
  */
 class DemoListActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
+    private lateinit var searchbar: Searchbar
+
     override fun onCreate(savedInstanceState: Bundle?) {
         // Launch Screen: Setting the theme here removes the launch screen, which was added to this activity
         // by setting the theme to App.Launcher in the manifest.
@@ -35,16 +37,20 @@ class DemoListActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
         setContentView(R.layout.activity_demo_list)
 
-        setSupportActionBar(toolbar)
-
-        toolbar.subtitle = BuildConfig.VERSION_NAME
-
-        searchbar.onQueryTextListener = this
+        setupAppBar()
 
         demo_list.adapter = DemoListAdapter()
         demo_list.addItemDecoration(ListItemDivider(this, DividerItemDecoration.VERTICAL))
 
         Initializer.init(application)
+    }
+
+    private fun setupAppBar() {
+        app_bar.toolbar.subtitle = BuildConfig.VERSION_NAME
+
+        searchbar = Searchbar(this)
+        searchbar.onQueryTextListener = this
+        app_bar.accessoryView = searchbar
     }
 
     override fun onQueryTextSubmit(query: String): Boolean {

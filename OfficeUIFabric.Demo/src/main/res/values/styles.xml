@@ -16,9 +16,11 @@
         <item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AppTheme.Orange">
+        <item name="colorPrimaryDark">#a52c00</item>
+        <item name="colorPrimary">#d83b01</item>
+        <item name="colorAccent">#d83b01</item>
+    </style>
 
     <!--Launch Screen: This theme sets the launch screen for the app-->
     <style name="AppTheme.Launcher">

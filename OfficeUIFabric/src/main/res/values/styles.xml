@@ -120,7 +120,8 @@
     <style name="Widget.UIFabric.SearchView" parent="Widget.AppCompat.SearchView">
         <item name="colorControlActivated">?attr/uifabricSearchbarSearchViewCursorColor</item>
         <item name="android:textColorHint">?attr/uifabricSearchbarSearchViewTextHintColor</item>
-        <item name="android:textAppearance">@style/TextAppearance.UIFabric.SearchbarSearchViewText</item>
+        <item name="android:editTextColor">?attr/uifabricSearchbarSearchViewTextColor</item>
+        <item name="android:textSize">@dimen/uifabric_searchbar_search_view_text_size</item>
     </style>
     <style name="Widget.UIFabric.CircularProgress.XSmall.Search">
         <item name="android:indeterminateTint">?attr/uifabricSearchbarProgressColor</item>
@@ -143,10 +144,12 @@
     </style>
 
     <!--Toolbar-->
+    <!--We use Widget.AppCompat.Toolbar instead of a ThemeOverlay to maintain Android's default Toolbar styling.-->
     <style name="Theme.UIFabric.Toolbar" parent="@style/Widget.AppCompat.Toolbar">
         <item name="titleTextAppearance">@style/TextAppearance.UIFabric.ToolbarTitle</item>
         <item name="subtitleTextAppearance">@style/TextAppearance.UIFabric.ToolbarSubtitle</item>
         <item name="toolbarNavigationButtonStyle">@style/Widget.UIFabric.NavigationButton</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
     </style>
     <style name="Widget.UIFabric.NavigationButton" parent="@style/Widget.AppCompat.Toolbar.Button.Navigation">
         <item name="android:minWidth">@dimen/uifabric_toolbar_navigation_icon_container_size</item>

@@ -14,6 +14,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.*
 import com.microsoft.officeuifabric.R
+import com.microsoft.officeuifabric.appbarlayout.AppBarLayout
 import com.microsoft.officeuifabric.util.isVisible
 import com.microsoft.officeuifabric.util.showKeyboard
 import com.microsoft.officeuifabric.view.TemplateView
@@ -159,6 +160,9 @@ open class Searchbar : TemplateView, SearchView.OnQueryTextListener {
                 setUnfocusedState()
             }
 
+            // Because Searchbar is a commonly used accessory view in AppBarLayout, we want to support the standard focus animation.
+            (parent as? AppBarLayout)?.updateExpanded(!hasFocus)
+
             onQueryTextFocusChangeListener?.onFocusChange(searchView, hasFocus)
         }
 
@@ -198,7 +202,7 @@ open class Searchbar : TemplateView, SearchView.OnQueryTextListener {
         val searchViewContainerMarginEndResourceId = if (withIcons)
             R.dimen.uifabric_searchbar_search_view_container_with_icons_margin_end
         else
-            R.dimen.uifabric_searchbar_search_view_container_margin_horizontal
+            R.dimen.uifabric_searchbar_search_view_container_margin_end
 
         val lp = searchViewContainer?.layoutParams as? FrameLayout.LayoutParams ?: return
         lp.marginEnd = context.resources.getDimension(searchViewContainerMarginEndResourceId).toInt()
@@ -208,16 +212,11 @@ open class Searchbar : TemplateView, SearchView.OnQueryTextListener {
     private fun updateSearchViewSpacing() {
         // Search edit frame
         val searchEditFrame = searchView?.findViewById<LinearLayout>(R.id.search_edit_frame)
-        val searchEditFrameMarginStartResourceId = if (hasFocus())
-            R.dimen.uifabric_searchbar_with_back_button_search_view_margin_start
-        else
-            R.dimen.uifabric_searchbar_with_search_icon_search_view_margin_start
-
         val searchEditFrameLayoutParams = searchEditFrame?.layoutParams as? LinearLayout.LayoutParams
-        searchEditFrameLayoutParams?.marginStart = resources.getDimension(searchEditFrameMarginStartResourceId).toInt()
+        searchEditFrameLayoutParams?.marginStart = resources.getDimension(R.dimen.uifabric_searchbar_search_view_margin_start).toInt()
         searchEditFrame?.layoutParams = searchEditFrameLayoutParams
 
-        // Search text
+        // Search text - adjust padding to account for the cursor.
         val searchSrcText = searchView?.findViewById<SearchView.SearchAutoComplete>(R.id.search_src_text)
         val searchSrcTextPaddingStartResourceId = if (hasFocus())
             R.dimen.uifabric_searchbar_with_back_button_search_view_text_padding_start
@@ -230,5 +229,15 @@ open class Searchbar : TemplateView, SearchView.OnQueryTextListener {
             searchSrcText.paddingEnd,
             searchSrcText.paddingBottom
         )
+
+        // Search view container
+        val searchViewContainerLayoutParams = searchViewContainer?.layoutParams as? FrameLayout.LayoutParams
+        val searchViewContainerMarginStartResourceId = if (hasFocus())
+            R.dimen.uifabric_searchbar_search_view_container_back_button_margin_start
+        else
+            R.dimen.uifabric_searchbar_search_view_container_search_icon_margin_start
+
+        searchViewContainerLayoutParams?.marginStart = resources.getDimension(searchViewContainerMarginStartResourceId).toInt()
+        searchViewContainer?.layoutParams = searchViewContainerLayoutParams
     }
 }

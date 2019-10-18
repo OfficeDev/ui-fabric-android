@@ -10,6 +10,7 @@
     <dimen name="cell_horizontal_spacing">8dp</dimen>
     <dimen name="cell_vertical_spacing">2dp</dimen>
     <dimen name="calendar_date_title_text_size">18sp</dimen>
+    <dimen name="button_list_item_vertical_padding">8dp</dimen>
 
     <!--Avatar-->
     <dimen name="avatar_size_text_margin_end">36dp</dimen>

@@ -30,7 +30,7 @@
     <attr name="uifabricBackgroundSecondary20Color" format="reference|color"/>
 
     <!--Transparent Foregrounds-->
-    <attr name="uifabricForegroundOnPrimary90Color" format="reference|color"/>
+    <attr name="uifabricForegroundOnPrimary80Color" format="reference|color"/>
     <attr name="uifabricForegroundOnPrimary70Color" format="reference|color"/>
 
     <!-- *** Semantic Colors *** -->
@@ -149,6 +149,7 @@
     <!--Toolbar-->
     <attr name="uifabricToolbarTitleTextColor" format="reference|color"/>
     <attr name="uifabricToolbarSubtitleTextColor" format="reference|color"/>
+    <attr name="uifabricToolbarIconColor" format="reference|color"/>
 
     <!--Tooltip-->
     <attr name="uifabricTooltipBackgroundColor" format="reference|color"/>

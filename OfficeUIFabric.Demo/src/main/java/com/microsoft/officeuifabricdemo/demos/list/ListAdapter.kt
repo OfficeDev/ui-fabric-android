@@ -6,8 +6,11 @@
 package com.microsoft.officeuifabricdemo.demos.list
 
 import android.content.Context
+import android.support.v7.widget.AppCompatButton
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.FrameLayout
 import android.widget.LinearLayout
 import com.microsoft.officeuifabric.listitem.ListItemView
 import com.microsoft.officeuifabric.listitem.ListSubHeaderView
@@ -17,7 +20,7 @@ import java.util.*
 
 class ListAdapter(private val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private enum class ViewType {
-        SUB_HEADER, ITEM
+        SUB_HEADER, ITEM, BUTTON_ITEM
     }
 
     var listItems = ArrayList<IBaseListItem>()
@@ -35,6 +38,23 @@ class ListAdapter(private val context: Context) : RecyclerView.Adapter<RecyclerV
                 listItemView.layoutParams = lp
                 ListItemViewHolder(listItemView)
             }
+            ViewType.BUTTON_ITEM -> {
+                val buttonItemView = FrameLayout(context)
+                buttonItemView.layoutParams = lp
+
+                val button = AppCompatButton(context)
+                button.layoutParams = FrameLayout.LayoutParams(
+                    FrameLayout.LayoutParams.WRAP_CONTENT,
+                    context.resources.getDimension(R.dimen.uifabric_button_min_height).toInt()
+                )
+                buttonItemView.addView(button)
+
+                val paddingHorizontal = context.resources.getDimension(R.dimen.default_layout_margin).toInt()
+                val paddingVertical = context.resources.getDimension(R.dimen.button_list_item_vertical_padding).toInt()
+                buttonItemView.setPaddingRelative(paddingHorizontal, paddingVertical, paddingHorizontal, paddingVertical)
+
+                ButtonItemViewHolder(buttonItemView)
+            }
         }
     }
 
@@ -46,6 +66,9 @@ class ListAdapter(private val context: Context) : RecyclerView.Adapter<RecyclerV
 
         if (listItem is IListItem)
             (holder as? ListItemViewHolder)?.setListItem(listItem)
+
+        if (listItem is IButtonItem)
+            (holder as? ButtonItemViewHolder)?.setButtonItem(listItem)
     }
 
     override fun onViewRecycled(holder: RecyclerView.ViewHolder) {
@@ -56,10 +79,11 @@ class ListAdapter(private val context: Context) : RecyclerView.Adapter<RecyclerV
     override fun getItemCount(): Int = listItems.size
 
     override fun getItemViewType(position: Int): Int {
-        return if (listItems[position] is ListSubHeader)
-            ViewType.SUB_HEADER.ordinal
-        else
-            ViewType.ITEM.ordinal
+        return when {
+            listItems[position] is ListSubHeader -> ViewType.SUB_HEADER.ordinal
+            listItems[position] is ButtonItem -> ViewType.BUTTON_ITEM.ordinal
+            else -> ViewType.ITEM.ordinal
+        }
     }
 
     private inner class ListItemViewHolder : RecyclerView.ViewHolder {
@@ -91,6 +115,20 @@ class ListAdapter(private val context: Context) : RecyclerView.Adapter<RecyclerV
 
         fun setListSubHeader(listSubHeader: IListSubHeader) {
             listSubHeaderView.setListSubHeader(listSubHeader)
+        }
+    }
+
+    private inner class ButtonItemViewHolder : RecyclerView.ViewHolder {
+        private var button: Button? = null
+
+        constructor(view: FrameLayout) : super(view) {
+            button = view.getChildAt(0) as? AppCompatButton ?: return
+        }
+
+        fun setButtonItem(buttonItem: IButtonItem) {
+            button?.text = buttonItem.buttonText
+            button?.id = buttonItem.id
+            button?.setOnClickListener(buttonItem.onClickListener)
         }
     }
 }

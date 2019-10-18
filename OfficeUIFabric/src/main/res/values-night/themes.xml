@@ -36,6 +36,7 @@
         <!--Toolbar-->
         <item name="uifabricToolbarTitleTextColor">?attr/uifabricForegroundOnSecondaryColor</item>
         <item name="uifabricToolbarSubtitleTextColor">?attr/uifabricForegroundOnSecondaryColor</item>
+        <item name="uifabricToolbarIconColor">?attr/uifabricForegroundOnSecondaryColor</item>
     </style>
 
 </resources>
