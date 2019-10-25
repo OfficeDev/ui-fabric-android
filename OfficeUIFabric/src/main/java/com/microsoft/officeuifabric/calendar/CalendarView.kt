@@ -249,6 +249,7 @@ class CalendarView : LinearLayout, OnDateSelectedListener {
         val differentiateOddEvenMonth = true
         val otherMonthBackgroundColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarOtherMonthBackgroundColor)
         val calendarDayMonthYearTextSize = context.resources.getDimensionPixelSize(R.dimen.uifabric_calendar_month_year_font_size)
+        val calendarDayTextSize = context.resources.getDimensionPixelSize(R.dimen.uifabric_calendar_week_day_font_size)
 
         // Create this in code instead of xml to support Lollipop, which does not allow attributes in xml selectors.
         val calendarDayTextColor = ColorStateList(

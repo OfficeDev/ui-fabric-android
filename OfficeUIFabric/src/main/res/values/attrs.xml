@@ -71,6 +71,8 @@
 
     <!--Dialog-->
     <attr name="uifabricDialogBackgroundColor" format="reference|color"/>
+    <attr name="uifabricDialogCloseIconColor" format="reference|color"/>
+    <attr name="uifabricDialogTabLayoutBackgroundColor" format="reference|color"/>
 
     <!--Drawer-->
     <attr name="uifabricDrawerBackgroundColor" format="reference|color"/>
@@ -141,7 +143,6 @@
     <attr name="uifabricSnackbarActionTextAnnouncementColor" format="reference|color"/>
 
     <!--TabLayout-->
-    <attr name="uifabricTabLayoutBackgroundColor" format="reference|color"/>
     <attr name="uifabricTabTextColor" format="reference|color"/>
     <attr name="uifabricTabSelectedTextColor" format="reference|color"/>
     <attr name="uifabricTabIndicatorColor" format="reference|color"/>

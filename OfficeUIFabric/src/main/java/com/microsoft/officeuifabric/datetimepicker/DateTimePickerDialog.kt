@@ -162,7 +162,8 @@ class DateTimePickerDialog : ResizableDialog(), Toolbar.OnMenuItemClickListener,
         val context = context ?: return
         toolbar.inflateMenu(R.menu.menu_time_picker)
         toolbar.setOnMenuItemClickListener(this)
-        toolbar.navigationIcon = ContextCompat.getDrawable(context, R.drawable.ms_ic_close_grey)
+        val closeColor = ThemeUtil.getColor(context, R.attr.uifabricDialogCloseIconColor)
+        toolbar.navigationIcon = context.getTintedDrawable(R.drawable.ms_ic_close_grey, closeColor)
         toolbar.navigationContentDescription = resources.getString(R.string.date_time_picker_accessibility_close_dialog_button)
         toolbar.setNavigationOnClickListener { dismiss() }
         val iconColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricDateTimePickerToolbarIconColor)

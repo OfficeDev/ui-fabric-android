@@ -21,7 +21,7 @@
         app:tabGravity="fill"
         app:tabMode="fixed"
         android:visibility="gone"
-        style="@style/Widget.UIFabric.TabLayout" />
+        style="@style/Widget.UIFabric.Dialog.TabLayout" />
 
     <LinearLayout
         android:id="@+id/date_time_pickers"

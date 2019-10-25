@@ -7,10 +7,8 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:background="@color/uifabric_gray_400">
+    android:layout_height="match_parent">
 
     <android.support.v7.widget.CardView
         android:id="@+id/card_view_container"
@@ -21,7 +19,6 @@
         android:background="@drawable/ms_dialog_background_light"
         card_view:cardCornerRadius="@dimen/uifabric_corner_radius_medium"
         card_view:cardElevation="@dimen/uifabric_resizable_dialog_card_elevation"
-        card_view:cardUseCompatPadding="true"
-        tools:layout_height="@dimen/uifabric_resizable_dialog_card_tools_width" />
+        card_view:cardUseCompatPadding="true" />
 
 </FrameLayout>

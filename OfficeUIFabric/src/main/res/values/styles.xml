@@ -29,6 +29,11 @@
         <item name="android:paddingBottom">@dimen/uifabric_button_padding_vertical</item>
         <item name="android:minHeight">@dimen/uifabric_button_min_height</item>
     </style>
+    
+    <!--DateTimePickerDialog-->
+    <style name="DateTimePickerDialog.Toolbar" parent="@style/ThemeOverlay.AppCompat">
+        <item name="android:colorControlHighlight">?attr/uifabricBackgroundPressedColor</item>
+    </style>
 
     <!--Dialog-->
     <style name="Dialog.UIFabric" parent="@style/Theme.AppCompat.Light.Dialog.Alert">
@@ -36,6 +41,16 @@
         <item name="android:colorBackground">?attr/uifabricDialogBackgroundColor</item>
         <item name="android:colorBackgroundCacheHint">?attr/uifabricDialogBackgroundColor</item>
         <item name="android:textAppearance">@style/TextAppearance.UIFabric.Title1</item>
+    </style>
+    <style name="Widget.UIFabric.Dialog.TabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabGravity">center</item>
+        <item name="tabMode">scrollable</item>
+        <item name="tabTextAppearance">@style/TextAppearance.UIFabric.Tab.Light</item>
+        <item name="tabMinWidth">90dp</item>
+        <item name="tabSelectedTextColor">?attr/uifabricTabSelectedTextColor</item>
+        <item name="tabIndicatorColor">?attr/uifabricTabIndicatorColor</item>
+        <item name="android:background">?attr/uifabricDialogTabLayoutBackgroundColor</item>
+        <item name="tabRippleColor">?uifabricBackgroundPressedColor</item>
     </style>
 
     <!--Drawer-->
@@ -130,17 +145,6 @@
         <item name="android:minWidth">@dimen/uifabric_searchbar_progress_size</item>
         <item name="android:maxHeight">@dimen/uifabric_searchbar_progress_size</item>
         <item name="android:maxWidth">@dimen/uifabric_searchbar_progress_size</item>
-    </style>
-
-    <!--TabLayout-->
-    <style name="Widget.UIFabric.TabLayout" parent="Widget.Design.TabLayout">
-        <item name="tabGravity">center</item>
-        <item name="tabMode">scrollable</item>
-        <item name="tabTextAppearance">@style/TextAppearance.UIFabric.Tab.Light</item>
-        <item name="tabMinWidth">90dp</item>
-        <item name="tabSelectedTextColor">?attr/uifabricTabSelectedTextColor</item>
-        <item name="tabIndicatorColor">?attr/uifabricTabIndicatorColor</item>
-        <item name="android:background">?attr/uifabricTabLayoutBackgroundColor</item>
     </style>
 
     <!--Toolbar-->

@@ -18,7 +18,7 @@
 
         <!--Backgrounds-->
         <item name="uifabricBackgroundColor">@color/uifabric_black</item>
-        <item name="uifabricBackgroundPressedColor">@color/uifabric_gray_900</item>
+        <item name="uifabricBackgroundPressedColor">@color/uifabric_gray_400</item>
 
         <!--Foregrounds-->
         <item name="uifabricForegroundColor">@color/uifabric_white</item>
@@ -26,6 +26,21 @@
         <item name="uifabricDividerColor">@color/uifabric_gray_800</item>
 
         <!-- *** Semantic Colors *** -->
+
+        <!--CalendarView-->
+        <item name="uifabricCalendarBackgroundColor">?attr/uifabricBackgroundSecondaryColor</item>
+        <item name="uifabricCalendarWeekHeadingBackgroundColor">?attr/uifabricBackgroundSecondaryColor</item>
+        <item name="uifabricCalendarOtherMonthBackgroundColor">@color/uifabric_gray_700</item>
+        <item name="uifabricCalendarDayTodayBackgroundColor">?attr/uifabricBackgroundSecondaryColor</item>
+        <item name="uifabricCalendarDayTextActiveColor">?attr/uifabricForegroundColor</item>
+        <item name="uifabricCalendarWeekHeadingWeekendTextColor">@color/uifabric_gray_600</item>
+
+        <!--Dialog-->
+        <item name="uifabricDialogBackgroundColor">?attr/uifabricBackgroundSecondaryColor</item>
+        <item name="uifabricDialogCloseIconColor">?attr/colorPrimary</item>
+
+        <!--NumberPicker-->
+        <item name="uifabricNumberPickerBackgroundColor">?attr/uifabricBackgroundSecondaryColor</item>
 
         <!--Searchbar-->
         <item name="uifabricSearchbarBackgroundColor">?attr/uifabricBackgroundSecondaryColor</item>

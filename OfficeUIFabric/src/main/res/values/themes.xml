@@ -79,11 +79,13 @@
         <!--DateTimePicker-->
         <item name="uifabricDateTimePickerToolbarTitleTextColor">?attr/colorPrimary</item>
         <item name="uifabricDateTimePickerTabTextColor">?attr/uifabricForegroundSecondaryColor</item>
-        <item name="uifabricDateTimePickerDialogBackgroundColor">?attr/uifabricBackgroundColor</item>
+        <item name="uifabricDateTimePickerDialogBackgroundColor">?attr/uifabricDialogBackgroundColor</item>
         <item name="uifabricDateTimePickerToolbarIconColor">?attr/colorPrimary</item>
 
         <!--Dialog-->
         <item name="uifabricDialogBackgroundColor">?attr/uifabricBackgroundColor</item>
+        <item name="uifabricDialogCloseIconColor">?attr/uifabricForegroundSecondaryColor</item>
+        <item name="uifabricDialogTabLayoutBackgroundColor">?attr/uifabricDialogBackgroundColor</item>
 
         <!--Drawer-->
         <item name="uifabricDrawerBackgroundColor">?attr/uifabricBackgroundColor</item>
@@ -155,7 +157,6 @@
         <item name="uifabricSnackbarActionTextAnnouncementColor">?attr/uifabricForegroundOnPrimaryColor</item>
 
         <!--TabLayout-->
-        <item name="uifabricTabLayoutBackgroundColor">?attr/uifabricBackgroundColor</item>
         <item name="uifabricTabTextColor">?attr/uifabricForegroundSecondaryColor</item>
         <item name="uifabricTabSelectedTextColor">?attr/uifabricForegroundSelectedColor</item>
         <item name="uifabricTabIndicatorColor">?attr/uifabricForegroundSelectedColor</item>

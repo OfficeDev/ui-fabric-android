@@ -14,6 +14,7 @@ import android.graphics.Canvas
 import android.graphics.Rect
 import android.graphics.Typeface
 import android.support.v4.content.ContextCompat
+import android.support.v4.graphics.ColorUtils
 import android.support.v4.util.Pools
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.GridLayoutManager
@@ -46,7 +47,6 @@ internal class WeeksView : MSRecyclerView {
 
         private const val MONTH_OVERLAY_BACKGROUND_COLOR = "monthOverlayBackgroundColor"
         private const val MONTH_OVERLAY_FONT_COLOR = "monthOverlayFontColor"
-        private const val START_COLOR = 0x00FFFFFF
         private const val FONT_FAMILY = "sans-serif-medium"
 
         private const val MONTH_DESCRIPTORS_CAPACITY = 4
@@ -125,8 +125,9 @@ internal class WeeksView : MSRecyclerView {
         paint.typeface = Typeface.create(FONT_FAMILY, Typeface.NORMAL)
         paint.textSize = config.monthOverlayTextSize.toFloat()
 
-        overlayBackgroundColorProperty = ColorProperty(MONTH_OVERLAY_BACKGROUND_COLOR, START_COLOR, config.monthOverlayBackgroundColor)
-        overlayFontColorProperty = ColorProperty(MONTH_OVERLAY_FONT_COLOR, START_COLOR, config.monthOverlayTextColor)
+        val startColor = ColorUtils.setAlphaComponent(config.monthOverlayBackgroundColor, 0)
+        overlayBackgroundColorProperty = ColorProperty(MONTH_OVERLAY_BACKGROUND_COLOR, startColor, config.monthOverlayBackgroundColor)
+        overlayFontColorProperty = ColorProperty(MONTH_OVERLAY_FONT_COLOR, startColor, config.monthOverlayTextColor)
     }
 
     @JvmOverloads

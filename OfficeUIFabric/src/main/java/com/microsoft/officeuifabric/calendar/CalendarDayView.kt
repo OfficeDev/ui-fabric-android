@@ -11,10 +11,7 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.PorterDuff
-import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
-import android.graphics.drawable.StateListDrawable
-import android.os.Build
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewCompat
 import android.support.v4.widget.TextViewCompat
@@ -23,6 +20,7 @@ import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.style.AbsoluteSizeSpan
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.Gravity
 import android.view.View
 import android.view.accessibility.AccessibilityEvent
@@ -31,7 +29,6 @@ import android.widget.Checkable
 import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.util.DateStringUtils
 import com.microsoft.officeuifabric.util.DateTimeUtils
-import com.microsoft.officeuifabric.util.ThemeUtil
 import com.microsoft.officeuifabric.util.isAccessibilityEnabled
 import org.threeten.bp.LocalDate
 import org.threeten.bp.ZonedDateTime
@@ -45,6 +42,10 @@ import java.util.*
  * [CalendarDayView] View that displays a day of the week
  */
 internal class CalendarDayView: AppCompatButton, Checkable {
+    companion object {
+        private const val MIN_TEXT_SIZE = 2
+        private const val AUTO_SIZE_TEXT_GRANULARITY_STEP = 2
+    }
     /**
      * sets the date of the View
      */
@@ -131,10 +132,10 @@ internal class CalendarDayView: AppCompatButton, Checkable {
         gravity = Gravity.CENTER
         includeFontPadding = false
         TextViewCompat.setTextAppearance(this, regularAppearance)
+        setTextSize(TypedValue.COMPLEX_UNIT_PX, config.calendarDayTextSize.toFloat())
         isAllCaps = false
 
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M)
-            _foregroundDrawable = createBackgroundStateList()
+        _foregroundDrawable = ContextCompat.getDrawable(context, R.drawable.ms_ripple_transparent_background)
 
         setPadding(0, 0, 0, 0)
     }
@@ -260,10 +261,13 @@ internal class CalendarDayView: AppCompatButton, Checkable {
             stringBuilder.append("\n")
             stringBuilder.append(Integer.toString(date.dayOfMonth))
 
+            var maxTextSize = config.calendarDayTextSize
+
             if (date.year != ZonedDateTime.now().year) {
                 stringBuilder.append("\n")
                 val idx = stringBuilder.length
                 stringBuilder.append(Integer.toString(date.year))
+                maxTextSize = config.calendarDayMonthYearTextSize
                 stringBuilder.setSpan(
                     AbsoluteSizeSpan(config.calendarDayMonthYearTextSize),
                     idx,
@@ -271,6 +275,14 @@ internal class CalendarDayView: AppCompatButton, Checkable {
                     Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
                 )
             }
+
+            TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(
+                this,
+                MIN_TEXT_SIZE,
+                maxTextSize,
+                AUTO_SIZE_TEXT_GRANULARITY_STEP,
+                TypedValue.COMPLEX_UNIT_PX
+            )
 
             text = stringBuilder
         } else {
@@ -312,32 +324,5 @@ internal class CalendarDayView: AppCompatButton, Checkable {
             else -> regularAppearance
         }
         TextViewCompat.setTextAppearance(this, appearance)
-    }
-
-    // Create this in code instead of xml to support Lollipop, which does not allow attributes in xml selectors.
-    private fun createBackgroundStateList(): StateListDrawable {
-        val colorDrawable = ColorDrawable(ThemeUtil.getThemeAttrColor(context, R.attr.uifabricBackgroundPressedColor))
-        val stateListDrawable = StateListDrawable()
-        stateListDrawable.addState(
-            intArrayOf(android.R.attr.state_focused, android.R.attr.state_pressed),
-            colorDrawable
-        )
-        stateListDrawable.addState(
-            intArrayOf(-android.R.attr.state_focused, android.R.attr.state_pressed),
-            colorDrawable
-        )
-        stateListDrawable.addState(
-            intArrayOf(android.R.attr.state_focused),
-            colorDrawable
-        )
-        stateListDrawable.addState(
-            intArrayOf(android.R.attr.state_selected),
-            colorDrawable
-        )
-        stateListDrawable.addState(
-            intArrayOf(),
-            ColorDrawable(viewBackgroundColor)
-        )
-        return stateListDrawable
     }
 }
