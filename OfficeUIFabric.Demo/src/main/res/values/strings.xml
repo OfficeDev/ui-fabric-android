@@ -41,6 +41,17 @@
     <string name="avatar_size_small">Small</string>
     <string name="avatar_size_xsmall">XSmall</string>
 
+    <!--BottomNavigation-->
+    <string name="bottom_navigation_menu_item_photos">Photos</string>
+    <string name="bottom_navigation_menu_item_videos">Videos</string>
+    <string name="bottom_navigation_menu_item_info">Info</string>
+    <string name="bottom_navigation_menu_item_shared">Shared</string>
+    <string name="bottom_navigation_menu_item_settings">Settings</string>
+    <string name="bottom_navigation_toggle_labels_button">Toggle labels</string>
+    <string name="bottom_navigation_three_menu_items_button">Show three menu items</string>
+    <string name="bottom_navigation_four_menu_items_button">Show four menu items</string>
+    <string name="bottom_navigation_five_menu_items_button">Show five menu items</string>
+
     <!--BottomSheet-->
     <string name="bottom_sheet">BottomSheet</string>
     <string name="bottom_sheet_dialog">BottomSheetDialog</string>

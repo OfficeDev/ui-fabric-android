@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/bottom_navigation">
+        <item
+            android:id="@+id/action_photos"
+            android:title="@string/bottom_navigation_menu_item_photos"
+            android:icon="@drawable/ic_gallery" />
+        <item
+            android:id="@+id/action_videos"
+            android:title="@string/bottom_navigation_menu_item_videos"
+            android:icon="@drawable/ic_videos" />
+        <item
+            android:id="@+id/action_info"
+            android:title="@string/bottom_navigation_menu_item_info"
+            android:icon="@drawable/ic_info" />
+        <item
+            android:id="@+id/action_share"
+            android:title="@string/bottom_navigation_menu_item_shared"
+            android:icon="@drawable/ic_share" />
+        <item
+            android:id="@+id/action_settings"
+            android:title="@string/bottom_navigation_menu_item_settings"
+            android:icon="@drawable/ic_wrench" />
+    </group>
+
+</menu>

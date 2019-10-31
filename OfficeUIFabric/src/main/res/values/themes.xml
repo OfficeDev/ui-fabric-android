@@ -48,6 +48,11 @@
 
         <!-- *** Semantic Colors *** -->
 
+        <!--BottomNavigation-->
+        <item name="uifabricBottomNavigationBackgroundColor">?attr/uifabricBackgroundColor</item>
+        <item name="uifabricBottomNavigationForegroundActiveColor">?attr/colorPrimary</item>
+        <item name="uifabricBottomNavigationForegroundInactiveColor">@color/uifabric_gray_500</item>
+
         <!--Button-->
         <item name="uifabricButtonBackgroundDefaultColor">?attr/uifabricBackgroundPrimaryColor</item>
         <item name="uifabricButtonBackgroundDisabledColor">@color/uifabric_gray_50</item>

@@ -57,6 +57,14 @@
 
     <!-- *** UIFabric Semantic Styles *** -->
 
+    <!--BottomNavigation-->
+    <style name="TextAppearance.UIFabric.BottomNavigation.Inactive" parent="TextAppearance.UIFabric.Caption">
+        <item name="android:textColor">?attr/uifabricBottomNavigationForegroundInactiveColor</item>
+    </style>
+    <style name="TextAppearance.UIFabric.BottomNavigation.Active" parent="TextAppearance.UIFabric.Caption">
+        <item name="android:textColor">?attr/uifabricBottomNavigationForegroundActiveColor</item>
+    </style>
+
     <!--Button-->
     <style name="TextAppearance.UIFabric.Button" parent="TextAppearance.UIFabric.Body2">
         <item name="android:textColor">@color/button_text</item>

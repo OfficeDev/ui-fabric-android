@@ -30,6 +30,7 @@
         <activity android:name="com.microsoft.officeuifabricdemo.demos.AppBarLayoutActivity" />
         <activity android:name="com.microsoft.officeuifabricdemo.demos.AvatarViewActivity" />
         <activity android:name="com.microsoft.officeuifabricdemo.demos.BasicInputsActivity" />
+        <activity android:name="com.microsoft.officeuifabricdemo.demos.BottomNavigationActivity" />
         <activity android:name="com.microsoft.officeuifabricdemo.demos.BottomSheetActivity" />
         <activity android:name="com.microsoft.officeuifabricdemo.demos.CalendarViewActivity" />
         <activity android:name="com.microsoft.officeuifabricdemo.demos.DateTimePickerDialogActivity" />

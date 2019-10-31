@@ -7,6 +7,20 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="Widget.UIFabric" parent="@android:style/Widget"/>
+
+    <!--BottomNavigation-->
+    <style name="Widget.UIFabric.BottomNavigation" parent="Widget.Design.BottomNavigationView">
+        <item name="android:layout_gravity">bottom</item>
+        <item name="android:background">?attr/uifabricBottomNavigationBackgroundColor</item>
+        <item name="itemBackground">@drawable/ms_ripple_transparent_background_borderless</item>
+        <item name="itemTextAppearanceActive">@style/TextAppearance.UIFabric.BottomNavigation.Active</item>
+        <item name="itemTextAppearanceInactive">@style/TextAppearance.UIFabric.BottomNavigation.Inactive</item>
+        <item name="itemIconTint">@color/bottom_navigation_icon_tint</item>
+        <item name="labelVisibilityMode">labeled</item>
+    </style>
+    <style name="Widget.UIFabric.BottomNavigation.Unlabeled">
+        <item name="labelVisibilityMode">unlabeled</item>
+    </style>
     
     <!--Button-->
     <style name="Widget.UIFabric.Button" parent="Widget.AppCompat.Button">

@@ -35,6 +35,11 @@
 
     <!-- *** Semantic Colors *** -->
 
+    <!--BottomNavigation-->
+    <attr name="uifabricBottomNavigationBackgroundColor" format="reference|color"/>
+    <attr name="uifabricBottomNavigationForegroundActiveColor" format="reference|color"/>
+    <attr name="uifabricBottomNavigationForegroundInactiveColor" format="reference|color"/>
+
     <!--Button-->
     <attr name="uifabricButtonBackgroundDefaultColor" format="reference|color"/>
     <attr name="uifabricButtonBackgroundDisabledColor" format="reference|color"/>

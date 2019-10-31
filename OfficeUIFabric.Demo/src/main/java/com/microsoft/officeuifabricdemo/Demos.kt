@@ -12,6 +12,7 @@ import kotlin.reflect.KClass
 const val APP_BAR_LAYOUT = "AppBarLayout"
 const val AVATAR_VIEW = "AvatarView"
 const val BASIC_INPUTS = "Basic Inputs"
+const val BOTTOM_NAVIGATION = "BottomNavigation"
 const val BOTTOM_SHEET = "BottomSheet"
 const val CALENDAR_VIEW = "CalendarView"
 const val DATE_TIME_PICKER_DIALOG = "DateTimePickerDialog"
@@ -32,6 +33,7 @@ val DEMOS = arrayListOf(
     Demo(APP_BAR_LAYOUT, AppBarLayoutActivity::class),
     Demo(AVATAR_VIEW, AvatarViewActivity::class),
     Demo(BASIC_INPUTS, BasicInputsActivity::class),
+    Demo(BOTTOM_NAVIGATION, BottomNavigationActivity::class),
     Demo(BOTTOM_SHEET, BottomSheetActivity::class),
     Demo(CALENDAR_VIEW, CalendarViewActivity::class),
     Demo(DATE_TIME_PICKER_DIALOG, DateTimePickerDialogActivity::class),
