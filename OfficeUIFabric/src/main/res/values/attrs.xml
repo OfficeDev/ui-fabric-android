@@ -35,6 +35,9 @@
 
     <!-- *** Semantic Colors *** -->
 
+    <!--AppBarLayout-->
+    <attr name="uifabricAppBarLayoutBackgroundColor" format="reference|color"/>
+
     <!--BottomNavigation-->
     <attr name="uifabricBottomNavigationBackgroundColor" format="reference|color"/>
     <attr name="uifabricBottomNavigationForegroundActiveColor" format="reference|color"/>

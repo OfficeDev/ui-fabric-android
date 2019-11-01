@@ -10,7 +10,6 @@ import android.os.Bundle
 import android.support.annotation.LayoutRes
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
-import com.microsoft.officeuifabric.appbarlayout.AppBarLayout
 import kotlinx.android.synthetic.main.activity_demo_detail.*
 import java.util.*
 
@@ -36,8 +35,6 @@ abstract class DemoActivity : AppCompatActivity() {
         val demoID = intent.getSerializableExtra(DEMO_ID) as UUID
         val demo = DEMOS.find { it.id == demoID }
         title = demo?.title
-
-        app_bar.scrollBehavior = AppBarLayout.ScrollBehavior.NONE
 
         // Load content and place it in the requested container
         val container = if (contentNeedsScrollableContainer) demo_detail_scrollable_container else demo_detail_container

@@ -166,12 +166,7 @@
     <style name="Theme.UIFabric.Toolbar" parent="@style/Widget.AppCompat.Toolbar">
         <item name="titleTextAppearance">@style/TextAppearance.UIFabric.ToolbarTitle</item>
         <item name="subtitleTextAppearance">@style/TextAppearance.UIFabric.ToolbarSubtitle</item>
-        <item name="toolbarNavigationButtonStyle">@style/Widget.UIFabric.NavigationButton</item>
         <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
-    </style>
-    <style name="Widget.UIFabric.NavigationButton" parent="@style/Widget.AppCompat.Toolbar.Button.Navigation">
-        <item name="android:minWidth">@dimen/uifabric_toolbar_navigation_icon_container_size</item>
-        <item name="android:minHeight">@dimen/uifabric_toolbar_navigation_icon_container_size</item>
     </style>
 
 </resources>

@@ -18,14 +18,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <FrameLayout
-        android:id="@+id/frameLayout"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/demo_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <include layout="@layout/demo_list" />
-
-    </FrameLayout>
+        app:layoutManager="LinearLayoutManager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".DemoListActivity" />
 
 </android.support.design.widget.CoordinatorLayout>

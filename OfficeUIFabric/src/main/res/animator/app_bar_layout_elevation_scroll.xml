@@ -7,7 +7,7 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <objectAnimator
-            android:duration="100"
+            android:duration="@integer/uifabric_app_bar_layout_elevation_scroll_duration"
             android:propertyName="elevation"
             android:valueTo="@dimen/uifabric_app_bar_layout_elevation_scroll"
             android:valueType="floatType" />

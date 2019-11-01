@@ -19,7 +19,6 @@ import com.microsoft.officeuifabric.listitem.ListItemDivider
 import com.microsoft.officeuifabric.listitem.ListItemView
 import com.microsoft.officeuifabric.search.Searchbar
 import kotlinx.android.synthetic.main.activity_demo_list.*
-import kotlinx.android.synthetic.main.demo_list.*
 
 /**
  * This activity presents a list of [Demo]s, which when touched,

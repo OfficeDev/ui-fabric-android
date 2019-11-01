@@ -17,7 +17,8 @@
     <com.microsoft.officeuifabric.appbarlayout.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        app:scrollBehavior="pin" />
 
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/demo_detail_scrollable_container"

@@ -24,6 +24,9 @@ class PersonaListViewActivity : DemoActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        app_bar.scrollTargetViewId = R.id.persona_list_view_example
+
         persona_list_view_example.personas = createPersonaList(this)
         persona_list_view_example.onItemClickedListener = object : PersonaListView.OnItemClickedListener {
             override fun onItemClicked(persona: IPersona) {

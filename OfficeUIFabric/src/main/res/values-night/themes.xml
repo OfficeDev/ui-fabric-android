@@ -18,7 +18,7 @@
 
         <!--Backgrounds-->
         <item name="uifabricBackgroundColor">@color/uifabric_black</item>
-        <item name="uifabricBackgroundPressedColor">@color/uifabric_gray_400</item>
+        <item name="uifabricBackgroundPressedColor">@color/uifabric_gray_900</item>
 
         <!--Foregrounds-->
         <item name="uifabricForegroundColor">@color/uifabric_white</item>
@@ -26,6 +26,9 @@
         <item name="uifabricDividerColor">@color/uifabric_gray_800</item>
 
         <!-- *** Semantic Colors *** -->
+
+        <!--AppBarLayout-->
+        <item name="uifabricAppBarLayoutBackgroundColor">?attr/uifabricBackgroundSecondaryColor</item>
 
         <!--CalendarView-->
         <item name="uifabricCalendarBackgroundColor">?attr/uifabricBackgroundSecondaryColor</item>

@@ -48,6 +48,9 @@
 
         <!-- *** Semantic Colors *** -->
 
+        <!--AppBarLayout-->
+        <item name="uifabricAppBarLayoutBackgroundColor">?attr/colorPrimary</item>
+
         <!--BottomNavigation-->
         <item name="uifabricBottomNavigationBackgroundColor">?attr/uifabricBackgroundColor</item>
         <item name="uifabricBottomNavigationForegroundActiveColor">?attr/colorPrimary</item>

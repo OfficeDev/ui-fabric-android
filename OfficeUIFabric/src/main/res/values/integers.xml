@@ -5,6 +5,10 @@
   -->
 
 <resources>
+    <!--AppBarLayout-->
+    <integer name="uifabric_app_bar_layout_elevation_duration">500</integer>
+    <integer name="uifabric_app_bar_layout_elevation_scroll_duration">0</integer>
+
     <!--Animation-->
     <integer name="uifabric_anim_indeterminate_duration">1000</integer>
 

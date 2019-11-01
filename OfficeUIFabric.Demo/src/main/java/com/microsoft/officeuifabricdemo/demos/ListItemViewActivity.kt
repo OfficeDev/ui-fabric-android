@@ -29,6 +29,7 @@ import com.microsoft.officeuifabricdemo.demos.list.IBaseListItem
 import com.microsoft.officeuifabricdemo.demos.list.ListAdapter
 import com.microsoft.officeuifabricdemo.demos.list.ListItem
 import com.microsoft.officeuifabricdemo.demos.list.ListSubHeader
+import kotlinx.android.synthetic.main.activity_demo_detail.*
 import kotlinx.android.synthetic.main.activity_list_item_view.*
 
 class ListItemViewActivity : DemoActivity() {
@@ -40,6 +41,8 @@ class ListItemViewActivity : DemoActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        app_bar.scrollTargetViewId = R.id.list_example
 
         val listAdapter = ListAdapter(this)
         listAdapter.listItems = createList()

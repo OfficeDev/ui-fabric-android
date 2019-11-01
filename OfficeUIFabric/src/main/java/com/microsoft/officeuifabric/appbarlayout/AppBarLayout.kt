@@ -8,17 +8,23 @@ package com.microsoft.officeuifabric.appbarlayout
 import android.animation.AnimatorInflater
 import android.content.Context
 import android.os.Build
+import android.support.annotation.IdRes
 import android.support.design.widget.AppBarLayout
 import android.support.design.widget.AppBarLayout.LayoutParams.*
 import android.support.design.widget.AppBarLayout.OnOffsetChangedListener
+import android.support.design.widget.CoordinatorLayout
+import android.support.v4.widget.NestedScrollView
+import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
 import android.view.ContextThemeWrapper
 import android.view.View
+import android.view.ViewGroup
 import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.appbarlayout.AppBarLayout.ScrollBehavior
 import com.microsoft.officeuifabric.search.Searchbar
 import com.microsoft.officeuifabric.theming.UIFabricContextThemeWrapper
 import com.microsoft.officeuifabric.toolbar.Toolbar
+import com.microsoft.officeuifabric.util.ThemeUtil
 import com.microsoft.officeuifabric.util.activity
 import kotlin.math.abs
 
@@ -27,13 +33,20 @@ import kotlin.math.abs
  * [ScrollBehavior] provides control over [Toolbar] and [accessoryView] motion during scroll
  * changes and focus changes when using [Searchbar].
  *
+ * [ScrollBehavior] works best with a [CoordinatorLayout] parent and either [NestedScrollView] or
+ * [RecyclerView] direct siblings.
+ *
  * TODO
  * - Use Fluent PopupMenu
  * - Add xml attributes
  */
 class AppBarLayout : AppBarLayout {
+    companion object {
+        private val DEFAULT_SCROLL_BEHAVIOR = ScrollBehavior.COLLAPSE_TOOLBAR
+    }
+
     enum class ScrollBehavior {
-        NONE, COLLAPSE_TOOLBAR
+        NONE, COLLAPSE_TOOLBAR, PIN
     }
 
     /**
@@ -57,39 +70,94 @@ class AppBarLayout : AppBarLayout {
             if (field != null)
                 addView(field)
 
-            updateAnimationState()
+            updateViewsWithScrollBehavior()
         }
     /**
      * Defines the [ScrollBehavior] applied to the [toolbar] and [accessoryView] on scroll and focus changes.
      */
-    var scrollBehavior: ScrollBehavior = ScrollBehavior.COLLAPSE_TOOLBAR
+    var scrollBehavior: ScrollBehavior = DEFAULT_SCROLL_BEHAVIOR
         set(value) {
             if (field == value)
                 return
             field = value
-            updateAnimationState()
+            updateViewsWithScrollBehavior()
         }
+
+    /**
+     * Id of the view that [AppBarLayout] uses to determine [scrollBehavior] functionality. Use this id if
+     * the scrolling view is not a direct sibling of [AppBarLayout].
+     */
+    @IdRes
+    var scrollTargetViewId: Int = View.NO_ID
+        set(value) {
+            if (field == value)
+                return
+            field = value
+            scrollTargetView = getOnScrollTargetView()
+        }
+
+    private var scrollTargetView: View? = null
+        set(value) {
+            if (field == value)
+                return
+            (scrollTargetView as? RecyclerView)?.removeOnScrollListener(recyclerViewScrollListener)
+            field = value
+            (field as? RecyclerView)?.addOnScrollListener(recyclerViewScrollListener)
+        }
+
+    private val behavior = Behavior()
 
     private val offsetChangedListener = OnOffsetChangedListener { appBarLayout, verticalOffset ->
         toolbar.alpha = 1f - abs(verticalOffset / (appBarLayout.totalScrollRange.toFloat() / 3))
+        setStateListAnimator(verticalOffset != 0)
+    }
 
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP_MR1)
-            stateListAnimator = if (verticalOffset == 0)
-                AnimatorInflater.loadStateListAnimator(context, R.animator.app_bar_layout_elevation)
-            else
-                AnimatorInflater.loadStateListAnimator(context, R.animator.app_bar_layout_elevation_scroll)
-        else
-            elevation = resources.getDimension(R.dimen.uifabric_app_bar_layout_elevation)
+    private val recyclerViewScrollListener = object : RecyclerView.OnScrollListener() {
+        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+            super.onScrolled(recyclerView, dx, dy)
+            setStateListAnimator(recyclerView.computeVerticalScrollOffset() != 0)
+        }
     }
 
     constructor(context: Context, attrs: AttributeSet?) : super(UIFabricContextThemeWrapper(context), attrs) {
         setupToolbar(context)
-        updateAnimationState()
+        setBackgroundColor(ThemeUtil.getThemeAttrColor(context, R.attr.uifabricAppBarLayoutBackgroundColor))
+
+        val styledAttributes = context.obtainStyledAttributes(attrs, R.styleable.AppBarLayout)
+        scrollTargetViewId = styledAttributes.getResourceId(R.styleable.AppBarLayout_scrollTargetViewId, View.NO_ID)
+        val scrollBehaviorOrdinal = styledAttributes.getInt(R.styleable.AppBarLayout_scrollBehavior, DEFAULT_SCROLL_BEHAVIOR.ordinal)
+        scrollBehavior = ScrollBehavior.values()[scrollBehaviorOrdinal]
+        styledAttributes.recycle()
     }
 
     internal fun updateExpanded(expanded: Boolean) {
         if (scrollBehavior == ScrollBehavior.COLLAPSE_TOOLBAR)
             setExpanded(expanded, true)
+    }
+
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        scrollTargetView = getOnScrollTargetView()
+        updateViewsWithScrollBehavior()
+    }
+
+    private fun getOnScrollTargetView(): View? {
+        val parent = parent as? ViewGroup ?: return null
+        val firstSiblingIndex = parent.indexOfChild(this) + 1
+        val firstSibling = parent.getChildAt(firstSiblingIndex)
+        val scrollTargetViewWithId = parent.findViewById<View>(scrollTargetViewId)
+
+        return scrollTargetViewWithId ?: firstSibling as? RecyclerView ?: firstSibling as? NestedScrollView
+    }
+
+    private fun setStateListAnimator(lift: Boolean) {
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP_MR1)
+            stateListAnimator = if (lift && scrollBehavior != ScrollBehavior.NONE)
+                AnimatorInflater.loadStateListAnimator(context, R.animator.app_bar_layout_elevation_scroll)
+            else
+                AnimatorInflater.loadStateListAnimator(context, R.animator.app_bar_layout_elevation)
+        else
+            elevation = resources.getDimension(R.dimen.uifabric_app_bar_layout_elevation)
     }
 
     private fun setupToolbar(context: Context) {
@@ -100,13 +168,20 @@ class AppBarLayout : AppBarLayout {
         context.activity?.setSupportActionBar(toolbar)
     }
 
-    private fun updateAnimationState() {
-        val toolbarLayoutParams = LayoutParams(MATCH_PARENT, WRAP_CONTENT)
+    private fun updateViewsWithScrollBehavior() {
+        val currentBehavior = (layoutParams as? CoordinatorLayout.LayoutParams)?.behavior
+        (layoutParams as? CoordinatorLayout.LayoutParams)?.behavior = when {
+            scrollBehavior != ScrollBehavior.NONE -> behavior
+            currentBehavior != behavior -> currentBehavior
+            else -> null
+        }
 
+        val toolbarLayoutParams = LayoutParams(MATCH_PARENT, WRAP_CONTENT)
         when (scrollBehavior) {
             ScrollBehavior.NONE -> {
                 toolbarLayoutParams.scrollFlags = 0
                 removeOnOffsetChangedListener(offsetChangedListener)
+                setStateListAnimator(false)
                 toolbar.alpha = 1.0f
             }
             ScrollBehavior.COLLAPSE_TOOLBAR -> {
@@ -118,8 +193,49 @@ class AppBarLayout : AppBarLayout {
 
                 addOnOffsetChangedListener(offsetChangedListener)
             }
+            ScrollBehavior.PIN -> {
+                toolbarLayoutParams.scrollFlags = 0
+                setStateListAnimator(false)
+            }
+        }
+        toolbar.layoutParams = toolbarLayoutParams
+    }
+
+    private inner class Behavior : AppBarLayout.Behavior () {
+        override fun onStartNestedScroll(
+            parent: CoordinatorLayout,
+            child: AppBarLayout,
+            directTargetChild: View,
+            target: View,
+            nestedScrollAxes: Int,
+            type: Int
+        ): Boolean {
+            val superResult = super.onStartNestedScroll(parent, child, directTargetChild, target, nestedScrollAxes, type)
+            // Using a listener for RecyclerViews instead to get a more accurate y position.
+            if (target is RecyclerView)
+                return superResult
+
+            setStateListAnimator(target.scrollY != 0)
+            return true
         }
 
-        toolbar.layoutParams = toolbarLayoutParams
+        override fun onNestedScroll(
+            coordinatorLayout: CoordinatorLayout,
+            child: AppBarLayout,
+            target: View,
+            dxConsumed: Int,
+            dyConsumed: Int,
+            dxUnconsumed: Int,
+            dyUnconsumed: Int,
+            type: Int
+        ) {
+            super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed, type)
+            setStateListAnimator(target.scrollY != 0)
+        }
+
+        override fun onStopNestedScroll(coordinatorLayout: CoordinatorLayout, abl: AppBarLayout, target: View, type: Int) {
+            super.onStopNestedScroll(coordinatorLayout, abl, target, type)
+            setStateListAnimator(target.scrollY != 0)
+        }
     }
 }

@@ -94,6 +94,7 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
         )
 
         setupList()
+        app_bar.scrollTargetViewId = R.id.app_bar_layout_list
 
         updateScrollBehavior()
         updateNavigationIcon()
@@ -111,10 +112,11 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
     override fun onClick(view: View) {
         when(view.id) {
             R.id.app_bar_layout_toggle_scroll_behavior_button -> {
-                scrollBehavior = if (scrollBehavior == AppBarLayout.ScrollBehavior.NONE)
-                    AppBarLayout.ScrollBehavior.COLLAPSE_TOOLBAR
-                else
-                    AppBarLayout.ScrollBehavior.NONE
+                scrollBehavior = when (scrollBehavior) {
+                    AppBarLayout.ScrollBehavior.NONE -> AppBarLayout.ScrollBehavior.COLLAPSE_TOOLBAR
+                    AppBarLayout.ScrollBehavior.COLLAPSE_TOOLBAR -> AppBarLayout.ScrollBehavior.PIN
+                    AppBarLayout.ScrollBehavior.PIN -> AppBarLayout.ScrollBehavior.NONE
+                }
             }
             R.id.app_bar_layout_toggle_navigation_icon_button ->
                 navigationIconType = when (navigationIconType) {
