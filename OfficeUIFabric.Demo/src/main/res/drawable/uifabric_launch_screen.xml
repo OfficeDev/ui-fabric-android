@@ -7,7 +7,7 @@
 <!--Launch Screen: To use this drawable for your own launch screen, replace the bitmap src attribute values with your own logo(s)-->
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android"
     android:opacity="opaque">
-    <item android:drawable="@color/uifabric_white" />
+    <item android:drawable="?attr/uifabricBackgroundColor" />
     <item android:bottom="@dimen/uifabric_launch_logo_bottom_spacing">
         <bitmap
             android:gravity="center"

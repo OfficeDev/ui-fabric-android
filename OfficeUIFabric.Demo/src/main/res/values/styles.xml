@@ -6,7 +6,7 @@
 
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="AppTheme" parent="Theme.UIFabric">
+    <style name="Base.AppTheme" parent="Theme.UIFabric">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowBackground">?attr/uifabricBackgroundColor</item>
@@ -16,19 +16,23 @@
         <item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
     </style>
 
+    <style name="AppTheme" parent="Base.AppTheme" />
+
     <style name="AppTheme.Orange">
         <item name="colorPrimaryDark">#a52c00</item>
         <item name="colorPrimary">#d83b01</item>
         <item name="colorAccent">#d83b01</item>
     </style>
 
-    <!--Launch Screen: This theme sets the launch screen for the app-->
-    <style name="AppTheme.Launcher">
+    <style name="Base.AppTheme.Launcher">
         <!--Use background instead of windowBackground to account for differences in bottom nav bar height treatment-->
         <item name="android:background">@drawable/uifabric_launch_screen</item>
-        <item name="android:statusBarColor">@color/uifabric_white</item>
+        <item name="android:statusBarColor">?attr/uifabricBackgroundColor</item>
         <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
     </style>
+
+    <!--Launch Screen: This theme sets the launch screen for the app-->
+    <style name="AppTheme.Launcher" parent="Base.AppTheme.Launcher" />
 
     <!--Demo-->
     <style name="Widget.DemoSubHeader" parent="@android:style/Widget.TextView">
