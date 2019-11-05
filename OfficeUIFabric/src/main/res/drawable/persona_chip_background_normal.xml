@@ -12,7 +12,7 @@
             <item>
                 <shape>
                     <solid android:color="?attr/uifabricPersonaChipBackgroundActiveColor" />
-                    <corners android:radius="@dimen/uifabric_corner_radius_small" />
+                    <corners android:radius="@dimen/uifabric_corner_radius_2" />
                 </shape>
             </item>
         </ripple>
@@ -23,7 +23,7 @@
             <item>
                 <shape>
                     <solid android:color="?attr/uifabricPersonaChipBackgroundNormalColor" />
-                    <corners android:radius="@dimen/uifabric_corner_radius_small" />
+                    <corners android:radius="@dimen/uifabric_corner_radius_2" />
                 </shape>
             </item>
         </ripple>

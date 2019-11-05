@@ -16,7 +16,7 @@
     <dimen name="uifabric_avatar_size_large">40dp</dimen>
     <dimen name="uifabric_avatar_size_xlarge">52dp</dimen>
     <dimen name="uifabric_avatar_size_xxlarge">64dp</dimen>
-    <dimen name="uifabric_avatar_square_corner_radius">@dimen/uifabric_corner_radius_medium</dimen>
+    <dimen name="uifabric_avatar_square_corner_radius">@dimen/uifabric_corner_radius_4</dimen>
 
     <!--BottomSheet-->
     <dimen name="uifabric_bottom_sheet_bottom_padding">8dp</dimen>
@@ -25,7 +25,7 @@
     <dimen name="uifabric_button_padding_horizontal">@dimen/uifabric_content_inset</dimen>
     <dimen name="uifabric_button_padding_vertical">8.5dp</dimen>
     <dimen name="uifabric_button_borderless_padding_horizontal">8dp</dimen>
-    <dimen name="uifabric_button_corner_radius">@dimen/uifabric_corner_radius_small</dimen>
+    <dimen name="uifabric_button_corner_radius">@dimen/uifabric_corner_radius_2</dimen>
     <dimen name="uifabric_button_min_height">36dp</dimen>
 
     <!--CalendarView-->
@@ -57,7 +57,7 @@
     <dimen name="uifabric_resizable_dialog_card_elevation">2dp</dimen>
 
     <!--Drawer-->
-    <dimen name="uifabric_drawer_corner_radius">@dimen/uifabric_corner_radius_large</dimen>
+    <dimen name="uifabric_drawer_corner_radius">@dimen/uifabric_corner_radius_8</dimen>
     <dimen name="uifabric_drawer_peek_height">0dp</dimen>
     <dimen name="uifabric_drawer_elevation">5dp</dimen>
     <dimen name="uifabric_drawer_handle_vertical_margin">8dp</dimen>
@@ -112,7 +112,7 @@
     <dimen name="uifabric_persona_chip_spacing">6dp</dimen>
 
     <!--PopupMenu-->
-    <dimen name="uifabric_popup_menu_corner_radius">@dimen/uifabric_corner_radius_medium</dimen>
+    <dimen name="uifabric_popup_menu_corner_radius">@dimen/uifabric_corner_radius_4</dimen>
     <dimen name="uifabric_popup_menu_item_icon_size">24dp</dimen>
     <dimen name="uifabric_popup_menu_item_margin_horizontal">8dp</dimen>
     <dimen name="uifabric_popup_menu_item_min_height">42dp</dimen>
@@ -147,9 +147,9 @@
 
     <!--Shared-->
     <dimen name="uifabric_divider_height">.5dp</dimen>
-    <dimen name="uifabric_corner_radius_small">2dp</dimen>
-    <dimen name="uifabric_corner_radius_medium">4dp</dimen>
-    <dimen name="uifabric_corner_radius_large">12dp</dimen>
+    <dimen name="uifabric_corner_radius_2">2dp</dimen>
+    <dimen name="uifabric_corner_radius_4">4dp</dimen>
+    <dimen name="uifabric_corner_radius_8">8dp</dimen>
     <dimen name="uifabric_min_touch_size">48dp</dimen>
     <dimen name="uifabric_content_inset">16dp</dimen>
 
@@ -158,7 +158,7 @@
     <dimen name="uifabric_snackbar_action_spacing">7dp</dimen>
     <dimen name="uifabric_snackbar_action_text_wrapping_width">100dp</dimen>
     <dimen name="uifabric_snackbar_background_inset">8dp</dimen>
-    <dimen name="uifabric_snackbar_background_corner_radius">@dimen/uifabric_corner_radius_medium</dimen>
+    <dimen name="uifabric_snackbar_background_corner_radius">@dimen/uifabric_corner_radius_4</dimen>
     <dimen name="uifabric_snackbar_content_inset">@dimen/uifabric_content_inset</dimen>
     <dimen name="uifabric_snackbar_custom_view_size_small">24dp</dimen>
     <dimen name="uifabric_snackbar_custom_view_size_medium">32dp</dimen>
@@ -181,6 +181,6 @@
     <dimen name="uifabric_tooltip_margin">8dp</dimen>
     <dimen name="uifabric_tooltip_padding_vertical">8dp</dimen>
     <dimen name="uifabric_tooltip_padding_horizontal">12dp</dimen>
-    <dimen name="uifabric_tooltip_radius">@dimen/uifabric_corner_radius_medium</dimen>
+    <dimen name="uifabric_tooltip_radius">@dimen/uifabric_corner_radius_4</dimen>
     <dimen name="uifabric_tooltip_background_padding">2dp</dimen>
 </resources>

@@ -17,7 +17,7 @@
         android:layout_gravity="center"
         android:layout_margin="@dimen/uifabric_dialog_insets"
         android:background="@drawable/ms_dialog_background_light"
-        card_view:cardCornerRadius="@dimen/uifabric_corner_radius_medium"
+        card_view:cardCornerRadius="@dimen/uifabric_corner_radius_4"
         card_view:cardElevation="@dimen/uifabric_resizable_dialog_card_elevation"
         card_view:cardUseCompatPadding="true" />
 
