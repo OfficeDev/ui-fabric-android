@@ -55,6 +55,10 @@
         <item name="uifabricToolbarTitleTextColor">?attr/uifabricForegroundOnSecondaryColor</item>
         <item name="uifabricToolbarSubtitleTextColor">?attr/uifabricForegroundOnSecondaryColor</item>
         <item name="uifabricToolbarIconColor">?attr/uifabricForegroundOnSecondaryColor</item>
+
+        <!--Tooltip-->
+        <item name="uifabricTooltipBackgroundColor">?attr/uifabricBackgroundPrimaryColor</item>
+        <item name="uifabricTooltipTextColor">?attr/uifabricForegroundOnPrimaryColor</item>
     </style>
 
 </resources>

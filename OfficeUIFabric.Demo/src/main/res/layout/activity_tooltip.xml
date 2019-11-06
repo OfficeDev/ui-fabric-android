@@ -13,6 +13,7 @@
 
     <Button
         android:id="@+id/tooltip_anchor_top_start"
+        style="@style/Demo.Tooltip.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tooltip_button"
@@ -21,6 +22,7 @@
 
     <Button
         android:id="@+id/tooltip_anchor_top_end"
+        style="@style/Demo.Tooltip.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tooltip_button"
@@ -29,6 +31,7 @@
 
     <Button
         android:id="@+id/tooltip_anchor_bottom_start"
+        style="@style/Demo.Tooltip.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tooltip_button"
@@ -37,6 +40,7 @@
 
     <Button
         android:id="@+id/tooltip_anchor_bottom_end"
+        style="@style/Demo.Tooltip.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tooltip_button"
@@ -45,6 +49,7 @@
 
     <Button
         android:id="@+id/tooltip_anchor_center"
+        style="@style/Demo.Tooltip.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tooltip_center_button"

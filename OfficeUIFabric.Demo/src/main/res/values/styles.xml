@@ -61,4 +61,7 @@
         <item name="android:textColor">?attr/uifabricForegroundSecondaryColor</item>
     </style>
 
+    <!--Tooltip Demo-->
+    <style name="Demo.Tooltip.Button" parent="Widget.UIFabric.Button" />
+
 </resources>
