@@ -31,8 +31,8 @@
     <color name="uifabric_gray_800">#292929</color>
     <color name="uifabric_gray_700">#303030</color>
     <color name="uifabric_gray_600">#404040</color>
-    <color name="uifabric_gray_500">#767676</color>
-    <color name="uifabric_gray_400">#8E8E8E</color>
+    <color name="uifabric_gray_500">#6E6E6E</color>
+    <color name="uifabric_gray_400">#919191</color>
     <color name="uifabric_gray_300">#ACACAC</color>
     <color name="uifabric_gray_200">#C8C8C8</color>
     <color name="uifabric_gray_100">#E1E1E1</color>

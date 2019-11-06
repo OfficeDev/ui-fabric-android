@@ -37,7 +37,8 @@
         <!--Foregrounds-->
         <item name="uifabricForegroundColor">@color/uifabric_gray_900</item>
         <item name="uifabricForegroundSelectedColor">?attr/colorPrimary</item>
-        <item name="uifabricForegroundSecondaryColor">@color/uifabric_gray_400</item>
+        <item name="uifabricForegroundSecondaryColor">@color/uifabric_gray_500</item>
+        <item name="uifabricForegroundSecondaryIconColor">@color/uifabric_gray_400</item>
         <item name="uifabricForegroundOnPrimaryColor">@color/uifabric_white</item>
         <item name="uifabricForegroundOnSecondaryColor">@color/uifabric_white</item>
         <item name="uifabricDividerColor">@color/uifabric_gray_100</item>
@@ -54,7 +55,7 @@
         <!--BottomNavigation-->
         <item name="uifabricBottomNavigationBackgroundColor">?attr/uifabricBackgroundColor</item>
         <item name="uifabricBottomNavigationForegroundActiveColor">?attr/colorPrimary</item>
-        <item name="uifabricBottomNavigationForegroundInactiveColor">@color/uifabric_gray_500</item>
+        <item name="uifabricBottomNavigationForegroundInactiveColor">?attr/uifabricForegroundSecondaryColor</item>
 
         <!--Button-->
         <item name="uifabricButtonBackgroundDefaultColor">?attr/uifabricBackgroundPrimaryColor</item>
@@ -72,7 +73,7 @@
         <item name="uifabricCalendarBackgroundColor">?attr/uifabricBackgroundColor</item>
         <item name="uifabricCalendarWeekHeadingBackgroundColor">?attr/uifabricBackgroundColor</item>
         <item name="uifabricCalendarWeekHeadingWeekDayTextColor">?attr/uifabricForegroundSecondaryColor</item>
-        <item name="uifabricCalendarWeekHeadingWeekendTextColor">@color/uifabric_gray_200</item>
+        <item name="uifabricCalendarWeekHeadingWeekendTextColor">@color/uifabric_gray_400</item>
         <item name="uifabricCalendarMonthOverlayBackgroundColor">?attr/uifabricBackgroundColor</item>
         <item name="uifabricCalendarMonthOverlayTextColor">?attr/uifabricForegroundColor</item>
         <item name="uifabricCalendarOtherMonthBackgroundColor">@color/uifabric_gray_25</item>
@@ -92,7 +93,7 @@
 
         <!--Dialog-->
         <item name="uifabricDialogBackgroundColor">?attr/uifabricBackgroundColor</item>
-        <item name="uifabricDialogCloseIconColor">?attr/uifabricForegroundSecondaryColor</item>
+        <item name="uifabricDialogCloseIconColor">?attr/uifabricForegroundSecondaryIconColor</item>
         <item name="uifabricDialogTabLayoutBackgroundColor">?attr/uifabricDialogBackgroundColor</item>
 
         <!--Drawer-->
@@ -121,7 +122,7 @@
         <item name="uifabricPeoplePickerPopupBackgroundColor">?attr/uifabricBackgroundColor</item>
         <item name="uifabricPeoplePickerTextViewBackgroundColor">?attr/uifabricBackgroundColor</item>
         <item name="uifabricPeoplePickerTextViewDragBackgroundColor">?attr/uifabricBackgroundPrimaryColor</item>
-        <item name="uifabricPeoplePickerHintTextColor">@color/uifabric_gray_300</item>
+        <item name="uifabricPeoplePickerHintTextColor">?attr/uifabricForegroundSecondaryColor</item>
         <item name="uifabricPeoplePickerLabelTextColor">?attr/uifabricForegroundSecondaryColor</item>
         <item name="uifabricPeoplePickerCountSpanTextColor">?attr/uifabricForegroundSecondaryColor</item>
 

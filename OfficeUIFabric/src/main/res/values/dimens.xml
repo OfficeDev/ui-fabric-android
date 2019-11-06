@@ -46,7 +46,7 @@
     <dimen name="uifabric_date_time_picker_date_internal_min_width">160dp</dimen>
     <dimen name="uifabric_date_time_picker_month_internal_min_width">100dp</dimen>
     <dimen name="uifabric_date_time_picker_year_internal_min_width">80dp</dimen>
-    <dimen name="uifabric_date_time_picker_fading_edge_length">50dp</dimen>
+    <dimen name="uifabric_date_time_picker_fading_edge_length">100dp</dimen>
     <dimen name="uifabric_date_time_picker_internal_min_width">48dp</dimen>
     <dimen name="uifabric_date_time_picker_max_height">336dp</dimen>
     <dimen name="uifabric_date_time_picker_padding_right">8dp</dimen>

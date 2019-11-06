@@ -31,7 +31,6 @@ import android.graphics.Typeface
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.support.annotation.IntDef
-import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewCompat
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat
 import android.support.v4.widget.ExploreByTouchHelper
@@ -832,7 +831,6 @@ internal class NumberPicker : LinearLayout {
         if (changed) {
             // need to do all this when we know our size
             initializeSelectorWheel()
-            initializeFadingEdges()
             mTopSelectionDividerTop = (height - mSelectionDividersDistance) / 2 - mSelectionDividerHeight
             mBottomSelectionDividerBottom = (mTopSelectionDividerTop + 2 * mSelectionDividerHeight
                 + mSelectionDividersDistance)
@@ -1490,11 +1488,6 @@ internal class NumberPicker : LinearLayout {
         mInitialScrollOffset = editTextTextPosition - mSelectorElementHeight * mSelectorMiddleItemIndex
         mCurrentScrollOffset = mInitialScrollOffset
         updateTextView()
-    }
-
-    private fun initializeFadingEdges() {
-        isVerticalFadingEdgeEnabled = true
-        setFadingEdgeLength((bottom - top - mTextSize) / 2)
     }
 
     /**

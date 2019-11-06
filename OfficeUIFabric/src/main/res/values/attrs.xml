@@ -22,6 +22,7 @@
     <attr name="uifabricForegroundColor" format="reference|color"/>
     <attr name="uifabricForegroundSelectedColor" format="reference|color"/>
     <attr name="uifabricForegroundSecondaryColor" format="reference|color"/>
+    <attr name="uifabricForegroundSecondaryIconColor" format="reference|color"/>
     <attr name="uifabricForegroundOnPrimaryColor" format="reference|color"/>
     <attr name="uifabricForegroundOnSecondaryColor" format="reference|color"/>
     <attr name="uifabricDividerColor" format="reference|color"/>
