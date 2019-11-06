@@ -86,7 +86,7 @@
         <item name="solidColor">@android:color/transparent</item>
         <item name="internalMinWidth">@dimen/uifabric_date_time_picker_internal_min_width</item>
         <item name="internalMaxHeight">@dimen/uifabric_date_time_picker_max_height</item>
-        <item name="selectorWheelItemCount">7</item>
+        <item name="selectorWheelItemCount">@integer/uifabric_number_picker_selector_wheel_item_count</item>
         <item name="textAlign">center</item>
         <item name="android:paddingRight">@dimen/uifabric_date_time_picker_padding_right</item>
     </style>
