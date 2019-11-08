@@ -45,22 +45,18 @@ internal class DateTimePicker : LinearLayout, NumberPicker.OnValueChangeListener
         private const val MAX_PERIOD = 1
     }
 
-    enum class Tab {
-        START, END, NONE
-    }
-
     enum class PickerMode {
         DATE, DATE_TIME
     }
 
-    val selectedTab: Tab
-        get() = Tab.values()[start_end_tabs.selectedTabPosition]
+    val selectedTab: DateTimeRangeTab
+        get() = DateTimeRangeTab.values()[start_end_tabs.selectedTabPosition]
 
     var timeSlot: TimeSlot = TimeSlot(ZonedDateTime.now(), Duration.ZERO)
         get() {
             val updatedTime = pickerValue
 
-            if (selectedTab == Tab.START)
+            if (selectedTab == DateTimeRangeTab.START)
                 dateTime = updatedTime
             else
                 duration = if (updatedTime.isBefore(dateTime)) Duration.ZERO else Duration.between(dateTime, updatedTime)
@@ -71,7 +67,7 @@ internal class DateTimePicker : LinearLayout, NumberPicker.OnValueChangeListener
             field = value
             dateTime = value.start.truncatedTo(ChronoUnit.MINUTES)
             duration = value.duration
-            setPickerValues(selectedTab == Tab.END, false)
+            setPickerValues(selectedTab == DateTimeRangeTab.END, false)
         }
 
     /**
@@ -86,7 +82,7 @@ internal class DateTimePicker : LinearLayout, NumberPicker.OnValueChangeListener
             }
         }
 
-    var onDateTimeSelectedListener: OnDateTimeSelectedListener? = null
+    var onTimeSlotSelectedListener: OnTimeSlotSelectedListener? = null
 
     private val pickerValue: ZonedDateTime
         get() = when (pickerMode) {
@@ -106,7 +102,7 @@ internal class DateTimePicker : LinearLayout, NumberPicker.OnValueChangeListener
         override fun onTabSelected(tab: TabLayout.Tab) {
             // Adjust start time and duration when switching tabs
             shouldAnnounceHints = false
-            setPickerValues(tab.tag === Tab.END, true)
+            setPickerValues(tab.tag === DateTimeRangeTab.END, true)
         }
 
         override fun onTabUnselected(tab: TabLayout.Tab) { }
@@ -118,18 +114,27 @@ internal class DateTimePicker : LinearLayout, NumberPicker.OnValueChangeListener
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
         LayoutInflater.from(context).inflate(R.layout.view_date_time_picker, this, true)
         is24Hour = DateFormat.is24HourFormat(context)
+
+        with(start_end_tabs) {
+            addTab(newTab())
+            addTab(newTab())
+            addOnTabSelectedListener(onTabSelectedListener)
+        }
+
+        getTab(DateTimeRangeTab.START)?.tag = DateTimeRangeTab.START
+        getTab(DateTimeRangeTab.END)?.tag = DateTimeRangeTab.END
     }
 
     /**
-     * Selects either START or END tab, or in the case of NONE hides the tabs.
+     * Selects either [DateTimeRangeTab.START] or [DateTimeRangeTab.END] tab or in the case of [DateTimeRangeTab.NONE] hides the tabs.
      */
-    fun selectTab(tab: Tab) {
-        if (tab == Tab.NONE) {
+    fun selectTab(dateTimeRangeTab: DateTimeRangeTab) {
+        if (dateTimeRangeTab == DateTimeRangeTab.NONE) {
             start_end_tabs.visibility = View.GONE
         } else {
             with(start_end_tabs) {
                 removeOnTabSelectedListener(onTabSelectedListener)
-                getTabAt(tab.ordinal)?.select()
+                getTabAt(dateTimeRangeTab.ordinal)?.select()
                 addOnTabSelectedListener(onTabSelectedListener)
                 visibility = View.VISIBLE
             }
@@ -151,24 +156,11 @@ internal class DateTimePicker : LinearLayout, NumberPicker.OnValueChangeListener
         updateRangeContentDescription()
     }
 
-    override fun onFinishInflate() {
-        super.onFinishInflate()
-
-        with(start_end_tabs) {
-            addTab(newTab())
-            addTab(newTab())
-            addOnTabSelectedListener(onTabSelectedListener)
-        }
-
-        getTab(Tab.START)?.tag = Tab.START
-        getTab(Tab.END)?.tag = Tab.END
-    }
-
     override fun onValueChange(picker: NumberPicker, oldVal: Int, newVal: Int) {
         if (pickerMode == PickerMode.DATE)
             updateDaysPerMonth(timeSlot.start)
 
-        onDateTimeSelectedListener?.onDateTimeSelected(timeSlot.start, timeSlot.duration)
+        onTimeSlotSelectedListener?.onTimeSlotSelected(timeSlot)
 
         if (shouldAnnounceHints)
             announceNumberPickerValue(picker)
@@ -201,7 +193,7 @@ internal class DateTimePicker : LinearLayout, NumberPicker.OnValueChangeListener
         }
     }
 
-    private fun getTab(tab: Tab): TabLayout.Tab? = start_end_tabs.getTabAt(tab.ordinal)
+    private fun getTab(dateTimeRangeTab: DateTimeRangeTab): TabLayout.Tab? = start_end_tabs.getTabAt(dateTimeRangeTab.ordinal)
 
     // Date Time NumberPickers
 
@@ -225,10 +217,10 @@ internal class DateTimePicker : LinearLayout, NumberPicker.OnValueChangeListener
         }
 
     private fun initDateTimeNumberPickers() {
-        getTab(Tab.START)?.setText(R.string.date_time_picker_start_time)
-        getTab(Tab.END)?.setText(R.string.date_time_picker_end_time)
-        getTab(Tab.START)?.contentDescription = resources.getString(R.string.date_time_picker_accessiblility_start_time)
-        getTab(Tab.END)?.contentDescription = resources.getString(R.string.date_time_picker_accessiblility_end_time)
+        getTab(DateTimeRangeTab.START)?.setText(R.string.date_time_picker_start_time)
+        getTab(DateTimeRangeTab.END)?.setText(R.string.date_time_picker_end_time)
+        getTab(DateTimeRangeTab.START)?.contentDescription = resources.getString(R.string.date_time_picker_accessiblility_start_time)
+        getTab(DateTimeRangeTab.END)?.contentDescription = resources.getString(R.string.date_time_picker_accessiblility_end_time)
 
         date_time_pickers.visibility = View.VISIBLE
 
@@ -333,10 +325,10 @@ internal class DateTimePicker : LinearLayout, NumberPicker.OnValueChangeListener
         get() = ZonedDateTime.now().withYear(year_picker.value).withMonth(month_picker.value).withDayOfMonth(day_picker.value)
 
     private fun initDateNumberPickers() {
-        getTab(Tab.START)?.setText(R.string.date_time_picker_start_date)
-        getTab(Tab.END)?.setText(R.string.date_time_picker_end_date)
-        getTab(Tab.START)?.contentDescription = resources.getString(R.string.date_picker_accessiblility_start_date)
-        getTab(Tab.END)?.contentDescription = resources.getString(R.string.date_picker_accessiblility_end_date)
+        getTab(DateTimeRangeTab.START)?.setText(R.string.date_time_picker_start_date)
+        getTab(DateTimeRangeTab.END)?.setText(R.string.date_time_picker_end_date)
+        getTab(DateTimeRangeTab.START)?.contentDescription = resources.getString(R.string.date_picker_accessiblility_start_date)
+        getTab(DateTimeRangeTab.END)?.contentDescription = resources.getString(R.string.date_picker_accessiblility_end_date)
 
         date_pickers.visibility = View.VISIBLE
 
@@ -405,7 +397,7 @@ internal class DateTimePicker : LinearLayout, NumberPicker.OnValueChangeListener
     }
 
     private fun updateDaysPerMonth(time: ZonedDateTime) {
-        val time = if (selectedTab == Tab.END) time.plus(duration) else time
+        val time = if (selectedTab == DateTimeRangeTab.END) time.plus(duration) else time
         val yearMonth = YearMonth.of(time.year, time.month)
         with(day_picker) {
             minValue = MIN_DAYS
@@ -416,22 +408,21 @@ internal class DateTimePicker : LinearLayout, NumberPicker.OnValueChangeListener
     // Accessibility
 
     private fun updateRangeContentDescription() {
-        if (start_end_tabs.visibility == View.VISIBLE) {
+        if (start_end_tabs.visibility == View.VISIBLE)
             when (pickerMode) {
                 PickerMode.DATE -> date_pickers.contentDescription = getAccessibilityDescription(true)
                 PickerMode.DATE_TIME -> date_time_pickers.contentDescription = getAccessibilityDescription(false)
             }
-        }
     }
 
     private fun getAccessibilityDescription(dateOnly: Boolean): String {
-        val time = if (selectedTab === Tab.END) dateTime.plus(duration) else dateTime
+        val time = if (selectedTab === DateTimeRangeTab.END) dateTime.plus(duration) else dateTime
         if (dateOnly)
             return getSelectedValueString(DateStringUtils.formatMonthDayYear(context, time))
 
         val label = when (selectedTab) {
-            Tab.START -> context.getString(R.string.date_time_picker_start_time)
-            Tab.END -> context.getString(R.string.date_time_picker_end_time)
+            DateTimeRangeTab.START -> context.getString(R.string.date_time_picker_start_time)
+            DateTimeRangeTab.END -> context.getString(R.string.date_time_picker_end_time)
             else -> ""
         }
 
@@ -493,13 +484,17 @@ internal class DateTimePicker : LinearLayout, NumberPicker.OnValueChangeListener
         override fun format(value: Int): String =
             getDate(value, today.plusDays((value - daysBack).toLong()))
     }
+
+    interface OnTimeSlotSelectedListener {
+        /**
+         * Method called when a user selects a date time range
+         * @param [timeSlot] the selected TimeSlot
+         *
+         */
+        fun onTimeSlotSelected(timeSlot: TimeSlot)
+    }
 }
 
-internal interface OnDateTimeSelectedListener {
-    /**
-     * Method called when a user selects a date time range
-     * @param [dateTime] the selected date and time
-     * @param [duration] the duration of a date range
-     */
-    fun onDateTimeSelected(dateTime: ZonedDateTime, duration: Duration)
+enum class DateTimeRangeTab {
+    START, END, NONE
 }

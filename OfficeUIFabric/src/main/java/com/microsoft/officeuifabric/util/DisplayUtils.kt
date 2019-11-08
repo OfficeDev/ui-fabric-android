@@ -50,6 +50,19 @@ fun Context.getSystemDimension(dimensionId: String): Int {
     return if (resourceId > 0) resources.getDimensionPixelSize(resourceId) else 0
 }
 
+val Context.desiredDialogSize: IntArray
+    get() {
+        val dialogSize = IntArray(2)
+        if (isTablet)
+            dialogSize[0] = WindowManager.LayoutParams.WRAP_CONTENT
+        else
+            dialogSize[0] = resources.displayMetrics.widthPixels
+
+        dialogSize[1] = WindowManager.LayoutParams.WRAP_CONTENT
+
+        return dialogSize
+    }
+
 // This check returns false in emulators
 val Context.hasSoftNavigationBar: Boolean
     get() {

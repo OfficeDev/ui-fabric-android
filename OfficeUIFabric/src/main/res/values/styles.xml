@@ -48,6 +48,11 @@
     <style name="DateTimePickerDialog.Toolbar" parent="@style/ThemeOverlay.AppCompat">
         <item name="android:colorControlHighlight">?attr/uifabricBackgroundPressedColor</item>
     </style>
+    <style name="Base.Widget.UIFabric.DateTimePickerDialog.DateTimeRange.TabLayout" parent="Widget.UIFabric.Dialog.TabLayout">
+        <item name="tabGravity">fill</item>
+        <item name="tabMode">fixed</item>
+    </style>
+    <style name="Widget.UIFabric.DateTimePickerDialog.DateTimeRange.TabLayout" parent="Base.Widget.UIFabric.DateTimePickerDialog.DateTimeRange.TabLayout" />
 
     <!--Dialog-->
     <style name="Dialog.UIFabric" parent="@style/Theme.AppCompat.Light.Dialog.Alert">

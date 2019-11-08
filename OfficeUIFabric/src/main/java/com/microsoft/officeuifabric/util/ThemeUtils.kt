@@ -144,7 +144,7 @@ object ThemeUtil {
     }
 }
 
-fun Context.getTintedDrawable(@DrawableRes drawableId: Int, tintId: Int): Drawable? {
+fun Context.getTintedDrawable(@DrawableRes drawableId: Int, @ColorInt tintId: Int): Drawable? {
     val drawable = ContextCompat.getDrawable(this, drawableId) ?: return null
     val wrappedDrawable = DrawableCompat.wrap(drawable.mutate())
     DrawableCompat.setTint(wrappedDrawable, tintId)

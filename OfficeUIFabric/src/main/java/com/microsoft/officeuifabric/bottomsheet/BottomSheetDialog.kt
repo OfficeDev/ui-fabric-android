@@ -7,8 +7,8 @@ package com.microsoft.officeuifabric.bottomsheet
 
 import android.content.Context
 import android.support.annotation.StyleRes
-import android.support.v4.app.DialogFragment
 import android.view.View
+import android.view.Window
 import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.drawer.DrawerDialog
 import com.microsoft.officeuifabric.listitem.ListItemView
@@ -28,7 +28,7 @@ class BottomSheetDialog : DrawerDialog, BottomSheetItem.OnClickListener {
 
     @JvmOverloads
     constructor(context: Context, items: ArrayList<BottomSheetItem>, headerItem: BottomSheetItem? = null, @StyleRes theme: Int = 0) : super(context, theme) {
-        supportRequestWindowFeature(DialogFragment.STYLE_NO_TITLE)
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE)
 
         val view = layoutInflater.inflate(R.layout.view_bottom_sheet, container.drawer_content, false)
 

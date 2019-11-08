@@ -36,8 +36,6 @@ import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.temporal.ChronoUnit
 import java.util.*
 
-// TODO add ripple for Lollipop
-
 /**
  * [CalendarDayView] View that displays a day of the week
  */
@@ -148,8 +146,8 @@ internal class CalendarDayView: AppCompatButton, Checkable {
             return
 
         _isChecked = checked
-        updateText()
         updateTypeface()
+        updateText()
         refreshDrawableState()
 
         if (context.isAccessibilityEnabled) {
@@ -173,9 +171,9 @@ internal class CalendarDayView: AppCompatButton, Checkable {
         if (wasActivated == activated)
             return
 
-        updateText()
         setTextColor(textDayColor)
         updateTypeface()
+        updateText()
 
         ViewCompat.postInvalidateOnAnimation(this)
     }
@@ -251,13 +249,7 @@ internal class CalendarDayView: AppCompatButton, Checkable {
             val stringBuilder = SpannableStringBuilder()
 
             stringBuilder.append(DateTimeFormatter.ofPattern("MMM").format(date))
-            stringBuilder.setSpan(
-                AbsoluteSizeSpan(config.calendarDayMonthYearTextSize),
-                0,
-                stringBuilder.length,
-                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-            )
-
+            val monthEndIdx = stringBuilder.length
             stringBuilder.append("\n")
             stringBuilder.append(Integer.toString(date.dayOfMonth))
 
@@ -265,13 +257,12 @@ internal class CalendarDayView: AppCompatButton, Checkable {
 
             if (date.year != ZonedDateTime.now().year) {
                 stringBuilder.append("\n")
-                val idx = stringBuilder.length
                 stringBuilder.append(Integer.toString(date.year))
                 maxTextSize = config.calendarDayMonthYearTextSize
-                stringBuilder.setSpan(
-                    AbsoluteSizeSpan(config.calendarDayMonthYearTextSize),
-                    idx,
-                    stringBuilder.length,
+            } else {
+                stringBuilder.setSpan(AbsoluteSizeSpan(config.calendarDayMonthYearTextSize),
+                    0,
+                    monthEndIdx,
                     Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
                 )
             }
@@ -286,6 +277,8 @@ internal class CalendarDayView: AppCompatButton, Checkable {
 
             text = stringBuilder
         } else {
+            TextViewCompat.setAutoSizeTextTypeWithDefaults(this, TextViewCompat.AUTO_SIZE_TEXT_TYPE_NONE)
+            setTextSize(TypedValue.COMPLEX_UNIT_PX, config.calendarDayTextSize.toFloat())
             text = String.format(Locale.ROOT, Integer.toString(dayOfMonth))
         }
     }

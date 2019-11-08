@@ -194,9 +194,9 @@ class CalendarView : LinearLayout, OnDateSelectedListener {
         super.onMeasure(widthMeasureSpec, View.MeasureSpec.makeMeasureSpec(computeHeight(displayMode), View.MeasureSpec.EXACTLY))
     }
 
-    override fun onDateSelected(date: ZonedDateTime) {
-        this.date = date.toLocalDate()
-        onDateSelectedListener?.onDateSelected(date)
+    override fun onDateSelected(dateTime: ZonedDateTime) {
+        this.date = dateTime.toLocalDate()
+        onDateSelectedListener?.onDateSelected(dateTime)
     }
 
     private fun computeHeight(mode: DisplayMode): Int {
@@ -272,7 +272,7 @@ class CalendarView : LinearLayout, OnDateSelectedListener {
 interface OnDateSelectedListener {
     /**
      * Method called when a user selects a date
-     * @param [date] the selected date
+     * @param [dateTime] the selected date
      */
-    fun onDateSelected(date: ZonedDateTime)
+    fun onDateSelected(dateTime: ZonedDateTime)
 }

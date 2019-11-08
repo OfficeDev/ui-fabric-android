@@ -18,10 +18,8 @@
         android:id="@+id/start_end_tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabGravity="fill"
-        app:tabMode="fixed"
         android:visibility="gone"
-        style="@style/Widget.UIFabric.Dialog.TabLayout" />
+        style="@style/Widget.UIFabric.DateTimePickerDialog.DateTimeRange.TabLayout" />
 
     <LinearLayout
         android:id="@+id/date_time_pickers"
