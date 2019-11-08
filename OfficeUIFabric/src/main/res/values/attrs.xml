@@ -123,6 +123,7 @@
     <attr name="uifabricPersonaChipTextActiveColor" format="reference|color"/>
     <attr name="uifabricPersonaChipTextErrorColor" format="reference|color"/>
     <attr name="uifabricPersonaChipTextDisabledColor" format="reference|color"/>
+    <attr name="uifabricPersonaChipCloseIconColor" format="reference|color"/>
 
     <!--PopupMenu-->
     <attr name="uifabricPopupMenuBackgroundColor" format="reference|color"/>

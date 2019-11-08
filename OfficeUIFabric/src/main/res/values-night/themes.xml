@@ -45,6 +45,14 @@
         <!--NumberPicker-->
         <item name="uifabricNumberPickerBackgroundColor">?attr/uifabricBackgroundSecondaryColor</item>
 
+        <!--Persona Chip-->
+        <!--TODO add hex values to the colors file when they get added to the toolkit-->
+        <item name="uifabricPersonaChipBackgroundNormalColor">?attr/uifabricBackgroundSecondaryColor</item>
+        <item name="uifabricPersonaChipBackgroundErrorColor">#4DFF474C</item>
+        <item name="uifabricPersonaChipBackgroundErrorActiveColor">#FF474C</item>
+        <item name="uifabricPersonaChipTextNormalColor">@color/uifabric_gray_100</item>
+        <item name="uifabricPersonaChipTextErrorColor">#FF474C</item>
+
         <!--Searchbar-->
         <item name="uifabricSearchbarBackgroundColor">?attr/uifabricBackgroundSecondaryColor</item>
         <item name="uifabricSearchbarSearchViewContainerBackgroundColor">@color/uifabric_gray_700</item>

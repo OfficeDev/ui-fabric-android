@@ -137,6 +137,7 @@
         <item name="uifabricPersonaChipTextActiveColor">?attr/uifabricForegroundOnPrimaryColor</item>
         <item name="uifabricPersonaChipTextErrorColor">#E63237</item>
         <item name="uifabricPersonaChipTextDisabledColor">@color/uifabric_gray_400</item>
+        <item name="uifabricPersonaChipCloseIconColor">?attr/uifabricForegroundOnPrimaryColor</item>
 
         <!--PopupMenu-->
         <item name="uifabricPopupMenuBackgroundColor">?attr/uifabricBackgroundColor</item>
