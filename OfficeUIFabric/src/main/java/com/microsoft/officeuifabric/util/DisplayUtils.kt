@@ -12,6 +12,7 @@ import android.support.v4.view.ViewCompat
 import android.view.Surface
 import android.view.View
 import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
 
 private const val TABLET_SIZE_THRESHOLD = 600
 private const val NAV_BAR_HEIGHT_STRING = "navigation_bar_height"
@@ -77,6 +78,9 @@ val Context.displaySize: Point
         windowManager.defaultDisplay.getSize(displaySize)
         return displaySize
     }
+
+val Context.inputMethodManager: InputMethodManager
+    get() = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
 
 val View.layoutIsRtl: Boolean
     get() {

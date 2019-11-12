@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.DividerItemDecoration
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import com.microsoft.officeuifabric.appbarlayout.AppBarLayout
 import com.microsoft.officeuifabric.listitem.ListItemDivider
@@ -17,6 +18,7 @@ import com.microsoft.officeuifabric.listitem.ListSubHeaderView
 import com.microsoft.officeuifabric.search.Searchbar
 import com.microsoft.officeuifabric.snackbar.Snackbar
 import com.microsoft.officeuifabric.util.ThemeUtil
+import com.microsoft.officeuifabric.util.getTintedDrawable
 import com.microsoft.officeuifabricdemo.DemoActivity
 import com.microsoft.officeuifabricdemo.R
 import com.microsoft.officeuifabricdemo.demos.list.*
@@ -30,7 +32,9 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
         private var themeId = R.style.AppTheme
         private const val SCROLL_BEHAVIOR = "scrollBehavior"
         private const val NAVIGATION_ICON_TYPE = "navigationIconType"
-        private const val SHOW_ACCESSORY_VIEW = "showAccessoryView"
+        private const val SEARCHBAR_IS_ACTION_MENU_VIEW = "searchbarIsActionMenuView"
+        private const val SEARCHBAR_HAS_FOCUS = "searchbarHasFocus"
+        private const val SEARCHBAR_QUERY = "searchbarQuery"
     }
 
     enum class NavigationIconType {
@@ -43,26 +47,44 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
     override val contentNeedsScrollableContainer: Boolean
         get() = false
 
+    private var optionsMenu: Menu? = null
+        set(value) {
+            field = value
+            updateSearchbar()
+            updateSearchbarFocus()
+            updateSearchbarQuery()
+        }
     private var scrollBehavior: AppBarLayout.ScrollBehavior = AppBarLayout.ScrollBehavior.COLLAPSE_TOOLBAR
         set(value) {
             field = value
             updateScrollBehavior()
-        }
-    private var showAccessoryView: Boolean = true
-        set(value) {
-            field = value
-            updateAccessoryView()
         }
     private var navigationIconType: NavigationIconType = NavigationIconType.BACK_ICON
         set(value) {
             field = value
             updateNavigationIcon()
         }
+    private var searchbarIsActionMenuView: Boolean = false
+        set(value) {
+            field = value
+            updateSearchbar()
+        }
+    private var searchbarHasFocus: Boolean = false
+        set(value) {
+            field = value
+            updateSearchbarFocus()
+        }
+    private var searchbarQuery: String = ""
+        set(value) {
+            field = value
+            updateSearchbarQuery()
+        }
 
     private val adapter = ListAdapter(this)
     private lateinit var scrollBehaviorSubHeader: ListSubHeader
     private lateinit var navigationIconButton: ButtonItem
-    private lateinit var accessoryViewButton: ButtonItem
+    private lateinit var searchbarButton: ButtonItem
+    private lateinit var searchbar: Searchbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(themeId)
@@ -72,12 +94,16 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
         savedInstanceState?.let {
             scrollBehaviorOrdinal = it.getInt(SCROLL_BEHAVIOR)
             navigationIconTypeOrdinal = it.getInt(NAVIGATION_ICON_TYPE)
-            showAccessoryView = it.getBoolean(SHOW_ACCESSORY_VIEW)
+            searchbarIsActionMenuView = it.getBoolean(SEARCHBAR_IS_ACTION_MENU_VIEW)
+            searchbarHasFocus = it.getBoolean(SEARCHBAR_HAS_FOCUS)
+            searchbarQuery = it.getString(SEARCHBAR_QUERY) ?: ""
         }
         scrollBehavior = AppBarLayout.ScrollBehavior.values()[scrollBehaviorOrdinal]
         navigationIconType = NavigationIconType.values()[navigationIconTypeOrdinal]
 
         super.onCreate(savedInstanceState)
+
+        searchbar = createSearchbar()
 
         scrollBehaviorSubHeader = createListSubHeader(
             resources.getString(R.string.app_bar_layout_toggle_scroll_behavior_sub_header, scrollBehavior.toString())
@@ -87,9 +113,9 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
             id = R.id.app_bar_layout_toggle_navigation_icon_button,
             onClickListener = this
         )
-        accessoryViewButton = ButtonItem(
-            buttonText = resources.getString(R.string.app_bar_layout_hide_accessory_view_button),
-            id = R.id.app_bar_layout_toggle_accessory_view_button,
+        searchbarButton = ButtonItem(
+            buttonText = resources.getString(R.string.app_bar_layout_searchbar_accessory_view_button),
+            id = R.id.app_bar_layout_toggle_searchbar_type_button,
             onClickListener = this
         )
 
@@ -98,15 +124,19 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
 
         updateScrollBehavior()
         updateNavigationIcon()
-        updateAccessoryView()
+        updateSearchbar()
     }
 
     override fun onSaveInstanceState(outState: Bundle?) {
         super.onSaveInstanceState(outState)
 
+        searchbarQuery = searchbar.query.toString()
+
         outState?.putInt(SCROLL_BEHAVIOR, scrollBehavior.ordinal)
         outState?.putInt(NAVIGATION_ICON_TYPE, navigationIconType.ordinal)
-        outState?.putBoolean(SHOW_ACCESSORY_VIEW, showAccessoryView)
+        outState?.putBoolean(SEARCHBAR_IS_ACTION_MENU_VIEW, searchbarIsActionMenuView)
+        outState?.putBoolean(SEARCHBAR_HAS_FOCUS, searchbarHasFocus)
+        outState?.putString(SEARCHBAR_QUERY, searchbarQuery)
     }
 
     override fun onClick(view: View) {
@@ -124,8 +154,8 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
                     NavigationIconType.AVATAR -> NavigationIconType.BACK_ICON
                     NavigationIconType.BACK_ICON -> NavigationIconType.NONE
                 }
-            R.id.app_bar_layout_toggle_accessory_view_button ->
-                showAccessoryView = !showAccessoryView
+            R.id.app_bar_layout_toggle_searchbar_type_button ->
+                searchbarIsActionMenuView = !searchbarIsActionMenuView
             R.id.app_bar_layout_toggle_theme_button -> {
                 themeId = if (themeId == R.style.AppTheme)
                     R.style.AppTheme_Orange
@@ -140,6 +170,8 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_app_bar_layout, menu)
 
+        optionsMenu = menu
+
         for (index in 0 until menu.size()) {
             val drawable = menu.getItem(index).icon
             drawable?.setColorFilter(
@@ -149,6 +181,13 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
         }
 
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.app_bar_layout_action_search)
+            (item.actionView as? Searchbar)?.requestSearchViewFocus()
+
+        return super.onOptionsItemSelected(item)
     }
 
     private fun updateScrollBehavior() {
@@ -169,6 +208,9 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
     private fun updateNavigationIcon() {
         if (app_bar == null)
             return
+
+        searchbar.clearFocus()
+        optionsMenu?.findItem(R.id.app_bar_layout_action_search)?.collapseActionView()
 
         when (navigationIconType) {
             NavigationIconType.NONE -> {
@@ -201,19 +243,55 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
         adapter.notifyDataSetChanged()
     }
 
-    private fun updateAccessoryView() {
+    private fun updateSearchbar() {
         if (app_bar == null)
             return
 
-        if (showAccessoryView) {
-            app_bar.accessoryView = Searchbar(this)
-            accessoryViewButton.buttonText = resources.getString(R.string.app_bar_layout_hide_accessory_view_button)
-        } else {
+        searchbar.isActionMenuView = searchbarIsActionMenuView
+        if (searchbarIsActionMenuView) {
+            val optionsMenu = optionsMenu ?: return
             app_bar.accessoryView = null
-            accessoryViewButton.buttonText = resources.getString(R.string.app_bar_layout_show_accessory_view_button)
+
+            val searchIcon = getTintedDrawable(R.drawable.ms_ic_search, ThemeUtil.getThemeAttrColor(this, R.attr.uifabricToolbarIconColor))
+            optionsMenu.add(R.id.app_bar_menu, R.id.app_bar_layout_action_search, 0, getString(R.string.app_bar_layout_menu_search))
+                .setIcon(searchIcon)
+                .setActionView(searchbar)
+                .setShowAsAction(MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW or MenuItem.SHOW_AS_ACTION_ALWAYS)
+
+            searchbarButton.buttonText = resources.getString(R.string.app_bar_layout_searchbar_accessory_view_button)
+        } else {
+            optionsMenu?.removeItem(R.id.app_bar_layout_action_search)
+            app_bar.accessoryView = searchbar
+            searchbarButton.buttonText = resources.getString(R.string.app_bar_layout_searchbar_action_view_button)
         }
 
         adapter.notifyDataSetChanged()
+    }
+
+    private fun updateSearchbarFocus() {
+        if (app_bar == null)
+            return
+
+        if (searchbarHasFocus) {
+            optionsMenu?.performIdentifierAction(R.id.app_bar_layout_action_search, 0)
+            searchbar.requestSearchViewFocus()
+        }
+    }
+
+    private fun updateSearchbarQuery() {
+        if (app_bar == null)
+            return
+
+        searchbar.setQuery(searchbarQuery, false)
+    }
+
+    private fun createSearchbar(): Searchbar {
+        val searchbar = Searchbar(this)
+        searchbar.onQueryTextFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
+            searchbarHasFocus = hasFocus
+        }
+
+        return searchbar
     }
 
     private fun setupList() {
@@ -239,9 +317,9 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
             arrayListOf(navigationIconButton)
         )
 
-        val accessoryViewSection = createSection(
-            createListSubHeader(resources.getString(R.string.app_bar_layout_toggle_accessory_view_sub_header)),
-            arrayListOf(accessoryViewButton)
+        val searchbarSection = createSection(
+            createListSubHeader(resources.getString(R.string.app_bar_layout_toggle_searchbar_sub_header)),
+            arrayListOf(searchbarButton)
         )
 
         val themeSection = createSection(
@@ -262,7 +340,7 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
             extraListItems
         )
 
-        return (scrollBehaviorSection + navigationIconSection + accessoryViewSection + themeSection + extraScrollableContextSection) as ArrayList<IBaseListItem>
+        return (scrollBehaviorSection + navigationIconSection + searchbarSection + themeSection + extraScrollableContextSection) as ArrayList<IBaseListItem>
     }
 
     private fun createSection(subHeader: ListSubHeader, items: ArrayList<IBaseListItem>): ArrayList<IBaseListItem> {

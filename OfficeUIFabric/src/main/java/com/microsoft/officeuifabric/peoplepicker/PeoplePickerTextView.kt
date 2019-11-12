@@ -38,6 +38,7 @@ import com.microsoft.officeuifabric.persona.PersonaChipView
 import com.microsoft.officeuifabric.persona.setPersona
 import com.microsoft.officeuifabric.util.ThemeUtil
 import com.microsoft.officeuifabric.util.getTextSize
+import com.microsoft.officeuifabric.util.inputMethodManager
 import com.tokenautocomplete.CountSpan
 import com.tokenautocomplete.TokenCompleteTextView
 import kotlin.math.max
@@ -228,9 +229,8 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
 
         // Soft keyboard does not always show up when the view first loads without this
         if (hasFocus) {
-            val inputMethodManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             post {
-                inputMethodManager.showSoftInput(this, InputMethodManager.SHOW_IMPLICIT)
+                context.inputMethodManager.showSoftInput(this, InputMethodManager.SHOW_IMPLICIT)
             }
         }
 

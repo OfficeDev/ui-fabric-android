@@ -14,8 +14,8 @@
     <!--AppBar-->
     <string name="app_bar_layout_navigation_icon_clicked">Navigation icon clicked.</string>
     <string name="app_bar_layout_menu_flag">Flag</string>
-    <string name="app_bar_layout_menu_share">Share</string>
     <string name="app_bar_layout_menu_settings">Settings</string>
+    <string name="app_bar_layout_menu_search">Search</string>
     <string name="app_bar_layout_toggle_scroll_behavior_sub_header">Scroll behavior: %s</string>
     <string name="app_bar_layout_toggle_scroll_behavior_button">Toggle scroll behavior</string>
     <string name="app_bar_layout_toggle_navigation_icon_sub_header">Toggle navigation icon</string>
@@ -23,9 +23,9 @@
     <string name="app_bar_layout_show_back_icon_button">Show back icon</string>
     <string name="app_bar_layout_hide_icon_button">Hide icon</string>
     <string name="app_bar_layout_show_icon_button">Show icon</string>
-    <string name="app_bar_layout_toggle_accessory_view_sub_header">Toggle accessory view visibility</string>
-    <string name="app_bar_layout_hide_accessory_view_button">Hide accessory view</string>
-    <string name="app_bar_layout_show_accessory_view_button">Show accessory view</string>
+    <string name="app_bar_layout_toggle_searchbar_sub_header">Toggle searchbar layout style</string>
+    <string name="app_bar_layout_searchbar_accessory_view_button">Show as accessory view</string>
+    <string name="app_bar_layout_searchbar_action_view_button">Show as action view</string>
     <string name="app_bar_layout_toggle_theme_sub_header">Toggle between themes (recreates activity)</string>
     <string name="app_bar_layout_toggle_theme_button">Toggle theme</string>
     <string name="app_bar_layout_list_item">Item</string>

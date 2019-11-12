@@ -12,17 +12,19 @@ import android.support.v7.widget.AppCompatImageView
 import android.support.v7.widget.SearchView
 import android.util.AttributeSet
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.appbarlayout.AppBarLayout
+import com.microsoft.officeuifabric.util.inputMethodManager
 import com.microsoft.officeuifabric.util.isVisible
-import com.microsoft.officeuifabric.util.showKeyboard
+import com.microsoft.officeuifabric.util.toggleKeyboardVisibility
 import com.microsoft.officeuifabric.view.TemplateView
 
 /**
  * [Searchbar] provides a [SearchView] with a search icon, back button, close icon,
  * and progress indicator. It is designed to be used as the primary search experience at the top of the app,
- * in conjunction with the Toolbar or stand alone.
+ * either displayed below the Toolbar as an accessory view, from a menu item as an action view, or stand alone.
  */
 open class Searchbar : TemplateView, SearchView.OnQueryTextListener {
     /**
@@ -65,6 +67,19 @@ open class Searchbar : TemplateView, SearchView.OnQueryTextListener {
         }
 
     /**
+     * Defines whether the [Searchbar] will be styled to be used as an ActionMenuView.
+     */
+    var isActionMenuView: Boolean = false
+        set(value) {
+            if (field == value)
+                return
+            field = value
+            updateSearchViewSpacing()
+            clearFocus()
+            updateFocusState()
+        }
+
+    /**
      * Provides callbacks for when text is entered in the search view and when that query is submitted.
      */
     var onQueryTextListener: SearchView.OnQueryTextListener? = null
@@ -87,6 +102,10 @@ open class Searchbar : TemplateView, SearchView.OnQueryTextListener {
      */
     fun setQuery(query: CharSequence, submit: Boolean) {
         searchView?.setQuery(query, submit)
+    }
+
+    fun requestSearchViewFocus() {
+        searchView?.requestFocus()
     }
 
     override fun clearFocus() {
@@ -143,7 +162,7 @@ open class Searchbar : TemplateView, SearchView.OnQueryTextListener {
 
     private fun setupListeners() {
         setOnClickListener {
-            searchView?.requestFocus()
+            requestSearchViewFocus()
         }
 
         searchBackButton?.setOnClickListener {
@@ -153,12 +172,7 @@ open class Searchbar : TemplateView, SearchView.OnQueryTextListener {
 
         searchView?.setOnQueryTextListener(this)
         searchView?.setOnQueryTextFocusChangeListener { searchView, hasFocus ->
-            if (hasFocus) {
-                showKeyboard()
-                setFocusedState()
-            } else {
-                setUnfocusedState()
-            }
+            updateFocusState()
 
             // Because Searchbar is a commonly used accessory view in AppBarLayout, we want to support the standard focus animation.
             (parent as? AppBarLayout)?.updateExpanded(!hasFocus)
@@ -168,6 +182,20 @@ open class Searchbar : TemplateView, SearchView.OnQueryTextListener {
 
         searchCloseButton?.setOnClickListener {
             setQuery("", false)
+        }
+    }
+
+    private fun updateFocusState() {
+        when {
+            hasFocus() -> {
+                setFocusedState()
+                toggleKeyboardVisibility()
+            }
+            isActionMenuView -> {
+                setFocusedState()
+                context.inputMethodManager.hideSoftInputFromWindow(searchView?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+            }
+            else -> setUnfocusedState()
         }
     }
 
@@ -184,7 +212,7 @@ open class Searchbar : TemplateView, SearchView.OnQueryTextListener {
         updateSearchViewSpacing()
         searchViewContainer?.background = null
         searchIcon?.isVisible = false
-        searchBackButton?.isVisible = true
+        searchBackButton?.isVisible = !isActionMenuView
     }
 
     private fun updateProgressVisibility() {
@@ -213,12 +241,16 @@ open class Searchbar : TemplateView, SearchView.OnQueryTextListener {
         // Search edit frame
         val searchEditFrame = searchView?.findViewById<LinearLayout>(R.id.search_edit_frame)
         val searchEditFrameLayoutParams = searchEditFrame?.layoutParams as? LinearLayout.LayoutParams
-        searchEditFrameLayoutParams?.marginStart = resources.getDimension(R.dimen.uifabric_searchbar_search_view_margin_start).toInt()
+        val searchEditFrameMarginStartResourceId = if (isActionMenuView)
+            R.dimen.uifabric_searchbar_search_view_action_view_margin_start
+        else
+            R.dimen.uifabric_searchbar_search_view_margin_start
+        searchEditFrameLayoutParams?.marginStart = resources.getDimension(searchEditFrameMarginStartResourceId).toInt()
         searchEditFrame?.layoutParams = searchEditFrameLayoutParams
 
         // Search text - adjust padding to account for the cursor.
         val searchSrcText = searchView?.findViewById<SearchView.SearchAutoComplete>(R.id.search_src_text)
-        val searchSrcTextPaddingStartResourceId = if (hasFocus())
+        val searchSrcTextPaddingStartResourceId = if (hasFocus() || isActionMenuView)
             R.dimen.uifabric_searchbar_with_back_button_search_view_text_padding_start
         else
             R.dimen.uifabric_searchbar_with_search_icon_search_view_text_padding_start
@@ -232,10 +264,14 @@ open class Searchbar : TemplateView, SearchView.OnQueryTextListener {
 
         // Search view container
         val searchViewContainerLayoutParams = searchViewContainer?.layoutParams as? FrameLayout.LayoutParams
-        val searchViewContainerMarginStartResourceId = if (hasFocus())
-            R.dimen.uifabric_searchbar_search_view_container_back_button_margin_start
-        else
+        val searchViewContainerMarginStartResourceId = if (hasFocus() || isActionMenuView) {
+            if (isActionMenuView)
+                R.dimen.uifabric_searchbar_search_view_action_view_margin_start
+            else
+                R.dimen.uifabric_searchbar_search_view_container_back_button_margin_start
+        } else {
             R.dimen.uifabric_searchbar_search_view_container_search_icon_margin_start
+        }
 
         searchViewContainerLayoutParams?.marginStart = resources.getDimension(searchViewContainerMarginStartResourceId).toInt()
         searchViewContainer?.layoutParams = searchViewContainerLayoutParams

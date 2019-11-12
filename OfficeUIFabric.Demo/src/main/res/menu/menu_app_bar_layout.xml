@@ -7,19 +7,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item
-        android:id="@+id/action_flag"
-        android:icon="@drawable/ic_flag"
-        android:title="@string/app_bar_layout_menu_flag"
-        app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/action_share"
-        android:icon="@drawable/ic_share"
-        android:title="@string/app_bar_layout_menu_share"
-        app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/action_settings"
-        android:title="@string/app_bar_layout_menu_settings"
-        app:showAsAction="never" />
+    <group android:id="@+id/app_bar_menu">
+        <item
+            android:id="@+id/action_flag"
+            android:icon="@drawable/ic_flag"
+            android:orderInCategory="1"
+            android:title="@string/app_bar_layout_menu_flag"
+            app:showAsAction="ifRoom" />
+        <item
+            android:id="@+id/action_settings"
+            android:orderInCategory="1"
+            android:title="@string/app_bar_layout_menu_settings"
+            app:showAsAction="never" />
+    </group>
 
 </menu>

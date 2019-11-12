@@ -138,6 +138,7 @@
     <dimen name="uifabric_searchbar_search_view_height">34dp</dimen>
     <dimen name="uifabric_searchbar_search_view_text_size">16sp</dimen>
     <dimen name="uifabric_searchbar_search_view_margin_start">12dp</dimen>
+    <dimen name="uifabric_searchbar_search_view_action_view_margin_start">0dp</dimen>
     <dimen name="uifabric_searchbar_search_icon_padding_start">16dp</dimen>
     <dimen name="uifabric_searchbar_search_icon_padding_end">8dp</dimen>
     <dimen name="uifabric_searchbar_with_search_icon_search_view_text_padding_start">8dp</dimen>
