@@ -12,7 +12,7 @@
     -->
     <style name="Base.Theme.UIFabric" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/uifabric_communication_blue</item>
-        <item name="colorPrimaryDark">@color/uifabric_communication_shade_10</item>
+        <item name="colorPrimaryDark">@color/uifabric_communication_shade_20</item>
         <item name="colorAccent">@color/uifabric_communication_blue</item>
         <item name="android:textColorPrimary">@color/uifabric_gray_900</item>
         <item name="buttonStyle">@style/Widget.UIFabric.Button</item>
@@ -20,8 +20,9 @@
 
         <!-- *** Theme Semantic Colors *** -->
 
+        <item name="uifabricColorPrimaryDarker">@color/uifabric_communication_shade_30</item>
         <item name="uifabricColorPrimaryLight">@color/uifabric_communication_tint_20</item>
-        <item name="uifabricColorPrimaryExtraLight">@color/uifabric_communication_tint_40</item>
+        <item name="uifabricColorPrimaryLighter">@color/uifabric_communication_tint_40</item>
 
         <!-- *** Base Semantic Colors *** -->
 
@@ -67,7 +68,10 @@
         <!--Button Borderless-->
         <item name="uifabricButtonBorderlessBackgroundDefaultColor">@android:color/transparent</item>
         <item name="uifabricButtonBorderlessBackgroundDisabledColor">@android:color/transparent</item>
+        <item name="uifabricButtonBorderlessBackgroundPressedColor">?attr/colorControlHighlight</item>
         <item name="uifabricButtonBorderlessTextDefaultColor">?attr/colorPrimary</item>
+        <item name="uifabricButtonBorderlessTextDisabledColor">@color/uifabric_gray_300</item>
+        <item name="uifabricButtonBorderlessTextPressedColor">?attr/uifabricButtonBorderlessTextDefaultColor</item>
 
         <!--CalendarView-->
         <item name="uifabricCalendarBackgroundColor">?attr/uifabricBackgroundColor</item>
@@ -78,7 +82,7 @@
         <item name="uifabricCalendarMonthOverlayTextColor">?attr/uifabricForegroundColor</item>
         <item name="uifabricCalendarOtherMonthBackgroundColor">@color/uifabric_gray_25</item>
         <item name="uifabricCalendarSelectedColor">?attr/uifabricForegroundSelectedColor</item>
-        <item name="uifabricCalendarDayTodayBackgroundColor">?attr/uifabricColorPrimaryExtraLight</item>
+        <item name="uifabricCalendarDayTodayBackgroundColor">?attr/uifabricColorPrimaryLighter</item>
         <!--day selector-->
         <item name="uifabricCalendarDayTextActiveColor">?attr/uifabricForegroundSelectedColor</item>
         <item name="uifabricCalendarDayTextActiveCheckedColor">?attr/uifabricForegroundOnPrimaryColor</item>

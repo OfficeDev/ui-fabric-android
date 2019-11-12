@@ -30,6 +30,16 @@
         <!--AppBarLayout-->
         <item name="uifabricAppBarLayoutBackgroundColor">?attr/uifabricBackgroundSecondaryColor</item>
 
+        <!--Button-->
+        <item name="uifabricButtonBackgroundDisabledColor">?attr/uifabricBackgroundPrimaryColor</item>
+        <item name="uifabricButtonBackgroundPressedColor">?attr/uifabricColorPrimaryDarker</item>
+        <item name="uifabricButtonTextDisabledColor">?attr/colorPrimaryDark</item>
+
+        <!--ButtonBorderless-->
+        <item name="uifabricButtonBorderlessBackgroundPressedColor">@android:color/transparent</item>
+        <item name="uifabricButtonBorderlessTextDisabledColor">@color/uifabric_gray_500</item>
+        <item name="uifabricButtonBorderlessTextPressedColor">?attr/colorPrimaryDark</item>
+
         <!--CalendarView-->
         <item name="uifabricCalendarBackgroundColor">?attr/uifabricBackgroundSecondaryColor</item>
         <item name="uifabricCalendarWeekHeadingBackgroundColor">?attr/uifabricBackgroundSecondaryColor</item>

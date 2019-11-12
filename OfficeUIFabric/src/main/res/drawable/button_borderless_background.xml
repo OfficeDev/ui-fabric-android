@@ -12,7 +12,7 @@
         </shape>
     </item>
     <item>
-        <ripple android:color="?attr/uifabricButtonBackgroundPressedColor">
+        <ripple android:color="?attr/uifabricButtonBorderlessBackgroundPressedColor">
             <item android:id="@android:id/mask" android:drawable="@android:color/white" />
             <item>
                 <shape>

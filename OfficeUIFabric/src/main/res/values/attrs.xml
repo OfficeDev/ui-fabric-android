@@ -7,8 +7,9 @@
 <resources>
     <!-- *** Theme Semantic Colors *** -->
 
+    <attr name="uifabricColorPrimaryDarker" format="reference|color"/>
     <attr name="uifabricColorPrimaryLight" format="reference|color"/>
-    <attr name="uifabricColorPrimaryExtraLight" format="reference|color"/>
+    <attr name="uifabricColorPrimaryLighter" format="reference|color"/>
 
     <!-- *** Base Semantic Colors *** -->
 
@@ -54,7 +55,10 @@
     <!--Button Borderless-->
     <attr name="uifabricButtonBorderlessBackgroundDefaultColor" format="reference|color"/>
     <attr name="uifabricButtonBorderlessBackgroundDisabledColor" format="reference|color"/>
+    <attr name="uifabricButtonBorderlessBackgroundPressedColor" format="reference|color"/>
     <attr name="uifabricButtonBorderlessTextDefaultColor" format="reference|color"/>
+    <attr name="uifabricButtonBorderlessTextDisabledColor" format="reference|color"/>
+    <attr name="uifabricButtonBorderlessTextPressedColor" format="reference|color"/>
 
     <!--CalendarView-->
     <attr name="uifabricCalendarBackgroundColor" format="reference|color"/>
