@@ -30,7 +30,7 @@
         <item name="android:fontFamily">"sans-serif"</item>
     </style>
 
-    <style name="TextAppearance.UIFabric.SubHeading">
+    <style name="TextAppearance.UIFabric.SubHeading1">
         <item name="android:textSize">16sp</item>
         <item name="android:fontFamily">"sans-serif"</item>
     </style>
@@ -76,7 +76,7 @@
 
     <!--Calendar-->
     <!--calendar_week_day_text_selector sets the colors for these-->
-    <style name="TextAppearance.UIFabric.CalendarDay" parent="TextAppearance.UIFabric.SubHeading">
+    <style name="TextAppearance.UIFabric.CalendarDay" parent="TextAppearance.UIFabric.SubHeading1">
         <item name="android:textColor">@null</item>
     </style>
     <style name="TextAppearance.UIFabric.CalendarDay2" parent="TextAppearance.UIFabric.SubHeading2">
@@ -87,7 +87,7 @@
     </style>
 
     <!--ListItem-->
-    <style name="TextAppearance.UIFabric.ListItemTitle" parent="TextAppearance.UIFabric.SubHeading">
+    <style name="TextAppearance.UIFabric.ListItemTitle" parent="TextAppearance.UIFabric.SubHeading1">
         <item name="android:textColor">?attr/uifabricListItemTitleColor</item>
     </style>
     <style name="TextAppearance.UIFabric.ListItemSubtitle" parent="TextAppearance.UIFabric.Body1">
@@ -125,7 +125,7 @@
     </style>
 
     <!--PeoplePicker-->
-    <style name="TextAppearance.UIFabric.PeoplePickerLabel" parent="TextAppearance.UIFabric.SubHeading">
+    <style name="TextAppearance.UIFabric.PeoplePickerLabel" parent="TextAppearance.UIFabric.SubHeading1">
         <item name="android:textColor">?attr/uifabricPeoplePickerLabelTextColor</item>
     </style>
     <style name="TextAppearance.UIFabric.PeoplePickerText" parent="TextAppearance.UIFabric.Heading" />

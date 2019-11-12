@@ -42,10 +42,10 @@
     </style>
 
     <!--Demo font-->
-    <style name="TextAppearance.DemoListItem" parent="@style/TextAppearance.UIFabric.SubHeading">
+    <style name="TextAppearance.DemoListItem" parent="@style/TextAppearance.UIFabric.SubHeading1">
         <item name="android:textColor">?attr/uifabricForegroundColor</item>
     </style>
-    <style name="TextAppearance.ListItemValue" parent="@style/TextAppearance.UIFabric.SubHeading">
+    <style name="TextAppearance.ListItemValue" parent="@style/TextAppearance.UIFabric.SubHeading1">
         <item name="android:textColor">?attr/uifabricForegroundSecondaryColor</item>
     </style>
     <style name="TextAppearance.DemoListItemSubtitle" parent="TextAppearance.UIFabric.Body1">
@@ -54,10 +54,10 @@
     <style name="TextAppearance.DemoSubHeader" parent="@style/TextAppearance.UIFabric.Body2">
         <item name="android:textColor">?attr/colorPrimary</item>
     </style>
-    <style name="TextAppearance.DemoDescription" parent="@style/TextAppearance.UIFabric.SubHeading">
+    <style name="TextAppearance.DemoDescription" parent="@style/TextAppearance.UIFabric.SubHeading1">
         <item name="android:textColor">?attr/uifabricForegroundColor</item>
     </style>
-    <style name="TextAppearance.DemoDescription.Label" parent="@style/TextAppearance.UIFabric.SubHeading">
+    <style name="TextAppearance.DemoDescription.Label" parent="@style/TextAppearance.UIFabric.SubHeading1">
         <item name="android:textColor">?attr/uifabricForegroundSecondaryColor</item>
     </style>
 
