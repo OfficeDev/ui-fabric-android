@@ -55,8 +55,8 @@
   <string name="date_picker_accessibility_next_minute_click_action">kies volgende minuut</string>
   <string name="date_time_picker_accessibility_decrement_minute_button">Dekrementminuut</string>
   <string name="date_picker_accessibility_previous_minute_click_action">kies vorige minuut</string>
-  <string name="date_time_picker_accessibility_period_toggle_button">Wissel vm/nm-tydperk</string>
-  <string name="date_time_picker_accessibility_period_toggle_click_action">wissel vm/nm-tydperk</string>
+  <string name="date_time_picker_accessibility_period_toggle_button">wissel vm./nm.-tydperk</string>
+  <string name="date_time_picker_accessibility_period_toggle_click_action">wissel vm./nm.-tydperk</string>
   <string name="date_time_picker_accessibility_selected_date">%s gekies</string>
   <string name="people_picker_sample_label">Etiket</string>
   <string name="people_picker_search_directory">Deursoek gids</string>
