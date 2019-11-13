@@ -162,6 +162,7 @@
     <attr name="uifabricTabIndicatorColor" format="reference|color"/>
 
     <!--Toolbar-->
+    <attr name="uifabricToolbarBackgroundColor" format="reference|color"/>
     <attr name="uifabricToolbarTitleTextColor" format="reference|color"/>
     <attr name="uifabricToolbarSubtitleTextColor" format="reference|color"/>
     <attr name="uifabricToolbarIconColor" format="reference|color"/>

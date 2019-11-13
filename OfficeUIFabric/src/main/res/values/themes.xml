@@ -16,7 +16,9 @@
         <item name="colorAccent">@color/uifabric_communication_blue</item>
         <item name="android:textColorPrimary">@color/uifabric_gray_900</item>
         <item name="buttonStyle">@style/Widget.UIFabric.Button</item>
-        <item name="toolbarStyle">@style/Theme.UIFabric.Toolbar</item>
+        <item name="toolbarStyle">@style/Widget.UIFabric.Toolbar</item>
+        <item name="actionOverflowButtonStyle">@style/Widget.UIFabric.Toolbar.OverflowButtonStyle</item>
+        <item name="homeAsUpIndicator">@drawable/ms_ic_arrow_back_toolbar</item>
 
         <!-- *** Theme Semantic Colors *** -->
 
@@ -176,6 +178,7 @@
         <item name="uifabricTabIndicatorColor">?attr/uifabricForegroundSelectedColor</item>
 
         <!--Toolbar-->
+        <item name="uifabricToolbarBackgroundColor">?attr/colorPrimary</item>
         <item name="uifabricToolbarTitleTextColor">?attr/uifabricForegroundOnPrimaryColor</item>
         <item name="uifabricToolbarSubtitleTextColor">?attr/uifabricForegroundOnPrimaryColor</item>
         <item name="uifabricToolbarIconColor">?attr/uifabricForegroundOnPrimaryColor</item>

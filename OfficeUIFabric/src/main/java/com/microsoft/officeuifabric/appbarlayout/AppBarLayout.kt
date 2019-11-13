@@ -16,7 +16,6 @@ import android.support.design.widget.CoordinatorLayout
 import android.support.v4.widget.NestedScrollView
 import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
-import android.view.ContextThemeWrapper
 import android.view.View
 import android.view.ViewGroup
 import com.microsoft.officeuifabric.R
@@ -161,9 +160,7 @@ class AppBarLayout : AppBarLayout {
     }
 
     private fun setupToolbar(context: Context) {
-        // This theme ensures the proper overflow icon color.
-        val contextThemeWrapper = ContextThemeWrapper(context, R.style.ThemeOverlay_AppCompat_Dark_ActionBar)
-        toolbar = Toolbar(contextThemeWrapper)
+        toolbar = Toolbar(context)
         addView(toolbar)
         context.activity?.setSupportActionBar(toolbar)
     }

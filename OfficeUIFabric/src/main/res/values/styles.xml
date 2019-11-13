@@ -168,10 +168,15 @@
 
     <!--Toolbar-->
     <!--We use Widget.AppCompat.Toolbar instead of a ThemeOverlay to maintain Android's default Toolbar styling.-->
-    <style name="Theme.UIFabric.Toolbar" parent="@style/Widget.AppCompat.Toolbar">
+    <style name="Base.Widget.UIFabric.Toolbar" parent="@style/Widget.AppCompat.Toolbar">
+        <item name="android:background">?attr/uifabricToolbarBackgroundColor</item>
         <item name="titleTextAppearance">@style/TextAppearance.UIFabric.ToolbarTitle</item>
         <item name="subtitleTextAppearance">@style/TextAppearance.UIFabric.ToolbarSubtitle</item>
         <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+    </style>
+    <style name="Widget.UIFabric.Toolbar" parent="@style/Base.Widget.UIFabric.Toolbar" />
+    <style name="Widget.UIFabric.Toolbar.OverflowButtonStyle" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:tint">?attr/uifabricToolbarIconColor</item>
     </style>
 
 </resources>

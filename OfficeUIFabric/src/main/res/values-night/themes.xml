@@ -12,7 +12,6 @@
     -->
     <style name="Theme.UIFabric" parent="Base.Theme.UIFabric">
         <item name="android:textColorPrimary">@color/uifabric_white</item>
-        <item name="toolbarStyle">@style/Theme.UIFabric.Toolbar.Dark</item>
 
         <!-- *** Base Semantic Colors *** -->
 
@@ -66,10 +65,12 @@
         <!--Searchbar-->
         <item name="uifabricSearchbarBackgroundColor">?attr/uifabricBackgroundSecondaryColor</item>
         <item name="uifabricSearchbarSearchViewContainerBackgroundColor">@color/uifabric_gray_700</item>
+        <item name="uifabricSearchbarSearchViewTextColor">?attr/uifabricForegroundOnSecondaryColor</item>
         <item name="uifabricSearchbarBackButtonColor">?attr/uifabricForegroundOnSecondaryColor</item>
         <item name="uifabricSearchbarSearchViewCursorColor">?attr/uifabricForegroundOnSecondaryColor</item>
 
         <!--Toolbar-->
+        <item name="uifabricToolbarBackgroundColor">?attr/uifabricBackgroundSecondaryColor</item>
         <item name="uifabricToolbarTitleTextColor">?attr/uifabricForegroundOnSecondaryColor</item>
         <item name="uifabricToolbarSubtitleTextColor">?attr/uifabricForegroundOnSecondaryColor</item>
         <item name="uifabricToolbarIconColor">?attr/uifabricForegroundOnSecondaryColor</item>

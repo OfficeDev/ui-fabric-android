@@ -6,9 +6,9 @@
 
 <resources>
 
-    <style name="Theme.UIFabric.Toolbar.Dark">
-        <!--TODO make this its own attribute. Will need a white toolbar background, too.-->
-        <item name="android:background">?attr/uifabricBackgroundSecondaryColor</item>
+    <!--Toolbar-->
+    <style name="Widget.UIFabric.Toolbar" parent="@style/Base.Widget.UIFabric.Toolbar">
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Dark</item>
     </style>
 
 </resources>
