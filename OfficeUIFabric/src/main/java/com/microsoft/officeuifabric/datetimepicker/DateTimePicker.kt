@@ -43,10 +43,15 @@ internal class DateTimePicker : LinearLayout, NumberPicker.OnValueChangeListener
         private const val MIN_MONTHS = 1
         private const val MIN_PERIOD = 0
         private const val MAX_PERIOD = 1
+        private const val HOUR_BEFORE_PERIOD_CHANGE = 11
     }
 
     enum class PickerMode {
         DATE, DATE_TIME
+    }
+
+    private enum class AmPmPeriod {
+        AM, PM
     }
 
     val selectedTab: DateTimeRangeTab
@@ -95,8 +100,13 @@ internal class DateTimePicker : LinearLayout, NumberPicker.OnValueChangeListener
     private val is24Hour: Boolean
     private var daysBack: Int = 0
     private var daysForward: Int = 0
+    private var lastSelectedHour: Int = 0
 
     private var shouldAnnounceHints: Boolean = true
+
+    private val shouldToggleAmPmPeriod: Boolean
+        get() = lastSelectedHour == HOUR_BEFORE_PERIOD_CHANGE && hour_picker.value == MAX_HOURS_12_CLOCK ||
+            lastSelectedHour == MAX_HOURS_12_CLOCK && hour_picker.value == HOUR_BEFORE_PERIOD_CHANGE
 
     private val onTabSelectedListener = object : TabLayout.OnTabSelectedListener {
         override fun onTabSelected(tab: TabLayout.Tab) {
@@ -159,6 +169,10 @@ internal class DateTimePicker : LinearLayout, NumberPicker.OnValueChangeListener
     override fun onValueChange(picker: NumberPicker, oldVal: Int, newVal: Int) {
         if (pickerMode == PickerMode.DATE)
             updateDaysPerMonth(timeSlot.start)
+
+        // Switch AM PM period according to the hour and direction of movement
+        if (!is24Hour && picker.id == R.id.hour_picker)
+            updateAmPmPeriod()
 
         onTimeSlotSelectedListener?.onTimeSlotSelected(timeSlot)
 
@@ -316,7 +330,18 @@ internal class DateTimePicker : LinearLayout, NumberPicker.OnValueChangeListener
                 period_picker.value = ampmValue
         }
 
+        lastSelectedHour = hourValue
         updateDateTimePickerHints()
+    }
+
+    private fun updateAmPmPeriod() {
+        if (shouldToggleAmPmPeriod) {
+            val periodValue = AmPmPeriod.values()[period_picker.value]
+            val period = if (periodValue == AmPmPeriod.AM) AmPmPeriod.PM else AmPmPeriod.AM
+            period_picker.animateValueTo(period.ordinal)
+        }
+
+        lastSelectedHour = hour_picker.value
     }
 
     // Date NumberPickers
