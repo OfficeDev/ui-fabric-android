@@ -204,6 +204,13 @@ class DateTimePickerDialog : AppCompatDialog, Toolbar.OnMenuItemClickListener, O
         window?.setLayout(context.desiredDialogSize[0], WindowManager.LayoutParams.MATCH_PARENT)
     }
 
+    override fun dismiss() {
+        // For single instance dialogs this prevents a dialog from animating into its final size when
+        // shown after a rotation, since its dimensions in portrait are different than in landscape.
+        enableLayoutTransition(false)
+        super.dismiss()
+    }
+
     override fun onMenuItemClick(item: MenuItem): Boolean {
         onDateTimePickedListener?.onDateTimePicked(dateTime, duration)
         dismiss()
