@@ -43,7 +43,15 @@
         <item name="android:paddingBottom">@dimen/uifabric_button_padding_vertical</item>
         <item name="android:minHeight">@dimen/uifabric_button_min_height</item>
     </style>
-    
+
+    <!--Compound Buttons-->
+    <style name="Widget.UIFabric.RadioButton" parent="@style/Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:buttonTint">@color/compound_button_tint</item>
+    </style>
+    <style name="Widget.UIFabric.CheckBox" parent="@style/Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:buttonTint">@color/compound_button_tint</item>
+    </style>
+
     <!--DateTimePickerDialog-->
     <style name="DateTimePickerDialog.Toolbar" parent="@style/ThemeOverlay.AppCompat">
         <item name="android:colorControlHighlight">?attr/uifabricBackgroundPressedColor</item>

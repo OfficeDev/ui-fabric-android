@@ -62,6 +62,12 @@
         <item name="uifabricPersonaChipTextNormalColor">@color/uifabric_gray_100</item>
         <item name="uifabricPersonaChipTextErrorColor">#FF474C</item>
 
+        <!--PopupMenu-->
+        <item name="uifabricPopupMenuBackgroundColor">?attr/uifabricBackgroundSecondaryColor</item>
+        <item name="uifabricPopupMenuBackgroundPressedColor">?attr/uifabricBackgroundSecondaryPressedColor</item>
+        <item name="uifabricPopupMenuItemTitleColor">@color/uifabric_gray_100</item>
+        <item name="uifabricPopupMenuItemCheckBackgroundRippleColor">?attr/uifabricBackgroundSecondaryPressedColor</item>
+
         <!--Searchbar-->
         <item name="uifabricSearchbarBackgroundColor">?attr/uifabricBackgroundSecondaryColor</item>
         <item name="uifabricSearchbarSearchViewContainerBackgroundColor">@color/uifabric_gray_700</item>

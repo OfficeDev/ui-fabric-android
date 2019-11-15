@@ -18,6 +18,7 @@
     <attr name="uifabricBackgroundPressedColor" format="reference|color"/>
     <attr name="uifabricBackgroundPrimaryColor" format="reference|color"/>
     <attr name="uifabricBackgroundSecondaryColor" format="reference|color"/>
+    <attr name="uifabricBackgroundSecondaryPressedColor" format="reference|color"/>
 
     <!--Foregrounds-->
     <attr name="uifabricForegroundColor" format="reference|color"/>
@@ -76,6 +77,10 @@
     <attr name="uifabricCalendarDayTextInactiveCheckedColor" format="reference|color"/>
     <attr name="uifabricCalendarDayTextDefaultColor" format="reference|color"/>
 
+    <!--Compound Buttons-->
+    <attr name="uifabricCompoundButtonTintDefaultColor" format="reference|color"/>
+    <attr name="uifabricCompoundButtonTintCheckedColor" format="reference|color"/>
+
     <!--DateTimePicker-->
     <attr name="uifabricDateTimePickerToolbarTitleTextColor" format="reference|color"/>
     <attr name="uifabricDateTimePickerTabTextColor" format="reference|color"/>
@@ -131,6 +136,7 @@
 
     <!--PopupMenu-->
     <attr name="uifabricPopupMenuBackgroundColor" format="reference|color"/>
+    <attr name="uifabricPopupMenuBackgroundPressedColor" format="reference|color"/>
     <attr name="uifabricPopupMenuItemTitleColor" format="reference|color"/>
     <attr name="uifabricPopupMenuItemForegroundSelectedColor" format="reference|color"/>
     <attr name="uifabricPopupMenuItemCheckBackgroundRippleColor" format="reference|color"/>
