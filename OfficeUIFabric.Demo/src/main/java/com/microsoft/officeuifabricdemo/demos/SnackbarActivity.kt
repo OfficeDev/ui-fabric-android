@@ -16,6 +16,7 @@ import android.widget.ProgressBar
 import com.microsoft.officeuifabric.persona.AvatarSize
 import com.microsoft.officeuifabric.persona.AvatarView
 import com.microsoft.officeuifabric.snackbar.Snackbar
+import com.microsoft.officeuifabric.util.createImageView
 import com.microsoft.officeuifabricdemo.DemoActivity
 import com.microsoft.officeuifabricdemo.R
 import kotlinx.android.synthetic.main.activity_demo_detail.*
@@ -93,11 +94,12 @@ class SnackbarActivity : DemoActivity(), View.OnClickListener {
                 Snackbar.make(root_view, getString(R.string.snackbar_multiline), Snackbar.LENGTH_LONG).show()
 
             R.id.btn_snackbar_multiline_custom_view -> {
-                val doneIconImageView = ImageView(this)
-                doneIconImageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_done_white))
-
+                val checkmarkIconImageView = createImageView(
+                    R.drawable.ms_ic_checkmark_24_filled,
+                    ContextCompat.getColor(this, R.color.uifabric_white)
+                )
                 Snackbar.make(root_view, getString(R.string.snackbar_multiline), Snackbar.LENGTH_LONG)
-                    .setCustomView(doneIconImageView)
+                    .setCustomView(checkmarkIconImageView)
                     .show()
             }
 
@@ -137,7 +139,7 @@ class SnackbarActivity : DemoActivity(), View.OnClickListener {
 
             R.id.btn_snackbar_announcement -> {
                 val announcementIconImageView = ImageView(this)
-                announcementIconImageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_birthday))
+                announcementIconImageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_gift_24_filled))
 
                 Snackbar.make(root_view, getString(R.string.snackbar_announcement), style = Snackbar.Style.ANNOUNCEMENT)
                     .setCustomView(announcementIconImageView)

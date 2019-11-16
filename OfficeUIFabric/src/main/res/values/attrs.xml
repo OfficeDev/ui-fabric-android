@@ -46,6 +46,9 @@
     <attr name="uifabricBottomNavigationForegroundActiveColor" format="reference|color"/>
     <attr name="uifabricBottomNavigationForegroundInactiveColor" format="reference|color"/>
 
+    <!--BottomSheet-->
+    <attr name="uifabricBottomSheetIconColor" format="reference|color"/>
+
     <!--Button-->
     <attr name="uifabricButtonBackgroundDefaultColor" format="reference|color"/>
     <attr name="uifabricButtonBackgroundDisabledColor" format="reference|color"/>
@@ -129,10 +132,9 @@
     <attr name="uifabricPersonaChipBackgroundErrorActiveColor" format="reference|color"/>
     <attr name="uifabricPersonaChipBackgroundPressedColor" format="reference|color"/>
     <attr name="uifabricPersonaChipTextNormalColor" format="reference|color"/>
-    <attr name="uifabricPersonaChipTextActiveColor" format="reference|color"/>
+    <attr name="uifabricPersonaChipForegroundActiveColor" format="reference|color"/>
     <attr name="uifabricPersonaChipTextErrorColor" format="reference|color"/>
     <attr name="uifabricPersonaChipTextDisabledColor" format="reference|color"/>
-    <attr name="uifabricPersonaChipCloseIconColor" format="reference|color"/>
 
     <!--PopupMenu-->
     <attr name="uifabricPopupMenuBackgroundColor" format="reference|color"/>

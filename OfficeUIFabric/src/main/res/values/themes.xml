@@ -18,7 +18,7 @@
         <item name="buttonStyle">@style/Widget.UIFabric.Button</item>
         <item name="toolbarStyle">@style/Widget.UIFabric.Toolbar</item>
         <item name="actionOverflowButtonStyle">@style/Widget.UIFabric.Toolbar.OverflowButtonStyle</item>
-        <item name="homeAsUpIndicator">@drawable/ms_ic_arrow_back_toolbar</item>
+        <item name="homeAsUpIndicator">@drawable/ms_ic_arrow_left_24_filled_toolbar</item>
         <item name="checkboxStyle">@style/Widget.UIFabric.CheckBox</item>
         <item name="radioButtonStyle">@style/Widget.UIFabric.RadioButton</item>
 
@@ -62,6 +62,9 @@
         <item name="uifabricBottomNavigationBackgroundColor">?attr/uifabricBackgroundColor</item>
         <item name="uifabricBottomNavigationForegroundActiveColor">?attr/colorPrimary</item>
         <item name="uifabricBottomNavigationForegroundInactiveColor">?attr/uifabricForegroundSecondaryColor</item>
+
+        <!--BottomSheet-->
+        <item name="uifabricBottomSheetIconColor">?attr/uifabricForegroundSecondaryIconColor</item>
 
         <!--Button-->
         <item name="uifabricButtonBackgroundDefaultColor">?attr/uifabricBackgroundPrimaryColor</item>
@@ -147,10 +150,9 @@
         <item name="uifabricPersonaChipBackgroundErrorActiveColor">#E8484C</item>
         <item name="uifabricPersonaChipBackgroundPressedColor">#0D000000</item>
         <item name="uifabricPersonaChipTextNormalColor">@color/uifabric_gray_900</item>
-        <item name="uifabricPersonaChipTextActiveColor">?attr/uifabricForegroundOnPrimaryColor</item>
+        <item name="uifabricPersonaChipForegroundActiveColor">?attr/uifabricForegroundOnPrimaryColor</item>
         <item name="uifabricPersonaChipTextErrorColor">#E63237</item>
         <item name="uifabricPersonaChipTextDisabledColor">@color/uifabric_gray_400</item>
-        <item name="uifabricPersonaChipCloseIconColor">?attr/uifabricForegroundOnPrimaryColor</item>
 
         <!--PopupMenu-->
         <item name="uifabricPopupMenuBackgroundColor">?attr/uifabricBackgroundColor</item>

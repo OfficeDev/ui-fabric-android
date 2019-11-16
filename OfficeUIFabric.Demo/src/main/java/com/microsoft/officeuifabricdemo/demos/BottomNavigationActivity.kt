@@ -32,38 +32,38 @@ class BottomNavigationActivity : DemoActivity() {
         }
 
         three_menu_items_button.setOnClickListener {
-            bottom_navigation.menu.removeItem(R.id.action_share)
-            bottom_navigation.menu.removeItem(R.id.action_settings)
+            bottom_navigation.menu.removeItem(R.id.action_calendar)
+            bottom_navigation.menu.removeItem(R.id.action_team)
         }
 
         four_menu_items_button.setOnClickListener {
-            bottom_navigation.menu.removeItem(R.id.action_share)
-            bottom_navigation.menu.removeItem(R.id.action_settings)
+            bottom_navigation.menu.removeItem(R.id.action_calendar)
+            bottom_navigation.menu.removeItem(R.id.action_team)
 
             bottom_navigation.menu.add(
                 R.id.bottom_navigation,
-                R.id.action_share,
+                R.id.action_calendar,
                 3,
-                resources.getString(R.string.bottom_navigation_menu_item_shared)
-            ).setIcon(R.drawable.ic_share)
+                resources.getString(R.string.bottom_navigation_menu_item_calendar)
+            ).setIcon(R.drawable.ic_calendar_28_regular)
         }
 
         five_menu_items_button.setOnClickListener {
-            bottom_navigation.menu.removeItem(R.id.action_share)
-            bottom_navigation.menu.removeItem(R.id.action_settings)
+            bottom_navigation.menu.removeItem(R.id.action_calendar)
+            bottom_navigation.menu.removeItem(R.id.action_team)
 
             bottom_navigation.menu.add(
                 R.id.bottom_navigation,
-                R.id.action_share,
+                R.id.action_calendar,
                 3,
-                resources.getString(R.string.bottom_navigation_menu_item_shared)
-            ).setIcon(R.drawable.ic_share)
+                resources.getString(R.string.bottom_navigation_menu_item_calendar)
+            ).setIcon(R.drawable.ic_calendar_28_regular)
             bottom_navigation.menu.add(
                 R.id.bottom_navigation,
-                R.id.action_settings,
+                R.id.action_team,
                 4,
-                resources.getString(R.string.bottom_navigation_menu_item_settings)
-            ).setIcon(R.drawable.ic_wrench)
+                resources.getString(R.string.bottom_navigation_menu_item_team)
+            ).setIcon(R.drawable.ic_people_team_28_regular)
         }
     }
 }

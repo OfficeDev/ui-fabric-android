@@ -10,7 +10,7 @@
     <group android:id="@+id/app_bar_menu">
         <item
             android:id="@+id/action_flag"
-            android:icon="@drawable/ic_flag"
+            android:icon="@drawable/ic_flag_24_filled"
             android:orderInCategory="1"
             android:title="@string/app_bar_layout_menu_flag"
             app:showAsAction="ifRoom" />

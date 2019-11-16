@@ -229,7 +229,7 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
                 navigationIconButton.buttonText = resources.getString(R.string.app_bar_layout_show_back_icon_button)
             }
             NavigationIconType.BACK_ICON -> {
-                val backArrow = ContextCompat.getDrawable(this, R.drawable.ms_ic_arrow_back)
+                val backArrow = ContextCompat.getDrawable(this, R.drawable.ms_ic_arrow_left_24_filled)
                 backArrow?.setTint(ThemeUtil.getThemeAttrColor(this, R.attr.uifabricToolbarIconColor))
                 app_bar.toolbar.navigationIcon = backArrow
                 app_bar.toolbar.setNavigationOnClickListener {
@@ -252,7 +252,7 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
             val optionsMenu = optionsMenu ?: return
             app_bar.accessoryView = null
 
-            val searchIcon = getTintedDrawable(R.drawable.ms_ic_search, ThemeUtil.getThemeAttrColor(this, R.attr.uifabricToolbarIconColor))
+            val searchIcon = getTintedDrawable(R.drawable.ms_ic_search_24_filled, ThemeUtil.getThemeAttrColor(this, R.attr.uifabricToolbarIconColor))
             optionsMenu.add(R.id.app_bar_menu, R.id.app_bar_layout_action_search, 0, getString(R.string.app_bar_layout_menu_search))
                 .setIcon(searchIcon)
                 .setActionView(searchbar)

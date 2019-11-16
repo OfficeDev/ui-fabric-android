@@ -43,10 +43,10 @@
 
     <!--BottomNavigation-->
     <string name="bottom_navigation_menu_item_photos">Photos</string>
-    <string name="bottom_navigation_menu_item_videos">Videos</string>
-    <string name="bottom_navigation_menu_item_info">Info</string>
-    <string name="bottom_navigation_menu_item_shared">Shared</string>
-    <string name="bottom_navigation_menu_item_settings">Settings</string>
+    <string name="bottom_navigation_menu_item_news">News</string>
+    <string name="bottom_navigation_menu_item_alerts">Alerts</string>
+    <string name="bottom_navigation_menu_item_calendar">Calendar</string>
+    <string name="bottom_navigation_menu_item_team">Team</string>
     <string name="bottom_navigation_toggle_labels_button">Toggle labels</string>
     <string name="bottom_navigation_three_menu_items_button">Show three menu items</string>
     <string name="bottom_navigation_four_menu_items_button">Show four menu items</string>
@@ -100,8 +100,6 @@
     <string name="bottom_sheet_item_clock_toast">Clock item clicked</string>
     <string name="bottom_sheet_item_alarm_title">Alarm</string>
     <string name="bottom_sheet_item_alarm_toast">Alarm item clicked</string>
-    <string name="bottom_sheet_item_stop_watch_title">Stop watch</string>
-    <string name="bottom_sheet_item_stop_watch_toast">Stop watch item clicked</string>
     <string name="bottom_sheet_item_time_zone_title">Time zone</string>
     <string name="bottom_sheet_item_time_zone_toast">Time zone item clicked</string>
 

@@ -24,7 +24,6 @@
     <item name="bottom_sheet_item_manage" type="id" />
     <item name="bottom_sheet_item_clock" type="id" />
     <item name="bottom_sheet_item_alarm" type="id" />
-    <item name="bottom_sheet_item_stop_watch" type="id" />
     <item name="bottom_sheet_item_time_zone" type="id" />
     <item name="bottom_sheet_item_double_line_header_delete" type="id" />
     <item name="bottom_sheet_item_double_line_header_share" type="id" />

@@ -7,11 +7,20 @@ package com.microsoft.officeuifabric.bottomsheet
 
 import android.os.Parcel
 import android.os.Parcelable
+import android.support.annotation.ColorInt
 import android.support.annotation.DrawableRes
 
 class BottomSheetItem : Parcelable {
     interface OnClickListener {
         fun onBottomSheetItemClick(item: BottomSheetItem)
+    }
+
+    /**
+     *  Use [ImageTintType.DEFAULT] to use the default [imageTint]. Use [ImageTintType.CUSTOM] to
+     *  customize the [imageTint]. Use [ImageTintType.NONE] to void the [imageTint].
+     */
+    enum class ImageTintType {
+        DEFAULT, CUSTOM, NONE
     }
 
     val id: Int
@@ -20,6 +29,9 @@ class BottomSheetItem : Parcelable {
     val title: String
     val subtitle: String
     val useDivider: Boolean
+    @ColorInt
+    val imageTint: Int
+    val imageTintType: ImageTintType
 
     @JvmOverloads
     constructor(
@@ -27,13 +39,17 @@ class BottomSheetItem : Parcelable {
         @DrawableRes imageId: Int = NO_ID,
         title: String,
         subtitle: String = "",
-        useDivider: Boolean = false
+        useDivider: Boolean = false,
+        @ColorInt imageTint: Int = 0,
+        imageTintType: ImageTintType = ImageTintType.DEFAULT
     ) {
         this.id = id
         this.imageId = imageId
         this.title = title
         this.subtitle = subtitle
         this.useDivider = useDivider
+        this.imageTint = imageTint
+        this.imageTintType = imageTintType
     }
 
     private constructor(parcel: Parcel) : this(
@@ -41,7 +57,9 @@ class BottomSheetItem : Parcelable {
         imageId = parcel.readInt(),
         title = parcel.readString() ?: "",
         subtitle = parcel.readString() ?: "",
-        useDivider = parcel.readInt() == 1
+        useDivider = parcel.readInt() == 1,
+        imageTint = parcel.readInt(),
+        imageTintType = ImageTintType.values()[parcel.readInt()]
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -50,6 +68,8 @@ class BottomSheetItem : Parcelable {
         parcel.writeString(title)
         parcel.writeString(subtitle)
         parcel.writeInt(if (useDivider) 1 else 0)
+        parcel.writeInt(imageTint)
+        parcel.writeInt(imageTintType.ordinal)
     }
 
     override fun describeContents(): Int = 0

@@ -30,22 +30,22 @@ class BottomSheetActivity : DemoActivity(), BottomSheetItem.OnClickListener {
                 arrayListOf(
                     BottomSheetItem(
                         R.id.bottom_sheet_item_flag,
-                        R.drawable.ic_flag,
+                        R.drawable.ic_flag_24_filled,
                         getString(R.string.bottom_sheet_item_flag_title)
                     ),
                     BottomSheetItem(
                         R.id.bottom_sheet_item_reply,
-                        R.drawable.ic_reply,
+                        R.drawable.ic_reply_24_filled,
                         getString(R.string.bottom_sheet_item_reply_title)
                     ),
                     BottomSheetItem(
                         R.id.bottom_sheet_item_forward,
-                        R.drawable.ic_forward,
+                        R.drawable.ic_forward_24_filled,
                         getString(R.string.bottom_sheet_item_forward_title)
                     ),
                     BottomSheetItem(
                         R.id.bottom_sheet_item_delete,
-                        R.drawable.ic_trash_can,
+                        R.drawable.ic_delete_24_filled,
                         getString(R.string.bottom_sheet_item_delete_title)
                     )
                 )
@@ -59,25 +59,25 @@ class BottomSheetActivity : DemoActivity(), BottomSheetItem.OnClickListener {
                 arrayListOf(
                     BottomSheetItem(
                         R.id.bottom_sheet_item_camera,
-                        R.drawable.ic_camera,
+                        R.drawable.ic_camera_24_regular,
                         getString(R.string.bottom_sheet_item_camera_title),
                         getString(R.string.bottom_sheet_item_camera_subtitle)
                     ),
                     BottomSheetItem(
                         R.id.bottom_sheet_item_gallery,
-                        R.drawable.ic_gallery,
+                        R.drawable.ic_image_library_24_regular,
                         getString(R.string.bottom_sheet_item_gallery_title),
                         getString(R.string.bottom_sheet_item_gallery_subtitle)
                     ),
                     BottomSheetItem(
                         R.id.bottom_sheet_item_videos,
-                        R.drawable.ic_videos,
+                        R.drawable.ic_video_24_regular,
                         getString(R.string.bottom_sheet_item_videos_title),
                         getString(R.string.bottom_sheet_item_videos_subtitle)
                     ),
                     BottomSheetItem(
                         R.id.bottom_sheet_item_manage,
-                        R.drawable.ic_wrench,
+                        R.drawable.ic_settings_24_regular,
                         getString(R.string.bottom_sheet_item_manage_title),
                         getString(R.string.bottom_sheet_item_manage_subtitle)
                     )
@@ -92,22 +92,22 @@ class BottomSheetActivity : DemoActivity(), BottomSheetItem.OnClickListener {
                 arrayListOf(
                     BottomSheetItem(
                         R.id.bottom_sheet_item_flag,
-                        R.drawable.ic_flag,
+                        R.drawable.ic_flag_24_filled,
                         getString(R.string.bottom_sheet_item_flag_title)
                     ),
                     BottomSheetItem(
                         R.id.bottom_sheet_item_reply,
-                        R.drawable.ic_reply,
+                        R.drawable.ic_reply_24_filled,
                         getString(R.string.bottom_sheet_item_reply_title)
                     ),
                     BottomSheetItem(
                         R.id.bottom_sheet_item_forward,
-                        R.drawable.ic_forward,
+                        R.drawable.ic_forward_24_filled,
                         getString(R.string.bottom_sheet_item_forward_title)
                     ),
                     BottomSheetItem(
                         R.id.bottom_sheet_item_delete,
-                        R.drawable.ic_trash_can,
+                        R.drawable.ic_delete_24_filled,
                         getString(R.string.bottom_sheet_item_delete_title)
                     )
                 ),
@@ -124,28 +124,28 @@ class BottomSheetActivity : DemoActivity(), BottomSheetItem.OnClickListener {
                 arrayListOf(
                     BottomSheetItem(
                         R.id.bottom_sheet_item_double_line_header_share,
-                        R.drawable.ic_share,
+                        R.drawable.ic_share_24_filled,
                         getString(R.string.bottom_sheet_item_double_line_header_share)
                     ),
                     BottomSheetItem(
                         R.id.bottom_sheet_item_double_line_header_move,
-                        R.drawable.ic_folder_move,
+                        R.drawable.ic_folder_move_24_regular,
                         getString(R.string.bottom_sheet_item_double_line_header_move)
                     ),
                     BottomSheetItem(
                         R.id.bottom_sheet_item_double_line_header_delete,
-                        R.drawable.ic_trash_outline,
+                        R.drawable.ic_delete_24_regular,
                         getString(R.string.bottom_sheet_item_double_line_header_delete)
                     ),
                     BottomSheetItem(
                         R.id.bottom_sheet_item_double_line_header_info,
-                        R.drawable.ic_info,
+                        R.drawable.ic_info_24_regular,
                         getString(R.string.bottom_sheet_item_double_line_header_info),
                         useDivider = true
                     )
                 ),
                 BottomSheetItem(
-                    imageId = R.drawable.ic_folder,
+                    imageId = R.drawable.ic_folder_24_regular,
                     title = getString(R.string.bottom_sheet_item_double_line_header),
                     subtitle = getString(R.string.bottom_sheet_item_double_line_header_subtitle)
                 )
@@ -161,22 +161,17 @@ class BottomSheetActivity : DemoActivity(), BottomSheetItem.OnClickListener {
                     arrayListOf(
                         BottomSheetItem(
                             R.id.bottom_sheet_item_clock,
-                            R.drawable.ic_clock_16,
+                            R.drawable.ic_clock_24_regular,
                             getString(R.string.bottom_sheet_item_clock_title)
                         ),
                         BottomSheetItem(
                             R.id.bottom_sheet_item_alarm,
-                            R.drawable.ic_alarm,
+                            R.drawable.ic_alert_24_regular,
                             getString(R.string.bottom_sheet_item_alarm_title)
                         ),
                         BottomSheetItem(
-                            R.id.bottom_sheet_item_stop_watch,
-                            R.drawable.ic_stop_watch,
-                            getString(R.string.bottom_sheet_item_stop_watch_title)
-                        ),
-                        BottomSheetItem(
                             R.id.bottom_sheet_item_time_zone,
-                            R.drawable.ic_time_zone,
+                            R.drawable.ic_globe_24_regular,
                             getString(R.string.bottom_sheet_item_time_zone_title)
                         )
                     )
@@ -216,7 +211,6 @@ class BottomSheetActivity : DemoActivity(), BottomSheetItem.OnClickListener {
             // Dialog
             R.id.bottom_sheet_item_clock -> showSnackbar(resources.getString(R.string.bottom_sheet_item_clock_toast))
             R.id.bottom_sheet_item_alarm -> showSnackbar(resources.getString(R.string.bottom_sheet_item_alarm_toast))
-            R.id.bottom_sheet_item_stop_watch -> showSnackbar(resources.getString(R.string.bottom_sheet_item_stop_watch_toast))
             R.id.bottom_sheet_item_time_zone -> showSnackbar(resources.getString(R.string.bottom_sheet_item_time_zone_toast))
         }
     }

@@ -35,7 +35,7 @@
             android:layout_gravity="center_vertical"
             android:contentDescription="@string/searchbar_back"
             android:minWidth="0dp"
-            android:src="@drawable/ms_ic_arrow_back"
+            android:src="@drawable/ms_ic_arrow_left_24_filled"
             android:tint="?attr/uifabricSearchbarBackButtonColor" />
 
         <ImageView
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:paddingStart="@dimen/uifabric_searchbar_search_icon_padding_start"
             android:paddingEnd="@dimen/uifabric_searchbar_search_icon_padding_end"
-            android:src="@drawable/ms_ic_search"
+            android:src="@drawable/ms_ic_search_24_filled"
             android:tint="?attr/uifabricSearchbarSearchIconColor"
             android:tintMode="src_in"/>
 
@@ -83,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:contentDescription="@string/searchbar_clear_search"
-                android:src="@drawable/ms_ic_close_circle"
+                android:src="@drawable/ms_ic_dismiss_circle_24_filled"
                 android:tint="?attr/uifabricSearchbarCloseIconColor"
                 android:tintMode="src_in"
                 android:visibility="gone"

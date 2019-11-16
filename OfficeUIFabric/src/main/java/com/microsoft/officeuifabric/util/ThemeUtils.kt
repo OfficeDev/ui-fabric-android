@@ -9,10 +9,12 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.Drawable
-import android.support.annotation.*
+import android.support.annotation.ArrayRes
+import android.support.annotation.AttrRes
+import android.support.annotation.ColorInt
+import android.support.annotation.DrawableRes
 import android.support.v4.content.ContextCompat
 import android.support.v4.graphics.ColorUtils
-import android.support.v4.graphics.drawable.DrawableCompat
 import android.util.Log
 import android.util.TypedValue
 
@@ -144,9 +146,8 @@ object ThemeUtil {
     }
 }
 
-fun Context.getTintedDrawable(@DrawableRes drawableId: Int, @ColorInt tintId: Int): Drawable? {
+fun Context.getTintedDrawable(@DrawableRes drawableId: Int, @ColorInt tint: Int): Drawable? {
     val drawable = ContextCompat.getDrawable(this, drawableId) ?: return null
-    val wrappedDrawable = DrawableCompat.wrap(drawable.mutate())
-    DrawableCompat.setTint(wrappedDrawable, tintId)
-    return wrappedDrawable
+    drawable.setTint(tint)
+    return drawable
 }

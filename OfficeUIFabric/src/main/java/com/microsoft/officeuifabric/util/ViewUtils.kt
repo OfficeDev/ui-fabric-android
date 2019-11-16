@@ -7,6 +7,7 @@ package com.microsoft.officeuifabric.util
 
 import android.content.Context
 import android.content.ContextWrapper
+import android.support.annotation.ColorInt
 import android.support.annotation.DrawableRes
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
@@ -40,9 +41,14 @@ fun ViewGroup.setContentAndUpdateVisibility(view: View?, updateLayout: (() -> Un
 /**
  * Returns an ImageView containing a Drawable.
  * @param imageId a Drawable resource id.
+ * @param imageTint a color integer that will be applied as tint to the drawable. Default is transparent.
  */
-fun Context.createImageView(@DrawableRes imageId: Int): ImageView {
-    val drawable = ContextCompat.getDrawable(this, imageId)
+fun Context.createImageView(@DrawableRes imageId: Int, @ColorInt imageTint: Int? = null): ImageView {
+    val drawable = if (imageTint != null)
+        getTintedDrawable(imageId, imageTint)
+    else
+        ContextCompat.getDrawable(this, imageId)
+
     val imageView = ImageView(this)
     imageView.setImageDrawable(drawable)
     return imageView

@@ -11,23 +11,23 @@
         <item
             android:id="@+id/action_photos"
             android:title="@string/bottom_navigation_menu_item_photos"
-            android:icon="@drawable/ic_gallery" />
+            android:icon="@drawable/ic_image_library_28_regular" />
         <item
-            android:id="@+id/action_videos"
-            android:title="@string/bottom_navigation_menu_item_videos"
-            android:icon="@drawable/ic_videos" />
+            android:id="@+id/action_news"
+            android:title="@string/bottom_navigation_menu_item_news"
+            android:icon="@drawable/ic_news_28_regular" />
         <item
-            android:id="@+id/action_info"
-            android:title="@string/bottom_navigation_menu_item_info"
-            android:icon="@drawable/ic_info" />
+            android:id="@+id/action_alerts"
+            android:title="@string/bottom_navigation_menu_item_alerts"
+            android:icon="@drawable/ic_alert_28_regular" />
         <item
-            android:id="@+id/action_share"
-            android:title="@string/bottom_navigation_menu_item_shared"
-            android:icon="@drawable/ic_share" />
+            android:id="@+id/action_calendar"
+            android:title="@string/bottom_navigation_menu_item_calendar"
+            android:icon="@drawable/ic_calendar_28_regular" />
         <item
-            android:id="@+id/action_settings"
-            android:title="@string/bottom_navigation_menu_item_settings"
-            android:icon="@drawable/ic_wrench" />
+            android:id="@+id/action_team"
+            android:title="@string/bottom_navigation_menu_item_team"
+            android:icon="@drawable/ic_people_team_28_regular" />
     </group>
 
 </menu>

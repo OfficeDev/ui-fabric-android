@@ -63,7 +63,7 @@ class BottomSheetDialog : DrawerDialog, BottomSheetItem.OnClickListener {
     private fun createDoubleLineHeader(headerItem: BottomSheetItem): View {
         val headerView = ListItemView(context)
         if (headerItem.imageId != BottomSheetItem.NO_ID)
-            headerView.customView = context.createImageView(headerItem.imageId)
+            headerView.customView = context.createImageView(headerItem.imageId, headerItem.imageTint)
         headerView.title = headerItem.title
         headerView.subtitle = headerItem.subtitle
         return headerView

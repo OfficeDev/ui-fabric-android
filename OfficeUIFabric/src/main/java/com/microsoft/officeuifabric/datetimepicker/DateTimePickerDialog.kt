@@ -177,12 +177,12 @@ class DateTimePickerDialog : AppCompatDialog, Toolbar.OnMenuItemClickListener, O
         toolbar.setOnMenuItemClickListener(this)
 
         val closeIconColor = ThemeUtil.getColor(uifabricContext, R.attr.uifabricDialogCloseIconColor)
-        toolbar.navigationIcon = context.getTintedDrawable(R.drawable.ms_ic_close_grey, closeIconColor)
+        toolbar.navigationIcon = context.getTintedDrawable(R.drawable.ms_ic_dismiss_24_filled, closeIconColor)
         toolbar.navigationContentDescription = context.resources.getString(R.string.date_time_picker_accessibility_close_dialog_button)
         toolbar.setNavigationOnClickListener { cancel() }
 
         val doneIconColor = ThemeUtil.getThemeAttrColor(uifabricContext, R.attr.uifabricDateTimePickerToolbarIconColor)
-        toolbar.menu.findItem(R.id.action_done).icon = context.getTintedDrawable(R.drawable.ms_ic_done, doneIconColor)
+        toolbar.menu.findItem(R.id.action_done).icon = context.getTintedDrawable(R.drawable.ms_ic_checkmark_24_filled, doneIconColor)
 
         pagerAdapter = DateTimePagerAdapter()
         view_pager.adapter = pagerAdapter
