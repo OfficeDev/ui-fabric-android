@@ -30,22 +30,22 @@ class BottomSheetActivity : DemoActivity(), BottomSheetItem.OnClickListener {
                 arrayListOf(
                     BottomSheetItem(
                         R.id.bottom_sheet_item_flag,
-                        R.drawable.ic_flag_24_filled,
+                        R.drawable.ic_fluent_flag_24_regular,
                         getString(R.string.bottom_sheet_item_flag_title)
                     ),
                     BottomSheetItem(
                         R.id.bottom_sheet_item_reply,
-                        R.drawable.ic_reply_24_filled,
+                        R.drawable.ic_fluent_reply_24_regular,
                         getString(R.string.bottom_sheet_item_reply_title)
                     ),
                     BottomSheetItem(
                         R.id.bottom_sheet_item_forward,
-                        R.drawable.ic_forward_24_filled,
+                        R.drawable.ic_fluent_forward_24_regular,
                         getString(R.string.bottom_sheet_item_forward_title)
                     ),
                     BottomSheetItem(
                         R.id.bottom_sheet_item_delete,
-                        R.drawable.ic_delete_24_filled,
+                        R.drawable.ic_delete_24_regular,
                         getString(R.string.bottom_sheet_item_delete_title)
                     )
                 )
@@ -92,22 +92,22 @@ class BottomSheetActivity : DemoActivity(), BottomSheetItem.OnClickListener {
                 arrayListOf(
                     BottomSheetItem(
                         R.id.bottom_sheet_item_flag,
-                        R.drawable.ic_flag_24_filled,
+                        R.drawable.ic_fluent_flag_24_regular,
                         getString(R.string.bottom_sheet_item_flag_title)
                     ),
                     BottomSheetItem(
                         R.id.bottom_sheet_item_reply,
-                        R.drawable.ic_reply_24_filled,
+                        R.drawable.ic_fluent_reply_24_regular,
                         getString(R.string.bottom_sheet_item_reply_title)
                     ),
                     BottomSheetItem(
                         R.id.bottom_sheet_item_forward,
-                        R.drawable.ic_forward_24_filled,
+                        R.drawable.ic_fluent_forward_24_regular,
                         getString(R.string.bottom_sheet_item_forward_title)
                     ),
                     BottomSheetItem(
                         R.id.bottom_sheet_item_delete,
-                        R.drawable.ic_delete_24_filled,
+                        R.drawable.ic_delete_24_regular,
                         getString(R.string.bottom_sheet_item_delete_title)
                     )
                 ),

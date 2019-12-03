@@ -8,7 +8,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="@dimen/uifabric_list_sub_header_height"
-    android:background="?attr/uifabricListItemBackgroundColor"
     android:baselineAligned="true"
     android:gravity="center_vertical"
     android:orientation="horizontal"

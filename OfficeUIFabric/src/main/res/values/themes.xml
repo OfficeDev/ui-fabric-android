@@ -64,7 +64,10 @@
         <item name="uifabricBottomNavigationForegroundInactiveColor">?attr/uifabricForegroundSecondaryColor</item>
 
         <!--BottomSheet-->
+        <item name="uifabricBottomSheetBackgroundColor">?attr/uifabricBackgroundColor</item>
+        <item name="uifabricBottomSheetBackgroundPressedColor">?attr/uifabricBackgroundPressedColor</item>
         <item name="uifabricBottomSheetIconColor">?attr/uifabricForegroundSecondaryIconColor</item>
+        <item name="uifabricBottomSheetDividerColor">?attr/uifabricDividerColor</item>
 
         <!--Button-->
         <item name="uifabricButtonBackgroundDefaultColor">?attr/uifabricBackgroundPrimaryColor</item>
@@ -114,6 +117,7 @@
 
         <!--Drawer-->
         <item name="uifabricDrawerBackgroundColor">?attr/uifabricBackgroundColor</item>
+        <item name="uifabricDrawerHandleColor">@color/uifabric_gray_100</item>
 
         <!--ListItemView-->
         <item name="uifabricListItemBackgroundColor">?attr/uifabricBackgroundColor</item>

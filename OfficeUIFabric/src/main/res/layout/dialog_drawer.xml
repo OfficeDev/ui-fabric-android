@@ -27,6 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_drawer_handle"
+            android:tint="?attr/uifabricDrawerHandleColor"
             android:layout_marginTop="@dimen/uifabric_drawer_handle_vertical_margin"
             android:layout_marginBottom="@dimen/uifabric_drawer_handle_vertical_margin"
             android:layout_gravity="center"/>

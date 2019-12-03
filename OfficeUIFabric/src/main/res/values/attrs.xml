@@ -47,7 +47,10 @@
     <attr name="uifabricBottomNavigationForegroundInactiveColor" format="reference|color"/>
 
     <!--BottomSheet-->
+    <attr name="uifabricBottomSheetBackgroundColor" format="reference|color"/>
+    <attr name="uifabricBottomSheetBackgroundPressedColor" format="reference|color"/>
     <attr name="uifabricBottomSheetIconColor" format="reference|color"/>
+    <attr name="uifabricBottomSheetDividerColor" format="reference|color"/>
 
     <!--Button-->
     <attr name="uifabricButtonBackgroundDefaultColor" format="reference|color"/>
@@ -97,6 +100,7 @@
 
     <!--Drawer-->
     <attr name="uifabricDrawerBackgroundColor" format="reference|color"/>
+    <attr name="uifabricDrawerHandleColor" format="reference|color"/>
 
     <!--ListItemView-->
     <attr name="uifabricListItemBackgroundColor" format="reference|color"/>

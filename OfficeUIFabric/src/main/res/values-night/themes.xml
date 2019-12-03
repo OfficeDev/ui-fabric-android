@@ -29,6 +29,11 @@
         <!--AppBarLayout-->
         <item name="uifabricAppBarLayoutBackgroundColor">?attr/uifabricBackgroundSecondaryColor</item>
 
+        <!--BottomSheet-->
+        <item name="uifabricBottomSheetBackgroundColor">?attr/uifabricBackgroundSecondaryColor</item>
+        <item name="uifabricBottomSheetBackgroundPressedColor">?attr/uifabricBackgroundSecondaryPressedColor</item>
+        <item name="uifabricBottomSheetDividerColor">@color/uifabric_gray_700</item>
+
         <!--Button-->
         <item name="uifabricButtonBackgroundDisabledColor">?attr/uifabricBackgroundPrimaryColor</item>
         <item name="uifabricButtonBackgroundPressedColor">?attr/uifabricColorPrimaryDarker</item>
@@ -50,6 +55,13 @@
         <!--Dialog-->
         <item name="uifabricDialogBackgroundColor">?attr/uifabricBackgroundSecondaryColor</item>
         <item name="uifabricDialogCloseIconColor">?attr/colorPrimary</item>
+
+        <!--Drawer-->
+        <item name="uifabricDrawerBackgroundColor">?attr/uifabricBackgroundSecondaryColor</item>
+        <item name="uifabricDrawerHandleColor">@color/uifabric_gray_500</item>
+
+        <!--ListItemView-->
+        <item name="uifabricListItemTitleColor">@color/uifabric_gray_100</item>
 
         <!--NumberPicker-->
         <item name="uifabricNumberPickerBackgroundColor">?attr/uifabricBackgroundSecondaryColor</item>

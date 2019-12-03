@@ -20,7 +20,7 @@
         android:id="@+id/bottom_sheet_header_divider"
         android:layout_width="match_parent"
         android:layout_height="@dimen/uifabric_divider_height"
-        android:background="?attr/uifabricDividerColor"
+        android:background="?attr/uifabricBottomSheetDividerColor"
         android:visibility="gone"/>
 
     <android.support.v7.widget.RecyclerView

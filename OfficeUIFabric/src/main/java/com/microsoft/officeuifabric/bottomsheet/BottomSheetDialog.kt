@@ -13,6 +13,7 @@ import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.drawer.DrawerDialog
 import com.microsoft.officeuifabric.listitem.ListItemView
 import com.microsoft.officeuifabric.listitem.ListSubHeaderView
+import com.microsoft.officeuifabric.util.ThemeUtil
 import com.microsoft.officeuifabric.util.createImageView
 import com.microsoft.officeuifabric.util.isVisible
 import kotlinx.android.synthetic.main.dialog_drawer.view.*
@@ -57,15 +58,17 @@ class BottomSheetDialog : DrawerDialog, BottomSheetItem.OnClickListener {
         val headerView = ListSubHeaderView(context)
         headerView.titleColor = ListSubHeaderView.TitleColor.SECONDARY
         headerView.title = headerItem.title
+        headerView.background = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricBottomSheetBackgroundColor)
         return headerView
     }
 
     private fun createDoubleLineHeader(headerItem: BottomSheetItem): View {
         val headerView = ListItemView(context)
         if (headerItem.imageId != BottomSheetItem.NO_ID)
-            headerView.customView = context.createImageView(headerItem.imageId, headerItem.imageTint)
+            headerView.customView = context.createImageView(headerItem.imageId, headerItem.getImageTint(context))
         headerView.title = headerItem.title
         headerView.subtitle = headerItem.subtitle
+        headerView.background = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricBottomSheetBackgroundColor)
         return headerView
     }
 

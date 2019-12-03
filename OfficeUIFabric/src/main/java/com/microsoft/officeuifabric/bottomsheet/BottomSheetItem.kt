@@ -5,10 +5,13 @@
 
 package com.microsoft.officeuifabric.bottomsheet
 
+import android.content.Context
 import android.os.Parcel
 import android.os.Parcelable
 import android.support.annotation.ColorInt
 import android.support.annotation.DrawableRes
+import com.microsoft.officeuifabric.R
+import com.microsoft.officeuifabric.util.ThemeUtil
 
 class BottomSheetItem : Parcelable {
     interface OnClickListener {
@@ -82,5 +85,13 @@ class BottomSheetItem : Parcelable {
             override fun createFromParcel(source: Parcel): BottomSheetItem = BottomSheetItem(source)
             override fun newArray(size: Int): Array<BottomSheetItem?> = arrayOfNulls(size)
         }
+    }
+}
+
+fun BottomSheetItem.getImageTint(context: Context): Int? {
+    return when (imageTintType) {
+        BottomSheetItem.ImageTintType.DEFAULT -> ThemeUtil.getThemeAttrColor(context, R.attr.uifabricBottomSheetIconColor)
+        BottomSheetItem.ImageTintType.CUSTOM -> imageTint
+        BottomSheetItem.ImageTintType.NONE -> null
     }
 }

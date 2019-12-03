@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.listitem.ListItemView
+import com.microsoft.officeuifabric.util.ThemeUtil
 import com.microsoft.officeuifabric.view.BaseDividerItemDecoration
 
 internal class BottomSheetItemDivider(context: Context) : BaseDividerItemDecoration(context, HORIZONTAL) {
@@ -32,7 +33,14 @@ internal class BottomSheetItemDivider(context: Context) : BaseDividerItemDecorat
                     val left =  itemView.left.toFloat()
                     val right = itemView.right.toFloat()
                     drawTopSpacer(canvas, itemView, left, right)
-                    drawDivider(canvas, itemView, left, right, true)
+                    drawDivider(
+                        canvas,
+                        itemView,
+                        left,
+                        right,
+                        true,
+                        ThemeUtil.getThemeAttrColor(uifabricContext, R.attr.uifabricBottomSheetDividerColor)
+                    )
                     drawBottomSpacer(canvas, itemView, left, right)
                 }
             }

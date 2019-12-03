@@ -13,7 +13,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.listitem.ListItemView
-import com.microsoft.officeuifabric.util.ThemeUtil
 import com.microsoft.officeuifabric.util.createImageView
 
 internal class BottomSheetAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -54,17 +53,12 @@ internal class BottomSheetAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder
         }
 
         fun setBottomSheetItem(item: BottomSheetItem) {
-            val imageTint = when (item.imageTintType) {
-                BottomSheetItem.ImageTintType.DEFAULT -> ThemeUtil.getThemeAttrColor(context, R.attr.uifabricBottomSheetIconColor)
-                BottomSheetItem.ImageTintType.CUSTOM -> item.imageTint
-                BottomSheetItem.ImageTintType.NONE -> null
-            }
-
-            listItemView.customView = context.createImageView(item.imageId, imageTint)
+            listItemView.customView = context.createImageView(item.imageId, item.getImageTint(context))
             listItemView.title = item.title
             listItemView.subtitle = item.subtitle
             listItemView.setTag(R.id.uifabric_bottom_sheet_item_divider, item.useDivider)
             listItemView.layoutDensity = ListItemView.LayoutDensity.COMPACT
+            listItemView.background = R.drawable.bottom_sheet_item_ripple_background
 
             listItemView.setOnClickListener {
                 onBottomSheetItemClickListener?.onBottomSheetItemClick(item)

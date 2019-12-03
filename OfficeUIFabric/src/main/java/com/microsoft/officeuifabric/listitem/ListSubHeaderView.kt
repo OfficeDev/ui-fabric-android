@@ -6,6 +6,7 @@
 package com.microsoft.officeuifabric.listitem
 
 import android.content.Context
+import android.support.annotation.ColorInt
 import android.support.v4.widget.TextViewCompat
 import android.text.TextUtils
 import android.util.AttributeSet
@@ -14,6 +15,7 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.microsoft.officeuifabric.R
+import com.microsoft.officeuifabric.util.ThemeUtil
 import com.microsoft.officeuifabric.util.setContentAndUpdateVisibility
 import com.microsoft.officeuifabric.view.TemplateView
 
@@ -78,6 +80,18 @@ class ListSubHeaderView : TemplateView {
             updateTemplate()
         }
 
+    /**
+     * Sets the background color.
+     */
+    @ColorInt
+    var background: Int = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricListItemBackgroundColor)
+        set(value) {
+            if (field == value)
+                return
+            field = value
+            updateTemplate()
+        }
+
     private var customAccessoryViewOriginalPaddingStart: Int = 0
     private var customAccessoryViewOriginalPaddingTop: Int = 0
     private var customAccessoryViewOriginalPaddingEnd: Int = 0
@@ -119,6 +133,7 @@ class ListSubHeaderView : TemplateView {
     private fun updateTemplate() {
         updateTitleView()
         customAccessoryViewContainer?.setContentAndUpdateVisibility(customAccessoryView)
+        setBackgroundColor(background)
     }
 
     private fun updateTitleView() {
