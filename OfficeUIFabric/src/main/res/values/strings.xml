@@ -28,7 +28,7 @@
     <string name="accessibility_today">today</string>
     <string name="accessibility_selected">Selected</string>
 
-    <!-- *** DateTimePicker *** -->
+    <!-- *** TimePicker *** -->
 
     <!--date picker tab title for start time range-->
     <string name="date_time_picker_start_time">Start time</string>

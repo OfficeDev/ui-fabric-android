@@ -112,22 +112,25 @@
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">Choose a date</string>
 
-    <!--DateTimePickerDialog-->
-    <string name="date_time_picker_dialog_date_button">Show date picker</string>
-    <string name="date_time_picker_dialog_calendar_date_time_button">Show date time picker with date tab selected</string>
-    <string name="date_time_picker_dialog_date_time_calendar_button">Show date time picker with time tab selected</string>
-    <string name="date_time_picker_dialog_date_time_button">Show date time picker</string>
-    <string name="date_time_picker_dialog_date_start_button">Select start date</string>
-    <string name="date_time_picker_dialog_date_time_range_button">Select date time range</string>
-    <string name="date_time_picker_dialog_date_end_button">Select end date</string>
-    <string name="date_time_picker_dialog_date_picked_default">No date picked</string>
-    <string name="date_time_picker_dialog_date_start_picked_default">No start picked</string>
-    <string name="date_time_picker_dialog_date_end_picked_default">No end picked</string>
-    <string name="date_time_picker_example_no_duration_title">Single Date</string>
-    <string name="date_time_picker_example_date_range_title">Date Range</string>
-    <string name="date_time_picker_example_date_time_range_title">Date Time Range</string>
-    <string name="date_time_picker_example_date_range_start_title">Start:</string>
-    <string name="date_time_picker_example_date_range_end_title">End:</string>
+    <!--DateTimePicker-->
+    <string name="date_time_picker_title">DateTimePicker</string>
+    <string name="date_time_picker_single_date_title">Single Date</string>
+    <string name="date_time_picker_date_picked_default">No date picked</string>
+    <string name="date_time_picker_date_button">Show date picker</string>
+    <string name="date_time_picker_calendar_date_time_button">Show date time picker with date tab selected</string>
+    <string name="date_time_picker_date_time_calendar_button">Show date time picker with time tab selected</string>
+    <string name="date_time_picker_date_time_button">Show date time picker</string>
+    <string name="date_time_picker_date_range_title">Date Range</string>
+    <string name="date_time_picker_date_range_start_title">Start:</string>
+    <string name="date_time_picker_date_range_end_title">End:</string>
+    <string name="date_time_picker_date_start_picked_default">No start picked</string>
+    <string name="date_time_picker_date_end_picked_default">No end picked</string>
+    <string name="date_time_picker_date_start_button">Select start date</string>
+    <string name="date_time_picker_date_end_button">Select end date</string>
+    <string name="date_time_picker_date_time_range_title">Date Time Range</string>
+    <string name="date_time_picker_date_time_range_button">Select date time range</string>
+    <string name="date_time_picker_dialog_title">DateTimePickerDialog</string>
+    <string name="date_time_picker_dialog_button">Show Dialog</string>
 
     <!--Drawer-->
     <string name="drawer_button">Show drawer</string>

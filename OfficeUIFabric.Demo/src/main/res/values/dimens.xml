@@ -16,8 +16,8 @@
     <dimen name="avatar_size_text_margin_end">36dp</dimen>
 
     <!--DatePickerDialog-->
-    <dimen name="date_picker_example_range_title_padding_end">4dp</dimen>
-    <dimen name="date_picker_example_range_title_width">50dp</dimen>
+    <dimen name="date_picker_range_title_padding_end">4dp</dimen>
+    <dimen name="date_picker_range_title_width">50dp</dimen>
 
     <!--DemoListItem-->
     <dimen name="demo_list_item_padding_horizontal">@dimen/default_layout_margin</dimen>

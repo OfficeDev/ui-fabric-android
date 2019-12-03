@@ -33,7 +33,7 @@ import org.threeten.bp.ZonedDateTime
  * the picking of dates and times in a [WrapContentViewPager] as well as toolbar UI and menu buttons to
  * dismiss the dialog and accept a date/ time.
  */
-class DateTimePickerDialog : AppCompatDialog, Toolbar.OnMenuItemClickListener, OnDateSelectedListener, DateTimePicker.OnTimeSlotSelectedListener {
+class DateTimePickerDialog : AppCompatDialog, Toolbar.OnMenuItemClickListener, OnDateSelectedListener, TimePicker.OnTimeSlotSelectedListener {
     enum class PickerTab {
         CALENDAR_VIEW, DATE_TIME_PICKER
     }
@@ -66,7 +66,7 @@ class DateTimePickerDialog : AppCompatDialog, Toolbar.OnMenuItemClickListener, O
      * Returns the selected [DateTimeRangeTab] tab.
      */
     val dateTimeRangeTab: DateTimeRangeTab = DateTimeRangeTab.START
-        get() = pagerAdapter.dateTimePicker?.selectedTab ?: field
+        get() = pagerAdapter.timePicker?.selectedTab ?: field
     /**
      * Register a callback for when a [ZonedDateTime] and [Duration] are picked.
      */
@@ -92,15 +92,15 @@ class DateTimePickerDialog : AppCompatDialog, Toolbar.OnMenuItemClickListener, O
         override fun onPageSelected(position: Int) {
             updateTitles()
             val calendarView = pagerAdapter.calendarView
-            val dateTimePicker = pagerAdapter.dateTimePicker
+            val timePicker = pagerAdapter.timePicker
             if (position == displayMode.dateTabIndex && calendarView != null) {
                 view_pager.currentObject = calendarView
                 // We're switching from the tall time picker to the short date picker. Layout transition
                 // leaves blank white area below date picker. So manual animation is used here instead to avoid this.
                 enableLayoutTransition(false)
                 view_pager.smoothlyResize(calendarView.fullModeHeight, animatorListener)
-            } else if (position == displayMode.dateTimeTabIndex && dateTimePicker != null) {
-                view_pager.currentObject = dateTimePicker
+            } else if (position == displayMode.dateTimeTabIndex && timePicker != null) {
+                view_pager.currentObject = timePicker
                 calendarView?.setDisplayMode(CalendarView.DisplayMode.LENGTHY_MODE, true)
                 enableLayoutTransition(true)
                 view_pager.shouldWrapContent = true
@@ -128,13 +128,28 @@ class DateTimePickerDialog : AppCompatDialog, Toolbar.OnMenuItemClickListener, O
         dateRangeMode: DateRangeMode = DateRangeMode.NONE,
         dateTime: ZonedDateTime = ZonedDateTime.now(),
         duration: Duration = Duration.ZERO
+    ) : this(
+        context,
+        if (context.isAccessibilityEnabled) mode.accessibleMode else mode.defaultMode,
+        dateRangeMode,
+        dateTime,
+        duration
+    )
+
+    @JvmOverloads
+    internal constructor(
+        context: Context,
+        displayMode: DisplayMode,
+        dateRangeMode: DateRangeMode = DateRangeMode.NONE,
+        dateTime: ZonedDateTime = ZonedDateTime.now(),
+        duration: Duration = Duration.ZERO
     ) : super(context, R.style.Dialog_UIFabric) {
         uifabricContext = UIFabricContextThemeWrapper(context)
 
         this.dateRangeMode = dateRangeMode
         this.dateTime = dateTime
         this.duration = duration
-        displayMode = getDisplayMode(mode)
+        this.displayMode = displayMode
 
         initDialog()
         initDialogContents()
@@ -236,7 +251,7 @@ class DateTimePickerDialog : AppCompatDialog, Toolbar.OnMenuItemClickListener, O
 
         updateCalendarSelectedDateRange()
         updateTitles()
-        updateDateTimePicker()
+        updateTimePicker()
 
         onDateTimeSelectedListener?.onDateTimeSelected(this.dateTime, duration)
     }
@@ -273,12 +288,12 @@ class DateTimePickerDialog : AppCompatDialog, Toolbar.OnMenuItemClickListener, O
         return super.dispatchPopulateAccessibilityEvent(event)
     }
 
-    private fun updateDateTimePicker() {
-        val timeSlot = pagerAdapter.dateTimePicker?.timeSlot ?: return
+    private fun updateTimePicker() {
+        val timeSlot = pagerAdapter.timePicker?.timeSlot ?: return
         if (DateTimeUtils.isSameDay(dateTime, timeSlot.start))
             return
 
-        pagerAdapter.dateTimePicker?.timeSlot = TimeSlot(timeSlot.start.with(dateTime.toLocalDate()), timeSlot.duration)
+        pagerAdapter.timePicker?.timeSlot = TimeSlot(timeSlot.start.with(dateTime.toLocalDate()), timeSlot.duration)
     }
 
     private fun updateCalendarSelectedDateRange() {
@@ -324,22 +339,9 @@ class DateTimePickerDialog : AppCompatDialog, Toolbar.OnMenuItemClickListener, O
         }
     }
 
-    private fun getDisplayMode(mode: Mode): DisplayMode =
-        if (context.isAccessibilityEnabled)  {
-            mode.accessibleMode
-        } else {
-            val endTime = dateTime.plus(duration)
-            val isSameDayEvent = DateTimeUtils.isSameDay(dateTime, endTime)
-            if (isSameDayEvent || mode == Mode.DATE)
-                mode.defaultMode
-            else
-                DisplayMode.TIME
-        }
-
-
     private inner class DateTimePagerAdapter : PagerAdapter() {
         var calendarView: CalendarView? = null
-        var dateTimePicker: DateTimePicker? = null
+        var timePicker: TimePicker? = null
 
         override fun getCount(): Int =
             if (displayMode == DisplayMode.DATE_TIME || displayMode == DisplayMode.TIME_DATE) 2 else 1
@@ -348,7 +350,7 @@ class DateTimePickerDialog : AppCompatDialog, Toolbar.OnMenuItemClickListener, O
             val view = if (position == 0 && useCalendarView(position))
                 initCalendarView()
             else
-                initDateTimePicker()
+                initTimePicker()
 
             if (position == view_pager.currentItem)
                 view_pager.currentObject = view
@@ -373,33 +375,33 @@ class DateTimePickerDialog : AppCompatDialog, Toolbar.OnMenuItemClickListener, O
             return calendarView
         }
 
-        private fun initDateTimePicker(): DateTimePicker {
-            val dateTimePicker = DateTimePicker(uifabricContext)
-            this.dateTimePicker = dateTimePicker
-            dateTimePicker.timeSlot = TimeSlot(dateTime, duration)
-            dateTimePicker.pickerMode = if (displayMode == DisplayMode.ACCESSIBLE_DATE)
-                DateTimePicker.PickerMode.DATE
+        private fun initTimePicker(): TimePicker {
+            val timePicker = TimePicker(uifabricContext)
+            this.timePicker = timePicker
+            timePicker.timeSlot = TimeSlot(dateTime, duration)
+            timePicker.pickerMode = if (displayMode == DisplayMode.ACCESSIBLE_DATE)
+                TimePicker.PickerMode.DATE
             else
-                DateTimePicker.PickerMode.DATE_TIME
-            dateTimePicker.onTimeSlotSelectedListener = this@DateTimePickerDialog
-            initDateTimePickerUI()
+                TimePicker.PickerMode.DATE_TIME
+            timePicker.onTimeSlotSelectedListener = this@DateTimePickerDialog
+            initTimePickerUI()
 
-            return dateTimePicker
+            return timePicker
         }
 
-        private fun initDateTimePickerUI() {
+        private fun initTimePickerUI() {
             when (dateRangeMode) {
                 DateRangeMode.START -> {
-                    dateTimePicker?.selectTab(DateTimeRangeTab.START)
-                    dateTimePicker?.setPickerValues(showEndTime = false, animate = false)
+                    timePicker?.selectTab(DateTimeRangeTab.START)
+                    timePicker?.setPickerValues(showEndTime = false, animate = false)
                 }
                 DateRangeMode.END -> {
-                    dateTimePicker?.selectTab(DateTimeRangeTab.END)
-                    dateTimePicker?.setPickerValues(showEndTime = true, animate = false)
+                    timePicker?.selectTab(DateTimeRangeTab.END)
+                    timePicker?.setPickerValues(showEndTime = true, animate = false)
                 }
                 DateRangeMode.NONE -> {
-                    dateTimePicker?.selectTab(DateTimeRangeTab.NONE)
-                    dateTimePicker?.setPickerValues(showEndTime = false, animate = false)
+                    timePicker?.selectTab(DateTimeRangeTab.NONE)
+                    timePicker?.setPickerValues(showEndTime = false, animate = false)
                 }
             }
         }
