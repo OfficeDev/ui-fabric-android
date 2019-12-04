@@ -18,6 +18,7 @@ import android.view.View
 import android.widget.LinearLayout
 import com.jakewharton.threetenabp.AndroidThreeTen
 import com.microsoft.officeuifabric.R
+import com.microsoft.officeuifabric.theming.UIFabricContextThemeWrapper
 import com.microsoft.officeuifabric.util.ThemeUtil
 import org.threeten.bp.*
 
@@ -234,20 +235,21 @@ class CalendarView : LinearLayout, OnDateSelectedListener {
      * The [Config] contains attributes allowing for objects down the line to consume them
      */
     inner class Config {
-        val backgroundColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarBackgroundColor)
-        val weekHeadingBackgroundColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarWeekHeadingBackgroundColor)
-        val weekdayHeadingTextColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarWeekHeadingWeekDayTextColor)
-        val weekendHeadingTextColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarWeekHeadingWeekendTextColor)
+        val uifabricContext = UIFabricContextThemeWrapper(context)
+        val backgroundColor = ThemeUtil.getThemeAttrColor(uifabricContext, R.attr.uifabricCalendarBackgroundColor)
+        val weekHeadingBackgroundColor = ThemeUtil.getThemeAttrColor(uifabricContext, R.attr.uifabricCalendarWeekHeadingBackgroundColor)
+        val weekdayHeadingTextColor = ThemeUtil.getThemeAttrColor(uifabricContext, R.attr.uifabricCalendarWeekHeadingWeekDayTextColor)
+        val weekendHeadingTextColor = ThemeUtil.getThemeAttrColor(uifabricContext, R.attr.uifabricCalendarWeekHeadingWeekendTextColor)
         val weekHeadingHeight = context.resources.getDimensionPixelSize(R.dimen.uifabric_calendar_week_heading_height)
 
-        val selectionAccentColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarSelectedColor)
+        val selectionAccentColor = ThemeUtil.getThemeAttrColor(uifabricContext, R.attr.uifabricCalendarSelectedColor)
 
-        val monthOverlayBackgroundColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarMonthOverlayBackgroundColor, 0.7f)
+        val monthOverlayBackgroundColor = ThemeUtil.getThemeAttrColor(uifabricContext, R.attr.uifabricCalendarMonthOverlayBackgroundColor, 0.7f)
         val monthOverlayTextSize = context.resources.getDimensionPixelSize(R.dimen.uifabric_calendar_month_overlay_text_size)
-        val monthOverlayTextColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarMonthOverlayTextColor)
+        val monthOverlayTextColor = ThemeUtil.getThemeAttrColor(uifabricContext, R.attr.uifabricCalendarMonthOverlayTextColor)
 
         val differentiateOddEvenMonth = true
-        val otherMonthBackgroundColor = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarOtherMonthBackgroundColor)
+        val otherMonthBackgroundColor = ThemeUtil.getThemeAttrColor(uifabricContext, R.attr.uifabricCalendarOtherMonthBackgroundColor)
         val calendarDayMonthYearTextSize = context.resources.getDimensionPixelSize(R.dimen.uifabric_calendar_month_year_font_size)
         val calendarDayTextSize = context.resources.getDimensionPixelSize(R.dimen.uifabric_calendar_week_day_font_size)
 
@@ -260,10 +262,10 @@ class CalendarView : LinearLayout, OnDateSelectedListener {
                 intArrayOf()
             ),
             intArrayOf(
-                ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarDayTextActiveColor),
-                ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarDayTextActiveCheckedColor),
-                ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarDayTextInactiveCheckedColor),
-                ThemeUtil.getThemeAttrColor(context, R.attr.uifabricCalendarDayTextDefaultColor)
+                ThemeUtil.getThemeAttrColor(uifabricContext, R.attr.uifabricCalendarDayTextActiveColor),
+                ThemeUtil.getThemeAttrColor(uifabricContext, R.attr.uifabricCalendarDayTextActiveCheckedColor),
+                ThemeUtil.getThemeAttrColor(uifabricContext, R.attr.uifabricCalendarDayTextInactiveCheckedColor),
+                ThemeUtil.getThemeAttrColor(uifabricContext, R.attr.uifabricCalendarDayTextDefaultColor)
             )
         )
     }
