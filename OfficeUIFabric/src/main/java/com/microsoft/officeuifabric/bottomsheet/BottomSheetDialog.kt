@@ -68,7 +68,7 @@ class BottomSheetDialog : DrawerDialog, BottomSheetItem.OnClickListener {
             headerView.customView = context.createImageView(headerItem.imageId, headerItem.getImageTint(context))
         headerView.title = headerItem.title
         headerView.subtitle = headerItem.subtitle
-        headerView.background = ThemeUtil.getThemeAttrColor(context, R.attr.uifabricBottomSheetBackgroundColor)
+        headerView.background = R.drawable.bottom_sheet_header_background
         return headerView
     }
 
