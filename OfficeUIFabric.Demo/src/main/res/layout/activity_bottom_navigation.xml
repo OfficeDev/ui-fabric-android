@@ -45,7 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.design.widget.BottomNavigationView
+        <com.microsoft.officeuifabric.widget.BottomNavigationView
             android:id="@+id/bottom_navigation"
             style="@style/Widget.UIFabric.BottomNavigation"
             android:layout_width="match_parent"

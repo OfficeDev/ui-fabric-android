@@ -66,7 +66,7 @@
             android:layout_width="@dimen/uifabric_min_touch_size"
             android:layout_height="@dimen/uifabric_min_touch_size">
 
-            <ProgressBar
+            <com.microsoft.officeuifabric.widget.ProgressBar
                 android:id="@+id/search_progress"
                 style="@style/Widget.UIFabric.CircularProgress.XSmall.Search"
                 android:layout_width="wrap_content"

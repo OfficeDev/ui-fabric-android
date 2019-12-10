@@ -27,12 +27,12 @@
 
     <!--For the basic button, style can be set in the app theme.-->
 
-    <Button
+    <com.microsoft.officeuifabric.widget.Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button" />
 
-    <Button
+    <com.microsoft.officeuifabric.widget.Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:enabled="false"
@@ -40,13 +40,13 @@
 
     <!--For other button variants, style can be set in the widget.-->
 
-    <Button
+    <com.microsoft.officeuifabric.widget.Button
         style="@style/Widget.UIFabric.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_borderless" />
 
-    <Button
+    <com.microsoft.officeuifabric.widget.Button
         style="@style/Widget.UIFabric.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

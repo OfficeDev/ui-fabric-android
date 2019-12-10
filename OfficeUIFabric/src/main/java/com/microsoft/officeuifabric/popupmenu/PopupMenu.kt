@@ -11,6 +11,7 @@ import android.support.v7.widget.ListPopupWindow
 import android.view.View
 import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.popupmenu.PopupMenu.ItemCheckableBehavior
+import com.microsoft.officeuifabric.theming.UIFabricContextThemeWrapper
 
 /**
  * [PopupMenu] is a transient UI that displays a list of options. The popup appears from a view that
@@ -59,7 +60,7 @@ class PopupMenu : ListPopupWindow, PopupMenuItem.OnClickListener {
         anchorView: View,
         items: ArrayList<PopupMenuItem>,
         itemCheckableBehavior: ItemCheckableBehavior = DEFAULT_ITEM_CHECKABLE_BEHAVIOR
-    ) : super(context) {
+    ) : super(UIFabricContextThemeWrapper(context)) {
         this.context = context
         this.anchorView = anchorView
         this.items = items
@@ -68,7 +69,7 @@ class PopupMenu : ListPopupWindow, PopupMenuItem.OnClickListener {
         adapter = PopupMenuAdapter(context, items, itemCheckableBehavior, this)
         setAdapter(adapter)
 
-        setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.popup_menu_background))
+        setBackgroundDrawable(ContextCompat.getDrawable(UIFabricContextThemeWrapper(context), R.drawable.popup_menu_background))
 
         isModal = true
         width = adapter.calculateWidth()

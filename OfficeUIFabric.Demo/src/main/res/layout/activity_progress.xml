@@ -59,13 +59,13 @@
 
             </LinearLayout>
 
-            <ProgressBar
+            <com.microsoft.officeuifabric.widget.ProgressBar
                 android:id="@+id/progress_bar_large"
                 style="@style/Widget.UIFabric.CircularProgress.Large"
                 android:layout_gravity="start|center_vertical"
                 android:layout_marginEnd="@dimen/circular_progress_spacing" />
 
-            <ProgressBar
+            <com.microsoft.officeuifabric.widget.ProgressBar
                 android:id="@+id/progress_bar_large_primary"
                 style="@style/Widget.UIFabric.CircularProgress.Large.Primary"
                 android:layout_gravity="start|center_vertical" />
@@ -99,13 +99,13 @@
 
             </LinearLayout>
 
-            <ProgressBar
+            <com.microsoft.officeuifabric.widget.ProgressBar
                 android:id="@+id/progress_bar_medium"
                 style="@style/Widget.UIFabric.CircularProgress.Medium"
                 android:layout_gravity="start|center_vertical"
                 android:layout_marginEnd="@dimen/circular_progress_spacing" />
 
-            <ProgressBar
+            <com.microsoft.officeuifabric.widget.ProgressBar
                 android:id="@+id/progress_bar_medium_primary"
                 style="@style/Widget.UIFabric.CircularProgress.Medium.Primary"
                 android:layout_gravity="start|center_vertical" />
@@ -139,13 +139,13 @@
 
             </LinearLayout>
 
-            <ProgressBar
+            <com.microsoft.officeuifabric.widget.ProgressBar
                 android:id="@+id/progress_bar"
                 style="@style/Widget.UIFabric.CircularProgress.Small"
                 android:layout_gravity="start|center_vertical"
                 android:layout_marginEnd="@dimen/circular_progress_spacing" />
 
-            <ProgressBar
+            <com.microsoft.officeuifabric.widget.ProgressBar
                 android:id="@+id/progress_bar_small_primary"
                 style="@style/Widget.UIFabric.CircularProgress.Small.Primary"
                 android:layout_gravity="start|center_vertical" />
@@ -179,13 +179,13 @@
 
             </LinearLayout>
 
-            <ProgressBar
+            <com.microsoft.officeuifabric.widget.ProgressBar
                 android:id="@+id/progress_bar_xsmall"
                 style="@style/Widget.UIFabric.CircularProgress.XSmall"
                 android:layout_gravity="start|center_vertical"
                 android:layout_marginEnd="@dimen/circular_progress_spacing" />
 
-            <ProgressBar
+            <com.microsoft.officeuifabric.widget.ProgressBar
                 android:id="@+id/progress_bar_xsmall_primary"
                 style="@style/Widget.UIFabric.CircularProgress.XSmall.Primary"
                 android:layout_gravity="start|center_vertical" />

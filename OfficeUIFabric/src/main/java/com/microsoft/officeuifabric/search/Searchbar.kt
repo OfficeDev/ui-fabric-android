@@ -13,9 +13,13 @@ import android.support.v7.widget.SearchView
 import android.util.AttributeSet
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.*
+import android.widget.FrameLayout
+import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.LinearLayout
 import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.appbarlayout.AppBarLayout
+import com.microsoft.officeuifabric.widget.ProgressBar
 import com.microsoft.officeuifabric.util.inputMethodManager
 import com.microsoft.officeuifabric.util.isVisible
 import com.microsoft.officeuifabric.util.toggleKeyboardVisibility

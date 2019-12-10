@@ -12,9 +12,9 @@ import android.support.v4.content.ContextCompat
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory
 import android.view.View
 import android.widget.ImageView
-import android.widget.ProgressBar
 import com.microsoft.officeuifabric.persona.AvatarSize
 import com.microsoft.officeuifabric.persona.AvatarView
+import com.microsoft.officeuifabric.widget.ProgressBar
 import com.microsoft.officeuifabric.snackbar.Snackbar
 import com.microsoft.officeuifabric.util.createImageView
 import com.microsoft.officeuifabricdemo.DemoActivity
