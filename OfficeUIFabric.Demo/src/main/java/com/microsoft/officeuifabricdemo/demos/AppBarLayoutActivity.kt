@@ -9,6 +9,7 @@ import android.graphics.PorterDuff
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.DividerItemDecoration
+import android.view.ContextThemeWrapper
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -157,10 +158,11 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
             R.id.app_bar_layout_toggle_searchbar_type_button ->
                 searchbarIsActionMenuView = !searchbarIsActionMenuView
             R.id.app_bar_layout_toggle_theme_button -> {
-                themeId = if (themeId == R.style.AppTheme)
-                    R.style.AppTheme_Orange
-                else
-                    R.style.AppTheme
+                themeId = when (themeId) {
+                    R.style.AppTheme -> R.style.AppTheme_Neutral
+                    R.style.AppTheme_Neutral -> R.style.AppTheme_Orange
+                    else -> R.style.AppTheme
+                }
 
                 recreate()
             }
@@ -286,7 +288,7 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
     }
 
     private fun createSearchbar(): Searchbar {
-        val searchbar = Searchbar(this)
+        val searchbar = Searchbar(ContextThemeWrapper(this, themeId))
         searchbar.onQueryTextFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
             searchbarHasFocus = hasFocus
         }

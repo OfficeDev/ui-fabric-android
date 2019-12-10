@@ -208,4 +208,30 @@
     -->
     <style name="Theme.UIFabric" parent="Base.Theme.UIFabric"/>
 
+    <!--
+        This theme overlay targets only the attributes needed for a neutral AppBarLayout with a white background.
+        Use as the theme attribute in an AppBarLayout or in a ContextThemeWrapper for AppBarLayout, Searchbar, or Toolbar.
+    -->
+    <style name="ThemeOverlay.UIFabric.NeutralAppBar" parent="">
+        <!--AppBarLayout-->
+        <item name="uifabricAppBarLayoutBackgroundColor">?attr/uifabricBackgroundColor</item>
+
+        <!--Searchbar-->
+        <item name="uifabricSearchbarBackgroundColor">?attr/uifabricBackgroundColor</item>
+        <item name="uifabricSearchbarSearchViewContainerBackgroundColor">#33C8C8C8</item>
+        <item name="uifabricSearchbarBackButtonColor">?attr/uifabricForegroundSecondaryIconColor</item>
+        <item name="uifabricSearchbarSearchIconColor">?attr/uifabricForegroundSecondaryIconColor</item>
+        <item name="uifabricSearchbarSearchViewTextColor">?attr/uifabricForegroundColor</item>
+        <item name="uifabricSearchbarSearchViewTextHintColor">?attr/uifabricForegroundColor</item>
+        <item name="uifabricSearchbarSearchViewCursorColor">?attr/colorPrimary</item>
+        <item name="uifabricSearchbarProgressColor">?attr/uifabricForegroundSecondaryIconColor</item>
+        <item name="uifabricSearchbarCloseIconColor">?attr/uifabricForegroundSecondaryIconColor</item>
+
+        <!--Toolbar-->
+        <item name="uifabricToolbarBackgroundColor">?attr/uifabricBackgroundColor</item>
+        <item name="uifabricToolbarTitleTextColor">?attr/uifabricForegroundColor</item>
+        <item name="uifabricToolbarSubtitleTextColor">?attr/uifabricForegroundColor</item>
+        <item name="uifabricToolbarIconColor">@color/uifabric_gray_500</item>
+    </style>
+
 </resources>

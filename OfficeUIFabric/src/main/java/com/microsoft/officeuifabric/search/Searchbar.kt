@@ -25,6 +25,9 @@ import com.microsoft.officeuifabric.view.TemplateView
  * [Searchbar] provides a [SearchView] with a search icon, back button, close icon,
  * and progress indicator. It is designed to be used as the primary search experience at the top of the app,
  * either displayed below the Toolbar as an accessory view, from a menu item as an action view, or stand alone.
+ *
+ * To use a neutral theme with a white background instead of primary background in day mode,
+ * apply ThemeOverlay.UIFabric.NeutralAppBar via a ContextThemeWrapper.
  */
 open class Searchbar : TemplateView, SearchView.OnQueryTextListener {
     /**

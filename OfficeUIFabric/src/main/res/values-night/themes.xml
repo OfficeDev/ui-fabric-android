@@ -98,4 +98,22 @@
         <item name="uifabricTooltipTextColor">?attr/uifabricForegroundOnPrimaryColor</item>
     </style>
 
+    <style name="ThemeOverlay.UIFabric.NeutralAppBar" parent="">
+        <!--AppBarLayout-->
+        <item name="uifabricAppBarLayoutBackgroundColor">?attr/uifabricBackgroundSecondaryColor</item>
+
+        <!--Searchbar-->
+        <item name="uifabricSearchbarBackgroundColor">?attr/uifabricBackgroundSecondaryColor</item>
+        <item name="uifabricSearchbarSearchViewContainerBackgroundColor">@color/uifabric_gray_700</item>
+        <item name="uifabricSearchbarSearchViewTextColor">?attr/uifabricForegroundOnSecondaryColor</item>
+        <item name="uifabricSearchbarBackButtonColor">?attr/uifabricForegroundOnSecondaryColor</item>
+        <item name="uifabricSearchbarSearchViewCursorColor">?attr/uifabricForegroundOnSecondaryColor</item>
+
+        <!--Toolbar-->
+        <item name="uifabricToolbarBackgroundColor">?attr/uifabricBackgroundSecondaryColor</item>
+        <item name="uifabricToolbarTitleTextColor">?attr/uifabricForegroundOnSecondaryColor</item>
+        <item name="uifabricToolbarSubtitleTextColor">?attr/uifabricForegroundOnSecondaryColor</item>
+        <item name="uifabricToolbarIconColor">?attr/uifabricForegroundOnSecondaryColor</item>
+    </style>
+
 </resources>

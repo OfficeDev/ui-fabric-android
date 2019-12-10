@@ -35,6 +35,9 @@ import kotlin.math.abs
  * [ScrollBehavior] works best with a [CoordinatorLayout] parent and either [NestedScrollView] or
  * [RecyclerView] direct siblings.
  *
+ * To use a neutral theme with a white background instead of primary background in day mode,
+ * apply ThemeOverlay.UIFabric.NeutralAppBar via the theme attribute or a ContextThemeWrapper.
+ *
  * TODO
  * - Use Fluent PopupMenu
  * - Add xml attributes

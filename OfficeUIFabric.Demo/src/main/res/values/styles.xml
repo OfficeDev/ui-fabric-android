@@ -24,6 +24,17 @@
         <item name="colorAccent">#d83b01</item>
     </style>
 
+    <style name="Base.AppTheme.Neutral" parent="ThemeOverlay.UIFabric.NeutralAppBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">?attr/uifabricBackgroundColor</item>
+        <item name="android:background">@null</item>
+        <item name="android:statusBarColor">?attr/uifabricBackgroundColor</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
+    </style>
+
+    <style name="AppTheme.Neutral" parent="Base.AppTheme.Neutral" />
+
     <style name="Base.AppTheme.Launcher">
         <!--Use background instead of windowBackground to account for differences in bottom nav bar height treatment-->
         <item name="android:background">@drawable/uifabric_launch_screen</item>
