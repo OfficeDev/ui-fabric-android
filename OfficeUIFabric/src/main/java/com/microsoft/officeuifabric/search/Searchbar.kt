@@ -19,11 +19,11 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.appbarlayout.AppBarLayout
-import com.microsoft.officeuifabric.widget.ProgressBar
 import com.microsoft.officeuifabric.util.inputMethodManager
 import com.microsoft.officeuifabric.util.isVisible
 import com.microsoft.officeuifabric.util.toggleKeyboardVisibility
 import com.microsoft.officeuifabric.view.TemplateView
+import com.microsoft.officeuifabric.widget.ProgressBar
 
 /**
  * [Searchbar] provides a [SearchView] with a search icon, back button, close icon,
@@ -112,6 +112,7 @@ open class Searchbar : TemplateView, SearchView.OnQueryTextListener {
     }
 
     fun requestSearchViewFocus() {
+        reloadTemplateIfInvalid()
         searchView?.requestFocus()
     }
 

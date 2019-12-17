@@ -12,12 +12,14 @@ import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.support.v7.widget.Toolbar
 import android.util.AttributeSet
+import android.view.View
 import android.view.ViewGroup
 import com.microsoft.officeuifabric.R
 import com.microsoft.officeuifabric.persona.AvatarSize
 import com.microsoft.officeuifabric.persona.AvatarView
 import com.microsoft.officeuifabric.persona.IAvatar
 import com.microsoft.officeuifabric.persona.setAvatar
+import com.microsoft.officeuifabric.search.Searchbar
 import com.microsoft.officeuifabric.theming.UIFabricContextThemeWrapper
 
 /**
@@ -55,8 +57,16 @@ class Toolbar : Toolbar {
         updateStylesAndIcon()
     }
 
-    private fun updateStylesAndIcon() {
-        if (navigationIcon == null) {
+    override fun onViewAdded(child: View) {
+        super.onViewAdded(child)
+
+        // This accounts for cases when the native back button is added for Searchbar as ActionMenuView.
+        if (child is Searchbar && child.isActionMenuView)
+            updateStylesAndIcon(true)
+    }
+
+    private fun updateStylesAndIcon(nativeBackButtonUsed: Boolean = false) {
+        if (navigationIcon == null && !nativeBackButtonUsed) {
             setPaddingRelative(context.resources.getDimension(R.dimen.uifabric_toolbar_padding_start).toInt(), 0, 0, 0)
             titleMarginStart = context.resources.getDimension(R.dimen.uifabric_toolbar_title_margin_start).toInt()
             return
