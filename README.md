@@ -1,4 +1,4 @@
-## This repo has moved! Please use https://github.com/microsoft/fluentui-android instead. 
+## This repo has moved and has been archived. Please use https://github.com/microsoft/fluentui-android instead. 
 
 
 ![Build status](https://onedrive.visualstudio.com/Design/_apis/build/status/fabric-mobile/fabric-android-CI-github?branchName=master)
